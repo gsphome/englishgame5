@@ -8,6 +8,7 @@ import { useTranslation } from '../../utils/i18n';
 import { useToast } from '../../hooks/useToast';
 import { useLearningCleanup } from '../../hooks/useLearningCleanup';
 import { shuffleArray } from '../../utils/randomUtils';
+import NavigationButton from '../ui/NavigationButton';
 import type { LearningModule } from '../../types';
 
 interface CompletionData {
@@ -265,12 +266,12 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
       {/* Unified Control Bar */}
       <div className="flex justify-center items-center gap-3 flex-wrap mt-6">
         {/* Navigation */}
-        <button
+        <NavigationButton
           onClick={() => setCurrentView('menu')}
-          className="flex items-center gap-1 px-4 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors text-sm font-medium"
+          title="Return to main menu"
         >
-          ← Menu
-        </button>
+          Back to Menu
+        </NavigationButton>
 
         {/* Separator */}
         <div className="w-px h-6 bg-gray-300 mx-1"></div>

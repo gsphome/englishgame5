@@ -7,6 +7,7 @@ import { useProgressStore } from '../../stores/progressStore';
 import { useTranslation } from '../../utils/i18n';
 import { useLearningCleanup } from '../../hooks/useLearningCleanup';
 import { shuffleArray } from '../../utils/randomUtils';
+import NavigationButton from '../ui/NavigationButton';
 import type { FlashcardData, LearningModule } from '../../types';
 
 interface FlashcardComponentProps {
@@ -196,12 +197,12 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
       {/* Unified Control Bar */}
       <div className="flex justify-center items-center gap-3 flex-wrap mt-6">
         {/* Navigation */}
-        <button
+        <NavigationButton
           onClick={() => setCurrentView('menu')}
-          className="flex items-center gap-1 px-4 py-2.5 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 rounded-lg transition-colors text-sm font-medium"
+          title="Return to main menu"
         >
-          ← Menu
-        </button>
+          Back to Menu
+        </NavigationButton>
 
         {/* Separator */}
         <div className="w-px h-6 bg-gray-300 dark:bg-gray-600 mx-1"></div>

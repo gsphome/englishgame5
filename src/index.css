@@ -132,4 +132,171 @@
   }
   
 
-}
+}  /* Na
+vigation Button - BEM Architecture */
+  .nav-btn {
+    @apply flex items-center gap-2 px-4 py-2.5 rounded-lg transition-all duration-200 text-sm font-medium shadow-sm;
+    @apply bg-white border-2 border-gray-200 text-gray-700;
+    @apply hover:bg-gray-50 hover:border-gray-300 hover:shadow-md;
+    @apply active:scale-95;
+  }
+  
+  .nav-btn--back {
+    /* Specific styles for back navigation button */
+  }
+  
+  .nav-btn__icon {
+    @apply w-4 h-4 flex-shrink-0;
+  }
+  
+  .nav-btn__icon--arrow {
+    @apply text-gray-700; /* Explicit color for light mode */
+  }
+  
+  .nav-btn__text {
+    @apply text-gray-700; /* Explicit color for light mode */
+  }
+  
+  /* Dark mode variants */
+  .dark .nav-btn {
+    @apply bg-gray-800 border-gray-600 text-gray-100;
+    @apply hover:bg-gray-700 hover:border-gray-500;
+  }
+  
+  .dark .nav-btn__icon--arrow {
+    @apply text-gray-100; /* Explicit white color for dark mode */
+  }
+  
+  .dark .nav-btn__text {
+    @apply text-gray-100; /* Explicit white color for dark mode */
+  }  /* Ins
+tructional Text - BEM Architecture */
+  .instruction-text {
+    @apply text-gray-600;
+  }
+  
+  .instruction-text--small {
+    @apply text-xs;
+  }
+  
+  .instruction-text--medium {
+    @apply text-sm;
+  }
+  
+  .instruction-text--center {
+    @apply text-center;
+  }
+  
+  .instruction-text--label {
+    @apply font-medium;
+  }
+  
+  /* Dark mode variants */
+  .dark .instruction-text {
+    @apply text-gray-200;
+  }
+  
+  /* Section Headers */
+  .section-header {
+    @apply text-gray-700 font-medium;
+  }
+  
+  .dark .section-header {
+    @apply text-gray-100;
+  }
+  
+  /* Help Text */
+  .help-text {
+    @apply text-yellow-700;
+  }
+  
+  .help-text--strong {
+    @apply text-yellow-800 font-medium;
+  }
+  
+  .dark .help-text {
+    @apply text-yellow-200;
+  }
+  
+  .dark .help-text--strong {
+    @apply text-yellow-100;
+  }  /* 
+Drop Zone - BEM Architecture */
+  .drop-zone {
+    @apply p-1 sm:p-4 border-2 border-dashed rounded-lg min-h-[140px] sm:min-h-[200px] transition-all duration-200;
+    @apply border-gray-400 bg-gray-50;
+  }
+  
+  .drop-zone--interactive {
+    @apply hover:border-blue-500 hover:bg-blue-50 hover:shadow-sm;
+  }
+  
+  .drop-zone--correct {
+    @apply border-green-500 bg-green-50;
+  }
+  
+  .drop-zone--error {
+    @apply border-red-500 bg-red-50;
+  }
+  
+  .drop-zone--neutral {
+    @apply border-gray-400 bg-gray-50;
+  }
+  
+  /* Dark mode variants with enhanced contrast */
+  .dark .drop-zone {
+    @apply border-gray-500 bg-gray-800;
+  }
+  
+  .dark .drop-zone--interactive {
+    @apply hover:border-blue-400 hover:bg-gray-700 hover:shadow-lg;
+  }
+  
+  .dark .drop-zone--correct {
+    @apply border-green-400 bg-green-900/50;
+  }
+  
+  .dark .drop-zone--error {
+    @apply border-red-400 bg-red-900/50;
+  }
+  
+  .dark .drop-zone--neutral {
+    @apply border-gray-500 bg-gray-800;
+  }
+  
+  /* Enhanced visual feedback */
+  .drop-zone__header {
+    @apply font-semibold text-gray-900 mb-2 sm:mb-3 text-center text-sm sm:text-base;
+  }
+  
+  .dark .drop-zone__header {
+    @apply text-white;
+  }
+  
+  /* Drag over state */
+  .drop-zone--drag-over {
+    @apply border-blue-600 bg-blue-100 scale-[1.02] shadow-md;
+  }
+  
+  .dark .drop-zone--drag-over {
+    @apply border-blue-300 bg-blue-900/30;
+  }  /* A
+vailable Words Area */
+  .available-words-area {
+    @apply min-h-[80px] p-4 border-2 border-dashed rounded-lg transition-colors;
+    @apply border-gray-400 bg-gray-50;
+  }
+  
+  .dark .available-words-area {
+    @apply border-gray-500 bg-gray-800;
+  }
+  
+  /* Word chips */
+  .word-chip {
+    @apply px-2 py-1 sm:px-3 sm:py-2 rounded-lg cursor-move transition-all duration-200 select-none text-xs sm:text-sm;
+    @apply bg-blue-100 text-blue-800 hover:bg-blue-200 hover:shadow-sm;
+  }
+  
+  .dark .word-chip {
+    @apply bg-blue-900 text-blue-200 hover:bg-blue-800;
+  }

@@ -6,6 +6,7 @@ import { useSettingsStore } from '../../stores/settingsStore';
 import { useProgressStore } from '../../stores/progressStore';
 import { useToast } from '../../hooks/useToast';
 import { useLearningCleanup } from '../../hooks/useLearningCleanup';
+import NavigationButton from '../ui/NavigationButton';
 import type { LearningModule } from '../../types';
 
 // Get category display name from module data
@@ -40,6 +41,7 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
   const [availableWords, setAvailableWords] = useState<string[]>([]);
   const [showResult, setShowResult] = useState(false);
   const [startTime] = useState(Date.now());
+  const [dragOverCategory, setDragOverCategory] = useState<string | null>(null);
 
   const { updateSessionScore, setCurrentView } = useAppStore();
   const { updateUserScore } = useUserStore();
@@ -128,9 +130,15 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
     e.dataTransfer.effectAllowed = 'move';
   };
 
-  const handleDragOver = (e: React.DragEvent) => {
+  const handleDragOver = (e: React.DragEvent, categoryName: string) => {
     e.preventDefault();
     e.dataTransfer.dropEffect = 'move';
+    setDragOverCategory(categoryName);
+  };
+
+  const handleDragLeave = (e: React.DragEvent) => {
+    e.preventDefault();
+    setDragOverCategory(null);
   };
 
   const handleDrop = (e: React.DragEvent, categoryName: string) => {
@@ -147,6 +155,7 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
     }));
 
     setDraggedItem(null);
+    setDragOverCategory(null);
   };
 
   const handleRemoveFromCategory = (word: string, categoryName: string) => {
@@ -242,29 +251,29 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
             style={{ width: `${exercise.words.length > 0 ? ((exercise.words.length - availableWords.length) / exercise.words.length) * 100 : 0}%` }}
           />
         </div>
-        <p className="text-xs text-gray-500 dark:text-gray-400 mt-2 text-center">
+        <p className="instruction-text instruction-text--small instruction-text--center mt-2">
           {allWordsSorted ? 'All words sorted! Check your answers' : 'Drag and drop words into categories'}
         </p>
       </div>
 
       {/* Available Words */}
       <div className="mb-4">
-        <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Available Words</h3>
-        <div className="min-h-[80px] p-4 bg-gray-50 dark:bg-gray-800 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg">
+        <h3 className="section-header instruction-text--medium mb-2">Available Words</h3>
+        <div className="available-words-area">
           <div className="flex flex-wrap gap-2">
             {availableWords.map((word, index) => (
               <div
                 key={`available-${index}-${word}`}
                 draggable
                 onDragStart={(e) => handleDragStart(e, word)}
-                className="px-2 py-1 sm:px-3 sm:py-2 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-lg cursor-move hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors select-none text-xs sm:text-sm"
+                className="word-chip"
               >
                 {word}
               </div>
             ))}
           </div>
           {availableWords.length === 0 && (
-            <p className="text-gray-500 dark:text-gray-400 text-center">All words have been sorted!</p>
+            <p className="instruction-text instruction-text--center">All words have been sorted!</p>
           )}
         </div>
       </div>
@@ -278,21 +287,34 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
             userItems.every(item => category.items.includes(item));
           const hasErrors = showResult && !isCorrect;
 
+          const isDragOver = dragOverCategory === category.name;
+          
+          let dropZoneClass = 'drop-zone';
+          
+          if (showResult) {
+            if (isCorrect) {
+              dropZoneClass += ' drop-zone--correct';
+            } else if (hasErrors) {
+              dropZoneClass += ' drop-zone--error';
+            } else {
+              dropZoneClass += ' drop-zone--neutral';
+            }
+          } else {
+            dropZoneClass += ' drop-zone--interactive';
+            if (isDragOver) {
+              dropZoneClass += ' drop-zone--drag-over';
+            }
+          }
+
           return (
             <div
               key={category.name}
-              onDragOver={handleDragOver}
+              onDragOver={(e) => handleDragOver(e, category.name)}
+              onDragLeave={handleDragLeave}
               onDrop={(e) => handleDrop(e, category.name)}
-              className={`p-1 sm:p-4 border-2 border-dashed rounded-lg min-h-[140px] sm:min-h-[200px] ${showResult
-                ? isCorrect
-                  ? 'border-green-400 dark:border-green-500 bg-green-50 dark:bg-green-900'
-                  : hasErrors
-                    ? 'border-red-400 dark:border-red-500 bg-red-50 dark:bg-red-900'
-                    : 'border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-800'
-                : 'border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-800 hover:border-blue-400 dark:hover:border-blue-500'
-                }`}
+              className={dropZoneClass}
             >
-              <h4 className="font-semibold text-gray-900 dark:text-white mb-2 sm:mb-3 text-center text-sm sm:text-base">
+              <h4 className="drop-zone__header">
                 {category.name}
                 {showResult && (
                   <span className={`ml-2 ${isCorrect ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
@@ -320,7 +342,7 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
 
               {showResult && hasErrors && (
                 <div className="mt-3 p-2 bg-yellow-50 dark:bg-yellow-900 border border-yellow-200 dark:border-yellow-700 rounded text-xs">
-                  <strong className="text-yellow-800 dark:text-yellow-200">Correct items:</strong> <span className="text-yellow-700 dark:text-yellow-300">{category.items.join(', ')}</span>
+                  <strong className="help-text--strong">Correct items:</strong> <span className="help-text">{category.items.join(', ')}</span>
                 </div>
               )}
             </div>
@@ -331,12 +353,12 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
       {/* Unified Control Bar */}
       <div className="flex justify-center items-center gap-3 flex-wrap mt-6">
         {/* Navigation */}
-        <button
+        <NavigationButton
           onClick={() => setCurrentView('menu')}
-          className="flex items-center gap-1 px-4 py-2.5 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 rounded-lg transition-colors text-sm font-medium"
+          title="Return to main menu"
         >
-          ← Menu
-        </button>
+          Back to Menu
+        </NavigationButton>
 
         {/* Separator */}
         <div className="w-px h-6 bg-gray-300 mx-1"></div>

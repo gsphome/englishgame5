@@ -8,6 +8,7 @@ import { useToast } from '../../hooks/useToast';
 import { useLearningCleanup } from '../../hooks/useLearningCleanup';
 import { shuffleArray } from '../../utils/randomUtils';
 import { createSanitizedHTML } from '../../utils/htmlSanitizer';
+import NavigationButton from '../ui/NavigationButton';
 
 import type { LearningModule } from '../../types';
 
@@ -63,15 +64,15 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
 
   const handleAnswerSelect = useCallback((optionIndex: number) => {
     if (showResult || !currentQuestion) return;
-    
-    const selectedAnswer = currentQuestion.options?.[optionIndex];
-    const isCorrect = selectedAnswer === currentQuestion.correct;
-    
+
+    const selectedAnswerText = currentQuestion.options?.[optionIndex];
+    const isCorrect = selectedAnswerText === currentQuestion.correct;
+
     setSelectedAnswer(optionIndex);
     setShowResult(true);
-    
+
     updateSessionScore(isCorrect ? { correct: 1 } : { incorrect: 1 });
-    
+
     if (isCorrect) {
       showCorrectAnswer();
     } else {
@@ -89,7 +90,7 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
       const { sessionScore } = useAppStore.getState();
       const finalScore = Math.round((sessionScore.correct / sessionScore.total) * 100);
       const accuracy = sessionScore.accuracy;
-      
+
       // Register progress
       addProgressEntry({
         score: finalScore,
@@ -99,7 +100,7 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
         learningMode: 'quiz',
         timeSpent: timeSpent,
       });
-      
+
       showModuleCompleted(module.name, finalScore, accuracy);
       updateUserScore(module.id, finalScore, timeSpent);
       setCurrentView('menu');
@@ -108,7 +109,7 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
 
   useEffect(() => {
     if (randomizedQuestions.length === 0) return;
-    
+
     const handleKeyPress = (e: KeyboardEvent) => {
       if (e.key >= '1' && e.key <= '4' && !showResult && currentQuestion) {
         const optionIndex = parseInt(e.key) - 1;
@@ -236,27 +237,24 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
       {/* Unified Control Bar */}
       <div className="flex justify-center items-center gap-3 flex-wrap mt-6">
         {/* Navigation */}
-        <button
+        <NavigationButton
           onClick={() => setCurrentView('menu')}
-          className="flex items-center gap-1 px-4 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors text-sm font-medium"
+          title="Return to main menu"
         >
-          ← Menu
+          Back to Menu
+        </NavigationButton>
+
+        {/* Separator */}
+        <div className="w-px h-6 bg-gray-300 dark:bg-gray-600 mx-1"></div>
+
+        <button
+          onClick={handleNext}
+          disabled={!showResult}
+          className="flex items-center gap-2 px-6 py-2.5 bg-green-600 hover:bg-green-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white rounded-lg transition-colors text-sm font-medium shadow-sm"
+        >
+          <span>{currentIndex === randomizedQuestions.length - 1 ? 'Finish Quiz' : 'Next Question'}</span>
+          <ArrowRight className="h-4 w-4" />
         </button>
-
-        {showResult && (
-          <>
-            {/* Separator */}
-            <div className="w-px h-6 bg-gray-300 mx-1"></div>
-
-            <button
-              onClick={handleNext}
-              className="flex items-center gap-2 px-6 py-2.5 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors text-sm font-medium shadow-sm"
-            >
-              <span>{currentIndex === randomizedQuestions.length - 1 ? 'Finish Quiz' : 'Next Question'}</span>
-              <ArrowRight className="h-4 w-4" />
-            </button>
-          </>
-        )}
       </div>
     </div>
   );

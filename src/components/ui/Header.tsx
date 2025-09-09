@@ -120,7 +120,7 @@ export const Header: React.FC<HeaderProps> = ({ onDashboardToggle }) => {
           <div className="header-redesigned__quick-actions">
             <button
               onClick={onDashboardToggle}
-              className="header-redesigned__control-btn header-redesigned__control-btn--secondary"
+              className="header-redesigned__control-btn header-redesigned__control-btn--primary"
               title="Dashboard & Statistics"
               aria-label="Open dashboard and statistics"
             >
