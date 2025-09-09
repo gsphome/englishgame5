@@ -4,7 +4,7 @@ import '../../styles/components/header.css';
 import { useAppStore } from '../../stores/appStore';
 import { useUserStore } from '../../stores/userStore';
 import { useSettingsStore } from '../../stores/settingsStore';
-import { toast } from '../../stores/toastStore';
+// import { toast } from '../../stores/toastStore';
 
 import { UserProfileForm } from './UserProfileForm';
 import { AdvancedSettingsModal } from './AdvancedSettingsModal';
@@ -48,12 +48,12 @@ export const Header: React.FC<HeaderProps> = ({ onDashboardToggle }) => {
     setShowSideMenu(false);
   };
 
-  const handleSettings = () => {
-    setShowSettings(!showSettings);
-    if (!showSettings) {
-      toast.info('Configuración', 'Panel de configuración abierto');
-    }
-  };
+  // const handleSettings = () => {
+  //   setShowSettings(!showSettings);
+  //   if (!showSettings) {
+  //     toast.info('Configuración', 'Panel de configuración abierto');
+  //   }
+  // };
 
   return (
     <header className={`header-redesigned header-redesigned--${headerMode}`}>

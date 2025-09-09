@@ -6,7 +6,7 @@ import { useUserStore } from '../../stores/userStore';
 import { useSettingsStore } from '../../stores/settingsStore';
 import { useProgressStore } from '../../stores/progressStore';
 import { useTranslation } from '../../utils/i18n';
-import { toast } from '../../stores/toastStore';
+// import { toast } from '../../stores/toastStore';
 
 
 interface DashboardProps {
