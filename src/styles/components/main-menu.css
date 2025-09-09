@@ -1,0 +1,186 @@
+/* Main Menu Styles */
+
+/* SVG Icon Inheritance Fix - Force white in dark mode */
+.main-menu svg {
+  color: currentColor !important;
+  stroke: currentColor !important;
+  fill: none !important;
+}
+
+.dark .main-menu svg {
+  color: white !important;
+  stroke: white !important;
+}
+
+/* Menu Container */
+.main-menu {
+  @apply max-w-6xl mx-auto my-2 bg-white pt-4 pb-6 px-3 sm:px-6 rounded-lg shadow-sm;
+}
+
+.main-menu__title {
+  @apply text-3xl font-bold text-center mb-8 text-gray-900;
+}
+
+/* Search Section */
+.main-menu__search {
+  @apply max-w-sm mx-auto mb-4;
+}
+
+/* Grid Container - UX-First Approach: No Horizontal Scroll */
+.main-menu__grid {
+  @apply bg-gray-50 rounded-xl border-2 border-gray-200 mx-auto;
+  padding: 0.875rem;
+  width: 100%;
+  max-width: 100%;
+}
+
+.main-menu__grid-container {
+  display: grid !important;
+  place-items: center !important;
+  gap: 0.625rem !important;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)) !important;
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+/* UX-First Breakpoints: Based on Available Container Space */
+/* Mobile: 12px main padding + 14px grid padding = 52px total overhead */
+@media (max-width: 299px) {
+  .main-menu .main-menu__grid .main-menu__grid-container {
+    grid-template-columns: repeat(1, minmax(100px, 1fr)) !important;
+  }
+}
+
+/* 2 cols: Conservative breakpoint to prevent cutting */
+@media (min-width: 300px) and (max-width: 409px) {
+  .main-menu .main-menu__grid .main-menu__grid-container {
+    grid-template-columns: repeat(2, minmax(100px, 1fr)) !important;
+  }
+}
+
+/* 3 cols: Conservative range to prevent cutting */
+@media (min-width: 410px) and (max-width: 719px) {
+  .main-menu .main-menu__grid .main-menu__grid-container {
+    grid-template-columns: repeat(3, minmax(100px, 1fr)) !important;
+  }
+}
+
+/* 4 cols: Conservative breakpoint to prevent horizontal scroll */
+/* Real calculation: 4×130px + 3×16px + 88px overhead = 656px + safety margin = 720px */
+@media (min-width: 720px) and (max-width: 899px) {
+  .main-menu .main-menu__grid .main-menu__grid-container {
+    grid-template-columns: repeat(4, minmax(130px, 1fr)) !important;
+  }
+}
+
+/* Desktop: 5 cols: 5×145px + 4×20px gap = 805px minimum */
+@media (min-width: 900px) {
+  .main-menu .main-menu__grid .main-menu__grid-container {
+    grid-template-columns: repeat(5, minmax(145px, 1fr)) !important;
+  }
+}
+
+/* Progressive Enhancement: Larger Screens Get More Space */
+@media (min-width: 720px) and (max-width: 899px) {
+  .main-menu__grid {
+    padding: 1.25rem;
+  }
+  
+  .main-menu__grid-container {
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 900px) {
+  .main-menu__grid {
+    padding: 1.5rem;
+    max-width: 833px;
+    max-height: 425px;
+    margin: 0 auto;
+    overflow-y: auto;
+  }
+  
+  .main-menu__grid-container {
+    gap: 1.25rem;
+  }
+}
+
+/* No Results */
+.main-menu__no-results {
+  @apply text-center py-8;
+}
+
+.main-menu__no-results-text {
+  @apply text-gray-700 dark:text-gray-300;
+}
+
+.main-menu__results-count {
+  @apply mt-4 text-center text-sm text-gray-700 dark:text-gray-300;
+}
+
+/* Loading State */
+.main-menu__loading {
+  @apply flex items-center justify-center py-8;
+}
+
+.main-menu__loading-spinner {
+  @apply animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600;
+}
+
+/* Error State */
+.main-menu__error {
+  @apply text-center py-8;
+}
+
+.main-menu__error-text {
+  @apply text-red-600 dark:text-red-400 mb-4;
+}
+
+.main-menu__error-btn {
+  @apply bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors duration-200;
+}
+
+/* Mobile-First Responsive Design */
+@media (max-width: 719px) {
+  .main-menu {
+    @apply mx-2 my-2 pt-3 pb-4 px-3;
+  }
+  
+  .main-menu__search {
+    @apply mb-4;
+  }
+  
+  .main-menu__grid {
+    overflow-y: auto;
+    max-height: 295px;
+    padding: 0.875rem;
+  }
+  
+  .main-menu__grid-container {
+    gap: 0.625rem;
+  }
+}
+
+@media (min-width: 720px) and (max-width: 899px) {
+  .main-menu {
+    @apply px-6;
+  }
+  
+  .main-menu__grid {
+    @apply overflow-y-auto;
+    max-height: 365px;
+  }
+}
+
+/* Dark Mode */
+.dark .main-menu {
+  @apply bg-gray-800;
+}
+
+.dark .main-menu__title {
+  @apply text-white;
+}
+
+.dark .main-menu__grid {
+  @apply bg-gray-700 border-gray-600;
+}

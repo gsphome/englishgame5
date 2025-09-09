@@ -1,0 +1,135 @@
+@import './styles/components.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-100 font-sans;
+  }
+  
+  .dark body {
+    @apply bg-gray-900 text-white;
+  }
+  
+  .dark .header {
+    @apply bg-gray-800 border-gray-700;
+  }
+  
+  .dark .menu {
+    @apply bg-gray-800;
+  }
+  
+  .dark .menu__title {
+    @apply text-white;
+  }
+  
+  .dark .btn {
+    @apply border-gray-600;
+  }
+  
+  .dark .btn--primary {
+    @apply bg-blue-600 hover:bg-blue-700 text-white;
+  }
+  
+  .dark .header__button {
+    @apply text-gray-300 hover:text-white;
+  }
+  
+  .dark .header__user-button {
+    @apply text-gray-300 hover:text-white;
+  }
+  
+  .dark .header__user-points {
+    @apply text-gray-400;
+  }
+  
+  .dark .header__title {
+    @apply text-white;
+  }
+  
+  /* Modal styles for dark mode */
+  .dark .fixed.inset-0 > div {
+    @apply bg-gray-800 text-white;
+  }
+  
+  .dark .fixed.inset-0 input,
+  .dark .fixed.inset-0 select {
+    @apply bg-gray-700 border-gray-600 text-white;
+  }
+  
+  .dark .fixed.inset-0 label {
+    @apply text-gray-300;
+  }
+  
+  /* Side menu dark mode */
+  .dark .fixed.left-0 {
+    @apply bg-gray-800 text-white;
+  }
+  
+  .dark .fixed.left-0 button:hover {
+    @apply bg-gray-700;
+  }
+  
+  .dark .fixed.left-0 h2 {
+    @apply text-white;
+  }
+}
+
+/* Module Cards - Updated to work with new BEM-Like structure */
+/* Base styles are now handled in module-card.css with proper BEM-Like nomenclature */
+
+/* Legacy support - these will be overridden by the new BEM-Like styles */
+.module-card {
+  /* Base styles moved to module-card.css */
+}
+
+/* Color variants are now handled with gradients in module-card.css */
+.module-card--flashcard,
+.module-card--quiz,
+.module-card--completion,
+.module-card--sorting,
+.module-card--matching {
+  /* Gradient backgrounds defined in module-card.css */
+}
+
+/* Typography elements now use BEM-Like structure */
+.module-card__icon,
+.module-card__title,
+.module-card__type,
+.module-card__level {
+  /* Styles defined in module-card.css with proper BEM-Like nomenclature */
+}
+
+@layer components {
+  .app-header {
+    @apply bg-white border-b border-gray-200 shadow-sm;
+  }
+  
+  .main-container {
+    @apply max-w-4xl mx-auto my-4 bg-white p-8 rounded-lg shadow-sm;
+  }
+  
+  .module-grid {
+    @apply bg-gray-50 rounded-xl p-2 border-2 border-gray-200 max-w-3xl mx-auto;
+  }
+  
+  .search-input {
+    @apply w-full px-3 py-2 pl-10 pr-10 border border-gray-300 rounded-md text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500;
+  }
+  
+  .btn-primary {
+    @apply bg-blue-600 text-white px-3 py-1.5 rounded-md text-sm font-medium hover:bg-blue-700 transition-colors;
+  }
+  
+  .header-content {
+    @apply max-w-4xl mx-auto px-8 py-4 flex justify-between items-center;
+  }
+  
+  .header-title {
+    @apply text-xl font-bold text-gray-900;
+  }
+  
+
+}

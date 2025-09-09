@@ -1,0 +1,1301 @@
+/* Component-specific styles - Clean separation */
+/* Import component styles from organized structure */
+@import './components/index.css';
+
+/* ========================================
+   GLOBAL SVG ICON RULES - ENHANCED CONTRAST SYSTEM
+   ======================================== */
+
+/* 
+ * Base SVG Rules - Light Mode
+ * Ensures all SVG icons inherit currentColor for proper theming
+ * Uses !important to override inline styles from icon libraries like Lucide React
+ */
+svg {
+  color: currentColor !important;
+  stroke: currentColor !important;
+  fill: none !important;
+  /* Ensure minimum contrast ratio of 3:1 for icons */
+  min-width: 16px;
+  min-height: 16px;
+}
+
+/* 
+ * Dark Mode Override - Force White Icons
+ * Uses .dark prefix to ensure maximum contrast (white on dark backgrounds)
+ * Overrides any component-specific color rules for consistency
+ */
+.dark svg {
+  color: #ffffff !important; /* Pure white for maximum contrast */
+  stroke: #ffffff !important;
+  fill: none !important;
+}
+
+/* 
+ * Lucide React Specific Rules
+ * Ensures Lucide React icons properly inherit colors in both modes
+ * Addresses any inline styles that might be applied by the library
+ */
+[data-lucide] {
+  color: inherit !important;
+  stroke: currentColor !important;
+  fill: none !important;
+}
+
+.dark [data-lucide] {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+/* 
+ * Interactive Element Icons
+ * Ensures icons in buttons, links, and interactive elements maintain proper contrast
+ */
+button svg,
+a svg,
+[role="button"] svg,
+[tabindex] svg {
+  color: inherit !important;
+  stroke: currentColor !important;
+}
+
+.dark button svg,
+.dark a svg,
+.dark [role="button"] svg,
+.dark [tabindex] svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+/* 
+ * Header Specific Icon Rules - Critical for Dark Mode Visibility
+ * Higher specificity to ensure header icons are always visible
+ */
+.header-redesigned svg,
+.header-redesigned__menu-btn svg,
+.header-redesigned__user-btn svg,
+.header-redesigned__login-btn svg,
+.header-redesigned__control-btn svg,
+.header-side-menu svg {
+  color: currentColor !important;
+  stroke: currentColor !important;
+  fill: none !important;
+}
+
+/* Force white icons in header dark mode - Maximum specificity */
+.dark .header-redesigned svg,
+.dark .header-redesigned__menu-btn svg,
+.dark .header-redesigned__user-btn svg,
+.dark .header-redesigned__login-btn svg,
+.dark .header-redesigned__control-btn svg,
+.dark .header-side-menu svg,
+.dark .header-side-menu__icon,
+.dark .header-side-menu__item svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+  fill: none !important;
+}
+
+/* 
+ * CRITICAL: Specific Icons Fix for Dark Mode Header
+ * Ultra-high specificity for problematic icons: hamburger menu, stats, settings
+ */
+.dark .header-redesigned .header-redesigned__menu-btn svg,
+.dark .header-redesigned .header-redesigned__control-btn svg,
+.dark .header-redesigned .header-redesigned__control-panel svg,
+.dark .header-redesigned .header-redesigned__control-group svg,
+.dark .header-redesigned button[title*="menu"] svg,
+.dark .header-redesigned button[title*="Menu"] svg,
+.dark .header-redesigned button[aria-label*="menu"] svg,
+.dark .header-redesigned button[aria-label*="Menu"] svg,
+.dark .header-redesigned button[aria-label*="settings"] svg,
+.dark .header-redesigned button[aria-label*="Settings"] svg,
+.dark .header-redesigned button[aria-label*="configuración"] svg,
+.dark .header-redesigned button[aria-label*="Configuración"] svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+  fill: none !important;
+  opacity: 1 !important;
+}
+
+/* Additional header icon specificity for all states */
+.header-redesigned button svg,
+.header-redesigned a svg,
+.header-side-menu button svg,
+.header-side-menu a svg {
+  color: inherit !important;
+  stroke: currentColor !important;
+}
+
+.dark .header-redesigned button svg,
+.dark .header-redesigned a svg,
+.dark .header-side-menu button svg,
+.dark .header-side-menu a svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+/* 
+ * EMERGENCY FIX: Lucide React Icon Names for Header Dark Mode
+ * Targeting specific icon components by their data attributes and classes
+ */
+.dark .header-redesigned [data-lucide="menu"] svg,
+.dark .header-redesigned [data-lucide="settings"] svg,
+.dark .header-redesigned [data-lucide="bar-chart"] svg,
+.dark .header-redesigned [data-lucide="bar-chart-2"] svg,
+.dark .header-redesigned [data-lucide="activity"] svg,
+.dark .header-redesigned [data-lucide="user"] svg,
+.dark .header-redesigned [data-lucide="more-horizontal"] svg,
+.dark .header-redesigned [data-lucide="more-vertical"] svg,
+.dark .header-redesigned svg[class*="lucide"],
+.dark .header-redesigned .lucide svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+  fill: none !important;
+  opacity: 1 !important;
+}
+
+/* 
+ * High Contrast Mode Support
+ * Enhanced contrast for users with high contrast preferences
+ */
+@media (prefers-contrast: high) {
+  svg {
+    color: #000000 !important; /* Pure black in high contrast light mode */
+    stroke: #000000 !important;
+    stroke-width: 2 !important; /* Thicker strokes for better visibility */
+  }
+  
+  .dark svg {
+    color: #ffffff !important; /* Pure white in high contrast dark mode */
+    stroke: #ffffff !important;
+    stroke-width: 2 !important;
+  }
+}
+
+/* 
+ * Reduced Motion Support
+ * Removes any icon animations for users who prefer reduced motion
+ */
+@media (prefers-reduced-motion: reduce) {
+  svg {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* 
+ * Focus State Icons
+ * Ensures icons remain visible during focus states
+ */
+:focus svg,
+:focus-visible svg {
+  color: inherit !important;
+  stroke: currentColor !important;
+}
+
+.dark :focus svg,
+.dark :focus-visible svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+/* 
+ * SMART HEADER ICON COLORS: Context-Aware Contrast
+ * Icons adapt to their background color for optimal visibility
+ */
+
+/* CASE 1: Header with WHITE background (light mode or special cases) */
+.header-redesigned svg,
+.header-redesigned__menu-btn svg,
+.header-redesigned__control-btn svg {
+  color: #374151 !important; /* Dark gray on white background */
+  stroke: #374151 !important;
+  fill: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* CASE 2: Header with DARK background (normal dark mode) */
+.dark .header-redesigned svg,
+.dark .header-redesigned__menu-btn svg,
+.dark .header-redesigned__control-btn svg {
+  color: #ffffff !important; /* White on dark background */
+  stroke: #ffffff !important;
+  fill: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* CASE 3: Side menu - ALWAYS dark icons on white background */
+.header-side-menu svg,
+.header-side-menu__icon,
+.header-side-menu__item svg,
+.header-side-menu * svg {
+  color: #1f2937 !important; /* Dark gray on white background */
+  stroke: #1f2937 !important;
+  fill: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* CASE 4: Dark mode side menu - STILL dark icons (white background persists) */
+.dark .header-side-menu svg,
+.dark .header-side-menu__icon,
+.dark .header-side-menu__item svg,
+.dark .header-side-menu * svg {
+  color: #1f2937 !important; /* Keep dark on white background */
+  stroke: #1f2937 !important;
+  fill: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* CASE 5: If header background is forced white in dark mode */
+.dark .header-redesigned[style*="background-color: white"] svg,
+.dark .header-redesigned[style*="background: white"] svg {
+  color: #1f2937 !important; /* Dark icons on forced white background */
+  stroke: #1f2937 !important;
+  fill: none !important;
+}
+
+/* 
+ * Disabled State Icons
+ * Maintains appropriate contrast for disabled elements
+ */
+:disabled svg,
+[aria-disabled="true"] svg {
+  opacity: 0.5;
+  color: inherit !important;
+  stroke: currentColor !important;
+}
+
+.dark :disabled svg,
+.dark [aria-disabled="true"] svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+  opacity: 0.6; /* Slightly higher opacity in dark mode for better visibility */
+}
+
+/* 
+ * CRITICAL: Universal Header Icon Fix for Dark Mode
+ * This rule has maximum specificity to ensure ALL header icons are visible
+ */
+.dark [class*="header"] svg,
+.dark [class*="header-"] svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+  fill: none !important;
+}
+
+/* Layout */
+.layout-container {
+  @apply min-h-screen;
+}
+
+.layout-main {
+  @apply px-3 sm:px-6;
+}
+
+/* Header - Legacy (mantener para compatibilidad) */
+.header {
+  @apply bg-white border-b border-gray-200 shadow-sm;
+}
+
+.header__content {
+  @apply max-w-4xl mx-auto px-8 py-4 flex justify-between items-center;
+  min-width: 0;
+}
+
+.header__left {
+  @apply flex items-center space-x-4;
+}
+
+.header__title {
+  @apply text-xl font-bold text-gray-900 whitespace-nowrap;
+  flex-shrink: 1;
+  min-width: 0;
+}
+
+.header__score {
+  @apply flex items-center space-x-2 text-sm;
+}
+
+.header__right {
+  @apply flex items-center space-x-2;
+}
+
+.header__button {
+  @apply p-2 text-gray-600 hover:text-gray-800 transition-colors;
+}
+
+.header__user-button {
+  @apply flex items-center space-x-2 text-sm text-gray-700 hover:text-gray-900;
+}
+
+.header__user-points {
+  @apply text-xs text-gray-500;
+}
+
+/* Header styles moved to components/header.css */
+
+/* Main Menu - Legacy classes for compatibility */
+.menu {
+  @apply max-w-6xl mx-auto my-2 bg-white pt-4 pb-6 px-3 sm:px-6 rounded-lg shadow-sm;
+}
+
+.menu__title {
+  @apply text-3xl font-bold text-center mb-8 text-gray-900;
+}
+
+.menu__search {
+  @apply max-w-sm mx-auto mb-4;
+}
+
+.menu__grid {
+  @apply bg-gray-50 rounded-xl p-2 border-2 border-gray-200 max-w-5xl mx-auto;
+}
+
+/* Optimización para modo web - contenedor más compacto */
+@media (min-width: 640px) {
+  .menu__grid {
+    @apply max-w-2xl; /* Reducido de 3xl (768px) a 2xl (672px) */
+  }
+  
+  .menu__grid-container {
+    @apply gap-2; /* Reducido de gap-3 (12px) a gap-2 (8px) */
+  }
+}
+
+.menu__grid-container {
+  @apply grid gap-3 place-items-center;
+}
+
+/* Custom breakpoints - All responsive grid columns */
+@media (max-width: 259px) {
+  .menu__grid-container {
+    @apply grid-cols-1;
+  }
+}
+
+@media (min-width: 260px) and (max-width: 349px) {
+  .menu__grid-container {
+    @apply grid-cols-2;
+  }
+}
+
+@media (min-width: 350px) and (max-width: 639px) {
+  .menu__grid-container {
+    @apply grid-cols-3;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 679px) {
+  .menu__grid-container {
+    @apply grid-cols-4;
+  }
+}
+
+@media (min-width: 680px) and (max-width: 1023px) {
+  .menu__grid-container {
+    @apply grid-cols-5;
+  }
+}
+
+@media (min-width: 1024px) {
+  .menu__grid-container {
+    @apply grid-cols-3;
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 0 0.75rem;
+    gap: 0.75rem;
+    overflow: hidden;
+  }
+}
+
+.menu__no-results {
+  @apply text-center py-8;
+}
+
+.menu__no-results-text {
+  @apply text-gray-700 dark:text-gray-300;
+}
+
+.menu__results-count {
+  @apply mt-4 text-center text-sm text-gray-700 dark:text-gray-300;
+}
+
+/* Search styles moved to components/search-bar.css */
+
+/* Buttons */
+.btn {
+  @apply px-3 py-1.5 rounded-md text-sm font-medium transition-colors;
+  @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
+}
+
+.btn--primary {
+  @apply bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500;
+}
+
+.btn--icon {
+  @apply inline mr-1;
+}
+
+/* Loading States */
+.loading {
+  @apply min-h-screen bg-gray-50 flex items-center justify-center;
+}
+
+.loading > div {
+  @apply text-center;
+}
+
+.loading__spinner {
+  @apply animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4;
+}
+
+.loading__text {
+  @apply text-gray-700 dark:text-gray-300;
+}
+
+/* Error States */
+.error {
+  @apply min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center;
+}
+
+.error > div {
+  @apply text-center;
+}
+
+.error__message {
+  @apply text-red-700 dark:text-red-400 mb-4 font-semibold;
+}
+
+.error__details {
+  @apply text-sm text-gray-700 dark:text-gray-300 mb-4;
+}
+
+/* Score Display */
+.header__score {
+  @apply flex items-center space-x-4 bg-gray-50 dark:bg-gray-800 px-3 py-2 rounded-lg border;
+}
+
+.score__session {
+  @apply flex items-center space-x-1 text-sm;
+}
+
+.score__global {
+  @apply flex items-center space-x-1 text-sm border-l border-gray-300 dark:border-gray-600 pl-4;
+}
+
+.score__label {
+  @apply text-gray-500 dark:text-gray-400 font-medium;
+}
+
+.score__correct {
+  @apply text-green-600 dark:text-green-400 font-bold;
+}
+
+.score__separator {
+  @apply text-gray-400 dark:text-gray-500;
+}
+
+.score__incorrect {
+  @apply text-red-500 dark:text-red-400 font-bold;
+}
+
+.score__total {
+  @apply text-gray-600 dark:text-gray-300;
+}
+
+.score__accuracy {
+  @apply text-blue-600 dark:text-blue-400 font-medium ml-1;
+}
+
+.score__total-points {
+  @apply text-purple-600 dark:text-purple-400 font-bold text-lg;
+}
+
+.score__points-label {
+  @apply text-purple-500 dark:text-purple-400 text-xs font-medium;
+}
+
+/* Advanced Score Display */
+.score-display {
+  @apply flex items-center space-x-4 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 px-4 py-2 rounded-xl border border-blue-200 dark:border-gray-600 shadow-sm;
+}
+
+.score-display__session,
+.score-display__global {
+  @apply flex flex-col items-center space-y-1;
+}
+
+.score-display__global {
+  @apply border-l border-blue-200 dark:border-gray-600 pl-4;
+}
+
+.score-display__label {
+  @apply flex items-center space-x-1 text-xs font-medium text-gray-600 dark:text-gray-300;
+}
+
+.score-display__icon {
+  @apply text-sm;
+}
+
+.score-display__values {
+  @apply flex items-center space-x-1 text-sm font-bold;
+}
+
+.score-display__correct {
+  @apply text-green-600 dark:text-green-400;
+}
+
+.score-display__separator {
+  @apply text-gray-400 dark:text-gray-500;
+}
+
+.score-display__incorrect {
+  @apply text-red-500 dark:text-red-400;
+}
+
+.score-display__accuracy {
+  @apply flex items-center space-x-1 ml-2 px-2 py-1 bg-white dark:bg-gray-800 rounded-full border;
+}
+
+.score-display__total-points {
+  @apply text-purple-600 dark:text-purple-400 text-lg font-bold;
+}
+
+.score-display__points-label {
+  @apply text-purple-500 dark:text-purple-400 text-xs;
+}
+
+.score-display__level {
+  @apply flex flex-col items-center space-y-1 ml-2;
+}
+
+.score-display__level-text {
+  @apply text-xs font-bold text-orange-600 dark:text-orange-400;
+}
+
+.score-display__progress-bar {
+  @apply w-12 h-1 bg-gray-200 dark:bg-gray-600 rounded-full overflow-hidden;
+}
+
+.score-display__progress-fill {
+  @apply h-full bg-gradient-to-r from-orange-400 to-yellow-400 transition-all duration-300;
+}
+
+/* Score Display Compact - Nueva implementación optimizada con mejor contraste */
+.score-display-compact {
+  @apply bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-700;
+  @apply border border-blue-200 dark:border-gray-600;
+  @apply rounded-xl px-2 sm:px-3 py-1.5 sm:py-2;
+  @apply shadow-sm;
+  @apply transition-all duration-300 ease-out;
+  height: 36px; /* Altura más compacta */
+  min-width: 160px; /* Ancho mínimo garantizado */
+  max-width: 280px; /* Ancho máximo para no dominar el header */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Score Display en modo Learning - Más compacto y centrado */
+.header-redesigned--learning .score-display-compact {
+  @apply bg-gradient-to-r from-green-50 to-blue-50 dark:from-gray-700 dark:to-gray-600;
+  @apply border-green-200 dark:border-gray-500;
+  max-width: 220px; /* Más compacto en modo learning */
+  @apply shadow-md; /* Sombra más prominente para destacar la sesión */
+}
+
+/* Score Display en modo Menu - Layout completo */
+.header-redesigned--menu .score-display-compact {
+  max-width: 280px; /* Espacio completo en menú principal */
+}
+
+.score-display-compact__session {
+  @apply flex items-center gap-2;
+}
+
+.score-display-compact__global {
+  @apply flex items-center gap-3;
+}
+
+.score-display-compact__main {
+  @apply flex items-center gap-2;
+}
+
+.score-display-compact__icon {
+  @apply text-sm flex-shrink-0;
+}
+
+.score-display-compact__values {
+  @apply flex items-center gap-1 text-sm font-bold;
+}
+
+.score-display-compact__correct {
+  @apply text-green-700 dark:text-green-400;
+}
+
+.score-display-compact__separator {
+  @apply text-gray-600 dark:text-gray-400;
+}
+
+.score-display-compact__incorrect {
+  @apply text-red-600 dark:text-red-400;
+}
+
+.score-display-compact__accuracy {
+  @apply text-xs font-medium text-blue-700 dark:text-blue-300;
+  @apply bg-white dark:bg-gray-800 px-2 py-1 rounded-full;
+  @apply border border-blue-200 dark:border-gray-600;
+}
+
+.score-display-compact__divider {
+  @apply w-px h-6 bg-gray-400 dark:bg-gray-500;
+}
+
+.score-display-compact__level {
+  @apply flex items-center gap-1.5;
+  @apply flex-shrink-0;
+}
+
+.score-display-compact__level-badge {
+  @apply text-xs font-bold text-orange-700 dark:text-orange-300;
+  @apply bg-orange-100 dark:bg-orange-900 px-1.5 py-0.5 rounded-full;
+  @apply border border-orange-200 dark:border-orange-700;
+  @apply flex-shrink-0;
+  min-width: 28px; /* Ancho mínimo para el badge */
+  text-align: center;
+}
+
+.score-display-compact__points {
+  @apply text-xs font-bold text-purple-700 dark:text-purple-300;
+  @apply flex-shrink-0;
+  min-width: 24px; /* Ancho mínimo para los puntos */
+}
+
+.score-display-compact__progress-bar {
+  @apply w-8 h-1 bg-gray-300 dark:bg-gray-600 rounded-full overflow-hidden;
+  @apply border border-gray-400 dark:border-gray-500;
+  @apply flex-shrink-0;
+}
+
+.score-display-compact__progress-fill {
+  @apply h-full bg-gradient-to-r from-orange-500 to-yellow-500 transition-all duration-300;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .score-display-compact {
+    @apply px-1.5 py-1;
+    height: 32px;
+    min-width: 140px;
+    max-width: 200px;
+  }
+  
+  .score-display-compact__global {
+    @apply gap-1.5;
+  }
+  
+  .score-display-compact__main {
+    @apply gap-1;
+  }
+  
+  .score-display-compact__values {
+    @apply text-xs;
+  }
+  
+  .score-display-compact__accuracy {
+    @apply text-xs px-1.5 py-0.5;
+  }
+  
+  .score-display-compact__level-badge {
+    @apply text-xs px-1 py-0.5;
+    min-width: 24px;
+  }
+  
+  .score-display-compact__points {
+    @apply text-xs;
+    min-width: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .score-display-compact {
+    min-width: 120px;
+    max-width: 160px;
+  }
+  
+  .score-display-compact__icon {
+    @apply hidden;
+  }
+  
+  .score-display-compact__level {
+    @apply gap-1;
+  }
+  
+  .score-display-compact__accuracy {
+    @apply hidden; /* Ocultar precisión en pantallas muy pequeñas */
+  }
+}
+
+@media (max-width: 360px) {
+  .score-display-compact {
+    min-width: 100px;
+    max-width: 120px;
+    @apply px-1;
+  }
+  
+  .score-display-compact__divider {
+    @apply hidden;
+  }
+  
+  .score-display-compact__level {
+    @apply gap-0.5;
+  }
+  
+  .score-display-compact__level-badge {
+    @apply text-xs px-1 py-0.5;
+    min-width: 20px;
+  }
+  
+  .score-display-compact__points {
+    min-width: 16px;
+  }
+  
+  .score-display-compact__progress-bar {
+    @apply w-6 h-0.5;
+  }
+}
+
+/* Score Display Tooltip - Legacy */
+.score-display {
+  @apply relative;
+}
+
+.score-display__tooltip {
+  @apply absolute top-full left-1/2 transform -translate-x-1/2 mt-2 z-50;
+}
+
+.score-display__tooltip-content {
+  @apply bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-lg shadow-lg p-4 min-w-64;
+}
+
+.score-display__tooltip-title {
+  @apply text-sm font-bold text-gray-800 dark:text-gray-200 mb-3 text-center;
+}
+
+.score-display__tooltip-stats {
+  @apply space-y-2 mb-3;
+}
+
+.score-display__tooltip-stat {
+  @apply flex justify-between items-center text-sm;
+}
+
+.score-display__tooltip-label {
+  @apply text-gray-600 dark:text-gray-400;
+}
+
+.score-display__tooltip-value {
+  @apply font-bold text-gray-800 dark:text-gray-200;
+}
+
+.score-display__tooltip-progress {
+  @apply border-t border-gray-200 dark:border-gray-600 pt-3;
+}
+
+.score-display__tooltip-progress-text {
+  @apply text-xs text-center text-gray-500 dark:text-gray-400 font-medium;
+}
+
+/* Screen Reader Only */
+.sr-only {
+  @apply absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0;
+  clip: rect(0, 0, 0, 0);
+}
+
+/* Focus visible for better keyboard navigation */
+.focus-visible {
+  @apply outline-none ring-2 ring-blue-500 ring-offset-2;
+}
+
+/* Improved focus styles for interactive elements */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  @apply outline-none ring-2 ring-blue-500 ring-offset-2;
+}
+
+.dark button:focus-visible,
+.dark input:focus-visible,
+.dark select:focus-visible,
+.dark textarea:focus-visible,
+.dark [tabindex]:focus-visible {
+  @apply ring-blue-400 ring-offset-gray-800;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .score-display-compact__correct {
+    @apply text-green-800 dark:text-green-200;
+  }
+  
+  .score-display-compact__incorrect {
+    @apply text-red-800 dark:text-red-200;
+  }
+  
+  .score-display-compact__separator {
+    @apply text-gray-800 dark:text-gray-200;
+  }
+  
+  .menu__no-results-text,
+  .menu__results-count {
+    @apply text-gray-900 dark:text-gray-100;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .loading-skeleton {
+    animation: none;
+  }
+  
+  .flashcard-inner {
+    transition: none;
+  }
+  
+  .score-display-compact__progress-fill {
+    transition: none;
+  }
+  
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .menu {
+    @apply mx-1 my-1 pt-3 pb-4 px-3;
+  }
+  
+  .menu__search {
+    @apply mb-3;
+  }
+  
+  .menu__grid {
+    @apply max-w-sm overflow-y-auto;
+    max-height: 330px; /* Reducido 10px */
+  }
+  
+  .header__content {
+    @apply px-4 py-3;
+  }
+}
+
+@media (min-width: 641px) {
+  .menu__grid {
+    @apply overflow-y-auto;
+    max-height: 440px; /* Agregado 10px más para modo web */
+  }
+}
+
+/* Ajuste específico para 2-3 columnas que se ven cortadas */
+@media (min-width: 260px) and (max-width: 639px) {
+  .menu__grid {
+    max-height: 330px; /* Aumentado 2px más para 3er botón completo */
+  }
+}
+
+/* Dark Mode Styles */
+.dark .header {
+  @apply bg-gray-800 border-gray-700;
+}
+
+.dark .header__title {
+  @apply text-white;
+}
+
+.dark .header__button {
+  @apply text-gray-300 hover:text-white;
+}
+
+.dark .header__user-button {
+  @apply text-gray-300 hover:text-white;
+}
+
+.dark .header__user-points {
+  @apply text-gray-400;
+}
+
+/* Legacy Header Icon Rules for Dark Mode */
+.header svg,
+.header__button svg,
+.header__user-button svg {
+  color: currentColor !important;
+  stroke: currentColor !important;
+}
+
+.dark .header svg,
+.dark .header__button svg,
+.dark .header__user-button svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+/* Dark mode header styles moved to components/header.css */
+
+.dark .menu {
+  @apply bg-gray-800;
+}
+
+.dark .menu__title {
+  @apply text-white;
+}
+
+.dark .menu__grid {
+  @apply bg-gray-700 border-gray-600;
+}
+
+/* Dark mode search styles moved to components/search-bar.css */
+
+.dark .btn--primary {
+  @apply bg-blue-600 hover:bg-blue-700;
+}
+
+.dark .loading {
+  @apply bg-gray-900;
+}
+
+.dark .loading__text {
+  @apply text-gray-300;
+}
+
+.dark .error {
+  @apply bg-gray-900;
+}
+
+.dark .error__message {
+  @apply text-red-400;
+}
+
+.dark .error__details {
+  @apply text-gray-300;
+}
+
+/* Quiz Component Dark Mode */
+.dark .quiz-container {
+  @apply bg-gray-800 text-white;
+}
+
+.dark .quiz-question {
+  @apply bg-gray-800 text-white;
+}
+
+.dark .quiz-option {
+  @apply border-gray-600 text-white;
+}
+
+.dark .quiz-option:hover {
+  @apply border-blue-400 bg-gray-700;
+}
+
+.dark .quiz-option--correct {
+  @apply border-green-400 bg-green-900 text-green-200;
+}
+
+.dark .quiz-option--incorrect {
+  @apply border-red-400 bg-red-900 text-red-200;
+}
+
+.dark .quiz-option--disabled {
+  @apply border-gray-600 bg-gray-700 text-gray-400;
+}
+
+.dark .quiz-explanation {
+  @apply bg-blue-900 border-blue-700 text-blue-200;
+}
+
+.dark .quiz-explanation h4 {
+  @apply text-blue-100;
+}
+
+/* Loading Skeletons */
+.loading-skeleton {
+  @apply animate-pulse bg-gray-200 dark:bg-gray-700 rounded;
+}
+
+.loading-skeleton--card {
+  @apply h-24 w-24 rounded-lg;
+}
+
+.loading-skeleton--text {
+  @apply h-4 w-full rounded;
+}
+
+.loading-skeleton--button {
+  @apply h-10 w-32 rounded-lg;
+}
+
+.loading-skeleton--header {
+  @apply h-6 w-48 rounded;
+}
+
+.loading-skeleton--score {
+  @apply h-8 w-40 rounded-xl;
+}
+
+.loading-skeleton--grid {
+  @apply h-24 w-24 rounded-lg;
+}
+
+/* Improved skeleton animation */
+@keyframes skeleton-loading {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.loading-skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200px 100%;
+  animation: skeleton-loading 1.5s infinite;
+}
+
+.dark .loading-skeleton {
+  background: linear-gradient(90deg, #374151 25%, #4b5563 50%, #374151 75%);
+  background-size: 200px 100%;
+}
+
+/* Toast Notifications */
+.toast-container {
+  @apply fixed top-4 right-4 z-50 space-y-2;
+  @apply pointer-events-none;
+  max-width: 420px;
+}
+
+.toast {
+  @apply relative overflow-hidden rounded-lg shadow-lg border;
+  @apply pointer-events-auto;
+  @apply transform transition-all duration-300 ease-out;
+  @apply translate-x-full opacity-0;
+  @apply bg-white dark:bg-gray-800;
+  @apply border-gray-200 dark:border-gray-700;
+  min-width: 320px;
+}
+
+.toast--visible {
+  @apply translate-x-0 opacity-100;
+}
+
+.toast--leaving {
+  @apply translate-x-full opacity-0 scale-95;
+}
+
+.toast--success {
+  @apply border-l-4 border-l-green-500;
+}
+
+.toast--error {
+  @apply border-l-4 border-l-red-500;
+}
+
+.toast--warning {
+  @apply border-l-4 border-l-orange-500;
+}
+
+.toast--info {
+  @apply border-l-4 border-l-blue-500;
+}
+
+.toast__content {
+  @apply flex items-start p-4 gap-3;
+}
+
+.toast__icon {
+  @apply flex-shrink-0 mt-0.5;
+}
+
+.toast__text {
+  @apply flex-1 min-w-0;
+}
+
+.toast__title {
+  @apply text-sm font-semibold text-gray-900 dark:text-white;
+  @apply leading-tight;
+}
+
+.toast__message {
+  @apply text-sm text-gray-600 dark:text-gray-300 mt-1;
+  @apply leading-relaxed;
+}
+
+.toast__action {
+  @apply flex-shrink-0 ml-2 px-3 py-1.5;
+  @apply text-xs font-medium rounded-md;
+  @apply bg-blue-600 hover:bg-blue-700 text-white;
+  @apply transition-colors duration-200;
+  @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+}
+
+.toast__close {
+  @apply flex-shrink-0 ml-2 p-1.5 rounded-md;
+  @apply text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300;
+  @apply hover:bg-gray-100 dark:hover:bg-gray-700;
+  @apply transition-colors duration-200;
+  @apply focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2;
+}
+
+/* Toast animations for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .toast {
+    @apply transition-none;
+    @apply translate-x-0 opacity-100;
+  }
+  
+  .toast--leaving {
+    @apply opacity-0;
+  }
+}
+
+/* Mobile responsive toasts */
+@media (max-width: 640px) {
+  .toast-container {
+    @apply top-2 right-2 left-2;
+    @apply max-w-none;
+  }
+  
+  .toast {
+    @apply min-w-0 w-full;
+  }
+  
+  .toast__content {
+    @apply p-3 gap-2;
+  }
+  
+  .toast__title {
+    @apply text-xs;
+  }
+  
+  .toast__message {
+    @apply text-xs;
+  }
+}
+
+/* High contrast mode support for toasts */
+@media (prefers-contrast: high) {
+  .toast {
+    @apply border-2;
+  }
+  
+  .toast--success {
+    @apply border-green-700 dark:border-green-300;
+  }
+  
+  .toast--error {
+    @apply border-red-700 dark:border-red-300;
+  }
+  
+  .toast--warning {
+    @apply border-orange-700 dark:border-orange-300;
+  }
+  
+  .toast--info {
+    @apply border-blue-700 dark:border-blue-300;
+  }
+}
+
+/* Flashcard 3D Flip Effect */
+.flashcard {
+  perspective: 1000px;
+}
+
+.flashcard-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flashcard.flipped .flashcard-inner {
+  transform: rotateY(180deg);
+}
+
+.flashcard-front,
+.flashcard-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 12px;
+}
+
+.flashcard-back {
+  transform: rotateY(180deg);
+}
+
+/* Flashcard Navigation Buttons - BEM-like convention */
+.flashcard-nav-btn {
+  /* Base styles */
+  background-color: #e5e7eb; /* gray-200 */
+  color: #374151; /* gray-700 */
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.flashcard-nav-btn:hover {
+  background-color: #d1d5db; /* gray-300 */
+  color: #1f2937; /* gray-800 */
+}
+
+.flashcard-nav-btn:disabled {
+  background-color: #f3f4f6; /* gray-100 */
+  color: #9ca3af; /* gray-400 */
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Dark mode styles */
+.dark .flashcard-nav-btn {
+  background-color: #4b5563; /* gray-600 */
+  color: #e5e7eb; /* gray-200 */
+}
+
+.dark .flashcard-nav-btn:hover {
+  background-color: #6b7280; /* gray-500 */
+  color: #f9fafb; /* gray-50 */
+}
+
+.dark .flashcard-nav-btn:disabled {
+  background-color: #374151; /* gray-700 */
+  color: #6b7280; /* gray-500 */
+}
+
+/* Specific button variants */
+.flashcard-nav-btn--prev {
+  /* Previous button specific styles if needed */
+}
+
+.flashcard-nav-btn--next {
+  /* Next button specific styles if needed */
+}

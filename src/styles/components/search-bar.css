@@ -1,0 +1,142 @@
+/* Search Bar Component - Enhanced Contrast Implementation */
+
+/* Base Search Container */
+.search {
+  @apply relative w-full max-w-md mx-auto;
+}
+
+/* Search Icon Container */
+.search__icon {
+  @apply absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none;
+}
+
+/* Search Icon SVG - Light Mode: Dark gray for contrast */
+.search__icon-svg {
+  @apply h-4 w-4;
+  color: #6b7280 !important; /* gray-500 - sufficient contrast on white */
+  stroke: #6b7280 !important;
+  fill: none !important;
+}
+
+/* Search Icon SVG - Dark Mode: White for maximum visibility */
+.dark .search__icon-svg {
+  color: #ffffff !important; /* Pure white for maximum contrast */
+  stroke: #ffffff !important;
+}
+
+/* Input Field - Light Mode: Black text on white background */
+.search__input {
+  @apply w-full px-3 py-2 pl-10 pr-10 rounded-md text-sm;
+  @apply transition-all duration-200;
+  
+  /* Light mode - Maximum contrast */
+  background-color: #ffffff !important; /* Pure white background */
+  color: #111827 !important; /* gray-900 - nearly black text */
+  border: 2px solid #d1d5db !important; /* gray-300 - defined border */
+  
+  /* Focus styles for light mode */
+  @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500;
+}
+
+/* Input Field - Dark Mode: White text on dark background */
+.dark .search__input {
+  background-color: #1f2937 !important; /* gray-800 - dark background */
+  color: #ffffff !important; /* Pure white text for maximum contrast */
+  border-color: #4b5563 !important; /* gray-600 - visible border */
+}
+
+/* Placeholder Text - Light Mode: Medium gray for readability */
+.search__input::placeholder {
+  color: #6b7280 !important; /* gray-500 - sufficient contrast */
+}
+
+/* Placeholder Text - Dark Mode: Light gray for visibility */
+.dark .search__input::placeholder {
+  color: #d1d5db !important; /* gray-300 - good contrast on dark background */
+}
+
+/* Focus States - Light Mode */
+.search__input:focus {
+  @apply shadow-lg;
+  border-color: #3b82f6 !important; /* blue-500 */
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important; /* blue focus ring */
+}
+
+/* Focus States - Dark Mode: Enhanced visibility */
+.dark .search__input:focus {
+  background-color: #111827 !important; /* gray-900 - even darker on focus */
+  border-color: #3b82f6 !important; /* blue-500 */
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2) !important; /* stronger focus ring */
+}
+
+/* Clear Button Container */
+.search__clear {
+  @apply absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer;
+}
+
+/* Clear Button Icon - Light Mode: Gray with dark hover */
+.search__clear-icon {
+  @apply h-4 w-4 transition-colors duration-200;
+  color: #6b7280 !important; /* gray-500 - visible on white */
+  stroke: #6b7280 !important;
+  fill: none !important;
+}
+
+.search__clear-icon:hover {
+  color: #374151 !important; /* gray-700 - darker on hover */
+  stroke: #374151 !important;
+}
+
+/* Clear Button Icon - Dark Mode: White with enhanced hover */
+.dark .search__clear-icon {
+  color: #ffffff !important; /* Pure white for visibility */
+  stroke: #ffffff !important;
+}
+
+.dark .search__clear-icon:hover {
+  color: #f3f4f6 !important; /* gray-100 - slightly dimmed on hover */
+  stroke: #f3f4f6 !important;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .search {
+    @apply max-w-full;
+  }
+  
+  .search__input {
+    @apply text-base; /* Prevent zoom on iOS */
+  }
+}
+
+/* Accessibility - Enhanced Focus Visibility */
+.search__input:focus-visible {
+  @apply ring-2 ring-blue-500 ring-offset-2;
+}
+
+.dark .search__input:focus-visible {
+  @apply ring-blue-400 ring-offset-gray-800;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .search__input {
+    border-width: 3px !important; /* Thicker border for high contrast */
+  }
+  
+  .search__icon-svg {
+    color: #000000 !important; /* Pure black in high contrast light mode */
+  }
+  
+  .dark .search__icon-svg {
+    color: #ffffff !important; /* Pure white in high contrast dark mode */
+  }
+  
+  .search__clear-icon {
+    color: #000000 !important; /* Pure black in high contrast light mode */
+  }
+  
+  .dark .search__clear-icon {
+    color: #ffffff !important; /* Pure white in high contrast dark mode */
+  }
+}

@@ -1,0 +1,432 @@
+/* Module Card Styles - Redesigned for Consistency */
+
+/* CSS Variables for Consistent Design System */
+:root {
+  --card-border-radius: 0.75rem;
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --card-shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --card-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --card-width-mobile: 100px;
+  --card-height-mobile: 85px;
+  --card-width-tablet: 130px;
+  --card-height-tablet: 105px;
+  --card-width-desktop: 125px;
+  --card-height-desktop: 125px;
+}
+
+/* Card Container - Enhanced Design with Rectangular Shape */
+.module-card {
+  position: relative;
+  border-radius: var(--card-border-radius);
+  box-shadow: var(--card-shadow);
+  transition: var(--card-transition);
+  cursor: pointer;
+  border: 2px solid transparent;
+  width: var(--card-width-mobile);
+  height: var(--card-height-mobile);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.module-card:hover {
+  box-shadow: var(--card-shadow-hover);
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.module-card:active {
+  transform: translateY(0);
+}
+
+.module-card:focus {
+  outline: none;
+  box-shadow: var(--card-shadow-hover), 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+/* Card Content - Compact Layout */
+.module-card__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0.5rem;
+  text-align: center;
+  gap: 0.125rem;
+}
+
+/* Icon Section - Compact */
+.module-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.125rem;
+  flex-shrink: 0;
+}
+
+.module-card__icon svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: rgba(255, 255, 255, 0.95);
+  stroke: rgba(255, 255, 255, 0.95);
+  fill: none;
+  stroke-width: 2;
+  transition: all 0.2s ease-in-out;
+}
+
+.module-card:hover .module-card__icon svg {
+  color: rgba(255, 255, 255, 1);
+  stroke: rgba(255, 255, 255, 1);
+  transform: scale(1.1);
+}
+
+/* Typography Elements - Compact & Readable */
+.module-card__title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: rgba(255, 255, 255, 0.98);
+  margin-bottom: 0.0625rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  flex-shrink: 1;
+  transition: color 0.2s ease-in-out;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.module-card__type {
+  font-size: 0.625rem;
+  font-weight: 600;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.85);
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  margin-bottom: 0.0625rem;
+  flex-shrink: 0;
+  transition: color 0.2s ease-in-out;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.module-card__level {
+  font-size: 0.5625rem;
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.15);
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  flex-shrink: 0;
+  transition: all 0.2s ease-in-out;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover States - Enhanced Contrast */
+.module-card:hover .module-card__title {
+  color: rgba(255, 255, 255, 1);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.module-card:hover .module-card__type {
+  color: rgba(255, 255, 255, 1);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.module-card:hover .module-card__level {
+  color: rgba(255, 255, 255, 1);
+  background-color: rgba(255, 255, 255, 0.3);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Learning Mode Variants - BEM-Like Modifiers */
+.module-card--flashcard {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+}
+
+.module-card--quiz {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.module-card--completion {
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+}
+
+.module-card--sorting {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+}
+
+.module-card--matching {
+  background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
+}
+
+/* Hover States for Variants */
+.module-card--flashcard:hover {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+}
+
+.module-card--quiz:hover {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+}
+
+.module-card--completion:hover {
+  background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+}
+
+.module-card--sorting:hover {
+  background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+}
+
+.module-card--matching:hover {
+  background: linear-gradient(135deg, #db2777 0%, #be185d 100%);
+}
+
+/* State Modifiers - BEM-Like */
+.module-card--completed {
+  position: relative;
+}
+
+.module-card--completed::after {
+  content: '✓';
+  position: absolute;
+  top: 0.25rem;
+  right: 0.25rem;
+  background-color: rgba(16, 185, 129, 0.9);
+  color: white;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.module-card--locked {
+  opacity: 0.6;
+  cursor: not-allowed;
+  filter: grayscale(0.5);
+}
+
+.module-card--locked:hover {
+  transform: none;
+  box-shadow: var(--card-shadow);
+}
+
+.module-card--locked .module-card__content {
+  position: relative;
+}
+
+.module-card--locked .module-card__content::before {
+  content: '🔒';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  z-index: 1;
+}
+
+/* Removed obsolete styles - now using structured BEM-Like approach */
+
+/* Enhanced Typography for 3-Column Range - Same as 2-Column Base */
+@media (min-width: 410px) and (max-width: 719px) {
+  .module-card__title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+  
+  .module-card__type {
+    font-size: 0.625rem;
+    font-weight: 600;
+  }
+  
+  .module-card__level {
+    font-size: 0.5625rem;
+    font-weight: 700;
+    padding: 0.125rem 0.25rem;
+  }
+}
+
+/* Responsive Design - 4 Columns */
+@media (min-width: 720px) {
+  .module-card {
+    width: var(--card-width-tablet);
+    height: var(--card-height-tablet);
+  }
+  
+  .module-card__content {
+    padding: 0.5rem;
+    gap: 0.1875rem;
+  }
+  
+  .module-card__icon svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  
+  .module-card__title {
+    font-size: 0.8125rem;
+    line-height: 1.1;
+    font-weight: 700;
+  }
+  
+  .module-card__type {
+    font-size: 0.6875rem;
+    font-weight: 600;
+  }
+  
+  .module-card__level {
+    font-size: 0.625rem;
+    padding: 0.125rem 0.25rem;
+    font-weight: 700;
+  }
+}
+
+@media (min-width: 900px) {
+  .module-card {
+    width: var(--card-width-desktop);
+    height: var(--card-height-desktop);
+  }
+  
+  .module-card__content {
+    padding: 0.625rem;
+    gap: 0.1875rem;
+  }
+  
+  .module-card__icon svg {
+    width: 1.375rem;
+    height: 1.375rem;
+  }
+  
+  .module-card__title {
+    font-size: 0.8125rem;
+    line-height: 1.1;
+    font-weight: 700;
+  }
+  
+  .module-card__type {
+    font-size: 0.6875rem;
+    font-weight: 600;
+  }
+  
+  .module-card__level {
+    font-size: 0.5625rem;
+    padding: 0.125rem 0.3125rem;
+    font-weight: 700;
+  }
+}
+
+/* Accessibility - BEM-Like Approach */
+.module-card:focus-visible {
+  outline: 2px solid #60a5fa;
+  outline-offset: 2px;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .module-card {
+    border-width: 3px;
+  }
+  
+  .module-card__title {
+    font-weight: 700;
+  }
+  
+  .module-card__type {
+    font-weight: 600;
+  }
+  
+  .module-card__level {
+    font-weight: 700;
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .module-card,
+  .module-card__icon svg,
+  .module-card__title,
+  .module-card__type,
+  .module-card__level {
+    transition: none;
+  }
+  
+  .module-card:hover {
+    transform: none;
+  }
+  
+  .module-card:active {
+    transform: none;
+  }
+  
+  .module-card:hover .module-card__icon svg {
+    transform: none;
+  }
+}
+
+/* Dark Mode Specific Adjustments */
+@media (prefers-color-scheme: dark) {
+  .module-card {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  }
+  
+  .module-card:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* Safari-specific fixes for button flexbox centering */
+@supports (-webkit-appearance: none) {
+  /* Safari has issues with flexbox on button elements */
+  .module-card {
+    -webkit-appearance: none;
+    display: -webkit-flex !important;
+    display: flex !important;
+    -webkit-align-items: stretch;
+    align-items: stretch;
+  }
+  
+  .module-card__content {
+    display: -webkit-flex !important;
+    display: flex !important;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-flex: 1;
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    /* Force Safari to respect flexbox */
+    min-height: 0;
+    min-width: 0;
+  }
+  
+  .module-card__icon {
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+    -webkit-align-self: center;
+    align-self: center;
+  }
+  
+  .module-card__title,
+  .module-card__type,
+  .module-card__level {
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+    -webkit-align-self: center;
+    align-self: center;
+    width: 100%;
+  }
+}
