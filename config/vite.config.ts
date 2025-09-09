@@ -32,7 +32,11 @@ export default defineConfig(({ command, mode }) => {
         allow: ['..']
       },
       port: 5173,
-      host: true
+      host: true,
+      hmr: {
+        port: 5173,
+        clientPort: 5173
+      }
     },
     define: {
       __APP_VERSION__: JSON.stringify(process.env.npm_package_version),

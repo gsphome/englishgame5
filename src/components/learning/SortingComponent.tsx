@@ -8,6 +8,22 @@ import { useToast } from '../../hooks/useToast';
 import { useLearningCleanup } from '../../hooks/useLearningCleanup';
 import type { LearningModule } from '../../types';
 
+// Get category display name from module data
+const getCategoryDisplayName = (categoryId: string, moduleData: any): string => {
+  // Try to find the category mapping in the module's categories array
+  if (moduleData?.categories && Array.isArray(moduleData.categories)) {
+    const categoryMapping = moduleData.categories.find(
+      (cat: any) => cat.category_id === categoryId
+    );
+    if (categoryMapping?.category_show) {
+      return categoryMapping.category_show;
+    }
+  }
+
+  // Fallback to formatted category ID if no mapping found
+  return categoryId.charAt(0).toUpperCase() + categoryId.slice(1).replace(/_/g, ' ');
+};
+
 interface SortingData {
   id: string;
   words: string[];
@@ -70,7 +86,7 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
           wordsForCategories.push(...categoryWords);
 
           return {
-            name: categoryId.charAt(0).toUpperCase() + categoryId.slice(1),
+            name: getCategoryDisplayName(categoryId, module),
             items: categoryWords
           };
         });
