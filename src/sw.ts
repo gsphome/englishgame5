@@ -91,7 +91,7 @@ registerRoute(
     } catch {
       // Return cached offline page or main app
       const cache = await caches.open('pages');
-      const cachedResponse = await cache.match('/englishgame4/');
+      const cachedResponse = await cache.match('/englishgame5/');
       return cachedResponse || new Response('Offline - Please check your connection', {
         status: 503,
         statusText: 'Service Unavailable',
@@ -114,20 +114,20 @@ self.addEventListener('push', (event) => {
   const data = event.data.json();
   const options = {
     body: data.body,
-    icon: '/englishgame4/pwa-192x192.png',
-    badge: '/englishgame4/pwa-192x192.png',
+    icon: '/englishgame5/pwa-192x192.png',
+    badge: '/englishgame5/pwa-192x192.png',
     vibrate: [200, 100, 200],
     data: data.data,
     actions: [
       {
         action: 'open',
         title: 'Open App',
-        icon: '/englishgame4/pwa-192x192.png'
+        icon: '/englishgame5/pwa-192x192.png'
       },
       {
         action: 'close',
         title: 'Close',
-        icon: '/englishgame4/pwa-192x192.png'
+        icon: '/englishgame5/pwa-192x192.png'
       }
     ]
   };
@@ -143,7 +143,7 @@ self.addEventListener('notificationclick', (event) => {
 
   if (event.action === 'open' || !event.action) {
     event.waitUntil(
-      self.clients.openWindow('/englishgame4/')
+      self.clients.openWindow('/englishgame5/')
     );
   }
 });
