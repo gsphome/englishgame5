@@ -331,30 +331,28 @@ export const AdvancedSettingsModal: React.FC<AdvancedSettingsModalProps> = ({ is
 
           {/* Categories Tab */}
           {activeTab === 'categories' && (
-            <div className="advanced-settings-modal__section">
-              <div className="advanced-settings-modal__categories">
-                {allCategories.map(category => (
-                  <div key={category} className="advanced-settings-modal__category-item">
-                    <input
-                      type="checkbox"
-                      id={category}
-                      checked={localCategories.includes(category)}
-                      onChange={(e) => handleCategoryChange(category, e.target.checked)}
-                      disabled={!isEditMode}
-                      className="advanced-settings-modal__category-checkbox"
-                    />
-                    <label
-                      htmlFor={category}
-                      className="advanced-settings-modal__category-label"
-                    >
-                      {category === 'Vocabulary' && `📚 ${categoryLabels[category as keyof typeof categoryLabels]}`}
-                      {category === 'Grammar' && `📝 ${categoryLabels[category as keyof typeof categoryLabels]}`}
-                      {category === 'PhrasalVerbs' && `🔗 ${categoryLabels[category as keyof typeof categoryLabels]}`}
-                      {category === 'Idioms' && `💭 ${categoryLabels[category as keyof typeof categoryLabels]}`}
-                    </label>
-                  </div>
-                ))}
-              </div>
+            <div className="advanced-settings-modal__section advanced-settings-modal__section--categories">
+              {allCategories.map(category => (
+                <div key={category} className="advanced-settings-modal__category-item">
+                  <input
+                    type="checkbox"
+                    id={category}
+                    checked={localCategories.includes(category)}
+                    onChange={(e) => handleCategoryChange(category, e.target.checked)}
+                    disabled={!isEditMode}
+                    className="advanced-settings-modal__category-checkbox"
+                  />
+                  <label
+                    htmlFor={category}
+                    className="advanced-settings-modal__category-label"
+                  >
+                    {category === 'Vocabulary' && `📚 ${categoryLabels[category as keyof typeof categoryLabels]}`}
+                    {category === 'Grammar' && `📝 ${categoryLabels[category as keyof typeof categoryLabels]}`}
+                    {category === 'PhrasalVerbs' && `🔗 ${categoryLabels[category as keyof typeof categoryLabels]}`}
+                    {category === 'Idioms' && `💭 ${categoryLabels[category as keyof typeof categoryLabels]}`}
+                  </label>
+                </div>
+              ))}
             </div>
           )}
         </div>

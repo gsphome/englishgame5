@@ -337,12 +337,11 @@
   cursor: not-allowed;
 }
 
-/* Enhanced Categories - Full Height */
-.advanced-settings-modal__categories {
+/* Enhanced Categories Section - Consistent with other tabs */
+.advanced-settings-modal__section--categories {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.75rem;
-  height: 100%;
   align-content: start;
 }
 
@@ -351,22 +350,25 @@
   align-items: center;
   gap: 0.75rem;
   padding: 1rem;
-  border: 2px solid transparent;
+  border: 2px solid var(--settings-input-border);
   border-radius: 0.5rem;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: var(--settings-input-bg);
   transition: all 0.2s ease-in-out;
   cursor: pointer;
   min-height: 60px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .dark .advanced-settings-modal__category-item {
-  background-color: rgba(55, 65, 81, 0.5);
+  background-color: var(--settings-input-bg);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .advanced-settings-modal__category-item:hover {
   background-color: rgba(139, 92, 246, 0.1);
   border-color: var(--settings-focus-ring);
   transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.15);
 }
 
 .advanced-settings-modal__category-checkbox {
@@ -551,7 +553,7 @@ sive Design */
     gap: 0.75rem;
   }
   
-  .advanced-settings-modal__categories {
+  .advanced-settings-modal__section--categories {
     grid-template-columns: 1fr;
     gap: 0.5rem;
   }
@@ -802,7 +804,7 @@ a Compact Mode for Very Small Screens */
     padding: 0.125rem;
   }
   
-  .advanced-settings-modal__categories {
+  .advanced-settings-modal__section--categories {
     grid-template-columns: repeat(4, 1fr);
     gap: 0.125rem;
   }
