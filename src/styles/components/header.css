@@ -7,7 +7,7 @@
   --header-border: #e5e7eb;
   --header-text-primary: #111827;
   --header-text-secondary: #6b7280;
-  --header-icon-color: #6b7280;
+  --header-icon-color: #374151;
   --header-icon-hover: #111827;
   --header-button-hover-bg: #f3f4f6;
   --header-button-active-bg: #e5e7eb;
@@ -150,11 +150,7 @@
   justify-content: center;
 }
 
-.header-redesigned__menu-btn:hover {
-  color: var(--header-icon-hover);
-  background-color: var(--header-button-hover-bg);
-  transform: translateY(-1px);
-}
+/* Menu button now uses primary button styles - no specific rules needed */
 
 .header-redesigned__menu-btn:active {
   background-color: var(--header-button-active-bg);
@@ -270,21 +266,7 @@
   box-shadow: 0 0 0 2px var(--header-focus-ring);
 }
 
-.header-redesigned__avatar {
-  width: 32px;
-  height: 32px;
-  background-color: var(--header-button-hover-bg);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease-in-out;
-}
-
-.header-redesigned__user-btn:hover .header-redesigned__avatar {
-  background-color: var(--header-button-active-bg);
-  transform: scale(1.05);
-}
+/* Avatar styles removed - now using consistent icon-only approach */
 
 .header-redesigned__user-info {
   display: none;
@@ -311,6 +293,7 @@
 }
 
 /* Button Hierarchy System - Homologated Design */
+.header-redesigned__menu-btn--primary,
 .header-redesigned__user-btn--primary,
 .header-redesigned__login-btn--primary,
 .header-redesigned__control-btn--primary {
@@ -319,6 +302,7 @@
   border-radius: 8px;
 }
 
+.header-redesigned__menu-btn--primary:hover,
 .header-redesigned__user-btn--primary:hover,
 .header-redesigned__login-btn--primary:hover,
 .header-redesigned__control-btn--primary:hover {
@@ -762,6 +746,7 @@ anced Button Definitions for Dark Mode */
 }
 
 /* Enhanced Primary Buttons in Dark Mode - Homologated */
+.dark .header-redesigned__menu-btn--primary,
 .dark .header-redesigned__user-btn--primary,
 .dark .header-redesigned__login-btn--primary,
 .dark .header-redesigned__control-btn--primary {
@@ -770,6 +755,7 @@ anced Button Definitions for Dark Mode */
   backdrop-filter: blur(8px);
 }
 
+.dark .header-redesigned__menu-btn--primary:hover,
 .dark .header-redesigned__user-btn--primary:hover,
 .dark .header-redesigned__login-btn--primary:hover,
 .dark .header-redesigned__control-btn--primary:hover {
@@ -778,20 +764,7 @@ anced Button Definitions for Dark Mode */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* Enhanced Avatar in Dark Mode */
-.dark .header-redesigned__avatar {
-  background: linear-gradient(135deg, #374151 0%, #4b5563 100%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
-
-.dark .header-redesigned__user-btn:hover .header-redesigned__avatar {
-  background: linear-gradient(135deg, #4b5563 0%, #6b7280 100%);
-  border-color: rgba(255, 255, 255, 0.2);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.15),
-    0 2px 4px rgba(0, 0, 0, 0.2);
-}
+/* Avatar styles removed - now using consistent icon-only approach for all buttons */
 
 /* Enhanced Side Menu for Dark Mode */
 .dark .header-side-menu {
@@ -891,24 +864,58 @@ ologated Button Sections - Equal Visual Weight */
 }
 
 /* Homologated Primary Button Styles - All buttons get same treatment */
+.header-redesigned__menu-btn--primary,
 .header-redesigned__user-btn--primary,
 .header-redesigned__login-btn--primary,
 .header-redesigned__control-btn--primary {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   padding: 8px 12px;
   min-height: 40px;
+  min-width: 40px;
   font-weight: 500;
   font-size: 0.875rem;
+  color: var(--header-text-primary);
+}
+
+/* Ensure icons have consistent visual weight and better contrast */
+.header-redesigned__menu-btn--primary svg,
+.header-redesigned__user-btn--primary svg,
+.header-redesigned__login-btn--primary svg,
+.header-redesigned__control-btn--primary svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: var(--header-text-primary);
+  stroke: var(--header-text-primary);
+}
+
+/* Ensure all text within primary buttons uses consistent color */
+.header-redesigned__menu-btn--primary span,
+.header-redesigned__user-btn--primary span,
+.header-redesigned__login-btn--primary span,
+.header-redesigned__control-btn--primary span,
+.header-redesigned__username {
+  color: var(--header-text-primary);
+  font-weight: 500;
 }
 
 /* Ensure Stats button has same visual weight as User button */
 .header-redesigned__control-btn--primary {
-  min-width: fit-content;
+  min-width: 40px;
+}
+
+/* Ensure consistent button alignment in right section */
+.header-redesigned__user-section,
+.header-redesigned__quick-actions {
+  align-items: center;
+  height: 40px;
 }
 
 /* Dark mode - ensure all primary buttons have identical treatment */
+.dark .header-redesigned__menu-btn--primary,
 .dark .header-redesigned__user-btn--primary,
 .dark .header-redesigned__login-btn--primary,
 .dark .header-redesigned__control-btn--primary {
@@ -918,8 +925,10 @@ ologated Button Sections - Equal Visual Weight */
   box-shadow:
     0 1px 3px rgba(0, 0, 0, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  color: var(--header-text-primary);
 }
 
+.dark .header-redesigned__menu-btn--primary:hover,
 .dark .header-redesigned__user-btn--primary:hover,
 .dark .header-redesigned__login-btn--primary:hover,
 .dark .header-redesigned__control-btn--primary:hover {
@@ -929,17 +938,30 @@ ologated Button Sections - Equal Visual Weight */
     0 4px 12px rgba(0, 0, 0, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.15);
   transform: translateY(-1px);
+  color: var(--header-text-primary);
+}
+
+/* Ensure dark mode hover state maintains consistent text color */
+.dark .header-redesigned__menu-btn--primary:hover span,
+.dark .header-redesigned__user-btn--primary:hover span,
+.dark .header-redesigned__login-btn--primary:hover span,
+.dark .header-redesigned__control-btn--primary:hover span,
+.dark .header-redesigned__user-btn--primary:hover .header-redesigned__username {
+  color: var(--header-text-primary);
 }
 
 /* Light mode - ensure consistency */
+.header-redesigned__menu-btn--primary,
 .header-redesigned__user-btn--primary,
 .header-redesigned__login-btn--primary,
 .header-redesigned__control-btn--primary {
   background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
   border: 1px solid var(--header-border);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  color: var(--header-text-primary);
 }
 
+.header-redesigned__menu-btn--primary:hover,
 .header-redesigned__user-btn--primary:hover,
 .header-redesigned__login-btn--primary:hover,
 .header-redesigned__control-btn--primary:hover {
@@ -947,4 +969,14 @@ ologated Button Sections - Equal Visual Weight */
   border-color: #9ca3af;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   transform: translateY(-1px);
+  color: var(--header-text-primary);
+}
+
+/* Ensure hover state maintains consistent text color for all elements */
+.header-redesigned__menu-btn--primary:hover span,
+.header-redesigned__user-btn--primary:hover span,
+.header-redesigned__login-btn--primary:hover span,
+.header-redesigned__control-btn--primary:hover span,
+.header-redesigned__user-btn--primary:hover .header-redesigned__username {
+  color: var(--header-text-primary);
 }

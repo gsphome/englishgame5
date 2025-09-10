@@ -62,7 +62,7 @@ export const Header: React.FC<HeaderProps> = ({ onDashboardToggle }) => {
         <div className="header-redesigned__left">
           <button
             onClick={handleMenuToggle}
-            className="header-redesigned__menu-btn header-redesigned__menu-btn--tertiary"
+            className="header-redesigned__menu-btn header-redesigned__menu-btn--primary"
             title="Abrir menú de navegación y configuración"
             aria-label="Abrir menú de navegación y configuración"
             aria-expanded={showSideMenu}
@@ -95,9 +95,7 @@ export const Header: React.FC<HeaderProps> = ({ onDashboardToggle }) => {
                 title={`${user.name} - Profile`}
                 aria-label={`User profile: ${user.name}. Click to open profile`}
               >
-                <div className="header-redesigned__avatar">
-                  <User className="w-4 h-4" />
-                </div>
+                <User className="w-4 h-4" />
                 <div className="header-redesigned__user-info">
                   <span className="header-redesigned__username">{user.name}</span>
                 </div>
