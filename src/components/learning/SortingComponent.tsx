@@ -123,7 +123,7 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
       });
       setSortedItems(initialSorted);
     }
-  }, [module.id, module.data]);
+  }, [module]);
 
   const handleDragStart = (e: React.DragEvent, word: string) => {
     setDraggedItem(word);
