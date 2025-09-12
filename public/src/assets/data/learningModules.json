@@ -1,279 +1,680 @@
 [
-    {
-        "id": "flashcard-ielts-home-daily-life",
-        "name": "Home & Daily",
-        "learningMode": "flashcard",
-        "dataPath": "src/assets/data/flashcard-ielts-home-daily-life.json",
-        "level": [
-            "b2",
-            "c1"
-        ],
-        "category": "Vocabulary"
-    },
-    {
-        "id": "flashcard-ielts-problem-solving",
-        "name": "Problem Solving",
-        "learningMode": "flashcard",
-        "dataPath": "src/assets/data/flashcard-ielts-problem-solving.json",
-        "level": [
-            "b2",
-            "c1"
-        ],
-        "category": "Vocabulary"
-    },
-    {
-        "id": "flashcard-ielts-clothing-appearance",
-        "name": "Clothing & Style",
-        "learningMode": "flashcard",
-        "dataPath": "src/assets/data/flashcard-ielts-clothing-appearance.json",
-        "level": [
-            "b2",
-            "c1"
-        ],
-        "category": "PhrasalVerbs"
-    },
-    {
-        "id": "quiz-idioms-emotions-feelings",
-        "name": "Emotions",
-        "learningMode": "flashcard",
-        "dataPath": "src/assets/data/quiz-idioms-emotions-feelings.json",
-        "level": [
-            "b2"
-        ],
-        "category": "Idioms"
-    },
-    {
-        "id": "quiz-idioms-success-failure",
-        "name": "Success & Failure",
-        "learningMode": "flashcard",
-        "dataPath": "src/assets/data/quiz-idioms-success-failure.json",
-        "level": [
-            "b2"
-        ],
-        "category": "Idioms"
-    },
-    {
-        "id": "quiz-idioms-time",
-        "name": "Time Idioms",
-        "learningMode": "flashcard",
-        "dataPath": "src/assets/data/quiz-idioms-time.json",
-        "level": [
-            "b2"
-        ],
-        "category": "Idioms"
-    },
-    {
-        "id": "quiz-idioms-nature-animals",
-        "name": "Nature & Animals",
-        "learningMode": "flashcard",
-        "dataPath": "src/assets/data/quiz-idioms-nature-animals.json",
-        "level": [
-            "b2"
-        ],
-        "category": "Idioms"
-    },
-    {
-        "id": "flashcard-ielts-general",
-        "name": "General Vocab",
-        "learningMode": "flashcard",
-        "dataPath": "src/assets/data/flashcard-ielts-general.json",
-        "level": [
-            "b2",
-            "c1"
-        ],
-        "category": "Vocabulary"
-    },
-    {
-        "id": "flashcard-ielts-environment",
-        "name": "Environment",
-        "learningMode": "flashcard",
-        "dataPath": "src/assets/data/flashcard-ielts-environment.json",
-        "level": [
-            "b2",
-            "c1"
-        ],
-        "category": "Vocabulary"
-    },
-    {
-        "id": "flashcard-ielts-technology",
-        "name": "Technology",
-        "learningMode": "flashcard",
-        "dataPath": "src/assets/data/flashcard-ielts-technology.json",
-        "level": [
-            "b2",
-            "c1"
-        ],
-        "category": "Vocabulary"
-    },
-    {
-        "id": "flashcard-ielts-business",
-        "name": "Business",
-        "learningMode": "flashcard",
-        "dataPath": "src/assets/data/flashcard-ielts-business.json",
-        "level": [
-            "b2",
-            "c1"
-        ],
-        "category": "Vocabulary"
-    },
-    {
-        "id": "flashcard-academic-c1",
-        "name": "Academic",
-        "learningMode": "flashcard",
-        "dataPath": "src/assets/data/flashcard-academic-c1.json",
-        "level": [
-            "c1"
-        ],
-        "category": "Vocabulary"
-    },
-    {
-        "id": "quiz-idioms-everyday-situations",
-        "name": "Situations",
-        "learningMode": "quiz",
-        "dataPath": "src/assets/data/quiz-idioms-everyday-situations.json",
-        "level": [
-            "b2"
-        ],
-        "category": "Idioms"
-    },
-    {
-        "id": "quiz-advanced-grammar-conditionals",
-        "name": "Conditionals",
-        "learningMode": "quiz",
-        "dataPath": "src/assets/data/quiz-advanced-grammar-conditionals.json",
-        "level": [
-            "c1"
-        ],
-        "category": "Grammar"
-    },
-    {
-        "id": "quiz-advanced-grammar-participles",
-        "name": "Participles",
-        "learningMode": "quiz",
-        "dataPath": "src/assets/data/quiz-advanced-grammar-participles.json",
-        "level": [
-            "c1"
-        ],
-        "category": "Grammar"
-    },
-    {
-        "id": "quiz-advanced-grammar-subjunctive",
-        "name": "Subjunctive",
-        "learningMode": "quiz",
-        "dataPath": "src/assets/data/quiz-advanced-grammar-subjunctive.json",
-        "level": [
-            "c1"
-        ],
-        "category": "Grammar"
-    },
-    {
-        "id": "quiz-advanced-grammar-inversions",
-        "name": "Grammar Inversions",
-        "learningMode": "quiz",
-        "dataPath": "src/assets/data/quiz-advanced-grammar-inversions.json",
-        "level": [
-            "c1"
-        ],
-        "category": "Grammar"
-    },
-    {
-        "id": "quiz-advanced-collocations-idioms-c2",
-        "name": "Adv. Collocations",
-        "learningMode": "quiz",
-        "dataPath": "src/assets/data/quiz-advanced-collocations-idioms-c2.json",
-        "level": [
-            "c2"
-        ],
-        "category": "Vocabulary"
-    },
-    {
-        "id": "quiz-formal-vocabulary-nuance-c2",
-        "name": "Formal & Nuance",
-        "learningMode": "quiz",
-        "dataPath": "src/assets/data/quiz-formal-vocabulary-nuance-c2.json",
-        "level": [
-            "c2"
-        ],
-        "category": "Vocabulary"
-    },
-    {
-        "id": "quiz-advanced-grammatical-structures-c2",
-        "name": "Structures",
-        "learningMode": "quiz",
-        "dataPath": "src/assets/data/quiz-advanced-grammatical-structures-c2.json",
-        "level": [
-            "c2"
-        ],
-        "category": "Grammar"
-    },
-    {
-        "id": "completion-phrasal-verbs",
-        "name": "Phrasal Verbs",
-        "learningMode": "completion",
-        "dataPath": "src/assets/data/completion-phrasal-verbs.json",
-        "level": [
-            "b2"
-        ],
-        "category": "PhrasalVerbs"
-    },
-    {
-        "id": "completion-used-to",
-        "name": "Grammar UsedTo",
-        "learningMode": "completion",
-        "dataPath": "src/assets/data/completion-used-to.json",
-        "level": [
-            "b2"
-        ],
-        "category": "Grammar"
-    },
-    {
-        "id": "completion-advanced-phrasal-verbs-c2",
-        "name": "Phrasal Verbs+",
-        "learningMode": "completion",
-        "dataPath": "src/assets/data/completion-advanced-phrasal-verbs-c2.json",
-        "level": [
-            "c2"
-        ],
-        "category": "PhrasalVerbs"
-    },
-    {
-        "id": "completion-complex-prepositions-conjunctions-c2",
-        "name": "Complex Prep.",
-        "learningMode": "completion",
-        "dataPath": "src/assets/data/completion-complex-prepositions-conjunctions-c2.json",
-        "level": [
-            "c2"
-        ],
-        "category": "Grammar"
-    },
-    {
-        "id": "sorting-connector-words",
-        "name": "Connector Words",
-        "learningMode": "sorting",
-        "dataPath": "src/assets/data/sorting-connector-words.json",
-        "level": [
-            "b2"
-        ],
-        "category": "Grammar"
-    },
-    {
-        "id": "sorting-nuance-vocabulary-c2",
-        "name": "Vocab Nuance",
-        "learningMode": "sorting",
-        "dataPath": "src/assets/data/sorting-nuance-vocabulary-c2.json",
-        "level": [
-            "c2"
-        ],
-        "category": "Vocabulary"
-    },
-    {
-        "id": "matching-vocabulary-c1",
-        "name": "Vocabulary",
-        "learningMode": "matching",
-        "dataPath": "src/assets/data/matching-sample.json",
-        "level": [
-            "c1"
-        ],
-        "category": "Vocabulary"
-    }
+  {
+    "id": "flashcard-basic-vocabulary-a1",
+    "name": "Basic Vocabulary",
+    "learningMode": "flashcard",
+    "dataPath": "src/assets/data/flashcard-basic-vocabulary-a1.json",
+    "level": [
+      "a1"
+    ],
+    "category": "Vocabulary",
+    "unit": 1,
+    "prerequisites": [],
+    "description": "Essential everyday vocabulary for beginners",
+    "estimatedTime": 5,
+    "difficulty": 1
+  },
+  {
+    "id": "matching-basic-grammar-a1",
+    "name": "Basic Grammar",
+    "learningMode": "matching",
+    "dataPath": "src/assets/data/matching-basic-grammar-a1.json",
+    "level": [
+      "a1"
+    ],
+    "category": "Grammar",
+    "unit": 1,
+    "prerequisites": [
+      "flashcard-basic-vocabulary-a1"
+    ],
+    "description": "Fundamental grammar concepts and structures",
+    "estimatedTime": 5,
+    "difficulty": 1
+  },
+  {
+    "id": "matching-numbers-quantities-a1",
+    "name": "Numbers & Quantities",
+    "learningMode": "matching",
+    "dataPath": "src/assets/data/matching-numbers-quantities-a1.json",
+    "level": [
+      "a1"
+    ],
+    "category": "Vocabulary",
+    "unit": 1,
+    "prerequisites": [
+      "matching-basic-grammar-a1"
+    ],
+    "description": "Numbers, quantities and basic measurements",
+    "estimatedTime": 5,
+    "difficulty": 1
+  },
+  {
+    "id": "completion-basic-sentences-a1",
+    "name": "Basic Sentences",
+    "learningMode": "completion",
+    "dataPath": "src/assets/data/completion-basic-sentences-a1.json",
+    "level": [
+      "a1"
+    ],
+    "category": "Grammar",
+    "unit": 1,
+    "prerequisites": [
+      "matching-numbers-quantities-a1"
+    ],
+    "description": "Simple sentence completion exercises",
+    "estimatedTime": 5,
+    "difficulty": 1
+  },
+  {
+    "id": "quiz-basic-review-a1",
+    "name": "Basic Review",
+    "learningMode": "quiz",
+    "dataPath": "src/assets/data/quiz-basic-review-a1.json",
+    "level": [
+      "a1"
+    ],
+    "category": "Review",
+    "unit": 1,
+    "prerequisites": [
+      "completion-basic-sentences-a1"
+    ],
+    "description": "Comprehensive review of A1 level concepts",
+    "estimatedTime": 5,
+    "difficulty": 1
+  },
+  {
+    "id": "flashcard-family-a2",
+    "name": "Family",
+    "learningMode": "flashcard",
+    "dataPath": "src/assets/data/flashcard-family-a2.json",
+    "level": [
+      "a2"
+    ],
+    "category": "Vocabulary",
+    "unit": 2,
+    "prerequisites": [
+      "quiz-basic-review-a1"
+    ],
+    "description": "Family members and relationships vocabulary",
+    "estimatedTime": 5,
+    "difficulty": 2
+  },
+  {
+    "id": "flashcard-home-a2",
+    "name": "Home",
+    "learningMode": "flashcard",
+    "dataPath": "src/assets/data/flashcard-home-a2.json",
+    "level": [
+      "a2"
+    ],
+    "category": "Vocabulary",
+    "unit": 2,
+    "prerequisites": [
+      "flashcard-family-a2"
+    ],
+    "description": "Home, furniture and household items",
+    "estimatedTime": 5,
+    "difficulty": 2
+  },
+  {
+    "id": "sorting-past-tense-a2",
+    "name": "Past Tense",
+    "learningMode": "sorting",
+    "dataPath": "src/assets/data/sorting-past-tense-a2.json",
+    "level": [
+      "a2"
+    ],
+    "category": "Grammar",
+    "unit": 2,
+    "prerequisites": [
+      "flashcard-home-a2"
+    ],
+    "description": "Regular and irregular past tense verbs",
+    "estimatedTime": 5,
+    "difficulty": 2
+  },
+  {
+    "id": "completion-past-stories-a2",
+    "name": "Past Stories",
+    "learningMode": "completion",
+    "dataPath": "src/assets/data/completion-past-stories-a2.json",
+    "level": [
+      "a2"
+    ],
+    "category": "Grammar",
+    "unit": 2,
+    "prerequisites": [
+      "sorting-past-tense-a2"
+    ],
+    "description": "Complete stories using past tense",
+    "estimatedTime": 5,
+    "difficulty": 2
+  },
+  {
+    "id": "matching-time-expressions-a2",
+    "name": "Time Expressions",
+    "learningMode": "matching",
+    "dataPath": "src/assets/data/matching-time-expressions-a2.json",
+    "level": [
+      "a2"
+    ],
+    "category": "Vocabulary",
+    "unit": 2,
+    "prerequisites": [
+      "completion-past-stories-a2"
+    ],
+    "description": "Time expressions and temporal phrases",
+    "estimatedTime": 5,
+    "difficulty": 2
+  },
+  {
+    "id": "completion-comparatives-superlatives-a2",
+    "name": "Comparatives & Superlatives",
+    "learningMode": "completion",
+    "dataPath": "src/assets/data/completion-comparatives-superlatives-a2.json",
+    "level": [
+      "a2"
+    ],
+    "category": "Grammar",
+    "unit": 2,
+    "prerequisites": [
+      "matching-time-expressions-a2"
+    ],
+    "description": "Comparative and superlative forms",
+    "estimatedTime": 5,
+    "difficulty": 2
+  },
+  {
+    "id": "quiz-elementary-review-a2",
+    "name": "Elementary Review",
+    "learningMode": "quiz",
+    "dataPath": "src/assets/data/quiz-elementary-review-a2.json",
+    "level": [
+      "a2"
+    ],
+    "category": "Review",
+    "unit": 2,
+    "prerequisites": [
+      "completion-comparatives-superlatives-a2"
+    ],
+    "description": "Comprehensive review of A2 level concepts",
+    "estimatedTime": 5,
+    "difficulty": 2
+  },
+  {
+    "id": "flashcard-travel-leisure-b1",
+    "name": "Travel & Leisure",
+    "learningMode": "flashcard",
+    "dataPath": "src/assets/data/flashcard-travel-leisure-b1.json",
+    "level": [
+      "b1"
+    ],
+    "category": "Vocabulary",
+    "unit": 3,
+    "prerequisites": [
+      "quiz-elementary-review-a2"
+    ],
+    "description": "Travel, leisure and vacation vocabulary",
+    "estimatedTime": 5,
+    "difficulty": 3
+  },
+  {
+    "id": "sorting-modal-verbs-b1",
+    "name": "Modal Verbs",
+    "learningMode": "sorting",
+    "dataPath": "src/assets/data/sorting-modal-verbs-b1.json",
+    "level": [
+      "b1"
+    ],
+    "category": "Grammar",
+    "unit": 3,
+    "prerequisites": [
+      "flashcard-travel-leisure-b1"
+    ],
+    "description": "Modal verbs and their uses",
+    "estimatedTime": 5,
+    "difficulty": 3
+  },
+  {
+    "id": "sorting-prepositions-b1",
+    "name": "Prepositions",
+    "learningMode": "sorting",
+    "dataPath": "src/assets/data/sorting-prepositions-b1.json",
+    "level": [
+      "b1"
+    ],
+    "category": "Grammar",
+    "unit": 3,
+    "prerequisites": [
+      "sorting-modal-verbs-b1"
+    ],
+    "description": "Prepositions of place, time and movement",
+    "estimatedTime": 5,
+    "difficulty": 3
+  },
+  {
+    "id": "completion-future-forms-b1",
+    "name": "Future Forms",
+    "learningMode": "completion",
+    "dataPath": "src/assets/data/completion-future-forms-b1.json",
+    "level": [
+      "b1"
+    ],
+    "category": "Grammar",
+    "unit": 3,
+    "prerequisites": [
+      "sorting-prepositions-b1"
+    ],
+    "description": "Different ways to express future",
+    "estimatedTime": 5,
+    "difficulty": 3
+  },
+  {
+    "id": "matching-common-phrasal-verbs-b1",
+    "name": "Common Phrasal Verbs",
+    "learningMode": "matching",
+    "dataPath": "src/assets/data/matching-common-phrasal-verbs-b1.json",
+    "level": [
+      "b1"
+    ],
+    "category": "PhrasalVerbs",
+    "unit": 3,
+    "prerequisites": [
+      "completion-future-forms-b1"
+    ],
+    "description": "Most common phrasal verbs and meanings",
+    "estimatedTime": 5,
+    "difficulty": 3
+  },
+  {
+    "id": "quiz-idioms-everyday-situations-b1",
+    "name": "Everyday Idioms",
+    "learningMode": "quiz",
+    "dataPath": "src/assets/data/quiz-idioms-everyday-situations-b1.json",
+    "level": [
+      "b1"
+    ],
+    "category": "Idioms",
+    "unit": 3,
+    "prerequisites": [
+      "matching-common-phrasal-verbs-b1"
+    ],
+    "description": "Common idioms for everyday situations",
+    "estimatedTime": 5,
+    "difficulty": 3
+  },
+  {
+    "id": "quiz-intermediate-review-b1",
+    "name": "Intermediate Review",
+    "learningMode": "quiz",
+    "dataPath": "src/assets/data/quiz-intermediate-review-b1.json",
+    "level": [
+      "b1"
+    ],
+    "category": "Review",
+    "unit": 3,
+    "prerequisites": [
+      "quiz-idioms-everyday-situations-b1"
+    ],
+    "description": "Comprehensive review of B1 level concepts",
+    "estimatedTime": 5,
+    "difficulty": 3
+  },
+  {
+    "id": "flashcard-ielts-general",
+    "name": "General Vocab",
+    "learningMode": "flashcard",
+    "dataPath": "src/assets/data/flashcard-ielts-general.json",
+    "level": [
+      "b2"
+    ],
+    "category": "Vocabulary",
+    "unit": 4,
+    "prerequisites": [
+      "quiz-intermediate-review-b1"
+    ],
+    "description": "General IELTS vocabulary",
+    "estimatedTime": 5,
+    "difficulty": 4
+  },
+  {
+    "id": "completion-phrasal-verbs-b2",
+    "name": "Phrasal Verbs",
+    "learningMode": "completion",
+    "dataPath": "src/assets/data/completion-phrasal-verbs-b2.json",
+    "level": [
+      "b2"
+    ],
+    "category": "PhrasalVerbs",
+    "unit": 4,
+    "prerequisites": [
+      "flashcard-ielts-general"
+    ],
+    "description": "Advanced phrasal verbs completion",
+    "estimatedTime": 5,
+    "difficulty": 4
+  },
+  {
+    "id": "sorting-connector-words-b2",
+    "name": "Connector Words",
+    "learningMode": "sorting",
+    "dataPath": "src/assets/data/sorting-connector-words-b2.json",
+    "level": [
+      "b2"
+    ],
+    "category": "Grammar",
+    "unit": 4,
+    "prerequisites": [
+      "completion-phrasal-verbs-b2"
+    ],
+    "description": "Discourse markers and connectors",
+    "estimatedTime": 5,
+    "difficulty": 4
+  },
+  {
+    "id": "quiz-idioms-emotions-feelings",
+    "name": "Emotions & Feelings",
+    "learningMode": "quiz",
+    "dataPath": "src/assets/data/quiz-idioms-emotions-feelings.json",
+    "level": [
+      "b2"
+    ],
+    "category": "Idioms",
+    "unit": 4,
+    "prerequisites": [
+      "sorting-connector-words-b2"
+    ],
+    "description": "Idioms about emotions and feelings",
+    "estimatedTime": 5,
+    "difficulty": 4
+  },
+  {
+    "id": "quiz-idioms-success-failure",
+    "name": "Success & Failure",
+    "learningMode": "quiz",
+    "dataPath": "src/assets/data/quiz-idioms-success-failure.json",
+    "level": [
+      "b2"
+    ],
+    "category": "Idioms",
+    "unit": 4,
+    "prerequisites": [
+      "quiz-idioms-emotions-feelings"
+    ],
+    "description": "Idioms about success and failure",
+    "estimatedTime": 5,
+    "difficulty": 4
+  },
+  {
+    "id": "quiz-idioms-time",
+    "name": "Time Idioms",
+    "learningMode": "quiz",
+    "dataPath": "src/assets/data/quiz-idioms-time.json",
+    "level": [
+      "b2"
+    ],
+    "category": "Idioms",
+    "unit": 4,
+    "prerequisites": [
+      "quiz-idioms-success-failure"
+    ],
+    "description": "Idioms related to time",
+    "estimatedTime": 5,
+    "difficulty": 4
+  },
+  {
+    "id": "quiz-idioms-nature-animals",
+    "name": "Nature & Animals",
+    "learningMode": "quiz",
+    "dataPath": "src/assets/data/quiz-idioms-nature-animals.json",
+    "level": [
+      "b2"
+    ],
+    "category": "Idioms",
+    "unit": 4,
+    "prerequisites": [
+      "quiz-idioms-time"
+    ],
+    "description": "Idioms about nature and animals",
+    "estimatedTime": 5,
+    "difficulty": 4
+  },
+  {
+    "id": "flashcard-ielts-business-c1",
+    "name": "Business",
+    "learningMode": "flashcard",
+    "dataPath": "src/assets/data/flashcard-ielts-business-c1.json",
+    "level": [
+      "c1"
+    ],
+    "category": "Vocabulary",
+    "unit": 5,
+    "prerequisites": [
+      "quiz-idioms-nature-animals"
+    ],
+    "description": "Business and professional vocabulary",
+    "estimatedTime": 5,
+    "difficulty": 5
+  },
+  {
+    "id": "flashcard-ielts-problem-solving",
+    "name": "Problem Solving",
+    "learningMode": "flashcard",
+    "dataPath": "src/assets/data/flashcard-ielts-problem-solving.json",
+    "level": [
+      "c1"
+    ],
+    "category": "Vocabulary",
+    "unit": 5,
+    "prerequisites": [
+      "flashcard-ielts-home-daily-life"
+    ],
+    "description": "Advanced problem solving vocabulary",
+    "estimatedTime": 5,
+    "difficulty": 5
+  },
+  {
+    "id": "quiz-advanced-grammar-conditionals",
+    "name": "Conditionals",
+    "learningMode": "quiz",
+    "dataPath": "src/assets/data/quiz-advanced-grammar-conditionals.json",
+    "level": [
+      "c1"
+    ],
+    "category": "Grammar",
+    "unit": 5,
+    "prerequisites": [
+      "flashcard-ielts-problem-solving"
+    ],
+    "description": "Advanced conditional structures",
+    "estimatedTime": 5,
+    "difficulty": 5
+  },
+  {
+    "id": "quiz-advanced-grammar-inversions",
+    "name": "Grammar Inversions",
+    "learningMode": "quiz",
+    "dataPath": "src/assets/data/quiz-advanced-grammar-inversions.json",
+    "level": [
+      "c1"
+    ],
+    "category": "Grammar",
+    "unit": 5,
+    "prerequisites": [
+      "quiz-advanced-grammar-conditionals"
+    ],
+    "description": "Advanced grammatical inversions",
+    "estimatedTime": 5,
+    "difficulty": 5
+  },
+  {
+    "id": "quiz-advanced-grammar-participles",
+    "name": "Participles",
+    "learningMode": "quiz",
+    "dataPath": "src/assets/data/quiz-advanced-grammar-participles.json",
+    "level": [
+      "c1"
+    ],
+    "category": "Grammar",
+    "unit": 5,
+    "prerequisites": [
+      "quiz-advanced-grammar-inversions"
+    ],
+    "description": "Advanced participle constructions",
+    "estimatedTime": 5,
+    "difficulty": 5
+  },
+  {
+    "id": "quiz-advanced-grammar-subjunctive",
+    "name": "Subjunctive",
+    "learningMode": "quiz",
+    "dataPath": "src/assets/data/quiz-advanced-grammar-subjunctive.json",
+    "level": [
+      "c1"
+    ],
+    "category": "Grammar",
+    "unit": 5,
+    "prerequisites": [
+      "quiz-advanced-grammar-participles"
+    ],
+    "description": "Subjunctive mood and usage",
+    "estimatedTime": 5,
+    "difficulty": 5
+  },
+  {
+    "id": "matching-vocabulary-c1",
+    "name": "Advanced Vocabulary",
+    "learningMode": "matching",
+    "dataPath": "src/assets/data/matching-sample.json",
+    "level": [
+      "c1"
+    ],
+    "category": "Vocabulary",
+    "unit": 5,
+    "prerequisites": [
+      "quiz-advanced-grammar-subjunctive"
+    ],
+    "description": "Advanced vocabulary matching",
+    "estimatedTime": 5,
+    "difficulty": 5
+  },
+  {
+    "id": "quiz-advanced-collocations-idioms-c2",
+    "name": "Advanced Collocations",
+    "learningMode": "quiz",
+    "dataPath": "src/assets/data/quiz-advanced-collocations-idioms-c2.json",
+    "level": [
+      "c2"
+    ],
+    "category": "Vocabulary",
+    "unit": 6,
+    "prerequisites": [
+      "flashcard-academic-c2"
+    ],
+    "description": "Sophisticated collocations and idioms",
+    "estimatedTime": 5,
+    "difficulty": 5
+  },
+  {
+    "id": "quiz-advanced-grammatical-structures-c2",
+    "name": "Advanced Structures",
+    "learningMode": "quiz",
+    "dataPath": "src/assets/data/quiz-advanced-grammatical-structures-c2.json",
+    "level": [
+      "c2"
+    ],
+    "category": "Grammar",
+    "unit": 6,
+    "prerequisites": [
+      "quiz-advanced-collocations-idioms-c2"
+    ],
+    "description": "Complex grammatical structures",
+    "estimatedTime": 5,
+    "difficulty": 5
+  },
+  {
+    "id": "quiz-formal-vocabulary-nuance-c2",
+    "name": "Formal & Nuance",
+    "learningMode": "quiz",
+    "dataPath": "src/assets/data/quiz-formal-vocabulary-nuance-c2.json",
+    "level": [
+      "c2"
+    ],
+    "category": "Vocabulary",
+    "unit": 6,
+    "prerequisites": [
+      "quiz-advanced-grammatical-structures-c2"
+    ],
+    "description": "Formal vocabulary and subtle nuances",
+    "estimatedTime": 5,
+    "difficulty": 5
+  },
+  {
+    "id": "sorting-nuance-vocabulary-c2",
+    "name": "Vocabulary Nuance",
+    "learningMode": "sorting",
+    "dataPath": "src/assets/data/sorting-nuance-vocabulary-c2.json",
+    "level": [
+      "c2"
+    ],
+    "category": "Vocabulary",
+    "unit": 6,
+    "prerequisites": [
+      "quiz-formal-vocabulary-nuance-c2"
+    ],
+    "description": "Subtle vocabulary distinctions",
+    "estimatedTime": 5,
+    "difficulty": 5
+  },
+  {
+    "id": "completion-advanced-phrasal-verbs-c2",
+    "name": "Advanced Phrasal Verbs",
+    "learningMode": "completion",
+    "dataPath": "src/assets/data/completion-advanced-phrasal-verbs-c2.json",
+    "level": [
+      "c2"
+    ],
+    "category": "PhrasalVerbs",
+    "unit": 6,
+    "prerequisites": [
+      "sorting-nuance-vocabulary-c2"
+    ],
+    "description": "Sophisticated phrasal verbs",
+    "estimatedTime": 5,
+    "difficulty": 5
+  },
+  {
+    "id": "completion-complex-prepositions-conjunctions-c2",
+    "name": "Complex Prepositions",
+    "learningMode": "completion",
+    "dataPath": "src/assets/data/completion-complex-prepositions-conjunctions-c2.json",
+    "level": [
+      "c2"
+    ],
+    "category": "Grammar",
+    "unit": 6,
+    "prerequisites": [
+      "completion-advanced-phrasal-verbs-c2"
+    ],
+    "description": "Complex prepositions and conjunctions",
+    "estimatedTime": 5,
+    "difficulty": 5
+  },
+  {
+    "id": "quiz-mastery-assessment-c2",
+    "name": "Mastery Assessment",
+    "learningMode": "quiz",
+    "dataPath": "src/assets/data/quiz-mastery-assessment-c2.json",
+    "level": [
+      "c2"
+    ],
+    "category": "Review",
+    "unit": 6,
+    "prerequisites": [
+      "completion-complex-prepositions-conjunctions-c2"
+    ],
+    "description": "Comprehensive mastery assessment",
+    "estimatedTime": 5,
+    "difficulty": 5
+  }
 ]

@@ -1,7 +1,17 @@
 // Core Types
 export type LearningMode = 'flashcard' | 'quiz' | 'completion' | 'sorting' | 'matching';
 export type DifficultyLevel = 'a1' | 'a2' | 'b1' | 'b2' | 'c1' | 'c2';
-export type Category = 'Vocabulary' | 'Grammar' | 'PhrasalVerbs' | 'Idioms';
+export type Category = 
+  | 'Vocabulary' 
+  | 'Grammar' 
+  | 'PhrasalVerbs' 
+  | 'Idioms'
+  | 'Pronunciation'
+  | 'Listening'
+  | 'Reading'
+  | 'Writing'
+  | 'Speaking'
+  | 'Review';
 
 export interface LearningModule {
   id: string;
@@ -10,6 +20,8 @@ export interface LearningModule {
   learningMode: LearningMode;
   level: DifficultyLevel[] | DifficultyLevel;
   category: Category;
+  unit: number; // 1-6 (Foundation → Mastery)
+  prerequisites: string[]; // IDs of required modules
   tags?: string[];
   data?: LearningData[];
   dataPath?: string;
@@ -61,7 +73,8 @@ export interface SortingData extends BaseLearningData {
 export interface MatchingData extends BaseLearningData {
   left: string;
   right: string;
-  type: 'word-definition' | 'word-translation' | 'question-answer';
+  explanation?: string;
+  type?: 'word-definition' | 'word-translation' | 'question-answer';
   pairs?: { left: string; right: string }[];
 }
 
@@ -158,6 +171,19 @@ export interface Toast {
   message: string;
   duration?: number;
   isGameRelated?: boolean;
+}
+
+// Validation types
+export interface ValidationResult {
+  success: boolean;
+  errors: string[];
+  warnings?: string[];
+}
+
+export interface ValidationConfig {
+  strictMode: boolean;
+  requiredItemCount: number;
+  allowWarnings: boolean;
 }
 
 // API Response types

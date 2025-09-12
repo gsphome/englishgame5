@@ -42,6 +42,20 @@ export interface SettingsState {
   updateMaxLimits: (limits: MaxLimits) => void;
 }
 
+// Default categories for fallback and migration
+const DEFAULT_CATEGORIES = [
+  'Vocabulary',
+  'Grammar', 
+  'PhrasalVerbs',
+  'Idioms',
+  'Pronunciation',
+  'Listening',
+  'Reading',
+  'Writing',
+  'Speaking',
+  'Review'
+];
+
 export const useSettingsStore = create<SettingsState>()(
   persist(
     (set, get) => ({
@@ -49,7 +63,7 @@ export const useSettingsStore = create<SettingsState>()(
       theme: 'light',
       language: 'en',
       level: 'all',
-      categories: ['Vocabulary', 'Grammar', 'PhrasalVerbs', 'Idioms'],
+      categories: DEFAULT_CATEGORIES,
       gameSettings: {
         flashcardMode: { wordCount: 10 },
         quizMode: { questionCount: 10 },
@@ -100,7 +114,18 @@ export const useSettingsStore = create<SettingsState>()(
       updateMaxLimits: (limits) => set({ maxLimits: limits })
     }),
     {
-      name: 'settings-storage'
+      name: 'settings-storage',
+      version: 2,
+      migrate: (persistedState: any, version: number) => {
+        // Migration from version 1 to version 2
+        if (version < 2) {
+          return {
+            ...persistedState,
+            categories: DEFAULT_CATEGORIES // Expand from 4 to 10 categories
+          };
+        }
+        return persistedState;
+      }
     }
   )
 );

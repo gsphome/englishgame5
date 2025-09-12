@@ -56,6 +56,8 @@ export const createMockModule = (overrides: Partial<LearningModule> = {}): Learn
   learningMode: 'flashcard',
   level: ['b1'],
   category: 'Vocabulary',
+  unit: 3,
+  prerequisites: [],
   tags: ['test'],
   data: [
     {

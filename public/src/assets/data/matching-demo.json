@@ -1,24 +1,32 @@
-{
-  "id": "matching-demo",
-  "name": "Match English-Spanish",
-  "description": "Match English words with their Spanish translations",
-  "learningMode": "matching",
-  "level": "beginner",
-  "category": "Vocabulary",
-  "tags": ["vocabulary", "matching", "translation"],
-  "estimatedTime": 7,
-  "difficulty": 2,
-  "data": [
-    {
-      "id": "m1",
-      "pairs": [
-        { "left": "Hello", "right": "Hola" },
-        { "left": "Goodbye", "right": "Adiós" },
-        { "left": "Thank you", "right": "Gracias" },
-        { "left": "Please", "right": "Por favor" },
-        { "left": "Excuse me", "right": "Disculpe" },
-        { "left": "How are you?", "right": "¿Cómo estás?" }
-      ]
-    }
-  ]
-}
+[
+  {
+    "left": "Hello",
+    "right": "Hola",
+    "explanation": "Basic greeting used when meeting someone"
+  },
+  {
+    "left": "Goodbye",
+    "right": "Adiós",
+    "explanation": "Farewell expression used when leaving"
+  },
+  {
+    "left": "Thank you",
+    "right": "Gracias",
+    "explanation": "Expression of gratitude"
+  },
+  {
+    "left": "Please",
+    "right": "Por favor",
+    "explanation": "Polite way to make a request"
+  },
+  {
+    "left": "Excuse me",
+    "right": "Disculpe",
+    "explanation": "Polite way to get attention or apologize"
+  },
+  {
+    "left": "How are you?",
+    "right": "¿Cómo estás?",
+    "explanation": "Common question to ask about someone's well-being"
+  }
+]

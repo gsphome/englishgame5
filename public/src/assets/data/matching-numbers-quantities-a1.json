@@ -1,0 +1,202 @@
+[
+  {
+    "left": "1",
+    "right": "one",
+    "explanation": "The number one written as a word"
+  },
+  {
+    "left": "2",
+    "right": "two",
+    "explanation": "The number two written as a word"
+  },
+  {
+    "left": "3",
+    "right": "three",
+    "explanation": "The number three written as a word"
+  },
+  {
+    "left": "4",
+    "right": "four",
+    "explanation": "The number four written as a word"
+  },
+  {
+    "left": "5",
+    "right": "five",
+    "explanation": "The number five written as a word"
+  },
+  {
+    "left": "6",
+    "right": "six",
+    "explanation": "The number six written as a word"
+  },
+  {
+    "left": "7",
+    "right": "seven",
+    "explanation": "The number seven written as a word"
+  },
+  {
+    "left": "8",
+    "right": "eight",
+    "explanation": "The number eight written as a word"
+  },
+  {
+    "left": "9",
+    "right": "nine",
+    "explanation": "The number nine written as a word"
+  },
+  {
+    "left": "10",
+    "right": "ten",
+    "explanation": "The number ten written as a word"
+  },
+  {
+    "left": "11",
+    "right": "eleven",
+    "explanation": "The number eleven written as a word"
+  },
+  {
+    "left": "12",
+    "right": "twelve",
+    "explanation": "The number twelve written as a word"
+  },
+  {
+    "left": "13",
+    "right": "thirteen",
+    "explanation": "The number thirteen written as a word"
+  },
+  {
+    "left": "14",
+    "right": "fourteen",
+    "explanation": "The number fourteen written as a word"
+  },
+  {
+    "left": "15",
+    "right": "fifteen",
+    "explanation": "The number fifteen written as a word"
+  },
+  {
+    "left": "16",
+    "right": "sixteen",
+    "explanation": "The number sixteen written as a word"
+  },
+  {
+    "left": "17",
+    "right": "seventeen",
+    "explanation": "The number seventeen written as a word"
+  },
+  {
+    "left": "18",
+    "right": "eighteen",
+    "explanation": "The number eighteen written as a word"
+  },
+  {
+    "left": "19",
+    "right": "nineteen",
+    "explanation": "The number nineteen written as a word"
+  },
+  {
+    "left": "20",
+    "right": "twenty",
+    "explanation": "The number twenty written as a word"
+  },
+  {
+    "left": "30",
+    "right": "thirty",
+    "explanation": "The number thirty written as a word"
+  },
+  {
+    "left": "40",
+    "right": "forty",
+    "explanation": "The number forty written as a word"
+  },
+  {
+    "left": "50",
+    "right": "fifty",
+    "explanation": "The number fifty written as a word"
+  },
+  {
+    "left": "60",
+    "right": "sixty",
+    "explanation": "The number sixty written as a word"
+  },
+  {
+    "left": "70",
+    "right": "seventy",
+    "explanation": "The number seventy written as a word"
+  },
+  {
+    "left": "80",
+    "right": "eighty",
+    "explanation": "The number eighty written as a word"
+  },
+  {
+    "left": "90",
+    "right": "ninety",
+    "explanation": "The number ninety written as a word"
+  },
+  {
+    "left": "100",
+    "right": "one hundred",
+    "explanation": "The number one hundred written as words"
+  },
+  {
+    "left": "some",
+    "right": "a few",
+    "explanation": "Both mean a small amount"
+  },
+  {
+    "left": "many",
+    "right": "a lot of",
+    "explanation": "Both mean a large amount"
+  },
+  {
+    "left": "much",
+    "right": "a lot of",
+    "explanation": "Both mean a large amount (uncountable)"
+  },
+  {
+    "left": "few",
+    "right": "not many",
+    "explanation": "Both mean a small number"
+  },
+  {
+    "left": "little",
+    "right": "not much",
+    "explanation": "Both mean a small amount (uncountable)"
+  },
+  {
+    "left": "all",
+    "right": "everything",
+    "explanation": "Both mean the complete amount"
+  },
+  {
+    "left": "none",
+    "right": "nothing",
+    "explanation": "Both mean zero amount"
+  },
+  {
+    "left": "half",
+    "right": "50%",
+    "explanation": "Half means one of two equal parts"
+  },
+  {
+    "left": "quarter",
+    "right": "25%",
+    "explanation": "Quarter means one of four equal parts"
+  },
+  {
+    "left": "double",
+    "right": "twice",
+    "explanation": "Both mean two times the amount"
+  },
+  {
+    "left": "single",
+    "right": "one",
+    "explanation": "Both mean just one"
+  },
+  {
+    "left": "pair",
+    "right": "two",
+    "explanation": "A pair means two things together"
+  }
+]

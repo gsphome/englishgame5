@@ -51,18 +51,12 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
     
     currentModuleIdRef.current = module.id;
 
-    let pairs: { left: string; right: string }[] = [];
-    
-    // Check if data has pairs property (legacy format)
-    const firstItem = module.data[0] as any;
-    if (firstItem?.pairs) {
-      pairs = firstItem.pairs;
-    } else if (Array.isArray(module.data)) {
-      pairs = module.data.map((item: any) => ({
-        left: item.en || item.term || item.left || '',
-        right: item.es || item.definition || item.right || ''
-      }));
-    }
+    // Expect data to be an array of {left, right, explanation} objects
+    const pairs = (module.data as any[]).map((item: any) => ({
+      left: item.left || '',
+      right: item.right || '',
+      explanation: item.explanation || ''
+    }));
 
     if (pairs.length > 0) {
       const terms = pairs.map((pair: { left: string; right: string }) => pair.left).sort(() => Math.random() - 0.5);
@@ -86,15 +80,12 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
     );
   }
 
-  const getPairs = (): { left: string; right: string }[] => {
+  const getPairs = (): { left: string; right: string; explanation: string }[] => {
     if (!module.data) return [];
-    const firstItem = module.data[0] as any;
-    if (firstItem?.pairs) {
-      return firstItem.pairs;
-    }
     return (module.data as any[]).map((item: any) => ({
-      left: item.term || '',
-      right: item.definition || ''
+      left: item.left || '',
+      right: item.right || '',
+      explanation: item.explanation || ''
     }));
   };
 
@@ -267,7 +258,7 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
                         <div
                           onClick={(e) => {
                             e.stopPropagation();
-                            const termData = (module.data as any[])?.find((d: any) => d.term === item);
+                            const termData = (module.data as any[])?.find((d: any) => d.left === item);
                             setSelectedTerm(termData);
                             setShowExplanation(true);
                           }}
@@ -392,7 +383,7 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
                   className="text-lg font-semibold text-gray-900"
                   style={{ color: document.documentElement.classList.contains('dark') ? '#ffffff' : undefined }}
                 >
-                  {selectedTerm.term}
+                  {selectedTerm.left}
                 </h3>
                 <button
                   onClick={() => setShowExplanation(false)}
@@ -409,13 +400,13 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
                     className="text-sm font-medium text-gray-700 mb-1"
                     style={{ color: document.documentElement.classList.contains('dark') ? '#e5e7eb' : undefined }}
                   >
-                    Definition:
+                    Match:
                   </h4>
                   <p 
                     className="text-gray-900"
                     style={{ color: document.documentElement.classList.contains('dark') ? '#ffffff' : undefined }}
                   >
-                    {selectedTerm.definition}
+                    {selectedTerm.right}
                   </p>
                 </div>
                 
@@ -432,23 +423,6 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
                       style={{ color: document.documentElement.classList.contains('dark') ? '#ffffff' : undefined }}
                     >
                       {selectedTerm.explanation}
-                    </p>
-                  </div>
-                )}
-                
-                {selectedTerm.term_es && (
-                  <div>
-                    <h4 
-                      className="text-sm font-medium text-gray-700 mb-1"
-                      style={{ color: document.documentElement.classList.contains('dark') ? '#e5e7eb' : undefined }}
-                    >
-                      Spanish:
-                    </h4>
-                    <p 
-                      className="text-gray-900 font-medium"
-                      style={{ color: document.documentElement.classList.contains('dark') ? '#ffffff' : undefined }}
-                    >
-                      {selectedTerm.term_es}
                     </p>
                   </div>
                 )}
