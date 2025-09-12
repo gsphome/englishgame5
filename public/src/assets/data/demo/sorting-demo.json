@@ -11,19 +11,33 @@
   "data": [
     {
       "id": "s1",
-      "words": ["apple", "car", "dog", "banana", "bus", "cat", "orange", "train", "bird", "grape"],
+      "words": ["apple", "car", "dog", "banana"],
       "categories": [
         {
           "name": "Fruits",
-          "items": ["apple", "banana", "orange", "grape"]
+          "items": ["apple", "banana"]
         },
         {
           "name": "Transportation",
-          "items": ["car", "bus", "train"]
+          "items": ["car"]
         },
         {
           "name": "Animals",
-          "items": ["dog", "cat", "bird"]
+          "items": ["dog"]
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "words": ["red", "happy", "blue", "sad"],
+      "categories": [
+        {
+          "name": "Colors",
+          "items": ["red", "blue"]
+        },
+        {
+          "name": "Emotions",
+          "items": ["happy", "sad"]
         }
       ]
     }

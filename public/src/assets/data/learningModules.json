@@ -3,7 +3,7 @@
     "id": "flashcard-basic-vocabulary-a1",
     "name": "Basic Vocabulary",
     "learningMode": "flashcard",
-    "dataPath": "src/assets/data/flashcard-basic-vocabulary-a1.json",
+    "dataPath": "src/assets/data/a1/a1-flashcard-basic-vocabulary.json",
     "level": [
       "a1"
     ],
@@ -18,7 +18,7 @@
     "id": "matching-basic-grammar-a1",
     "name": "Basic Grammar",
     "learningMode": "matching",
-    "dataPath": "src/assets/data/matching-basic-grammar-a1.json",
+    "dataPath": "src/assets/data/a1/a1-matching-basic-grammar.json",
     "level": [
       "a1"
     ],
@@ -35,7 +35,7 @@
     "id": "matching-numbers-quantities-a1",
     "name": "Numbers & Quantities",
     "learningMode": "matching",
-    "dataPath": "src/assets/data/matching-numbers-quantities-a1.json",
+    "dataPath": "src/assets/data/a1/a1-matching-numbers-quantities.json",
     "level": [
       "a1"
     ],
@@ -52,7 +52,7 @@
     "id": "completion-basic-sentences-a1",
     "name": "Basic Sentences",
     "learningMode": "completion",
-    "dataPath": "src/assets/data/completion-basic-sentences-a1.json",
+    "dataPath": "src/assets/data/a1/a1-completion-basic-sentences.json",
     "level": [
       "a1"
     ],
@@ -69,7 +69,7 @@
     "id": "quiz-basic-review-a1",
     "name": "Basic Review",
     "learningMode": "quiz",
-    "dataPath": "src/assets/data/quiz-basic-review-a1.json",
+    "dataPath": "src/assets/data/a1/a1-quiz-basic-review.json",
     "level": [
       "a1"
     ],
@@ -86,7 +86,7 @@
     "id": "flashcard-family-a2",
     "name": "Family",
     "learningMode": "flashcard",
-    "dataPath": "src/assets/data/flashcard-family-a2.json",
+    "dataPath": "src/assets/data/a2-flashcard-family.json",
     "level": [
       "a2"
     ],
@@ -103,7 +103,7 @@
     "id": "flashcard-home-a2",
     "name": "Home",
     "learningMode": "flashcard",
-    "dataPath": "src/assets/data/flashcard-home-a2.json",
+    "dataPath": "src/assets/data/a2-flashcard-home.json",
     "level": [
       "a2"
     ],
@@ -120,7 +120,7 @@
     "id": "sorting-past-tense-a2",
     "name": "Past Tense",
     "learningMode": "sorting",
-    "dataPath": "src/assets/data/sorting-past-tense-a2.json",
+    "dataPath": "src/assets/data/a2-sorting-past-tense.json",
     "level": [
       "a2"
     ],
@@ -137,7 +137,7 @@
     "id": "completion-past-stories-a2",
     "name": "Past Stories",
     "learningMode": "completion",
-    "dataPath": "src/assets/data/completion-past-stories-a2.json",
+    "dataPath": "src/assets/data/a2-completion-past-stories.json",
     "level": [
       "a2"
     ],
@@ -154,7 +154,7 @@
     "id": "matching-time-expressions-a2",
     "name": "Time Expressions",
     "learningMode": "matching",
-    "dataPath": "src/assets/data/matching-time-expressions-a2.json",
+    "dataPath": "src/assets/data/a2-matching-time-expressions.json",
     "level": [
       "a2"
     ],
@@ -171,7 +171,7 @@
     "id": "completion-comparatives-superlatives-a2",
     "name": "Comparatives & Superlatives",
     "learningMode": "completion",
-    "dataPath": "src/assets/data/completion-comparatives-superlatives-a2.json",
+    "dataPath": "src/assets/data/a2-completion-comparatives-superlatives.json",
     "level": [
       "a2"
     ],
@@ -185,17 +185,34 @@
     "difficulty": 2
   },
   {
+    "id": "completion-used-to-a2",
+    "name": "Used To",
+    "learningMode": "completion",
+    "dataPath": "src/assets/data/a2-completion-used-to.json",
+    "level": [
+      "a2"
+    ],
+    "category": "Grammar",
+    "unit": 2,
+    "prerequisites": [
+      "completion-comparatives-superlatives-a2"
+    ],
+    "description": "Past habits and states with 'used to'",
+    "estimatedTime": 5,
+    "difficulty": 2
+  },
+  {
     "id": "quiz-elementary-review-a2",
     "name": "Elementary Review",
     "learningMode": "quiz",
-    "dataPath": "src/assets/data/quiz-elementary-review-a2.json",
+    "dataPath": "src/assets/data/a2-quiz-elementary-review.json",
     "level": [
       "a2"
     ],
     "category": "Review",
     "unit": 2,
     "prerequisites": [
-      "completion-comparatives-superlatives-a2"
+      "completion-used-to-a2"
     ],
     "description": "Comprehensive review of A2 level concepts",
     "estimatedTime": 5,
@@ -205,7 +222,7 @@
     "id": "flashcard-travel-leisure-b1",
     "name": "Travel & Leisure",
     "learningMode": "flashcard",
-    "dataPath": "src/assets/data/flashcard-travel-leisure-b1.json",
+    "dataPath": "src/assets/data/b1-flashcard-travel-leisure.json",
     "level": [
       "b1"
     ],
@@ -222,7 +239,7 @@
     "id": "sorting-modal-verbs-b1",
     "name": "Modal Verbs",
     "learningMode": "sorting",
-    "dataPath": "src/assets/data/sorting-modal-verbs-b1.json",
+    "dataPath": "src/assets/data/b1-sorting-modal-verbs.json",
     "level": [
       "b1"
     ],
@@ -239,7 +256,7 @@
     "id": "sorting-prepositions-b1",
     "name": "Prepositions",
     "learningMode": "sorting",
-    "dataPath": "src/assets/data/sorting-prepositions-b1.json",
+    "dataPath": "src/assets/data/b1-sorting-prepositions.json",
     "level": [
       "b1"
     ],
@@ -256,7 +273,7 @@
     "id": "completion-future-forms-b1",
     "name": "Future Forms",
     "learningMode": "completion",
-    "dataPath": "src/assets/data/completion-future-forms-b1.json",
+    "dataPath": "src/assets/data/b1-completion-future-forms.json",
     "level": [
       "b1"
     ],
@@ -273,7 +290,7 @@
     "id": "matching-common-phrasal-verbs-b1",
     "name": "Common Phrasal Verbs",
     "learningMode": "matching",
-    "dataPath": "src/assets/data/matching-common-phrasal-verbs-b1.json",
+    "dataPath": "src/assets/data/b1-matching-common-phrasal-verbs.json",
     "level": [
       "b1"
     ],
@@ -290,7 +307,7 @@
     "id": "quiz-idioms-everyday-situations-b1",
     "name": "Everyday Idioms",
     "learningMode": "quiz",
-    "dataPath": "src/assets/data/quiz-idioms-everyday-situations-b1.json",
+    "dataPath": "src/assets/data/b1-quiz-idioms-everyday-situations.json",
     "level": [
       "b1"
     ],
@@ -304,17 +321,34 @@
     "difficulty": 3
   },
   {
+    "id": "quiz-idioms-everyday-situations-alt-b1",
+    "name": "Everyday Idioms Alternative",
+    "learningMode": "quiz",
+    "dataPath": "src/assets/data/b1-quiz-idioms-everyday-situations-alt.json",
+    "level": [
+      "b1"
+    ],
+    "category": "Idioms",
+    "unit": 3,
+    "prerequisites": [
+      "quiz-idioms-everyday-situations-b1"
+    ],
+    "description": "Additional common idioms for everyday situations",
+    "estimatedTime": 5,
+    "difficulty": 3
+  },
+  {
     "id": "quiz-intermediate-review-b1",
     "name": "Intermediate Review",
     "learningMode": "quiz",
-    "dataPath": "src/assets/data/quiz-intermediate-review-b1.json",
+    "dataPath": "src/assets/data/b1-quiz-intermediate-review.json",
     "level": [
       "b1"
     ],
     "category": "Review",
     "unit": 3,
     "prerequisites": [
-      "quiz-idioms-everyday-situations-b1"
+      "quiz-idioms-everyday-situations-alt-b1"
     ],
     "description": "Comprehensive review of B1 level concepts",
     "estimatedTime": 5,
@@ -324,7 +358,7 @@
     "id": "flashcard-ielts-general",
     "name": "General Vocab",
     "learningMode": "flashcard",
-    "dataPath": "src/assets/data/flashcard-ielts-general.json",
+    "dataPath": "src/assets/data/b2-flashcard-ielts-general.json",
     "level": [
       "b2"
     ],
@@ -341,7 +375,7 @@
     "id": "completion-phrasal-verbs-b2",
     "name": "Phrasal Verbs",
     "learningMode": "completion",
-    "dataPath": "src/assets/data/completion-phrasal-verbs-b2.json",
+    "dataPath": "src/assets/data/b2-completion-phrasal-verbs.json",
     "level": [
       "b2"
     ],
@@ -358,7 +392,7 @@
     "id": "sorting-connector-words-b2",
     "name": "Connector Words",
     "learningMode": "sorting",
-    "dataPath": "src/assets/data/sorting-connector-words-b2.json",
+    "dataPath": "src/assets/data/b2-sorting-connector-words.json",
     "level": [
       "b2"
     ],
@@ -375,7 +409,7 @@
     "id": "quiz-idioms-emotions-feelings",
     "name": "Emotions & Feelings",
     "learningMode": "quiz",
-    "dataPath": "src/assets/data/quiz-idioms-emotions-feelings.json",
+    "dataPath": "src/assets/data/b2-quiz-idioms-emotions-feelings.json",
     "level": [
       "b2"
     ],
@@ -392,7 +426,7 @@
     "id": "quiz-idioms-success-failure",
     "name": "Success & Failure",
     "learningMode": "quiz",
-    "dataPath": "src/assets/data/quiz-idioms-success-failure.json",
+    "dataPath": "src/assets/data/b2-quiz-idioms-success-failure.json",
     "level": [
       "b2"
     ],
@@ -409,7 +443,7 @@
     "id": "quiz-idioms-time",
     "name": "Time Idioms",
     "learningMode": "quiz",
-    "dataPath": "src/assets/data/quiz-idioms-time.json",
+    "dataPath": "src/assets/data/b2-quiz-idioms-time.json",
     "level": [
       "b2"
     ],
@@ -426,7 +460,7 @@
     "id": "quiz-idioms-nature-animals",
     "name": "Nature & Animals",
     "learningMode": "quiz",
-    "dataPath": "src/assets/data/quiz-idioms-nature-animals.json",
+    "dataPath": "src/assets/data/b2-quiz-idioms-nature-animals.json",
     "level": [
       "b2"
     ],
@@ -440,19 +474,70 @@
     "difficulty": 4
   },
   {
+    "id": "flashcard-ielts-clothing-appearance-b2",
+    "name": "Clothing & Appearance",
+    "learningMode": "flashcard",
+    "dataPath": "src/assets/data/b2-flashcard-ielts-clothing-appearance.json",
+    "level": [
+      "b2"
+    ],
+    "category": "Vocabulary",
+    "unit": 4,
+    "prerequisites": [
+      "quiz-idioms-nature-animals"
+    ],
+    "description": "Clothing, fashion and appearance vocabulary",
+    "estimatedTime": 5,
+    "difficulty": 4
+  },
+  {
+    "id": "flashcard-ielts-technology-b2",
+    "name": "Technology",
+    "learningMode": "flashcard",
+    "dataPath": "src/assets/data/b2-flashcard-ielts-technology.json",
+    "level": [
+      "b2"
+    ],
+    "category": "Vocabulary",
+    "unit": 4,
+    "prerequisites": [
+      "flashcard-ielts-clothing-appearance-b2"
+    ],
+    "description": "Technology and digital world vocabulary",
+    "estimatedTime": 5,
+    "difficulty": 4
+  },
+  {
     "id": "flashcard-ielts-business-c1",
     "name": "Business",
     "learningMode": "flashcard",
-    "dataPath": "src/assets/data/flashcard-ielts-business-c1.json",
+    "dataPath": "src/assets/data/c1-flashcard-ielts-business.json",
     "level": [
       "c1"
     ],
     "category": "Vocabulary",
     "unit": 5,
     "prerequisites": [
-      "quiz-idioms-nature-animals"
+      "flashcard-ielts-technology-b2"
     ],
     "description": "Business and professional vocabulary",
+    "estimatedTime": 5,
+    "difficulty": 5
+  },
+  {
+    "id": "flashcard-ielts-home-daily-life-c1",
+    "name": "Home & Daily Life",
+    "learningMode": "flashcard",
+    "dataPath": "src/assets/data/c1-flashcard-ielts-home-daily-life.json",
+    "level": [
+      "c1"
+    ],
+    "category": "Vocabulary",
+    "unit": 5,
+    "prerequisites": [
+      "flashcard-ielts-business-c1"
+    ],
+    "description": "Advanced home and daily life vocabulary",
     "estimatedTime": 5,
     "difficulty": 5
   },
@@ -460,14 +545,14 @@
     "id": "flashcard-ielts-problem-solving",
     "name": "Problem Solving",
     "learningMode": "flashcard",
-    "dataPath": "src/assets/data/flashcard-ielts-problem-solving.json",
+    "dataPath": "src/assets/data/c1-flashcard-ielts-problem-solving.json",
     "level": [
       "c1"
     ],
     "category": "Vocabulary",
     "unit": 5,
     "prerequisites": [
-      "flashcard-ielts-home-daily-life"
+      "flashcard-ielts-home-daily-life-c1"
     ],
     "description": "Advanced problem solving vocabulary",
     "estimatedTime": 5,
@@ -477,7 +562,7 @@
     "id": "quiz-advanced-grammar-conditionals",
     "name": "Conditionals",
     "learningMode": "quiz",
-    "dataPath": "src/assets/data/quiz-advanced-grammar-conditionals.json",
+    "dataPath": "src/assets/data/c1-quiz-advanced-grammar-conditionals.json",
     "level": [
       "c1"
     ],
@@ -494,7 +579,7 @@
     "id": "quiz-advanced-grammar-inversions",
     "name": "Grammar Inversions",
     "learningMode": "quiz",
-    "dataPath": "src/assets/data/quiz-advanced-grammar-inversions.json",
+    "dataPath": "src/assets/data/c1-quiz-advanced-grammar-inversions.json",
     "level": [
       "c1"
     ],
@@ -511,7 +596,7 @@
     "id": "quiz-advanced-grammar-participles",
     "name": "Participles",
     "learningMode": "quiz",
-    "dataPath": "src/assets/data/quiz-advanced-grammar-participles.json",
+    "dataPath": "src/assets/data/c1-quiz-advanced-grammar-participles.json",
     "level": [
       "c1"
     ],
@@ -528,7 +613,7 @@
     "id": "quiz-advanced-grammar-subjunctive",
     "name": "Subjunctive",
     "learningMode": "quiz",
-    "dataPath": "src/assets/data/quiz-advanced-grammar-subjunctive.json",
+    "dataPath": "src/assets/data/c1-quiz-advanced-grammar-subjunctive.json",
     "level": [
       "c1"
     ],
@@ -545,7 +630,7 @@
     "id": "matching-vocabulary-c1",
     "name": "Advanced Vocabulary",
     "learningMode": "matching",
-    "dataPath": "src/assets/data/matching-sample.json",
+    "dataPath": "src/assets/data/c1-matching-sample.json",
     "level": [
       "c1"
     ],
@@ -559,10 +644,27 @@
     "difficulty": 5
   },
   {
+    "id": "flashcard-academic-c2",
+    "name": "Academic Vocabulary",
+    "learningMode": "flashcard",
+    "dataPath": "src/assets/data/c2-flashcard-academic.json",
+    "level": [
+      "c2"
+    ],
+    "category": "Vocabulary",
+    "unit": 6,
+    "prerequisites": [
+      "matching-vocabulary-c1"
+    ],
+    "description": "Advanced academic and scholarly vocabulary",
+    "estimatedTime": 5,
+    "difficulty": 5
+  },
+  {
     "id": "quiz-advanced-collocations-idioms-c2",
     "name": "Advanced Collocations",
     "learningMode": "quiz",
-    "dataPath": "src/assets/data/quiz-advanced-collocations-idioms-c2.json",
+    "dataPath": "src/assets/data/c2-quiz-advanced-collocations-idioms.json",
     "level": [
       "c2"
     ],
@@ -579,7 +681,7 @@
     "id": "quiz-advanced-grammatical-structures-c2",
     "name": "Advanced Structures",
     "learningMode": "quiz",
-    "dataPath": "src/assets/data/quiz-advanced-grammatical-structures-c2.json",
+    "dataPath": "src/assets/data/c2-quiz-advanced-grammatical-structures.json",
     "level": [
       "c2"
     ],
@@ -596,7 +698,7 @@
     "id": "quiz-formal-vocabulary-nuance-c2",
     "name": "Formal & Nuance",
     "learningMode": "quiz",
-    "dataPath": "src/assets/data/quiz-formal-vocabulary-nuance-c2.json",
+    "dataPath": "src/assets/data/c2-quiz-formal-vocabulary-nuance.json",
     "level": [
       "c2"
     ],
@@ -613,7 +715,7 @@
     "id": "sorting-nuance-vocabulary-c2",
     "name": "Vocabulary Nuance",
     "learningMode": "sorting",
-    "dataPath": "src/assets/data/sorting-nuance-vocabulary-c2.json",
+    "dataPath": "src/assets/data/c2-sorting-nuance-vocabulary.json",
     "level": [
       "c2"
     ],
@@ -630,7 +732,7 @@
     "id": "completion-advanced-phrasal-verbs-c2",
     "name": "Advanced Phrasal Verbs",
     "learningMode": "completion",
-    "dataPath": "src/assets/data/completion-advanced-phrasal-verbs-c2.json",
+    "dataPath": "src/assets/data/c2-completion-advanced-phrasal-verbs.json",
     "level": [
       "c2"
     ],
@@ -647,7 +749,7 @@
     "id": "completion-complex-prepositions-conjunctions-c2",
     "name": "Complex Prepositions",
     "learningMode": "completion",
-    "dataPath": "src/assets/data/completion-complex-prepositions-conjunctions-c2.json",
+    "dataPath": "src/assets/data/c2-completion-complex-prepositions-conjunctions.json",
     "level": [
       "c2"
     ],
@@ -664,7 +766,7 @@
     "id": "quiz-mastery-assessment-c2",
     "name": "Mastery Assessment",
     "learningMode": "quiz",
-    "dataPath": "src/assets/data/quiz-mastery-assessment-c2.json",
+    "dataPath": "src/assets/data/c2-quiz-mastery-assessment.json",
     "level": [
       "c2"
     ],

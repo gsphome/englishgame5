@@ -1,0 +1,37 @@
+{
+  "id": "quiz-demo",
+  "name": "English Grammar Quiz",
+  "description": "Test your knowledge of English grammar",
+  "learningMode": "quiz",
+  "level": "intermediate",
+  "category": "Grammar",
+  "tags": ["grammar", "quiz", "test"],
+  "estimatedTime": 10,
+  "difficulty": 3,
+  "data": [
+    {
+      "id": "q1",
+      "question": "Which sentence is grammatically correct?",
+      "options": [
+        "She don't like coffee.",
+        "She doesn't like coffee.",
+        "She not like coffee.",
+        "She no likes coffee."
+      ],
+      "correct": 1,
+      "explanation": "The correct form uses 'doesn't' (does not) with third person singular subjects."
+    },
+    {
+      "id": "q2",
+      "question": "What is the past tense of 'go'?",
+      "options": [
+        "goed",
+        "gone",
+        "went",
+        "going"
+      ],
+      "correct": 2,
+      "explanation": "'Went' is the simple past tense of 'go'. 'Gone' is the past participle."
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+[
+  {
+    "en": "Hello",
+    "es": "Hola",
+    "ipa": "/həˈloʊ/",
+    "example": "Hello, how are you?",
+    "example_es": "Hola, ¿cómo estás?"
+  },
+  {
+    "en": "Thank you",
+    "es": "Gracias",
+    "ipa": "/θæŋk juː/",
+    "example": "Thank you very much.",
+    "example_es": "Muchas gracias."
+  }
+]

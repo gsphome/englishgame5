@@ -1,0 +1,12 @@
+[
+  {
+    "left": "Hello",
+    "right": "Hola",
+    "explanation": "Basic greeting used when meeting someone"
+  },
+  {
+    "left": "Thank you",
+    "right": "Gracias",
+    "explanation": "Expression of gratitude"
+  }
+]
