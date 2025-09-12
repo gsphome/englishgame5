@@ -80,7 +80,9 @@
 }
 
 .profile-content-grid > * {
-  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  transition:
+    transform 0.2s ease-in-out,
+    opacity 0.2s ease-in-out;
 }
 
 .user-profile-modal {
@@ -111,20 +113,20 @@
   .user-profile-container {
     height: 380px;
   }
-  
+
   /* More compact spacing for very limited height */
   .user-profile-content {
     @apply p-2;
   }
-  
+
   .profile-section {
     @apply p-2;
   }
-  
+
   .user-profile-form {
     @apply space-y-1;
   }
-  
+
   .profile-content-grid {
     @apply gap-1;
   }
@@ -136,11 +138,11 @@
     height: 340px;
     overflow-y: auto;
   }
-  
+
   .user-profile-content {
     @apply p-1.5;
   }
-  
+
   .profile-section {
     @apply p-1.5;
   }
@@ -153,22 +155,22 @@
     height: auto;
     overflow-y: auto;
   }
-  
+
   /* Force single column on mobile */
   .profile-content-grid {
     @apply grid-cols-1 gap-2;
   }
-  
+
   /* Adjust field grid to single column on mobile */
   .profile-field-grid {
     @apply grid-cols-1 gap-2;
   }
-  
+
   /* Optimize mobile spacing */
   .user-profile-content {
     @apply p-2;
   }
-  
+
   .profile-section {
     @apply p-2;
   }
@@ -180,15 +182,15 @@
     max-height: 95vh;
     margin: 0.5rem;
   }
-  
+
   .user-profile-content {
     @apply p-1.5;
   }
-  
+
   .profile-section {
     @apply p-1.5;
   }
-  
+
   .profile-categories-grid {
     @apply grid-cols-1 gap-1;
   }
@@ -201,19 +203,19 @@
     height: auto;
     overflow-y: auto;
   }
-  
+
   .user-profile-content {
     @apply p-2;
   }
-  
+
   .profile-section {
     @apply p-2;
   }
-  
+
   .user-profile-form {
     @apply space-y-1;
   }
-  
+
   /* Use horizontal layout for categories in landscape */
   .profile-categories-grid {
     @apply grid-cols-4 gap-1;
@@ -298,17 +300,17 @@
   .user-profile-container {
     max-width: 580px;
   }
-  
+
   /* Ensure two-column layout works well on tablets */
   .profile-content-grid {
     @apply gap-1.5;
   }
-  
+
   /* Optimize field grid for tablet */
   .profile-field-grid {
     @apply grid-cols-1 gap-1.5;
   }
-  
+
   /* Tablet portrait - adjust container width */
   @media (orientation: portrait) {
     .user-profile-container {
@@ -322,11 +324,11 @@
   .profile-content-grid {
     @apply gap-2;
   }
-  
+
   .user-profile-container {
     max-width: 620px;
   }
-  
+
   /* Restore two-column field grid on larger screens */
   .profile-field-grid {
     @apply grid-cols-2 gap-1.5;
@@ -678,7 +680,7 @@
     margin-bottom: 0;
     max-width: 180px;
   }
-  
+
   /* Show tooltip on touch/tap for mobile */
   .profile-error--compact:active .profile-error-tooltip,
   .profile-error--compact:focus .profile-error-tooltip {
@@ -775,7 +777,7 @@
   .profile-actions {
     @apply flex-col space-y-2 space-x-0;
   }
-  
+
   .profile-btn {
     @apply w-full justify-center;
   }
@@ -786,7 +788,7 @@
   .profile-actions {
     @apply flex-row space-y-0 space-x-2;
   }
-  
+
   .profile-btn {
     @apply w-auto;
   }
@@ -820,7 +822,9 @@
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.3);
   transform: translate(-50%, -50%);
-  transition: width 0.3s ease, height 0.3s ease;
+  transition:
+    width 0.3s ease,
+    height 0.3s ease;
 }
 
 .profile-btn:active::before {
@@ -845,11 +849,15 @@
 }
 
 .profile-btn--save:focus {
-  box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.3), 0 8px 16px rgba(147, 51, 234, 0.2);
+  box-shadow:
+    0 0 0 3px rgba(147, 51, 234, 0.3),
+    0 8px 16px rgba(147, 51, 234, 0.2);
 }
 
 .dark .profile-btn--save:focus {
-  box-shadow: 0 0 0 3px rgba(196, 181, 253, 0.4), 0 8px 16px rgba(196, 181, 253, 0.3);
+  box-shadow:
+    0 0 0 3px rgba(196, 181, 253, 0.4),
+    0 8px 16px rgba(196, 181, 253, 0.3);
 }
 
 .profile-btn-icon {
@@ -880,12 +888,12 @@
   .profile-select {
     border-width: 2px;
   }
-  
+
   .profile-btn {
     border-width: 2px;
     border-color: currentColor;
   }
-  
+
   .profile-category-item,
   .profile-notifications-item {
     border-width: 1px;
@@ -908,7 +916,7 @@
     animation: none;
     transition: none;
   }
-  
+
   .profile-btn::before {
     display: none;
   }
@@ -1370,7 +1378,9 @@
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.3);
   transform: translate(-50%, -50%);
-  transition: width 0.3s ease, height 0.3s ease;
+  transition:
+    width 0.3s ease,
+    height 0.3s ease;
 }
 
 .user-profile-form__btn:active::before {
@@ -1397,11 +1407,15 @@
 }
 
 .user-profile-form__btn--save:focus {
-  box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.3), 0 8px 16px rgba(147, 51, 234, 0.2);
+  box-shadow:
+    0 0 0 3px rgba(147, 51, 234, 0.3),
+    0 8px 16px rgba(147, 51, 234, 0.2);
 }
 
 .dark .user-profile-form__btn--save:focus {
-  box-shadow: 0 0 0 3px rgba(196, 181, 253, 0.4), 0 8px 16px rgba(196, 181, 253, 0.3);
+  box-shadow:
+    0 0 0 3px rgba(196, 181, 253, 0.4),
+    0 8px 16px rgba(196, 181, 253, 0.3);
 }
 
 .user-profile-form__btn-icon {
@@ -1443,7 +1457,7 @@
   .user-profile-form__actions {
     @apply flex-col space-y-2 space-x-0;
   }
-  
+
   .user-profile-form__btn {
     @apply w-full justify-center;
   }
@@ -1453,7 +1467,7 @@
   .user-profile-form__actions {
     @apply flex-row space-y-0 space-x-2;
   }
-  
+
   .user-profile-form__btn {
     @apply w-auto;
   }
@@ -1469,7 +1483,7 @@
   .user-profile-form__content-grid {
     @apply gap-2;
   }
-  
+
   .user-profile-form__field-grid {
     @apply grid-cols-2 gap-1.5;
   }
@@ -1501,12 +1515,12 @@
   .user-profile-form__select {
     border-width: 2px;
   }
-  
+
   .user-profile-form__btn {
     border-width: 2px;
     border-color: currentColor;
   }
-  
+
   .user-profile-form__category-item,
   .user-profile-form__notifications-item {
     border-width: 1px;
@@ -1528,7 +1542,7 @@
     animation: none;
     transition: none;
   }
-  
+
   .user-profile-form__btn::before {
     display: none;
   }

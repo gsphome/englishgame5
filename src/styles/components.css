@@ -53,7 +53,7 @@ svg {
  */
 button svg,
 a svg,
-[role="button"] svg,
+[role='button'] svg,
 [tabindex] svg {
   color: inherit !important;
   stroke: currentColor !important;
@@ -61,7 +61,7 @@ a svg,
 
 .dark button svg,
 .dark a svg,
-.dark [role="button"] svg,
+.dark [role='button'] svg,
 .dark [tabindex] svg {
   color: #ffffff !important;
   stroke: #ffffff !important;
@@ -104,14 +104,14 @@ a svg,
 .dark .header-redesigned .header-redesigned__control-btn svg,
 .dark .header-redesigned .header-redesigned__control-panel svg,
 .dark .header-redesigned .header-redesigned__control-group svg,
-.dark .header-redesigned button[title*="menu"] svg,
-.dark .header-redesigned button[title*="Menu"] svg,
-.dark .header-redesigned button[aria-label*="menu"] svg,
-.dark .header-redesigned button[aria-label*="Menu"] svg,
-.dark .header-redesigned button[aria-label*="settings"] svg,
-.dark .header-redesigned button[aria-label*="Settings"] svg,
-.dark .header-redesigned button[aria-label*="configuración"] svg,
-.dark .header-redesigned button[aria-label*="Configuración"] svg {
+.dark .header-redesigned button[title*='menu'] svg,
+.dark .header-redesigned button[title*='Menu'] svg,
+.dark .header-redesigned button[aria-label*='menu'] svg,
+.dark .header-redesigned button[aria-label*='Menu'] svg,
+.dark .header-redesigned button[aria-label*='settings'] svg,
+.dark .header-redesigned button[aria-label*='Settings'] svg,
+.dark .header-redesigned button[aria-label*='configuración'] svg,
+.dark .header-redesigned button[aria-label*='Configuración'] svg {
   color: #ffffff !important;
   stroke: #ffffff !important;
   fill: none !important;
@@ -139,15 +139,15 @@ a svg,
  * EMERGENCY FIX: Lucide React Icon Names for Header Dark Mode
  * Targeting specific icon components by their data attributes and classes
  */
-.dark .header-redesigned [data-lucide="menu"] svg,
-.dark .header-redesigned [data-lucide="settings"] svg,
-.dark .header-redesigned [data-lucide="bar-chart"] svg,
-.dark .header-redesigned [data-lucide="bar-chart-2"] svg,
-.dark .header-redesigned [data-lucide="activity"] svg,
-.dark .header-redesigned [data-lucide="user"] svg,
-.dark .header-redesigned [data-lucide="more-horizontal"] svg,
-.dark .header-redesigned [data-lucide="more-vertical"] svg,
-.dark .header-redesigned svg[class*="lucide"],
+.dark .header-redesigned [data-lucide='menu'] svg,
+.dark .header-redesigned [data-lucide='settings'] svg,
+.dark .header-redesigned [data-lucide='bar-chart'] svg,
+.dark .header-redesigned [data-lucide='bar-chart-2'] svg,
+.dark .header-redesigned [data-lucide='activity'] svg,
+.dark .header-redesigned [data-lucide='user'] svg,
+.dark .header-redesigned [data-lucide='more-horizontal'] svg,
+.dark .header-redesigned [data-lucide='more-vertical'] svg,
+.dark .header-redesigned svg[class*='lucide'],
 .dark .header-redesigned .lucide svg {
   color: #ffffff !important;
   stroke: #ffffff !important;
@@ -165,7 +165,7 @@ a svg,
     stroke: #000000 !important;
     stroke-width: 2 !important; /* Thicker strokes for better visibility */
   }
-  
+
   .dark svg {
     color: #ffffff !important; /* Pure white in high contrast dark mode */
     stroke: #ffffff !important;
@@ -252,8 +252,8 @@ a svg,
 }
 
 /* CASE 5: If header background is forced white in dark mode */
-.dark .header-redesigned[style*="background-color: white"] svg,
-.dark .header-redesigned[style*="background: white"] svg {
+.dark .header-redesigned[style*='background-color: white'] svg,
+.dark .header-redesigned[style*='background: white'] svg {
   color: #1f2937 !important; /* Dark icons on forced white background */
   stroke: #1f2937 !important;
   fill: none !important;
@@ -264,14 +264,14 @@ a svg,
  * Maintains appropriate contrast for disabled elements
  */
 :disabled svg,
-[aria-disabled="true"] svg {
+[aria-disabled='true'] svg {
   opacity: 0.5;
   color: inherit !important;
   stroke: currentColor !important;
 }
 
 .dark :disabled svg,
-.dark [aria-disabled="true"] svg {
+.dark [aria-disabled='true'] svg {
   color: #ffffff !important;
   stroke: #ffffff !important;
   opacity: 0.6; /* Slightly higher opacity in dark mode for better visibility */
@@ -281,8 +281,8 @@ a svg,
  * CRITICAL: Universal Header Icon Fix for Dark Mode
  * This rule has maximum specificity to ensure ALL header icons are visible
  */
-.dark [class*="header"] svg,
-.dark [class*="header-"] svg {
+.dark [class*='header'] svg,
+.dark [class*='header-'] svg {
   color: #ffffff !important;
   stroke: #ffffff !important;
   fill: none !important;
@@ -361,7 +361,7 @@ a svg,
   .menu__grid {
     @apply max-w-2xl; /* Reducido de 3xl (768px) a 2xl (672px) */
   }
-  
+
   .menu__grid-container {
     @apply gap-2; /* Reducido de gap-3 (12px) a gap-2 (8px) */
   }
@@ -694,28 +694,28 @@ a svg,
     min-width: 140px;
     max-width: 200px;
   }
-  
+
   .score-display-compact__global {
     @apply gap-1.5;
   }
-  
+
   .score-display-compact__main {
     @apply gap-1;
   }
-  
+
   .score-display-compact__values {
     @apply text-xs;
   }
-  
+
   .score-display-compact__accuracy {
     @apply text-xs px-1.5 py-0.5;
   }
-  
+
   .score-display-compact__level-badge {
     @apply text-xs px-1 py-0.5;
     min-width: 24px;
   }
-  
+
   .score-display-compact__points {
     @apply text-xs;
     min-width: 20px;
@@ -727,15 +727,15 @@ a svg,
     min-width: 120px;
     max-width: 160px;
   }
-  
+
   .score-display-compact__icon {
     @apply hidden;
   }
-  
+
   .score-display-compact__level {
     @apply gap-1;
   }
-  
+
   .score-display-compact__accuracy {
     @apply hidden; /* Ocultar precisión en pantallas muy pequeñas */
   }
@@ -747,24 +747,24 @@ a svg,
     max-width: 120px;
     @apply px-1;
   }
-  
+
   .score-display-compact__divider {
     @apply hidden;
   }
-  
+
   .score-display-compact__level {
     @apply gap-0.5;
   }
-  
+
   .score-display-compact__level-badge {
     @apply text-xs px-1 py-0.5;
     min-width: 20px;
   }
-  
+
   .score-display-compact__points {
     min-width: 16px;
   }
-  
+
   .score-display-compact__progress-bar {
     @apply w-6 h-0.5;
   }
@@ -844,15 +844,15 @@ textarea:focus-visible,
   .score-display-compact__correct {
     @apply text-green-800 dark:text-green-200;
   }
-  
+
   .score-display-compact__incorrect {
     @apply text-red-800 dark:text-red-200;
   }
-  
+
   .score-display-compact__separator {
     @apply text-gray-800 dark:text-gray-200;
   }
-  
+
   .menu__no-results-text,
   .menu__results-count {
     @apply text-gray-900 dark:text-gray-100;
@@ -864,15 +864,15 @@ textarea:focus-visible,
   .loading-skeleton {
     animation: none;
   }
-  
+
   .flashcard-inner {
     transition: none;
   }
-  
+
   .score-display-compact__progress-fill {
     transition: none;
   }
-  
+
   * {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
@@ -885,16 +885,16 @@ textarea:focus-visible,
   .menu {
     @apply mx-1 my-1 pt-3 pb-4 px-3;
   }
-  
+
   .menu__search {
     @apply mb-3;
   }
-  
+
   .menu__grid {
     @apply max-w-sm overflow-y-auto;
     max-height: 330px; /* Reducido 10px */
   }
-  
+
   .header__content {
     @apply px-4 py-3;
   }
@@ -1162,7 +1162,7 @@ textarea:focus-visible,
     @apply transition-none;
     @apply translate-x-0 opacity-100;
   }
-  
+
   .toast--leaving {
     @apply opacity-0;
   }
@@ -1174,19 +1174,19 @@ textarea:focus-visible,
     @apply top-2 right-2 left-2;
     @apply max-w-none;
   }
-  
+
   .toast {
     @apply min-w-0 w-full;
   }
-  
+
   .toast__content {
     @apply p-3 gap-2;
   }
-  
+
   .toast__title {
     @apply text-xs;
   }
-  
+
   .toast__message {
     @apply text-xs;
   }
@@ -1197,19 +1197,19 @@ textarea:focus-visible,
   .toast {
     @apply border-2;
   }
-  
+
   .toast--success {
     @apply border-green-700 dark:border-green-300;
   }
-  
+
   .toast--error {
     @apply border-red-700 dark:border-red-300;
   }
-  
+
   .toast--warning {
     @apply border-orange-700 dark:border-orange-300;
   }
-  
+
   .toast--info {
     @apply border-blue-700 dark:border-blue-300;
   }

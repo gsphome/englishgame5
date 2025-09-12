@@ -2,7 +2,11 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ErrorBoundary } from './components/common/ErrorBoundary';
 import { AppRouter } from './components/layout/AppRouter';
-import { MemoizedHeader, MemoizedDashboard, MemoizedToastContainer } from './components/ui/MemoizedComponents';
+import {
+  MemoizedHeader,
+  MemoizedDashboard,
+  MemoizedToastContainer,
+} from './components/ui/MemoizedComponents';
 import { useAppStore } from './stores/appStore';
 import { useMaxLimits } from './hooks/useMaxLimits';
 import { toast } from './stores/toastStore';
@@ -56,7 +60,7 @@ const AppContent: React.FC = () => {
     // Clear toasts when changing views (immediate, no delays)
     if (currentView !== prevView) {
       const learningModes = ['flashcard', 'quiz', 'completion', 'sorting', 'matching'];
-      
+
       if (learningModes.includes(prevView) || learningModes.includes(currentView)) {
         toast.clearOnNavigation();
       }
@@ -80,17 +84,10 @@ const AppContent: React.FC = () => {
   return (
     <ErrorBoundary>
       <div className="layout-container">
-        <MemoizedHeader
-          onMenuToggle={handleMenuToggle}
-          onDashboardToggle={handleDashboardToggle}
-        />
+        <MemoizedHeader onMenuToggle={handleMenuToggle} onDashboardToggle={handleDashboardToggle} />
 
         <main className="layout-main">
-          {showDashboard ? (
-            <MemoizedDashboard onClose={handleDashboardClose} />
-          ) : (
-            <AppRouter />
-          )}
+          {showDashboard ? <MemoizedDashboard onClose={handleDashboardClose} /> : <AppRouter />}
         </main>
 
         <MemoizedToastContainer />

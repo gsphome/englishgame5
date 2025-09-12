@@ -5,16 +5,21 @@
 // Simple no-op functions to avoid any initialization issues
 export function logDebug(message: string, data?: any, component?: string) {
   // Disabled to prevent initialization issues
-  void message; void data; void component;
+  void message;
+  void data;
+  void component;
 }
 
 export function logInfo(message: string, data?: any, component?: string) {
   // Disabled to prevent initialization issues
-  void message; void data; void component;
+  void message;
+  void data;
+  void component;
 }
 
 export function logWarn(message: string, data?: any, component?: string) {
-  void data; void component;
+  void data;
+  void component;
   try {
     console.warn(message);
   } catch {
@@ -23,7 +28,8 @@ export function logWarn(message: string, data?: any, component?: string) {
 }
 
 export function logError(message: string, data?: any, component?: string) {
-  void data; void component;
+  void data;
+  void component;
   try {
     console.error(message);
   } catch {
@@ -38,5 +44,5 @@ export const logger = {
   warn: logWarn,
   error: logError,
   getLogs: () => [],
-  clearLogs: () => { }
+  clearLogs: () => {},
 };

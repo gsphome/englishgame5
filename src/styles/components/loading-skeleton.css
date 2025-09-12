@@ -222,11 +222,11 @@
   .loading-skeleton--card {
     @apply h-20 w-20;
   }
-  
+
   .dashboard-skeleton__stats {
     @apply grid-cols-2 gap-3;
   }
-  
+
   .dashboard-skeleton__charts {
     @apply grid-cols-1 gap-4;
   }
@@ -237,9 +237,10 @@
   .loading-skeleton {
     animation: none;
   }
-  
+
   @keyframes skeleton-loading {
-    0%, 100% {
+    0%,
+    100% {
       background-position: -200px 0;
     }
   }

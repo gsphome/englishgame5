@@ -8,11 +8,11 @@ interface SearchBarProps {
   disabled?: boolean;
 }
 
-export const SearchBar: React.FC<SearchBarProps> = ({ 
-  query, 
-  onQueryChange, 
-  placeholder = "Search modules...",
-  disabled = false
+export const SearchBar: React.FC<SearchBarProps> = ({
+  query,
+  onQueryChange,
+  placeholder = 'Search modules...',
+  disabled = false,
 }) => {
   const searchId = useId();
   const clearButtonId = useId();
@@ -29,7 +29,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
         id={searchId}
         type="text"
         value={query}
-        onChange={(e) => onQueryChange(e.target.value)}
+        onChange={e => onQueryChange(e.target.value)}
         className="search__input"
         placeholder={placeholder}
         disabled={disabled}

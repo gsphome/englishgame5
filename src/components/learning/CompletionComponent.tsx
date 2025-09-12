@@ -70,7 +70,14 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
     } else {
       showIncorrectAnswer();
     }
-  }, [showResult, answer, currentExercise?.correct, updateSessionScore, showCorrectAnswer, showIncorrectAnswer]);
+  }, [
+    showResult,
+    answer,
+    currentExercise?.correct,
+    updateSessionScore,
+    showCorrectAnswer,
+    showIncorrectAnswer,
+  ]);
 
   const handleNext = useCallback(() => {
     if (currentIndex < randomizedExercises.length - 1) {
@@ -97,7 +104,17 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
       updateUserScore(module.id, finalScore, timeSpent);
       setCurrentView('menu');
     }
-  }, [currentIndex, randomizedExercises.length, startTime, addProgressEntry, module.id, module.name, showModuleCompleted, updateUserScore, setCurrentView]);
+  }, [
+    currentIndex,
+    randomizedExercises.length,
+    startTime,
+    addProgressEntry,
+    module.id,
+    module.name,
+    showModuleCompleted,
+    updateUserScore,
+    setCurrentView,
+  ]);
 
   useEffect(() => {
     if (randomizedExercises.length === 0) return;
@@ -122,7 +139,9 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
   if (!randomizedExercises.length) {
     return (
       <div className="max-w-6xl mx-auto p-3 sm:p-6 text-center">
-        <p className="text-gray-600 mb-4">{t('noDataAvailable') || 'No completion exercises available'}</p>
+        <p className="text-gray-600 mb-4">
+          {t('noDataAvailable') || 'No completion exercises available'}
+        </p>
         <button
           onClick={() => setCurrentView('menu')}
           className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
@@ -152,7 +171,9 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
 
       // Add input after each part except the last
       if (index < parts.length - 1) {
-        const isCorrect = showResult && answer.toLowerCase().trim() === currentExercise.correct?.toLowerCase().trim();
+        const isCorrect =
+          showResult &&
+          answer.toLowerCase().trim() === currentExercise.correct?.toLowerCase().trim();
         const isIncorrect = showResult && answer && !isCorrect;
 
         elements.push(
@@ -160,20 +181,21 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
             key={`input-${index}`}
             type="text"
             value={answer}
-            onChange={(e) => setAnswer(e.target.value)}
+            onChange={e => setAnswer(e.target.value)}
             disabled={showResult}
             placeholder="..."
             autoComplete="off"
-            className={`inline-block mx-2 px-3 py-1.5 min-w-[120px] text-center rounded-lg border-2 focus:outline-none transition-all duration-200 font-medium ${showResult
-              ? isCorrect
-                ? 'border-green-500 bg-green-50 text-green-700 dark:bg-green-900 dark:text-green-200'
-                : isIncorrect
-                  ? 'border-red-500 bg-red-50 text-red-700 dark:bg-red-900 dark:text-red-200'
-                  : 'border-gray-300 bg-gray-50 text-gray-600 dark:bg-gray-700 dark:text-gray-300'
-              : 'border-blue-300 bg-blue-50 focus:border-blue-500 focus:bg-white text-gray-900 dark:bg-gray-700 dark:border-gray-500 dark:text-white dark:focus:bg-gray-600'
-              }`}
+            className={`inline-block mx-2 px-3 py-1.5 min-w-[120px] text-center rounded-lg border-2 focus:outline-none transition-all duration-200 font-medium ${
+              showResult
+                ? isCorrect
+                  ? 'border-green-500 bg-green-50 text-green-700 dark:bg-green-900 dark:text-green-200'
+                  : isIncorrect
+                    ? 'border-red-500 bg-red-50 text-red-700 dark:bg-red-900 dark:text-red-200'
+                    : 'border-gray-300 bg-gray-50 text-gray-600 dark:bg-gray-700 dark:text-gray-300'
+                : 'border-blue-300 bg-blue-50 focus:border-blue-500 focus:bg-white text-gray-900 dark:bg-gray-700 dark:border-gray-500 dark:text-white dark:focus:bg-gray-600'
+            }`}
             style={{
-              width: `${Math.max(120, (answer?.length || 3) * 12 + 60)}px`
+              width: `${Math.max(120, (answer?.length || 3) * 12 + 60)}px`,
             }}
           />
         );
@@ -191,8 +213,13 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
       <div className="mb-4">
         <div className="flex justify-between items-center mb-3">
           <h2 className="text-lg sm:text-xl font-bold text-gray-900">{module.name}</h2>
-          <span className="text-sm font-medium text-gray-600 bg-gray-100 px-3 py-1 rounded-full" style={{ minWidth: '60px', textAlign: 'center' }}>
-            {randomizedExercises.length > 0 ? `${currentIndex + 1}/${randomizedExercises.length}` : '...'}
+          <span
+            className="text-sm font-medium text-gray-600 bg-gray-100 px-3 py-1 rounded-full"
+            style={{ minWidth: '60px', textAlign: 'center' }}
+          >
+            {randomizedExercises.length > 0
+              ? `${currentIndex + 1}/${randomizedExercises.length}`
+              : '...'}
           </span>
         </div>
         <div className="w-full bg-gray-200 rounded-full h-1.5">
@@ -221,14 +248,15 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
         )}
 
         <div className="text-lg leading-relaxed mb-4 p-6 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-800 rounded-xl border border-gray-200 dark:border-gray-600 shadow-inner">
-          <div className="text-gray-900 dark:text-white font-medium">
-            {renderSentence()}
-          </div>
+          <div className="text-gray-900 dark:text-white font-medium">{renderSentence()}</div>
         </div>
 
         {/* Result and Explanation - Compact unified section */}
-        <div className={`mt-3 overflow-hidden transition-all duration-300 ease-in-out ${showResult ? 'max-h-32 opacity-100' : 'max-h-0 opacity-0'
-          }`}>
+        <div
+          className={`mt-3 overflow-hidden transition-all duration-300 ease-in-out ${
+            showResult ? 'max-h-32 opacity-100' : 'max-h-0 opacity-0'
+          }`}
+        >
           <div className="px-3 py-2 bg-blue-50 dark:bg-blue-900 border border-blue-200 dark:border-blue-700 rounded-lg">
             {/* Ultra-compact result feedback */}
             <div className="flex items-center space-x-1.5 flex-wrap">
@@ -266,10 +294,7 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
       {/* Unified Control Bar */}
       <div className="flex justify-center items-center gap-3 flex-wrap mt-6">
         {/* Navigation */}
-        <NavigationButton
-          onClick={() => setCurrentView('menu')}
-          title="Return to main menu"
-        >
+        <NavigationButton onClick={() => setCurrentView('menu')} title="Return to main menu">
           Back to Menu
         </NavigationButton>
 
@@ -290,7 +315,11 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
             onClick={handleNext}
             className="flex items-center gap-2 px-6 py-2.5 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors text-sm font-medium shadow-sm"
           >
-            <span>{currentIndex === randomizedExercises.length - 1 ? 'Finish Exercise' : 'Next Exercise'}</span>
+            <span>
+              {currentIndex === randomizedExercises.length - 1
+                ? 'Finish Exercise'
+                : 'Next Exercise'}
+            </span>
             <ArrowRight className="h-4 w-4" />
           </button>
         )}

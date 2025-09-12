@@ -1,10 +1,10 @@
 // Core Types
 export type LearningMode = 'flashcard' | 'quiz' | 'completion' | 'sorting' | 'matching';
 export type DifficultyLevel = 'a1' | 'a2' | 'b1' | 'b2' | 'c1' | 'c2';
-export type Category = 
-  | 'Vocabulary' 
-  | 'Grammar' 
-  | 'PhrasalVerbs' 
+export type Category =
+  | 'Vocabulary'
+  | 'Grammar'
+  | 'PhrasalVerbs'
   | 'Idioms'
   | 'Pronunciation'
   | 'Listening'
@@ -79,12 +79,7 @@ export interface MatchingData extends BaseLearningData {
 }
 
 // Union type for all learning data
-export type LearningData = 
-  | FlashcardData 
-  | QuizData 
-  | CompletionData 
-  | SortingData 
-  | MatchingData;
+export type LearningData = FlashcardData | QuizData | CompletionData | SortingData | MatchingData;
 
 // Language and Theme types
 export type Language = 'en' | 'es';

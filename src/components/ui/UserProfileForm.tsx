@@ -17,22 +17,27 @@ const _baseProfileSchema = z.object({
     dailyGoal: z.number().min(1).max(100),
     categories: z.array(z.string()).min(1),
     difficulty: z.number().min(1).max(5),
-    notifications: z.boolean()
-  })
+    notifications: z.boolean(),
+  }),
 });
 
 // Create schema with dynamic error messages
-const createProfileSchema = (t: (_key: string, _defaultValue?: string) => string) => z.object({
-  name: z.string().min(2, t('profile.nameRequired', 'El nombre debe tener al menos 2 caracteres')),
-  level: z.enum(['beginner', 'intermediate', 'advanced']),
-  preferences: z.object({
-    language: z.enum(['en', 'es']),
-    dailyGoal: z.number().min(1).max(100),
-    categories: z.array(z.string()).min(1, t('profile.categoriesRequired', 'Selecciona al menos una categoría')),
-    difficulty: z.number().min(1).max(5),
-    notifications: z.boolean()
-  })
-});
+const createProfileSchema = (t: (_key: string, _defaultValue?: string) => string) =>
+  z.object({
+    name: z
+      .string()
+      .min(2, t('profile.nameRequired', 'El nombre debe tener al menos 2 caracteres')),
+    level: z.enum(['beginner', 'intermediate', 'advanced']),
+    preferences: z.object({
+      language: z.enum(['en', 'es']),
+      dailyGoal: z.number().min(1).max(100),
+      categories: z
+        .array(z.string())
+        .min(1, t('profile.categoriesRequired', 'Selecciona al menos una categoría')),
+      difficulty: z.number().min(1).max(5),
+      notifications: z.boolean(),
+    }),
+  });
 
 type ProfileFormData = z.infer<typeof _baseProfileSchema>;
 
@@ -47,7 +52,11 @@ export const UserProfileForm: React.FC<UserProfileFormProps> = ({ onClose }) => 
 
   const profileSchema = createProfileSchema(t);
 
-  const { register, handleSubmit, formState: { errors } } = useForm<ProfileFormData>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ProfileFormData>({
     resolver: zodResolver(profileSchema),
     defaultValues: user || {
       name: '',
@@ -57,14 +66,12 @@ export const UserProfileForm: React.FC<UserProfileFormProps> = ({ onClose }) => 
         dailyGoal: 10,
         categories: [],
         difficulty: 3,
-        notifications: true
-      }
-    }
+        notifications: true,
+      },
+    },
   });
 
-  const categories = [
-    'Vocabulary', 'Grammar', 'PhrasalVerbs', 'Idioms'
-  ] as const;
+  const categories = ['Vocabulary', 'Grammar', 'PhrasalVerbs', 'Idioms'] as const;
 
   const onSubmit = (data: ProfileFormData) => {
     const newUser = {
@@ -74,8 +81,8 @@ export const UserProfileForm: React.FC<UserProfileFormProps> = ({ onClose }) => 
       createdAt: user?.createdAt || new Date().toISOString(),
       preferences: {
         ...data.preferences,
-        categories: data.preferences.categories as any // Temporary fix for build
-      }
+        categories: data.preferences.categories as any, // Temporary fix for build
+      },
     };
     setUser(newUser);
     onClose();
@@ -91,12 +98,8 @@ export const UserProfileForm: React.FC<UserProfileFormProps> = ({ onClose }) => 
                 <User className="user-profile-icon" />
               </div>
               <div>
-                <h2 className="user-profile-title">
-                  {t('profile.userProfile')}
-                </h2>
-                <p className="user-profile-subtitle">
-                  {t('profile.profileSubtitle')}
-                </p>
+                <h2 className="user-profile-title">{t('profile.userProfile')}</h2>
+                <p className="user-profile-subtitle">{t('profile.profileSubtitle')}</p>
               </div>
             </div>
             <button
@@ -120,10 +123,10 @@ export const UserProfileForm: React.FC<UserProfileFormProps> = ({ onClose }) => 
                 </h3>
 
                 <div className="profile-fields">
-                  <div className={`profile-field-container ${errors.name ? 'profile-field-container--error' : ''}`}>
-                    <label className="profile-field-label">
-                      {t('profile.name')} *
-                    </label>
+                  <div
+                    className={`profile-field-container ${errors.name ? 'profile-field-container--error' : ''}`}
+                  >
+                    <label className="profile-field-label">{t('profile.name')} *</label>
                     <input
                       {...register('name')}
                       className={`profile-input profile-input--purple-focus ${errors.name ? 'profile-input--error' : ''}`}
@@ -135,23 +138,31 @@ export const UserProfileForm: React.FC<UserProfileFormProps> = ({ onClose }) => 
                     />
                     {errors.name && (
                       <>
-                        <div className="profile-error--compact" role="tooltip" aria-label={errors.name.message}>
+                        <div
+                          className="profile-error--compact"
+                          role="tooltip"
+                          aria-label={errors.name.message}
+                        >
                           !
                           <div className="profile-error-tooltip" id="name-error">
                             {errors.name.message}
                           </div>
                         </div>
-                        <p className="profile-error--inline" id="name-error-text" aria-live="polite">
+                        <p
+                          className="profile-error--inline"
+                          id="name-error-text"
+                          aria-live="polite"
+                        >
                           {errors.name.message}
                         </p>
                       </>
                     )}
                   </div>
 
-                  <div className={`profile-field-container ${errors.level ? 'profile-field-container--error' : ''}`}>
-                    <label className="profile-field-label">
-                      {t('profile.englishLevel')} *
-                    </label>
+                  <div
+                    className={`profile-field-container ${errors.level ? 'profile-field-container--error' : ''}`}
+                  >
+                    <label className="profile-field-label">{t('profile.englishLevel')} *</label>
                     <select
                       {...register('level')}
                       className={`profile-select profile-select--purple-focus ${errors.level ? 'profile-select--error' : ''}`}
@@ -165,7 +176,11 @@ export const UserProfileForm: React.FC<UserProfileFormProps> = ({ onClose }) => 
                       <option value="advanced">{t('profile.advanced')}</option>
                     </select>
                     {errors.level && (
-                      <div className="profile-error--compact" role="tooltip" aria-label={errors.level.message}>
+                      <div
+                        className="profile-error--compact"
+                        role="tooltip"
+                        aria-label={errors.level.message}
+                      >
                         !
                         <div className="profile-error-tooltip" id="level-error">
                           {errors.level.message}
@@ -184,7 +199,9 @@ export const UserProfileForm: React.FC<UserProfileFormProps> = ({ onClose }) => 
                 </h3>
 
                 <div className="profile-field-grid">
-                  <div className={`profile-field-item profile-field-container ${errors.preferences?.language ? 'profile-field-container--error' : ''}`}>
+                  <div
+                    className={`profile-field-item profile-field-container ${errors.preferences?.language ? 'profile-field-container--error' : ''}`}
+                  >
                     <label className="profile-field-label profile-field-label--compact">
                       {t('profile.language', 'Idioma')}
                     </label>
@@ -200,7 +217,11 @@ export const UserProfileForm: React.FC<UserProfileFormProps> = ({ onClose }) => 
                       <option value="es">Español</option>
                     </select>
                     {errors.preferences?.language && (
-                      <div className="profile-error--compact" role="tooltip" aria-label={errors.preferences.language.message}>
+                      <div
+                        className="profile-error--compact"
+                        role="tooltip"
+                        aria-label={errors.preferences.language.message}
+                      >
                         !
                         <div className="profile-error-tooltip" id="language-error">
                           {errors.preferences.language.message}
@@ -209,7 +230,9 @@ export const UserProfileForm: React.FC<UserProfileFormProps> = ({ onClose }) => 
                     )}
                   </div>
 
-                  <div className={`profile-field-item profile-field-container ${errors.preferences?.dailyGoal ? 'profile-field-container--error' : ''}`}>
+                  <div
+                    className={`profile-field-item profile-field-container ${errors.preferences?.dailyGoal ? 'profile-field-container--error' : ''}`}
+                  >
                     <label className="profile-field-label profile-field-label--compact">
                       {t('profile.dailyGoal', 'Meta Diaria')}
                     </label>
@@ -222,15 +245,19 @@ export const UserProfileForm: React.FC<UserProfileFormProps> = ({ onClose }) => 
                         className={`profile-input profile-input--purple-focus profile-input--number ${errors.preferences?.dailyGoal ? 'profile-input--error' : ''}`}
                         aria-label={`${t('profile.dailyGoal')} (${t('dashboard.timeSpent')})`}
                         aria-invalid={errors.preferences?.dailyGoal ? 'true' : 'false'}
-                        aria-describedby={errors.preferences?.dailyGoal ? 'dailygoal-error' : undefined}
+                        aria-describedby={
+                          errors.preferences?.dailyGoal ? 'dailygoal-error' : undefined
+                        }
                         tabIndex={4}
                       />
-                      <span className="profile-input-addon">
-                        min
-                      </span>
+                      <span className="profile-input-addon">min</span>
                     </div>
                     {errors.preferences?.dailyGoal && (
-                      <div className="profile-error--compact" role="tooltip" aria-label={errors.preferences.dailyGoal.message}>
+                      <div
+                        className="profile-error--compact"
+                        role="tooltip"
+                        aria-label={errors.preferences.dailyGoal.message}
+                      >
                         !
                         <div className="profile-error-tooltip" id="dailygoal-error">
                           {errors.preferences.dailyGoal.message}
@@ -240,7 +267,9 @@ export const UserProfileForm: React.FC<UserProfileFormProps> = ({ onClose }) => 
                   </div>
                 </div>
 
-                <div className={`profile-spacing-sm profile-field-container ${errors.preferences?.difficulty ? 'profile-field-container--error' : ''}`}>
+                <div
+                  className={`profile-spacing-sm profile-field-container ${errors.preferences?.difficulty ? 'profile-field-container--error' : ''}`}
+                >
                   <label className="profile-field-label profile-field-label--difficulty profile-field-label--compact">
                     {t('profile.difficulty', 'Dificultad')}
                   </label>
@@ -253,7 +282,9 @@ export const UserProfileForm: React.FC<UserProfileFormProps> = ({ onClose }) => 
                       className="profile-range-slider"
                       aria-label={`${t('profile.difficultyLevel')} (1-5)`}
                       aria-invalid={errors.preferences?.difficulty ? 'true' : 'false'}
-                      aria-describedby={errors.preferences?.difficulty ? 'difficulty-error' : undefined}
+                      aria-describedby={
+                        errors.preferences?.difficulty ? 'difficulty-error' : undefined
+                      }
                       tabIndex={5}
                     />
                     <div className="profile-range-labels">
@@ -268,7 +299,11 @@ export const UserProfileForm: React.FC<UserProfileFormProps> = ({ onClose }) => 
                     </div>
                   </div>
                   {errors.preferences?.difficulty && (
-                    <div className="profile-error--compact" role="tooltip" aria-label={errors.preferences.difficulty.message}>
+                    <div
+                      className="profile-error--compact"
+                      role="tooltip"
+                      aria-label={errors.preferences.difficulty.message}
+                    >
                       !
                       <div className="profile-error-tooltip" id="difficulty-error">
                         {errors.preferences.difficulty.message}
@@ -281,7 +316,9 @@ export const UserProfileForm: React.FC<UserProfileFormProps> = ({ onClose }) => 
 
             {/* Full-width sections below the grid */}
             <div className="profile-section profile-section--preferences">
-              <div className={`profile-spacing-sm profile-field-container ${errors.preferences?.categories ? 'profile-field-container--error' : ''}`}>
+              <div
+                className={`profile-spacing-sm profile-field-container ${errors.preferences?.categories ? 'profile-field-container--error' : ''}`}
+              >
                 <label className="profile-field-label profile-field-label--categories">
                   {t('profile.interestedCategories')} *
                 </label>
@@ -296,7 +333,9 @@ export const UserProfileForm: React.FC<UserProfileFormProps> = ({ onClose }) => 
                           className="profile-category-checkbox"
                           aria-label={`${t('profile.interestedCategories')}: ${category}`}
                           aria-invalid={errors.preferences?.categories ? 'true' : 'false'}
-                          aria-describedby={errors.preferences?.categories ? 'categories-error' : undefined}
+                          aria-describedby={
+                            errors.preferences?.categories ? 'categories-error' : undefined
+                          }
                           tabIndex={6 + index}
                         />
                         <span className="profile-category-label">
@@ -311,20 +350,30 @@ export const UserProfileForm: React.FC<UserProfileFormProps> = ({ onClose }) => 
                 </div>
                 {errors.preferences?.categories && (
                   <>
-                    <div className="profile-error--compact" role="tooltip" aria-label={errors.preferences.categories.message}>
+                    <div
+                      className="profile-error--compact"
+                      role="tooltip"
+                      aria-label={errors.preferences.categories.message}
+                    >
                       !
                       <div className="profile-error-tooltip" id="categories-error">
                         {errors.preferences.categories.message}
                       </div>
                     </div>
-                    <p className="profile-error--inline" id="categories-error-text" aria-live="polite">
+                    <p
+                      className="profile-error--inline"
+                      id="categories-error-text"
+                      aria-live="polite"
+                    >
                       {errors.preferences.categories.message}
                     </p>
                   </>
                 )}
               </div>
 
-              <div className={`profile-spacing-sm profile-field-container ${errors.preferences?.notifications ? 'profile-field-container--error' : ''}`}>
+              <div
+                className={`profile-spacing-sm profile-field-container ${errors.preferences?.notifications ? 'profile-field-container--error' : ''}`}
+              >
                 <div className="profile-notifications-container">
                   <label className="profile-notifications-item">
                     <input
@@ -333,7 +382,9 @@ export const UserProfileForm: React.FC<UserProfileFormProps> = ({ onClose }) => 
                       className="profile-notifications-checkbox"
                       aria-label="Habilitar notificaciones de recordatorio"
                       aria-invalid={errors.preferences?.notifications ? 'true' : 'false'}
-                      aria-describedby={errors.preferences?.notifications ? 'notifications-error' : undefined}
+                      aria-describedby={
+                        errors.preferences?.notifications ? 'notifications-error' : undefined
+                      }
                       tabIndex={10}
                     />
                     <div className="profile-notifications-content">
@@ -348,7 +399,11 @@ export const UserProfileForm: React.FC<UserProfileFormProps> = ({ onClose }) => 
                   </label>
                 </div>
                 {errors.preferences?.notifications && (
-                  <div className="profile-error--compact" role="tooltip" aria-label={errors.preferences.notifications.message}>
+                  <div
+                    className="profile-error--compact"
+                    role="tooltip"
+                    aria-label={errors.preferences.notifications.message}
+                  >
                     !
                     <div className="profile-error-tooltip" id="notifications-error">
                       {errors.preferences.notifications.message}

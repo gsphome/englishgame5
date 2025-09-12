@@ -8,15 +8,15 @@ interface LoadingSkeletonProps {
   height?: string;
 }
 
-export const LoadingSkeleton: React.FC<LoadingSkeletonProps> = ({ 
-  variant = 'text', 
-  count = 1, 
+export const LoadingSkeleton: React.FC<LoadingSkeletonProps> = ({
+  variant = 'text',
+  count = 1,
   className = '',
   width,
-  height 
+  height,
 }) => {
   const baseClasses = 'animate-pulse bg-gray-200 dark:bg-gray-700 rounded';
-  
+
   const getVariantClasses = () => {
     switch (variant) {
       case 'card':
@@ -39,7 +39,7 @@ export const LoadingSkeleton: React.FC<LoadingSkeletonProps> = ({
   const skeletonClasses = `${baseClasses} ${getVariantClasses()} ${className}`;
   const style = {
     ...(width && { width }),
-    ...(height && { height })
+    ...(height && { height }),
   };
 
   if (count === 1) {
@@ -85,9 +85,13 @@ export const HeaderSkeleton: React.FC = () => (
 );
 
 export const DashboardSkeleton: React.FC = () => (
-  <div className="max-w-6xl mx-auto px-3 sm:px-6 space-y-6" role="status" aria-label="Loading dashboard">
+  <div
+    className="max-w-6xl mx-auto px-3 sm:px-6 space-y-6"
+    role="status"
+    aria-label="Loading dashboard"
+  >
     <LoadingSkeleton variant="header" width="300px" />
-    
+
     {/* Stats Cards Skeleton */}
     <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
       {Array.from({ length: 4 }).map((_, index) => (
@@ -102,7 +106,7 @@ export const DashboardSkeleton: React.FC = () => (
         </div>
       ))}
     </div>
-    
+
     {/* Charts Skeleton */}
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
       {Array.from({ length: 2 }).map((_, index) => (

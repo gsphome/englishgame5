@@ -47,7 +47,7 @@ const safeLocalStorage = {
     } catch {
       // Fail silently, no toast persistence
     }
-  }
+  },
 };
 
 // Generate unique ID for toasts
@@ -57,7 +57,7 @@ const generateId = (): string => {
 
 // Notify all listeners of state changes
 const notifyListeners = (): void => {
-  globalState.listeners.forEach((listener) => {
+  globalState.listeners.forEach(listener => {
     try {
       listener();
     } catch (e) {
@@ -129,16 +129,16 @@ const toastStore = {
   // Show welcome toast only once using localStorage
   showWelcomeOnce(moduleCount: number) {
     const hasShown = safeLocalStorage.getItem('welcome-toast-shown');
-    
+
     if (!hasShown) {
       this.showToast({
         type: 'success',
         title: 'Bienvenido',
         message: `${moduleCount} módulos disponibles para aprender`,
         duration: 5000,
-        priority: 'high'
+        priority: 'high',
       });
-      
+
       safeLocalStorage.setItem('welcome-toast-shown', 'true');
     }
   },
@@ -161,7 +161,7 @@ const toastStore = {
     } catch (e) {
       console.warn('Could not reset welcome toast:', e);
     }
-  }
+  },
 };
 
 // React hook for using toast store
@@ -192,32 +192,32 @@ export const toast = {
   success(title: string, message?: string, options?: Partial<ToastData>) {
     try {
       toastStore.showToast({ type: 'success', title, message, ...options });
-    } catch (e) { 
-      console.warn('Toast not ready:', e); 
+    } catch (e) {
+      console.warn('Toast not ready:', e);
     }
   },
 
   error(title: string, message?: string, options?: Partial<ToastData>) {
     try {
       toastStore.showToast({ type: 'error', title, message, duration: 6000, ...options });
-    } catch (e) { 
-      console.warn('Toast not ready:', e); 
+    } catch (e) {
+      console.warn('Toast not ready:', e);
     }
   },
 
   warning(title: string, message?: string, options?: Partial<ToastData>) {
     try {
       toastStore.showToast({ type: 'warning', title, message, ...options });
-    } catch (e) { 
-      console.warn('Toast not ready:', e); 
+    } catch (e) {
+      console.warn('Toast not ready:', e);
     }
   },
 
   info(title: string, message?: string, options?: Partial<ToastData>) {
     try {
       toastStore.showToast({ type: 'info', title, message, ...options });
-    } catch (e) { 
-      console.warn('Toast not ready:', e); 
+    } catch (e) {
+      console.warn('Toast not ready:', e);
     }
   },
 
@@ -225,8 +225,8 @@ export const toast = {
   clear() {
     try {
       toastStore.clearToast();
-    } catch (e) { 
-      console.warn('Toast not ready:', e); 
+    } catch (e) {
+      console.warn('Toast not ready:', e);
     }
   },
 
@@ -234,8 +234,8 @@ export const toast = {
   clearOnNavigation() {
     try {
       toastStore.clearOnNavigation();
-    } catch (e) { 
-      console.warn('Toast not ready:', e); 
+    } catch (e) {
+      console.warn('Toast not ready:', e);
     }
   },
 
@@ -243,8 +243,8 @@ export const toast = {
   welcomeOnce(moduleCount: number) {
     try {
       toastStore.showWelcomeOnce(moduleCount);
-    } catch (e) { 
-      console.warn('Toast not ready:', e); 
+    } catch (e) {
+      console.warn('Toast not ready:', e);
     }
   },
 
@@ -262,35 +262,35 @@ export const toast = {
     success(title: string, message?: string, options?: Partial<ToastData>) {
       try {
         toastStore.showToast({ type: 'success', title, message, ...options });
-      } catch (e) { 
-        console.warn('Toast not ready:', e); 
+      } catch (e) {
+        console.warn('Toast not ready:', e);
       }
     },
 
     error(title: string, message?: string, options?: Partial<ToastData>) {
       try {
         toastStore.showToast({ type: 'error', title, message, duration: 6000, ...options });
-      } catch (e) { 
-        console.warn('Toast not ready:', e); 
+      } catch (e) {
+        console.warn('Toast not ready:', e);
       }
     },
 
     warning(title: string, message?: string, options?: Partial<ToastData>) {
       try {
         toastStore.showToast({ type: 'warning', title, message, ...options });
-      } catch (e) { 
-        console.warn('Toast not ready:', e); 
+      } catch (e) {
+        console.warn('Toast not ready:', e);
       }
     },
 
     info(title: string, message?: string, options?: Partial<ToastData>) {
       try {
         toastStore.showToast({ type: 'info', title, message, ...options });
-      } catch (e) { 
-        console.warn('Toast not ready:', e); 
+      } catch (e) {
+        console.warn('Toast not ready:', e);
       }
-    }
-  }
+    },
+  },
 };
 
 // Reset function for tests
@@ -309,8 +309,8 @@ if (typeof window !== 'undefined') {
       return {
         stored: value,
         hasShown: value === 'true',
-        willShow: !value || value !== 'true'
+        willShow: !value || value !== 'true',
       };
-    }
+    },
   };
 }

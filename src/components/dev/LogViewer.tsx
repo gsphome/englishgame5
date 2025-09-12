@@ -33,10 +33,11 @@ export const LogViewer: React.FC<LogViewerProps> = ({ isOpen, onClose }) => {
 
   const filteredLogs = logs.filter(log => {
     const matchesFilter = filter === 'all' || log.level === filter;
-    const matchesSearch = searchTerm === '' || 
+    const matchesSearch =
+      searchTerm === '' ||
       log.message.toLowerCase().includes(searchTerm.toLowerCase()) ||
       log.component?.toLowerCase().includes(searchTerm.toLowerCase());
-    
+
     return matchesFilter && matchesSearch;
   });
 
@@ -60,21 +61,31 @@ export const LogViewer: React.FC<LogViewerProps> = ({ isOpen, onClose }) => {
 
   const getLevelColor = (level: string) => {
     switch (level) {
-      case 'error': return 'text-red-600 bg-red-50';
-      case 'warn': return 'text-yellow-600 bg-yellow-50';
-      case 'info': return 'text-blue-600 bg-blue-50';
-      case 'debug': return 'text-gray-600 bg-gray-50';
-      default: return 'text-gray-600 bg-gray-50';
+      case 'error':
+        return 'text-red-600 bg-red-50';
+      case 'warn':
+        return 'text-yellow-600 bg-yellow-50';
+      case 'info':
+        return 'text-blue-600 bg-blue-50';
+      case 'debug':
+        return 'text-gray-600 bg-gray-50';
+      default:
+        return 'text-gray-600 bg-gray-50';
     }
   };
 
   const getLevelIcon = (level: string) => {
     switch (level) {
-      case 'error': return '❌';
-      case 'warn': return '⚠️';
-      case 'info': return 'ℹ️';
-      case 'debug': return '🐛';
-      default: return '📝';
+      case 'error':
+        return '❌';
+      case 'warn':
+        return '⚠️';
+      case 'info':
+        return 'ℹ️';
+      case 'debug':
+        return '🐛';
+      default:
+        return '📝';
     }
   };
 
@@ -114,7 +125,7 @@ export const LogViewer: React.FC<LogViewerProps> = ({ isOpen, onClose }) => {
             <Filter className="h-4 w-4 text-gray-500" />
             <select
               value={filter}
-              onChange={(e) => setFilter(e.target.value)}
+              onChange={e => setFilter(e.target.value)}
               className="border border-gray-300 rounded px-2 py-1 text-sm"
             >
               <option value="all">All Levels</option>
@@ -124,15 +135,15 @@ export const LogViewer: React.FC<LogViewerProps> = ({ isOpen, onClose }) => {
               <option value="debug">Debug</option>
             </select>
           </div>
-          
+
           <input
             type="text"
             placeholder="Search logs..."
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            onChange={e => setSearchTerm(e.target.value)}
             className="border border-gray-300 rounded px-3 py-1 text-sm flex-1 max-w-xs"
           />
-          
+
           <div className="text-sm text-gray-500">
             {filteredLogs.length} of {logs.length} logs
           </div>
@@ -154,9 +165,7 @@ export const LogViewer: React.FC<LogViewerProps> = ({ isOpen, onClose }) => {
                   <div className="flex items-start justify-between">
                     <div className="flex items-center space-x-2 mb-1">
                       <span className="text-sm">{getLevelIcon(log.level)}</span>
-                      <span className="font-medium text-sm uppercase">
-                        {log.level}
-                      </span>
+                      <span className="font-medium text-sm uppercase">{log.level}</span>
                       {log.component && (
                         <span className="text-xs bg-gray-200 px-2 py-1 rounded">
                           {log.component}
@@ -167,11 +176,9 @@ export const LogViewer: React.FC<LogViewerProps> = ({ isOpen, onClose }) => {
                       </span>
                     </div>
                   </div>
-                  
-                  <div className="text-sm font-medium mb-1">
-                    {log.message}
-                  </div>
-                  
+
+                  <div className="text-sm font-medium mb-1">{log.message}</div>
+
                   {log.data && (
                     <details className="mt-2">
                       <summary className="text-xs text-gray-600 cursor-pointer hover:text-gray-800">
@@ -191,8 +198,8 @@ export const LogViewer: React.FC<LogViewerProps> = ({ isOpen, onClose }) => {
         {/* Footer */}
         <div className="p-4 border-t bg-gray-50 text-xs text-gray-600">
           <p>
-            <strong>Note:</strong> This log viewer is only available in development mode. 
-            Logs are stored in sessionStorage and cleared when the browser session ends.
+            <strong>Note:</strong> This log viewer is only available in development mode. Logs are
+            stored in sessionStorage and cleared when the browser session ends.
           </p>
         </div>
       </div>

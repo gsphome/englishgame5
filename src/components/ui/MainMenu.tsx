@@ -25,8 +25,8 @@ export const MainMenu: React.FC = () => {
       toast.error('Error de conexión', 'No se pudieron cargar los módulos. Verifica tu conexión.', {
         action: {
           label: 'Reintentar',
-          onClick: () => window.location.reload()
-        }
+          onClick: () => window.location.reload(),
+        },
       });
     }
   }, [error]);
@@ -37,18 +37,22 @@ export const MainMenu: React.FC = () => {
     if (gridElement) {
       sessionStorage.setItem('menuGridScrollPosition', gridElement.scrollTop.toString());
     }
-    
+
     // Show toast when starting a module
     const modeLabels: Record<string, string> = {
       flashcard: 'Flashcards',
       quiz: 'Quiz',
       completion: 'Completar oraciones',
       sorting: 'Ejercicio de clasificación',
-      matching: 'Ejercicio de emparejamiento'
+      matching: 'Ejercicio de emparejamiento',
     };
-    
-    toast.info('Iniciando módulo', `${module.name} - ${modeLabels[module.learningMode] || 'Ejercicio'}`, { duration: 1500 });
-    
+
+    toast.info(
+      'Iniciando módulo',
+      `${module.name} - ${modeLabels[module.learningMode] || 'Ejercicio'}`,
+      { duration: 1500 }
+    );
+
     setCurrentModule(module);
     setCurrentView(module.learningMode);
   };
@@ -57,7 +61,7 @@ export const MainMenu: React.FC = () => {
     return (
       <div className="main-menu">
         <div className="main-menu__search">
-          <SearchBar 
+          <SearchBar
             query=""
             onQueryChange={() => {}}
             placeholder="Search modules, categories, or topics..."
@@ -77,7 +81,7 @@ export const MainMenu: React.FC = () => {
           <p className="main-menu__error-text">
             {error instanceof Error ? error.message : 'An unexpected error occurred'}
           </p>
-          <button 
+          <button
             onClick={() => window.location.reload()}
             className="main-menu__error-btn"
             aria-label="Retry loading modules"
@@ -92,7 +96,7 @@ export const MainMenu: React.FC = () => {
   return (
     <div className="main-menu">
       <div className="main-menu__search">
-        <SearchBar 
+        <SearchBar
           query={query}
           onQueryChange={setQuery}
           placeholder="Search modules, categories, or topics..."
@@ -110,7 +114,7 @@ export const MainMenu: React.FC = () => {
         </div>
       ) : (
         <div className="main-menu__grid">
-          <div 
+          <div
             className="main-menu__grid-container"
             role="grid"
             aria-label={`${results.length} learning modules available`}
@@ -131,11 +135,7 @@ export const MainMenu: React.FC = () => {
       )}
 
       {query && results.length > 0 && (
-        <div 
-          className="main-menu__results-count"
-          role="status"
-          aria-live="polite"
-        >
+        <div className="main-menu__results-count" role="status" aria-live="polite">
           Showing <strong>{results.length}</strong> of <strong>{modules.length}</strong> modules
         </div>
       )}

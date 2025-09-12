@@ -1,10 +1,10 @@
-import type { 
-  LearningModule, 
-  LearningData, 
-  FlashcardData, 
-  QuizData, 
-  CompletionData, 
-  SortingData, 
+import type {
+  LearningModule,
+  LearningData,
+  FlashcardData,
+  QuizData,
+  CompletionData,
+  SortingData,
   MatchingData,
   DifficultyLevel,
   LearningMode,
@@ -65,20 +65,26 @@ export class DataValidator {
 
     // Data count validation
     if (module.data && module.data.length !== this.REQUIRED_ITEM_COUNT) {
-      errors.push(`Module must have exactly ${this.REQUIRED_ITEM_COUNT} items, found ${module.data.length}`);
+      errors.push(
+        `Module must have exactly ${this.REQUIRED_ITEM_COUNT} items, found ${module.data.length}`
+      );
     }
 
     return {
       success: errors.length === 0,
       errors,
-      warnings: warnings.length > 0 ? warnings : undefined
+      warnings: warnings.length > 0 ? warnings : undefined,
     };
   }
 
   /**
    * Validates module data based on learning mode
    */
-  static validateModuleData(data: LearningData[], learningMode: LearningMode, moduleId: string): ValidationResult {
+  static validateModuleData(
+    data: LearningData[],
+    learningMode: LearningMode,
+    moduleId: string
+  ): ValidationResult {
     const errors: string[] = [];
     const warnings: string[] = [];
 
@@ -93,14 +99,18 @@ export class DataValidator {
     return {
       success: errors.length === 0,
       errors,
-      warnings: warnings.length > 0 ? warnings : undefined
+      warnings: warnings.length > 0 ? warnings : undefined,
     };
   }
 
   /**
    * Validates individual data items based on type
    */
-  static validateDataItem(item: LearningData, learningMode: LearningMode, itemId: string): ValidationResult {
+  static validateDataItem(
+    item: LearningData,
+    learningMode: LearningMode,
+    itemId: string
+  ): ValidationResult {
     switch (learningMode) {
       case 'flashcard':
         return this.validateFlashcardData(item as FlashcardData, itemId);
@@ -115,7 +125,7 @@ export class DataValidator {
       default:
         return {
           success: false,
-          errors: [`Unknown learning mode: ${learningMode} for item ${itemId}`]
+          errors: [`Unknown learning mode: ${learningMode} for item ${itemId}`],
         };
     }
   }
@@ -147,7 +157,7 @@ export class DataValidator {
     return {
       success: errors.length === 0,
       errors,
-      warnings: warnings.length > 0 ? warnings : undefined
+      warnings: warnings.length > 0 ? warnings : undefined,
     };
   }
 
@@ -184,7 +194,7 @@ export class DataValidator {
     return {
       success: errors.length === 0,
       errors,
-      warnings: warnings.length > 0 ? warnings : undefined
+      warnings: warnings.length > 0 ? warnings : undefined,
     };
   }
 
@@ -201,7 +211,9 @@ export class DataValidator {
 
     // Validate exactly 6 underscores for blanks
     if (data.sentence && !this.COMPLETION_BLANK_PATTERN.test(data.sentence)) {
-      errors.push(`${itemId}: Completion sentence must contain exactly 6 underscores (______) for blanks`);
+      errors.push(
+        `${itemId}: Completion sentence must contain exactly 6 underscores (______) for blanks`
+      );
     }
 
     // Must use 'correct' field, not 'answer'
@@ -220,7 +232,7 @@ export class DataValidator {
     return {
       success: errors.length === 0,
       errors,
-      warnings: warnings.length > 0 ? warnings : undefined
+      warnings: warnings.length > 0 ? warnings : undefined,
     };
   }
 
@@ -242,7 +254,7 @@ export class DataValidator {
     return {
       success: errors.length === 0,
       errors,
-      warnings: warnings.length > 0 ? warnings : undefined
+      warnings: warnings.length > 0 ? warnings : undefined,
     };
   }
 
@@ -274,26 +286,32 @@ export class DataValidator {
     return {
       success: errors.length === 0,
       errors,
-      warnings: warnings.length > 0 ? warnings : undefined
+      warnings: warnings.length > 0 ? warnings : undefined,
     };
   }
 
   /**
    * Validates file naming convention
    */
-  static validateFileName(fileName: string, expectedLearningMode: LearningMode, expectedLevel: DifficultyLevel): ValidationResult {
+  static validateFileName(
+    fileName: string,
+    expectedLearningMode: LearningMode,
+    expectedLevel: DifficultyLevel
+  ): ValidationResult {
     const errors: string[] = [];
-    
+
     // Expected pattern: {type}-{tema}-{nivel}.json
     const pattern = new RegExp(`^${expectedLearningMode}-[a-z0-9-]+-${expectedLevel}\\.json$`);
-    
+
     if (!pattern.test(fileName)) {
-      errors.push(`File name '${fileName}' doesn't follow pattern: ${expectedLearningMode}-{tema}-${expectedLevel}.json`);
+      errors.push(
+        `File name '${fileName}' doesn't follow pattern: ${expectedLearningMode}-{tema}-${expectedLevel}.json`
+      );
     }
 
     return {
       success: errors.length === 0,
-      errors
+      errors,
     };
   }
 
@@ -307,14 +325,16 @@ export class DataValidator {
     modules.forEach(module => {
       module.prerequisites.forEach(prereqId => {
         if (!moduleIds.has(prereqId)) {
-          errors.push(`Module '${module.id}' has invalid prerequisite '${prereqId}' - module not found`);
+          errors.push(
+            `Module '${module.id}' has invalid prerequisite '${prereqId}' - module not found`
+          );
         }
       });
     });
 
     return {
       success: errors.length === 0,
-      errors
+      errors,
     };
   }
 }
@@ -324,11 +344,19 @@ export const validateModuleStructure = (module: LearningModule): ValidationResul
   return DataValidator.validateModule(module);
 };
 
-export const validateModuleData = (data: LearningData[], learningMode: LearningMode, moduleId: string): ValidationResult => {
+export const validateModuleData = (
+  data: LearningData[],
+  learningMode: LearningMode,
+  moduleId: string
+): ValidationResult => {
   return DataValidator.validateModuleData(data, learningMode, moduleId);
 };
 
-export const validateFileName = (fileName: string, learningMode: LearningMode, level: DifficultyLevel): ValidationResult => {
+export const validateFileName = (
+  fileName: string,
+  learningMode: LearningMode,
+  level: DifficultyLevel
+): ValidationResult => {
   return DataValidator.validateFileName(fileName, learningMode, level);
 };
 

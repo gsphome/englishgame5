@@ -19,9 +19,10 @@ export const ScoreDisplay: React.FC = () => {
       className={`score-display-compact ${isInGame ? 'score-display-compact--learning' : 'score-display-compact--menu'}`}
       role="status"
       aria-live="polite"
-      aria-label={isInGame
-        ? `Session score: ${sessionScore.correct} correct, ${sessionScore.incorrect} incorrect, ${sessionScore.accuracy.toFixed(0)}% accuracy`
-        : `Global score: ${globalScore.correct} correct, ${globalScore.incorrect} incorrect, ${globalScore.accuracy.toFixed(0)}% accuracy, Level ${level}`
+      aria-label={
+        isInGame
+          ? `Session score: ${sessionScore.correct} correct, ${sessionScore.incorrect} incorrect, ${sessionScore.accuracy.toFixed(0)}% accuracy`
+          : `Global score: ${globalScore.correct} correct, ${globalScore.incorrect} incorrect, ${globalScore.accuracy.toFixed(0)}% accuracy, Level ${level}`
       }
     >
       {/* Adaptive container based on context */}
@@ -32,17 +33,13 @@ export const ScoreDisplay: React.FC = () => {
           height: '36px',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center'
+          justifyContent: 'center',
         }}
       >
         {isInGame ? (
           // Compact session score with fixed layout
           <div className="score-display-compact__session">
-            <div
-              className="score-display-compact__icon"
-              role="img"
-              aria-label="Session score"
-            >
+            <div className="score-display-compact__icon" role="img" aria-label="Session score">
               🎯
             </div>
             <div className="score-display-compact__values">
@@ -52,7 +49,9 @@ export const ScoreDisplay: React.FC = () => {
               >
                 {sessionScore.correct}
               </span>
-              <span className="score-display-compact__separator" aria-hidden="true">/</span>
+              <span className="score-display-compact__separator" aria-hidden="true">
+                /
+              </span>
               <span
                 className="score-display-compact__incorrect"
                 aria-label={`${sessionScore.incorrect} incorrect answers`}
@@ -72,11 +71,7 @@ export const ScoreDisplay: React.FC = () => {
           // Compact global score with level indicator
           <div className="score-display-compact__global">
             <div className="score-display-compact__main">
-              <div
-                className="score-display-compact__icon"
-                role="img"
-                aria-label="Global score"
-              >
+              <div className="score-display-compact__icon" role="img" aria-label="Global score">
                 🌍
               </div>
               <div className="score-display-compact__values">
@@ -86,7 +81,9 @@ export const ScoreDisplay: React.FC = () => {
                 >
                   {globalScore.correct}
                 </span>
-                <span className="score-display-compact__separator" aria-hidden="true">/</span>
+                <span className="score-display-compact__separator" aria-hidden="true">
+                  /
+                </span>
                 <span
                   className="score-display-compact__incorrect"
                   aria-label={`${globalScore.incorrect} total incorrect answers`}
@@ -106,10 +103,7 @@ export const ScoreDisplay: React.FC = () => {
             {/* Level indicator - Compact horizontal layout */}
             <div className="score-display-compact__divider" aria-hidden="true" />
             <div className="score-display-compact__level">
-              <div
-                className="score-display-compact__level-badge"
-                aria-label={`Level ${level}`}
-              >
+              <div className="score-display-compact__level-badge" aria-label={`Level ${level}`}>
                 L{level}
               </div>
               <div

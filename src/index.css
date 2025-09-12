@@ -8,70 +8,70 @@
   body {
     @apply bg-gray-100 font-sans;
   }
-  
+
   .dark body {
     @apply bg-gray-900 text-white;
   }
-  
+
   .dark .header {
     @apply bg-gray-800 border-gray-700;
   }
-  
+
   .dark .menu {
     @apply bg-gray-800;
   }
-  
+
   .dark .menu__title {
     @apply text-white;
   }
-  
+
   .dark .btn {
     @apply border-gray-600;
   }
-  
+
   .dark .btn--primary {
     @apply bg-blue-600 hover:bg-blue-700 text-white;
   }
-  
+
   .dark .header__button {
     @apply text-gray-300 hover:text-white;
   }
-  
+
   .dark .header__user-button {
     @apply text-gray-300 hover:text-white;
   }
-  
+
   .dark .header__user-points {
     @apply text-gray-400;
   }
-  
+
   .dark .header__title {
     @apply text-white;
   }
-  
+
   /* Modal styles for dark mode */
   .dark .fixed.inset-0 > div {
     @apply bg-gray-800 text-white;
   }
-  
+
   .dark .fixed.inset-0 input,
   .dark .fixed.inset-0 select {
     @apply bg-gray-700 border-gray-600 text-white;
   }
-  
+
   .dark .fixed.inset-0 label {
     @apply text-gray-300;
   }
-  
+
   /* Side menu dark mode */
   .dark .fixed.left-0 {
     @apply bg-gray-800 text-white;
   }
-  
+
   .dark .fixed.left-0 button:hover {
     @apply bg-gray-700;
   }
-  
+
   .dark .fixed.left-0 h2 {
     @apply text-white;
   }
@@ -106,197 +106,195 @@
   .app-header {
     @apply bg-white border-b border-gray-200 shadow-sm;
   }
-  
+
   .main-container {
     @apply max-w-4xl mx-auto my-4 bg-white p-8 rounded-lg shadow-sm;
   }
-  
+
   .module-grid {
     @apply bg-gray-50 rounded-xl p-2 border-2 border-gray-200 max-w-3xl mx-auto;
   }
-  
+
   .search-input {
     @apply w-full px-3 py-2 pl-10 pr-10 border border-gray-300 rounded-md text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500;
   }
-  
+
   .btn-primary {
     @apply bg-blue-600 text-white px-3 py-1.5 rounded-md text-sm font-medium hover:bg-blue-700 transition-colors;
   }
-  
+
   .header-content {
     @apply max-w-4xl mx-auto px-8 py-4 flex justify-between items-center;
   }
-  
+
   .header-title {
     @apply text-xl font-bold text-gray-900;
   }
-  
-
-}  /* Na
+} /* Na
 vigation Button - BEM Architecture */
-  .nav-btn {
-    @apply flex items-center gap-2 px-4 py-2.5 rounded-lg transition-all duration-200 text-sm font-medium shadow-sm;
-    @apply bg-white border-2 border-gray-200 text-gray-700;
-    @apply hover:bg-gray-50 hover:border-gray-300 hover:shadow-md;
-    @apply active:scale-95;
-  }
-  
-  .nav-btn--back {
-    /* Specific styles for back navigation button */
-  }
-  
-  .nav-btn__icon {
-    @apply w-4 h-4 flex-shrink-0;
-  }
-  
-  .nav-btn__icon--arrow {
-    @apply text-gray-700; /* Explicit color for light mode */
-  }
-  
-  .nav-btn__text {
-    @apply text-gray-700; /* Explicit color for light mode */
-  }
-  
-  /* Dark mode variants */
-  .dark .nav-btn {
-    @apply bg-gray-800 border-gray-600 text-gray-100;
-    @apply hover:bg-gray-700 hover:border-gray-500;
-  }
-  
-  .dark .nav-btn__icon--arrow {
-    @apply text-gray-100; /* Explicit white color for dark mode */
-  }
-  
-  .dark .nav-btn__text {
-    @apply text-gray-100; /* Explicit white color for dark mode */
-  }  /* Ins
+.nav-btn {
+  @apply flex items-center gap-2 px-4 py-2.5 rounded-lg transition-all duration-200 text-sm font-medium shadow-sm;
+  @apply bg-white border-2 border-gray-200 text-gray-700;
+  @apply hover:bg-gray-50 hover:border-gray-300 hover:shadow-md;
+  @apply active:scale-95;
+}
+
+.nav-btn--back {
+  /* Specific styles for back navigation button */
+}
+
+.nav-btn__icon {
+  @apply w-4 h-4 flex-shrink-0;
+}
+
+.nav-btn__icon--arrow {
+  @apply text-gray-700; /* Explicit color for light mode */
+}
+
+.nav-btn__text {
+  @apply text-gray-700; /* Explicit color for light mode */
+}
+
+/* Dark mode variants */
+.dark .nav-btn {
+  @apply bg-gray-800 border-gray-600 text-gray-100;
+  @apply hover:bg-gray-700 hover:border-gray-500;
+}
+
+.dark .nav-btn__icon--arrow {
+  @apply text-gray-100; /* Explicit white color for dark mode */
+}
+
+.dark .nav-btn__text {
+  @apply text-gray-100; /* Explicit white color for dark mode */
+} /* Ins
 tructional Text - BEM Architecture */
-  .instruction-text {
-    @apply text-gray-600;
-  }
-  
-  .instruction-text--small {
-    @apply text-xs;
-  }
-  
-  .instruction-text--medium {
-    @apply text-sm;
-  }
-  
-  .instruction-text--center {
-    @apply text-center;
-  }
-  
-  .instruction-text--label {
-    @apply font-medium;
-  }
-  
-  /* Dark mode variants */
-  .dark .instruction-text {
-    @apply text-gray-200;
-  }
-  
-  /* Section Headers */
-  .section-header {
-    @apply text-gray-700 font-medium;
-  }
-  
-  .dark .section-header {
-    @apply text-gray-100;
-  }
-  
-  /* Help Text */
-  .help-text {
-    @apply text-yellow-700;
-  }
-  
-  .help-text--strong {
-    @apply text-yellow-800 font-medium;
-  }
-  
-  .dark .help-text {
-    @apply text-yellow-200;
-  }
-  
-  .dark .help-text--strong {
-    @apply text-yellow-100;
-  }  /* 
+.instruction-text {
+  @apply text-gray-600;
+}
+
+.instruction-text--small {
+  @apply text-xs;
+}
+
+.instruction-text--medium {
+  @apply text-sm;
+}
+
+.instruction-text--center {
+  @apply text-center;
+}
+
+.instruction-text--label {
+  @apply font-medium;
+}
+
+/* Dark mode variants */
+.dark .instruction-text {
+  @apply text-gray-200;
+}
+
+/* Section Headers */
+.section-header {
+  @apply text-gray-700 font-medium;
+}
+
+.dark .section-header {
+  @apply text-gray-100;
+}
+
+/* Help Text */
+.help-text {
+  @apply text-yellow-700;
+}
+
+.help-text--strong {
+  @apply text-yellow-800 font-medium;
+}
+
+.dark .help-text {
+  @apply text-yellow-200;
+}
+
+.dark .help-text--strong {
+  @apply text-yellow-100;
+} /* 
 Drop Zone - BEM Architecture */
-  .drop-zone {
-    @apply p-1 sm:p-4 border-2 border-dashed rounded-lg min-h-[140px] sm:min-h-[200px] transition-all duration-200;
-    @apply border-gray-400 bg-gray-50;
-  }
-  
-  .drop-zone--interactive {
-    @apply hover:border-blue-500 hover:bg-blue-50 hover:shadow-sm;
-  }
-  
-  .drop-zone--correct {
-    @apply border-green-500 bg-green-50;
-  }
-  
-  .drop-zone--error {
-    @apply border-red-500 bg-red-50;
-  }
-  
-  .drop-zone--neutral {
-    @apply border-gray-400 bg-gray-50;
-  }
-  
-  /* Dark mode variants with enhanced contrast */
-  .dark .drop-zone {
-    @apply border-gray-500 bg-gray-800;
-  }
-  
-  .dark .drop-zone--interactive {
-    @apply hover:border-blue-400 hover:bg-gray-700 hover:shadow-lg;
-  }
-  
-  .dark .drop-zone--correct {
-    @apply border-green-400 bg-green-900/50;
-  }
-  
-  .dark .drop-zone--error {
-    @apply border-red-400 bg-red-900/50;
-  }
-  
-  .dark .drop-zone--neutral {
-    @apply border-gray-500 bg-gray-800;
-  }
-  
-  /* Enhanced visual feedback */
-  .drop-zone__header {
-    @apply font-semibold text-gray-900 mb-2 sm:mb-3 text-center text-sm sm:text-base;
-  }
-  
-  .dark .drop-zone__header {
-    @apply text-white;
-  }
-  
-  /* Drag over state */
-  .drop-zone--drag-over {
-    @apply border-blue-600 bg-blue-100 scale-[1.02] shadow-md;
-  }
-  
-  .dark .drop-zone--drag-over {
-    @apply border-blue-300 bg-blue-900/30;
-  }  /* A
+.drop-zone {
+  @apply p-1 sm:p-4 border-2 border-dashed rounded-lg min-h-[140px] sm:min-h-[200px] transition-all duration-200;
+  @apply border-gray-400 bg-gray-50;
+}
+
+.drop-zone--interactive {
+  @apply hover:border-blue-500 hover:bg-blue-50 hover:shadow-sm;
+}
+
+.drop-zone--correct {
+  @apply border-green-500 bg-green-50;
+}
+
+.drop-zone--error {
+  @apply border-red-500 bg-red-50;
+}
+
+.drop-zone--neutral {
+  @apply border-gray-400 bg-gray-50;
+}
+
+/* Dark mode variants with enhanced contrast */
+.dark .drop-zone {
+  @apply border-gray-500 bg-gray-800;
+}
+
+.dark .drop-zone--interactive {
+  @apply hover:border-blue-400 hover:bg-gray-700 hover:shadow-lg;
+}
+
+.dark .drop-zone--correct {
+  @apply border-green-400 bg-green-900/50;
+}
+
+.dark .drop-zone--error {
+  @apply border-red-400 bg-red-900/50;
+}
+
+.dark .drop-zone--neutral {
+  @apply border-gray-500 bg-gray-800;
+}
+
+/* Enhanced visual feedback */
+.drop-zone__header {
+  @apply font-semibold text-gray-900 mb-2 sm:mb-3 text-center text-sm sm:text-base;
+}
+
+.dark .drop-zone__header {
+  @apply text-white;
+}
+
+/* Drag over state */
+.drop-zone--drag-over {
+  @apply border-blue-600 bg-blue-100 scale-[1.02] shadow-md;
+}
+
+.dark .drop-zone--drag-over {
+  @apply border-blue-300 bg-blue-900/30;
+} /* A
 vailable Words Area */
-  .available-words-area {
-    @apply min-h-[80px] p-4 border-2 border-dashed rounded-lg transition-colors;
-    @apply border-gray-400 bg-gray-50;
-  }
-  
-  .dark .available-words-area {
-    @apply border-gray-500 bg-gray-800;
-  }
-  
-  /* Word chips */
-  .word-chip {
-    @apply px-2 py-1 sm:px-3 sm:py-2 rounded-lg cursor-move transition-all duration-200 select-none text-xs sm:text-sm;
-    @apply bg-blue-100 text-blue-800 hover:bg-blue-200 hover:shadow-sm;
-  }
-  
-  .dark .word-chip {
-    @apply bg-blue-900 text-blue-200 hover:bg-blue-800;
-  }
+.available-words-area {
+  @apply min-h-[80px] p-4 border-2 border-dashed rounded-lg transition-colors;
+  @apply border-gray-400 bg-gray-50;
+}
+
+.dark .available-words-area {
+  @apply border-gray-500 bg-gray-800;
+}
+
+/* Word chips */
+.word-chip {
+  @apply px-2 py-1 sm:px-3 sm:py-2 rounded-lg cursor-move transition-all duration-200 select-none text-xs sm:text-sm;
+  @apply bg-blue-100 text-blue-800 hover:bg-blue-200 hover:shadow-sm;
+}
+
+.dark .word-chip {
+  @apply bg-blue-900 text-blue-200 hover:bg-blue-800;
+}

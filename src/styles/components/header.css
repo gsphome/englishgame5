@@ -82,14 +82,18 @@
 .header-redesigned {
   background-color: var(--header-bg);
   border-bottom: 1px solid var(--header-border);
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  box-shadow:
+    0 1px 3px 0 rgba(0, 0, 0, 0.1),
+    0 1px 2px 0 rgba(0, 0, 0, 0.06);
   min-height: 64px;
   transition: all 0.3s ease-in-out;
 }
 
 /* Enhanced shadow and border for dark mode */
 .dark .header-redesigned {
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  box-shadow:
+    0 1px 3px 0 rgba(0, 0, 0, 0.3),
+    0 1px 2px 0 rgba(0, 0, 0, 0.2);
   border-bottom: 1px solid var(--header-border);
   background: linear-gradient(180deg, #1f2937 0%, #1a202c 100%);
 }
@@ -405,12 +409,12 @@
   padding: 1rem;
 }
 
-.header-side-menu__content>*+* {
+.header-side-menu__content > * + * {
   margin-top: 1.5rem;
 }
 
 /* Menu Sections */
-.header-side-menu__section>*+* {
+.header-side-menu__section > * + * {
   margin-top: 0.5rem;
 }
 
@@ -637,7 +641,6 @@ d Accessibility and High Contrast Support */
 
 /* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
-
   .header-redesigned *,
   .header-side-menu * {
     transition: none !important;
@@ -718,7 +721,6 @@ d Accessibility and High Contrast Support */
 
 /* Reduced motion support for logo */
 @media (prefers-reduced-motion: reduce) {
-
   .header-redesigned__logo,
   .header-redesigned__brand:hover .header-redesigned__logo {
     transform: none !important;
@@ -812,10 +814,12 @@ anced Button Definitions for Dark Mode */
 
 /* Enhanced Overlay for Dark Mode */
 .dark .header-side-menu-overlay {
-  background: linear-gradient(45deg,
-      rgba(0, 0, 0, 0.7) 0%,
-      rgba(0, 0, 0, 0.5) 50%,
-      rgba(0, 0, 0, 0.7) 100%);
+  background: linear-gradient(
+    45deg,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0.5) 50%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
   backdrop-filter: blur(8px);
 }
 
@@ -859,7 +863,7 @@ ologated Button Sections - Equal Visual Weight */
 }
 
 /* Ensure consistent spacing between primary action buttons */
-.header-redesigned__right>*+* {
+.header-redesigned__right > * + * {
   margin-left: 8px;
 }
 

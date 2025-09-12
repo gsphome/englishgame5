@@ -9,7 +9,7 @@ export const useSearch = (modules: LearningModule[]) => {
     return new Fuse(modules, {
       keys: ['name', 'description', 'category', 'tags'],
       threshold: 0.3,
-      includeScore: true
+      includeScore: true,
     });
   }, [modules]);
 

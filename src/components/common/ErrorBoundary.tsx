@@ -37,19 +37,23 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
     });
 
     // Log error to monitoring service
-    logError('React Error Boundary caught an error', {
-      error: {
-        message: error.message,
-        stack: error.stack,
-        name: error.name,
+    logError(
+      'React Error Boundary caught an error',
+      {
+        error: {
+          message: error.message,
+          stack: error.stack,
+          name: error.name,
+        },
+        errorInfo: {
+          componentStack: errorInfo.componentStack,
+        },
+        userAgent: navigator.userAgent,
+        url: window.location.href,
+        timestamp: new Date().toISOString(),
       },
-      errorInfo: {
-        componentStack: errorInfo.componentStack,
-      },
-      userAgent: navigator.userAgent,
-      url: window.location.href,
-      timestamp: new Date().toISOString(),
-    }, 'ErrorBoundary');
+      'ErrorBoundary'
+    );
   }
 
   handleRetry = (): void => {
@@ -63,12 +67,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
   render(): ReactNode {
     if (this.state.hasError) {
       const FallbackComponent = this.props.fallback || DefaultErrorFallback;
-      return (
-        <FallbackComponent 
-          error={this.state.error} 
-          retry={this.handleRetry}
-        />
-      );
+      return <FallbackComponent error={this.state.error} retry={this.handleRetry} />;
     }
 
     return this.props.children;

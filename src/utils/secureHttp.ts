@@ -12,14 +12,17 @@ interface SecureFetchOptions extends globalThis.RequestInit {
  * @param options - Fetch options with additional security configurations
  * @returns Promise with fetch response
  */
-export const secureFetch = async (url: string, options: SecureFetchOptions = {}): Promise<Response> => {
+export const secureFetch = async (
+  url: string,
+  options: SecureFetchOptions = {}
+): Promise<Response> => {
   const { timeout = 10000, ...fetchOptions } = options;
 
   // Security headers for requests
   const secureHeaders: globalThis.HeadersInit = {
     'X-Requested-With': 'XMLHttpRequest',
     'Cache-Control': 'no-cache',
-    'Pragma': 'no-cache',
+    Pragma: 'no-cache',
     ...fetchOptions.headers,
   };
 
@@ -55,11 +58,11 @@ export const secureFetch = async (url: string, options: SecureFetchOptions = {})
     return response;
   } catch (error) {
     clearTimeout(timeoutId);
-    
+
     if (error instanceof Error && error.name === 'AbortError') {
       throw new Error(`Request timeout after ${timeout}ms`);
     }
-    
+
     throw error;
   }
 };
@@ -108,11 +111,14 @@ const validateResponseSecurity = (response: Response, url: string): void => {
  * @param options - Fetch options
  * @returns Promise with parsed JSON data
  */
-export const secureJsonFetch = async <T = any>(url: string, options: SecureFetchOptions = {}): Promise<T> => {
+export const secureJsonFetch = async <T = any>(
+  url: string,
+  options: SecureFetchOptions = {}
+): Promise<T> => {
   const response = await secureFetch(url, {
     ...options,
     headers: {
-      'Accept': 'application/json',
+      Accept: 'application/json',
       'Content-Type': 'application/json',
       ...options.headers,
     },
@@ -142,7 +148,7 @@ export const secureJsonFetch = async <T = any>(url: string, options: SecureFetch
 export const validateUrl = (url: string): string => {
   try {
     const parsedUrl = new URL(url, window.location.origin);
-    
+
     // Only allow HTTP/HTTPS protocols
     if (!['http:', 'https:'].includes(parsedUrl.protocol)) {
       throw new Error('Invalid protocol. Only HTTP/HTTPS allowed.');
@@ -151,7 +157,7 @@ export const validateUrl = (url: string): string => {
     // Prevent access to private IP ranges in production
     if (process.env.NODE_ENV === 'production') {
       const hostname = parsedUrl.hostname;
-      
+
       // Block private IP ranges
       const privateRanges = [
         /^127\./, // 127.0.0.0/8

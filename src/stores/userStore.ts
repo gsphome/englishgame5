@@ -5,7 +5,7 @@ import type { User, ModuleScore } from '../types';
 interface UserStore {
   user: User | null;
   userScores: Record<string, ModuleScore>;
-  
+
   // Actions
   setUser: (user: User | null) => void;
   updateUserScore: (moduleId: string, score: number, timeSpent: number) => void;
@@ -28,27 +28,28 @@ export const useUserStore = create<UserStore>()(
       user: null,
       userScores: {},
 
-      setUser: (user) => set({ user }),
+      setUser: user => set({ user }),
 
-      updateUserScore: (moduleId, score, timeSpent) => set((state) => {
-        const existingScore = state.userScores[moduleId];
-        const newScore: ModuleScore = {
-          moduleId,
-          bestScore: existingScore ? Math.max(existingScore.bestScore, score) : score,
-          attempts: existingScore ? existingScore.attempts + 1 : 1,
-          lastAttempt: new Date().toISOString(),
-          timeSpent: existingScore ? existingScore.timeSpent + timeSpent : timeSpent
-        };
+      updateUserScore: (moduleId, score, timeSpent) =>
+        set(state => {
+          const existingScore = state.userScores[moduleId];
+          const newScore: ModuleScore = {
+            moduleId,
+            bestScore: existingScore ? Math.max(existingScore.bestScore, score) : score,
+            attempts: existingScore ? existingScore.attempts + 1 : 1,
+            lastAttempt: new Date().toISOString(),
+            timeSpent: existingScore ? existingScore.timeSpent + timeSpent : timeSpent,
+          };
 
-        return {
-          userScores: {
-            ...state.userScores,
-            [moduleId]: newScore
-          }
-        };
-      }),
+          return {
+            userScores: {
+              ...state.userScores,
+              [moduleId]: newScore,
+            },
+          };
+        }),
 
-      getUserProgress: (moduleId) => {
+      getUserProgress: moduleId => {
         const { userScores } = get();
         return userScores[moduleId] || null;
       },
@@ -61,9 +62,9 @@ export const useUserStore = create<UserStore>()(
       getGlobalStats: () => {
         const { userScores } = get();
         const scores = Object.values(userScores);
-        
+
         // Debug logging removed to avoid circular dependencies
-        
+
         if (scores.length === 0) {
           const emptyStats = {
             totalScore: 0,
@@ -72,7 +73,7 @@ export const useUserStore = create<UserStore>()(
             totalModules: 0,
             bestStreak: 0,
             level: 1,
-            progressToNextLevel: 0
+            progressToNextLevel: 0,
           };
           return emptyStats;
         }
@@ -80,19 +81,19 @@ export const useUserStore = create<UserStore>()(
         const totalScore = scores.reduce((sum, score) => sum + score.bestScore, 0);
         const totalAttempts = scores.reduce((sum, score) => sum + score.attempts, 0);
         const avgScore = Math.round(totalScore / scores.length);
-        
+
         // Calculate level (every 100 points = 1 level)
         const level = Math.floor(totalScore / 100) + 1;
         const progressToNextLevel = totalScore % 100;
-        
+
         // Calculate best streak (consecutive high scores)
         const sortedScores = scores
           .sort((a, b) => new Date(b.lastAttempt).getTime() - new Date(a.lastAttempt).getTime())
           .map(s => s.bestScore);
-        
+
         let bestStreak = 0;
         let currentStreak = 0;
-        
+
         for (const score of sortedScores) {
           if (score >= 80) {
             currentStreak++;
@@ -109,14 +110,14 @@ export const useUserStore = create<UserStore>()(
           totalModules: scores.length,
           bestStreak,
           level,
-          progressToNextLevel
+          progressToNextLevel,
         };
-        
+
         return globalStats;
-      }
+      },
     }),
     {
-      name: 'user-storage'
+      name: 'user-storage',
     }
   )
 );

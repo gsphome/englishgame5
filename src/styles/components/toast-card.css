@@ -34,7 +34,9 @@
   position: relative;
   overflow: hidden;
   border-radius: 6px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
   border: 1px solid #e5e7eb;
   pointer-events: auto;
   transition: all 0.3s ease-out;
@@ -50,7 +52,9 @@
 .dark .toast-card {
   background-color: #1f2937;
   border-color: #374151;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.3),
+    0 2px 4px -1px rgba(0, 0, 0, 0.2);
 }
 
 /* Elements */
@@ -257,11 +261,11 @@
   .toast-card {
     max-width: 380px;
   }
-  
+
   .toast-card__title {
     font-size: 15px;
   }
-  
+
   .toast-card__message {
     font-size: 13px;
   }
@@ -272,7 +276,7 @@
   .toast-card {
     padding: 8px 12px;
   }
-  
+
   .toast-card__content {
     padding: 8px;
   }
@@ -283,7 +287,7 @@
   .toast-card {
     transition: none;
   }
-  
+
   .toast-card--entering,
   .toast-card--visible,
   .toast-card--exiting {
@@ -298,23 +302,23 @@
     border-width: 2px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   }
-  
+
   .toast-card__title {
     font-weight: 700;
   }
-  
+
   .toast-card--success {
     border-left-width: 6px;
   }
-  
+
   .toast-card--error {
     border-left-width: 6px;
   }
-  
+
   .toast-card--warning {
     border-left-width: 6px;
   }
-  
+
   .toast-card--info {
     border-left-width: 6px;
   }

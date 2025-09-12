@@ -23,16 +23,16 @@ export interface SettingsState {
   theme: 'light' | 'dark';
   language: 'en' | 'es';
   level: 'all' | 'a1' | 'a2' | 'b1' | 'b2' | 'c1' | 'c2';
-  
+
   // Categories
   categories: string[];
-  
+
   // Game Settings
   gameSettings: GameSettings;
-  
+
   // Max limits based on available data
   maxLimits: MaxLimits;
-  
+
   // Actions
   setTheme: (theme: 'light' | 'dark') => void;
   setLanguage: (language: 'en' | 'es') => void;
@@ -45,7 +45,7 @@ export interface SettingsState {
 // Default categories for fallback and migration
 const DEFAULT_CATEGORIES = [
   'Vocabulary',
-  'Grammar', 
+  'Grammar',
   'PhrasalVerbs',
   'Idioms',
   'Pronunciation',
@@ -53,7 +53,7 @@ const DEFAULT_CATEGORIES = [
   'Reading',
   'Writing',
   'Speaking',
-  'Review'
+  'Review',
 ];
 
 export const useSettingsStore = create<SettingsState>()(
@@ -69,20 +69,20 @@ export const useSettingsStore = create<SettingsState>()(
         quizMode: { questionCount: 10 },
         completionMode: { itemCount: 10 },
         sortingMode: { wordCount: 5, categoryCount: 3 },
-        matchingMode: { wordCount: 6 }
+        matchingMode: { wordCount: 6 },
       },
-      
+
       maxLimits: {
         flashcard: 50,
         quiz: 50,
         completion: 50,
         sorting: 50,
         matching: 50,
-        maxCategories: 10
+        maxCategories: 10,
       },
-      
+
       // Actions
-      setTheme: (theme) => {
+      setTheme: theme => {
         set({ theme });
         // Apply theme to DOM
         if (theme === 'dark') {
@@ -91,13 +91,13 @@ export const useSettingsStore = create<SettingsState>()(
           document.documentElement.classList.remove('dark');
         }
       },
-      
-      setLanguage: (language) => set({ language }),
-      
-      setLevel: (level) => set({ level: level as any }),
-      
-      setCategories: (categories) => set({ categories }),
-      
+
+      setLanguage: language => set({ language }),
+
+      setLevel: level => set({ level: level as any }),
+
+      setCategories: categories => set({ categories }),
+
       setGameSetting: (mode, setting, value) => {
         const currentSettings = get().gameSettings;
         set({
@@ -105,13 +105,13 @@ export const useSettingsStore = create<SettingsState>()(
             ...currentSettings,
             [mode]: {
               ...currentSettings[mode],
-              [setting]: value
-            }
-          }
+              [setting]: value,
+            },
+          },
         });
       },
-      
-      updateMaxLimits: (limits) => set({ maxLimits: limits })
+
+      updateMaxLimits: limits => set({ maxLimits: limits }),
     }),
     {
       name: 'settings-storage',
@@ -121,11 +121,11 @@ export const useSettingsStore = create<SettingsState>()(
         if (version < 2) {
           return {
             ...persistedState,
-            categories: DEFAULT_CATEGORIES // Expand from 4 to 10 categories
+            categories: DEFAULT_CATEGORIES, // Expand from 4 to 10 categories
           };
         }
         return persistedState;
-      }
+      },
     }
   )
 );

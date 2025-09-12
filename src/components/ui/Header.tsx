@@ -69,9 +69,7 @@ export const Header: React.FC<HeaderProps> = ({ onDashboardToggle }) => {
             aria-controls="navigation-menu"
           >
             <Menu className="w-5 h-5" />
-            <span className="sr-only">
-              {showSideMenu ? 'Cerrar menú' : 'Abrir menú'}
-            </span>
+            <span className="sr-only">{showSideMenu ? 'Cerrar menú' : 'Abrir menú'}</span>
           </button>
           <div className="header-redesigned__brand">
             <FluentFlowLogo size="md" className="header-redesigned__logo" />
@@ -129,19 +127,11 @@ export const Header: React.FC<HeaderProps> = ({ onDashboardToggle }) => {
         </div>
       </div>
 
-      {showProfileForm && (
-        <UserProfileForm onClose={() => setShowProfileForm(false)} />
-      )}
+      {showProfileForm && <UserProfileForm onClose={() => setShowProfileForm(false)} />}
 
-      <AdvancedSettingsModal
-        isOpen={showSettings}
-        onClose={() => setShowSettings(false)}
-      />
+      <AdvancedSettingsModal isOpen={showSettings} onClose={() => setShowSettings(false)} />
 
-      <AboutModal
-        isOpen={showAbout}
-        onClose={() => setShowAbout(false)}
-      />
+      <AboutModal isOpen={showAbout} onClose={() => setShowAbout(false)} />
 
       {showSideMenu && (
         <div
@@ -152,25 +142,19 @@ export const Header: React.FC<HeaderProps> = ({ onDashboardToggle }) => {
           <nav
             id="navigation-menu"
             className="header-side-menu"
-            onClick={(e) => e.stopPropagation()}
+            onClick={e => e.stopPropagation()}
             role="navigation"
             aria-label="Main navigation and settings"
           >
             <div className="header-side-menu__header">
-              <h2 className="header-side-menu__title">
-                FluentFlow
-              </h2>
-              <p className="header-side-menu__subtitle">
-                Navegación y Configuración
-              </p>
+              <h2 className="header-side-menu__title">FluentFlow</h2>
+              <p className="header-side-menu__subtitle">Navegación y Configuración</p>
             </div>
-            
+
             <div className="header-side-menu__content">
               {/* Navigation Section */}
               <div className="header-side-menu__section">
-                <h3 className="header-side-menu__section-title">
-                  📱 Navegación Principal
-                </h3>
+                <h3 className="header-side-menu__section-title">📱 Navegación Principal</h3>
                 <button
                   onClick={handleGoToMenu}
                   className="header-side-menu__item"
@@ -180,7 +164,10 @@ export const Header: React.FC<HeaderProps> = ({ onDashboardToggle }) => {
                   <span className="header-side-menu__text">Menú Principal</span>
                 </button>
                 <button
-                  onClick={() => { onDashboardToggle?.(); setShowSideMenu(false); }}
+                  onClick={() => {
+                    onDashboardToggle?.();
+                    setShowSideMenu(false);
+                  }}
                   className="header-side-menu__item"
                   aria-label="Ver dashboard y estadísticas"
                 >
@@ -191,11 +178,12 @@ export const Header: React.FC<HeaderProps> = ({ onDashboardToggle }) => {
 
               {/* Settings Section */}
               <div className="header-side-menu__section">
-                <h3 className="header-side-menu__section-title">
-                  ⚙️ Configuración
-                </h3>
+                <h3 className="header-side-menu__section-title">⚙️ Configuración</h3>
                 <button
-                  onClick={() => { setShowSettings(true); setShowSideMenu(false); }}
+                  onClick={() => {
+                    setShowSettings(true);
+                    setShowSideMenu(false);
+                  }}
                   className="header-side-menu__item"
                   aria-label="Abrir configuración avanzada"
                 >
@@ -204,7 +192,10 @@ export const Header: React.FC<HeaderProps> = ({ onDashboardToggle }) => {
                 </button>
                 <button
                   className="header-side-menu__item"
-                  onClick={() => { setShowAbout(true); setShowSideMenu(false); }}
+                  onClick={() => {
+                    setShowAbout(true);
+                    setShowSideMenu(false);
+                  }}
                   aria-label="Información sobre la aplicación"
                 >
                   <User className="header-side-menu__icon" aria-hidden="true" />
@@ -215,11 +206,12 @@ export const Header: React.FC<HeaderProps> = ({ onDashboardToggle }) => {
               {/* User Profile Section */}
               {user && (
                 <div className="header-side-menu__section">
-                  <h3 className="header-side-menu__section-title">
-                    👤 Perfil de Usuario
-                  </h3>
+                  <h3 className="header-side-menu__section-title">👤 Perfil de Usuario</h3>
                   <button
-                    onClick={() => { setShowProfileForm(true); setShowSideMenu(false); }}
+                    onClick={() => {
+                      setShowProfileForm(true);
+                      setShowSideMenu(false);
+                    }}
                     className="header-side-menu__item"
                     aria-label="Editar perfil de usuario"
                   >

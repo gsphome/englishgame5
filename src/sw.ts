@@ -92,23 +92,26 @@ registerRoute(
       // Return cached offline page or main app
       const cache = await caches.open('pages');
       const cachedResponse = await cache.match('/englishgame5/');
-      return cachedResponse || new Response('Offline - Please check your connection', {
-        status: 503,
-        statusText: 'Service Unavailable',
-      });
+      return (
+        cachedResponse ||
+        new Response('Offline - Please check your connection', {
+          status: 503,
+          statusText: 'Service Unavailable',
+        })
+      );
     }
   }
 );
 
 // Background sync for user progress
-self.addEventListener('sync', (event) => {
+self.addEventListener('sync', event => {
   if (event.tag === 'user-progress-sync') {
     event.waitUntil(syncUserProgress());
   }
 });
 
 // Push notification handling
-self.addEventListener('push', (event) => {
+self.addEventListener('push', event => {
   if (!event.data) return;
 
   const data = event.data.json();
@@ -122,29 +125,25 @@ self.addEventListener('push', (event) => {
       {
         action: 'open',
         title: 'Open App',
-        icon: '/englishgame5/pwa-192x192.png'
+        icon: '/englishgame5/pwa-192x192.png',
       },
       {
         action: 'close',
         title: 'Close',
-        icon: '/englishgame5/pwa-192x192.png'
-      }
-    ]
+        icon: '/englishgame5/pwa-192x192.png',
+      },
+    ],
   };
 
-  event.waitUntil(
-    self.registration.showNotification(data.title, options)
-  );
+  event.waitUntil(self.registration.showNotification(data.title, options));
 });
 
 // Handle notification clicks
-self.addEventListener('notificationclick', (event) => {
+self.addEventListener('notificationclick', event => {
   event.notification.close();
 
   if (event.action === 'open' || !event.action) {
-    event.waitUntil(
-      self.clients.openWindow('/englishgame5/')
-    );
+    event.waitUntil(self.clients.openWindow('/englishgame5/'));
   }
 });
 
@@ -154,13 +153,13 @@ async function syncUserProgress(): Promise<void> {
     // Get stored progress data
     const cache = await caches.open('user-progress');
     const requests = await cache.keys();
-    
+
     for (const request of requests) {
       if (request.url.includes('progress-sync')) {
         const response = await cache.match(request);
         if (response) {
           const data = await response.json();
-          
+
           // Attempt to sync with server
           try {
             await fetch('/api/sync-progress', {
@@ -170,7 +169,7 @@ async function syncUserProgress(): Promise<void> {
               },
               body: JSON.stringify(data),
             });
-            
+
             // Remove from cache after successful sync
             await cache.delete(request);
           } catch (syncError) {
@@ -185,14 +184,14 @@ async function syncUserProgress(): Promise<void> {
 }
 
 // Handle app updates
-self.addEventListener('message', (event) => {
+self.addEventListener('message', event => {
   if (event.data && event.data.type === 'SKIP_WAITING') {
     self.skipWaiting();
   }
 });
 
 // Periodic background sync (if supported)
-self.addEventListener('periodicsync', (event) => {
+self.addEventListener('periodicsync', event => {
   if (event.tag === 'daily-progress-sync') {
     event.waitUntil(syncUserProgress());
   }
@@ -205,16 +204,16 @@ self.addEventListener('install', () => {
 });
 
 // Activate event
-self.addEventListener('activate', (event) => {
+self.addEventListener('activate', event => {
   console.log('Service Worker activating...');
   event.waitUntil(self.clients.claim());
 });
 
 // Error handling
-self.addEventListener('error', (event) => {
+self.addEventListener('error', event => {
   console.error('Service Worker error:', event.error);
 });
 
-self.addEventListener('unhandledrejection', (event) => {
+self.addEventListener('unhandledrejection', event => {
   console.error('Service Worker unhandled rejection:', event.reason);
 });

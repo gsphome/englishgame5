@@ -26,9 +26,7 @@ export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose }) => {
                 <FluentFlowLogo size="sm" />
               </div>
               <div>
-                <h2 className="about-modal__title">
-                  {t('about.title', 'About FluentFlow')}
-                </h2>
+                <h2 className="about-modal__title">{t('about.title', 'About FluentFlow')}</h2>
                 <p className="about-modal__subtitle">
                   {t('about.subtitle', 'Advanced English Learning Platform')}
                 </p>
@@ -44,20 +42,21 @@ export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose }) => {
           </div>
 
           <div className="about-modal__body">
-
-
             {/* Description Section */}
             <div className="about-modal__section about-modal__section--description">
               <h3 className="about-modal__section-title about-modal__section-title--description">
                 <span className="about-modal__section-icon">📖</span>
                 {t('about.description', 'Description')}
               </h3>
-              
+
               <div className="about-modal__description">
                 <p className="about-modal__description-text">
-                  {t('about.descriptionText', 'FluentFlow is an advanced English learning platform designed to help you improve your vocabulary and comprehension through interactive exercises.')}
+                  {t(
+                    'about.descriptionText',
+                    'FluentFlow is an advanced English learning platform designed to help you improve your vocabulary and comprehension through interactive exercises.'
+                  )}
                 </p>
-                
+
                 <div className="about-modal__features">
                   <ul className="about-modal__features-list">
                     <li className="about-modal__feature-item">
@@ -104,11 +103,14 @@ export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose }) => {
                     <span>GitHub</span>
                   </a>
                 </div>
-                
+
                 <div className="about-modal__acknowledgments-compact">
                   <p className="about-modal__acknowledgments-text-compact">
                     <Heart className="about-modal__heart-icon-compact" />
-                    {t('about.acknowledgementsText', 'Built with passion for language learning and education. Special thanks to the open-source community for the amazing tools and libraries that made this project possible.')}
+                    {t(
+                      'about.acknowledgementsText',
+                      'Built with passion for language learning and education. Special thanks to the open-source community for the amazing tools and libraries that made this project possible.'
+                    )}
                   </p>
                 </div>
               </div>

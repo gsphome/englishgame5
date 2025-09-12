@@ -49,7 +49,7 @@ class ApiService {
   async fetchModules(): Promise<ApiResponse<LearningModule[]>> {
     const cacheKey = this.getCacheKey('modules');
     const cached = this.getFromCache<LearningModule[]>(cacheKey);
-    
+
     if (cached) {
       logDebug('Returning cached modules', { count: cached.length }, 'ApiService');
       return { data: cached, success: true };
@@ -58,7 +58,7 @@ class ApiService {
     try {
       const modulesUrl = validateUrl(getLearningModulesPath());
       const modules = await secureJsonFetch<LearningModule[]>(modulesUrl);
-      
+
       // Enhance modules with default values
       const enhancedModules = modules.map((module: LearningModule) => ({
         ...module,
@@ -69,7 +69,7 @@ class ApiService {
 
       this.setCache(cacheKey, enhancedModules);
       logDebug('Fetched modules successfully', { count: enhancedModules.length }, 'ApiService');
-      
+
       return { data: enhancedModules, success: true };
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'Unknown error';
@@ -84,7 +84,7 @@ class ApiService {
   async fetchModuleData(moduleId: string): Promise<ApiResponse<LearningModule>> {
     const cacheKey = this.getCacheKey('module', { moduleId });
     const cached = this.getFromCache<LearningModule>(cacheKey);
-    
+
     if (cached) {
       logDebug('Returning cached module data', { moduleId }, 'ApiService');
       return { data: cached, success: true };
@@ -104,11 +104,11 @@ class ApiService {
 
       // Then get module data if dataPath exists
       let moduleData: LearningModule = { ...moduleInfo };
-      
+
       if (moduleInfo.dataPath) {
         const dataUrl = validateUrl(getAssetPath(moduleInfo.dataPath));
         const data = await secureJsonFetch(dataUrl);
-        
+
         moduleData = {
           ...moduleInfo,
           data: data.data || data,
@@ -120,7 +120,7 @@ class ApiService {
 
       this.setCache(cacheKey, moduleData);
       logDebug('Fetched module data successfully', { moduleId }, 'ApiService');
-      
+
       return { data: moduleData, success: true };
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'Unknown error';
@@ -147,28 +147,28 @@ class ApiService {
     // Special handling for sorting modules - they need all data for category selection
     if (moduleId.includes('sorting')) {
       logDebug('Applying minimal filtering for sorting module', { moduleId }, 'ApiService');
-      
+
       // Only filter by level for sorting modules, not by categories
       // because sorting component needs to select from multiple categories
       if (filters.level && filters.level !== 'all') {
-        filteredData = filteredData.filter((item) => {
+        filteredData = filteredData.filter(item => {
           const itemLevel = item.level || 'b1';
           return itemLevel.toLowerCase() === filters.level!.toLowerCase();
         });
       }
-      
+
       // Apply limit
       if (filters.limit && filters.limit > 0) {
         filteredData = filteredData.slice(0, filters.limit);
       }
-      
+
       return filteredData;
     }
 
     // Normal filtering for other modes
     // Filter by categories
     if (filters.categories && filters.categories.length > 0) {
-      filteredData = filteredData.filter((item) => {
+      filteredData = filteredData.filter(item => {
         const itemCategory = item.category || this.getCategoryFromId(moduleId);
         return filters.categories!.includes(itemCategory);
       });
@@ -176,7 +176,7 @@ class ApiService {
 
     // Filter by level
     if (filters.level && filters.level !== 'all') {
-      filteredData = filteredData.filter((item) => {
+      filteredData = filteredData.filter(item => {
         const itemLevel = item.level || 'b1';
         return itemLevel.toLowerCase() === filters.level!.toLowerCase();
       });
@@ -187,12 +187,16 @@ class ApiService {
       filteredData = filteredData.slice(0, filters.limit);
     }
 
-    logDebug('Filtered module data', {
-      moduleId,
-      originalCount: data.length,
-      filteredCount: filteredData.length,
-      filters,
-    }, 'ApiService');
+    logDebug(
+      'Filtered module data',
+      {
+        moduleId,
+        originalCount: data.length,
+        filteredCount: filteredData.length,
+        filters,
+      },
+      'ApiService'
+    );
 
     return filteredData;
   }
@@ -201,7 +205,11 @@ class ApiService {
    * Helper to determine category from module ID
    */
   private getCategoryFromId(moduleId: string): string {
-    if (moduleId.includes('grammar') || moduleId.includes('conditional') || moduleId.includes('participle')) {
+    if (
+      moduleId.includes('grammar') ||
+      moduleId.includes('conditional') ||
+      moduleId.includes('participle')
+    ) {
       return 'Grammar';
     }
     if (moduleId.includes('phrasal')) {
@@ -250,7 +258,7 @@ export const apiService = {
     moduleId: string
   ) => getApiService().filterModuleData(data, filters, moduleId),
   clearCache: () => getApiService().clearCache(),
-  getCacheStats: () => getApiService().getCacheStats()
+  getCacheStats: () => getApiService().getCacheStats(),
 };
 
 // Export convenience functions

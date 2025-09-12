@@ -28,12 +28,12 @@
 .search__input {
   @apply w-full px-3 py-2 pl-10 pr-10 rounded-md text-sm;
   @apply transition-all duration-200;
-  
+
   /* Light mode - Maximum contrast */
   background-color: #ffffff !important; /* Pure white background */
   color: #111827 !important; /* gray-900 - nearly black text */
   border: 2px solid #d1d5db !important; /* gray-300 - defined border */
-  
+
   /* Focus styles for light mode */
   @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500;
 }
@@ -103,7 +103,7 @@
   .search {
     @apply max-w-full;
   }
-  
+
   .search__input {
     @apply text-base; /* Prevent zoom on iOS */
   }
@@ -123,19 +123,19 @@
   .search__input {
     border-width: 3px !important; /* Thicker border for high contrast */
   }
-  
+
   .search__icon-svg {
     color: #000000 !important; /* Pure black in high contrast light mode */
   }
-  
+
   .dark .search__icon-svg {
     color: #ffffff !important; /* Pure white in high contrast dark mode */
   }
-  
+
   .search__clear-icon {
     color: #000000 !important; /* Pure black in high contrast light mode */
   }
-  
+
   .dark .search__clear-icon {
     color: #ffffff !important; /* Pure white in high contrast dark mode */
   }

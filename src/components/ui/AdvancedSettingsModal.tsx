@@ -2,7 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { X } from 'lucide-react';
 import { useSettingsStore } from '../../stores/settingsStore';
 import { useTranslation } from '../../utils/i18n';
-import { validateNumber, validateGameSettings, sanitizeString, globalRateLimiter } from '../../utils/inputValidation';
+import {
+  validateNumber,
+  validateGameSettings,
+  sanitizeString,
+  globalRateLimiter,
+} from '../../utils/inputValidation';
 import { logWarn } from '../../utils/logger';
 
 interface AdvancedSettingsModalProps {
@@ -10,10 +15,21 @@ interface AdvancedSettingsModalProps {
   onClose: () => void;
 }
 
-export const AdvancedSettingsModal: React.FC<AdvancedSettingsModalProps> = ({ isOpen, onClose }) => {
+export const AdvancedSettingsModal: React.FC<AdvancedSettingsModalProps> = ({
+  isOpen,
+  onClose,
+}) => {
   const {
-    theme, language, level, categories, gameSettings,
-    setTheme, setLanguage, setLevel, setCategories, setGameSetting
+    theme,
+    language,
+    level,
+    categories,
+    gameSettings,
+    setTheme,
+    setLanguage,
+    setLevel,
+    setCategories,
+    setGameSetting,
   } = useSettingsStore();
 
   const { t } = useTranslation(language);
@@ -92,7 +108,11 @@ export const AdvancedSettingsModal: React.FC<AdvancedSettingsModalProps> = ({ is
   const handleGameSettingChange = (mode: string, setting: string, value: string) => {
     // Rate limiting for rapid changes
     if (!globalRateLimiter.isAllowed(`settings-${mode}-${setting}`)) {
-      logWarn('Rate limit exceeded for settings change', { mode, setting }, 'AdvancedSettingsModal');
+      logWarn(
+        'Rate limit exceeded for settings change',
+        { mode, setting },
+        'AdvancedSettingsModal'
+      );
       return;
     }
 
@@ -113,8 +133,8 @@ export const AdvancedSettingsModal: React.FC<AdvancedSettingsModalProps> = ({ is
       ...localGameSettings,
       [mode]: {
         ...localGameSettings[mode as keyof typeof localGameSettings],
-        [setting]: validValue
-      }
+        [setting]: validValue,
+      },
     });
   };
 
@@ -140,10 +160,10 @@ export const AdvancedSettingsModal: React.FC<AdvancedSettingsModalProps> = ({ is
 
   const allCategories = ['Vocabulary', 'Grammar', 'PhrasalVerbs', 'Idioms'];
   const categoryLabels = {
-    'Vocabulary': t('settings.vocabulary'),
-    'Grammar': t('settings.grammar'),
-    'PhrasalVerbs': t('settings.phrasalVerbs'),
-    'Idioms': t('settings.idioms')
+    Vocabulary: t('settings.vocabulary'),
+    Grammar: t('settings.grammar'),
+    PhrasalVerbs: t('settings.phrasalVerbs'),
+    Idioms: t('settings.idioms'),
   };
 
   return (
@@ -166,7 +186,9 @@ export const AdvancedSettingsModal: React.FC<AdvancedSettingsModalProps> = ({ is
             onClick={() => setActiveTab('general')}
             className={`advanced-settings-modal__tab ${activeTab === 'general' ? 'advanced-settings-modal__tab--active' : ''}`}
           >
-            <span className="advanced-settings-modal__tab-title">{t('settings.generalSettings')}</span>
+            <span className="advanced-settings-modal__tab-title">
+              {t('settings.generalSettings')}
+            </span>
             <span className="advanced-settings-modal__tab-icon">🎛️</span>
           </button>
           <button
@@ -180,7 +202,9 @@ export const AdvancedSettingsModal: React.FC<AdvancedSettingsModalProps> = ({ is
             onClick={() => setActiveTab('categories')}
             className={`advanced-settings-modal__tab ${activeTab === 'categories' ? 'advanced-settings-modal__tab--active' : ''}`}
           >
-            <span className="advanced-settings-modal__tab-title">{t('settings.categorySettings')}</span>
+            <span className="advanced-settings-modal__tab-title">
+              {t('settings.categorySettings')}
+            </span>
             <span className="advanced-settings-modal__tab-icon">📚</span>
           </button>
         </div>
@@ -196,7 +220,7 @@ export const AdvancedSettingsModal: React.FC<AdvancedSettingsModalProps> = ({ is
                   <select
                     className="advanced-settings-modal__select"
                     value={localTheme}
-                    onChange={(e) => setLocalTheme(e.target.value as 'light' | 'dark')}
+                    onChange={e => setLocalTheme(e.target.value as 'light' | 'dark')}
                     disabled={!isEditMode}
                   >
                     <option value="light">☀️ {t('settings.light')}</option>
@@ -209,7 +233,7 @@ export const AdvancedSettingsModal: React.FC<AdvancedSettingsModalProps> = ({ is
                   <select
                     className="advanced-settings-modal__select"
                     value={localLanguage}
-                    onChange={(e) => setLocalLanguage(e.target.value as 'en' | 'es')}
+                    onChange={e => setLocalLanguage(e.target.value as 'en' | 'es')}
                     disabled={!isEditMode}
                   >
                     <option value="en">🇺🇸 {t('settings.english')}</option>
@@ -222,7 +246,7 @@ export const AdvancedSettingsModal: React.FC<AdvancedSettingsModalProps> = ({ is
                   <select
                     className="advanced-settings-modal__select advanced-settings-modal__select--full"
                     value={localLevel}
-                    onChange={(e) => setLocalLevel(e.target.value as any)}
+                    onChange={e => setLocalLevel(e.target.value as any)}
                     disabled={!isEditMode}
                   >
                     <option value="all">🌟 {t('settings.all')}</option>
@@ -243,13 +267,23 @@ export const AdvancedSettingsModal: React.FC<AdvancedSettingsModalProps> = ({ is
             <div className="advanced-settings-modal__section">
               <div className="advanced-settings-modal__grid">
                 <div className="advanced-settings-modal__field">
-                  <label className="advanced-settings-modal__label">📚 {t('settings.flashcardMode')}</label>
+                  <label className="advanced-settings-modal__label">
+                    📚 {t('settings.flashcardMode')}
+                  </label>
                   <input
                     type="number"
                     className="advanced-settings-modal__input"
                     value={localGameSettings.flashcardMode.wordCount || ''}
-                    onChange={(e) => handleGameSettingChange('flashcardMode', 'wordCount', e.target.value)}
-                    onBlur={() => handleInputBlur('flashcardMode', 'wordCount', localGameSettings.flashcardMode.wordCount)}
+                    onChange={e =>
+                      handleGameSettingChange('flashcardMode', 'wordCount', e.target.value)
+                    }
+                    onBlur={() =>
+                      handleInputBlur(
+                        'flashcardMode',
+                        'wordCount',
+                        localGameSettings.flashcardMode.wordCount
+                      )
+                    }
                     min="1"
                     max="50"
                     disabled={!isEditMode}
@@ -257,13 +291,23 @@ export const AdvancedSettingsModal: React.FC<AdvancedSettingsModalProps> = ({ is
                 </div>
 
                 <div className="advanced-settings-modal__field">
-                  <label className="advanced-settings-modal__label">❓ {t('settings.quizMode')}</label>
+                  <label className="advanced-settings-modal__label">
+                    ❓ {t('settings.quizMode')}
+                  </label>
                   <input
                     type="number"
                     className="advanced-settings-modal__input"
                     value={localGameSettings.quizMode.questionCount || ''}
-                    onChange={(e) => handleGameSettingChange('quizMode', 'questionCount', e.target.value)}
-                    onBlur={() => handleInputBlur('quizMode', 'questionCount', localGameSettings.quizMode.questionCount)}
+                    onChange={e =>
+                      handleGameSettingChange('quizMode', 'questionCount', e.target.value)
+                    }
+                    onBlur={() =>
+                      handleInputBlur(
+                        'quizMode',
+                        'questionCount',
+                        localGameSettings.quizMode.questionCount
+                      )
+                    }
                     min="1"
                     max="50"
                     disabled={!isEditMode}
@@ -271,13 +315,23 @@ export const AdvancedSettingsModal: React.FC<AdvancedSettingsModalProps> = ({ is
                 </div>
 
                 <div className="advanced-settings-modal__field">
-                  <label className="advanced-settings-modal__label">✏️ {t('settings.completionMode')}</label>
+                  <label className="advanced-settings-modal__label">
+                    ✏️ {t('settings.completionMode')}
+                  </label>
                   <input
                     type="number"
                     className="advanced-settings-modal__input"
                     value={localGameSettings.completionMode.itemCount || ''}
-                    onChange={(e) => handleGameSettingChange('completionMode', 'itemCount', e.target.value)}
-                    onBlur={() => handleInputBlur('completionMode', 'itemCount', localGameSettings.completionMode.itemCount)}
+                    onChange={e =>
+                      handleGameSettingChange('completionMode', 'itemCount', e.target.value)
+                    }
+                    onBlur={() =>
+                      handleInputBlur(
+                        'completionMode',
+                        'itemCount',
+                        localGameSettings.completionMode.itemCount
+                      )
+                    }
                     min="1"
                     max="50"
                     disabled={!isEditMode}
@@ -285,13 +339,23 @@ export const AdvancedSettingsModal: React.FC<AdvancedSettingsModalProps> = ({ is
                 </div>
 
                 <div className="advanced-settings-modal__field">
-                  <label className="advanced-settings-modal__label">🔄 {t('settings.sortingMode')}</label>
+                  <label className="advanced-settings-modal__label">
+                    🔄 {t('settings.sortingMode')}
+                  </label>
                   <input
                     type="number"
                     className="advanced-settings-modal__input"
                     value={localGameSettings.sortingMode.wordCount || ''}
-                    onChange={(e) => handleGameSettingChange('sortingMode', 'wordCount', e.target.value)}
-                    onBlur={() => handleInputBlur('sortingMode', 'wordCount', localGameSettings.sortingMode.wordCount)}
+                    onChange={e =>
+                      handleGameSettingChange('sortingMode', 'wordCount', e.target.value)
+                    }
+                    onBlur={() =>
+                      handleInputBlur(
+                        'sortingMode',
+                        'wordCount',
+                        localGameSettings.sortingMode.wordCount
+                      )
+                    }
                     min="1"
                     max="50"
                     disabled={!isEditMode}
@@ -299,13 +363,23 @@ export const AdvancedSettingsModal: React.FC<AdvancedSettingsModalProps> = ({ is
                 </div>
 
                 <div className="advanced-settings-modal__field">
-                  <label className="advanced-settings-modal__label">📊 {t('settings.sortingCategories')}</label>
+                  <label className="advanced-settings-modal__label">
+                    📊 {t('settings.sortingCategories')}
+                  </label>
                   <input
                     type="number"
                     className="advanced-settings-modal__input"
                     value={localGameSettings.sortingMode.categoryCount || ''}
-                    onChange={(e) => handleGameSettingChange('sortingMode', 'categoryCount', e.target.value)}
-                    onBlur={() => handleInputBlur('sortingMode', 'categoryCount', localGameSettings.sortingMode.categoryCount)}
+                    onChange={e =>
+                      handleGameSettingChange('sortingMode', 'categoryCount', e.target.value)
+                    }
+                    onBlur={() =>
+                      handleInputBlur(
+                        'sortingMode',
+                        'categoryCount',
+                        localGameSettings.sortingMode.categoryCount
+                      )
+                    }
                     min="2"
                     max="10"
                     disabled={!isEditMode}
@@ -313,13 +387,23 @@ export const AdvancedSettingsModal: React.FC<AdvancedSettingsModalProps> = ({ is
                 </div>
 
                 <div className="advanced-settings-modal__field">
-                  <label className="advanced-settings-modal__label">🔗 {t('settings.matchingMode')}</label>
+                  <label className="advanced-settings-modal__label">
+                    🔗 {t('settings.matchingMode')}
+                  </label>
                   <input
                     type="number"
                     className="advanced-settings-modal__input"
                     value={localGameSettings.matchingMode.wordCount || ''}
-                    onChange={(e) => handleGameSettingChange('matchingMode', 'wordCount', e.target.value)}
-                    onBlur={() => handleInputBlur('matchingMode', 'wordCount', localGameSettings.matchingMode.wordCount)}
+                    onChange={e =>
+                      handleGameSettingChange('matchingMode', 'wordCount', e.target.value)
+                    }
+                    onBlur={() =>
+                      handleInputBlur(
+                        'matchingMode',
+                        'wordCount',
+                        localGameSettings.matchingMode.wordCount
+                      )
+                    }
                     min="1"
                     max="50"
                     disabled={!isEditMode}
@@ -338,18 +422,19 @@ export const AdvancedSettingsModal: React.FC<AdvancedSettingsModalProps> = ({ is
                     type="checkbox"
                     id={category}
                     checked={localCategories.includes(category)}
-                    onChange={(e) => handleCategoryChange(category, e.target.checked)}
+                    onChange={e => handleCategoryChange(category, e.target.checked)}
                     disabled={!isEditMode}
                     className="advanced-settings-modal__category-checkbox"
                   />
-                  <label
-                    htmlFor={category}
-                    className="advanced-settings-modal__category-label"
-                  >
-                    {category === 'Vocabulary' && `📚 ${categoryLabels[category as keyof typeof categoryLabels]}`}
-                    {category === 'Grammar' && `📝 ${categoryLabels[category as keyof typeof categoryLabels]}`}
-                    {category === 'PhrasalVerbs' && `🔗 ${categoryLabels[category as keyof typeof categoryLabels]}`}
-                    {category === 'Idioms' && `💭 ${categoryLabels[category as keyof typeof categoryLabels]}`}
+                  <label htmlFor={category} className="advanced-settings-modal__category-label">
+                    {category === 'Vocabulary' &&
+                      `📚 ${categoryLabels[category as keyof typeof categoryLabels]}`}
+                    {category === 'Grammar' &&
+                      `📝 ${categoryLabels[category as keyof typeof categoryLabels]}`}
+                    {category === 'PhrasalVerbs' &&
+                      `🔗 ${categoryLabels[category as keyof typeof categoryLabels]}`}
+                    {category === 'Idioms' &&
+                      `💭 ${categoryLabels[category as keyof typeof categoryLabels]}`}
                   </label>
                 </div>
               ))}

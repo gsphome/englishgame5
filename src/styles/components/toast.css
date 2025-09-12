@@ -123,19 +123,19 @@
   .toast-container {
     @apply top-2 right-2 left-2 max-w-none;
   }
-  
+
   .toast {
     @apply min-w-0 w-full;
   }
-  
+
   .toast__content {
     @apply p-3 gap-2;
   }
-  
+
   .toast__title {
     @apply text-xs;
   }
-  
+
   .toast__message {
     @apply text-xs;
   }
@@ -146,19 +146,19 @@
   .toast {
     @apply border-2;
   }
-  
+
   .toast--success {
     @apply border-green-700 dark:border-green-300;
   }
-  
+
   .toast--error {
     @apply border-red-700 dark:border-red-300;
   }
-  
+
   .toast--warning {
     @apply border-orange-700 dark:border-orange-300;
   }
-  
+
   .toast--info {
     @apply border-blue-700 dark:border-blue-300;
   }
@@ -169,11 +169,11 @@
   .toast {
     @apply transition-none translate-x-0 opacity-100;
   }
-  
+
   .toast--leaving {
     @apply opacity-0;
   }
-  
+
   .toast__progress {
     @apply transition-none;
   }

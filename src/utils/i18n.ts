@@ -17,7 +17,7 @@ export const translations = {
       start: 'Start',
       pause: 'Pause',
       resume: 'Resume',
-      reset: 'Reset'
+      reset: 'Reset',
     },
     navigation: {
       mainMenu: 'Main Menu',
@@ -25,7 +25,7 @@ export const translations = {
       settings: 'Settings',
       profile: 'Profile',
       help: 'Help',
-      about: 'About'
+      about: 'About',
     },
     settings: {
       settings: 'Settings',
@@ -58,13 +58,14 @@ export const translations = {
       idioms: 'Idioms',
       edit: 'Edit',
       cancel: 'Cancel',
-      save: 'Save'
+      save: 'Save',
     },
     about: {
       title: 'About FluentFlow',
       subtitle: 'Advanced English Learning Platform',
       description: 'Description',
-      descriptionText: 'FluentFlow is an advanced English learning platform designed to help you improve your vocabulary and comprehension through interactive exercises.',
+      descriptionText:
+        'FluentFlow is an advanced English learning platform designed to help you improve your vocabulary and comprehension through interactive exercises.',
       features: 'Key Features',
       feature1: 'Interactive flashcards and quizzes',
       feature2: 'Adaptive difficulty levels (A1-C2)',
@@ -73,7 +74,8 @@ export const translations = {
       feature5: 'Multiple learning modes and games',
       developerTitle: 'Cloud Expert passionate about GenAI',
       acknowledgments: 'Acknowledgments',
-      acknowledgementsText: 'Built with passion for language learning and education. Special thanks to the open-source community for the amazing tools and libraries that made this project possible.'
+      acknowledgementsText:
+        'Built with passion for language learning and education. Special thanks to the open-source community for the amazing tools and libraries that made this project possible.',
     },
     learning: {
       flashcards: 'Flashcards',
@@ -83,7 +85,7 @@ export const translations = {
       matching: 'Matching',
       startLearning: 'Start Learning',
       continueSession: 'Continue Session',
-      newSession: 'New Session'
+      newSession: 'New Session',
     },
     scores: {
       correct: 'Correct',
@@ -94,7 +96,7 @@ export const translations = {
       globalScore: 'Global Score',
       bestScore: 'Best Score',
       attempts: 'Attempts',
-      timeSpent: 'Time Spent'
+      timeSpent: 'Time Spent',
     },
     dashboard: {
       learningDashboard: 'Learning Dashboard',
@@ -112,25 +114,31 @@ export const translations = {
       helpButton: 'Help',
       helpTitle: 'How Metrics Work',
       helpPointsTitle: 'Points System',
-      helpPointsDesc: 'Earn points by completing quizzes and exercises. Higher accuracy = more points per question.',
+      helpPointsDesc:
+        'Earn points by completing quizzes and exercises. Higher accuracy = more points per question.',
       helpAccuracyTitle: 'Accuracy Score',
-      helpAccuracyDesc: 'Percentage of correct answers in your recent sessions. Calculated from your last 7 days of activity.',
+      helpAccuracyDesc:
+        'Percentage of correct answers in your recent sessions. Calculated from your last 7 days of activity.',
       helpSessionsTitle: 'Study Sessions',
-      helpSessionsDesc: 'Each time you complete a learning module counts as one session. More sessions = more practice!',
+      helpSessionsDesc:
+        'Each time you complete a learning module counts as one session. More sessions = more practice!',
       helpTimeTitle: 'Practice Time',
-      helpTimeDesc: 'Total minutes spent actively learning. Time is tracked while you\'re engaged with exercises.',
+      helpTimeDesc:
+        "Total minutes spent actively learning. Time is tracked while you're engaged with exercises.",
       helpProgressTitle: 'Progress Tracking',
-      helpProgressDesc: 'Charts show your daily performance trends. Blue bars = accuracy, green line = session count.',
+      helpProgressDesc:
+        'Charts show your daily performance trends. Blue bars = accuracy, green line = session count.',
       helpModuleTitle: 'Module Performance',
-      helpModuleDesc: 'Your best score in each completed module. Focus on modules with lower scores to improve.',
-      closeHelp: 'Got it!'
+      helpModuleDesc:
+        'Your best score in each completed module. Focus on modules with lower scores to improve.',
+      closeHelp: 'Got it!',
     },
     categories: {
       vocabulary: 'Vocabulary',
       grammar: 'Grammar',
       phrasalverbs: 'Phrasal Verbs',
       idioms: 'Idioms',
-      all: 'All Categories'
+      all: 'All Categories',
     },
     levels: {
       all: 'All Levels',
@@ -139,7 +147,7 @@ export const translations = {
       b1: 'Intermediate (B1)',
       b2: 'Upper Intermediate (B2)',
       c1: 'Advanced (C1)',
-      c2: 'Proficient (C2)'
+      c2: 'Proficient (C2)',
     },
     messages: {
       noDataAvailable: 'No data available',
@@ -151,7 +159,7 @@ export const translations = {
       correctAnswer: 'Correct answer!',
       incorrectAnswer: 'Incorrect answer',
       gameComplete: 'Game completed!',
-      newRecord: 'New record!'
+      newRecord: 'New record!',
     },
     profile: {
       userProfile: 'User Profile',
@@ -174,7 +182,7 @@ export const translations = {
       saveProfile: 'Save Profile',
       profileSubtitle: 'Customize your learning experience',
       nameRequired: 'Name must be at least 2 characters',
-      categoriesRequired: 'Select at least one category'
+      categoriesRequired: 'Select at least one category',
     },
     errors: {
       somethingWentWrong: 'Something went wrong',
@@ -184,8 +192,8 @@ export const translations = {
       unauthorized: 'Unauthorized',
       forbidden: 'Forbidden',
       timeout: 'Request timeout',
-      unknownError: 'Unknown error'
-    }
+      unknownError: 'Unknown error',
+    },
   },
   es: {
     common: {
@@ -202,7 +210,7 @@ export const translations = {
       start: 'Comenzar',
       pause: 'Pausar',
       resume: 'Continuar',
-      reset: 'Reiniciar'
+      reset: 'Reiniciar',
     },
     navigation: {
       mainMenu: 'Menú Principal',
@@ -210,7 +218,7 @@ export const translations = {
       settings: 'Configuración',
       profile: 'Perfil',
       help: 'Ayuda',
-      about: 'Acerca de'
+      about: 'Acerca de',
     },
     settings: {
       settings: 'Configuración',
@@ -243,13 +251,14 @@ export const translations = {
       idioms: 'Modismos',
       edit: 'Editar',
       cancel: 'Cancelar',
-      save: 'Guardar'
+      save: 'Guardar',
     },
     about: {
       title: 'Acerca de FluentFlow',
       subtitle: 'Plataforma Avanzada de Aprendizaje de Inglés',
       description: 'Descripción',
-      descriptionText: 'FluentFlow es una plataforma avanzada de aprendizaje de inglés diseñada para ayudarte a mejorar tu vocabulario y comprensión a través de ejercicios interactivos.',
+      descriptionText:
+        'FluentFlow es una plataforma avanzada de aprendizaje de inglés diseñada para ayudarte a mejorar tu vocabulario y comprensión a través de ejercicios interactivos.',
       features: 'Características Principales',
       feature1: 'Tarjetas interactivas y cuestionarios',
       feature2: 'Niveles de dificultad adaptativos (A1-C2)',
@@ -258,7 +267,8 @@ export const translations = {
       feature5: 'Múltiples modos de aprendizaje y juegos',
       developerTitle: 'Experto Cloud apasionado por la GenAI',
       acknowledgments: 'Agradecimientos',
-      acknowledgementsText: 'Construido con pasión por el aprendizaje de idiomas y la educación. Agradecimientos especiales a la comunidad de código abierto por las increíbles herramientas y librerías que hicieron posible este proyecto.'
+      acknowledgementsText:
+        'Construido con pasión por el aprendizaje de idiomas y la educación. Agradecimientos especiales a la comunidad de código abierto por las increíbles herramientas y librerías que hicieron posible este proyecto.',
     },
     learning: {
       flashcards: 'Tarjetas',
@@ -268,7 +278,7 @@ export const translations = {
       matching: 'Emparejar',
       startLearning: 'Comenzar Aprendizaje',
       continueSession: 'Continuar Sesión',
-      newSession: 'Nueva Sesión'
+      newSession: 'Nueva Sesión',
     },
     scores: {
       correct: 'Correctas',
@@ -279,7 +289,7 @@ export const translations = {
       globalScore: 'Puntuación Global',
       bestScore: 'Mejor Puntuación',
       attempts: 'Intentos',
-      timeSpent: 'Tiempo Empleado'
+      timeSpent: 'Tiempo Empleado',
     },
     dashboard: {
       learningDashboard: 'Panel de Aprendizaje',
@@ -297,25 +307,31 @@ export const translations = {
       helpButton: 'Ayuda',
       helpTitle: 'Cómo Funcionan las Métricas',
       helpPointsTitle: 'Sistema de Puntos',
-      helpPointsDesc: 'Gana puntos completando cuestionarios y ejercicios. Mayor precisión = más puntos por pregunta.',
+      helpPointsDesc:
+        'Gana puntos completando cuestionarios y ejercicios. Mayor precisión = más puntos por pregunta.',
       helpAccuracyTitle: 'Puntuación de Precisión',
-      helpAccuracyDesc: 'Porcentaje de respuestas correctas en tus sesiones recientes. Calculado de tus últimos 7 días de actividad.',
+      helpAccuracyDesc:
+        'Porcentaje de respuestas correctas en tus sesiones recientes. Calculado de tus últimos 7 días de actividad.',
       helpSessionsTitle: 'Sesiones de Estudio',
-      helpSessionsDesc: 'Cada vez que completas un módulo de aprendizaje cuenta como una sesión. ¡Más sesiones = más práctica!',
+      helpSessionsDesc:
+        'Cada vez que completas un módulo de aprendizaje cuenta como una sesión. ¡Más sesiones = más práctica!',
       helpTimeTitle: 'Tiempo de Práctica',
-      helpTimeDesc: 'Minutos totales dedicados al aprendizaje activo. El tiempo se registra mientras participas en ejercicios.',
+      helpTimeDesc:
+        'Minutos totales dedicados al aprendizaje activo. El tiempo se registra mientras participas en ejercicios.',
       helpProgressTitle: 'Seguimiento de Progreso',
-      helpProgressDesc: 'Los gráficos muestran tus tendencias de rendimiento diario. Barras azules = precisión, línea verde = número de sesiones.',
+      helpProgressDesc:
+        'Los gráficos muestran tus tendencias de rendimiento diario. Barras azules = precisión, línea verde = número de sesiones.',
       helpModuleTitle: 'Rendimiento por Módulo',
-      helpModuleDesc: 'Tu mejor puntuación en cada módulo completado. Enfócate en módulos con puntuaciones más bajas para mejorar.',
-      closeHelp: '¡Entendido!'
+      helpModuleDesc:
+        'Tu mejor puntuación en cada módulo completado. Enfócate en módulos con puntuaciones más bajas para mejorar.',
+      closeHelp: '¡Entendido!',
     },
     categories: {
       vocabulary: 'Vocabulario',
       grammar: 'Gramática',
       phrasalverbs: 'Verbos Frasales',
       idioms: 'Modismos',
-      all: 'Todas las Categorías'
+      all: 'Todas las Categorías',
     },
     levels: {
       all: 'Todos los Niveles',
@@ -324,7 +340,7 @@ export const translations = {
       b1: 'Intermedio (B1)',
       b2: 'Intermedio Alto (B2)',
       c1: 'Avanzado (C1)',
-      c2: 'Competente (C2)'
+      c2: 'Competente (C2)',
     },
     messages: {
       noDataAvailable: 'No hay datos disponibles',
@@ -336,7 +352,7 @@ export const translations = {
       correctAnswer: '¡Respuesta correcta!',
       incorrectAnswer: 'Respuesta incorrecta',
       gameComplete: '¡Juego completado!',
-      newRecord: '¡Nuevo récord!'
+      newRecord: '¡Nuevo récord!',
     },
     profile: {
       userProfile: 'Perfil de Usuario',
@@ -359,7 +375,7 @@ export const translations = {
       saveProfile: 'Guardar Perfil',
       profileSubtitle: 'Personaliza tu experiencia de aprendizaje',
       nameRequired: 'El nombre debe tener al menos 2 caracteres',
-      categoriesRequired: 'Selecciona al menos una categoría'
+      categoriesRequired: 'Selecciona al menos una categoría',
     },
     errors: {
       somethingWentWrong: 'Algo salió mal',
@@ -369,22 +385,26 @@ export const translations = {
       unauthorized: 'No autorizado',
       forbidden: 'Prohibido',
       timeout: 'Tiempo de espera agotado',
-      unknownError: 'Error desconocido'
-    }
-  }
+      unknownError: 'Error desconocido',
+    },
+  },
 } as const;
 
 // Type-safe translation keys based on the JSON structure
 type NestedKeyOf<ObjectType extends object> = {
   [Key in keyof ObjectType & (string | number)]: ObjectType[Key] extends object
-  ? `${Key}` | `${Key}.${NestedKeyOf<ObjectType[Key]>}`
-  : `${Key}`;
+    ? `${Key}` | `${Key}.${NestedKeyOf<ObjectType[Key]>}`
+    : `${Key}`;
 }[keyof ObjectType & (string | number)];
 
 type TranslationKeys = NestedKeyOf<typeof translations.en>;
 
 export const useTranslation = (language: Language) => {
-  const t = (key: TranslationKeys | string, defaultValue?: string, interpolation?: Record<string, string | number>): string => {
+  const t = (
+    key: TranslationKeys | string,
+    defaultValue?: string,
+    interpolation?: Record<string, string | number>
+  ): string => {
     const keys = key.split('.');
     let value: any = translations[language];
 
@@ -436,7 +456,7 @@ export const useTranslation = (language: Language) => {
         value = value?.[k];
       }
       return value !== undefined;
-    }
+    },
   };
 };
 

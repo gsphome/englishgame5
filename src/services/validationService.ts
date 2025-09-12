@@ -8,7 +8,7 @@ export class ValidationService {
   private static readonly DEFAULT_CONFIG: ValidationConfig = {
     strictMode: true,
     requiredItemCount: 40,
-    allowWarnings: true
+    allowWarnings: true,
   };
 
   private config: ValidationConfig;
@@ -22,13 +22,13 @@ export class ValidationService {
    */
   validateModule(module: LearningModule): ValidationResult {
     const result = DataValidator.validateModule(module);
-    
+
     if (this.config.strictMode && result.warnings?.length) {
       // In strict mode, warnings become errors
       return {
         success: false,
         errors: [...result.errors, ...result.warnings],
-        warnings: []
+        warnings: [],
       };
     }
 
@@ -51,7 +51,7 @@ export class ValidationService {
   } {
     const results = modules.map(module => ({
       moduleId: module.id,
-      result: this.validateModule(module)
+      result: this.validateModule(module),
     }));
 
     const validModules = results.filter(r => r.result.success).length;
@@ -66,8 +66,8 @@ export class ValidationService {
         validModules,
         invalidModules: modules.length - validModules,
         totalErrors,
-        totalWarnings
-      }
+        totalWarnings,
+      },
     };
   }
 

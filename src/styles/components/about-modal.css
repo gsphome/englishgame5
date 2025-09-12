@@ -349,7 +349,9 @@
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.3);
   transform: translate(-50%, -50%);
-  transition: width 0.3s ease, height 0.3s ease;
+  transition:
+    width 0.3s ease,
+    height 0.3s ease;
 }
 
 .about-modal__btn:active::before {
@@ -362,11 +364,15 @@
 }
 
 .about-modal__btn--close:focus {
-  box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.3), 0 8px 16px rgba(147, 51, 234, 0.2);
+  box-shadow:
+    0 0 0 3px rgba(147, 51, 234, 0.3),
+    0 8px 16px rgba(147, 51, 234, 0.2);
 }
 
 .dark .about-modal__btn--close:focus {
-  box-shadow: 0 0 0 3px rgba(196, 181, 253, 0.4), 0 8px 16px rgba(196, 181, 253, 0.3);
+  box-shadow:
+    0 0 0 3px rgba(196, 181, 253, 0.4),
+    0 8px 16px rgba(196, 181, 253, 0.3);
 }
 
 /* Mobile Responsive Adjustments */
@@ -374,35 +380,35 @@
   .about-modal__header {
     @apply mb-3;
   }
-  
+
   .about-modal__title {
     @apply text-base;
   }
-  
+
   .about-modal__subtitle {
     @apply text-xs;
   }
-  
+
   .about-modal__body {
     @apply space-y-2;
   }
-  
+
   .about-modal__section {
     @apply p-2;
   }
-  
+
   .about-modal__info-grid {
     @apply grid-cols-1 gap-1.5;
   }
-  
+
   .about-modal__developer-links {
     @apply flex justify-center;
   }
-  
+
   .about-modal__developer-link {
     @apply justify-center;
   }
-  
+
   .about-modal__actions {
     @apply pt-2 mt-3;
   }
@@ -416,7 +422,7 @@
     animation: none;
     transition: none;
   }
-  
+
   .about-modal__btn::before {
     display: none;
   }
@@ -427,12 +433,12 @@
   .about-modal__section {
     border-width: 2px;
   }
-  
+
   .about-modal__btn {
     border-width: 2px;
     border-color: currentColor;
   }
-  
+
   .about-modal__info-item,
   .about-modal__developer-link,
   .about-modal__tech-item {
@@ -496,11 +502,11 @@
   .about-modal__developer-info-compact {
     @apply flex-col gap-2;
   }
-  
+
   .about-modal__developer-name-compact {
     @apply text-xs;
   }
-  
+
   .about-modal__developer-title-compact {
     @apply text-xs;
   }

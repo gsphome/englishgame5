@@ -5,7 +5,7 @@ import type { LearningModule } from '../types';
 
 export const useModuleData = (moduleId: string) => {
   const { categories, level, gameSettings } = useSettingsStore();
-  
+
   return useQuery({
     queryKey: ['module', moduleId],
     queryFn: async () => {
@@ -20,7 +20,7 @@ export const useModuleData = (moduleId: string) => {
       if (module.data && Array.isArray(module.data)) {
         // Determine limit based on game settings
         let limit = 10; // default
-        
+
         if (module.learningMode) {
           switch (module.learningMode) {
             case 'flashcard':
@@ -35,7 +35,8 @@ export const useModuleData = (moduleId: string) => {
             case 'sorting':
               // For sorting mode, we need more data than the final word count
               // because the component will select words from multiple categories
-              limit = gameSettings.sortingMode.wordCount * gameSettings.sortingMode.categoryCount * 2;
+              limit =
+                gameSettings.sortingMode.wordCount * gameSettings.sortingMode.categoryCount * 2;
               break;
             case 'matching':
               limit = gameSettings.matchingMode.wordCount;
@@ -51,7 +52,7 @@ export const useModuleData = (moduleId: string) => {
 
         return { ...module, data: filteredData };
       }
-      
+
       return module;
     },
     staleTime: 10 * 60 * 1000, // 10 minutes
@@ -67,7 +68,7 @@ export const useModuleData = (moduleId: string) => {
 
 export const useAllModules = () => {
   const { categories, level } = useSettingsStore();
-  
+
   return useQuery({
     queryKey: ['modules'],
     queryFn: async () => {
@@ -86,7 +87,7 @@ export const useAllModules = () => {
             return false;
           }
         }
-        
+
         // Filter by level - module.level can be array or string
         if (level !== 'all' && module.level) {
           const moduleLevels = Array.isArray(module.level) ? module.level : [module.level];
@@ -94,7 +95,7 @@ export const useAllModules = () => {
             return false;
           }
         }
-        
+
         return true;
       });
     },

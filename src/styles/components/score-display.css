@@ -214,28 +214,28 @@
     min-width: 140px;
     max-width: 200px;
   }
-  
+
   .score-display-compact__global {
     @apply gap-1.5;
   }
-  
+
   .score-display-compact__main {
     @apply gap-1;
   }
-  
+
   .score-display-compact__values {
     @apply text-xs;
   }
-  
+
   .score-display-compact__accuracy {
     @apply text-xs px-1.5 py-0.5;
   }
-  
+
   .score-display-compact__level-badge {
     @apply text-xs px-1 py-0.5;
     min-width: 24px;
   }
-  
+
   .score-display-compact__points {
     @apply text-xs;
     min-width: 20px;
@@ -249,23 +249,23 @@
     @apply px-1 py-1;
     height: 28px;
   }
-  
+
   .score-display-compact__icon {
     @apply hidden;
   }
-  
+
   .score-display-compact__level {
     @apply gap-0.5;
   }
-  
+
   .score-display-compact__accuracy {
     @apply hidden;
   }
-  
+
   .score-display-compact__values {
     @apply text-xs;
   }
-  
+
   .score-display-compact__points {
     @apply text-xs;
     min-width: 18px;
@@ -278,24 +278,24 @@
     max-width: 120px;
     @apply px-1;
   }
-  
+
   .score-display-compact__divider {
     @apply hidden;
   }
-  
+
   .score-display-compact__level {
     @apply gap-0.5;
   }
-  
+
   .score-display-compact__level-badge {
     @apply text-xs px-1 py-0.5;
     min-width: 20px;
   }
-  
+
   .score-display-compact__points {
     min-width: 16px;
   }
-  
+
   .score-display-compact__progress-bar {
     @apply w-6 h-0.5;
   }
@@ -307,15 +307,15 @@
     min-width: 80px;
     max-width: 100px;
   }
-  
+
   .score-display-compact__level-badge {
     @apply hidden;
   }
-  
+
   .score-display-compact__progress-bar {
     @apply hidden;
   }
-  
+
   .score-display-compact__level {
     @apply hidden;
   }
@@ -326,11 +326,11 @@
   .score-display-compact__correct {
     @apply text-green-800 dark:text-green-200;
   }
-  
+
   .score-display-compact__incorrect {
     @apply text-red-800 dark:text-red-200;
   }
-  
+
   .score-display-compact__separator {
     @apply text-gray-800 dark:text-gray-200;
   }

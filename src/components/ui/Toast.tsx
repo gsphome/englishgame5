@@ -38,7 +38,7 @@ const Toast: React.FC<ToastProps> = ({ toast, onClose }) => {
   }, [toast.duration, handleClose]);
 
   const getIcon = () => {
-    const iconProps = { className: "toast-card__icon-svg", 'aria-hidden': true };
+    const iconProps = { className: 'toast-card__icon-svg', 'aria-hidden': true };
 
     switch (toast.type) {
       case 'success':
@@ -57,10 +57,10 @@ const Toast: React.FC<ToastProps> = ({ toast, onClose }) => {
   // BEM classes
   const baseClass = 'toast-card';
   const modifierClass = `${baseClass}--${toast.type}`;
-  const stateClass = isLeaving 
-    ? `${baseClass}--exiting` 
-    : isVisible 
-      ? `${baseClass}--visible` 
+  const stateClass = isLeaving
+    ? `${baseClass}--exiting`
+    : isVisible
+      ? `${baseClass}--visible`
       : `${baseClass}--entering`;
 
   return (
@@ -71,25 +71,21 @@ const Toast: React.FC<ToastProps> = ({ toast, onClose }) => {
       className={`${baseClass} ${modifierClass} ${stateClass}`}
       style={{
         // Override CSS animations with JavaScript state
-        transform: isLeaving ? 'translateX(100%)' : (isVisible ? 'translateX(0)' : 'translateX(100%)'),
-        opacity: isLeaving ? 0 : (isVisible ? 1 : 0),
+        transform: isLeaving
+          ? 'translateX(100%)'
+          : isVisible
+            ? 'translateX(0)'
+            : 'translateX(100%)',
+        opacity: isLeaving ? 0 : isVisible ? 1 : 0,
       }}
     >
       <div className={`${baseClass}__container`}>
         <div className={`${baseClass}__content`}>
-          <div className={`${baseClass}__icon`}>
-            {getIcon()}
-          </div>
+          <div className={`${baseClass}__icon`}>{getIcon()}</div>
 
           <div className={`${baseClass}__text`}>
-            <div className={`${baseClass}__title`}>
-              {toast.title}
-            </div>
-            {toast.message && (
-              <div className={`${baseClass}__message`}>
-                {toast.message}
-              </div>
-            )}
+            <div className={`${baseClass}__title`}>{toast.title}</div>
+            {toast.message && <div className={`${baseClass}__message`}>{toast.message}</div>}
           </div>
 
           {toast.action && (

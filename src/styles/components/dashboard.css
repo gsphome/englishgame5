@@ -22,7 +22,7 @@
 .dashboard-modal-container {
   background-color: #ffffff;
   border-radius: 0.75rem;
-  box-shadow: 
+  box-shadow:
     0 25px 50px -12px rgba(0, 0, 0, 0.25),
     0 0 0 1px rgba(255, 255, 255, 0.05);
   max-width: 112rem;
@@ -36,7 +36,7 @@
 .dark .dashboard-modal-container {
   background-color: #111827;
   border: 2px solid #374151;
-  box-shadow: 
+  box-shadow:
     0 25px 50px -12px rgba(0, 0, 0, 0.5),
     0 0 0 1px rgba(255, 255, 255, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.05);
@@ -247,7 +247,7 @@
 
 /* Module Performance Chart */
 .dashboard-module-bar {
-  fill: #10B981;
+  fill: #10b981;
 }
 
 /* Compact chart styling */
@@ -598,7 +598,7 @@
 
 .dashboard-legend-text-primary {
   font-weight: 500; /* font-medium */
-}/* E
+} /* E
 nhanced Stats Cards with Better Dark Mode Contrast */
 .dashboard-stats-grid {
   display: grid;
@@ -742,22 +742,22 @@ nhanced Stats Cards with Better Dark Mode Contrast */
   .dashboard-title {
     font-size: 1.5rem;
   }
-  
+
   .dashboard-header {
     margin-bottom: 1rem;
     padding-bottom: 0.75rem;
   }
-  
+
   .dashboard-action-buttons {
     gap: 0.25rem;
   }
-  
+
   .dashboard-help-button,
   .dashboard-close-button {
     width: 2rem;
     height: 2rem;
   }
-  
+
   .dashboard-help-icon,
   .dashboard-close-icon {
     width: 1rem;
@@ -770,15 +770,15 @@ nhanced Stats Cards with Better Dark Mode Contrast */
   .dashboard-modal-container {
     border-width: 3px;
   }
-  
+
   .dashboard-stat-card {
     border-width: 3px;
   }
-  
+
   .dashboard-chart-section {
     border-width: 3px;
   }
-  
+
   .dashboard-title {
     font-weight: 900;
   }
@@ -793,16 +793,16 @@ nhanced Stats Cards with Better Dark Mode Contrast */
   .dashboard-close-button {
     transition: none;
   }
-  
+
   .dashboard-stat-card:hover {
     transform: none;
   }
-  
+
   .dashboard-help-button:hover,
   .dashboard-close-button:hover {
     transform: none;
   }
-  
+
   .dashboard-loading-skeleton {
     animation: none;
   }

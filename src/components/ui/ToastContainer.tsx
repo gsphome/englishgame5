@@ -12,16 +12,8 @@ export const ToastContainer: React.FC = () => {
   }
 
   return (
-    <div
-      aria-label="Notifications"
-      role="region"
-      className="toast-container"
-    >
-      <Toast
-        key={currentToast.id}
-        toast={currentToast}
-        onClose={clearToast}
-      />
+    <div aria-label="Notifications" role="region" className="toast-container">
+      <Toast key={currentToast.id} toast={currentToast} onClose={clearToast} />
     </div>
   );
 };

@@ -12,7 +12,7 @@ export const useToast = () => {
       '¡Excelente! ✨',
       '¡Perfecto! 🌟',
       '¡Bien! 👏',
-      '¡Genial! 🚀'
+      '¡Genial! 🚀',
     ];
     const randomMessage = messages[Math.floor(Math.random() * messages.length)];
     // Quick success feedback - explanation is already in main UI
@@ -27,18 +27,34 @@ export const useToast = () => {
   const showModuleCompleted = useCallback((moduleName: string, score: number, accuracy: number) => {
     // Use single toast to ensure clean completion message
     if (accuracy >= 90) {
-      toast.success('🎉 ¡Excelente trabajo!', `${moduleName} completado con ${accuracy.toFixed(0)}% de precisión (+${score} puntos)`);
+      toast.success(
+        '🎉 ¡Excelente trabajo!',
+        `${moduleName} completado con ${accuracy.toFixed(0)}% de precisión (+${score} puntos)`
+      );
     } else if (accuracy >= 70) {
-      toast.success('✨ ¡Bien hecho!', `${moduleName} completado con ${accuracy.toFixed(0)}% de precisión (+${score} puntos)`);
+      toast.success(
+        '✨ ¡Bien hecho!',
+        `${moduleName} completado con ${accuracy.toFixed(0)}% de precisión (+${score} puntos)`
+      );
     } else if (accuracy >= 50) {
-      toast.info('Módulo completado', `${moduleName} - ${accuracy.toFixed(0)}% de precisión. ¡Sigue practicando!`);
+      toast.info(
+        'Módulo completado',
+        `${moduleName} - ${accuracy.toFixed(0)}% de precisión. ¡Sigue practicando!`
+      );
     } else {
-      toast.warning('Módulo completado', `${moduleName} - ${accuracy.toFixed(0)}% de precisión. Te recomendamos repasar el contenido.`);
+      toast.warning(
+        'Módulo completado',
+        `${moduleName} - ${accuracy.toFixed(0)}% de precisión. Te recomendamos repasar el contenido.`
+      );
     }
   }, []);
 
   const showLevelUp = useCallback((newLevel: number, totalPoints: number) => {
-    toast.success('¡Nivel alcanzado!', `Has llegado al nivel ${newLevel} (+${totalPoints} puntos)`, { duration: 5000 });
+    toast.success(
+      '¡Nivel alcanzado!',
+      `Has llegado al nivel ${newLevel} (+${totalPoints} puntos)`,
+      { duration: 5000 }
+    );
   }, []);
 
   const showStreak = useCallback((days: number) => {
@@ -49,8 +65,8 @@ export const useToast = () => {
     toast.error('Error de conexión', 'Verifica tu conexión a internet', {
       action: {
         label: 'Reintentar',
-        onClick: () => window.location.reload()
-      }
+        onClick: () => window.location.reload(),
+      },
     });
   }, []);
 
@@ -101,19 +117,19 @@ export const useToast = () => {
     showStreak,
     showTip,
     showWelcome,
-    
+
     // System-specific
     showConnectionError,
     showSaveSuccess,
     showLoadingError,
     showFeatureComingSoon,
-    
+
     // Generic
     showSuccess,
     showError,
     showInfo,
     showWarning,
-    
+
     // Direct access to toast store
     toast,
   };

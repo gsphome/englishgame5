@@ -85,7 +85,7 @@
   .main-menu__grid {
     padding: 1.25rem;
   }
-  
+
   .main-menu__grid-container {
     gap: 1rem;
   }
@@ -99,7 +99,7 @@
     margin: 0 auto;
     overflow-y: auto;
   }
-  
+
   .main-menu__grid-container {
     gap: 1.25rem;
   }
@@ -145,17 +145,17 @@
   .main-menu {
     @apply mx-2 my-2 pt-3 pb-4 px-3;
   }
-  
+
   .main-menu__search {
     @apply mb-4;
   }
-  
+
   .main-menu__grid {
     overflow-y: auto;
     max-height: 295px;
     padding: 0.875rem;
   }
-  
+
   .main-menu__grid-container {
     gap: 0.625rem;
   }
@@ -165,7 +165,7 @@
   .main-menu {
     @apply px-6;
   }
-  
+
   .main-menu__grid {
     @apply overflow-y-auto;
     max-height: 365px;

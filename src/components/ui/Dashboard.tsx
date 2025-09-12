@@ -1,5 +1,15 @@
 import React from 'react';
-import { Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar, ComposedChart } from 'recharts';
+import {
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+  BarChart,
+  Bar,
+  ComposedChart,
+} from 'recharts';
 import { Trophy, Target, Clock, TrendingUp, X, HelpCircle } from 'lucide-react';
 import '../../styles/components/dashboard.css';
 import { useUserStore } from '../../stores/userStore';
@@ -7,7 +17,6 @@ import { useSettingsStore } from '../../stores/settingsStore';
 import { useProgressStore } from '../../stores/progressStore';
 import { useTranslation } from '../../utils/i18n';
 // import { toast } from '../../stores/toastStore';
-
 
 interface DashboardProps {
   onClose: () => void;
@@ -23,11 +32,14 @@ export const Dashboard: React.FC<DashboardProps> = ({ onClose }) => {
   const [showHelpModal, setShowHelpModal] = React.useState(false);
 
   // Theme-aware colors for charts
-  const chartColors = React.useMemo(() => ({
-    text: '#3B82F6', // Blue text for good contrast in both modes
-    grid: theme === 'dark' ? '#4B5563' : '#E5E7EB',
-    axis: theme === 'dark' ? '#6B7280' : '#E5E7EB'
-  }), [theme]);
+  const chartColors = React.useMemo(
+    () => ({
+      text: '#3B82F6', // Blue text for good contrast in both modes
+      grid: theme === 'dark' ? '#4B5563' : '#E5E7EB',
+      axis: theme === 'dark' ? '#6B7280' : '#E5E7EB',
+    }),
+    [theme]
+  );
 
   // Simulate loading for demo purposes
   React.useEffect(() => {
@@ -47,7 +59,8 @@ export const Dashboard: React.FC<DashboardProps> = ({ onClose }) => {
 
   // Group performance data by learning mode for more concise view
   const moduleData = React.useMemo(() => {
-    const modeGroups: { [key: string]: { totalScore: number; count: number; attempts: number } } = {};
+    const modeGroups: { [key: string]: { totalScore: number; count: number; attempts: number } } =
+      {};
 
     Object.values(userScores).forEach(score => {
       // Extract learning mode from moduleId (e.g., "flashcard-ielts-home" -> "flashcard")
@@ -63,12 +76,14 @@ export const Dashboard: React.FC<DashboardProps> = ({ onClose }) => {
       modeGroups[modeLabel].attempts += score.attempts;
     });
 
-    return Object.entries(modeGroups).map(([mode, data]) => ({
-      mode,
-      score: Math.round(data.totalScore / data.count),
-      modules: data.count,
-      attempts: data.attempts
-    })).sort((a, b) => b.score - a.score); // Sort by score descending
+    return Object.entries(modeGroups)
+      .map(([mode, data]) => ({
+        mode,
+        score: Math.round(data.totalScore / data.count),
+        modules: data.count,
+        attempts: data.attempts,
+      }))
+      .sort((a, b) => b.score - a.score); // Sort by score descending
   }, [userScores]);
 
   // Calculate performance metrics from real data
@@ -77,7 +92,11 @@ export const Dashboard: React.FC<DashboardProps> = ({ onClose }) => {
   const totalTimeSpent = progressData.reduce((sum, day) => sum + day.timeSpent, 0);
 
   const totalScore = getTotalScore();
-  const avgScore = weeklyAverage || (moduleData.length > 0 ? Math.round(moduleData.reduce((sum, m) => sum + m.score, 0) / moduleData.length) : 0);
+  const avgScore =
+    weeklyAverage ||
+    (moduleData.length > 0
+      ? Math.round(moduleData.reduce((sum, m) => sum + m.score, 0) / moduleData.length)
+      : 0);
 
   if (isLoading) {
     return (
@@ -112,8 +131,11 @@ export const Dashboard: React.FC<DashboardProps> = ({ onClose }) => {
             <div className="animate-pulse">
               {/* Stats Cards Skeleton */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8">
-                {[1, 2, 3, 4].map((i) => (
-                  <div key={i} className="bg-gray-50 dark:bg-gray-800 p-4 sm:p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+                {[1, 2, 3, 4].map(i => (
+                  <div
+                    key={i}
+                    className="bg-gray-50 dark:bg-gray-800 p-4 sm:p-6 rounded-lg border border-gray-200 dark:border-gray-700"
+                  >
                     <div className="flex items-center">
                       <div className="h-6 w-6 sm:h-8 sm:w-8 bg-gray-300 dark:bg-gray-600 rounded mr-2 sm:mr-3"></div>
                       <div>
@@ -184,7 +206,10 @@ export const Dashboard: React.FC<DashboardProps> = ({ onClose }) => {
               <div className="flex items-start justify-between">
                 <div className="flex-1">
                   <div className="flex items-center mb-2">
-                    <Trophy className="h-5 w-5 text-yellow-600 dark:text-yellow-400 mr-2" aria-hidden="true" />
+                    <Trophy
+                      className="h-5 w-5 text-yellow-600 dark:text-yellow-400 mr-2"
+                      aria-hidden="true"
+                    />
                     <p className="text-xs font-medium text-yellow-800 dark:text-yellow-300 uppercase tracking-wide">
                       Puntos Totales
                     </p>
@@ -207,7 +232,10 @@ export const Dashboard: React.FC<DashboardProps> = ({ onClose }) => {
               <div className="flex items-start justify-between">
                 <div className="flex-1">
                   <div className="flex items-center mb-2">
-                    <Target className="h-5 w-5 text-blue-600 dark:text-blue-400 mr-2" aria-hidden="true" />
+                    <Target
+                      className="h-5 w-5 text-blue-600 dark:text-blue-400 mr-2"
+                      aria-hidden="true"
+                    />
                     <p className="text-xs font-medium text-blue-800 dark:text-blue-300 uppercase tracking-wide">
                       Precisión Promedio
                     </p>
@@ -219,7 +247,9 @@ export const Dashboard: React.FC<DashboardProps> = ({ onClose }) => {
                     >
                       {avgScore}
                     </p>
-                    <span className="text-lg font-semibold text-blue-700 dark:text-blue-300 ml-1">%</span>
+                    <span className="text-lg font-semibold text-blue-700 dark:text-blue-300 ml-1">
+                      %
+                    </span>
                   </div>
                   <p className="text-xs text-blue-700 dark:text-blue-400 mt-1">
                     de respuestas correctas
@@ -233,7 +263,10 @@ export const Dashboard: React.FC<DashboardProps> = ({ onClose }) => {
               <div className="flex items-start justify-between">
                 <div className="flex-1">
                   <div className="flex items-center mb-2">
-                    <Clock className="h-5 w-5 text-green-600 dark:text-green-400 mr-2" aria-hidden="true" />
+                    <Clock
+                      className="h-5 w-5 text-green-600 dark:text-green-400 mr-2"
+                      aria-hidden="true"
+                    />
                     <p className="text-xs font-medium text-green-800 dark:text-green-300 uppercase tracking-wide">
                       Sesiones Completadas
                     </p>
@@ -256,7 +289,10 @@ export const Dashboard: React.FC<DashboardProps> = ({ onClose }) => {
               <div className="flex items-start justify-between">
                 <div className="flex-1">
                   <div className="flex items-center mb-2">
-                    <TrendingUp className="h-5 w-5 text-purple-600 dark:text-purple-400 mr-2" aria-hidden="true" />
+                    <TrendingUp
+                      className="h-5 w-5 text-purple-600 dark:text-purple-400 mr-2"
+                      aria-hidden="true"
+                    />
                     <p className="text-xs font-medium text-purple-800 dark:text-purple-300 uppercase tracking-wide">
                       Tiempo de Práctica
                     </p>
@@ -268,7 +304,9 @@ export const Dashboard: React.FC<DashboardProps> = ({ onClose }) => {
                     >
                       {Math.round(totalTimeSpent / 60)}
                     </p>
-                    <span className="text-sm font-medium text-purple-700 dark:text-purple-300 ml-1">min</span>
+                    <span className="text-sm font-medium text-purple-700 dark:text-purple-300 ml-1">
+                      min
+                    </span>
                   </div>
                   <p className="text-xs text-purple-700 dark:text-purple-400 mt-1">
                     de aprendizaje activo
@@ -293,7 +331,9 @@ export const Dashboard: React.FC<DashboardProps> = ({ onClose }) => {
                 <div className="dashboard-legend">
                   <div className="dashboard-legend-item">
                     <div className="dashboard-legend-dot dashboard-legend-dot-accuracy"></div>
-                    <span className="dashboard-legend-text dashboard-legend-text-primary">Precisión</span>
+                    <span className="dashboard-legend-text dashboard-legend-text-primary">
+                      Precisión
+                    </span>
                   </div>
                   <div className="dashboard-legend-item">
                     <div className="dashboard-legend-dot dashboard-legend-dot-sessions"></div>
@@ -310,17 +350,28 @@ export const Dashboard: React.FC<DashboardProps> = ({ onClose }) => {
                   </div>
                 </div>
               ) : (
-                <div role="img" aria-labelledby="progress-chart-title" aria-describedby="progress-chart-desc">
+                <div
+                  role="img"
+                  aria-labelledby="progress-chart-title"
+                  aria-describedby="progress-chart-desc"
+                >
                   <ResponsiveContainer width="100%" height={350}>
-                    <ComposedChart data={progressOverTime} margin={{ top: 15, right: 30, left: 30, bottom: 60 }}>
-                      <CartesianGrid strokeDasharray="3 3" stroke={chartColors.grid} className="opacity-30" />
+                    <ComposedChart
+                      data={progressOverTime}
+                      margin={{ top: 15, right: 30, left: 30, bottom: 60 }}
+                    >
+                      <CartesianGrid
+                        strokeDasharray="3 3"
+                        stroke={chartColors.grid}
+                        className="opacity-30"
+                      />
                       <XAxis
                         dataKey="date"
                         tick={{
                           fontSize: 11,
                           fill: chartColors.text,
                           fontWeight: '500',
-                          textAnchor: 'end'
+                          textAnchor: 'end',
                         }}
                         angle={-45}
                         height={60}
@@ -340,7 +391,12 @@ export const Dashboard: React.FC<DashboardProps> = ({ onClose }) => {
                           value: 'Precisión (%)',
                           angle: -90,
                           position: 'insideLeft',
-                          style: { textAnchor: 'middle', fontSize: '12px', fill: '#3b82f6', fontWeight: 'bold' }
+                          style: {
+                            textAnchor: 'middle',
+                            fontSize: '12px',
+                            fill: '#3b82f6',
+                            fontWeight: 'bold',
+                          },
                         }}
                       />
                       {/* Right Y-axis for Sessions (Line) - SECONDARY */}
@@ -354,7 +410,12 @@ export const Dashboard: React.FC<DashboardProps> = ({ onClose }) => {
                           value: 'Sesiones',
                           angle: 90,
                           position: 'insideRight',
-                          style: { textAnchor: 'middle', fontSize: '12px', fill: '#10b981', fontWeight: 'bold' }
+                          style: {
+                            textAnchor: 'middle',
+                            fontSize: '12px',
+                            fill: '#10b981',
+                            fontWeight: 'bold',
+                          },
                         }}
                       />
                       <Tooltip
@@ -363,18 +424,21 @@ export const Dashboard: React.FC<DashboardProps> = ({ onClose }) => {
                           border: '1px solid #e5e7eb',
                           borderRadius: '8px',
                           fontSize: '13px',
-                          boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+                          boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
                         }}
                         formatter={(value, name) => {
                           if (name === 'score') {
                             return [`${value}%`, '🎯 Precisión de Aprendizaje'];
                           }
                           if (name === 'sessions') {
-                            return [`${value} sesión${value !== 1 ? 'es' : ''}`, '📚 Sesiones de Estudio'];
+                            return [
+                              `${value} sesión${value !== 1 ? 'es' : ''}`,
+                              '📚 Sesiones de Estudio',
+                            ];
                           }
                           return [value, name];
                         }}
-                        labelFormatter={(label) => `📅 ${label}`}
+                        labelFormatter={label => `📅 ${label}`}
                         labelStyle={{ fontWeight: 'bold', marginBottom: '4px' }}
                       />
                       {/* Bars for Accuracy - PRIMARY MESSAGE */}
@@ -402,7 +466,8 @@ export const Dashboard: React.FC<DashboardProps> = ({ onClose }) => {
                 </div>
               )}
               <p id="progress-chart-desc" className="dashboard-sr-only">
-                Combined chart showing learning progress over the last 7 days with bars for accuracy percentage (primary) and line for session counts (secondary)
+                Combined chart showing learning progress over the last 7 days with bars for accuracy
+                percentage (primary) and line for session counts (secondary)
               </p>
             </div>
 
@@ -418,8 +483,13 @@ export const Dashboard: React.FC<DashboardProps> = ({ onClose }) => {
                 {/* Legend for Module Performance */}
                 <div className="dashboard-legend">
                   <div className="dashboard-legend-item">
-                    <div className="dashboard-legend-dot" style={{ backgroundColor: '#10B981', borderRadius: '0.125rem' }}></div>
-                    <span className="dashboard-legend-text dashboard-legend-text-primary">Puntuación Promedio</span>
+                    <div
+                      className="dashboard-legend-dot"
+                      style={{ backgroundColor: '#10B981', borderRadius: '0.125rem' }}
+                    ></div>
+                    <span className="dashboard-legend-text dashboard-legend-text-primary">
+                      Puntuación Promedio
+                    </span>
                   </div>
                 </div>
               </div>
@@ -432,20 +502,28 @@ export const Dashboard: React.FC<DashboardProps> = ({ onClose }) => {
                   </div>
                 </div>
               ) : (
-                <div role="img" aria-labelledby="performance-chart-title" aria-describedby="performance-chart-desc">
+                <div
+                  role="img"
+                  aria-labelledby="performance-chart-title"
+                  aria-describedby="performance-chart-desc"
+                >
                   <ResponsiveContainer width="100%" height={350}>
                     <BarChart
                       data={moduleData}
                       margin={{ top: 15, right: 30, left: 30, bottom: 60 }}
                     >
-                      <CartesianGrid strokeDasharray="3 3" stroke={chartColors.grid} className="opacity-30" />
+                      <CartesianGrid
+                        strokeDasharray="3 3"
+                        stroke={chartColors.grid}
+                        className="opacity-30"
+                      />
                       <XAxis
                         dataKey="mode"
                         tick={{
                           fontSize: 11,
                           textAnchor: 'end',
                           fill: chartColors.text,
-                          fontWeight: '500'
+                          fontWeight: '500',
                         }}
                         angle={-45}
                         height={60}
@@ -457,7 +535,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onClose }) => {
                         domain={[0, 100]}
                         tick={{
                           fontSize: 11,
-                          fill: chartColors.text
+                          fill: chartColors.text,
                         }}
                         axisLine={{ stroke: '#10B981' }}
                         tickLine={{ stroke: '#10B981' }}
@@ -469,8 +547,8 @@ export const Dashboard: React.FC<DashboardProps> = ({ onClose }) => {
                             textAnchor: 'middle',
                             fontSize: '12px',
                             fill: '#10B981',
-                            fontWeight: 'bold'
-                          }
+                            fontWeight: 'bold',
+                          },
                         }}
                       />
                       <Tooltip
@@ -479,7 +557,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onClose }) => {
                           border: '1px solid #e5e7eb',
                           borderRadius: '8px',
                           fontSize: '13px',
-                          boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+                          boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
                         }}
                         formatter={(value, name) => {
                           if (name === 'score') {
@@ -487,7 +565,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onClose }) => {
                           }
                           return [value, name];
                         }}
-                        labelFormatter={(label) => `📚 Modo ${label}`}
+                        labelFormatter={label => `📚 Modo ${label}`}
                         labelStyle={{ fontWeight: 'bold', marginBottom: '4px' }}
                       />
                       <Bar
@@ -502,7 +580,8 @@ export const Dashboard: React.FC<DashboardProps> = ({ onClose }) => {
                 </div>
               )}
               <p id="performance-chart-desc" className="dashboard-sr-only">
-                Bar chart showing average performance scores grouped by learning mode: {moduleData.map(d => d.mode).join(', ')}
+                Bar chart showing average performance scores grouped by learning mode:{' '}
+                {moduleData.map(d => d.mode).join(', ')}
               </p>
             </div>
           </div>
@@ -515,9 +594,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onClose }) => {
           <div className="dashboard-help-modal-content">
             <div className="p-6">
               <div className="dashboard-help-modal-header">
-                <h3 className="dashboard-help-modal-title">
-                  {t('dashboard.helpTitle')}
-                </h3>
+                <h3 className="dashboard-help-modal-title">{t('dashboard.helpTitle')}</h3>
                 <button
                   onClick={() => setShowHelpModal(false)}
                   className="dashboard-help-modal-close"
@@ -579,9 +656,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onClose }) => {
                     <TrendingUp className="h-5 w-5 dashboard-help-icon-purple" />
                   </div>
                   <div>
-                    <h4 className="dashboard-help-metric-title">
-                      {t('dashboard.helpTimeTitle')}
-                    </h4>
+                    <h4 className="dashboard-help-metric-title">{t('dashboard.helpTimeTitle')}</h4>
                     <p className="dashboard-help-metric-description">
                       {t('dashboard.helpTimeDesc')}
                     </p>
@@ -601,9 +676,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onClose }) => {
                     </p>
                   </div>
                   <div>
-                    <h4 className="dashboard-help-chart-title">
-                      {t('dashboard.helpModuleTitle')}
-                    </h4>
+                    <h4 className="dashboard-help-chart-title">{t('dashboard.helpModuleTitle')}</h4>
                     <p className="dashboard-help-chart-description">
                       {t('dashboard.helpModuleDesc')}
                     </p>

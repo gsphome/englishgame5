@@ -26,13 +26,24 @@ export const gameSettingsSchema = z.object({
 });
 
 export const userProfileSchema = z.object({
-  name: z.string().min(1).max(50).regex(/^[a-zA-Z\s\u00C0-\u017F]+$/, 'Name can only contain letters and spaces'),
+  name: z
+    .string()
+    .min(1)
+    .max(50)
+    .regex(/^[a-zA-Z\s\u00C0-\u017F]+$/, 'Name can only contain letters and spaces'),
   email: z.string().email().optional().or(z.literal('')),
   level: z.enum(['a1', 'a2', 'b1', 'b2', 'c1', 'c2']),
   nativeLanguage: z.enum(['en', 'es']),
 });
 
-export const searchQuerySchema = z.string().min(0).max(100).regex(/^[a-zA-Z0-9\s\-_]*$/, 'Search can only contain letters, numbers, spaces, hyphens, and underscores');
+export const searchQuerySchema = z
+  .string()
+  .min(0)
+  .max(100)
+  .regex(
+    /^[a-zA-Z0-9\s\-_]*$/,
+    'Search can only contain letters, numbers, spaces, hyphens, and underscores'
+  );
 
 /**
  * Sanitize string input by removing dangerous characters
@@ -48,13 +59,13 @@ export const sanitizeString = (input: string, maxLength: number = 100): string =
   // Remove null bytes and control characters
   // eslint-disable-next-line no-control-regex
   let sanitized = input.replace(/[\x00-\x1F\x7F]/g, '');
-  
+
   // Trim whitespace
   sanitized = sanitized.trim();
-  
+
   // Limit length
   sanitized = sanitized.substring(0, maxLength);
-  
+
   return sanitized;
 };
 
@@ -67,19 +78,19 @@ export const sanitizeString = (input: string, maxLength: number = 100): string =
  * @returns Validated number
  */
 export const validateNumber = (
-  input: any, 
-  min: number = 1, 
-  max: number = 50, 
+  input: any,
+  min: number = 1,
+  max: number = 50,
   defaultValue: number = min
 ): number => {
   // Convert to number
   const num = typeof input === 'string' ? parseInt(input, 10) : Number(input);
-  
+
   // Check if it's a valid number
   if (isNaN(num) || !isFinite(num)) {
     return defaultValue;
   }
-  
+
   // Clamp to valid range
   return Math.max(min, Math.min(max, Math.floor(num)));
 };
@@ -93,7 +104,7 @@ export const validateEmail = (email: string): boolean => {
   if (!email || typeof email !== 'string') {
     return false;
   }
-  
+
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email) && email.length <= 254;
 };
@@ -121,7 +132,7 @@ export const validateGameSettings = (settings: any): any => {
     return gameSettingsSchema.parse(settings);
   } catch {
     // Use console.warn for validation errors as they're important for debugging
-    
+
     // Return safe defaults
     return {
       flashcardMode: { wordCount: 10 },
@@ -214,10 +225,10 @@ class RateLimiter {
   isAllowed(key: string): boolean {
     const now = Date.now();
     const attempts = this.attempts.get(key) || [];
-    
+
     // Remove old attempts outside the window
     const validAttempts = attempts.filter(time => now - time < this.windowMs);
-    
+
     if (validAttempts.length >= this.maxAttempts) {
       return false;
     }
@@ -225,7 +236,7 @@ class RateLimiter {
     // Record this attempt
     validAttempts.push(now);
     this.attempts.set(key, validAttempts);
-    
+
     return true;
   }
 
@@ -252,5 +263,5 @@ export const globalRateLimiter = {
       _globalRateLimiter = new RateLimiter(50, 60000);
     }
     _globalRateLimiter.clear(key);
-  }
+  },
 };

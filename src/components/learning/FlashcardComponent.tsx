@@ -33,8 +33,6 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
     return shuffleArray(allFlashcards);
   }, [module?.data]);
 
-
-
   const currentCard = randomizedFlashcards[currentIndex];
 
   const handleNext = useCallback(() => {
@@ -58,7 +56,15 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
       updateUserScore(module.id, randomizedFlashcards.length, timeSpent);
       setCurrentView('menu');
     }
-  }, [currentIndex, randomizedFlashcards.length, startTime, addProgressEntry, module.id, updateUserScore, setCurrentView]);
+  }, [
+    currentIndex,
+    randomizedFlashcards.length,
+    startTime,
+    addProgressEntry,
+    module.id,
+    updateUserScore,
+    setCurrentView,
+  ]);
 
   const handlePrev = useCallback(() => {
     if (currentIndex > 0) {
@@ -102,7 +108,15 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
 
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [currentIndex, randomizedFlashcards.length, isFlipped, handleFlip, handleNext, handlePrev, setCurrentView]);
+  }, [
+    currentIndex,
+    randomizedFlashcards.length,
+    isFlipped,
+    handleFlip,
+    handleNext,
+    handlePrev,
+    setCurrentView,
+  ]);
 
   // Early return if no data
   if (!randomizedFlashcards.length) {
@@ -124,7 +138,9 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
       {/* Compact header with progress */}
       <div className="mb-4">
         <div className="flex justify-between items-center mb-3">
-          <h2 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">{module.name}</h2>
+          <h2 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">
+            {module.name}
+          </h2>
           <span className="text-sm font-medium text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full">
             {currentIndex + 1}/{randomizedFlashcards.length}
           </span>
@@ -136,14 +152,17 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
           />
         </div>
         <p className="text-xs text-gray-500 dark:text-gray-400 mt-2 text-center">
-          {isFlipped ? 'Press Enter/Space for next card' : 'Click card or press Enter/Space to flip'}
+          {isFlipped
+            ? 'Press Enter/Space for next card'
+            : 'Click card or press Enter/Space to flip'}
         </p>
       </div>
 
       {/* Flashcard */}
       <div
-        className={`flashcard relative h-56 sm:h-64 w-full cursor-pointer ${isFlipped ? 'flipped' : ''
-          }`}
+        className={`flashcard relative h-56 sm:h-64 w-full cursor-pointer ${
+          isFlipped ? 'flipped' : ''
+        }`}
         onClick={handleFlip}
       >
         <div className="flashcard-inner">
@@ -162,7 +181,6 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
                 "{currentCard.example}"
               </p>
             )}
-
           </div>
 
           {/* Back */}
@@ -197,10 +215,7 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
       {/* Unified Control Bar */}
       <div className="flex justify-center items-center gap-3 flex-wrap mt-6">
         {/* Navigation */}
-        <NavigationButton
-          onClick={() => setCurrentView('menu')}
-          title="Return to main menu"
-        >
+        <NavigationButton onClick={() => setCurrentView('menu')} title="Return to main menu">
           Back to Menu
         </NavigationButton>
 
@@ -227,7 +242,9 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
         <button
           onClick={handleNext}
           className="flashcard-nav-btn flashcard-nav-btn--next p-2.5 rounded-lg transition-colors shadow-sm"
-          title={currentIndex === randomizedFlashcards.length - 1 ? 'Finish Flashcards' : 'Next Card (→)'}
+          title={
+            currentIndex === randomizedFlashcards.length - 1 ? 'Finish Flashcards' : 'Next Card (→)'
+          }
         >
           <ChevronRight className="h-4 w-4" />
         </button>

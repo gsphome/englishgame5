@@ -72,7 +72,7 @@
   max-height: 600px;
   display: flex;
   flex-direction: column;
-  box-shadow: 
+  box-shadow:
     0 25px 50px -12px rgba(0, 0, 0, 0.25),
     0 0 0 1px rgba(255, 255, 255, 0.05);
   transition: all 0.3s ease-in-out;
@@ -80,7 +80,7 @@
 }
 
 .dark .advanced-settings-modal__container {
-  box-shadow: 
+  box-shadow:
     0 25px 50px -12px rgba(0, 0, 0, 0.5),
     0 0 0 1px rgba(255, 255, 255, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.05);
@@ -119,7 +119,7 @@
 }
 
 .advanced-settings-modal__title::before {
-  content: "⚙️";
+  content: '⚙️';
   font-size: 1.25rem;
 }
 
@@ -251,7 +251,7 @@
 }
 
 .advanced-settings-modal__section-title::before {
-  content: "📋";
+  content: '📋';
   font-size: 0.875rem;
 }
 
@@ -473,7 +473,9 @@
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.3);
   transform: translate(-50%, -50%);
-  transition: width 0.3s ease, height 0.3s ease;
+  transition:
+    width 0.3s ease,
+    height 0.3s ease;
 }
 
 .advanced-settings-modal__btn:active::before {
@@ -515,7 +517,7 @@
   background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
   box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
   transform: translateY(-2px);
-}/* Respon
+} /* Respon
 sive Design */
 @media (max-width: 640px) {
   .advanced-settings-modal__container {
@@ -525,49 +527,49 @@ sive Design */
     height: 90vh;
     max-height: 90vh;
   }
-  
+
   .advanced-settings-modal__title {
     font-size: 1rem;
   }
-  
+
   .advanced-settings-modal__tabs {
     flex-direction: row;
     gap: 0.25rem;
   }
-  
+
   .advanced-settings-modal__tab {
     padding: 0.5rem 0.25rem;
     min-height: 50px;
   }
-  
+
   .advanced-settings-modal__tab-title {
     font-size: 0.75rem;
   }
-  
+
   .advanced-settings-modal__tab-icon {
     font-size: 1.125rem;
   }
-  
+
   .advanced-settings-modal__grid {
     grid-template-columns: 1fr;
     gap: 0.75rem;
   }
-  
+
   .advanced-settings-modal__section--categories {
     grid-template-columns: 1fr;
     gap: 0.5rem;
   }
-  
+
   .advanced-settings-modal__category-item {
     padding: 0.75rem;
     min-height: 50px;
   }
-  
+
   .advanced-settings-modal__actions {
     flex-direction: column;
     gap: 0.5rem;
   }
-  
+
   .advanced-settings-modal__btn {
     width: 100%;
     justify-content: center;
@@ -581,36 +583,36 @@ sive Design */
     height: 95vh;
     max-height: 95vh;
   }
-  
+
   .advanced-settings-modal__tab {
     padding: 0.375rem 0.25rem;
     min-height: 45px;
   }
-  
+
   .advanced-settings-modal__tab-title {
     font-size: 0.6875rem;
   }
-  
+
   .advanced-settings-modal__tab-icon {
     font-size: 1rem;
   }
-  
+
   .advanced-settings-modal__section {
     padding: 0.75rem;
   }
-  
+
   .advanced-settings-modal__grid {
     gap: 0.5rem;
   }
-  
+
   .advanced-settings-modal__field {
     gap: 0.375rem;
   }
-  
+
   .advanced-settings-modal__label {
     font-size: 0.8125rem;
   }
-  
+
   .advanced-settings-modal__select,
   .advanced-settings-modal__input {
     padding: 0.5rem;
@@ -636,8 +638,12 @@ sive Design */
 }
 
 @keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
 }
 
 /* High Contrast Mode Support */
@@ -645,20 +651,20 @@ sive Design */
   .advanced-settings-modal__container {
     border-width: 3px;
   }
-  
+
   .advanced-settings-modal__section {
     border-width: 3px;
   }
-  
+
   .advanced-settings-modal__select,
   .advanced-settings-modal__input {
     border-width: 3px;
   }
-  
+
   .advanced-settings-modal__category-checkbox {
     border-width: 3px;
   }
-  
+
   .advanced-settings-modal__btn {
     border-width: 3px;
   }
@@ -676,14 +682,14 @@ sive Design */
     animation: none;
     transition: none;
   }
-  
+
   .advanced-settings-modal__section:hover,
   .advanced-settings-modal__row:hover,
   .advanced-settings-modal__category-item:hover,
   .advanced-settings-modal__btn:hover {
     transform: none;
   }
-  
+
   .advanced-settings-modal__btn::before {
     display: none;
   }
@@ -738,39 +744,39 @@ sive Design */
   background-color: #374151;
 }
 
-/* Removed obsolete icon rules - now using structured HTML *//* Ultr
+/* Removed obsolete icon rules - now using structured HTML */ /* Ultr
 a Compact Mode for Very Small Screens */
 @media (max-height: 600px) {
   .advanced-settings-modal__container {
     max-height: 99vh;
     padding: 0.5rem;
   }
-  
+
   .advanced-settings-modal__header {
     margin-bottom: 0.5rem;
     padding-bottom: 0.375rem;
   }
-  
+
   .advanced-settings-modal__section {
     margin-bottom: 0.5rem;
     padding: 0.5rem;
   }
-  
+
   .advanced-settings-modal__section-title {
     margin-bottom: 0.375rem;
     font-size: 0.75rem;
   }
-  
+
   .advanced-settings-modal__row {
     margin-bottom: 0.25rem;
     padding: 0.25rem;
   }
-  
+
   .advanced-settings-modal__actions {
     margin-top: 0.5rem;
     padding-top: 0.375rem;
   }
-  
+
   .advanced-settings-modal__btn {
     padding: 0.375rem 0.75rem;
     font-size: 0.75rem;
@@ -783,49 +789,49 @@ a Compact Mode for Very Small Screens */
     max-height: 98vh;
     padding: 0.375rem;
   }
-  
+
   .advanced-settings-modal__header {
     margin-bottom: 0.375rem;
     padding-bottom: 0.25rem;
   }
-  
+
   .advanced-settings-modal__section {
     margin-bottom: 0.375rem;
     padding: 0.375rem;
   }
-  
+
   .advanced-settings-modal__section-title {
     margin-bottom: 0.25rem;
     font-size: 0.6875rem;
   }
-  
+
   .advanced-settings-modal__row {
     margin-bottom: 0.125rem;
     padding: 0.125rem;
   }
-  
+
   .advanced-settings-modal__section--categories {
     grid-template-columns: repeat(4, 1fr);
     gap: 0.125rem;
   }
-  
+
   .advanced-settings-modal__category-item {
     padding: 0.25rem;
     font-size: 0.6875rem;
   }
-  
+
   .advanced-settings-modal__actions {
     flex-direction: row;
     gap: 0.25rem;
     margin-top: 0.375rem;
     padding-top: 0.25rem;
   }
-  
+
   .advanced-settings-modal__btn {
     padding: 0.25rem 0.5rem;
     font-size: 0.6875rem;
   }
-}/* Enhanc
+} /* Enhanc
 ed Tab Interaction States */
 .advanced-settings-modal__tab:focus {
   outline: none;
@@ -863,12 +869,12 @@ ed Tab Interaction States */
     min-height: 55px;
     padding: 0.625rem 0.375rem;
   }
-  
+
   .advanced-settings-modal__tab-title {
     font-size: 0.75rem;
     margin-bottom: 0.25rem;
   }
-  
+
   .advanced-settings-modal__tab-icon {
     font-size: 1.25rem;
   }
@@ -880,11 +886,11 @@ ed Tab Interaction States */
     min-height: 50px;
     padding: 0.5rem 0.25rem;
   }
-  
+
   .advanced-settings-modal__tab-title {
     font-size: 0.6875rem;
   }
-  
+
   .advanced-settings-modal__tab-icon {
     font-size: 1.125rem;
   }
@@ -895,11 +901,11 @@ ed Tab Interaction States */
   .advanced-settings-modal__tab {
     border: 2px solid transparent;
   }
-  
+
   .advanced-settings-modal__tab--active {
     border-color: currentColor;
   }
-  
+
   .advanced-settings-modal__tab:focus {
     border-color: var(--settings-focus-ring);
   }

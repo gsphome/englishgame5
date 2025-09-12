@@ -71,8 +71,8 @@ class AccessibilityManager {
   private detectReducedMotion(): void {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     this.reducedMotion = mediaQuery.matches;
-    
-    mediaQuery.addEventListener('change', (e) => {
+
+    mediaQuery.addEventListener('change', e => {
       this.reducedMotion = e.matches;
       logDebug('Reduced motion preference changed', { reducedMotion: this.reducedMotion }, 'A11y');
     });
@@ -82,13 +82,13 @@ class AccessibilityManager {
    * Setup keyboard navigation helpers
    */
   private setupKeyboardNavigation(): void {
-    document.addEventListener('keydown', (e) => {
+    document.addEventListener('keydown', e => {
       // Skip to main content (Alt + S)
       if (e.altKey && e.key === 's') {
         e.preventDefault();
         this.skipToMainContent();
       }
-      
+
       // Focus visible elements only
       if (e.key === 'Tab') {
         this.handleTabNavigation(e);
@@ -101,10 +101,14 @@ class AccessibilityManager {
    */
   private setupFocusManagement(): void {
     // Track focus changes
-    document.addEventListener('focusin', (e) => {
+    document.addEventListener('focusin', e => {
       const target = e.target as HTMLElement;
       if (target && this.isVisible(target)) {
-        logDebug('Focus moved to', { element: target.tagName, id: target.id, className: target.className }, 'A11y');
+        logDebug(
+          'Focus moved to',
+          { element: target.tagName, id: target.id, className: target.className },
+          'A11y'
+        );
       }
     });
   }
@@ -132,10 +136,15 @@ class AccessibilityManager {
    * Focus element with options
    */
   focus(element: HTMLElement | string, options: FocusOptions = {}): boolean {
-    const target = typeof element === 'string' ? document.querySelector(element) as HTMLElement : element;
-    
+    const target =
+      typeof element === 'string' ? (document.querySelector(element) as HTMLElement) : element;
+
     if (!target || !this.isVisible(target) || !this.isFocusable(target)) {
-      logDebug('Cannot focus element', { element: target?.tagName, visible: this.isVisible(target) }, 'A11y');
+      logDebug(
+        'Cannot focus element',
+        { element: target?.tagName, visible: this.isVisible(target) },
+        'A11y'
+      );
       return false;
     }
 
@@ -213,7 +222,7 @@ class AccessibilityManager {
   private handleTabNavigation(e: KeyboardEvent): void {
     const focusableElements = this.getFocusableElements(document.body);
     const currentIndex = focusableElements.indexOf(document.activeElement as HTMLElement);
-    
+
     if (currentIndex === -1) return;
 
     const nextIndex = e.shiftKey ? currentIndex - 1 : currentIndex + 1;
@@ -226,7 +235,7 @@ class AccessibilityManager {
       const visibleIndex = visibleElements.findIndex(el => el === document.activeElement);
       const nextVisibleIndex = e.shiftKey ? visibleIndex - 1 : visibleIndex + 1;
       const nextVisibleElement = visibleElements[nextVisibleIndex];
-      
+
       if (nextVisibleElement) {
         nextVisibleElement.focus();
       }
@@ -244,7 +253,7 @@ class AccessibilityManager {
       'select:not([disabled])',
       'textarea:not([disabled])',
       '[tabindex]:not([tabindex="-1"])',
-      '[contenteditable="true"]'
+      '[contenteditable="true"]',
     ].join(', ');
 
     const elements = Array.from(container.querySelectorAll(focusableSelectors)) as HTMLElement[];
@@ -256,7 +265,7 @@ class AccessibilityManager {
    */
   isVisible(element: HTMLElement): boolean {
     if (!element) return false;
-    
+
     const style = window.getComputedStyle(element);
     return (
       style.display !== 'none' &&
@@ -272,14 +281,14 @@ class AccessibilityManager {
    */
   isFocusable(element: HTMLElement): boolean {
     if (!element) return false;
-    
+
     const tabIndex = element.getAttribute('tabindex');
     if (tabIndex === '-1') return false;
-    
+
     if (element.hasAttribute('disabled') || element.getAttribute('aria-disabled') === 'true') {
       return false;
     }
-    
+
     return true;
   }
 
@@ -300,31 +309,41 @@ class AccessibilityManager {
       const r = parseInt(hex.substr(0, 2), 16) / 255;
       const g = parseInt(hex.substr(2, 2), 16) / 255;
       const b = parseInt(hex.substr(4, 2), 16) / 255;
-      
+
       const sRGB = [r, g, b].map(c => {
         return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
       });
-      
+
       return 0.2126 * sRGB[0] + 0.7152 * sRGB[1] + 0.0722 * sRGB[2];
     };
-    
+
     const lum1 = getLuminance(color1);
     const lum2 = getLuminance(color2);
     const brightest = Math.max(lum1, lum2);
     const darkest = Math.min(lum1, lum2);
-    
+
     return (brightest + 0.05) / (darkest + 0.05);
   }
 
   /**
    * Check WCAG compliance
    */
-  isWCAGCompliant(color1: string, color2: string, level: 'AA' | 'AAA' = 'AA', isLargeText = false): boolean {
+  isWCAGCompliant(
+    color1: string,
+    color2: string,
+    level: 'AA' | 'AAA' = 'AA',
+    isLargeText = false
+  ): boolean {
     const ratio = this.getContrastRatio(color1, color2);
-    const requiredRatio = level === 'AA' 
-      ? (isLargeText ? CONTRAST_RATIOS.AA_LARGE : CONTRAST_RATIOS.AA_NORMAL)
-      : (isLargeText ? CONTRAST_RATIOS.AAA_LARGE : CONTRAST_RATIOS.AAA_NORMAL);
-    
+    const requiredRatio =
+      level === 'AA'
+        ? isLargeText
+          ? CONTRAST_RATIOS.AA_LARGE
+          : CONTRAST_RATIOS.AA_NORMAL
+        : isLargeText
+          ? CONTRAST_RATIOS.AAA_LARGE
+          : CONTRAST_RATIOS.AAA_NORMAL;
+
     return ratio >= requiredRatio;
   }
 
@@ -341,27 +360,31 @@ class AccessibilityManager {
   /**
    * Create accessible button
    */
-  createAccessibleButton(text: string, onClick: () => void, options: {
-    ariaLabel?: string;
-    ariaDescribedBy?: string;
-    className?: string;
-  } = {}): HTMLButtonElement {
+  createAccessibleButton(
+    text: string,
+    onClick: () => void,
+    options: {
+      ariaLabel?: string;
+      ariaDescribedBy?: string;
+      className?: string;
+    } = {}
+  ): HTMLButtonElement {
     const button = document.createElement('button');
     button.textContent = text;
     button.addEventListener('click', onClick);
-    
+
     if (options.className) {
       button.className = options.className;
     }
-    
+
     if (options.ariaLabel) {
       button.setAttribute('aria-label', options.ariaLabel);
     }
-    
+
     if (options.ariaDescribedBy) {
       button.setAttribute('aria-describedby', options.ariaDescribedBy);
     }
-    
+
     return button;
   }
 }
@@ -377,25 +400,32 @@ const getA11y = () => {
 
 export const a11y = {
   announce: (message: string, priority?: AriaLiveType) => getA11y().announce(message, priority),
-  focus: (element: HTMLElement | string, options?: FocusOptions) => getA11y().focus(element, options),
+  focus: (element: HTMLElement | string, options?: FocusOptions) =>
+    getA11y().focus(element, options),
   trapFocus: (container: HTMLElement) => getA11y().trapFocus(container),
   restoreFocus: () => getA11y().restoreFocus(),
   prefersReducedMotion: () => getA11y().prefersReducedMotion(),
-  isWCAGCompliant: (color1: string, color2: string, level?: 'AA' | 'AAA', isLargeText?: boolean) => 
+  isWCAGCompliant: (color1: string, color2: string, level?: 'AA' | 'AAA', isLargeText?: boolean) =>
     getA11y().isWCAGCompliant(color1, color2, level, isLargeText),
   getFocusableElements: (container: HTMLElement) => getA11y().getFocusableElements(container),
-  createAccessibleButton: (text: string, onClick: () => void, options?: any) => 
+  createAccessibleButton: (text: string, onClick: () => void, options?: any) =>
     getA11y().createAccessibleButton(text, onClick, options),
   getContrastRatio: (color1: string, color2: string) => getA11y().getContrastRatio(color1, color2),
-  setAriaAttributes: (element: HTMLElement, attributes: Record<string, string>) => 
-    getA11y().setAriaAttributes(element, attributes)
+  setAriaAttributes: (element: HTMLElement, attributes: Record<string, string>) =>
+    getA11y().setAriaAttributes(element, attributes),
 };
 
 // Convenience functions
-export const announce = (message: string, priority?: AriaLiveType) => a11y.announce(message, priority);
-export const focus = (element: HTMLElement | string, options?: FocusOptions) => a11y.focus(element, options);
+export const announce = (message: string, priority?: AriaLiveType) =>
+  a11y.announce(message, priority);
+export const focus = (element: HTMLElement | string, options?: FocusOptions) =>
+  a11y.focus(element, options);
 export const trapFocus = (container: HTMLElement) => a11y.trapFocus(container);
 export const restoreFocus = () => a11y.restoreFocus();
 export const prefersReducedMotion = () => a11y.prefersReducedMotion();
-export const isWCAGCompliant = (color1: string, color2: string, level?: 'AA' | 'AAA', isLargeText?: boolean) => 
-  a11y.isWCAGCompliant(color1, color2, level, isLargeText);
+export const isWCAGCompliant = (
+  color1: string,
+  color2: string,
+  level?: 'AA' | 'AAA',
+  isLargeText?: boolean
+) => a11y.isWCAGCompliant(color1, color2, level, isLargeText);
