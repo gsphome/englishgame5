@@ -1,0 +1,214 @@
+name: Build Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  # Allow manual trigger
+  workflow_dispatch:
+  # Allow other workflows to trigger this
+  workflow_call:
+    outputs:
+      build-status:
+        description: "Overall build status"
+        value: ${{ jobs.build-summary.outputs.status }}
+      artifact-name:
+        description: "Build artifact name"
+        value: ${{ jobs.build.outputs.artifact-name }}
+
+permissions:
+  contents: read
+
+# Cancel previous runs on new push
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: '18'
+  CACHE_VERSION: v1
+
+jobs:
+  build:
+    name: Build Application
+    runs-on: ubuntu-latest
+    outputs:
+      artifact-name: build-files-${{ github.sha }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Cache dependencies
+        id: cache-deps
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ env.CACHE_VERSION }}-${{ hashFiles('package-lock.json') }}
+
+      - name: Install dependencies
+        if: steps.cache-deps.outputs.cache-hit != 'true'
+        run: npm ci --prefer-offline --no-audit
+
+      - name: Build application
+        run: npm run build
+
+      - name: Verify build output
+        run: |
+          if [ ! -d "dist" ]; then
+            echo "❌ Build failed: dist directory not found"
+            exit 1
+          fi
+          
+          if [ ! -f "dist/index.html" ]; then
+            echo "❌ Build failed: index.html not found"
+            exit 1
+          fi
+          
+          echo "✅ Build verification passed"
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-files-${{ github.sha }}
+          path: dist/
+          retention-days: 7
+
+  analyze:
+    name: Bundle Analysis
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-files-${{ github.sha }}
+          path: dist/
+
+      - name: Analyze bundle size
+        run: |
+          echo "📦 Build Analysis:"
+          echo "Total size: $(du -sh dist/ | cut -f1)"
+          echo ""
+          echo "🔍 Largest files:"
+          find dist/ -name "*.js" -o -name "*.css" | xargs du -h | sort -hr | head -10
+          echo ""
+          echo "📊 File count by type:"
+          echo "JS files: $(find dist/ -name "*.js" | wc -l)"
+          echo "CSS files: $(find dist/ -name "*.css" | wc -l)"
+          echo "Assets: $(find dist/ -type f ! -name "*.js" ! -name "*.css" ! -name "*.html" | wc -l)"
+
+      - name: Check bundle size limits
+        run: |
+          MAIN_JS_SIZE=$(find dist/assets -name "index-*.js" -exec du -k {} \; | cut -f1 2>/dev/null || echo "0")
+          if [ $MAIN_JS_SIZE -gt 1000 ]; then
+            echo "⚠️ Warning: Main bundle is ${MAIN_JS_SIZE}KB (>1MB)"
+            echo "Consider code splitting or lazy loading"
+          else
+            echo "✅ Bundle size OK: ${MAIN_JS_SIZE}KB"
+          fi
+
+      - name: Generate build report
+        run: |
+          echo "## 📦 Build Analysis Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Metric | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "|--------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Total Size | $(du -sh dist/ | cut -f1) |" >> $GITHUB_STEP_SUMMARY
+          echo "| JS Files | $(find dist/ -name "*.js" | wc -l) |" >> $GITHUB_STEP_SUMMARY
+          echo "| CSS Files | $(find dist/ -name "*.css" | wc -l) |" >> $GITHUB_STEP_SUMMARY
+          echo "| Assets | $(find dist/ -type f ! -name "*.js" ! -name "*.css" ! -name "*.html" | wc -l) |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 🔍 Largest Files:" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          find dist/ -name "*.js" -o -name "*.css" | xargs du -h | sort -hr | head -5 >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+
+  build-summary:
+    name: Build Summary
+    runs-on: ubuntu-latest
+    needs: [build, analyze]
+    if: always()
+    outputs:
+      status: ${{ steps.summary.outputs.status }}
+    steps:
+      - name: Generate build summary
+        id: summary
+        run: |
+          echo "## 📦 BUILD PIPELINE - FINAL SUMMARY" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Pipeline:** Build & Analysis" >> $GITHUB_STEP_SUMMARY
+          echo "**Timestamp:** $(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY
+          echo "**Commit:** ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Branch:** ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Artifact:** build-files-${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Detailed results table
+          echo "### 🔧 Detailed Results" >> $GITHUB_STEP_SUMMARY
+          echo "| Step | Status | Description | Action Required |" >> $GITHUB_STEP_SUMMARY
+          echo "|------|--------|-------------|-----------------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Build | ${{ needs.build.result == 'success' && '✅ PASS' || '❌ FAIL' }} | Application compilation | ${{ needs.build.result == 'success' && 'None' || 'Fix build errors' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Analysis | ${{ needs.analyze.result == 'success' && '✅ PASS' || '❌ FAIL' }} | Bundle size analysis | ${{ needs.analyze.result == 'success' && 'None' || 'Review bundle issues' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Determine overall status and provide clear guidance
+          if [[ "${{ needs.build.result }}" == "success" && 
+                "${{ needs.analyze.result }}" == "success" ]]; then
+            echo "status=success" >> $GITHUB_OUTPUT
+            echo "### ✅ OVERALL STATUS: SUCCESS" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "🎉 **Build completed successfully!**" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "**Build Artifacts:**" >> $GITHUB_STEP_SUMMARY
+            echo "- 📦 Artifact name: \`build-files-${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
+            echo "- 📁 Contains: Compiled application in \`dist/\` directory" >> $GITHUB_STEP_SUMMARY
+            echo "- ⏰ Retention: 7 days" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "**Next Steps:**" >> $GITHUB_STEP_SUMMARY
+            echo "- Build gate: ✅ CLEARED" >> $GITHUB_STEP_SUMMARY
+            echo "- Artifacts ready for deployment" >> $GITHUB_STEP_SUMMARY
+            echo "- Ready for deployment (pending quality and security)" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "status=failure" >> $GITHUB_OUTPUT
+            echo "### ❌ OVERALL STATUS: FAILURE" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "**Build Issues:**" >> $GITHUB_STEP_SUMMARY
+            [[ "${{ needs.build.result }}" != "success" ]] && echo "- ❌ Build: Compilation failed - check build logs for errors" >> $GITHUB_STEP_SUMMARY
+            [[ "${{ needs.analyze.result }}" != "success" ]] && echo "- ❌ Analysis: Bundle analysis failed - check bundle configuration" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "**Impact:**" >> $GITHUB_STEP_SUMMARY
+            echo "- 🚫 Build gate: BLOCKED" >> $GITHUB_STEP_SUMMARY
+            echo "- 🚫 No artifacts available for deployment" >> $GITHUB_STEP_SUMMARY
+            echo "- 🚫 Deployment: BLOCKED until build succeeds" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "**Common Solutions:**" >> $GITHUB_STEP_SUMMARY
+            echo "- Check for TypeScript errors: \`npm run type-check\`" >> $GITHUB_STEP_SUMMARY
+            echo "- Verify dependencies: \`npm ci\`" >> $GITHUB_STEP_SUMMARY
+            echo "- Test build locally: \`npm run build\`" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "---" >> $GITHUB_STEP_SUMMARY
+          echo "**For AI Analysis:** BUILD_PIPELINE_STATUS=${{ needs.build.result == 'success' && needs.analyze.result == 'success' && 'SUCCESS' || 'FAILURE' }}" >> $GITHUB_STEP_SUMMARY
+
+  notify-build-issues:
+    name: Build Issue Notification
+    runs-on: ubuntu-latest
+    needs: [build-summary]
+    if: needs.build-summary.outputs.status == 'failure'
+    steps:
+      - name: Build alert
+        run: |
+          echo "📦 Build issues detected!"
+          echo "Check the Build Summary for details"
+          echo "This will block deployment until resolved"

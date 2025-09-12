@@ -1,0 +1,242 @@
+name: Deploy Pipeline
+
+on:
+  # Only trigger on main branch pushes
+  push:
+    branches: [ main ]
+  # Allow manual trigger
+  workflow_dispatch:
+  # Allow other workflows to trigger this
+  workflow_call:
+    inputs:
+      artifact-name:
+        description: 'Build artifact name'
+        required: true
+        type: string
+      quality-status:
+        description: 'Quality pipeline status'
+        required: true
+        type: string
+      security-status:
+        description: 'Security pipeline status'
+        required: true
+        type: string
+      build-status:
+        description: 'Build pipeline status'
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Only one deployment at a time
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+env:
+  NODE_VERSION: '18'
+
+jobs:
+  pre-deploy-checks:
+    name: Pre-Deploy Verification
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Quality gate verification
+        run: |
+          echo "🎯 Verifying quality status..."
+          QUALITY_STATUS="${{ inputs.quality-status || 'unknown' }}"
+          if [ "$QUALITY_STATUS" != "success" ]; then
+            echo "🚨 DEPLOY BLOCKED: Quality checks failed"
+            echo "Quality status: $QUALITY_STATUS"
+            exit 1
+          fi
+          echo "✅ Quality verification passed"
+
+      - name: Security gate verification
+        run: |
+          echo "🛡️ Verifying security status..."
+          SECURITY_STATUS="${{ inputs.security-status || 'unknown' }}"
+          if [ "$SECURITY_STATUS" != "success" ]; then
+            echo "🚨 DEPLOY BLOCKED: Security checks failed"
+            echo "Security status: $SECURITY_STATUS"
+            exit 1
+          fi
+          echo "✅ Security verification passed"
+
+      - name: Build gate verification
+        run: |
+          echo "📦 Verifying build status..."
+          BUILD_STATUS="${{ inputs.build-status || 'unknown' }}"
+          if [ "$BUILD_STATUS" != "success" ]; then
+            echo "🚨 DEPLOY BLOCKED: Build failed"
+            echo "Build status: $BUILD_STATUS"
+            exit 1
+          fi
+          echo "✅ Build verification passed"
+
+      - name: All gates passed
+        run: |
+          echo "🎉 All deployment gates passed!"
+          echo "✅ Quality: Verified"
+          echo "✅ Security: Verified" 
+          echo "✅ Build: Verified"
+          echo "Proceeding with deployment..."
+
+  deploy:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    needs: pre-deploy-checks
+    environment: production
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ inputs.artifact-name || format('build-files-{0}', github.sha) }}
+          path: dist/
+
+      - name: Verify artifacts
+        run: |
+          if [ ! -d "dist" ]; then
+            echo "❌ Deploy failed: dist directory not found"
+            exit 1
+          fi
+          
+          if [ ! -f "dist/index.html" ]; then
+            echo "❌ Deploy failed: index.html not found"
+            exit 1
+          fi
+          
+          echo "✅ Artifacts verified"
+          echo "📊 Artifact contents:"
+          find dist/ -type f | head -10
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload to GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Deployment verification
+        run: |
+          echo "🚀 Verifying deployment..."
+          # Wait a moment for deployment to be ready
+          sleep 10
+          
+          # Basic check that the URL responds
+          DEPLOY_URL="${{ steps.deployment.outputs.page_url }}"
+          if curl -f -s "$DEPLOY_URL" > /dev/null; then
+            echo "✅ Deployment verification passed"
+          else
+            echo "⚠️ Deployment URL not immediately accessible (may take a few minutes)"
+          fi
+
+  deploy-summary:
+    name: Deploy Summary
+    runs-on: ubuntu-latest
+    needs: [pre-deploy-checks, deploy]
+    if: always()
+    outputs:
+      status: ${{ steps.summary.outputs.status }}
+    steps:
+      - name: Generate deployment summary
+        id: summary
+        run: |
+          echo "## 🚀 DEPLOY PIPELINE - FINAL SUMMARY" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Pipeline:** Production Deployment" >> $GITHUB_STEP_SUMMARY
+          echo "**Timestamp:** $(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY
+          echo "**Commit:** ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Branch:** ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Artifact:** ${{ inputs.artifact-name }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Gate verification status
+          echo "### 🚪 Gate Verification Results" >> $GITHUB_STEP_SUMMARY
+          echo "| Gate | Status | Input Status | Action Required |" >> $GITHUB_STEP_SUMMARY
+          echo "|------|--------|--------------|-----------------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Quality | ${{ inputs.quality-status == 'success' && '✅ PASS' || '❌ FAIL' }} | ${{ inputs.quality-status }} | ${{ inputs.quality-status == 'success' && 'None' || 'Fix quality issues' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Security | ${{ inputs.security-status == 'success' && '✅ PASS' || '❌ FAIL' }} | ${{ inputs.security-status }} | ${{ inputs.security-status == 'success' && 'None' || 'Fix security issues' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Build | ${{ inputs.build-status == 'success' && '✅ PASS' || '❌ FAIL' }} | ${{ inputs.build-status }} | ${{ inputs.build-status == 'success' && 'None' || 'Fix build issues' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Deployment steps status
+          echo "### 🔧 Deployment Steps" >> $GITHUB_STEP_SUMMARY
+          echo "| Step | Status | Description | Action Required |" >> $GITHUB_STEP_SUMMARY
+          echo "|------|--------|-------------|-----------------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Pre-Deploy | ${{ needs.pre-deploy-checks.result == 'success' && '✅ PASS' || '❌ FAIL' }} | Gate verification | ${{ needs.pre-deploy-checks.result == 'success' && 'None' || 'Check gate failures' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Deploy | ${{ needs.deploy.result == 'success' && '✅ PASS' || '❌ FAIL' }} | GitHub Pages deployment | ${{ needs.deploy.result == 'success' && 'None' || 'Check deployment logs' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Determine overall status and provide clear guidance
+          if [[ "${{ needs.pre-deploy-checks.result }}" == "success" && 
+                "${{ needs.deploy.result }}" == "success" ]]; then
+            echo "status=success" >> $GITHUB_OUTPUT
+            echo "### ✅ OVERALL STATUS: SUCCESS" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "🎉 **Deployment completed successfully!**" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "**Deployment Details:**" >> $GITHUB_STEP_SUMMARY
+            echo "- 🌐 URL: ${{ steps.deployment.outputs.page_url || 'GitHub Pages URL' }}" >> $GITHUB_STEP_SUMMARY
+            echo "- 📦 Build SHA: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+            echo "- 🕐 Deployed: $(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY
+            echo "- 🌿 Branch: ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "**Security Verification:**" >> $GITHUB_STEP_SUMMARY
+            echo "- ✅ Quality gate: PASSED" >> $GITHUB_STEP_SUMMARY
+            echo "- ✅ Security gate: PASSED" >> $GITHUB_STEP_SUMMARY
+            echo "- ✅ Build gate: PASSED" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "**Next Steps:**" >> $GITHUB_STEP_SUMMARY
+            echo "- 🔍 Verify application functionality at deployed URL" >> $GITHUB_STEP_SUMMARY
+            echo "- 📊 Monitor application performance" >> $GITHUB_STEP_SUMMARY
+            echo "- 🎯 All pipelines completed successfully" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "status=failure" >> $GITHUB_OUTPUT
+            echo "### ❌ OVERALL STATUS: FAILURE" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "**Deployment Issues:**" >> $GITHUB_STEP_SUMMARY
+            [[ "${{ needs.pre-deploy-checks.result }}" != "success" ]] && echo "- ❌ Pre-Deploy: Gate verification failed - check quality/security/build status" >> $GITHUB_STEP_SUMMARY
+            [[ "${{ needs.deploy.result }}" != "success" ]] && echo "- ❌ Deploy: GitHub Pages deployment failed - check deployment logs" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "**Gate Status Analysis:**" >> $GITHUB_STEP_SUMMARY
+            echo "- Quality: ${{ inputs.quality-status }}" >> $GITHUB_STEP_SUMMARY
+            echo "- Security: ${{ inputs.security-status }}" >> $GITHUB_STEP_SUMMARY
+            echo "- Build: ${{ inputs.build-status }}" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "**Impact:**" >> $GITHUB_STEP_SUMMARY
+            echo "- 🚫 Application not deployed" >> $GITHUB_STEP_SUMMARY
+            echo "- 🚫 Previous version remains active" >> $GITHUB_STEP_SUMMARY
+            echo "- 🔄 Fix issues and re-run pipeline" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "---" >> $GITHUB_STEP_SUMMARY
+          echo "**For AI Analysis:** DEPLOY_PIPELINE_STATUS=${{ needs.pre-deploy-checks.result == 'success' && needs.deploy.result == 'success' && 'SUCCESS' || 'FAILURE' }}" >> $GITHUB_STEP_SUMMARY
+
+      - name: Success notification
+        if: needs.deploy.result == 'success'
+        run: |
+          echo "🎉 Deployment successful!"
+          echo "📍 URL: ${{ steps.deployment.outputs.page_url }}"
+          echo "🛡️ All security gates passed"
+          echo "📦 Build SHA: ${{ github.sha }}"
+
+      - name: Failure notification
+        if: needs.deploy.result != 'success'
+        run: |
+          echo "❌ Deployment failed!"
+          echo "Check the deployment logs for details"
+          echo "All gates must pass before deployment can succeed"

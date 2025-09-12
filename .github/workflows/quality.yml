@@ -1,0 +1,335 @@
+name: Quality Checks
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  # Allow manual trigger
+  workflow_dispatch:
+  # Allow other workflows to trigger this
+  workflow_call:
+    outputs:
+      quality-status:
+        description: "Overall quality status"
+        value: ${{ jobs.quality-summary.outputs.status }}
+
+permissions:
+  contents: read
+
+# Cancel previous runs on new push
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: '18'
+  CACHE_VERSION: v1
+
+jobs:
+  setup:
+    name: Setup Dependencies
+    runs-on: ubuntu-latest
+    outputs:
+      cache-hit: ${{ steps.cache-deps.outputs.cache-hit }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Cache dependencies
+        id: cache-deps
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ env.CACHE_VERSION }}-${{ hashFiles('package-lock.json') }}
+
+      - name: Install dependencies
+        if: steps.cache-deps.outputs.cache-hit != 'true'
+        run: npm ci --prefer-offline --no-audit
+
+  lint:
+    name: ESLint Check
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Restore dependencies cache
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ env.CACHE_VERSION }}-${{ hashFiles('package-lock.json') }}
+
+      - name: Install dependencies
+        if: needs.setup.outputs.cache-hit != 'true'
+        run: npm ci --prefer-offline --no-audit
+
+      - name: Run ESLint
+        run: npm run lint
+
+      - name: ESLint report
+        if: always()
+        run: |
+          echo "## 🔍 ESLint Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          if npm run lint --silent; then
+            echo "✅ No linting issues found" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ Linting issues detected - check logs above" >> $GITHUB_STEP_SUMMARY
+          fi
+
+  type-check:
+    name: TypeScript Check
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Restore dependencies cache
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ env.CACHE_VERSION }}-${{ hashFiles('package-lock.json') }}
+
+      - name: Install dependencies
+        if: needs.setup.outputs.cache-hit != 'true'
+        run: npm ci --prefer-offline --no-audit
+
+      - name: TypeScript check
+        run: npm run type-check
+
+      - name: TypeScript report
+        if: always()
+        run: |
+          echo "## 📝 TypeScript Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          if npm run type-check --silent; then
+            echo "✅ No type errors found" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ Type errors detected - check logs above" >> $GITHUB_STEP_SUMMARY
+          fi
+
+  unit-tests:
+    name: Unit Tests
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Restore dependencies cache
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ env.CACHE_VERSION }}-${{ hashFiles('package-lock.json') }}
+
+      - name: Install dependencies
+        if: needs.setup.outputs.cache-hit != 'true'
+        run: npm ci --prefer-offline --no-audit
+
+      - name: Run unit tests
+        run: npm run test:unit
+
+      - name: Generate coverage report
+        run: npm run test:coverage
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          file: ./coverage/lcov.info
+          flags: unittests
+          name: unit-tests
+
+      - name: Coverage report
+        run: |
+          echo "## 🧪 Test Coverage Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          if [ -f coverage/coverage-summary.json ]; then
+            COVERAGE=$(cat coverage/coverage-summary.json | jq -r '.total.lines.pct')
+            echo "📊 Line Coverage: ${COVERAGE}%" >> $GITHUB_STEP_SUMMARY
+            if (( $(echo "$COVERAGE >= 80" | bc -l) )); then
+              echo "✅ Coverage meets minimum threshold (80%)" >> $GITHUB_STEP_SUMMARY
+            else
+              echo "⚠️ Coverage below recommended threshold (80%)" >> $GITHUB_STEP_SUMMARY
+            fi
+          else
+            echo "📊 Coverage report not found" >> $GITHUB_STEP_SUMMARY
+          fi
+
+  integration-tests:
+    name: Integration Tests
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Restore dependencies cache
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ env.CACHE_VERSION }}-${{ hashFiles('package-lock.json') }}
+
+      - name: Install dependencies
+        if: needs.setup.outputs.cache-hit != 'true'
+        run: npm ci --prefer-offline --no-audit
+
+      - name: Run integration tests
+        run: npm run test:integration
+
+      - name: Integration test report
+        if: always()
+        run: |
+          echo "## 🔗 Integration Test Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          if npm run test:integration --silent; then
+            echo "✅ All integration tests passed" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ Some integration tests failed - check logs above" >> $GITHUB_STEP_SUMMARY
+          fi
+
+  code-format:
+    name: Code Formatting
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Restore dependencies cache
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ env.CACHE_VERSION }}-${{ hashFiles('package-lock.json') }}
+
+      - name: Install dependencies
+        if: needs.setup.outputs.cache-hit != 'true'
+        run: npm ci --prefer-offline --no-audit
+
+      - name: Check Prettier formatting
+        run: npm run format:check
+
+      - name: Format report
+        if: always()
+        run: |
+          echo "## 💅 Code Formatting Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          if npm run format:check --silent; then
+            echo "✅ Code is properly formatted" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ Code formatting issues found - run 'npm run format' to fix" >> $GITHUB_STEP_SUMMARY
+          fi
+
+  quality-summary:
+    name: Quality Summary
+    runs-on: ubuntu-latest
+    needs: [lint, type-check, unit-tests, integration-tests, code-format]
+    if: always()
+    outputs:
+      status: ${{ steps.summary.outputs.status }}
+    steps:
+      - name: Generate quality summary
+        id: summary
+        run: |
+          echo "## 🎯 QUALITY PIPELINE - FINAL SUMMARY" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Pipeline:** Quality Checks" >> $GITHUB_STEP_SUMMARY
+          echo "**Timestamp:** $(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY
+          echo "**Commit:** ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Branch:** ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Detailed results table
+          echo "### 📊 Detailed Results" >> $GITHUB_STEP_SUMMARY
+          echo "| Check | Status | Description | Action Required |" >> $GITHUB_STEP_SUMMARY
+          echo "|-------|--------|-------------|-----------------|" >> $GITHUB_STEP_SUMMARY
+          echo "| ESLint | ${{ needs.lint.result == 'success' && '✅ PASS' || '❌ FAIL' }} | Code linting | ${{ needs.lint.result == 'success' && 'None' || 'Fix linting errors' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| TypeScript | ${{ needs.type-check.result == 'success' && '✅ PASS' || '❌ FAIL' }} | Type checking | ${{ needs.type-check.result == 'success' && 'None' || 'Fix type errors' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Unit Tests | ${{ needs.unit-tests.result == 'success' && '✅ PASS' || '❌ FAIL' }} | Unit test suite | ${{ needs.unit-tests.result == 'success' && 'None' || 'Fix failing tests' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Integration Tests | ${{ needs.integration-tests.result == 'success' && '✅ PASS' || '❌ FAIL' }} | Integration test suite | ${{ needs.integration-tests.result == 'success' && 'None' || 'Fix integration issues' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Code Format | ${{ needs.code-format.result == 'success' && '✅ PASS' || '❌ FAIL' }} | Prettier formatting | ${{ needs.code-format.result == 'success' && 'None' || 'Run npm run format' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Determine overall status and provide clear guidance
+          if [[ "${{ needs.lint.result }}" == "success" && 
+                "${{ needs.type-check.result }}" == "success" && 
+                "${{ needs.unit-tests.result }}" == "success" && 
+                "${{ needs.integration-tests.result }}" == "success" && 
+                "${{ needs.code-format.result }}" == "success" ]]; then
+            echo "status=success" >> $GITHUB_OUTPUT
+            echo "### ✅ OVERALL STATUS: SUCCESS" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "🎉 **All quality checks passed!**" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "**Next Steps:**" >> $GITHUB_STEP_SUMMARY
+            echo "- Quality gate: ✅ CLEARED" >> $GITHUB_STEP_SUMMARY
+            echo "- Ready for deployment (pending security and build)" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "status=failure" >> $GITHUB_OUTPUT
+            echo "### ❌ OVERALL STATUS: FAILURE" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "**Failed Checks:**" >> $GITHUB_STEP_SUMMARY
+            [[ "${{ needs.lint.result }}" != "success" ]] && echo "- ❌ ESLint: Fix linting errors" >> $GITHUB_STEP_SUMMARY
+            [[ "${{ needs.type-check.result }}" != "success" ]] && echo "- ❌ TypeScript: Fix type errors" >> $GITHUB_STEP_SUMMARY
+            [[ "${{ needs.unit-tests.result }}" != "success" ]] && echo "- ❌ Unit Tests: Fix failing tests" >> $GITHUB_STEP_SUMMARY
+            [[ "${{ needs.integration-tests.result }}" != "success" ]] && echo "- ❌ Integration Tests: Fix integration issues" >> $GITHUB_STEP_SUMMARY
+            [[ "${{ needs.code-format.result }}" != "success" ]] && echo "- ❌ Code Format: Run \`npm run format\`" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "**Impact:**" >> $GITHUB_STEP_SUMMARY
+            echo "- 🚫 Quality gate: BLOCKED" >> $GITHUB_STEP_SUMMARY
+            echo "- 🚫 Deployment: BLOCKED until issues resolved" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "---" >> $GITHUB_STEP_SUMMARY
+          echo "**For AI Analysis:** QUALITY_PIPELINE_STATUS=${{ needs.lint.result == 'success' && needs.type-check.result == 'success' && needs.unit-tests.result == 'success' && needs.integration-tests.result == 'success' && needs.code-format.result == 'success' && 'SUCCESS' || 'FAILURE' }}" >> $GITHUB_STEP_SUMMARY
+
+  notify-quality-issues:
+    name: Quality Issue Notification
+    runs-on: ubuntu-latest
+    needs: [quality-summary]
+    if: needs.quality-summary.outputs.status == 'failure'
+    steps:
+      - name: Quality alert
+        run: |
+          echo "⚠️ Quality issues detected!"
+          echo "Check the Quality Summary for details"
+          echo "This may block CI/CD pipeline until resolved"
