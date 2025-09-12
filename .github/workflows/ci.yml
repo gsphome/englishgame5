@@ -1,4 +1,4 @@
-name: CI/CD Pipeline
+name: CI/CD Pipeline (Improved)
 
 on:
   push:
@@ -11,10 +11,22 @@ permissions:
   pages: write
   id-token: write
 
+# Cancel previous runs on new push
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: '18'
+  CACHE_VERSION: v1
+
 jobs:
-  security-scan:
-    name: Security Scan
+  # Job paralelo para validaciones rápidas
+  quick-checks:
+    name: Quick Checks
     runs-on: ubuntu-latest
+    outputs:
+      cache-hit: ${{ steps.cache-deps.outputs.cache-hit }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -22,46 +34,37 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
 
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Run security audit
-        run: npm audit --audit-level=high
-
-      - name: Check for vulnerabilities
-        run: npm audit --audit-level=critical --production
-
-  code-quality:
-    name: Code Quality
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Cache dependencies
+        id: cache-deps
+        uses: actions/cache@v4
         with:
-          node-version: '18'
-          cache: 'npm'
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ env.CACHE_VERSION }}-${{ hashFiles('package-lock.json') }}
 
       - name: Install dependencies
-        run: npm ci
+        if: steps.cache-deps.outputs.cache-hit != 'true'
+        run: npm ci --prefer-offline --no-audit
 
-      - name: Run ESLint
+      - name: TypeScript check
+        run: npm run type-check
+
+      - name: Lint check
         run: npm run lint
 
-      - name: Run TypeScript check
-        run: npx tsc --noEmit --project config/tsconfig.json
+      - name: Security audit (quick)
+        run: npm audit --audit-level=high --production
 
-      - name: Check code formatting
-        run: echo "Prettier formatting check temporarily disabled" && exit 0
-
+  # Tests en paralelo
   test:
     name: Tests
     runs-on: ubuntu-latest
+    needs: quick-checks
+    strategy:
+      matrix:
+        test-type: [unit, integration]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -69,29 +72,43 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
 
+      - name: Restore dependencies cache
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ env.CACHE_VERSION }}-${{ hashFiles('package-lock.json') }}
+
       - name: Install dependencies
-        run: npm ci
+        if: needs.quick-checks.outputs.cache-hit != 'true'
+        run: npm ci --prefer-offline --no-audit
 
       - name: Run tests
-        run: npm test
+        run: |
+          if [ "${{ matrix.test-type }}" == "unit" ]; then
+            npm run test:unit
+          else
+            npm run test:integration
+          fi
 
-      - name: Run tests with coverage
+      - name: Generate coverage (unit only)
+        if: matrix.test-type == 'unit'
         run: npm run test:coverage
 
-      - name: Upload coverage to Codecov
+      - name: Upload coverage
+        if: matrix.test-type == 'unit'
         uses: codecov/codecov-action@v4
         with:
           file: ./coverage/lcov.info
           flags: unittests
-          name: codecov-umbrella
 
+  # Build optimizado
   build:
-    name: Build
+    name: Build & Analyze
     runs-on: ubuntu-latest
-    needs: [security-scan, code-quality, test]
+    needs: [quick-checks, test]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -99,88 +116,93 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
 
+      - name: Restore dependencies cache
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ env.CACHE_VERSION }}-${{ hashFiles('package-lock.json') }}
+
       - name: Install dependencies
-        run: npm ci
+        if: needs.quick-checks.outputs.cache-hit != 'true'
+        run: npm ci --prefer-offline --no-audit
 
       - name: Build application
         run: npm run build
 
-      - name: Check build size
+      - name: Analyze bundle size
         run: |
-          echo "Build size analysis:"
-          du -sh dist/
-          find dist/ -name "*.js" -exec du -h {} \; | sort -hr | head -10
+          echo "📦 Build Analysis:"
+          echo "Total size: $(du -sh dist/ | cut -f1)"
+          echo ""
+          echo "🔍 Largest files:"
+          find dist/ -name "*.js" -o -name "*.css" | xargs du -h | sort -hr | head -10
+          echo ""
+          echo "📊 File count by type:"
+          echo "JS files: $(find dist/ -name "*.js" | wc -l)"
+          echo "CSS files: $(find dist/ -name "*.css" | wc -l)"
+          echo "Assets: $(find dist/ -type f ! -name "*.js" ! -name "*.css" ! -name "*.html" | wc -l)"
+
+      - name: Check bundle size limits
+        run: |
+          MAIN_JS_SIZE=$(find dist/assets -name "index-*.js" -exec du -k {} \; | cut -f1)
+          if [ $MAIN_JS_SIZE -gt 1000 ]; then
+            echo "⚠️ Warning: Main bundle is ${MAIN_JS_SIZE}KB (>1MB)"
+            echo "Consider code splitting or lazy loading"
+          else
+            echo "✅ Bundle size OK: ${MAIN_JS_SIZE}KB"
+          fi
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: build-files
+          name: build-files-${{ github.sha }}
           path: dist/
           retention-days: 7
 
-  security-headers-test:
-    name: Security Headers Test
+  # Security checks mejorados
+  security-scan:
+    name: Security Scan
     runs-on: ubuntu-latest
-    needs: [build]
+    needs: quick-checks
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-      - name: Download build artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: build-files
-          path: dist/
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
 
-      - name: Install serve
-        run: npm install -g serve
-
-      - name: Start server
-        run: serve -s dist -p 3000 &
-        
-      - name: Wait for server
-        run: sleep 5
-
-      - name: Test security headers
-        run: |
-          echo "Testing security headers..."
-          curl -I http://localhost:3000 | grep -i "x-content-type-options\|x-frame-options\|content-security-policy" || echo "Some security headers missing"
-
-  deploy-staging:
-    name: Deploy to Staging
-    runs-on: ubuntu-latest
-    needs: [build, security-headers-test]
-    if: github.ref == 'refs/heads/develop'
-    environment: staging
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Download build artifacts
-        uses: actions/download-artifact@v4
+      - name: Restore dependencies cache
+        uses: actions/cache@v4
         with:
-          name: build-files
-          path: dist/
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ env.CACHE_VERSION }}-${{ hashFiles('package-lock.json') }}
 
-      - name: Deploy to staging
-        run: |
-          echo "Deploying to staging environment..."
-          # Add your staging deployment commands here
-          # Example: rsync, scp, or cloud provider CLI commands
+      - name: Install dependencies
+        if: needs.quick-checks.outputs.cache-hit != 'true'
+        run: npm ci --prefer-offline --no-audit
 
-  deploy-production:
-    name: Deploy to Production
+      - name: Full security audit
+        run: npm audit --audit-level=moderate
+
+      - name: Check for secrets
+        uses: trufflesecurity/trufflehog@main
+        with:
+          path: ./
+          base: ${{ github.event.before }}
+          head: ${{ github.sha }}
+
+  # Deploy condicional
+  deploy:
+    name: Deploy
     runs-on: ubuntu-latest
-    needs: [build, security-headers-test]
-    if: github.ref == 'refs/heads/main'
+    needs: [build, security-scan]
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     environment: production
     permissions:
       contents: read
@@ -193,7 +215,7 @@ jobs:
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
-          name: build-files
+          name: build-files-${{ github.sha }}
           path: dist/
 
       - name: Setup Pages
@@ -208,16 +230,28 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
+      - name: Deployment summary
+        run: |
+          echo "🚀 Deployment successful!"
+          echo "📍 URL: ${{ steps.deployment.outputs.page_url }}"
+          echo "📦 Build SHA: ${{ github.sha }}"
+          echo "⏰ Deployed at: $(date)"
+
+  # Notificaciones mejoradas
   notify:
-    name: Notify
+    name: Notify Results
     runs-on: ubuntu-latest
-    needs: [deploy-staging, deploy-production]
+    needs: [quick-checks, test, build, security-scan, deploy]
     if: always()
     steps:
-      - name: Notify deployment status
+      - name: Create summary
         run: |
-          if [ "${{ needs.deploy-staging.result }}" == "success" ] || [ "${{ needs.deploy-production.result }}" == "success" ]; then
-            echo "Deployment successful!"
-          else
-            echo "Deployment failed or skipped"
-          fi
+          echo "## 📋 Pipeline Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Job | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "|-----|--------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Quick Checks | ${{ needs.quick-checks.result == 'success' && '✅' || '❌' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Tests | ${{ needs.test.result == 'success' && '✅' || '❌' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Build | ${{ needs.build.result == 'success' && '✅' || '❌' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Security | ${{ needs.security-scan.result == 'success' && '✅' || '❌' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Deploy | ${{ needs.deploy.result == 'success' && '✅' || needs.deploy.result == 'skipped' && '⏭️' || '❌' }} |" >> $GITHUB_STEP_SUMMARY
