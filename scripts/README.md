@@ -219,6 +219,45 @@ node scripts/test-runner.js pipelines
 node scripts/test-runner.js git
 ```
 
+## 🔍 GitHub Actions Status
+
+### Check Workflow Status
+```bash
+# Overview of all workflows and recent runs
+npm run gh:status
+
+# Status for current commit/branch
+npm run gh:current
+
+# Watch status in real-time (30s intervals)
+npm run gh:watch
+
+# Watch with custom interval (10s)
+npm run gh:watch 10
+```
+
+### Features
+- **Workflow Overview**: See all configured workflows and their recent runs
+- **Current Status**: Check status of workflows for your current commit
+- **Real-time Monitoring**: Watch workflow progress with live updates
+- **Detailed Information**: View run URLs, timing, and failure details
+- **Branch Awareness**: Highlights runs for your current branch
+- **Smart Formatting**: Color-coded status indicators and clear summaries
+
+### Requirements
+- GitHub CLI (`gh`) must be installed and authenticated
+- Repository must have GitHub Actions workflows configured
+
+### Installation
+```bash
+# Install GitHub CLI
+brew install gh  # macOS
+# or visit: https://cli.github.com/
+
+# Authenticate
+gh auth login
+```
+
 ## 🔄 Migration from Old Scripts
 
 ### ✅ Completed Consolidation
@@ -233,6 +272,7 @@ node scripts/test-runner.js git
 - ✅ `utils/logger.js` - Consistent logging across all scripts
 - ✅ `utils/git-utils.js` - Shared git operations
 - ✅ `utils/ai-analyzer.js` - AI analysis engine for commits
+- ✅ `gh-status.js` - GitHub Actions workflow status checker
 
 ### Migration Commands
 ```bash

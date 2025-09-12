@@ -134,6 +134,32 @@ export function getCurrentCommitHash() {
 }
 
 /**
+ * Get current commit hash (full)
+ */
+export function getLatestCommit() {
+  try {
+    const hash = execSync('git rev-parse HEAD', { encoding: 'utf8', cwd: rootDir });
+    return hash.trim();
+  } catch (error) {
+    logError('Failed to get latest commit hash');
+    return 'unknown';
+  }
+}
+
+/**
+ * Get remote URL
+ */
+export function getRemoteUrl() {
+  try {
+    const url = execSync('git remote get-url origin', { encoding: 'utf8', cwd: rootDir });
+    return url.trim();
+  } catch (error) {
+    logError('Failed to get remote URL');
+    return 'unknown';
+  }
+}
+
+/**
  * Commit with message
  */
 export function commitChanges(message, body = '') {

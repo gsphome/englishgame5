@@ -47,6 +47,9 @@
     "flow:full": "node scripts/dev-tools.js full",
     "test-scripts": "node scripts/test-runner.js",
     "validate:integration": "node scripts/validate-integration.js",
+    "gh:status": "node scripts/gh-status.js status",
+    "gh:current": "node scripts/gh-status.js current",
+    "gh:watch": "node scripts/gh-status.js watch",
     "debug:pipeline": "echo '🐛 Pipeline debugging info:' && echo 'Node version:' && node --version && echo 'NPM version:' && npm --version && echo 'Dependencies status:' && npm ls --depth=0 2>/dev/null | head -10 && echo 'Build environment:' && npm run type-check --silent && echo '✅ Debug info collected'"
   },
   "dependencies": {
