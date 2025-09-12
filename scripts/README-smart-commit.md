@@ -48,22 +48,22 @@ npm run flow:safe
 
 ### 🤖 AI Commit Scripts
 
-| Script | Command | Description |
-|--------|---------|-------------|
-| `npm run commit` | `node scripts/smart-commit.js` | Interactive AI commit with multiple suggestions |
-| `npm run commit:ai` | `node scripts/smart-commit.js` | Same as above (alias) |
-| `npm run commit:quick` | `./scripts/commit.sh` | Fast AI commit (bash version) |
-| `npm run commit:all` | `./scripts/commit.sh --all` | Stage all changes and commit |
-| `npm run commit:push` | `./scripts/commit.sh --all --push` | Stage, commit, and push |
+| Script                 | Command                            | Description                                     |
+| ---------------------- | ---------------------------------- | ----------------------------------------------- |
+| `npm run commit`       | `node scripts/smart-commit.js`     | Interactive AI commit with multiple suggestions |
+| `npm run commit:ai`    | `node scripts/smart-commit.js`     | Same as above (alias)                           |
+| `npm run commit:quick` | `./scripts/commit.sh`              | Fast AI commit (bash version)                   |
+| `npm run commit:all`   | `./scripts/commit.sh --all`        | Stage all changes and commit                    |
+| `npm run commit:push`  | `./scripts/commit.sh --all --push` | Stage, commit, and push                         |
 
 ### 🔄 Development Flow Scripts
 
-| Script | Command | Description |
-|--------|---------|-------------|
-| `npm run flow` | `node scripts/dev-flow.js` | Interactive development workflow |
-| `npm run flow:quick` | `node scripts/dev-flow.js quick-commit` | Quick commit flow |
-| `npm run flow:safe` | `node scripts/dev-flow.js safe-commit` | Safe commit with validation |
-| `npm run flow:full` | `node scripts/dev-flow.js full-flow` | Complete development flow |
+| Script               | Command                                 | Description                      |
+| -------------------- | --------------------------------------- | -------------------------------- |
+| `npm run flow`       | `node scripts/dev-flow.js`              | Interactive development workflow |
+| `npm run flow:quick` | `node scripts/dev-flow.js quick-commit` | Quick commit flow                |
+| `npm run flow:safe`  | `node scripts/dev-flow.js safe-commit`  | Safe commit with validation      |
+| `npm run flow:full`  | `node scripts/dev-flow.js full-flow`    | Complete development flow        |
 
 ## 🎯 Features
 

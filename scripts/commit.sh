@@ -53,7 +53,7 @@ log_header() {
     echo "============================================================"
 }
 
-# Check git status
+# Check git status and auto-stage if needed
 check_git_status() {
     if ! git rev-parse --git-dir > /dev/null 2>&1; then
         log_error "Not a git repository"
@@ -63,7 +63,15 @@ check_git_status() {
     if ! git diff --cached --quiet; then
         return 0  # Has staged changes
     else
-        return 1  # No staged changes
+        # No staged changes, check for unstaged changes
+        if ! git diff --quiet; then
+            log_info "No staged changes found. Auto-staging all changes..."
+            git add .
+            log_success "All changes staged successfully!"
+            return 0  # Now has staged changes
+        else
+            return 1  # No changes at all
+        fi
     fi
 }
 
@@ -250,18 +258,11 @@ main() {
         auto_stage_all
     fi
     
-    # Check for staged changes
+    # Check for staged changes (auto-staging is handled in check_git_status)
     if ! check_git_status; then
-        log_warning "No staged changes found"
-        
-        if git diff --quiet; then
-            log_info "No changes detected in working directory"
-            exit 0
-        else
-            log_info "Unstaged changes found. Use --all to stage them automatically"
-            log_info "Or run: git add <files>"
-            exit 1
-        fi
+        log_warning "No changes found in working directory"
+        log_info "Nothing to commit"
+        exit 0
     fi
     
     # Use custom message or generate one

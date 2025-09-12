@@ -294,9 +294,19 @@ function generateCommitMessage(analysis, diffContent) {
 async function promptUser(question) {
   return new Promise((resolve) => {
     process.stdout.write(`${question} `);
+    
+    // Set stdin to raw mode for better input handling
+    if (process.stdin.isTTY) {
+      process.stdin.setRawMode(false);
+    }
+    
     process.stdin.once('data', (data) => {
-      resolve(data.toString().trim());
+      const input = data.toString().trim();
+      resolve(input);
     });
+    
+    // Resume stdin if it was paused
+    process.stdin.resume();
   });
 }
 
@@ -326,8 +336,10 @@ async function interactiveCommit(analysis, suggestions) {
       const index = parseInt(choice) - 1;
       if (suggestions[index]) {
         return suggestions[index];
+      } else {
+        logWarning('Invalid selection. Please try again.');
+        return await interactiveCommit(analysis, suggestions);
       }
-      break;
     case 'c':
       const customMessage = await promptUser('Enter custom commit message:');
       const customBody = await promptUser('Enter commit body (optional):');
@@ -393,9 +405,25 @@ async function main() {
     // Check if there are staged changes
     const diffLines = getGitDiff();
     if (diffLines.length === 0 || diffLines[0] === '') {
-      logWarning('No staged changes detected. Stage your changes first with `git add`.');
-      logInfo('Unstaged changes found. Use `git add` to stage them.');
-      process.exit(0);
+      logWarning('No staged changes detected.');
+      
+      // Check if there are unstaged changes
+      const unstagedStatus = execSync('git status --porcelain', { encoding: 'utf8', cwd: rootDir });
+      if (unstagedStatus.trim()) {
+        logInfo('Auto-staging all changes with `git add .`...');
+        execSync('git add .', { cwd: rootDir });
+        logSuccess('All changes staged successfully!');
+        
+        // Re-check staged changes after adding
+        const newDiffLines = getGitDiff();
+        if (newDiffLines.length === 0 || newDiffLines[0] === '') {
+          logWarning('No changes to commit after staging.');
+          process.exit(0);
+        }
+      } else {
+        logInfo('No changes found in working directory.');
+        process.exit(0);
+      }
     }
     
     logInfo('Analyzing changes...');
@@ -451,21 +479,46 @@ async function main() {
     log(`\n📝 Commit: ${commitHash}`, colors.cyan);
     log(`💬 Message: ${selectedCommit.message}`, colors.green);
     
+    // Exit successfully
+    log('\n✨ Smart commit completed successfully!', colors.green);
+    process.exit(0);
+    
   } catch (error) {
     logError(`Smart commit failed: ${error.message}`);
     process.exit(1);
   }
 }
 
+// Cleanup function
+function cleanup() {
+  if (process.stdin.isTTY) {
+    process.stdin.setRawMode(false);
+  }
+  process.stdin.pause();
+  process.stdin.destroy();
+}
+
 // Handle process termination
 process.on('SIGINT', () => {
   log('\n\n👋 Smart commit interrupted. No changes committed.', colors.cyan);
+  cleanup();
   process.exit(0);
+});
+
+process.on('SIGTERM', () => {
+  log('\n\n👋 Smart commit terminated. No changes committed.', colors.cyan);
+  cleanup();
+  process.exit(0);
+});
+
+process.on('exit', () => {
+  cleanup();
 });
 
 // Start the application
 main().catch((error) => {
   logError('Smart commit crashed:');
   console.error(error);
+  cleanup();
   process.exit(1);
 });

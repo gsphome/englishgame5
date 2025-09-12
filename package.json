@@ -41,6 +41,8 @@
     "ci:full": "npm ci && npm run pipeline:all",
     "commit": "node scripts/smart-commit.js",
     "commit:ai": "node scripts/smart-commit.js",
+    "commit:simple": "node scripts/simple-commit.js",
+    "commit:auto": "node scripts/simple-commit.js --auto",
     "commit:quick": "./scripts/commit.sh",
     "commit:all": "./scripts/commit.sh --all",
     "commit:push": "./scripts/commit.sh --all --push",

@@ -223,19 +223,47 @@ function checkGitStatus() {
     if (hasChanges) {
       log('\n📊 Git Status:', colors.bright);
       const lines = status.trim().split('\n');
-      lines.forEach(line => {
+      
+      // Check if there are unstaged changes that need auto-staging
+      const hasUnstaged = lines.some(line => {
         const status = line.substring(0, 2);
-        const file = line.substring(3);
-        let color = colors.white;
-        let icon = '•';
-        
-        if (status.includes('M')) { color = colors.yellow; icon = '~'; }
-        if (status.includes('A')) { color = colors.green; icon = '+'; }
-        if (status.includes('D')) { color = colors.red; icon = '-'; }
-        if (status.includes('??')) { color = colors.cyan; icon = '?'; }
-        
-        log(`  ${icon} ${file}`, color);
+        return status.includes('M') || status.includes('??') || status.includes('D');
       });
+      
+      if (hasUnstaged) {
+        logInfo('Found unstaged changes. Auto-staging with `git add .`...');
+        execSync('git add .', { cwd: rootDir });
+        logSuccess('All changes staged successfully!');
+        
+        // Re-check status after staging
+        const newStatus = execSync('git status --porcelain', { encoding: 'utf8', cwd: rootDir });
+        const newLines = newStatus.trim().split('\n').filter(line => line.trim());
+        
+        newLines.forEach(line => {
+          const status = line.substring(0, 2);
+          const file = line.substring(3);
+          let color = colors.green; // All should be staged now
+          let icon = '+';
+          
+          if (status.includes('M')) { icon = '~'; }
+          if (status.includes('D')) { color = colors.red; icon = '-'; }
+          
+          log(`  ${icon} ${file}`, color);
+        });
+      } else {
+        lines.forEach(line => {
+          const status = line.substring(0, 2);
+          const file = line.substring(3);
+          let color = colors.white;
+          let icon = '•';
+          
+          if (status.includes('M')) { color = colors.yellow; icon = '~'; }
+          if (status.includes('A')) { color = colors.green; icon = '+'; }
+          if (status.includes('D')) { color = colors.red; icon = '-'; }
+          
+          log(`  ${icon} ${file}`, color);
+        });
+      }
     } else {
       log('\n✨ Working directory is clean', colors.green);
     }
