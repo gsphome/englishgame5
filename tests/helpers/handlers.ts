@@ -1,6 +1,6 @@
 // Mock API handlers for testing
 import { vi } from 'vitest';
-import type { LearningModule } from '../../types';
+import type { LearningModule } from '../../src/types';
 
 // Mock data
 const mockModules: LearningModule[] = [

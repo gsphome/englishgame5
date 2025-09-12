@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { shuffleArray } from './randomUtils'
+import { shuffleArray } from '../../../src/utils/randomUtils'
 
 describe('randomUtils', () => {
   describe('shuffleArray', () => {

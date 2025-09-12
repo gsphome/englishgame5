@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { ValidationService, validationService, createValidationService } from '../validationService';
-import type { LearningModule, FlashcardData } from '../../types';
+import { ValidationService, validationService, createValidationService } from '../../../src/services/validationService';
+import type { LearningModule, FlashcardData } from '../../../src/types';
 
 describe('ValidationService', () => {
   let service: ValidationService;

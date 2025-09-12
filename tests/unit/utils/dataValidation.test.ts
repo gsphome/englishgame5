@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { DataValidator, validateModuleStructure, validateModuleData } from '../dataValidation';
-import type { LearningModule, FlashcardData, QuizData, CompletionData, MatchingData } from '../../types';
+import { DataValidator, validateModuleStructure, validateModuleData } from '../../../src/utils/dataValidation';
+import type { LearningModule, FlashcardData, QuizData, CompletionData, MatchingData } from '../../../src/types';
 
 describe('DataValidator', () => {
   describe('validateModule', () => {

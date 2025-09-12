@@ -1,6 +1,8 @@
+
 import React from 'react';
 import { describe, it, expect, beforeEach } from 'vitest';
-import { renderWithProviders, createMockModule } from '../../../src/test/utils';
+import { renderWithProviders } from '../../helpers/test-utils';
+import { testUtils } from '../../helpers/test-utils';
 import MatchingComponent from '../../../src/components/learning/MatchingComponent';
 import type { LearningModule } from '../../../src/types';
 
@@ -8,22 +10,25 @@ describe('MatchingComponent', () => {
   let mockModule: LearningModule;
 
   beforeEach(() => {
-    mockModule = createMockModule({
+    mockModule = testUtils.createMockModule({
       id: 'matching-test',
       name: 'Test Matching',
       learningMode: 'matching',
       data: [
         {
+          id: '1',
           left: 'Hello',
           right: 'Hola',
           explanation: 'Basic greeting'
         },
         {
+          id: '2',
           left: 'Goodbye',
           right: 'Adiós',
           explanation: 'Farewell expression'
         },
         {
+          id: '3',
           left: 'Thank you',
           right: 'Gracias',
           explanation: 'Expression of gratitude'
