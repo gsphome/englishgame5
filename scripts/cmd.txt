@@ -1,0 +1,3 @@
+npm run flow:full
+npm run gh:watch
+npm run gh:logs

@@ -140,7 +140,7 @@ const workflows = {
       { type: 'pipeline', target: 'quality' },
       { type: 'pipeline', target: 'security' },
       { type: 'pipeline', target: 'build' },
-      { type: 'command', cmd: 'node scripts/smart-commit.js --stage-all --push', desc: 'AI commit & push' }
+      { type: 'command', cmd: 'node scripts/smart-commit.js --stage-all --push --auto', desc: 'AI commit & push' }
     ]
   },
   fix: {

@@ -435,7 +435,19 @@ function showDetailedChanges(analysis) {
 
 async function main() {
   try {
+    // Parse command line arguments
+    const args = process.argv.slice(2);
+    const isAutoMode = args.includes('--auto');
+    const shouldStageAll = args.includes('--stage-all');
+    const shouldPush = args.includes('--push');
+    const isSimpleMode = args.includes('--simple');
+    const customMessage = args.find(arg => arg.startsWith('--message='))?.split('=')[1];
+
     logHeader('🤖 Smart Commit - AI-Powered Commit Messages');
+    
+    if (isAutoMode) {
+      logInfo('🤖 Running in automatic mode');
+    }
 
     // Check if we're in a git repository
     const statusLines = getGitStatus();
@@ -445,25 +457,31 @@ async function main() {
     }
 
     // Check if there are staged changes
-    const diffLines = getGitDiff();
+    let diffLines = getGitDiff();
     if (diffLines.length === 0 || diffLines[0] === '') {
-      logWarning('No staged changes detected.');
-
-      // Check if there are unstaged changes
-      const unstagedStatus = execSync('git status --porcelain', { encoding: 'utf8', cwd: rootDir });
-      if (unstagedStatus.trim()) {
+      if (shouldStageAll) {
         logInfo('Auto-staging all changes with `git add .`...');
         execSync('git add .', { cwd: rootDir });
         logSuccess('All changes staged successfully!');
+        diffLines = getGitDiff();
+      } else {
+        logWarning('No staged changes detected.');
 
-        // Re-check staged changes after adding
-        const newDiffLines = getGitDiff();
-        if (newDiffLines.length === 0 || newDiffLines[0] === '') {
-          logWarning('No changes to commit after staging.');
+        // Check if there are unstaged changes
+        const unstagedStatus = execSync('git status --porcelain', { encoding: 'utf8', cwd: rootDir });
+        if (unstagedStatus.trim()) {
+          logInfo('Auto-staging all changes with `git add .`...');
+          execSync('git add .', { cwd: rootDir });
+          logSuccess('All changes staged successfully!');
+          diffLines = getGitDiff();
+        } else {
+          logInfo('No changes found in working directory.');
           process.exit(0);
         }
-      } else {
-        logInfo('No changes found in working directory.');
+      }
+      
+      if (diffLines.length === 0 || diffLines[0] === '') {
+        logWarning('No changes to commit after staging.');
         process.exit(0);
       }
     }
@@ -501,8 +519,20 @@ async function main() {
 
     suggestions.push(descriptiveVersion);
 
-    // Interactive selection
-    const selectedCommit = await interactiveCommit(analysis, suggestions);
+    // Select commit message
+    let selectedCommit;
+    
+    if (customMessage) {
+      selectedCommit = { message: customMessage, body: '' };
+      logInfo(`Using custom message: ${customMessage}`);
+    } else if (isAutoMode) {
+      // In auto mode, use the first (short) suggestion
+      selectedCommit = suggestions[0];
+      logInfo(`Auto-selected: ${selectedCommit.message}`);
+    } else {
+      // Interactive selection
+      selectedCommit = await interactiveCommit(analysis, suggestions);
+    }
 
     // Perform commit
     logInfo('Committing changes...');
@@ -520,6 +550,17 @@ async function main() {
     const commitHash = execSync('git rev-parse --short HEAD', { encoding: 'utf8', cwd: rootDir }).trim();
     log(`\n📝 Commit: ${commitHash}`, colors.cyan);
     log(`💬 Message: ${selectedCommit.message}`, colors.green);
+
+    // Push if requested
+    if (shouldPush) {
+      logInfo('\nPushing to remote...');
+      try {
+        execSync('git push', { stdio: 'inherit', cwd: rootDir });
+        logSuccess('Push completed successfully!');
+      } catch (error) {
+        logError('Push failed. You may need to push manually.');
+      }
+    }
 
     // Exit successfully
     log('\n✨ Smart commit completed successfully!', colors.green);

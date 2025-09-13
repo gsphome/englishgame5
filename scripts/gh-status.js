@@ -426,12 +426,16 @@ function watchStatus(interval = 30) {
     
     if (!hasActivity) {
       consecutiveNoActivity++;
-      logInfo(`\n⚪ No active workflows detected (${consecutiveNoActivity}/3 checks)`);
+      logInfo(`\n⚪ No active workflows detected (${consecutiveNoActivity}/2 checks)`);
       
-      if (consecutiveNoActivity >= 3) {
+      // Stop after just 2 consecutive checks with no activity
+      if (consecutiveNoActivity >= 2) {
         logInfo('\n🏁 All workflows completed. Stopping watch automatically.');
         logInfo('💡 Use "npm run gh:current" to check final status');
         logInfo('💡 Use "npm run gh:watch" to start watching again');
+        
+        // Show final status before stopping
+        showCurrentStatus();
         return; // Stop watching
       }
     } else {
@@ -440,9 +444,10 @@ function watchStatus(interval = 30) {
     
     const result = showCurrentStatus();
     
-    // If no activity detected in showCurrentStatus, increment counter
-    if (!result.hasActivity) {
-      consecutiveNoActivity++;
+    // Double-check: if showCurrentStatus also reports no activity, stop immediately
+    if (!result.hasActivity && !hasActivity) {
+      logInfo('\n🏁 Confirmed: All workflows completed. Stopping watch.');
+      return; // Stop watching immediately
     }
     
     // Continue watching
@@ -456,21 +461,99 @@ function watchStatus(interval = 30) {
     logInfo('💡 All workflows appear to be completed.');
     logInfo('💡 Use "npm run gh:current" to see final status\n');
     
-    // Show current status anyway
+    // Show current status and stop
     const result = showCurrentStatus();
     
-    logInfo('\n🤔 Start watching anyway? (workflows might start soon)');
-    logInfo('Press Ctrl+C to cancel, or wait 10 seconds to start watching...');
-    
-    setTimeout(() => {
-      logInfo('\n🔄 Starting watch mode...');
-      setTimeout(watch, interval * 1000);
-    }, 10000);
+    logInfo('\n🏁 No active workflows found. Watch mode not needed.');
+    logInfo('💡 Use "npm run gh:watch" again if new workflows start');
+    return; // Don't start watching if there's no activity
   } else {
     logInfo('🔄 Active workflows detected. Starting watch mode...\n');
     const result = showCurrentStatus();
     setTimeout(watch, interval * 1000);
   }
+}
+
+/**
+ * Show failure logs for current commit
+ */
+function showFailureLogs() {
+  logHeader('🔍 GitHub Actions Failure Analysis');
+  
+  if (!checkGitHubCLI()) {
+    logError('GitHub CLI (gh) is not installed or not authenticated');
+    return false;
+  }
+  
+  const currentBranch = getCurrentBranch();
+  const latestCommit = getLatestCommit();
+  
+  logInfo(`Commit: ${latestCommit.slice(0, 8)}`);
+  logInfo(`Branch: ${currentBranch}`);
+  
+  // Get runs for current commit
+  const runs = getWorkflowRuns(20);
+  const currentRuns = runs.filter(run => run.headSha === latestCommit);
+  const failedRuns = currentRuns.filter(run => run.conclusion === 'failure');
+  
+  if (failedRuns.length === 0) {
+    logInfo('\n✅ No failed workflows found for current commit');
+    return true;
+  }
+  
+  logInfo(`\n❌ Found ${failedRuns.length} failed workflow(s):\n`);
+  
+  failedRuns.forEach((run, index) => {
+    logError(`${index + 1}. ${run.workflowName} - ${formatStatus(run.status, run.conclusion)}`);
+    logInfo(`   URL: ${run.url}`);
+    
+    // Get detailed logs for this run
+    try {
+      logInfo(`   📋 Getting failure details...`);
+      const logs = execSync(`gh run view ${run.url.split('/').pop()} --log-failed`, {
+        encoding: 'utf8',
+        cwd: rootDir
+      });
+      
+      if (logs.trim()) {
+        logInfo(`   🔍 Failure logs:`);
+        // Show only the most relevant error lines
+        const errorLines = logs.split('\n')
+          .filter(line => 
+            line.includes('Error:') || 
+            line.includes('Failed:') || 
+            line.includes('error') ||
+            line.includes('✗') ||
+            line.includes('❌') ||
+            line.includes('FAIL')
+          )
+          .slice(0, 5); // Show only first 5 error lines
+          
+        if (errorLines.length > 0) {
+          errorLines.forEach(line => {
+            logError(`     ${line.trim()}`);
+          });
+        } else {
+          logInfo(`     No specific error messages found in logs`);
+        }
+      }
+    } catch (error) {
+      logWarning(`   ⚠️  Could not fetch detailed logs: ${error.message}`);
+    }
+    
+    logInfo(''); // Empty line between workflows
+  });
+  
+  // Summary and recommendations
+  logInfo('🔧 Troubleshooting Tips:');
+  logInfo('  • Click on the URLs above to see full logs in GitHub');
+  logInfo('  • Check if the issue reproduces locally with:');
+  logInfo('    - npm run pipeline:quality');
+  logInfo('    - npm run pipeline:security'); 
+  logInfo('    - npm run pipeline:build');
+  logInfo('  • Compare local vs CI environment differences');
+  
+  return failedRuns.length === 0;
 }
 
 /**
@@ -497,20 +580,27 @@ function main() {
       watchStatus(interval);
       break;
       
+    case 'logs':
+    case 'failures':
+    case 'f':
+      showFailureLogs();
+      break;
+      
     case 'help':
     case 'h':
       logHeader('🔍 GitHub Actions Status Checker');
       logInfo('\nUsage: node scripts/gh-status.js [command] [options]\n');
       logInfo('Commands:');
-      logInfo('  status, s     Show overview of all workflows and recent runs');
-      logInfo('  current, c    Show status for current commit/branch');
-      logInfo('  watch, w [n]  Watch status with n second intervals (default: 30)');
-      logInfo('  help, h       Show this help message\n');
+      logInfo('  status, s       Show overview of all workflows and recent runs');
+      logInfo('  current, c      Show status for current commit/branch');
+      logInfo('  watch, w [n]    Watch status with n second intervals (default: 30)');
+      logInfo('  logs, failures  Show failure logs for current commit');
+      logInfo('  help, h         Show this help message\n');
       logInfo('Examples:');
       logInfo('  npm run gh:status         # Show workflow overview');
       logInfo('  npm run gh:current        # Show current commit status');
       logInfo('  npm run gh:watch          # Watch status every 30s');
-      logInfo('  npm run gh:watch 10       # Watch status every 10s');
+      logInfo('  npm run gh:logs           # Show failure analysis');
       break;
       
     default:
