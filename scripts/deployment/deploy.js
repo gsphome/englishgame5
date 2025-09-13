@@ -151,22 +151,112 @@ async function triggerDeploy(commitInfo, pipelineStatus) {
     log(`   Artifact: ${artifactName}`, 'cyan');
     log(`   Commit: ${shortSha}`, 'cyan');
     
-    // Wait a moment and show the workflow URL
-    setTimeout(() => {
-      log('\n📋 You can monitor the deployment at:', 'bright');
-      try {
-        const repoUrl = execCommand('gh repo view --json url --jq .url', { silent: true });
-        log(`   ${repoUrl}/actions/workflows/deploy.yml`, 'blue');
-      } catch (error) {
-        log('   Check your GitHub Actions tab', 'blue');
-      }
-    }, 2000);
+    return true;
     
   } catch (error) {
     log('❌ Failed to trigger deployment workflow', 'red');
     log('   Make sure you have the GitHub CLI installed and authenticated', 'yellow');
     log('   Run: gh auth login', 'yellow');
     throw error;
+  }
+}
+
+async function monitorDeployment(commitInfo, maxWaitTime = 300) {
+  const { sha, shortSha } = commitInfo;
+  
+  log('\n👀 Monitoring deployment progress...', 'cyan');
+  log('   (Press Ctrl+C to stop monitoring and continue in background)', 'yellow');
+  
+  const startTime = Date.now();
+  let deploymentFound = false;
+  let lastStatus = '';
+  
+  // Wait a bit for the workflow to start
+  await new Promise(resolve => setTimeout(resolve, 10000));
+  
+  while ((Date.now() - startTime) < maxWaitTime * 1000) {
+    try {
+      // Check for deployment workflow runs
+      const deployRuns = execCommand(
+        `gh api repos/$(gh repo view --json owner,name --jq '.owner.login + "/" + .name')/actions/runs --jq ".workflow_runs[] | select(.name == \\"Deploy Pipeline\\") | {status, conclusion, created_at, html_url}" | head -3`,
+        { silent: true }
+      );
+      
+      if (deployRuns.trim()) {
+        const runs = deployRuns.trim().split('\n').map(line => {
+          try {
+            return JSON.parse(line);
+          } catch {
+            return null;
+          }
+        }).filter(Boolean);
+        
+        // Find the most recent run
+        const latestRun = runs[0];
+        
+        if (latestRun) {
+          deploymentFound = true;
+          const status = latestRun.status;
+          const conclusion = latestRun.conclusion;
+          const currentStatus = conclusion || status;
+          
+          if (currentStatus !== lastStatus) {
+            lastStatus = currentStatus;
+            
+            switch (currentStatus) {
+              case 'queued':
+                log('   ⏳ Deployment queued...', 'yellow');
+                break;
+              case 'in_progress':
+                log('   🔄 Deployment in progress...', 'blue');
+                break;
+              case 'success':
+                log('   ✅ Deployment completed successfully!', 'green');
+                log(`   🌐 Check your application at the deployment URL`, 'cyan');
+                return { success: true, status: 'success' };
+              case 'failure':
+                log('   ❌ Deployment failed!', 'red');
+                log(`   🔗 Check details: ${latestRun.html_url}`, 'blue');
+                return { success: false, status: 'failure', url: latestRun.html_url };
+              case 'cancelled':
+                log('   ⚠️  Deployment was cancelled', 'yellow');
+                return { success: false, status: 'cancelled' };
+              default:
+                log(`   📊 Status: ${currentStatus}`, 'cyan');
+            }
+          }
+        }
+      }
+      
+      // Wait before next check
+      await new Promise(resolve => setTimeout(resolve, 15000));
+      
+    } catch (error) {
+      log('   ⚠️  Error checking deployment status, retrying...', 'yellow');
+      await new Promise(resolve => setTimeout(resolve, 10000));
+    }
+  }
+  
+  if (!deploymentFound) {
+    log('   ⚠️  No deployment workflow detected within timeout', 'yellow');
+    log('   💡 The deployment may still be starting - check GitHub Actions manually', 'cyan');
+  } else {
+    log('   ⏰ Monitoring timeout reached', 'yellow');
+    log('   💡 Deployment may still be in progress - check GitHub Actions for final status', 'cyan');
+  }
+  
+  return { success: false, status: 'timeout' };
+}
+
+function showDeploymentLinks() {
+  try {
+    const repoUrl = execCommand('gh repo view --json url --jq .url', { silent: true });
+    log('\n📋 Useful links:', 'bright');
+    log(`   🔗 Deployment workflow: ${repoUrl}/actions/workflows/deploy.yml`, 'blue');
+    log(`   🔗 All workflows: ${repoUrl}/actions`, 'blue');
+    log(`   🔗 Repository: ${repoUrl}`, 'blue');
+  } catch (error) {
+    log('\n📋 Check your GitHub Actions tab for deployment status', 'cyan');
   }
 }
 
@@ -202,23 +292,51 @@ async function main() {
     await triggerDeploy(commitInfo, pipelineStatus);
     
     log('\n🎉 Deployment process initiated!', 'green');
-    log('   Monitor the progress in GitHub Actions', 'cyan');
     
-    // Final success message
-    console.log('\n' + '='.repeat(60));
-    log('🚀 DEPLOYMENT WORKFLOW COMPLETE!', 'bright');
-    console.log('='.repeat(60));
-    log('✅ All quality gates verified', 'green');
-    log('✅ Deploy Pipeline triggered successfully', 'green');
-    log('✅ Application deployment in progress', 'green');
-    console.log('');
-    log('📋 Monitor deployment progress at:', 'cyan');
-    try {
-      const repoUrl = execCommand('gh repo view --json url --jq .url', { silent: true });
-      log(`   ${repoUrl}/actions/workflows/deploy.yml`, 'blue');
-    } catch (error) {
-      log('   Check your GitHub Actions tab', 'blue');
+    // Monitor deployment progress (unless disabled)
+    let monitorResult = { success: false, status: 'skipped' };
+    
+    if (!options.noMonitor) {
+      monitorResult = await monitorDeployment(commitInfo, options.timeout);
+    } else {
+      log('   ⏭️  Monitoring skipped (--no-monitor flag)', 'yellow');
     }
+    
+    // Final status message
+    console.log('\n' + '='.repeat(60));
+    if (monitorResult.success) {
+      log('🎉 DEPLOYMENT COMPLETED SUCCESSFULLY!', 'bright');
+      console.log('='.repeat(60));
+      log('✅ All quality gates verified', 'green');
+      log('✅ Deploy Pipeline triggered successfully', 'green');
+      log('✅ Application deployed successfully', 'green');
+      log('✅ Deployment monitoring completed', 'green');
+    } else {
+      log('🚀 DEPLOYMENT TRIGGERED!', 'bright');
+      console.log('='.repeat(60));
+      log('✅ All quality gates verified', 'green');
+      log('✅ Deploy Pipeline triggered successfully', 'green');
+      
+      switch (monitorResult.status) {
+        case 'failure':
+          log('❌ Deployment failed during execution', 'red');
+          log('🔗 Check the workflow logs for details', 'yellow');
+          break;
+        case 'cancelled':
+          log('⚠️  Deployment was cancelled', 'yellow');
+          break;
+        case 'timeout':
+          log('⏰ Monitoring timeout - deployment may still be running', 'yellow');
+          break;
+        case 'skipped':
+          log('⏭️  Monitoring skipped - check deployment status manually', 'cyan');
+          break;
+        default:
+          log('📊 Deployment status unknown - check manually', 'yellow');
+      }
+    }
+    
+    showDeploymentLinks();
     console.log('='.repeat(60));
     
   } catch (error) {
@@ -229,16 +347,30 @@ async function main() {
 
 // Handle command line arguments
 const args = process.argv.slice(2);
+const options = {
+  noMonitor: args.includes('--no-monitor'),
+  silent: args.includes('--silent'),
+  timeout: parseInt(args.find(arg => arg.startsWith('--timeout='))?.split('=')[1]) || 300
+};
+
 if (args.includes('--help') || args.includes('-h')) {
   log('🚀 Manual Deployment Trigger', 'bright');
   log('============================\n', 'bright');
   log('Usage: npm run deploy:manual [options]', 'cyan');
   log('\nOptions:', 'bright');
-  log('  --help, -h    Show this help message', 'cyan');
+  log('  --help, -h         Show this help message', 'cyan');
+  log('  --no-monitor       Skip deployment monitoring', 'cyan');
+  log('  --silent           Minimal output mode', 'cyan');
+  log('  --timeout=SECONDS  Monitoring timeout (default: 300)', 'cyan');
   log('\nDescription:', 'bright');
   log('  Triggers the GitHub Actions Deploy Pipeline manually', 'cyan');
+  log('  Automatically monitors deployment progress and shows final status', 'cyan');
   log('  Checks current pipeline status and prompts for confirmation', 'cyan');
   log('  if not all quality gates have passed.', 'cyan');
+  log('\nExamples:', 'bright');
+  log('  npm run deploy:manual                    # Full deployment with monitoring', 'cyan');
+  log('  npm run deploy:manual -- --no-monitor   # Deploy without monitoring', 'cyan');
+  log('  npm run deploy:manual -- --timeout=600  # Monitor for 10 minutes', 'cyan');
   log('\nPrerequisites:', 'bright');
   log('  - GitHub CLI (gh) installed and authenticated', 'cyan');
   log('  - Current directory must be a git repository', 'cyan');
