@@ -46,94 +46,18 @@ jobs:
     outputs:
       status: ${{ steps.summary.outputs.status }}
     steps:
-      - name: Generate orchestrator summary
+      - name: Check pipeline results
         id: summary
         run: |
-          echo "## 🎭 CI/CD ORCHESTRATOR - FINAL SUMMARY" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Pipeline:** CI/CD Orchestrator" >> $GITHUB_STEP_SUMMARY
-          echo "**Timestamp:** $(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY
-          echo "**Commit:** ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
-          echo "**Branch:** ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
-          echo "**Trigger:** ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Quality result: ${{ needs.quality.result }}"
+          echo "Security result: ${{ needs.security.result }}"
+          echo "Build result: ${{ needs.build.result }}"
           
-          # Pipeline execution results
-          echo "### 🔄 Pipeline Execution Results" >> $GITHUB_STEP_SUMMARY
-          echo "| Pipeline | Status | Responsibility | Action Required |" >> $GITHUB_STEP_SUMMARY
-          echo "|----------|--------|----------------|-----------------|" >> $GITHUB_STEP_SUMMARY
-          echo "| 🎯 Quality | ${{ needs.quality.result == 'success' && '✅ PASS' || '❌ FAIL' }} | ESLint, Tests, TypeScript, Format | ${{ needs.quality.result == 'success' && 'None' || 'Check Quality Pipeline logs' }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| 🛡️ Security | ${{ needs.security.result == 'success' && '✅ PASS' || '❌ FAIL' }} | Vulnerabilities, Secrets, Licenses | ${{ needs.security.result == 'success' && 'None' || 'Check Security Pipeline logs' }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| 📦 Build | ${{ needs.build.result == 'success' && '✅ PASS' || '❌ FAIL' }} | Application build & analysis | ${{ needs.build.result == 'success' && 'None' || 'Check Build Pipeline logs' }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| 🚀 Deploy | ⏭️ SKIP | Production deployment | Deploy runs separately via CI/CD Orchestrator |" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          
-          # Execution flow analysis
-          echo "### 📊 Execution Flow Analysis" >> $GITHUB_STEP_SUMMARY
-          echo "**Phase 1 - Parallel Execution:**" >> $GITHUB_STEP_SUMMARY
-          echo "- Quality Pipeline: ${{ needs.quality.result }}" >> $GITHUB_STEP_SUMMARY
-          echo "- Security Pipeline: ${{ needs.security.result }}" >> $GITHUB_STEP_SUMMARY
-          echo "- Build Pipeline: ${{ needs.build.result }}" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Phase 2 - Gate Verification:**" >> $GITHUB_STEP_SUMMARY
-          echo "- All 3 pipelines must succeed for deployment" >> $GITHUB_STEP_SUMMARY
-          echo "- Deploy only on main branch pushes" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Phase 3 - Deployment:**" >> $GITHUB_STEP_SUMMARY
-          echo "- Deploy Pipeline: Managed separately by CI/CD Orchestrator" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          
-          # Determine overall status and provide clear guidance
+          # Determine overall status
           if [[ "${{ needs.quality.result }}" == "success" && "${{ needs.security.result }}" == "success" && "${{ needs.build.result }}" == "success" ]]; then
-            PARALLEL_SUCCESS="true"
-          else
-            PARALLEL_SUCCESS="false"
-          fi
-          
-          if [[ "$PARALLEL_SUCCESS" == "true" ]]; then
             echo "status=success" >> $GITHUB_OUTPUT
-            echo "### ✅ OVERALL STATUS: SUCCESS" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "🎉 **All pipelines completed successfully!**" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "**Success Summary:**" >> $GITHUB_STEP_SUMMARY
-            echo "- ✅ Quality: All code quality checks passed" >> $GITHUB_STEP_SUMMARY
-            echo "- ✅ Security: All security scans passed" >> $GITHUB_STEP_SUMMARY
-            echo "- ✅ Build: Application built successfully" >> $GITHUB_STEP_SUMMARY
-            echo "- 🚀 Deploy: Ready for deployment (triggered separately)" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "**Next Steps:**" >> $GITHUB_STEP_SUMMARY
-            echo "- 🚀 Deployment will be triggered automatically" >> $GITHUB_STEP_SUMMARY
-            echo "- 📊 Monitor application performance" >> $GITHUB_STEP_SUMMARY
+            echo "✅ All pipelines succeeded"
           else
             echo "status=failure" >> $GITHUB_OUTPUT
-            echo "### ❌ OVERALL STATUS: FAILURE" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "**Pipeline Failures:**" >> $GITHUB_STEP_SUMMARY
-            [[ "${{ needs.quality.result }}" != "success" ]] && echo "- ❌ Quality Pipeline: Check ESLint, tests, TypeScript, formatting" >> $GITHUB_STEP_SUMMARY
-            [[ "${{ needs.security.result }}" != "success" ]] && echo "- ❌ Security Pipeline: Check vulnerabilities, secrets, licenses" >> $GITHUB_STEP_SUMMARY
-            [[ "${{ needs.build.result }}" != "success" ]] && echo "- ❌ Build Pipeline: Check compilation and bundle analysis" >> $GITHUB_STEP_SUMMARY
-            echo "- 🚀 Deploy Pipeline: Will be triggered if all gates pass" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "**Impact:**" >> $GITHUB_STEP_SUMMARY
-            echo "- 🚫 CI/CD pipeline: BLOCKED" >> $GITHUB_STEP_SUMMARY
-            [[ "$PARALLEL_SUCCESS" != "true" ]] && echo "- 🚫 Deployment: BLOCKED by failed pipeline gates" >> $GITHUB_STEP_SUMMARY
-            echo "- 🔄 Fix issues and re-run pipeline" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "**Debugging Guide:**" >> $GITHUB_STEP_SUMMARY
-            echo "1. Click on failed pipeline(s) above" >> $GITHUB_STEP_SUMMARY
-            echo "2. Review detailed logs and error messages" >> $GITHUB_STEP_SUMMARY
-            echo "3. Fix issues locally and push changes" >> $GITHUB_STEP_SUMMARY
-            echo "4. Pipeline will re-run automatically" >> $GITHUB_STEP_SUMMARY
+            echo "❌ One or more pipelines failed"
           fi
-          
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "### 🏗️ Architecture Benefits" >> $GITHUB_STEP_SUMMARY
-          echo "- 🔄 **Clear separation**: Each pipeline has single responsibility" >> $GITHUB_STEP_SUMMARY
-          echo "- ⚡ **Maximum speed**: 3 pipelines run in parallel" >> $GITHUB_STEP_SUMMARY
-          echo "- 🚪 **Triple gates**: Quality + Security + Build must all pass" >> $GITHUB_STEP_SUMMARY
-          echo "- 👀 **Visual clarity**: 4 separate workflows in GitHub Actions UI" >> $GITHUB_STEP_SUMMARY
-          echo "- 🎯 **Focused debugging**: Easy to identify which area failed" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "---" >> $GITHUB_STEP_SUMMARY
-          echo "**For AI Analysis:** ORCHESTRATOR_STATUS=${{ needs.quality.result == 'success' && needs.security.result == 'success' && needs.build.result == 'success' && 'SUCCESS' || 'FAILURE' }}" >> $GITHUB_STEP_SUMMARY
