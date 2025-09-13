@@ -145,3 +145,46 @@ Para añadir nuevas funcionalidades:
 - **v1.0** - Scripts iniciales de detección y corrección de duplicados
 - **v1.1** - Añadida validación de calidad de datos
 - **v1.2** - Optimización de componente y herramientas unificadas
+#
+## 🔍 validate-all-modules.js
+**Propósito**: Valida que todos los módulos de aprendizaje se puedan cargar correctamente.
+
+**Uso**:
+```bash
+node scripts/matching/validate-all-modules.js
+```
+
+**Funcionalidades**:
+- Verifica todos los tipos de módulos (flashcard, quiz, sorting, completion, matching)
+- Valida estructura de datos y formato JSON
+- Genera estadísticas por tipo y nivel
+- Reporta módulos problemáticos con detalles específicos
+
+### 🔧 normalize-data-structures.js
+**Propósito**: Normaliza las estructuras de datos de todos los módulos a los formatos esperados.
+
+**Uso**:
+```bash
+node scripts/matching/normalize-data-structures.js
+```
+
+**Funcionalidades**:
+- Convierte diferentes formatos a estructuras estándar
+- Normaliza flashcards (en/es → front/back)
+- Normaliza sorting (objetos complejos → arrays simples)
+- Crea backups automáticos antes de modificar
+- Reporta cambios realizados
+
+### 🛠️ fix-module-paths.js
+**Propósito**: Corrige las rutas de los módulos para que apunten a las subcarpetas correctas.
+
+**Uso**:
+```bash
+node scripts/matching/fix-module-paths.js
+```
+
+**Funcionalidades**:
+- Detecta rutas incorrectas en learningModules.json
+- Actualiza rutas para incluir subcarpetas (a1/, a2/, etc.)
+- Verifica que los archivos existan en las nuevas rutas
+- Crea backup del archivo de configuración

@@ -36,12 +36,15 @@ ${colors.bright}Uso:${colors.reset}
   node scripts/matching/matching-tools.js [comando]
 
 ${colors.bright}Comandos disponibles:${colors.reset}
-  ${colors.green}validate${colors.reset}    Valida la calidad de todos los datos de matching
-  ${colors.yellow}fix${colors.reset}         Detecta y corrige duplicados automáticamente
-  ${colors.blue}optimize${colors.reset}     Optimiza el componente MatchingComponent
-  ${colors.magenta}all${colors.reset}         Ejecuta todos los procesos en secuencia
-  ${colors.cyan}status${colors.reset}      Muestra el estado actual de los datos
-  ${colors.bright}help${colors.reset}        Muestra esta ayuda
+  ${colors.green}validate${colors.reset}      Valida la calidad de todos los datos de matching
+  ${colors.yellow}fix${colors.reset}           Detecta y corrige duplicados automáticamente
+  ${colors.blue}optimize${colors.reset}       Optimiza el componente MatchingComponent
+  ${colors.magenta}all${colors.reset}           Ejecuta todos los procesos en secuencia
+  ${colors.cyan}status${colors.reset}        Muestra el estado actual de los datos
+  ${colors.bright}validate-all${colors.reset}  Valida todos los módulos del sistema
+  ${colors.bright}normalize${colors.reset}     Normaliza estructuras de datos
+  ${colors.bright}fix-paths${colors.reset}     Corrige rutas de módulos
+  ${colors.bright}help${colors.reset}          Muestra esta ayuda
 
 ${colors.bright}Ejemplos:${colors.reset}
   node scripts/matching/matching-tools.js validate
