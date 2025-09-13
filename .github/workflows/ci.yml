@@ -35,16 +35,3 @@ jobs:
     uses: ./.github/workflows/build.yml
     secrets: inherit
 
-  # Summary final
-  orchestrator-summary:
-    name: Orchestrator Summary
-    runs-on: ubuntu-latest
-    needs: [quality, security, build]
-    if: always()
-    steps:
-      - name: Check pipeline results
-        run: |
-          echo "Quality result: ${{ needs.quality.result }}"
-          echo "Security result: ${{ needs.security.result }}"
-          echo "Build result: ${{ needs.build.result }}"
-          echo "✅ Orchestrator summary completed"
