@@ -35,18 +35,7 @@ jobs:
     uses: ./.github/workflows/build.yml
     secrets: inherit
 
-  # Deploy pipeline (waits for all 3 above)
-  deploy:
-    name: Deploy Pipeline
-    uses: ./.github/workflows/deploy.yml
-    needs: [quality, security, build]
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    secrets: inherit
-    with:
-      artifact-name: ${{ needs.build.outputs.artifact-name }}
-      quality-status: ${{ needs.quality.outputs.quality-status }}
-      security-status: ${{ needs.security.outputs.security-status }}
-      build-status: ${{ needs.build.outputs.build-status }}
+  # Deploy pipeline is handled separately - not part of CI/CD orchestrator
 
   # Summary final
   orchestrator-summary:
