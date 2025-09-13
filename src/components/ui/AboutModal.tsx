@@ -112,6 +112,12 @@ export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose }) => {
                       'Built with passion for language learning and education. Special thanks to the open-source community for the amazing tools and libraries that made this project possible.'
                     )}
                   </p>
+                  <p className="about-modal__build-date">
+                    <span className="about-modal__build-icon">🔨</span>
+                    {language === 'es'
+                      ? `${new Date().toLocaleDateString('es-ES')} ${new Date().toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })}`
+                      : `${new Date().toLocaleDateString()} ${new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}`}
+                  </p>
                 </div>
               </div>
             </div>

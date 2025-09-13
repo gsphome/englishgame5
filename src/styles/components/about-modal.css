@@ -466,7 +466,7 @@
 }
 
 .about-modal__developer-info-compact {
-  @apply flex flex-wrap items-center gap-3 justify-center text-center;
+  @apply flex flex-wrap items-center gap-3 justify-start text-left;
 }
 
 .about-modal__developer-name-compact {
@@ -497,10 +497,20 @@
   @apply h-3 w-3 text-red-500 mr-2 mt-0.5 flex-shrink-0;
 }
 
+.about-modal__build-date {
+  @apply flex items-start text-xs text-gray-500 dark:text-gray-400 mt-2 font-mono leading-relaxed;
+  font-size: 0.65rem;
+}
+
+.about-modal__build-icon {
+  @apply mr-2 mt-0.5 flex-shrink-0;
+  font-size: 0.65rem;
+}
+
 /* Mobile adjustments for compact version */
 @media (max-width: 640px) {
   .about-modal__developer-info-compact {
-    @apply flex-col gap-2;
+    @apply flex-col gap-2 items-start;
   }
 
   .about-modal__developer-name-compact {
