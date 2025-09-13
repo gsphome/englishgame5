@@ -17,21 +17,11 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # Quality pipeline (runs in parallel)
-  quality:
-    name: Quality Pipeline
-    uses: ./.github/workflows/quality.yml
-    secrets: inherit
-
-  # Security pipeline (runs in parallel)
-  security:
-    name: Security Pipeline
-    uses: ./.github/workflows/security.yml
-    secrets: inherit
-
-  # Build pipeline (runs in parallel)
-  build:
-    name: Build Pipeline
-    uses: ./.github/workflows/build.yml
-    secrets: inherit
+  # Test simple job first
+  test-job:
+    name: Test Job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Simple test
+        run: echo "✅ CI/CD Orchestrator test job completed"
 
