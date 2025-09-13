@@ -153,7 +153,7 @@ function formatDuration(startTime, endTime) {
  * Show workflow status summary
  */
 function showWorkflowStatus() {
-  logHeader('🔍 GitHub Actions Status Check');
+  logHeader('🔍 GitHub Actions Pipeline Status');
   
   // Check GitHub CLI
   if (!checkGitHubCLI()) {
@@ -179,42 +179,83 @@ function showWorkflowStatus() {
     return false;
   }
   
-  logInfo(`\n📋 Configured Workflows (${workflowFiles.length}):`);
-  workflowFiles.forEach(file => {
-    const workflow = parseWorkflowFile(file);
-    logInfo(`  • ${workflow.name} (${workflow.file})`);
-  });
-  
   // Get recent workflow runs
-  const runs = getWorkflowRuns(15);
+  const runs = getWorkflowRuns(30);
   if (runs.length === 0) {
     logWarning('\n⚠️  No workflow runs found');
     return true;
   }
   
-  // Group runs by workflow
+  // Show current commit status first
+  logInfo(`\n🎯 Current Commit Status (${latestCommit.slice(0, 8)}):`);
+  const currentCommitRuns = runs.filter(run => run.headSha === latestCommit);
+  
+  if (currentCommitRuns.length === 0) {
+    logWarning('  No runs found for current commit');
+  } else {
+    // Group current commit runs by workflow
+    const currentRunsByWorkflow = {};
+    currentCommitRuns.forEach(run => {
+      if (!currentRunsByWorkflow[run.workflowName]) {
+        currentRunsByWorkflow[run.workflowName] = run; // Keep only the latest run per workflow
+      }
+    });
+    
+    // Show status for each configured workflow
+    workflowFiles.forEach(file => {
+      const workflow = parseWorkflowFile(file);
+      const run = currentRunsByWorkflow[workflow.name];
+      
+      if (run) {
+        const status = formatStatus(run.status, run.conclusion);
+        const time = new Date(run.createdAt).toLocaleString();
+        logInfo(`  📊 ${workflow.name}: ${status} (${time})`);
+        if (run.url) {
+          logInfo(`      🔗 ${run.url}`);
+        }
+      } else {
+        logInfo(`  📊 ${workflow.name}: ${colors.white}⚪ No runs${colors.reset}`);
+      }
+    });
+    
+    // Summary for current commit
+    const currentSuccessful = currentCommitRuns.filter(r => r.conclusion === 'success').length;
+    const currentFailed = currentCommitRuns.filter(r => r.conclusion === 'failure').length;
+    const currentRunning = currentCommitRuns.filter(r => r.status === 'in_progress').length;
+    const currentPending = currentCommitRuns.filter(r => r.status === 'queued' || r.status === 'requested').length;
+    
+    logInfo(`\n📊 Current Commit Summary:`);
+    if (currentSuccessful > 0) logSuccess(`  ✅ ${currentSuccessful} successful`);
+    if (currentFailed > 0) logError(`  ❌ ${currentFailed} failed`);
+    if (currentRunning > 0) logInfo(`  🔄 ${currentRunning} running`);
+    if (currentPending > 0) logInfo(`  ⏳ ${currentPending} pending`);
+  }
+  
+  // Show recent activity for context (last 3 runs per workflow)
+  logInfo(`\n📈 Recent Activity (last 3 runs per workflow):`);
   const runsByWorkflow = {};
   runs.forEach(run => {
     if (!runsByWorkflow[run.workflowName]) {
       runsByWorkflow[run.workflowName] = [];
     }
-    runsByWorkflow[run.workflowName].push(run);
+    if (runsByWorkflow[run.workflowName].length < 3) {
+      runsByWorkflow[run.workflowName].push(run);
+    }
   });
   
-  logInfo(`\n🔄 Recent Workflow Runs:`);
-  
   Object.entries(runsByWorkflow).forEach(([workflowName, workflowRuns]) => {
-    logInfo(`\n  📊 ${workflowName}:`);
+    logInfo(`\n  🔄 ${workflowName}:`);
     
-    workflowRuns.slice(0, 5).forEach((run, index) => {
+    workflowRuns.forEach((run, index) => {
       const status = formatStatus(run.status, run.conclusion);
       const time = new Date(run.createdAt).toLocaleString();
-      const branch = run.headBranch === currentBranch ? 
-        `${colors.green}${run.headBranch}${colors.reset}` : 
-        run.headBranch;
+      const isCurrentCommit = run.headSha === latestCommit;
+      const commitIndicator = isCurrentCommit ? `${colors.bright}[CURRENT]${colors.reset}` : '';
       
-      logInfo(`    ${index + 1}. ${status} - ${branch} - ${time}`);
-      if (run.displayTitle && run.displayTitle !== run.headSha) {
+      logInfo(`    ${index + 1}. ${status} - ${time} ${commitIndicator}`);
+      if (run.displayTitle && run.displayTitle.length > 50) {
+        logInfo(`       "${run.displayTitle.slice(0, 50)}..."`);
+      } else if (run.displayTitle) {
         logInfo(`       "${run.displayTitle}"`);
       }
     });
@@ -224,10 +265,10 @@ function showWorkflowStatus() {
 }
 
 /**
- * Show detailed status for current branch/commit
+ * Show detailed status for current commit only
  */
 function showCurrentStatus() {
-  logHeader('🎯 Current Commit Status');
+  logHeader('🎯 Current Commit Pipeline Status');
   
   if (!checkGitHubCLI()) {
     logError('GitHub CLI (gh) is not installed or not authenticated');
@@ -237,48 +278,96 @@ function showCurrentStatus() {
   const currentBranch = getCurrentBranch();
   const latestCommit = getLatestCommit();
   
-  // Get runs for current commit
-  const runs = getWorkflowRuns(50);
-  const currentRuns = runs.filter(run => 
-    run.headSha === latestCommit || run.headBranch === currentBranch
-  );
+  logInfo(`Commit: ${latestCommit.slice(0, 8)}`);
+  logInfo(`Branch: ${currentBranch}`);
+  
+  // Get workflow files to know what workflows should exist
+  const workflowFiles = getWorkflowFiles();
+  if (workflowFiles.length === 0) {
+    logWarning('No workflow files found in .github/workflows/');
+    return false;
+  }
+  
+  // Get runs for current commit only
+  const runs = getWorkflowRuns(30);
+  const currentRuns = runs.filter(run => run.headSha === latestCommit);
   
   if (currentRuns.length === 0) {
-    logWarning(`No workflow runs found for current commit (${latestCommit.slice(0, 8)}) on branch ${currentBranch}`);
+    logWarning(`\nNo workflow runs found for current commit (${latestCommit.slice(0, 8)})`);
+    logInfo('This might mean:');
+    logInfo('  • The commit was just pushed and workflows are starting');
+    logInfo('  • Workflows are not configured to run on this branch');
+    logInfo('  • There might be an issue with workflow triggers');
     return true;
   }
   
-  logInfo(`Commit: ${latestCommit.slice(0, 8)}`);
-  logInfo(`Branch: ${currentBranch}`);
-  logInfo(`Found ${currentRuns.length} workflow run(s):\n`);
+  logInfo(`\n🔄 Pipeline Status (${currentRuns.length} workflows):`);
   
-  currentRuns.forEach((run, index) => {
-    const status = formatStatus(run.status, run.conclusion);
-    const time = new Date(run.createdAt).toLocaleString();
-    
-    logInfo(`${index + 1}. ${run.workflowName}`);
-    logInfo(`   Status: ${status}`);
-    logInfo(`   Started: ${time}`);
-    logInfo(`   URL: ${run.url}`);
-    
-    if (run.displayTitle) {
-      logInfo(`   Title: "${run.displayTitle}"`);
+  // Group runs by workflow name and show the latest run for each
+  const runsByWorkflow = {};
+  currentRuns.forEach(run => {
+    if (!runsByWorkflow[run.workflowName] || 
+        new Date(run.createdAt) > new Date(runsByWorkflow[run.workflowName].createdAt)) {
+      runsByWorkflow[run.workflowName] = run;
     }
-    
-    logInfo('');
   });
   
-  // Summary
-  const successful = currentRuns.filter(r => r.conclusion === 'success').length;
-  const failed = currentRuns.filter(r => r.conclusion === 'failure').length;
-  const running = currentRuns.filter(r => r.status === 'in_progress').length;
-  const pending = currentRuns.filter(r => r.status === 'queued' || r.status === 'requested').length;
+  // Show status for each workflow
+  Object.entries(runsByWorkflow).forEach(([workflowName, run]) => {
+    const status = formatStatus(run.status, run.conclusion);
+    const time = new Date(run.createdAt).toLocaleString();
+    const duration = run.conclusion ? formatDuration(run.createdAt, run.updatedAt) : 'Running...';
+    
+    logInfo(`\n📊 ${workflowName}:`);
+    logInfo(`   Status: ${status}`);
+    logInfo(`   Started: ${time}`);
+    logInfo(`   Duration: ${duration}`);
+    logInfo(`   URL: ${run.url}`);
+    
+    if (run.displayTitle && run.displayTitle.length > 60) {
+      logInfo(`   Title: "${run.displayTitle.slice(0, 60)}..."`);
+    } else if (run.displayTitle) {
+      logInfo(`   Title: "${run.displayTitle}"`);
+    }
+  });
   
-  logInfo('📊 Summary:');
+  // Check for missing workflows
+  const runningWorkflows = new Set(Object.keys(runsByWorkflow));
+  const configuredWorkflows = workflowFiles.map(file => parseWorkflowFile(file).name);
+  const missingWorkflows = configuredWorkflows.filter(name => !runningWorkflows.has(name));
+  
+  if (missingWorkflows.length > 0) {
+    logInfo(`\n⚠️  Workflows not triggered for this commit:`);
+    missingWorkflows.forEach(name => {
+      logInfo(`   • ${name}`);
+    });
+  }
+  
+  // Summary
+  const successful = Object.values(runsByWorkflow).filter(r => r.conclusion === 'success').length;
+  const failed = Object.values(runsByWorkflow).filter(r => r.conclusion === 'failure').length;
+  const running = Object.values(runsByWorkflow).filter(r => r.status === 'in_progress').length;
+  const pending = Object.values(runsByWorkflow).filter(r => r.status === 'queued' || r.status === 'requested').length;
+  const cancelled = Object.values(runsByWorkflow).filter(r => r.conclusion === 'cancelled').length;
+  
+  logInfo(`\n📊 Pipeline Summary:`);
   if (successful > 0) logSuccess(`  ✅ ${successful} successful`);
   if (failed > 0) logError(`  ❌ ${failed} failed`);
   if (running > 0) logInfo(`  🔄 ${running} running`);
   if (pending > 0) logInfo(`  ⏳ ${pending} pending`);
+  if (cancelled > 0) logInfo(`  ⏹️  ${cancelled} cancelled`);
+  
+  // Overall status
+  const totalWorkflows = Object.keys(runsByWorkflow).length;
+  if (failed > 0) {
+    logError(`\n🚫 Pipeline Status: FAILED (${failed}/${totalWorkflows} workflows failed)`);
+  } else if (running > 0 || pending > 0) {
+    logInfo(`\n🔄 Pipeline Status: IN PROGRESS (${running + pending}/${totalWorkflows} workflows pending)`);
+  } else if (successful === totalWorkflows) {
+    logSuccess(`\n✅ Pipeline Status: SUCCESS (${successful}/${totalWorkflows} workflows passed)`);
+  } else {
+    logInfo(`\n⚪ Pipeline Status: MIXED RESULTS`);
+  }
   
   return failed === 0;
 }
