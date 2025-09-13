@@ -1,2 +1,2 @@
-npm run flow:full
-npm run deploy:manual
+npm run build:full
+npm run deploy:full
