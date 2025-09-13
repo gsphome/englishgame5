@@ -1,9 +1,6 @@
 name: Deploy Pipeline
 
 on:
-  # Only trigger on main branch pushes
-  push:
-    branches: [ main ]
   # Allow manual trigger
   workflow_dispatch:
   # Allow other workflows to trigger this
