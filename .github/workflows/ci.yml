@@ -35,29 +35,23 @@ jobs:
     uses: ./.github/workflows/build.yml
     secrets: inherit
 
-  # Deploy pipeline is handled separately - not part of CI/CD orchestrator
-
   # Summary final
   orchestrator-summary:
     name: Orchestrator Summary
     runs-on: ubuntu-latest
     needs: [quality, security, build]
     if: always()
-    outputs:
-      status: ${{ steps.summary.outputs.status }}
     steps:
       - name: Check pipeline results
-        id: summary
         run: |
           echo "Quality result: ${{ needs.quality.result }}"
           echo "Security result: ${{ needs.security.result }}"
           echo "Build result: ${{ needs.build.result }}"
           
-          # Determine overall status
           if [[ "${{ needs.quality.result }}" == "success" && "${{ needs.security.result }}" == "success" && "${{ needs.build.result }}" == "success" ]]; then
-            echo "status=success" >> $GITHUB_OUTPUT
             echo "✅ All pipelines succeeded"
+            exit 0
           else
-            echo "status=failure" >> $GITHUB_OUTPUT
             echo "❌ One or more pipelines failed"
+            exit 1
           fi
