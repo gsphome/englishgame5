@@ -313,21 +313,36 @@ async function promptUser(question) {
 async function interactiveCommit(analysis, suggestions) {
   logHeader('🤖 AI-Generated Commit Messages');
   
-  log('\nSuggested commit messages:', colors.bright);
+  // Show a brief summary first
+  const { added, modified, deleted } = analysis;
+  const totalFiles = added.length + modified.length + deleted.length;
+  log(`\n📊 Changes Summary: ${totalFiles} files (${added.length} added, ${modified.length} modified, ${deleted.length} deleted)`, colors.cyan);
+  
+  // Show suggested messages prominently
+  log('\n🎯 Suggested commit messages:', colors.bright);
   suggestions.forEach((suggestion, index) => {
-    log(`  ${index + 1}. ${suggestion.message}`, colors.green);
+    log(`\n  ${colors.green}${index + 1}.${colors.reset} ${colors.bright}${suggestion.message}${colors.reset}`);
     if (suggestion.body) {
-      log(`     ${suggestion.body.replace(/\n/g, '\n     ')}`, colors.white);
+      const bodyLines = suggestion.body.split('\n');
+      bodyLines.forEach(line => {
+        if (line.trim()) {
+          log(`      ${colors.white}${line}${colors.reset}`);
+        }
+      });
     }
   });
   
-  log('\nOptions:', colors.bright);
-  log('  1-3: Use suggested message');
-  log('  c: Custom message');
-  log('  s: Show detailed changes');
-  log('  q: Quit without committing');
+  // Show options clearly at the bottom
+  log('\n' + '='.repeat(60), colors.cyan);
+  log('📋 What would you like to do?', colors.bright);
+  log('='.repeat(60), colors.cyan);
+  log(`  ${colors.green}1-3${colors.reset}  Use one of the suggested messages above`);
+  log(`  ${colors.blue}c${colors.reset}    Write a custom commit message`);
+  log(`  ${colors.yellow}s${colors.reset}    Show detailed file changes`);
+  log(`  ${colors.red}q${colors.reset}    Quit without committing`);
+  log('='.repeat(60), colors.cyan);
   
-  const choice = await promptUser('\n🎯 Select option:');
+  const choice = await promptUser(`\n${colors.bright}🎯 Your choice:${colors.reset}`);
   
   switch (choice.toLowerCase()) {
     case '1':
@@ -335,49 +350,70 @@ async function interactiveCommit(analysis, suggestions) {
     case '3':
       const index = parseInt(choice) - 1;
       if (suggestions[index]) {
+        log(`\n✅ Selected: ${suggestions[index].message}`, colors.green);
         return suggestions[index];
       } else {
-        logWarning('Invalid selection. Please try again.');
+        logWarning('Invalid selection. Please choose 1, 2, or 3.');
         return await interactiveCommit(analysis, suggestions);
       }
     case 'c':
-      const customMessage = await promptUser('Enter custom commit message:');
-      const customBody = await promptUser('Enter commit body (optional):');
-      return { message: customMessage, body: customBody };
+      log('\n📝 Custom commit message:', colors.bright);
+      const customMessage = await promptUser('Message:');
+      if (!customMessage.trim()) {
+        logWarning('Commit message cannot be empty.');
+        return await interactiveCommit(analysis, suggestions);
+      }
+      const customBody = await promptUser('Body (optional):');
+      return { message: customMessage.trim(), body: customBody.trim() };
     case 's':
       showDetailedChanges(analysis);
+      log('\nPress Enter to continue...', colors.cyan);
+      await promptUser('');
       return await interactiveCommit(analysis, suggestions);
     case 'q':
       log('\n👋 Commit cancelled.', colors.yellow);
       process.exit(0);
     default:
-      logWarning('Invalid option. Please try again.');
+      logWarning(`Invalid option "${choice}". Please choose 1-3, c, s, or q.`);
       return await interactiveCommit(analysis, suggestions);
   }
 }
 
 function showDetailedChanges(analysis) {
-  logHeader('📊 Detailed Change Analysis');
+  logHeader('📊 Detailed File Changes');
   
   const { added, modified, deleted, renamed, categories, scope, fileTypes } = analysis;
   
+  // Show summary first
+  const total = added.length + modified.length + deleted.length + renamed.length;
+  log(`\n📈 Total changes: ${total} files`, colors.bright);
+  
   if (added.length > 0) {
-    log('\n📁 Added files:', colors.green);
-    added.forEach(file => log(`  + ${file}`, colors.green));
+    log(`\n${colors.green}📁 Added files (${added.length}):${colors.reset}`);
+    added.slice(0, 10).forEach(file => log(`  ${colors.green}+${colors.reset} ${file}`));
+    if (added.length > 10) {
+      log(`  ${colors.white}... and ${added.length - 10} more${colors.reset}`);
+    }
   }
   
   if (modified.length > 0) {
-    log('\n📝 Modified files:', colors.yellow);
-    modified.forEach(file => log(`  ~ ${file}`, colors.yellow));
+    log(`\n${colors.yellow}📝 Modified files (${modified.length}):${colors.reset}`);
+    modified.slice(0, 10).forEach(file => log(`  ${colors.yellow}~${colors.reset} ${file}`));
+    if (modified.length > 10) {
+      log(`  ${colors.white}... and ${modified.length - 10} more${colors.reset}`);
+    }
   }
   
   if (deleted.length > 0) {
-    log('\n🗑️ Deleted files:', colors.red);
-    deleted.forEach(file => log(`  - ${file}`, colors.red));
+    log(`\n${colors.red}🗑️ Deleted files (${deleted.length}):${colors.reset}`);
+    deleted.slice(0, 10).forEach(file => log(`  ${colors.red}-${colors.reset} ${file}`));
+    if (deleted.length > 10) {
+      log(`  ${colors.white}... and ${deleted.length - 10} more${colors.reset}`);
+    }
   }
   
   if (renamed.length > 0) {
-    log('\n🔄 Renamed files:', colors.blue);
+    log(`\n${colors.blue}🔄 Renamed files (${renamed.length}):${colors.reset}`);
     renamed.forEach(file => log(`  → ${file}`, colors.blue));
   }
   

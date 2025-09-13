@@ -91,11 +91,7 @@ jobs:
           echo "### 📊 Detailed Results" >> $GITHUB_STEP_SUMMARY
           echo "| Check | Status | Description | Action Required |" >> $GITHUB_STEP_SUMMARY
           echo "|-------|--------|-------------|-----------------|" >> $GITHUB_STEP_SUMMARY
-          echo "| ESLint | ${{ needs.lint.result == 'success' && '✅ PASS' || '❌ FAIL' }} | Code linting | ${{ needs.lint.result == 'success' && 'None' || 'Fix linting errors' }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| TypeScript | ${{ needs.type-check.result == 'success' && '✅ PASS' || '❌ FAIL' }} | Type checking | ${{ needs.type-check.result == 'success' && 'None' || 'Fix type errors' }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| Unit Tests | ${{ needs.unit-tests.result == 'success' && '✅ PASS' || '❌ FAIL' }} | Unit test suite | ${{ needs.unit-tests.result == 'success' && 'None' || 'Fix failing tests' }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| Integration Tests | ${{ needs.integration-tests.result == 'success' && '✅ PASS' || '❌ FAIL' }} | Integration test suite | ${{ needs.integration-tests.result == 'success' && 'None' || 'Fix integration issues' }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| Code Format | ${{ needs.code-format.result == 'success' && '✅ PASS' || '❌ FAIL' }} | Prettier formatting | ${{ needs.code-format.result == 'success' && 'None' || 'Run npm run format' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Quality Pipeline | ${{ needs.quality-unified.result == 'success' && '✅ PASS' || '❌ FAIL' }} | Unified quality checks | ${{ needs.quality-unified.result == 'success' && 'None' || 'Run npm run pipeline:quality locally' }} |" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           
           # Determine overall status based on unified pipeline result
@@ -114,7 +110,7 @@ jobs:
             echo "- Quality gate: ✅ CLEARED" >> $GITHUB_STEP_SUMMARY
             echo "- Ready for deployment (pending security and build)" >> $GITHUB_STEP_SUMMARY
           else
-            echo "status=failure" >> $GITHUB_STEP_SUMMARY
+            echo "status=failure" >> $GITHUB_OUTPUT
             echo "### ❌ OVERALL STATUS: FAILURE" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
             echo "**Quality Pipeline Failed**" >> $GITHUB_STEP_SUMMARY
@@ -130,7 +126,7 @@ jobs:
           
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "---" >> $GITHUB_STEP_SUMMARY
-          echo "**For AI Analysis:** QUALITY_PIPELINE_STATUS=${{ needs.lint.result == 'success' && needs.type-check.result == 'success' && needs.unit-tests.result == 'success' && needs.integration-tests.result == 'success' && needs.code-format.result == 'success' && 'SUCCESS' || 'FAILURE' }}" >> $GITHUB_STEP_SUMMARY
+          echo "**For AI Analysis:** QUALITY_PIPELINE_STATUS=${{ needs.quality-unified.result == 'success' && 'SUCCESS' || 'FAILURE' }}" >> $GITHUB_STEP_SUMMARY
 
   notify-quality-issues:
     name: Quality Issue Notification
