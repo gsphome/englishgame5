@@ -20,6 +20,9 @@ on:
         description: 'Build pipeline status'
         required: true
         type: string
+  # Allow repository dispatch events
+  repository_dispatch:
+    types: [deploy-ready]
   # Allow other workflows to trigger this
   workflow_call:
     inputs:
@@ -62,7 +65,7 @@ jobs:
       - name: Quality gate verification
         run: |
           echo "🎯 Verifying quality status..."
-          QUALITY_STATUS="${{ inputs.quality-status || 'unknown' }}"
+          QUALITY_STATUS="${{ inputs.quality-status || github.event.client_payload.quality_status || 'unknown' }}"
           if [ "$QUALITY_STATUS" != "success" ]; then
             echo "🚨 DEPLOY BLOCKED: Quality checks failed"
             echo "Quality status: $QUALITY_STATUS"
@@ -73,7 +76,7 @@ jobs:
       - name: Security gate verification
         run: |
           echo "🛡️ Verifying security status..."
-          SECURITY_STATUS="${{ inputs.security-status || 'unknown' }}"
+          SECURITY_STATUS="${{ inputs.security-status || github.event.client_payload.security_status || 'unknown' }}"
           if [ "$SECURITY_STATUS" != "success" ]; then
             echo "🚨 DEPLOY BLOCKED: Security checks failed"
             echo "Security status: $SECURITY_STATUS"
@@ -84,7 +87,7 @@ jobs:
       - name: Build gate verification
         run: |
           echo "📦 Verifying build status..."
-          BUILD_STATUS="${{ inputs.build-status || 'unknown' }}"
+          BUILD_STATUS="${{ inputs.build-status || github.event.client_payload.build_status || 'unknown' }}"
           if [ "$BUILD_STATUS" != "success" ]; then
             echo "🚨 DEPLOY BLOCKED: Build failed"
             echo "Build status: $BUILD_STATUS"
@@ -112,7 +115,7 @@ jobs:
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
-          name: ${{ inputs.artifact-name || format('build-files-{0}', github.sha) }}
+          name: ${{ inputs.artifact-name || github.event.client_payload.artifact_name || format('build-files-{0}', github.sha) }}
           path: dist/
 
       - name: Verify artifacts
