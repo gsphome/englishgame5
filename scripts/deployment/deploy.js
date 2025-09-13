@@ -2,6 +2,7 @@
 
 import { execSync } from 'child_process';
 import { readFileSync } from 'fs';
+import readline from 'readline';
 
 /**
  * Deploy Script - Manual deployment trigger
@@ -120,14 +121,14 @@ function validatePipelineStatus(status) {
     log('   Recommended: Wait for all pipelines to pass before deploying', 'yellow');
     
     // Ask user if they want to continue
-    const readline = require('readline').createInterface({
+    const rl = readline.createInterface({
       input: process.stdin,
       output: process.stdout
     });
     
     return new Promise((resolve) => {
-      readline.question('\nDo you want to continue with deployment anyway? (y/N): ', (answer) => {
-        readline.close();
+      rl.question('\nDo you want to continue with deployment anyway? (y/N): ', (answer) => {
+        rl.close();
         resolve(answer.toLowerCase() === 'y' || answer.toLowerCase() === 'yes');
       });
     });
