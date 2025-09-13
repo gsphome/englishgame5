@@ -4,7 +4,7 @@
  * Integration Validator - Validates holistic system integration
  * 
  * Ensures local scripts and CI/CD workflows are properly integrated
- * Usage: node scripts/validate-integration.js
+ * Usage: node scripts/development/validate-integration.js
  */
 
 import { readFileSync } from 'fs';
@@ -123,7 +123,7 @@ function validateDevToolsIntegration() {
     // Test dev-tools.js with CI mode
     logInfo('Testing dev-tools.js CI mode support...');
     
-    const result = execSync('node scripts/dev-tools.js --help', { encoding: 'utf8' });
+    const result = execSync('node scripts/development/dev-tools.js --help', { encoding: 'utf8' });
     
     if (result.includes('--ci-mode') || result.includes('CI mode')) {
       logSuccess('dev-tools.js supports CI mode');
@@ -132,7 +132,7 @@ function validateDevToolsIntegration() {
     }
     
     // Test that dev-tools.js can detect CI environment
-    const ciTest = execSync('CI=true node scripts/dev-tools.js quality --ci-mode', { 
+    const ciTest = execSync('CI=true node scripts/development/dev-tools.js quality --ci-mode', { 
       encoding: 'utf8',
       stdio: 'pipe'
     });
@@ -158,7 +158,7 @@ function validateSystemArchitecture() {
       name: 'Unified entry point (dev-tools.js)',
       test: () => {
         try {
-          execSync('test -f scripts/dev-tools.js');
+          execSync('test -f scripts/development/dev-tools.js');
           return true;
         } catch {
           return false;
@@ -194,7 +194,7 @@ function validateSystemArchitecture() {
       name: 'Integration testing capability',
       test: () => {
         try {
-          execSync('test -f scripts/test-runner.js');
+          execSync('test -f scripts/development/test-runner.js');
           return true;
         } catch {
           return false;

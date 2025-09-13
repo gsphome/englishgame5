@@ -4,7 +4,7 @@
  * Smart Commit - AI-powered commit message generator
  * 
  * Analyzes git changes and generates intelligent commit messages
- * Usage: node scripts/smart-commit.js [options]
+ * Usage: node scripts/git/smart-commit.js [options]
  */
 
 import { execSync } from 'child_process';

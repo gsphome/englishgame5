@@ -323,7 +323,7 @@ show_help() {
     
     echo
     log "For advanced AI analysis, use:" "$MAGENTA"
-    log "  node scripts/smart-commit.js"
+    log "  node scripts/git/smart-commit.js"
 }
 
 # Check if we're in the right directory

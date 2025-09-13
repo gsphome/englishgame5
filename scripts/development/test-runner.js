@@ -4,7 +4,7 @@
  * Test Runner - Unified testing for all development scripts
  * 
  * Consolidates test-commit.js and other testing functionality
- * Usage: node scripts/test-runner.js [target]
+ * Usage: node scripts/development/test-runner.js [target]
  */
 
 import { execSync } from 'child_process';
@@ -26,11 +26,11 @@ const testSuites = {
     name: '📜 Script Validation',
     description: 'Test syntax and functionality of all scripts',
     tests: [
-      { script: 'scripts/dev-tools.js', name: 'Development Tools (Main)' },
-      { script: 'scripts/smart-commit.js', name: 'Smart Commit (AI)' },
-      { script: 'scripts/commit.sh', name: 'Quick Commit (Bash)' },
-      { script: 'scripts/cleanup.js', name: 'Cleanup Utility' },
-      { script: 'scripts/toggle-cache-logs.js', name: 'Cache Logs Toggle' }
+      { script: 'scripts/development/dev-tools.js', name: 'Development Tools (Main)' },
+      { script: 'scripts/git/smart-commit.js', name: 'Smart Commit (AI)' },
+      { script: 'scripts/git/commit.sh', name: 'Quick Commit (Bash)' },
+      { script: 'scripts/analysis/cleanup.js', name: 'Cleanup Utility' },
+      { script: 'scripts/development/toggle-cache-logs.js', name: 'Cache Logs Toggle' }
     ]
   },
   pipelines: {
@@ -274,7 +274,7 @@ function showHelp() {
   console.log(`
 🧪 Test Runner - Unified Development Script Testing
 
-Usage: node scripts/test-runner.js [target]
+Usage: node scripts/development/test-runner.js [target]
 
 Targets:
   scripts      Test all development scripts syntax and functionality
@@ -285,10 +285,10 @@ Targets:
   all          Run all test suites (default)
 
 Examples:
-  node scripts/test-runner.js              # Run all tests
-  node scripts/test-runner.js scripts      # Test only scripts
-  node scripts/test-runner.js pipelines    # Test only pipelines
-  node scripts/test-runner.js env          # Test only environment
+  node scripts/development/test-runner.js              # Run all tests
+  node scripts/development/test-runner.js scripts      # Test only scripts
+  node scripts/development/test-runner.js pipelines    # Test only pipelines
+  node scripts/development/test-runner.js env          # Test only environment
 
 NPM Integration:
   npm run test-scripts                     # Run all tests

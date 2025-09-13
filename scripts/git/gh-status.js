@@ -589,7 +589,7 @@ function main() {
     case 'help':
     case 'h':
       logHeader('🔍 GitHub Actions Status Checker');
-      logInfo('\nUsage: node scripts/gh-status.js [command] [options]\n');
+      logInfo('\nUsage: node scripts/git/gh-status.js [command] [options]\n');
       logInfo('Commands:');
       logInfo('  status, s       Show overview of all workflows and recent runs');
       logInfo('  current, c      Show status for current commit/branch');
