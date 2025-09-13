@@ -204,6 +204,23 @@ async function main() {
     log('\n🎉 Deployment process initiated!', 'green');
     log('   Monitor the progress in GitHub Actions', 'cyan');
     
+    // Final success message
+    console.log('\n' + '='.repeat(60));
+    log('🚀 DEPLOYMENT WORKFLOW COMPLETE!', 'bright');
+    console.log('='.repeat(60));
+    log('✅ All quality gates verified', 'green');
+    log('✅ Deploy Pipeline triggered successfully', 'green');
+    log('✅ Application deployment in progress', 'green');
+    console.log('');
+    log('📋 Monitor deployment progress at:', 'cyan');
+    try {
+      const repoUrl = execCommand('gh repo view --json url --jq .url', { silent: true });
+      log(`   ${repoUrl}/actions/workflows/deploy.yml`, 'blue');
+    } catch (error) {
+      log('   Check your GitHub Actions tab', 'blue');
+    }
+    console.log('='.repeat(60));
+    
   } catch (error) {
     log(`\n❌ Deployment failed: ${error.message}`, 'red');
     process.exit(1);

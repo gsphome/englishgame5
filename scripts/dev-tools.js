@@ -135,12 +135,13 @@ const workflows = {
   },
   full: {
     name: '🚀 Complete Development Flow',
-    description: 'All pipelines + AI commit + push',
+    description: 'All pipelines + AI commit + push + GitHub Actions monitoring',
     steps: [
       { type: 'pipeline', target: 'quality' },
       { type: 'pipeline', target: 'security' },
       { type: 'pipeline', target: 'build' },
-      { type: 'command', cmd: 'node scripts/smart-commit.js --stage-all --push --auto', desc: 'AI commit & push' }
+      { type: 'command', cmd: 'node scripts/smart-commit.js --stage-all --push --auto', desc: 'AI commit & push' },
+      { type: 'command', cmd: 'node scripts/gh-status.js watch', desc: 'Monitor GitHub Actions' }
     ]
   },
   fix: {
@@ -256,6 +257,20 @@ async function runWorkflow(workflowKey) {
   
   if (allSuccess) {
     logSuccess(`${workflow.name} completed successfully in ${totalDuration}s`);
+    
+    // Special message for full workflow completion
+    if (workflowKey === 'full') {
+      console.log('\n' + '='.repeat(60));
+      log('🎉 DEVELOPMENT FLOW COMPLETED!', colors.bright + colors.green);
+      console.log('='.repeat(60));
+      log('✅ All local pipelines passed', colors.green);
+      log('✅ Code committed and pushed to GitHub', colors.green);
+      log('✅ GitHub Actions monitoring completed', colors.green);
+      console.log('');
+      log('🚀 NEXT STEP: Deploy to production', colors.bright + colors.cyan);
+      log('   Run: npm run deploy:manual', colors.cyan);
+      console.log('='.repeat(60));
+    }
   } else {
     logError(`${workflow.name} failed after ${totalDuration}s`);
   }
