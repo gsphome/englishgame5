@@ -48,32 +48,51 @@ Configuración y documentación auxiliar.
 
 ## Uso Rápido
 
-### Herramientas de Matching
+### 🎛️ Herramienta Unificada (Recomendado)
 ```bash
+# Ver todas las herramientas disponibles
+node scripts/tools.js list
+
+# Estado general del proyecto
+node scripts/tools.js status
+
+# Herramientas de matching
+node scripts/tools.js matching status
+node scripts/tools.js matching validate
+node scripts/tools.js matching all
+
+# Desarrollo
+node scripts/tools.js development quality
+node scripts/tools.js development commit
+
+# Git y commits
+node scripts/tools.js git smart-commit
+node scripts/tools.js git gh-status
+
+# Análisis
+node scripts/tools.js analysis analyze-package
+node scripts/tools.js analysis cleanup
+```
+
+### 📁 Acceso Directo por Carpeta
+```bash
+# Herramientas de Matching
 node scripts/matching/matching-tools.js status
 node scripts/matching/matching-tools.js all
-```
 
-### Desarrollo
-```bash
+# Desarrollo
 node scripts/development/dev-tools.js
 node scripts/development/test-runner.js
-```
 
-### Git y Commits
-```bash
+# Git y Commits
 node scripts/git/smart-commit.js
 node scripts/git/gh-status.js
-```
 
-### Análisis y Limpieza
-```bash
+# Análisis y Limpieza
 node scripts/analysis/analyze-package.js
 node scripts/analysis/cleanup.js
-```
 
-### Despliegue
-```bash
+# Despliegue
 node scripts/deployment/deploy.js
 ```
 

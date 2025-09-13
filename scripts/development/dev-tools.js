@@ -4,7 +4,7 @@
  * Development Tools - Unified development workflow orchestrator
  * 
  * Consolidates pipeline-runner.js, dev-flow.js, and pipeline.sh functionality
- * Usage: node scripts/dev-tools.js [command] [options]
+ * Usage: node scripts/development/dev-tools.js [command] [options]
  */
 
 import { execSync } from 'child_process';
@@ -13,7 +13,7 @@ import { dirname } from 'path';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-const rootDir = dirname(__dirname);
+const rootDir = dirname(dirname(__dirname)); // Go up two levels: development -> scripts -> root
 
 // Colors for console output
 const colors = {
@@ -120,7 +120,7 @@ const workflows = {
     description: 'Quality check + AI commit + push',
     steps: [
       { type: 'pipeline', target: 'quality' },
-      { type: 'command', cmd: 'node scripts/smart-commit.js --stage-all', desc: 'AI commit' },
+      { type: 'command', cmd: 'node scripts/git/smart-commit.js --stage-all', desc: 'AI commit' },
       { type: 'command', cmd: 'git push', desc: 'Push to remote' }
     ]
   },
@@ -130,7 +130,7 @@ const workflows = {
     steps: [
       { type: 'pipeline', target: 'quality' },
       { type: 'pipeline', target: 'security' },
-      { type: 'command', cmd: 'node scripts/smart-commit.js', desc: 'AI commit' }
+      { type: 'command', cmd: 'node scripts/git/smart-commit.js', desc: 'AI commit' }
     ]
   },
   full: {
@@ -140,8 +140,8 @@ const workflows = {
       { type: 'pipeline', target: 'quality' },
       { type: 'pipeline', target: 'security' },
       { type: 'pipeline', target: 'build' },
-      { type: 'command', cmd: 'node scripts/smart-commit.js --stage-all --push --auto', desc: 'AI commit & push' },
-      { type: 'command', cmd: 'node scripts/gh-status.js watch', desc: 'Monitor GitHub Actions' }
+      { type: 'command', cmd: 'node scripts/git/smart-commit.js --stage-all --push --auto', desc: 'AI commit & push' },
+      { type: 'command', cmd: 'node scripts/git/gh-status.js watch', desc: 'Monitor GitHub Actions' }
     ]
   },
   fix: {
@@ -151,7 +151,7 @@ const workflows = {
       { type: 'command', cmd: 'npm run lint:fix', desc: 'Auto-fix linting' },
       { type: 'command', cmd: 'npm run format', desc: 'Auto-format code' },
       { type: 'pipeline', target: 'quality' },
-      { type: 'command', cmd: 'node scripts/smart-commit.js --stage-all --auto', desc: 'Auto commit' }
+      { type: 'command', cmd: 'node scripts/git/smart-commit.js --stage-all --auto', desc: 'Auto commit' }
     ]
   }
 };
@@ -396,7 +396,7 @@ function showHelp() {
   console.log(`
 🎭 Development Tools - Unified Workflow Orchestrator
 
-Usage: node scripts/dev-tools.js [command] [options]
+Usage: node scripts/development/dev-tools.js [command] [options]
 
 Commands:
   quality, q       Run quality pipeline (ESLint, TypeScript, Tests)
@@ -419,10 +419,10 @@ Options:
   --no-git         Skip git status checks
 
 Examples:
-  node scripts/dev-tools.js                    # Interactive mode
-  node scripts/dev-tools.js quality            # Run quality pipeline
-  node scripts/dev-tools.js commit             # Quick commit flow
-  node scripts/dev-tools.js all                # Run all pipelines
+  node scripts/development/dev-tools.js                    # Interactive mode
+  node scripts/development/dev-tools.js quality            # Run quality pipeline
+  node scripts/development/dev-tools.js commit             # Quick commit flow
+  node scripts/development/dev-tools.js all                # Run all pipelines
   
 NPM Integration:
   npm run dev-tools                            # Interactive mode
