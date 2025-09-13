@@ -24,7 +24,7 @@ concurrency:
 
 env:
   NODE_VERSION: '18'
-  CACHE_VERSION: v1
+  CACHE_VERSION: v2
 
 jobs:
   quality-unified:

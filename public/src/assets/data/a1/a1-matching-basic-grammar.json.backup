@@ -16,42 +16,42 @@
   },
   {
     "left": "She ___",
-    "right": "is (singular)",
+    "right": "is",
     "explanation": "Use 'is' with the pronoun 'she'"
   },
   {
     "left": "It ___",
-    "right": "is (third person)",
+    "right": "is",
     "explanation": "Use 'is' with the pronoun 'it'"
   },
   {
     "left": "We ___",
-    "right": "are (plural)",
+    "right": "are",
     "explanation": "Use 'are' with the pronoun 'we'"
   },
   {
     "left": "They ___",
-    "right": "are (second person)",
+    "right": "are",
     "explanation": "Use 'are' with the pronoun 'they'"
   },
   {
     "left": "This ___",
-    "right": "is (present tense)",
+    "right": "is",
     "explanation": "Use 'is' with 'this' (singular)"
   },
   {
     "left": "These ___",
-    "right": "are (present tense)",
+    "right": "are",
     "explanation": "Use 'are' with 'these' (plural)"
   },
   {
     "left": "That ___",
-    "right": "is (be verb)",
+    "right": "is",
     "explanation": "Use 'is' with 'that' (singular)"
   },
   {
     "left": "Those ___",
-    "right": "are (be verb)",
+    "right": "are",
     "explanation": "Use 'are' with 'those' (plural)"
   },
   {

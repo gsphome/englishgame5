@@ -151,7 +151,7 @@
   },
   {
     "left": "much",
-    "right": "many",
+    "right": "a lot of",
     "explanation": "Both mean a large amount (uncountable)"
   },
   {
@@ -191,12 +191,12 @@
   },
   {
     "left": "single",
-    "right": "one (2)",
+    "right": "one",
     "explanation": "Both mean just one"
   },
   {
     "left": "pair",
-    "right": "two (2)",
+    "right": "two",
     "explanation": "A pair means two things together"
   }
 ]

@@ -154,7 +154,7 @@
     "id": "matching-time-expressions-a2",
     "name": "Time Expressions",
     "learningMode": "matching",
-    "dataPath": "src/assets/data/a2-matching-time-expressions.json",
+    "dataPath": "src/assets/data/a2/a2-matching-time-expressions.json",
     "level": [
       "a2"
     ],
@@ -290,7 +290,7 @@
     "id": "matching-common-phrasal-verbs-b1",
     "name": "Common Phrasal Verbs",
     "learningMode": "matching",
-    "dataPath": "src/assets/data/b1-matching-common-phrasal-verbs.json",
+    "dataPath": "src/assets/data/b1/b1-matching-common-phrasal-verbs.json",
     "level": [
       "b1"
     ],
@@ -630,7 +630,7 @@
     "id": "matching-vocabulary-c1",
     "name": "Advanced Vocabulary",
     "learningMode": "matching",
-    "dataPath": "src/assets/data/c1-matching-sample.json",
+    "dataPath": "src/assets/data/c1/c1-matching-sample.json",
     "level": [
       "c1"
     ],
