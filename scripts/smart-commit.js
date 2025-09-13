@@ -109,17 +109,17 @@ function analyzeChanges(statusLines, diffLines) {
   statusLines.forEach(line => {
     const status = line.substring(0, 2);
     const file = line.substring(3);
-    
+
     // Determine change type
     if (status.includes('A')) analysis.added.push(file);
     if (status.includes('M')) analysis.modified.push(file);
     if (status.includes('D')) analysis.deleted.push(file);
     if (status.includes('R')) analysis.renamed.push(file);
-    
+
     // Determine file type
     const ext = file.split('.').pop();
     if (ext) analysis.fileTypes.add(ext);
-    
+
     // Determine category and scope
     if (file.startsWith('src/')) {
       analysis.categories.add('feat');
@@ -130,37 +130,37 @@ function analyzeChanges(statusLines, diffLines) {
       if (file.includes('store')) analysis.scope.add('store');
       if (file.includes('type')) analysis.scope.add('types');
     }
-    
+
     if (file.startsWith('tests/') || file.includes('.test.') || file.includes('.spec.')) {
       analysis.categories.add('test');
       analysis.scope.add('tests');
     }
-    
+
     if (file.startsWith('.github/workflows/')) {
       analysis.categories.add('ci');
       analysis.scope.add('workflows');
     }
-    
+
     if (file.startsWith('scripts/')) {
       analysis.categories.add('build');
       analysis.scope.add('scripts');
     }
-    
+
     if (file === 'package.json' || file === 'package-lock.json') {
       analysis.categories.add('build');
       analysis.scope.add('deps');
     }
-    
+
     if (file.startsWith('config/') || file.includes('.config.')) {
       analysis.categories.add('build');
       analysis.scope.add('config');
     }
-    
+
     if (file.includes('README') || file.includes('.md')) {
       analysis.categories.add('docs');
       analysis.scope.add('docs');
     }
-    
+
     if (file.includes('style') || file.includes('.css') || file.includes('.scss')) {
       analysis.categories.add('style');
       analysis.scope.add('styles');
@@ -173,7 +173,7 @@ function analyzeChanges(statusLines, diffLines) {
 // AI-powered commit message generation
 function generateCommitMessage(analysis, diffContent) {
   const { added, modified, deleted, renamed, categories, scope, fileTypes } = analysis;
-  
+
   // Determine primary type
   let type = 'feat'; // default
   if (categories.has('test') && categories.size === 1) type = 'test';
@@ -186,7 +186,7 @@ function generateCommitMessage(analysis, diffContent) {
     else type = 'fix';
   }
   if (deleted.length > 0) type = 'refactor';
-  
+
   // Determine scope
   let scopeStr = '';
   if (scope.size === 1) {
@@ -195,10 +195,10 @@ function generateCommitMessage(analysis, diffContent) {
     const mainScope = Array.from(scope).sort()[0];
     scopeStr = `(${mainScope})`;
   }
-  
+
   // Generate description based on changes
   let description = '';
-  
+
   if (added.length > 0 && modified.length === 0 && deleted.length === 0) {
     // Pure addition
     if (added.length === 1) {
@@ -250,34 +250,34 @@ function generateCommitMessage(analysis, diffContent) {
     else if (scope.has('scripts')) description = 'enhance build scripts';
     else description = `update project structure (${totalChanges} files)`;
   }
-  
+
   // Analyze diff content for more context
   if (diffContent) {
     const lines = diffContent.split('\n');
     const addedLines = lines.filter(line => line.startsWith('+')).length;
     const removedLines = lines.filter(line => line.startsWith('-')).length;
-    
+
     // Look for specific patterns
     if (diffContent.includes('TODO') || diffContent.includes('FIXME')) {
       if (!description.includes('fix')) description += ' and address TODOs';
     }
-    
+
     if (diffContent.includes('console.log') && diffContent.includes('-')) {
       description += ' and remove debug logs';
     }
-    
+
     if (diffContent.includes('test(') || diffContent.includes('it(') || diffContent.includes('describe(')) {
       if (!description.includes('test')) description += ' with tests';
     }
-    
+
     if (diffContent.includes('export') && diffContent.includes('+')) {
       if (!description.includes('add') && !description.includes('export')) description += ' and export utilities';
     }
   }
-  
+
   // Construct final message
   const commitMessage = `${type}${scopeStr}: ${description}`;
-  
+
   // Generate body if significant changes
   let body = '';
   if (added.length + modified.length + deleted.length > 5) {
@@ -286,7 +286,7 @@ function generateCommitMessage(analysis, diffContent) {
     if (modified.length > 0) body += `- Modified: ${modified.length} files\n`;
     if (deleted.length > 0) body += `- Deleted: ${deleted.length} files\n`;
   }
-  
+
   return { message: commitMessage, body: body.trim() };
 }
 
@@ -294,17 +294,17 @@ function generateCommitMessage(analysis, diffContent) {
 async function promptUser(question) {
   return new Promise((resolve) => {
     process.stdout.write(`${question} `);
-    
+
     // Set stdin to raw mode for better input handling
     if (process.stdin.isTTY) {
       process.stdin.setRawMode(false);
     }
-    
+
     process.stdin.once('data', (data) => {
       const input = data.toString().trim();
       resolve(input);
     });
-    
+
     // Resume stdin if it was paused
     process.stdin.resume();
   });
@@ -312,48 +312,54 @@ async function promptUser(question) {
 
 async function interactiveCommit(analysis, suggestions) {
   logHeader('🤖 AI-Generated Commit Messages');
-  
+
   // Show a brief summary first
   const { added, modified, deleted } = analysis;
   const totalFiles = added.length + modified.length + deleted.length;
   log(`\n📊 Changes Summary: ${totalFiles} files (${added.length} added, ${modified.length} modified, ${deleted.length} deleted)`, colors.cyan);
-  
+
   // Show suggested messages prominently
-  log('\n🎯 Suggested commit messages:', colors.bright);
-  suggestions.forEach((suggestion, index) => {
-    log(`\n  ${colors.green}${index + 1}.${colors.reset} ${colors.bright}${suggestion.message}${colors.reset}`);
-    if (suggestion.body) {
-      const bodyLines = suggestion.body.split('\n');
-      bodyLines.forEach(line => {
-        if (line.trim()) {
-          log(`      ${colors.white}${line}${colors.reset}`);
-        }
-      });
+  log('\n🎯 Commit message options:', colors.bright);
+
+  // Option 1: Short
+  log(`\n  ${colors.green}1.${colors.reset} ${colors.bright}Short:${colors.reset} ${suggestions[0].message}`);
+
+  // Option 2: Descriptive
+  log(`\n  ${colors.green}2.${colors.reset} ${colors.bright}Descriptive:${colors.reset} ${suggestions[1].message}`);
+  if (suggestions[1].body) {
+    const bodyLines = suggestions[1].body.split('\n').slice(0, 3); // Show first 3 lines
+    bodyLines.forEach(line => {
+      if (line.trim()) {
+        log(`      ${colors.white}${line}${colors.reset}`);
+      }
+    });
+    if (suggestions[1].body.split('\n').length > 3) {
+      log(`      ${colors.white}...${colors.reset}`);
     }
-  });
-  
+  }
+
   // Show options clearly at the bottom
   log('\n' + '='.repeat(60), colors.cyan);
   log('📋 What would you like to do?', colors.bright);
   log('='.repeat(60), colors.cyan);
-  log(`  ${colors.green}1-3${colors.reset}  Use one of the suggested messages above`);
+  log(`  ${colors.green}1${colors.reset}    Use short commit message (option 1)`);
+  log(`  ${colors.green}2${colors.reset}    Use descriptive commit message (option 2)`);
   log(`  ${colors.blue}c${colors.reset}    Write a custom commit message`);
   log(`  ${colors.yellow}s${colors.reset}    Show detailed file changes`);
   log(`  ${colors.red}q${colors.reset}    Quit without committing`);
   log('='.repeat(60), colors.cyan);
-  
+
   const choice = await promptUser(`\n${colors.bright}🎯 Your choice:${colors.reset}`);
-  
+
   switch (choice.toLowerCase()) {
     case '1':
     case '2':
-    case '3':
       const index = parseInt(choice) - 1;
       if (suggestions[index]) {
         log(`\n✅ Selected: ${suggestions[index].message}`, colors.green);
         return suggestions[index];
       } else {
-        logWarning('Invalid selection. Please choose 1, 2, or 3.');
+        logWarning('Invalid selection. Please choose 1 or 2.');
         return await interactiveCommit(analysis, suggestions);
       }
     case 'c':
@@ -381,13 +387,13 @@ async function interactiveCommit(analysis, suggestions) {
 
 function showDetailedChanges(analysis) {
   logHeader('📊 Detailed File Changes');
-  
+
   const { added, modified, deleted, renamed, categories, scope, fileTypes } = analysis;
-  
+
   // Show summary first
   const total = added.length + modified.length + deleted.length + renamed.length;
   log(`\n📈 Total changes: ${total} files`, colors.bright);
-  
+
   if (added.length > 0) {
     log(`\n${colors.green}📁 Added files (${added.length}):${colors.reset}`);
     added.slice(0, 10).forEach(file => log(`  ${colors.green}+${colors.reset} ${file}`));
@@ -395,7 +401,7 @@ function showDetailedChanges(analysis) {
       log(`  ${colors.white}... and ${added.length - 10} more${colors.reset}`);
     }
   }
-  
+
   if (modified.length > 0) {
     log(`\n${colors.yellow}📝 Modified files (${modified.length}):${colors.reset}`);
     modified.slice(0, 10).forEach(file => log(`  ${colors.yellow}~${colors.reset} ${file}`));
@@ -403,7 +409,7 @@ function showDetailedChanges(analysis) {
       log(`  ${colors.white}... and ${modified.length - 10} more${colors.reset}`);
     }
   }
-  
+
   if (deleted.length > 0) {
     log(`\n${colors.red}🗑️ Deleted files (${deleted.length}):${colors.reset}`);
     deleted.slice(0, 10).forEach(file => log(`  ${colors.red}-${colors.reset} ${file}`));
@@ -411,18 +417,18 @@ function showDetailedChanges(analysis) {
       log(`  ${colors.white}... and ${deleted.length - 10} more${colors.reset}`);
     }
   }
-  
+
   if (renamed.length > 0) {
     log(`\n${colors.blue}🔄 Renamed files (${renamed.length}):${colors.reset}`);
     renamed.forEach(file => log(`  → ${file}`, colors.blue));
   }
-  
+
   log('\n🏷️ Detected categories:', colors.bright);
   Array.from(categories).forEach(cat => log(`  • ${cat}`, colors.cyan));
-  
+
   log('\n🎯 Detected scopes:', colors.bright);
   Array.from(scope).forEach(sc => log(`  • ${sc}`, colors.magenta));
-  
+
   log('\n📄 File types:', colors.bright);
   Array.from(fileTypes).forEach(type => log(`  • ${type}`, colors.white));
 }
@@ -430,26 +436,26 @@ function showDetailedChanges(analysis) {
 async function main() {
   try {
     logHeader('🤖 Smart Commit - AI-Powered Commit Messages');
-    
+
     // Check if we're in a git repository
     const statusLines = getGitStatus();
     if (statusLines.length === 0 || statusLines[0] === '') {
       logWarning('No changes detected. Stage your changes first with `git add`.');
       process.exit(0);
     }
-    
+
     // Check if there are staged changes
     const diffLines = getGitDiff();
     if (diffLines.length === 0 || diffLines[0] === '') {
       logWarning('No staged changes detected.');
-      
+
       // Check if there are unstaged changes
       const unstagedStatus = execSync('git status --porcelain', { encoding: 'utf8', cwd: rootDir });
       if (unstagedStatus.trim()) {
         logInfo('Auto-staging all changes with `git add .`...');
         execSync('git add .', { cwd: rootDir });
         logSuccess('All changes staged successfully!');
-        
+
         // Re-check staged changes after adding
         const newDiffLines = getGitDiff();
         if (newDiffLines.length === 0 || newDiffLines[0] === '') {
@@ -461,64 +467,64 @@ async function main() {
         process.exit(0);
       }
     }
-    
+
     logInfo('Analyzing changes...');
-    
+
     // Analyze changes
     const analysis = analyzeChanges(statusLines, diffLines);
     const diffContent = getGitDiffContent();
     const diffStats = getGitDiffStats();
-    
-    // Generate multiple suggestions
+
+    // Generate exactly 2 suggestions: short and descriptive
     const suggestions = [];
-    
-    // Primary suggestion
+
+    // Generate primary commit message
     const primary = generateCommitMessage(analysis, diffContent);
-    suggestions.push(primary);
-    
-    // Alternative suggestions
-    if (analysis.categories.size > 1) {
-      // More generic version
-      const generic = {
-        message: `feat: update project structure`,
-        body: `Multiple areas updated:\n${Array.from(analysis.categories).map(c => `- ${c}`).join('\n')}`
-      };
-      suggestions.push(generic);
+
+    // Option 1: Short version (just the message)
+    const shortVersion = {
+      message: primary.message,
+      body: ''
+    };
+    suggestions.push(shortVersion);
+
+    // Option 2: Descriptive version (with body and details)
+    const descriptiveVersion = {
+      message: primary.message,
+      body: primary.body || `Changes:\n- Modified: ${analysis.modified.length} files\n- Added: ${analysis.added.length} files\n- Deleted: ${analysis.deleted.length} files`
+    };
+
+    // Add diff stats if significant changes
+    if (analysis.added.length + analysis.modified.length + analysis.deleted.length > 3) {
+      descriptiveVersion.body += `\n\nDiff summary:\n${diffStats.split('\n').slice(0, 5).join('\n')}`;
     }
-    
-    // Detailed version
-    if (analysis.added.length + analysis.modified.length + analysis.deleted.length > 1) {
-      const detailed = {
-        message: primary.message,
-        body: `${primary.body}\n\nFiles changed:\n${diffStats}`
-      };
-      suggestions.push(detailed);
-    }
-    
+
+    suggestions.push(descriptiveVersion);
+
     // Interactive selection
     const selectedCommit = await interactiveCommit(analysis, suggestions);
-    
+
     // Perform commit
     logInfo('Committing changes...');
-    
+
     let commitCommand = `git commit -m "${selectedCommit.message}"`;
     if (selectedCommit.body && selectedCommit.body.trim()) {
       commitCommand = `git commit -m "${selectedCommit.message}" -m "${selectedCommit.body}"`;
     }
-    
+
     execSync(commitCommand, { stdio: 'inherit', cwd: rootDir });
-    
+
     logSuccess('Commit completed successfully!');
-    
+
     // Show commit info
     const commitHash = execSync('git rev-parse --short HEAD', { encoding: 'utf8', cwd: rootDir }).trim();
     log(`\n📝 Commit: ${commitHash}`, colors.cyan);
     log(`💬 Message: ${selectedCommit.message}`, colors.green);
-    
+
     // Exit successfully
     log('\n✨ Smart commit completed successfully!', colors.green);
     process.exit(0);
-    
+
   } catch (error) {
     logError(`Smart commit failed: ${error.message}`);
     process.exit(1);
