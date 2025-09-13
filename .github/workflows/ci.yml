@@ -63,7 +63,7 @@ jobs:
           echo "| Pipeline | Status | Responsibility | Action Required |" >> $GITHUB_STEP_SUMMARY
           echo "|----------|--------|----------------|-----------------|" >> $GITHUB_STEP_SUMMARY
           echo "| 🎯 Quality | ${{ needs.quality.result == 'success' && '✅ PASS' || '❌ FAIL' }} | ESLint, Tests, TypeScript, Format | ${{ needs.quality.result == 'success' && 'None' || 'Check Quality Pipeline logs' }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| � ️ Security | ${{ needs.security.result == 'success' && '✅ PASS' || '❌ FAIL' }} | Vulnerabilities, Secrets, Licenses | ${{ needs.security.result == 'success' && 'None' || 'Check Security Pipeline logs' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| 🛡️ Security | ${{ needs.security.result == 'success' && '✅ PASS' || '❌ FAIL' }} | Vulnerabilities, Secrets, Licenses | ${{ needs.security.result == 'success' && 'None' || 'Check Security Pipeline logs' }} |" >> $GITHUB_STEP_SUMMARY
           echo "| 📦 Build | ${{ needs.build.result == 'success' && '✅ PASS' || '❌ FAIL' }} | Application build & analysis | ${{ needs.build.result == 'success' && 'None' || 'Check Build Pipeline logs' }} |" >> $GITHUB_STEP_SUMMARY
           echo "| 🚀 Deploy | ⏭️ SKIP | Production deployment | Deploy runs separately via CI/CD Orchestrator |" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
@@ -84,7 +84,11 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           
           # Determine overall status and provide clear guidance
-          PARALLEL_SUCCESS=${{ needs.quality.result == 'success' && needs.security.result == 'success' && needs.build.result == 'success' && 'true' || 'false' }}
+          if [[ "${{ needs.quality.result }}" == "success" && "${{ needs.security.result }}" == "success" && "${{ needs.build.result }}" == "success" ]]; then
+            PARALLEL_SUCCESS="true"
+          else
+            PARALLEL_SUCCESS="false"
+          fi
           
           if [[ "$PARALLEL_SUCCESS" == "true" ]]; then
             echo "status=success" >> $GITHUB_OUTPUT
