@@ -36,27 +36,21 @@ jobs:
         run: |
           COMMIT_SHA="${{ steps.commit-details.outputs.commit_sha }}"
           
-          # Get all workflow runs for this commit
-          gh api repos/${{ github.repository }}/actions/runs \
-            --jq ".workflow_runs[] | select(.head_sha == \"$COMMIT_SHA\") | {name: .name, conclusion: .conclusion}" \
-            > workflow_status.json
+          echo "🔍 Checking pipeline status for commit: $COMMIT_SHA"
           
-          echo "📊 All workflows for this commit:"
-          cat workflow_status.json
-          
-          # Check specific pipeline status
-          QUALITY_STATUS=$(jq -r '.[] | select(.name == "Quality Checks") | .conclusion' workflow_status.json | head -1)
-          SECURITY_STATUS=$(jq -r '.[] | select(.name == "Security Checks") | .conclusion' workflow_status.json | head -1)
-          BUILD_STATUS=$(jq -r '.[] | select(.name == "Build Pipeline") | .conclusion' workflow_status.json | head -1)
+          # Get workflow runs for this commit and extract status
+          QUALITY_STATUS=$(gh api repos/${{ github.repository }}/actions/runs --jq ".workflow_runs[] | select(.head_sha == \"$COMMIT_SHA\" and .name == \"Quality Checks\") | .conclusion" | head -1)
+          SECURITY_STATUS=$(gh api repos/${{ github.repository }}/actions/runs --jq ".workflow_runs[] | select(.head_sha == \"$COMMIT_SHA\" and .name == \"Security Checks\") | .conclusion" | head -1)
+          BUILD_STATUS=$(gh api repos/${{ github.repository }}/actions/runs --jq ".workflow_runs[] | select(.head_sha == \"$COMMIT_SHA\" and .name == \"Build Pipeline\") | .conclusion" | head -1)
           
           echo "quality_status=${QUALITY_STATUS:-unknown}" >> $GITHUB_OUTPUT
           echo "security_status=${SECURITY_STATUS:-unknown}" >> $GITHUB_OUTPUT
           echo "build_status=${BUILD_STATUS:-unknown}" >> $GITHUB_OUTPUT
           
           echo "📊 Pipeline Status Summary:"
-          echo "- Quality: $QUALITY_STATUS"
-          echo "- Security: $SECURITY_STATUS"
-          echo "- Build: $BUILD_STATUS"
+          echo "- Quality: ${QUALITY_STATUS:-unknown}"
+          echo "- Security: ${SECURITY_STATUS:-unknown}"
+          echo "- Build: ${BUILD_STATUS:-unknown}"
           
           # Check if all required pipelines succeeded
           if [[ "$QUALITY_STATUS" == "success" && "$SECURITY_STATUS" == "success" && "$BUILD_STATUS" == "success" ]]; then
