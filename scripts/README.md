@@ -61,9 +61,11 @@ node scripts/tools.js matching status
 node scripts/tools.js matching validate
 node scripts/tools.js matching all
 
-# Desarrollo
-node scripts/tools.js development quality
-node scripts/tools.js development commit
+# Desarrollo completo
+npm run build:full              # Pipeline completo + commit + push + monitoreo
+
+# Despliegue completo
+npm run deploy:full             # Deploy + monitoreo automático
 
 # Git y commits
 node scripts/tools.js git smart-commit
@@ -93,7 +95,7 @@ node scripts/analysis/analyze-package.js
 node scripts/analysis/cleanup.js
 
 # Despliegue
-node scripts/deployment/deploy.js
+npm run deploy:full             # Despliegue completo con monitoreo
 ```
 
 ## Convenciones

@@ -268,7 +268,7 @@ async function runWorkflow(workflowKey) {
       log('✅ GitHub Actions monitoring completed', colors.green);
       console.log('');
       log('🚀 NEXT STEP: Deploy to production', colors.bright + colors.cyan);
-      log('   Run: npm run deploy:manual', colors.cyan);
+      log('   Run: npm run deploy:full', colors.cyan);
       console.log('='.repeat(60));
     }
   } else {

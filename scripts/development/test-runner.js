@@ -65,7 +65,7 @@ const testSuites = {
       'pipeline:build',
       'flow:quick',
       'flow:safe',
-      'flow:full'
+      'build:full'
     ]
   }
 };

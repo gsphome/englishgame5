@@ -357,7 +357,7 @@ const options = {
 if (args.includes('--help') || args.includes('-h')) {
   log('🚀 Manual Deployment Trigger', 'bright');
   log('============================\n', 'bright');
-  log('Usage: npm run deploy:manual [options]', 'cyan');
+  log('Usage: npm run deploy:full [options]', 'cyan');
   log('\nOptions:', 'bright');
   log('  --help, -h         Show this help message', 'cyan');
   log('  --no-monitor       Skip deployment monitoring', 'cyan');
@@ -369,9 +369,9 @@ if (args.includes('--help') || args.includes('-h')) {
   log('  Checks current pipeline status and prompts for confirmation', 'cyan');
   log('  if not all quality gates have passed.', 'cyan');
   log('\nExamples:', 'bright');
-  log('  npm run deploy:manual                    # Full deployment with monitoring', 'cyan');
-  log('  npm run deploy:manual -- --no-monitor   # Deploy without monitoring', 'cyan');
-  log('  npm run deploy:manual -- --timeout=600  # Monitor for 10 minutes', 'cyan');
+  log('  npm run deploy:full                    # Full deployment with monitoring', 'cyan');
+  log('  npm run deploy:full -- --no-monitor   # Deploy without monitoring', 'cyan');
+  log('  npm run deploy:full -- --timeout=600  # Monitor for 10 minutes', 'cyan');
   log('\nPrerequisites:', 'bright');
   log('  - GitHub CLI (gh) installed and authenticated', 'cyan');
   log('  - Current directory must be a git repository', 'cyan');
