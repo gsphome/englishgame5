@@ -17,9 +17,15 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # Test only quality pipeline first
-  quality:
-    name: Quality Pipeline
-    uses: ./.github/workflows/quality.yml
-    secrets: inherit
+  # Simple orchestrator that just reports status
+  orchestrator-status:
+    name: CI/CD Orchestrator Status
+    runs-on: ubuntu-latest
+    steps:
+      - name: Orchestrator status
+        run: |
+          echo "🎭 CI/CD Orchestrator is running"
+          echo "Individual pipelines (Quality, Security, Build) run independently"
+          echo "Deploy Trigger will coordinate deployment when all pipelines succeed"
+          echo "✅ Orchestrator completed successfully"
 

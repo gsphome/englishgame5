@@ -1,8 +1,9 @@
 name: Deploy Trigger
 
 on:
+  # Trigger when individual pipelines complete successfully
   workflow_run:
-    workflows: ["CI/CD Orchestrator"]
+    workflows: ["Quality Checks", "Security Checks", "Build Pipeline"]
     types:
       - completed
     branches: [main]
@@ -15,41 +16,32 @@ permissions:
 
 jobs:
   check-and-deploy:
-    name: Check CI Status and Deploy
+    name: Check All Pipelines and Deploy
     runs-on: ubuntu-latest
+    # Only run if the triggering workflow succeeded
     if: github.event.workflow_run.conclusion == 'success'
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Get workflow run details
-        id: workflow-details
+      - name: Get commit details
+        id: commit-details
         run: |
-          # Get the workflow run ID
-          WORKFLOW_RUN_ID="${{ github.event.workflow_run.id }}"
-          echo "workflow_run_id=$WORKFLOW_RUN_ID" >> $GITHUB_OUTPUT
-          
-          # Get commit SHA
           COMMIT_SHA="${{ github.event.workflow_run.head_sha }}"
           echo "commit_sha=$COMMIT_SHA" >> $GITHUB_OUTPUT
-          
-          echo "🔍 Checking CI/CD Orchestrator results..."
-          echo "Workflow Run ID: $WORKFLOW_RUN_ID"
-          echo "Commit SHA: $COMMIT_SHA"
+          echo "🔍 Checking all pipelines for commit: $COMMIT_SHA"
 
-      - name: Check individual pipeline status
+      - name: Check all pipeline status
         id: pipeline-status
         run: |
-          # Use GitHub CLI to get the status of individual workflows for this commit
-          COMMIT_SHA="${{ steps.workflow-details.outputs.commit_sha }}"
-          
-          echo "🔍 Checking pipeline status for commit: $COMMIT_SHA"
+          COMMIT_SHA="${{ steps.commit-details.outputs.commit_sha }}"
           
           # Get all workflow runs for this commit
           gh api repos/${{ github.repository }}/actions/runs \
-            --jq ".workflow_runs[] | select(.head_sha == \"$COMMIT_SHA\") | {name: .name, conclusion: .conclusion, status: .status}" \
+            --jq ".workflow_runs[] | select(.head_sha == \"$COMMIT_SHA\") | {name: .name, conclusion: .conclusion}" \
             > workflow_status.json
           
+          echo "📊 All workflows for this commit:"
           cat workflow_status.json
           
           # Check specific pipeline status
@@ -61,19 +53,19 @@ jobs:
           echo "security_status=${SECURITY_STATUS:-unknown}" >> $GITHUB_OUTPUT
           echo "build_status=${BUILD_STATUS:-unknown}" >> $GITHUB_OUTPUT
           
-          echo "📊 Pipeline Status:"
+          echo "📊 Pipeline Status Summary:"
           echo "- Quality: $QUALITY_STATUS"
           echo "- Security: $SECURITY_STATUS"
           echo "- Build: $BUILD_STATUS"
           
-          # Verify all pipelines succeeded
+          # Check if all required pipelines succeeded
           if [[ "$QUALITY_STATUS" == "success" && "$SECURITY_STATUS" == "success" && "$BUILD_STATUS" == "success" ]]; then
             echo "all_pipelines_success=true" >> $GITHUB_OUTPUT
-            echo "✅ All pipelines succeeded - proceeding with deployment"
+            echo "✅ All pipelines succeeded - ready for deployment"
           else
             echo "all_pipelines_success=false" >> $GITHUB_OUTPUT
-            echo "❌ Not all pipelines succeeded - deployment blocked"
-            echo "Quality: $QUALITY_STATUS, Security: $SECURITY_STATUS, Build: $BUILD_STATUS"
+            echo "⏳ Not all pipelines completed successfully yet"
+            echo "Deployment will wait for all pipelines to succeed"
           fi
         env:
           GH_TOKEN: ${{ github.token }}
@@ -82,29 +74,18 @@ jobs:
         if: steps.pipeline-status.outputs.all_pipelines_success == 'true'
         uses: ./.github/workflows/deploy.yml
         with:
-          artifact-name: build-files-${{ steps.workflow-details.outputs.commit_sha }}
+          artifact-name: build-files-${{ steps.commit-details.outputs.commit_sha }}
           quality-status: ${{ steps.pipeline-status.outputs.quality_status }}
           security-status: ${{ steps.pipeline-status.outputs.security_status }}
           build-status: ${{ steps.pipeline-status.outputs.build_status }}
 
-      - name: Deployment blocked
-        if: steps.pipeline-status.outputs.all_pipelines_success != 'true'
-        run: |
-          echo "🚫 Deployment blocked due to pipeline failures"
-          echo "Quality: ${{ steps.pipeline-status.outputs.quality_status }}"
-          echo "Security: ${{ steps.pipeline-status.outputs.security_status }}"
-          echo "Build: ${{ steps.pipeline-status.outputs.build_status }}"
-          echo ""
-          echo "All pipelines must succeed before deployment can proceed."
-          exit 1
-
-      - name: Summary
+      - name: Deployment summary
         if: always()
         run: |
           echo "## 🚀 DEPLOY TRIGGER - SUMMARY" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Trigger:** CI/CD Orchestrator completion" >> $GITHUB_STEP_SUMMARY
-          echo "**Commit:** ${{ steps.workflow-details.outputs.commit_sha }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Triggered by:** ${{ github.event.workflow_run.name }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Commit:** ${{ steps.commit-details.outputs.commit_sha }}" >> $GITHUB_STEP_SUMMARY
           echo "**Branch:** ${{ github.event.workflow_run.head_branch }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### 📊 Pipeline Gate Status" >> $GITHUB_STEP_SUMMARY
@@ -119,6 +100,6 @@ jobs:
             echo "### ✅ DEPLOYMENT: TRIGGERED" >> $GITHUB_STEP_SUMMARY
             echo "All quality gates passed - deployment initiated" >> $GITHUB_STEP_SUMMARY
           else
-            echo "### ❌ DEPLOYMENT: BLOCKED" >> $GITHUB_STEP_SUMMARY
-            echo "One or more quality gates failed - deployment blocked" >> $GITHUB_STEP_SUMMARY
+            echo "### ⏳ DEPLOYMENT: WAITING" >> $GITHUB_STEP_SUMMARY
+            echo "Waiting for all pipelines to complete successfully" >> $GITHUB_STEP_SUMMARY
           fi
