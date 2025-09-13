@@ -1,4 +1,4 @@
-# 🚀 Flujo de Trabajo Simplificado
+# 🚀 Flujo de Trabajo Simplificado - v2.0
 
 ## 📋 Flujo Completo en Solo 2 Comandos
 
