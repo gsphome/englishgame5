@@ -209,10 +209,9 @@ function showWorkflowStatus() {
       if (run) {
         const status = formatStatus(run.status, run.conclusion);
         const time = new Date(run.createdAt).toLocaleString();
-        logInfo(`  📊 ${workflow.name}: ${status} (${time})`);
-        if (run.url) {
-          logInfo(`      🔗 ${run.url}`);
-        }
+        const duration = run.conclusion ? formatDuration(run.createdAt, run.updatedAt) : 'Running...';
+        logInfo(`  📊 ${workflow.name}: ${status}`);
+        logInfo(`      ${time} | ${duration} | ${run.url}`);
       } else {
         logInfo(`  📊 ${workflow.name}: ${colors.white}⚪ No runs${colors.reset}`);
       }
@@ -312,22 +311,20 @@ function showCurrentStatus() {
     }
   });
   
-  // Show status for each workflow
+  // Show status for each workflow (compact format)
   Object.entries(runsByWorkflow).forEach(([workflowName, run]) => {
     const status = formatStatus(run.status, run.conclusion);
     const time = new Date(run.createdAt).toLocaleString();
     const duration = run.conclusion ? formatDuration(run.createdAt, run.updatedAt) : 'Running...';
     
-    logInfo(`\n📊 ${workflowName}:`);
-    logInfo(`   Status: ${status}`);
-    logInfo(`   Started: ${time}`);
-    logInfo(`   Duration: ${duration}`);
+    logInfo(`\n📊 ${workflowName}: ${status}`);
+    logInfo(`   Started: ${time} | Duration: ${duration}`);
     logInfo(`   URL: ${run.url}`);
     
     if (run.displayTitle && run.displayTitle.length > 60) {
-      logInfo(`   Title: "${run.displayTitle.slice(0, 60)}..."`);
+      logInfo(`   "${run.displayTitle.slice(0, 60)}..."`);
     } else if (run.displayTitle) {
-      logInfo(`   Title: "${run.displayTitle}"`);
+      logInfo(`   "${run.displayTitle}"`);
     }
   });
   
@@ -359,9 +356,11 @@ function showCurrentStatus() {
   
   // Overall status
   const totalWorkflows = Object.keys(runsByWorkflow).length;
-  if (failed > 0) {
-    logError(`\n🚫 Pipeline Status: FAILED (${failed}/${totalWorkflows} workflows failed)`);
-  } else if (running > 0 || pending > 0) {
+  const hasActiveWorkflows = running > 0 || pending > 0;
+  
+  if (failed > 0 && !hasActiveWorkflows) {
+    logError(`\n� Pipeiline Status: FAILED (${failed}/${totalWorkflows} workflows failed)`);
+  } else if (hasActiveWorkflows) {
     logInfo(`\n🔄 Pipeline Status: IN PROGRESS (${running + pending}/${totalWorkflows} workflows pending)`);
   } else if (successful === totalWorkflows) {
     logSuccess(`\n✅ Pipeline Status: SUCCESS (${successful}/${totalWorkflows} workflows passed)`);
@@ -369,17 +368,53 @@ function showCurrentStatus() {
     logInfo(`\n⚪ Pipeline Status: MIXED RESULTS`);
   }
   
-  return failed === 0;
+  // Add activity indicator for watch mode
+  if (hasActiveWorkflows) {
+    logInfo(`\n🔄 Active workflows detected - monitoring will continue...`);
+  } else {
+    logInfo(`\n⚪ All workflows completed - monitoring may stop automatically`);
+  }
+  
+  return { success: failed === 0, hasActivity: hasActiveWorkflows };
 }
 
 /**
- * Watch workflow status (polling)
+ * Check if there are active workflows (running or pending)
+ */
+function hasActiveWorkflows() {
+  try {
+    const currentBranch = getCurrentBranch();
+    const latestCommit = getLatestCommit();
+    
+    const runs = getWorkflowRuns(20);
+    const currentRuns = runs.filter(run => run.headSha === latestCommit);
+    
+    if (currentRuns.length === 0) {
+      return false;
+    }
+    
+    // Check if any workflow is still active
+    const activeRuns = currentRuns.filter(run => 
+      run.status === 'in_progress' || 
+      run.status === 'queued' || 
+      run.status === 'requested'
+    );
+    
+    return activeRuns.length > 0;
+  } catch (error) {
+    return false;
+  }
+}
+
+/**
+ * Watch workflow status (polling) - stops automatically when all workflows complete
  */
 function watchStatus(interval = 30) {
   logHeader(`👀 Watching GitHub Actions Status (${interval}s intervals)`);
-  logInfo('Press Ctrl+C to stop watching\n');
+  logInfo('Press Ctrl+C to stop watching manually\n');
   
   let iteration = 0;
+  let consecutiveNoActivity = 0;
   
   const watch = () => {
     iteration++;
@@ -387,16 +422,55 @@ function watchStatus(interval = 30) {
     logInfo(`📊 Status Check #${iteration} - ${new Date().toLocaleString()}`);
     logInfo('='.repeat(60));
     
-    showCurrentStatus();
+    const hasActivity = hasActiveWorkflows();
     
+    if (!hasActivity) {
+      consecutiveNoActivity++;
+      logInfo(`\n⚪ No active workflows detected (${consecutiveNoActivity}/3 checks)`);
+      
+      if (consecutiveNoActivity >= 3) {
+        logInfo('\n🏁 All workflows completed. Stopping watch automatically.');
+        logInfo('💡 Use "npm run gh:current" to check final status');
+        logInfo('💡 Use "npm run gh:watch" to start watching again');
+        return; // Stop watching
+      }
+    } else {
+      consecutiveNoActivity = 0; // Reset counter if there's activity
+    }
+    
+    const result = showCurrentStatus();
+    
+    // If no activity detected in showCurrentStatus, increment counter
+    if (!result.hasActivity) {
+      consecutiveNoActivity++;
+    }
+    
+    // Continue watching
     setTimeout(watch, interval * 1000);
   };
   
   // Initial check
-  showCurrentStatus();
-  
-  // Start watching
-  setTimeout(watch, interval * 1000);
+  const initialActivity = hasActiveWorkflows();
+  if (!initialActivity) {
+    logInfo('⚪ No active workflows detected for current commit.');
+    logInfo('💡 All workflows appear to be completed.');
+    logInfo('💡 Use "npm run gh:current" to see final status\n');
+    
+    // Show current status anyway
+    const result = showCurrentStatus();
+    
+    logInfo('\n🤔 Start watching anyway? (workflows might start soon)');
+    logInfo('Press Ctrl+C to cancel, or wait 10 seconds to start watching...');
+    
+    setTimeout(() => {
+      logInfo('\n🔄 Starting watch mode...');
+      setTimeout(watch, interval * 1000);
+    }, 10000);
+  } else {
+    logInfo('🔄 Active workflows detected. Starting watch mode...\n');
+    const result = showCurrentStatus();
+    setTimeout(watch, interval * 1000);
+  }
 }
 
 /**
