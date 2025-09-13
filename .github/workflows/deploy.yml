@@ -131,11 +131,33 @@ jobs:
           GH_TOKEN: ${{ github.token }}
 
       - name: Download build artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: ${{ inputs.artifact-name || github.event.client_payload.artifact_name || format('build-files-{0}', github.sha) }}
-          path: dist/
-          run-id: ${{ steps.get-build-run.outputs.build_run_id }}
+        run: |
+          ARTIFACT_NAME="${{ inputs.artifact-name || github.event.client_payload.artifact_name || format('build-files-{0}', github.sha) }}"
+          BUILD_RUN_ID="${{ steps.get-build-run.outputs.build_run_id }}"
+          
+          echo "🔍 Downloading artifact: $ARTIFACT_NAME from run: $BUILD_RUN_ID"
+          
+          # Get artifact download URL
+          ARTIFACT_URL=$(gh api repos/${{ github.repository }}/actions/runs/$BUILD_RUN_ID/artifacts \
+            --jq ".artifacts[] | select(.name == \"$ARTIFACT_NAME\") | .archive_download_url")
+          
+          if [ -z "$ARTIFACT_URL" ]; then
+            echo "❌ Artifact not found: $ARTIFACT_NAME"
+            exit 1
+          fi
+          
+          # Download and extract artifact
+          mkdir -p dist
+          curl -L -H "Authorization: token ${{ github.token }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            "$ARTIFACT_URL" -o artifact.zip
+          
+          unzip -q artifact.zip -d dist/
+          rm artifact.zip
+          
+          echo "✅ Artifact downloaded and extracted to dist/"
+        env:
+          GH_TOKEN: ${{ github.token }}
 
       - name: Verify artifacts
         run: |
