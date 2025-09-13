@@ -10,15 +10,7 @@ import { shuffleArray } from '../../utils/randomUtils';
 import { createSanitizedHTML } from '../../utils/htmlSanitizer';
 import NavigationButton from '../ui/NavigationButton';
 
-import type { LearningModule } from '../../types';
-
-interface QuizData {
-  sentence: string;
-  idiom: string;
-  options: string[];
-  correct: string;
-  explanation?: string;
-}
+import type { LearningModule, QuizData } from '../../types';
 
 interface QuizComponentProps {
   module: LearningModule;
@@ -193,7 +185,7 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
         <h3 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6" style={{ color: textColor }}>
           <div
             dangerouslySetInnerHTML={createSanitizedHTML(
-              currentQuestion?.sentence || 'Loading question...'
+              currentQuestion?.question || currentQuestion?.sentence || 'Loading question...'
             )}
           />
         </h3>
