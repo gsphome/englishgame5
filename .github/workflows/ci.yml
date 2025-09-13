@@ -17,11 +17,9 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # Test simple job first
-  test-job:
-    name: Test Job
-    runs-on: ubuntu-latest
-    steps:
-      - name: Simple test
-        run: echo "✅ CI/CD Orchestrator test job completed"
+  # Test only quality pipeline first
+  quality:
+    name: Quality Pipeline
+    uses: ./.github/workflows/quality.yml
+    secrets: inherit
 
