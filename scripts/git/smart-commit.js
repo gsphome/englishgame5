@@ -451,9 +451,35 @@ async function main() {
 
     // Check if we're in a git repository
     const statusLines = getGitStatus();
+    
+    // Check if there are unpushed commits
+    let hasUnpushedCommits = false;
+    try {
+      const unpushedCommits = execSync('git log @{u}..HEAD --oneline', { encoding: 'utf8', cwd: rootDir });
+      hasUnpushedCommits = unpushedCommits.trim().length > 0;
+    } catch (error) {
+      // Branch might not have upstream, ignore error
+    }
+
     if (statusLines.length === 0 || statusLines[0] === '') {
-      logWarning('No changes detected. Stage your changes first with `git add`.');
-      process.exit(0);
+      // No working directory changes
+      if (hasUnpushedCommits && shouldPush) {
+        logInfo('No working directory changes, but found unpushed commits.');
+        // Skip to push section
+        logInfo('\nPushing to remote...');
+        try {
+          execSync('git push', { stdio: 'inherit', cwd: rootDir });
+          logSuccess('Push completed successfully!');
+          log('\n✨ Smart commit completed successfully!', colors.green);
+          process.exit(0);
+        } catch (error) {
+          logError('Push failed. You may need to push manually.');
+          process.exit(1);
+        }
+      } else {
+        logWarning('No changes detected. Stage your changes first with `git add`.');
+        process.exit(0);
+      }
     }
 
     // Check if there are staged changes
@@ -475,14 +501,46 @@ async function main() {
           logSuccess('All changes staged successfully!');
           diffLines = getGitDiff();
         } else {
-          logInfo('No changes found in working directory.');
-          process.exit(0);
+          // No unstaged changes, but check for unpushed commits
+          if (hasUnpushedCommits && shouldPush) {
+            logInfo('No working directory changes, but found unpushed commits.');
+            // Skip to push section
+            logInfo('\nPushing to remote...');
+            try {
+              execSync('git push', { stdio: 'inherit', cwd: rootDir });
+              logSuccess('Push completed successfully!');
+              log('\n✨ Smart commit completed successfully!', colors.green);
+              process.exit(0);
+            } catch (error) {
+              logError('Push failed. You may need to push manually.');
+              process.exit(1);
+            }
+          } else {
+            logInfo('No changes found in working directory.');
+            process.exit(0);
+          }
         }
       }
       
       if (diffLines.length === 0 || diffLines[0] === '') {
-        logWarning('No changes to commit after staging.');
-        process.exit(0);
+        // Still no staged changes after attempting to stage
+        if (hasUnpushedCommits && shouldPush) {
+          logInfo('No changes to commit, but found unpushed commits.');
+          // Skip to push section
+          logInfo('\nPushing to remote...');
+          try {
+            execSync('git push', { stdio: 'inherit', cwd: rootDir });
+            logSuccess('Push completed successfully!');
+            log('\n✨ Smart commit completed successfully!', colors.green);
+            process.exit(0);
+          } catch (error) {
+            logError('Push failed. You may need to push manually.');
+            process.exit(1);
+          }
+        } else {
+          logWarning('No changes to commit after staging.');
+          process.exit(0);
+        }
       }
     }
 
