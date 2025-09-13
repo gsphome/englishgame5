@@ -5,7 +5,7 @@
  */
 
 import { readFileSync } from 'fs';
-import { log, logHeader, logSuccess, logError, logWarning, logInfo, colors } from './utils/logger.js';
+import { log, logHeader, logSuccess, logError, logWarning, logInfo, colors } from '../utils/logger.js';
 
 function analyzePackageScripts() {
   try {

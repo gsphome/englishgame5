@@ -13,8 +13,8 @@ import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import { 
   log, logHeader, logSuccess, logError, logWarning, logInfo, colors 
-} from './utils/logger.js';
-import { validateGitRepository } from './utils/git-utils.js';
+} from '../utils/logger.js';
+import { validateGitRepository } from '../utils/git-utils.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);

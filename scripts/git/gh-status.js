@@ -11,8 +11,8 @@ import fs from 'fs';
 import { fileURLToPath } from 'url';
 
 // Import shared utilities
-import { logInfo, logSuccess, logError, logWarning, logHeader, colors } from './utils/logger.js';
-import { getCurrentBranch, getRemoteUrl, getLatestCommit } from './utils/git-utils.js';
+import { logInfo, logSuccess, logError, logWarning, logHeader, colors } from '../utils/logger.js';
+import { getCurrentBranch, getRemoteUrl, getLatestCommit } from '../utils/git-utils.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

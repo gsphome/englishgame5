@@ -1,4 +1,2 @@
 npm run flow:full
 npm run deploy:manual
-
-

@@ -9,7 +9,7 @@
 
 import { readFileSync } from 'fs';
 import { execSync } from 'child_process';
-import { log, logHeader, logSuccess, logError, logWarning, logInfo, colors } from './utils/logger.js';
+import { log, logHeader, logSuccess, logError, logWarning, logInfo, colors } from '../utils/logger.js';
 
 function validatePackageScripts() {
   logHeader('📦 Package.json Script Validation');
