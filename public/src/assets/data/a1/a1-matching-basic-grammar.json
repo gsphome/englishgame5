@@ -10,193 +10,203 @@
     "explanation": "Use 'are' with the pronoun 'you'"
   },
   {
-    "left": "He ___",
+    "left": "He/She/It ___",
     "right": "is",
-    "explanation": "Use 'is' with the pronoun 'he'"
-  },
-  {
-    "left": "She ___",
-    "right": "is (singular)",
-    "explanation": "Use 'is' with the pronoun 'she'"
-  },
-  {
-    "left": "It ___",
-    "right": "is (third person)",
-    "explanation": "Use 'is' with the pronoun 'it'"
+    "explanation": "Use 'is' with he, she, it and singular nouns"
   },
   {
     "left": "We ___",
-    "right": "are (plural)",
+    "right": "are",
     "explanation": "Use 'are' with the pronoun 'we'"
   },
   {
     "left": "They ___",
-    "right": "are (second person)",
+    "right": "are",
     "explanation": "Use 'are' with the pronoun 'they'"
   },
   {
-    "left": "This ___",
-    "right": "is (present tense)",
-    "explanation": "Use 'is' with 'this' (singular)"
+    "left": "I ___",
+    "right": "have",
+    "explanation": "Use 'have' with I, you, we, they"
   },
   {
-    "left": "These ___",
-    "right": "are (present tense)",
-    "explanation": "Use 'are' with 'these' (plural)"
+    "left": "She ___",
+    "right": "has",
+    "explanation": "Use 'has' with he, she, it"
   },
   {
-    "left": "That ___",
-    "right": "is (be verb)",
-    "explanation": "Use 'is' with 'that' (singular)"
+    "left": "I ___",
+    "right": "do",
+    "explanation": "Use 'do' with I, you, we, they"
   },
   {
-    "left": "Those ___",
-    "right": "are (be verb)",
-    "explanation": "Use 'are' with 'those' (plural)"
+    "left": "He ___",
+    "right": "does",
+    "explanation": "Use 'does' with he, she, it"
   },
   {
-    "left": "A cat",
-    "right": "an animal",
+    "left": "I ___",
+    "right": "was",
+    "explanation": "Past tense of 'be' with I, he, she, it"
+  },
+  {
+    "left": "You ___",
+    "right": "were",
+    "explanation": "Past tense of 'be' with you, we, they"
+  },
+  {
+    "left": "I ___",
+    "right": "went",
+    "explanation": "Past tense of 'go'"
+  },
+  {
+    "left": "She ___",
+    "right": "came",
+    "explanation": "Past tense of 'come'"
+  },
+  {
+    "left": "We ___",
+    "right": "saw",
+    "explanation": "Past tense of 'see'"
+  },
+  {
+    "left": "They ___",
+    "right": "ate",
+    "explanation": "Past tense of 'eat'"
+  },
+  {
+    "left": "I ___",
+    "right": "had",
+    "explanation": "Past tense of 'have'"
+  },
+  {
+    "left": "He ___",
+    "right": "did",
+    "explanation": "Past tense of 'do'"
+  },
+  {
+    "left": "A ___",
+    "right": "book",
     "explanation": "Use 'a' before consonant sounds"
   },
   {
-    "left": "An apple",
-    "right": "a fruit",
+    "left": "An ___",
+    "right": "apple",
     "explanation": "Use 'an' before vowel sounds"
   },
   {
-    "left": "The sun",
-    "right": "is hot",
-    "explanation": "Use 'the' for specific things"
+    "left": "The ___",
+    "right": "sun",
+    "explanation": "Use 'the' for specific or unique things"
   },
   {
-    "left": "My book",
-    "right": "is red",
-    "explanation": "'My' shows possession"
+    "left": "My ___",
+    "right": "house",
+    "explanation": "'My' shows possession (I)"
   },
   {
-    "left": "Your car",
-    "right": "is blue",
-    "explanation": "'Your' shows possession"
+    "left": "Your ___",
+    "right": "car",
+    "explanation": "'Your' shows possession (you)"
   },
   {
-    "left": "His house",
-    "right": "is big",
-    "explanation": "'His' shows possession (male)"
+    "left": "His ___",
+    "right": "dog",
+    "explanation": "'His' shows possession (he)"
   },
   {
-    "left": "Her dog",
-    "right": "is small",
-    "explanation": "'Her' shows possession (female)"
+    "left": "Her ___",
+    "right": "cat",
+    "explanation": "'Her' shows possession (she)"
   },
   {
-    "left": "Our family",
-    "right": "is happy",
+    "left": "Our ___",
+    "right": "family",
     "explanation": "'Our' shows possession (we)"
   },
   {
-    "left": "Their school",
-    "right": "is new",
+    "left": "Their ___",
+    "right": "school",
     "explanation": "'Their' shows possession (they)"
   },
   {
-    "left": "I like",
-    "right": "apples",
-    "explanation": "Use base form of verb with 'I'"
-  },
-  {
-    "left": "He likes",
+    "left": "I like ___",
     "right": "music",
-    "explanation": "Add 's' to verbs with he/she/it"
+    "explanation": "Use base form of verb with I, you, we, they"
   },
   {
-    "left": "She likes",
+    "left": "She likes ___",
     "right": "books",
-    "explanation": "Add 's' to verbs with he/she/it"
+    "explanation": "Add 's' to verbs with he, she, it"
   },
   {
-    "left": "We like",
-    "right": "pizza",
-    "explanation": "Use base form of verb with 'we'"
+    "left": "I don't ___",
+    "right": "like coffee",
+    "explanation": "Use 'don't' for negative with I, you, we, they"
   },
   {
-    "left": "They like",
-    "right": "movies",
-    "explanation": "Use base form of verb with 'they'"
+    "left": "He doesn't ___",
+    "right": "like tea",
+    "explanation": "Use 'doesn't' for negative with he, she, it"
   },
   {
-    "left": "I don't like",
-    "right": "coffee",
-    "explanation": "Use 'don't' for negative with I/you/we/they"
+    "left": "Do you ___",
+    "right": "like pizza?",
+    "explanation": "Use 'do' for questions with I, you, we, they"
   },
   {
-    "left": "He doesn't like",
-    "right": "tea",
-    "explanation": "Use 'doesn't' for negative with he/she/it"
+    "left": "Does she ___",
+    "right": "speak English?",
+    "explanation": "Use 'does' for questions with he, she, it"
   },
   {
-    "left": "Do you like",
-    "right": "chocolate?",
-    "explanation": "Use 'do' for questions with I/you/we/they"
-  },
-  {
-    "left": "Does she like",
-    "right": "dancing?",
-    "explanation": "Use 'does' for questions with he/she/it"
-  },
-  {
-    "left": "Where is",
-    "right": "the book?",
+    "left": "Where ___",
+    "right": "is the book?",
     "explanation": "'Where' asks about location"
   },
   {
-    "left": "What is",
-    "right": "your name?",
+    "left": "What ___",
+    "right": "is your name?",
     "explanation": "'What' asks for information"
   },
   {
-    "left": "Who is",
-    "right": "that person?",
+    "left": "Who ___",
+    "right": "is that?",
     "explanation": "'Who' asks about people"
   },
   {
-    "left": "When is",
-    "right": "the party?",
+    "left": "When ___",
+    "right": "is the party?",
     "explanation": "'When' asks about time"
   },
   {
-    "left": "How are",
-    "right": "you today?",
-    "explanation": "'How' asks about condition or manner"
+    "left": "How ___",
+    "right": "are you?",
+    "explanation": "'How' asks about condition"
   },
   {
-    "left": "Why are",
-    "right": "you sad?",
+    "left": "Why ___",
+    "right": "are you sad?",
     "explanation": "'Why' asks for reasons"
   },
   {
-    "left": "There is",
+    "left": "There is ___",
     "right": "a cat",
     "explanation": "Use 'there is' with singular nouns"
   },
   {
-    "left": "There are",
+    "left": "There are ___",
     "right": "two dogs",
     "explanation": "Use 'there are' with plural nouns"
   },
   {
-    "left": "I have",
-    "right": "a car",
-    "explanation": "Use 'have' with I/you/we/they"
-  },
-  {
-    "left": "She has",
-    "right": "a bike",
-    "explanation": "Use 'has' with he/she/it"
-  },
-  {
-    "left": "I can",
+    "left": "I can ___",
     "right": "swim",
     "explanation": "'Can' shows ability"
+  },
+  {
+    "left": "She can't ___",
+    "right": "drive",
+    "explanation": "'Can't' shows inability"
   }
 ]
