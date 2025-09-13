@@ -3,6 +3,23 @@ name: Deploy Pipeline
 on:
   # Allow manual trigger
   workflow_dispatch:
+    inputs:
+      artifact-name:
+        description: 'Build artifact name'
+        required: true
+        type: string
+      quality-status:
+        description: 'Quality pipeline status'
+        required: true
+        type: string
+      security-status:
+        description: 'Security pipeline status'
+        required: true
+        type: string
+      build-status:
+        description: 'Build pipeline status'
+        required: true
+        type: string
   # Allow other workflows to trigger this
   workflow_call:
     inputs:

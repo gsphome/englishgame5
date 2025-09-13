@@ -72,12 +72,16 @@ jobs:
 
       - name: Trigger deployment
         if: steps.pipeline-status.outputs.all_pipelines_success == 'true'
-        uses: ./.github/workflows/deploy.yml
-        with:
-          artifact-name: build-files-${{ steps.commit-details.outputs.commit_sha }}
-          quality-status: ${{ steps.pipeline-status.outputs.quality_status }}
-          security-status: ${{ steps.pipeline-status.outputs.security_status }}
-          build-status: ${{ steps.pipeline-status.outputs.build_status }}
+        run: |
+          echo "🚀 All pipelines succeeded - triggering deployment"
+          gh workflow run deploy.yml \
+            --field artifact-name="build-files-${{ steps.commit-details.outputs.commit_sha }}" \
+            --field quality-status="${{ steps.pipeline-status.outputs.quality_status }}" \
+            --field security-status="${{ steps.pipeline-status.outputs.security_status }}" \
+            --field build-status="${{ steps.pipeline-status.outputs.build_status }}"
+          echo "✅ Deployment workflow triggered"
+        env:
+          GH_TOKEN: ${{ github.token }}
 
       - name: Deployment summary
         if: always()
