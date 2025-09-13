@@ -53,6 +53,8 @@
     "gh:current": "node scripts/gh-status.js current",
     "gh:watch": "node scripts/gh-status.js watch",
     "gh:logs": "node scripts/gh-status.js logs",
+    "deploy:manual": "node scripts/deploy.js",
+    "deploy:help": "node scripts/deploy.js --help",
     "debug:pipeline": "echo '🐛 Pipeline debugging info:' && echo 'Node version:' && node --version && echo 'NPM version:' && npm --version && echo 'Dependencies status:' && npm ls --depth=0 2>/dev/null | head -10 && echo 'Build environment:' && npm run type-check --silent && echo '✅ Debug info collected'"
   },
   "dependencies": {
