@@ -441,6 +441,7 @@ async function main() {
     const shouldStageAll = args.includes('--stage-all');
     const shouldPush = args.includes('--push');
     const isSimpleMode = args.includes('--simple');
+    const allowEmpty = args.includes('--allow-empty');
     const customMessage = args.find(arg => arg.startsWith('--message='))?.split('=')[1];
 
     logHeader('🤖 Smart Commit - AI-Powered Commit Messages');
@@ -477,8 +478,14 @@ async function main() {
           process.exit(1);
         }
       } else {
-        logWarning('No changes detected. Stage your changes first with `git add`.');
-        process.exit(0);
+        if (allowEmpty) {
+          logInfo('No changes detected, but continuing due to --allow-empty flag.');
+          log('\n✨ Smart commit completed successfully (no changes detected)!', colors.green);
+          process.exit(0);
+        } else {
+          logWarning('No changes detected. Stage your changes first with `git add`.');
+          process.exit(0);
+        }
       }
     }
 
@@ -516,8 +523,14 @@ async function main() {
               process.exit(1);
             }
           } else {
-            logInfo('No changes found in working directory.');
-            process.exit(0);
+            if (allowEmpty) {
+              logInfo('No changes found in working directory, but continuing due to --allow-empty flag.');
+              log('\n✨ Smart commit completed successfully (no changes found)!', colors.green);
+              process.exit(0);
+            } else {
+              logInfo('No changes found in working directory.');
+              process.exit(0);
+            }
           }
         }
       }
@@ -538,8 +551,14 @@ async function main() {
             process.exit(1);
           }
         } else {
-          logWarning('No changes to commit after staging.');
-          process.exit(0);
+          if (allowEmpty) {
+            logInfo('No changes to commit after staging, but continuing due to --allow-empty flag.');
+            log('\n✨ Smart commit completed successfully (no changes to commit)!', colors.green);
+            process.exit(0);
+          } else {
+            logWarning('No changes to commit after staging.');
+            process.exit(0);
+          }
         }
       }
     }
