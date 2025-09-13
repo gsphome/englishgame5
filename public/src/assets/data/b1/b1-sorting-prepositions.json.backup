@@ -1,0 +1,210 @@
+{
+  "title": "Prepositions by Usage",
+  "categories": [
+    {"name": "Place/Location", "description": "Where something is located"},
+    {"name": "Time", "description": "When something happens"},
+    {"name": "Movement/Direction", "description": "How or where something moves"}
+  ],
+  "data": [
+    {
+      "text": "The book is on the table.",
+      "category": "Place/Location",
+      "explanation": "'On' indicates position on a surface"
+    },
+    {
+      "text": "I'll see you at 3 o'clock.",
+      "category": "Time",
+      "explanation": "'At' is used with specific times"
+    },
+    {
+      "text": "She walked through the park.",
+      "category": "Movement/Direction",
+      "explanation": "'Through' indicates movement from one side to another"
+    },
+    {
+      "text": "The cat is under the bed.",
+      "category": "Place/Location",
+      "explanation": "'Under' indicates position below something"
+    },
+    {
+      "text": "We met in December.",
+      "category": "Time",
+      "explanation": "'In' is used with months, years, and seasons"
+    },
+    {
+      "text": "He ran towards the station.",
+      "category": "Movement/Direction",
+      "explanation": "'Towards' indicates direction of movement"
+    },
+    {
+      "text": "There's a picture above the fireplace.",
+      "category": "Place/Location",
+      "explanation": "'Above' indicates position higher than something"
+    },
+    {
+      "text": "The meeting is on Friday.",
+      "category": "Time",
+      "explanation": "'On' is used with days of the week"
+    },
+    {
+      "text": "Water flows down the river.",
+      "category": "Movement/Direction",
+      "explanation": "'Down' indicates downward movement"
+    },
+    {
+      "text": "The keys are in my pocket.",
+      "category": "Place/Location",
+      "explanation": "'In' indicates position inside something"
+    },
+    {
+      "text": "I wake up in the morning.",
+      "category": "Time",
+      "explanation": "'In' is used with parts of the day"
+    },
+    {
+      "text": "She climbed up the mountain.",
+      "category": "Movement/Direction",
+      "explanation": "'Up' indicates upward movement"
+    },
+    {
+      "text": "The shop is between the bank and the post office.",
+      "category": "Place/Location",
+      "explanation": "'Between' indicates position in the middle of two things"
+    },
+    {
+      "text": "I'll finish this by tomorrow.",
+      "category": "Time",
+      "explanation": "'By' indicates a deadline"
+    },
+    {
+      "text": "The ball rolled across the field.",
+      "category": "Movement/Direction",
+      "explanation": "'Across' indicates movement from one side to the other"
+    },
+    {
+      "text": "The restaurant is next to the cinema.",
+      "category": "Place/Location",
+      "explanation": "'Next to' indicates adjacent position"
+    },
+    {
+      "text": "She's been working since 9 AM.",
+      "category": "Time",
+      "explanation": "'Since' indicates the starting point of an action"
+    },
+    {
+      "text": "He jumped over the fence.",
+      "category": "Movement/Direction",
+      "explanation": "'Over' indicates movement above and across"
+    },
+    {
+      "text": "The library is behind the school.",
+      "category": "Place/Location",
+      "explanation": "'Behind' indicates position at the back of something"
+    },
+    {
+      "text": "We studied for three hours.",
+      "category": "Time",
+      "explanation": "'For' indicates duration of time"
+    },
+    {
+      "text": "She walked along the beach.",
+      "category": "Movement/Direction",
+      "explanation": "'Along' indicates movement following a line or path"
+    },
+    {
+      "text": "The pharmacy is opposite the hospital.",
+      "category": "Place/Location",
+      "explanation": "'Opposite' indicates position facing something"
+    },
+    {
+      "text": "The concert starts at midnight.",
+      "category": "Time",
+      "explanation": "'At' is used with specific times including midnight and noon"
+    },
+    {
+      "text": "The plane flew around the clouds.",
+      "category": "Movement/Direction",
+      "explanation": "'Around' indicates circular movement or avoiding something"
+    },
+    {
+      "text": "There's a garden in front of the house.",
+      "category": "Place/Location",
+      "explanation": "'In front of' indicates position facing something"
+    },
+    {
+      "text": "I'll call you during lunch break.",
+      "category": "Time",
+      "explanation": "'During' indicates when something happens within a period"
+    },
+    {
+      "text": "She drove past the school.",
+      "category": "Movement/Direction",
+      "explanation": "'Past' indicates movement beyond a point"
+    },
+    {
+      "text": "The bird is among the trees.",
+      "category": "Place/Location",
+      "explanation": "'Among' indicates position surrounded by multiple things"
+    },
+    {
+      "text": "We'll leave before sunset.",
+      "category": "Time",
+      "explanation": "'Before' indicates earlier than a specific time"
+    },
+    {
+      "text": "He walked into the room.",
+      "category": "Movement/Direction",
+      "explanation": "'Into' indicates movement from outside to inside"
+    },
+    {
+      "text": "The hotel is near the airport.",
+      "category": "Place/Location",
+      "explanation": "'Near' indicates close proximity"
+    },
+    {
+      "text": "She arrived after the meeting started.",
+      "category": "Time",
+      "explanation": "'After' indicates later than a specific time"
+    },
+    {
+      "text": "The cat jumped out of the box.",
+      "category": "Movement/Direction",
+      "explanation": "'Out of' indicates movement from inside to outside"
+    },
+    {
+      "text": "The coffee shop is within walking distance.",
+      "category": "Place/Location",
+      "explanation": "'Within' indicates inside a boundary or limit"
+    },
+    {
+      "text": "I'll see you throughout the week.",
+      "category": "Time",
+      "explanation": "'Throughout' indicates during the entire period"
+    },
+    {
+      "text": "She ran away from the dog.",
+      "category": "Movement/Direction",
+      "explanation": "'Away from' indicates movement in the opposite direction"
+    },
+    {
+      "text": "The museum is beyond the bridge.",
+      "category": "Place/Location",
+      "explanation": "'Beyond' indicates position further than something"
+    },
+    {
+      "text": "We'll meet until 5 PM.",
+      "category": "Time",
+      "explanation": "'Until' indicates the end point of an action"
+    },
+    {
+      "text": "He walked beside his friend.",
+      "category": "Movement/Direction",
+      "explanation": "'Beside' indicates movement next to someone or something"
+    },
+    {
+      "text": "The store is outside the mall.",
+      "category": "Place/Location",
+      "explanation": "'Outside' indicates position not inside something"
+    }
+  ]
+}

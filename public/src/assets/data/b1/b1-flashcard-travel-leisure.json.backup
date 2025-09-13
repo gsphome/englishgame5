@@ -1,0 +1,282 @@
+[
+  {
+    "en": "accommodation",
+    "es": "alojamiento",
+    "ipa": "/əˌkɒməˈdeɪʃən/",
+    "example": "We need to book accommodation for our trip.",
+    "example_es": "Necesitamos reservar alojamiento para nuestro viaje."
+  },
+  {
+    "en": "itinerary",
+    "es": "itinerario",
+    "ipa": "/aɪˈtɪnərəri/",
+    "example": "Our itinerary includes visits to three museums.",
+    "example_es": "Nuestro itinerario incluye visitas a tres museos."
+  },
+  {
+    "en": "departure",
+    "es": "salida",
+    "ipa": "/dɪˈpɑːtʃər/",
+    "example": "The departure time is 9:30 AM.",
+    "example_es": "La hora de salida es a las 9:30 AM."
+  },
+  {
+    "en": "arrival",
+    "es": "llegada",
+    "ipa": "/əˈraɪvəl/",
+    "example": "The arrival gate is B12.",
+    "example_es": "La puerta de llegada es B12."
+  },
+  {
+    "en": "luggage",
+    "es": "equipaje",
+    "ipa": "/ˈlʌɡɪdʒ/",
+    "example": "Please collect your luggage from the carousel.",
+    "example_es": "Por favor recoja su equipaje del carrusel."
+  },
+  {
+    "en": "boarding pass",
+    "es": "tarjeta de embarque",
+    "ipa": "/ˈbɔːdɪŋ pæs/",
+    "example": "Don't forget your boarding pass at security.",
+    "example_es": "No olvides tu tarjeta de embarque en seguridad."
+  },
+  {
+    "en": "customs",
+    "es": "aduana",
+    "ipa": "/ˈkʌstəmz/",
+    "example": "We had to wait in line at customs.",
+    "example_es": "Tuvimos que hacer cola en la aduana."
+  },
+  {
+    "en": "passport",
+    "es": "pasaporte",
+    "ipa": "/ˈpæspɔːt/",
+    "example": "Your passport must be valid for six months.",
+    "example_es": "Tu pasaporte debe ser válido por seis meses."
+  },
+  {
+    "en": "visa",
+    "es": "visa",
+    "ipa": "/ˈviːzə/",
+    "example": "Do I need a visa to visit that country?",
+    "example_es": "¿Necesito una visa para visitar ese país?"
+  },
+  {
+    "en": "reservation",
+    "es": "reserva",
+    "ipa": "/ˌrezəˈveɪʃən/",
+    "example": "I made a reservation for dinner at 7 PM.",
+    "example_es": "Hice una reserva para cenar a las 7 PM."
+  },
+  {
+    "en": "check-in",
+    "es": "registro",
+    "ipa": "/ˈtʃek ɪn/",
+    "example": "Hotel check-in is at 3 PM.",
+    "example_es": "El registro del hotel es a las 3 PM."
+  },
+  {
+    "en": "check-out",
+    "es": "salida",
+    "ipa": "/ˈtʃek aʊt/",
+    "example": "Check-out time is 11 AM.",
+    "example_es": "La hora de salida es a las 11 AM."
+  },
+  {
+    "en": "sightseeing",
+    "es": "turismo",
+    "ipa": "/ˈsaɪtsiːɪŋ/",
+    "example": "We spent the day sightseeing in the old town.",
+    "example_es": "Pasamos el día haciendo turismo en el casco antiguo."
+  },
+  {
+    "en": "tourist attraction",
+    "es": "atracción turística",
+    "ipa": "/ˈtʊrɪst əˈtrækʃən/",
+    "example": "The cathedral is a major tourist attraction.",
+    "example_es": "La catedral es una atracción turística importante."
+  },
+  {
+    "en": "guidebook",
+    "es": "guía turística",
+    "ipa": "/ˈɡaɪdbʊk/",
+    "example": "The guidebook recommends this restaurant.",
+    "example_es": "La guía turística recomienda este restaurante."
+  },
+  {
+    "en": "souvenir",
+    "es": "recuerdo",
+    "ipa": "/ˌsuːvəˈnɪr/",
+    "example": "I bought a souvenir for my sister.",
+    "example_es": "Compré un recuerdo para mi hermana."
+  },
+  {
+    "en": "currency",
+    "es": "moneda",
+    "ipa": "/ˈkʌrənsi/",
+    "example": "What's the local currency here?",
+    "example_es": "¿Cuál es la moneda local aquí?"
+  },
+  {
+    "en": "exchange rate",
+    "es": "tipo de cambio",
+    "ipa": "/ɪksˈtʃeɪndʒ reɪt/",
+    "example": "The exchange rate is very favorable today.",
+    "example_es": "El tipo de cambio es muy favorable hoy."
+  },
+  {
+    "en": "backpack",
+    "es": "mochila",
+    "ipa": "/ˈbækpæk/",
+    "example": "I prefer traveling with just a backpack.",
+    "example_es": "Prefiero viajar solo con una mochila."
+  },
+  {
+    "en": "hostel",
+    "es": "albergue",
+    "ipa": "/ˈhɒstəl/",
+    "example": "We stayed at a youth hostel to save money.",
+    "example_es": "Nos quedamos en un albergue juvenil para ahorrar dinero."
+  },
+  {
+    "en": "campsite",
+    "es": "camping",
+    "ipa": "/ˈkæmpsaɪt/",
+    "example": "The campsite has excellent facilities.",
+    "example_es": "El camping tiene excelentes instalaciones."
+  },
+  {
+    "en": "hiking",
+    "es": "senderismo",
+    "ipa": "/ˈhaɪkɪŋ/",
+    "example": "We went hiking in the mountains.",
+    "example_es": "Fuimos de senderismo a las montañas."
+  },
+  {
+    "en": "leisure",
+    "es": "ocio",
+    "ipa": "/ˈleʒər/",
+    "example": "I enjoy reading in my leisure time.",
+    "example_es": "Disfruto leyendo en mi tiempo de ocio."
+  },
+  {
+    "en": "recreation",
+    "es": "recreación",
+    "ipa": "/ˌrekriˈeɪʃən/",
+    "example": "The hotel offers many recreation activities.",
+    "example_es": "El hotel ofrece muchas actividades de recreación."
+  },
+  {
+    "en": "adventure",
+    "es": "aventura",
+    "ipa": "/ədˈventʃər/",
+    "example": "This trip will be a great adventure.",
+    "example_es": "Este viaje será una gran aventura."
+  },
+  {
+    "en": "excursion",
+    "es": "excursión",
+    "ipa": "/ɪkˈskɜːʃən/",
+    "example": "We took an excursion to the nearby island.",
+    "example_es": "Hicimos una excursión a la isla cercana."
+  },
+  {
+    "en": "cruise",
+    "es": "crucero",
+    "ipa": "/kruːz/",
+    "example": "They went on a Mediterranean cruise.",
+    "example_es": "Fueron en un crucero por el Mediterráneo."
+  },
+  {
+    "en": "resort",
+    "es": "complejo turístico",
+    "ipa": "/rɪˈzɔːt/",
+    "example": "The beach resort has three pools.",
+    "example_es": "El complejo turístico de playa tiene tres piscinas."
+  },
+  {
+    "en": "destination",
+    "es": "destino",
+    "ipa": "/ˌdestɪˈneɪʃən/",
+    "example": "Paris is a popular tourist destination.",
+    "example_es": "París es un destino turístico popular."
+  },
+  {
+    "en": "journey",
+    "es": "viaje",
+    "ipa": "/ˈdʒɜːni/",
+    "example": "The journey took twelve hours.",
+    "example_es": "El viaje duró doce horas."
+  },
+  {
+    "en": "vacation",
+    "es": "vacaciones",
+    "ipa": "/vəˈkeɪʃən/",
+    "example": "We're planning our summer vacation.",
+    "example_es": "Estamos planeando nuestras vacaciones de verano."
+  },
+  {
+    "en": "holiday",
+    "es": "vacaciones",
+    "ipa": "/ˈhɒlədeɪ/",
+    "example": "I need a holiday after this busy month.",
+    "example_es": "Necesito unas vacaciones después de este mes ocupado."
+  },
+  {
+    "en": "package tour",
+    "es": "viaje organizado",
+    "ipa": "/ˈpækɪdʒ tʊr/",
+    "example": "The package tour includes meals and transport.",
+    "example_es": "El viaje organizado incluye comidas y transporte."
+  },
+  {
+    "en": "travel agent",
+    "es": "agente de viajes",
+    "ipa": "/ˈtrævəl ˈeɪdʒənt/",
+    "example": "Our travel agent found us a great deal.",
+    "example_es": "Nuestro agente de viajes nos encontró una gran oferta."
+  },
+  {
+    "en": "brochure",
+    "es": "folleto",
+    "ipa": "/ˈbrəʊʃər/",
+    "example": "The travel brochure looks very appealing.",
+    "example_es": "El folleto de viajes se ve muy atractivo."
+  },
+  {
+    "en": "map",
+    "es": "mapa",
+    "ipa": "/mæp/",
+    "example": "Do you have a map of the city center?",
+    "example_es": "¿Tienes un mapa del centro de la ciudad?"
+  },
+  {
+    "en": "compass",
+    "es": "brújula",
+    "ipa": "/ˈkʌmpəs/",
+    "example": "A compass is useful when hiking.",
+    "example_es": "Una brújula es útil cuando haces senderismo."
+  },
+  {
+    "en": "sunscreen",
+    "es": "protector solar",
+    "ipa": "/ˈsʌnskriːn/",
+    "example": "Don't forget to apply sunscreen at the beach.",
+    "example_es": "No olvides aplicar protector solar en la playa."
+  },
+  {
+    "en": "first aid kit",
+    "es": "botiquín de primeros auxilios",
+    "ipa": "/fɜːst eɪd kɪt/",
+    "example": "Always carry a first aid kit when camping.",
+    "example_es": "Siempre lleva un botiquín de primeros auxilios cuando acampes."
+  },
+  {
+    "en": "travel insurance",
+    "es": "seguro de viaje",
+    "ipa": "/ˈtrævəl ɪnˈʃʊrəns/",
+    "example": "Travel insurance is essential for international trips.",
+    "example_es": "El seguro de viaje es esencial para viajes internacionales."
+  }
+]

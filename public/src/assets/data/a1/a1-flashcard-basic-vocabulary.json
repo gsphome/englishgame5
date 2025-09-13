@@ -1,282 +1,362 @@
 [
   {
-    "en": "Hello",
-    "es": "Hola",
+    "front": "Hello",
+    "back": "Hola",
     "ipa": "/həˈloʊ/",
     "example": "Hello, how are you?",
-    "example_es": "Hola, ¿cómo estás?"
+    "example_es": "Hola, ¿cómo estás?",
+    "en": "Hello",
+    "es": "Hola"
   },
   {
-    "en": "Goodbye",
-    "es": "Adiós",
+    "front": "Goodbye",
+    "back": "Adiós",
     "ipa": "/ɡʊdˈbaɪ/",
     "example": "Goodbye, see you later!",
-    "example_es": "Adiós, ¡nos vemos luego!"
+    "example_es": "Adiós, ¡nos vemos luego!",
+    "en": "Goodbye",
+    "es": "Adiós"
   },
   {
-    "en": "Please",
-    "es": "Por favor",
+    "front": "Please",
+    "back": "Por favor",
     "ipa": "/pliːz/",
     "example": "Please help me.",
-    "example_es": "Por favor ayúdame."
+    "example_es": "Por favor ayúdame.",
+    "en": "Please",
+    "es": "Por favor"
   },
   {
-    "en": "Thank you",
-    "es": "Gracias",
+    "front": "Thank you",
+    "back": "Gracias",
     "ipa": "/θæŋk juː/",
     "example": "Thank you very much.",
-    "example_es": "Muchas gracias."
+    "example_es": "Muchas gracias.",
+    "en": "Thank you",
+    "es": "Gracias"
   },
   {
-    "en": "Yes",
-    "es": "Sí",
+    "front": "Yes",
+    "back": "Sí",
     "ipa": "/jes/",
     "example": "Yes, I understand.",
-    "example_es": "Sí, entiendo."
+    "example_es": "Sí, entiendo.",
+    "en": "Yes",
+    "es": "Sí"
   },
   {
-    "en": "No",
-    "es": "No",
+    "front": "No",
+    "back": "No",
     "ipa": "/noʊ/",
     "example": "No, I don't want it.",
-    "example_es": "No, no lo quiero."
+    "example_es": "No, no lo quiero.",
+    "en": "No",
+    "es": "No"
   },
   {
-    "en": "Water",
-    "es": "Agua",
+    "front": "Water",
+    "back": "Agua",
     "ipa": "/ˈwɔːtər/",
     "example": "I need water.",
-    "example_es": "Necesito agua."
+    "example_es": "Necesito agua.",
+    "en": "Water",
+    "es": "Agua"
   },
   {
-    "en": "Food",
-    "es": "Comida",
+    "front": "Food",
+    "back": "Comida",
     "ipa": "/fuːd/",
     "example": "The food is delicious.",
-    "example_es": "La comida está deliciosa."
+    "example_es": "La comida está deliciosa.",
+    "en": "Food",
+    "es": "Comida"
   },
   {
-    "en": "House",
-    "es": "Casa",
+    "front": "House",
+    "back": "Casa",
     "ipa": "/haʊs/",
     "example": "This is my house.",
-    "example_es": "Esta es mi casa."
+    "example_es": "Esta es mi casa.",
+    "en": "House",
+    "es": "Casa"
   },
   {
-    "en": "Car",
-    "es": "Coche",
+    "front": "Car",
+    "back": "Coche",
     "ipa": "/kɑːr/",
     "example": "I have a red car.",
-    "example_es": "Tengo un coche rojo."
+    "example_es": "Tengo un coche rojo.",
+    "en": "Car",
+    "es": "Coche"
   },
   {
-    "en": "Book",
-    "es": "Libro",
+    "front": "Book",
+    "back": "Libro",
     "ipa": "/bʊk/",
     "example": "I'm reading a book.",
-    "example_es": "Estoy leyendo un libro."
+    "example_es": "Estoy leyendo un libro.",
+    "en": "Book",
+    "es": "Libro"
   },
   {
-    "en": "School",
-    "es": "Escuela",
+    "front": "School",
+    "back": "Escuela",
     "ipa": "/skuːl/",
     "example": "I go to school every day.",
-    "example_es": "Voy a la escuela todos los días."
+    "example_es": "Voy a la escuela todos los días.",
+    "en": "School",
+    "es": "Escuela"
   },
   {
-    "en": "Work",
-    "es": "Trabajo",
+    "front": "Work",
+    "back": "Trabajo",
     "ipa": "/wɜːrk/",
     "example": "I work in an office.",
-    "example_es": "Trabajo en una oficina."
+    "example_es": "Trabajo en una oficina.",
+    "en": "Work",
+    "es": "Trabajo"
   },
   {
-    "en": "Friend",
-    "es": "Amigo",
+    "front": "Friend",
+    "back": "Amigo",
     "ipa": "/frend/",
     "example": "She is my best friend.",
-    "example_es": "Ella es mi mejor amiga."
+    "example_es": "Ella es mi mejor amiga.",
+    "en": "Friend",
+    "es": "Amigo"
   },
   {
-    "en": "Family",
-    "es": "Familia",
+    "front": "Family",
+    "back": "Familia",
     "ipa": "/ˈfæməli/",
     "example": "I love my family.",
-    "example_es": "Amo a mi familia."
+    "example_es": "Amo a mi familia.",
+    "en": "Family",
+    "es": "Familia"
   },
   {
-    "en": "Mother",
-    "es": "Madre",
+    "front": "Mother",
+    "back": "Madre",
     "ipa": "/ˈmʌðər/",
     "example": "My mother is kind.",
-    "example_es": "Mi madre es amable."
+    "example_es": "Mi madre es amable.",
+    "en": "Mother",
+    "es": "Madre"
   },
   {
-    "en": "Father",
-    "es": "Padre",
+    "front": "Father",
+    "back": "Padre",
     "ipa": "/ˈfɑːðər/",
     "example": "My father works hard.",
-    "example_es": "Mi padre trabaja duro."
+    "example_es": "Mi padre trabaja duro.",
+    "en": "Father",
+    "es": "Padre"
   },
   {
-    "en": "Dog",
-    "es": "Perro",
+    "front": "Dog",
+    "back": "Perro",
     "ipa": "/dɔːɡ/",
     "example": "I have a small dog.",
-    "example_es": "Tengo un perro pequeño."
+    "example_es": "Tengo un perro pequeño.",
+    "en": "Dog",
+    "es": "Perro"
   },
   {
-    "en": "Cat",
-    "es": "Gato",
+    "front": "Cat",
+    "back": "Gato",
     "ipa": "/kæt/",
     "example": "The cat is sleeping.",
-    "example_es": "El gato está durmiendo."
+    "example_es": "El gato está durmiendo.",
+    "en": "Cat",
+    "es": "Gato"
   },
   {
-    "en": "Big",
-    "es": "Grande",
+    "front": "Big",
+    "back": "Grande",
     "ipa": "/bɪɡ/",
     "example": "This is a big house.",
-    "example_es": "Esta es una casa grande."
+    "example_es": "Esta es una casa grande.",
+    "en": "Big",
+    "es": "Grande"
   },
   {
-    "en": "Small",
-    "es": "Pequeño",
+    "front": "Small",
+    "back": "Pequeño",
     "ipa": "/smɔːl/",
     "example": "I have a small car.",
-    "example_es": "Tengo un coche pequeño."
+    "example_es": "Tengo un coche pequeño.",
+    "en": "Small",
+    "es": "Pequeño"
   },
   {
-    "en": "Good",
-    "es": "Bueno",
+    "front": "Good",
+    "back": "Bueno",
     "ipa": "/ɡʊd/",
     "example": "This is good food.",
-    "example_es": "Esta es buena comida."
+    "example_es": "Esta es buena comida.",
+    "en": "Good",
+    "es": "Bueno"
   },
   {
-    "en": "Bad",
-    "es": "Malo",
+    "front": "Bad",
+    "back": "Malo",
     "ipa": "/bæd/",
     "example": "The weather is bad today.",
-    "example_es": "El clima está malo hoy."
+    "example_es": "El clima está malo hoy.",
+    "en": "Bad",
+    "es": "Malo"
   },
   {
-    "en": "Happy",
-    "es": "Feliz",
+    "front": "Happy",
+    "back": "Feliz",
     "ipa": "/ˈhæpi/",
     "example": "I am very happy.",
-    "example_es": "Estoy muy feliz."
+    "example_es": "Estoy muy feliz.",
+    "en": "Happy",
+    "es": "Feliz"
   },
   {
-    "en": "Sad",
-    "es": "Triste",
+    "front": "Sad",
+    "back": "Triste",
     "ipa": "/sæd/",
     "example": "She looks sad today.",
-    "example_es": "Ella se ve triste hoy."
+    "example_es": "Ella se ve triste hoy.",
+    "en": "Sad",
+    "es": "Triste"
   },
   {
-    "en": "Hot",
-    "es": "Caliente",
+    "front": "Hot",
+    "back": "Caliente",
     "ipa": "/hɑːt/",
     "example": "The coffee is hot.",
-    "example_es": "El café está caliente."
+    "example_es": "El café está caliente.",
+    "en": "Hot",
+    "es": "Caliente"
   },
   {
-    "en": "Cold",
-    "es": "Frío",
+    "front": "Cold",
+    "back": "Frío",
     "ipa": "/koʊld/",
     "example": "It's cold outside.",
-    "example_es": "Hace frío afuera."
+    "example_es": "Hace frío afuera.",
+    "en": "Cold",
+    "es": "Frío"
   },
   {
-    "en": "Red",
-    "es": "Rojo",
+    "front": "Red",
+    "back": "Rojo",
     "ipa": "/red/",
     "example": "I like the red dress.",
-    "example_es": "Me gusta el vestido rojo."
+    "example_es": "Me gusta el vestido rojo.",
+    "en": "Red",
+    "es": "Rojo"
   },
   {
-    "en": "Blue",
-    "es": "Azul",
+    "front": "Blue",
+    "back": "Azul",
     "ipa": "/bluː/",
     "example": "The sky is blue.",
-    "example_es": "El cielo es azul."
+    "example_es": "El cielo es azul.",
+    "en": "Blue",
+    "es": "Azul"
   },
   {
-    "en": "Green",
-    "es": "Verde",
+    "front": "Green",
+    "back": "Verde",
     "ipa": "/ɡriːn/",
     "example": "The grass is green.",
-    "example_es": "La hierba es verde."
+    "example_es": "La hierba es verde.",
+    "en": "Green",
+    "es": "Verde"
   },
   {
-    "en": "White",
-    "es": "Blanco",
+    "front": "White",
+    "back": "Blanco",
     "ipa": "/waɪt/",
     "example": "She wears a white shirt.",
-    "example_es": "Ella usa una camisa blanca."
+    "example_es": "Ella usa una camisa blanca.",
+    "en": "White",
+    "es": "Blanco"
   },
   {
-    "en": "Black",
-    "es": "Negro",
+    "front": "Black",
+    "back": "Negro",
     "ipa": "/blæk/",
     "example": "I have black shoes.",
-    "example_es": "Tengo zapatos negros."
+    "example_es": "Tengo zapatos negros.",
+    "en": "Black",
+    "es": "Negro"
   },
   {
-    "en": "Money",
-    "es": "Dinero",
+    "front": "Money",
+    "back": "Dinero",
     "ipa": "/ˈmʌni/",
     "example": "I need money to buy food.",
-    "example_es": "Necesito dinero para comprar comida."
+    "example_es": "Necesito dinero para comprar comida.",
+    "en": "Money",
+    "es": "Dinero"
   },
   {
-    "en": "Time",
-    "es": "Tiempo",
+    "front": "Time",
+    "back": "Tiempo",
     "ipa": "/taɪm/",
     "example": "What time is it?",
-    "example_es": "¿Qué hora es?"
+    "example_es": "¿Qué hora es?",
+    "en": "Time",
+    "es": "Tiempo"
   },
   {
-    "en": "Day",
-    "es": "Día",
+    "front": "Day",
+    "back": "Día",
     "ipa": "/deɪ/",
     "example": "Today is a beautiful day.",
-    "example_es": "Hoy es un día hermoso."
+    "example_es": "Hoy es un día hermoso.",
+    "en": "Day",
+    "es": "Día"
   },
   {
-    "en": "Night",
-    "es": "Noche",
+    "front": "Night",
+    "back": "Noche",
     "ipa": "/naɪt/",
     "example": "Good night, sleep well.",
-    "example_es": "Buenas noches, que duermas bien."
+    "example_es": "Buenas noches, que duermas bien.",
+    "en": "Night",
+    "es": "Noche"
   },
   {
-    "en": "Morning",
-    "es": "Mañana",
+    "front": "Morning",
+    "back": "Mañana",
     "ipa": "/ˈmɔːrnɪŋ/",
     "example": "Good morning! How are you?",
-    "example_es": "¡Buenos días! ¿Cómo estás?"
+    "example_es": "¡Buenos días! ¿Cómo estás?",
+    "en": "Morning",
+    "es": "Mañana"
   },
   {
-    "en": "Afternoon",
-    "es": "Tarde",
+    "front": "Afternoon",
+    "back": "Tarde",
     "ipa": "/ˌæftərˈnuːn/",
     "example": "See you this afternoon.",
-    "example_es": "Te veo esta tarde."
+    "example_es": "Te veo esta tarde.",
+    "en": "Afternoon",
+    "es": "Tarde"
   },
   {
-    "en": "Name",
-    "es": "Nombre",
+    "front": "Name",
+    "back": "Nombre",
     "ipa": "/neɪm/",
     "example": "What is your name?",
-    "example_es": "¿Cuál es tu nombre?"
+    "example_es": "¿Cuál es tu nombre?",
+    "en": "Name",
+    "es": "Nombre"
   },
   {
-    "en": "Help",
-    "es": "Ayuda",
+    "front": "Help",
+    "back": "Ayuda",
     "ipa": "/help/",
     "example": "Can you help me?",
-    "example_es": "¿Puedes ayudarme?"
+    "example_es": "¿Puedes ayudarme?",
+    "en": "Help",
+    "es": "Ayuda"
   }
 ]
