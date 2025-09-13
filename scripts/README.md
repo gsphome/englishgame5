@@ -1,322 +1,121 @@
-# 🛠️ Development Scripts
+# Scripts de Utilidades
 
-Comprehensive development automation tools for quality, security, building, and intelligent commits.
+Esta carpeta contiene herramientas y scripts organizados por funcionalidad para el mantenimiento y optimización del sistema de aprendizaje.
 
-## 🏗️ Architecture Overview
+## Estructura Organizacional
 
-```
-scripts/
-├── 🎭 dev-tools.js          # Main development orchestrator
-├── 🤖 smart-commit.js       # AI-powered commit generation
-├── 🧪 test-runner.js        # Test and validation runner
-├── 🛠️ commit.sh             # Bash commit script (for bash users)
-├── 🧹 cleanup.js            # Project cleanup utility
-├── ⚙️ toggle-cache-logs.js  # Cache logging toggle utility
-├── ⚙️ utils/                # Shared utilities
-│   ├── git-utils.js         # Git operations
-│   ├── ai-analyzer.js       # AI analysis engine
-│   └── logger.js            # Consistent logging
-└── 📚 README.md             # This file
-```
+### 📁 analysis/
+Herramientas de análisis de código y optimización.
+- Análisis de package.json
+- Limpieza de código no utilizado
+- Detección de duplicados
 
-## 🚀 Quick Start
+### 📁 deployment/
+Scripts de despliegue y producción.
+- Disparadores de pipeline
+- Gestión de releases
+- Configuración de producción
 
-### Main Commands
+### 📁 development/
+Herramientas de desarrollo y testing.
+- Orquestador de flujo de desarrollo
+- Ejecutor de tests unificado
+- Validación de integración
+- Debugging y logs
+
+### 📁 git/
+Gestión de Git y control de versiones.
+- Commits inteligentes con IA
+- Estado de GitHub Actions
+- Automatización de Git
+
+### 📁 matching/
+Herramientas especializadas para módulos de matching.
+- Corrección de duplicados
+- Validación de calidad
+- Optimización de componentes
+
+### 📁 utils/
+Utilidades compartidas por todos los scripts.
+- Sistema de logging
+- Operaciones de Git
+- Análisis con IA
+
+### 📁 config/
+Configuración y documentación auxiliar.
+- Comandos de referencia
+- Configuraciones específicas
+
+## Uso Rápido
+
+### Herramientas de Matching
 ```bash
-# Development workflow (replaces multiple scripts)
-npm run dev-tools
-
-# AI-powered commits
-npm run commit
-
-# Pipeline validation
-npm run pipeline
-
-# Complete development flow
-npm run flow
+node scripts/matching/matching-tools.js status
+node scripts/matching/matching-tools.js all
 ```
 
-### Direct Script Access
+### Desarrollo
 ```bash
-# Main development orchestrator
-node scripts/dev-tools.js [command]
-
-# AI commit generation
-node scripts/smart-commit.js
-
-# Test and validation
-node scripts/test-runner.js
+node scripts/development/dev-tools.js
+node scripts/development/test-runner.js
 ```
 
-## 📋 Available Commands
-
-### 🎭 Development Tools (`dev-tools.js`)
-**Replaces:** `dev-flow.js`, `pipeline-runner.js`, `pipeline.sh`
-
+### Git y Commits
 ```bash
-npm run dev-tools
-# or
-node scripts/dev-tools.js [command]
+node scripts/git/smart-commit.js
+node scripts/git/gh-status.js
 ```
 
-**Commands:**
-- `quality` - Run quality pipeline (ESLint, TypeScript, Tests, Format)
-- `security` - Run security pipeline (Audit, Patterns, Licenses)
-- `build` - Run build pipeline (Build, Verify, Analysis)
-- `all` - Run all pipelines
-- `commit` - Quality check + AI commit + push
-- `fix` - Auto-fix issues + commit
-- `test` - Run test suite
-- `interactive` - Interactive menu mode
-
-### 🤖 Smart Commit (`smart-commit.js`)
-**Replaces:** `simple-commit.js`, `commit.sh`
-
+### Análisis y Limpieza
 ```bash
-npm run commit
-# or
-node scripts/smart-commit.js [options]
+node scripts/analysis/analyze-package.js
+node scripts/analysis/cleanup.js
 ```
 
-**Options:**
-- `--auto` - Auto-commit without interaction
-- `--message "msg"` - Use custom message
-- `--stage-all` - Stage all changes first
-- `--push` - Push after commit
-- `--simple` - Simple mode (single suggestion)
-
-### 🧪 Test Runner (`test-runner.js`)
-**Replaces:** `test-commit.js`
-
+### Despliegue
 ```bash
-node scripts/test-runner.js [target]
+node scripts/deployment/deploy.js
 ```
 
-**Targets:**
-- `scripts` - Test all scripts
-- `pipelines` - Test pipeline functionality
-- `git` - Test git operations
-- `all` - Run all tests
+## Convenciones
 
-## 🎯 NPM Scripts Integration
+### Estructura de Scripts
+- Cada categoría tiene su propia carpeta
+- Scripts principales incluyen ayuda integrada (`--help`)
+- Utilidades compartidas en `utils/`
+- Documentación específica en cada carpeta
 
-### Core Scripts
-```json
-{
-  "dev-tools": "node scripts/dev-tools.js",
-  "commit": "node scripts/smart-commit.js",
-  "test-scripts": "node scripts/test-runner.js",
-  
-  // Pipeline shortcuts
-  "pipeline": "node scripts/dev-tools.js interactive",
-  "pipeline:quality": "node scripts/dev-tools.js quality",
-  "pipeline:security": "node scripts/dev-tools.js security", 
-  "pipeline:build": "node scripts/dev-tools.js build",
-  "pipeline:all": "node scripts/dev-tools.js all",
-  
-  // Commit shortcuts
-  "commit:auto": "node scripts/smart-commit.js --auto",
-  "commit:push": "node scripts/smart-commit.js --stage-all --push",
-  
-  // Development flow shortcuts
-  "flow": "node scripts/dev-tools.js interactive",
-  "flow:quick": "node scripts/dev-tools.js commit",
-  "flow:safe": "node scripts/dev-tools.js quality && node scripts/smart-commit.js",
-  "flow:full": "node scripts/dev-tools.js all && node scripts/smart-commit.js --push"
-}
-```
+### Nomenclatura
+- `*-tools.js` - Herramientas principales unificadas
+- `validate-*.js` - Scripts de validación
+- `fix-*.js` - Scripts de corrección
+- `analyze-*.js` - Scripts de análisis
 
-## 🧠 AI Features
+### Salida y Reportes
+- Uso de colores para mejor legibilidad
+- Reportes detallados en `local/informes/`
+- Backups automáticos cuando sea necesario
+- Logs estructurados con timestamps
 
-### Intelligent Commit Analysis
-- **File Change Detection**: Analyzes added, modified, deleted files
-- **Commit Type Suggestion**: feat, fix, docs, style, refactor, test, build, ci
-- **Scope Detection**: components, hooks, utils, services, tests, config
-- **Conventional Commits**: Follows standard format automatically
-- **Multiple Suggestions**: Provides options for different contexts
+## Desarrollo
 
-### Smart Pipeline Selection
-- **Context Awareness**: Suggests relevant pipelines based on changes
-- **Dependency Detection**: Identifies when security/quality checks are needed
-- **Performance Optimization**: Runs only necessary validations
+### Añadir Nuevas Herramientas
+1. Identificar la categoría apropiada
+2. Crear el script en la carpeta correspondiente
+3. Seguir las convenciones de nomenclatura
+4. Actualizar el README de la carpeta
+5. Usar utilidades compartidas de `utils/`
 
-## 🔧 Configuration
+### Estándares de Código
+- ES modules (import/export)
+- Manejo de errores robusto
+- Validación de entrada
+- Documentación inline
+- Tests cuando sea apropiado
 
-### Environment Variables
-```bash
-# Enable debug logging
-DEBUG_SCRIPTS=true
+## Historial
 
-# Skip interactive prompts
-CI_MODE=true
-
-# Custom commit message templates
-COMMIT_TEMPLATE="custom"
-```
-
-### Git Integration
-```bash
-# Add to .git/hooks/pre-commit
-#!/bin/bash
-npm run pipeline:quality
-
-# Add to .git/hooks/pre-push  
-#!/bin/bash
-npm run pipeline:all
-```
-
-## 📊 Usage Examples
-
-### Daily Development Workflow
-```bash
-# Make your changes
-# ...
-
-# Quick quality check + commit + push
-npm run flow:quick
-
-# Or step by step
-npm run pipeline:quality
-npm run commit
-git push
-```
-
-### Feature Development
-```bash
-# Complete validation before commit
-npm run flow:safe
-
-# Or full pipeline with auto-push
-npm run flow:full
-```
-
-### Bug Fixes
-```bash
-# Auto-fix common issues + commit
-node scripts/dev-tools.js fix
-```
-
-### Release Preparation
-```bash
-# Full validation suite
-npm run pipeline:all
-
-# Commit with detailed analysis
-npm run commit
-```
-
-## 🧪 Testing
-
-### Test All Scripts
-```bash
-npm run test-scripts
-```
-
-### Test Specific Components
-```bash
-node scripts/test-runner.js scripts
-node scripts/test-runner.js pipelines
-node scripts/test-runner.js git
-```
-
-## 🔍 GitHub Actions Status
-
-### Check Workflow Status
-```bash
-# Overview of all workflows and recent runs
-npm run gh:status
-
-# Status for current commit/branch
-npm run gh:current
-
-# Watch status in real-time (30s intervals)
-npm run gh:watch
-
-# Watch with custom interval (10s)
-npm run gh:watch 10
-```
-
-### Features
-- **Workflow Overview**: See all configured workflows and their recent runs
-- **Current Status**: Check status of workflows for your current commit
-- **Real-time Monitoring**: Watch workflow progress with live updates
-- **Detailed Information**: View run URLs, timing, and failure details
-- **Branch Awareness**: Highlights runs for your current branch
-- **Smart Formatting**: Color-coded status indicators and clear summaries
-
-### Requirements
-- GitHub CLI (`gh`) must be installed and authenticated
-- Repository must have GitHub Actions workflows configured
-
-### Installation
-```bash
-# Install GitHub CLI
-brew install gh  # macOS
-# or visit: https://cli.github.com/
-
-# Authenticate
-gh auth login
-```
-
-## 🔄 Migration from Old Scripts
-
-### ✅ Completed Consolidation
-- ❌ `dev-flow.js` → ✅ `dev-tools.js` (consolidated)
-- ❌ `pipeline-runner.js` → ✅ `dev-tools.js interactive` (consolidated)
-- ❌ `pipeline.sh` → ✅ `dev-tools.js [command]` (consolidated)
-- ❌ `simple-commit.js` → ✅ `smart-commit.js --simple` (consolidated)
-- ❌ `test-commit.js` → ✅ `test-runner.js` (consolidated)
-- ✅ `commit.sh` → Kept for bash users preference
-
-### 🆕 New Utilities Added
-- ✅ `utils/logger.js` - Consistent logging across all scripts
-- ✅ `utils/git-utils.js` - Shared git operations
-- ✅ `utils/ai-analyzer.js` - AI analysis engine for commits
-- ✅ `gh-status.js` - GitHub Actions workflow status checker
-
-### Migration Commands
-```bash
-# Old → New
-npm run dev-flow → npm run dev-tools
-npm run pipeline → npm run dev-tools interactive
-./scripts/pipeline.sh quality → node scripts/dev-tools.js quality
-npm run commit:simple → npm run commit --simple
-./scripts/commit.sh --auto → npm run commit:auto
-```
-
-## 💡 Best Practices
-
-### Commit Workflow
-1. **Make changes** to your code
-2. **Run quality checks**: `npm run pipeline:quality`
-3. **Stage changes**: `git add .` (or let smart-commit do it)
-4. **Generate commit**: `npm run commit`
-5. **Push changes**: `git push` (or use `--push` flag)
-
-### Development Workflow
-1. **Start development**: `npm run dev-tools` (interactive mode)
-2. **Select appropriate pipeline** based on changes
-3. **Use AI commit** for consistent messages
-4. **Validate before push** with full pipeline
-
-### Automation
-- Use `--auto` flags for CI/CD integration
-- Set `CI_MODE=true` for non-interactive environments
-- Integrate with git hooks for automatic validation
-
-## 🎯 Benefits of Consolidation
-
-- **Single Entry Point**: One main script for all development tasks
-- **Consistent Interface**: Unified command structure across all tools
-- **Reduced Complexity**: Fewer files to maintain and understand
-- **Better Integration**: Seamless workflow between different tools
-- **Improved Performance**: Shared utilities and optimized execution
-- **Easier Maintenance**: Centralized logic and configuration
-
-## 🚀 Future Enhancements
-
-- **Plugin System**: Extensible architecture for custom tools
-- **Configuration Files**: Project-specific settings and preferences
-- **Integration APIs**: Hooks for external tools and services
-- **Performance Metrics**: Timing and optimization insights
-- **Team Collaboration**: Shared configurations and standards
+- **v1.0** - Scripts iniciales dispersos
+- **v1.1** - Organización inicial con matching/
+- **v1.2** - Reorganización completa por funcionalidad
+- **v1.3** - Herramientas unificadas y documentación completa
