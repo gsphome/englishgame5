@@ -494,7 +494,27 @@ async function main() {
     if (diffLines.length === 0 || diffLines[0] === '') {
       if (shouldStageAll) {
         logInfo('Auto-staging all changes with `git add .`...');
-        execSync('git add .', { stdio: 'inherit', cwd: rootDir });
+        
+        // Show what files will be added
+        const unstagedFiles = execSync('git status --porcelain', { encoding: 'utf8', cwd: rootDir });
+        if (unstagedFiles.trim()) {
+          const files = unstagedFiles.trim().split('\n').slice(0, 5); // Show first 5 files
+          files.forEach(file => {
+            const status = file.substring(0, 2);
+            const filename = file.substring(3);
+            let icon = '•';
+            if (status.includes('M')) icon = '~';
+            if (status.includes('A')) icon = '+';
+            if (status.includes('D')) icon = '-';
+            if (status.includes('??')) icon = '?';
+            log(`  ${icon} ${filename}`, colors.cyan);
+          });
+          if (unstagedFiles.trim().split('\n').length > 5) {
+            log(`  ... and ${unstagedFiles.trim().split('\n').length - 5} more files`, colors.white);
+          }
+        }
+        
+        execSync('git add .', { cwd: rootDir });
         logSuccess('All changes staged successfully!');
         diffLines = getGitDiff();
       } else {
@@ -504,7 +524,24 @@ async function main() {
         const unstagedStatus = execSync('git status --porcelain', { encoding: 'utf8', cwd: rootDir });
         if (unstagedStatus.trim()) {
           logInfo('Auto-staging all changes with `git add .`...');
-          execSync('git add .', { stdio: 'inherit', cwd: rootDir });
+          
+          // Show what files will be added
+          const files = unstagedStatus.trim().split('\n').slice(0, 5); // Show first 5 files
+          files.forEach(file => {
+            const status = file.substring(0, 2);
+            const filename = file.substring(3);
+            let icon = '•';
+            if (status.includes('M')) icon = '~';
+            if (status.includes('A')) icon = '+';
+            if (status.includes('D')) icon = '-';
+            if (status.includes('??')) icon = '?';
+            log(`  ${icon} ${filename}`, colors.cyan);
+          });
+          if (unstagedStatus.trim().split('\n').length > 5) {
+            log(`  ... and ${unstagedStatus.trim().split('\n').length - 5} more files`, colors.white);
+          }
+          
+          execSync('git add .', { cwd: rootDir });
           logSuccess('All changes staged successfully!');
           diffLines = getGitDiff();
         } else {
