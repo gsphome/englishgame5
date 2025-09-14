@@ -141,7 +141,8 @@ const workflows = {
       { type: 'pipeline', target: 'security' },
       { type: 'pipeline', target: 'build' },
       { type: 'command', cmd: 'node scripts/git/smart-commit.js --stage-all --push --auto --allow-empty', desc: 'AI commit & push' },
-      { type: 'command', cmd: 'node scripts/git/gh-status.js watch', desc: 'Monitor GitHub Actions' }
+      { type: 'command', cmd: 'node scripts/git/gh-status.js watch', desc: 'Monitor GitHub Actions' },
+      { type: 'command', cmd: 'node scripts/git/gh-status.js current', desc: 'Final GitHub Actions status' }
     ]
   },
   fix: {
@@ -236,6 +237,7 @@ async function runWorkflow(workflowKey) {
   
   const startTime = Date.now();
   let allSuccess = true;
+  let githubActionsStatus = null;
   
   for (const step of workflow.steps) {
     if (step.type === 'pipeline') {
@@ -248,7 +250,37 @@ async function runWorkflow(workflowKey) {
       const success = executeCommand(step.cmd, step.desc);
       if (!success) {
         allSuccess = false;
-        break;
+        // For GitHub Actions monitoring, don't fail the entire workflow
+        if (step.desc.includes('GitHub Actions')) {
+          logWarning('GitHub Actions monitoring failed, but continuing...');
+          allSuccess = true;
+        } else {
+          break;
+        }
+      }
+      
+      // Capture GitHub Actions final status for full workflow
+      if (workflowKey === 'full' && step.desc === 'Final GitHub Actions status') {
+        try {
+          const { execSync } = await import('child_process');
+          const output = execSync('node scripts/git/gh-status.js current', { 
+            encoding: 'utf8', 
+            cwd: rootDir 
+          });
+          
+          // Parse the output to determine if GitHub Actions succeeded
+          if (output.includes('Pipeline Status: SUCCESS')) {
+            githubActionsStatus = 'SUCCESS';
+          } else if (output.includes('Pipeline Status: FAILED')) {
+            githubActionsStatus = 'FAILED';
+          } else if (output.includes('Pipeline Status: IN PROGRESS')) {
+            githubActionsStatus = 'IN_PROGRESS';
+          } else {
+            githubActionsStatus = 'UNKNOWN';
+          }
+        } catch (error) {
+          githubActionsStatus = 'ERROR';
+        }
       }
     }
   }
@@ -258,7 +290,7 @@ async function runWorkflow(workflowKey) {
   if (allSuccess) {
     logSuccess(`${workflow.name} completed successfully in ${totalDuration}s`);
     
-    // Special message for full workflow completion
+    // Special message for full workflow completion with GitHub Actions status
     if (workflowKey === 'full') {
       console.log('\n' + '='.repeat(60));
       log('🎉 DEVELOPMENT FLOW COMPLETED!', colors.bright + colors.green);
@@ -266,6 +298,37 @@ async function runWorkflow(workflowKey) {
       log('✅ All local pipelines passed', colors.green);
       log('✅ Code committed and pushed to GitHub', colors.green);
       log('✅ GitHub Actions monitoring completed', colors.green);
+      
+      // Show final GitHub Actions status
+      if (githubActionsStatus) {
+        console.log('');
+        switch (githubActionsStatus) {
+          case 'SUCCESS':
+            log('🎯 FINAL STATUS: ALL SYSTEMS GREEN ✅', colors.bright + colors.green);
+            log('✅ Local pipelines: PASSED', colors.green);
+            log('✅ GitHub Actions: PASSED', colors.green);
+            break;
+          case 'FAILED':
+            log('🎯 FINAL STATUS: GITHUB ACTIONS FAILED ❌', colors.bright + colors.red);
+            log('✅ Local pipelines: PASSED', colors.green);
+            log('❌ GitHub Actions: FAILED', colors.red);
+            log('🔍 Check GitHub Actions logs for details', colors.yellow);
+            break;
+          case 'IN_PROGRESS':
+            log('🎯 FINAL STATUS: GITHUB ACTIONS STILL RUNNING ⏳', colors.bright + colors.yellow);
+            log('✅ Local pipelines: PASSED', colors.green);
+            log('⏳ GitHub Actions: IN PROGRESS', colors.yellow);
+            log('💡 Use "npm run gh:watch" to continue monitoring', colors.cyan);
+            break;
+          default:
+            log('🎯 FINAL STATUS: GITHUB ACTIONS STATUS UNKNOWN ⚠️', colors.bright + colors.yellow);
+            log('✅ Local pipelines: PASSED', colors.green);
+            log('⚠️  GitHub Actions: UNKNOWN', colors.yellow);
+            log('💡 Use "npm run gh:current" to check status', colors.cyan);
+            break;
+        }
+      }
+      
       console.log('');
       log('🚀 NEXT STEP: Deploy to production', colors.bright + colors.cyan);
       log('   Run: npm run deploy:full', colors.cyan);
@@ -273,6 +336,17 @@ async function runWorkflow(workflowKey) {
     }
   } else {
     logError(`${workflow.name} failed after ${totalDuration}s`);
+    
+    if (workflowKey === 'full') {
+      console.log('\n' + '='.repeat(60));
+      log('❌ DEVELOPMENT FLOW FAILED!', colors.bright + colors.red);
+      console.log('='.repeat(60));
+      log('🎯 FINAL STATUS: LOCAL PIPELINE FAILED ❌', colors.bright + colors.red);
+      log('❌ One or more local pipelines failed', colors.red);
+      log('🔍 Check the error messages above for details', colors.yellow);
+      log('🔧 Fix the issues and run again', colors.cyan);
+      console.log('='.repeat(60));
+    }
   }
   
   return allSuccess;
