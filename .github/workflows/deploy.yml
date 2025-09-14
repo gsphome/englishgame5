@@ -143,7 +143,7 @@ jobs:
             exit 0
           fi
           
-          echo "� GaDte Status:"
+          echo "📊 Gate Status:"
           echo "- Quality: $QUALITY_STATUS"
           echo "- Security: $SECURITY_STATUS"
           echo "- Build: $BUILD_STATUS"
@@ -159,7 +159,7 @@ jobs:
   deploy:
     name: Deploy to Production
     runs-on: ubuntu-latest
-    needs: pre-deploy-checks
+    needs: [check-pipelines, pre-deploy-checks]
     environment: production
     steps:
       - name: Checkout code
