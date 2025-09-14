@@ -1,9 +1,9 @@
-name: Deploy Pipeline
+name: CD: Deploy
 
 on:
-  # Trigger only when Build Pipeline completes (as it's usually the last one)
+  # Trigger only when CI: Build & Package completes (as it's usually the last one)
   workflow_run:
-    workflows: ["Build Pipeline"]
+    workflows: ["CI: Build & Package"]
     types:
       - completed
     branches: [main]
@@ -74,9 +74,9 @@ jobs:
           echo "🔍 Checking pipeline status for commit: $COMMIT_SHA"
           
           # Get workflow runs for this commit
-          QUALITY_STATUS=$(gh api repos/${{ github.repository }}/actions/runs --jq ".workflow_runs[] | select(.head_sha == \"$COMMIT_SHA\" and .name == \"Quality Checks\") | .conclusion" | head -1)
-          SECURITY_STATUS=$(gh api repos/${{ github.repository }}/actions/runs --jq ".workflow_runs[] | select(.head_sha == \"$COMMIT_SHA\" and .name == \"Security Checks\") | .conclusion" | head -1)
-          BUILD_STATUS=$(gh api repos/${{ github.repository }}/actions/runs --jq ".workflow_runs[] | select(.head_sha == \"$COMMIT_SHA\" and .name == \"Build Pipeline\") | .conclusion" | head -1)
+          QUALITY_STATUS=$(gh api repos/${{ github.repository }}/actions/runs --jq ".workflow_runs[] | select(.head_sha == \"$COMMIT_SHA\" and .name == \"CI: Code Quality\") | .conclusion" | head -1)
+          SECURITY_STATUS=$(gh api repos/${{ github.repository }}/actions/runs --jq ".workflow_runs[] | select(.head_sha == \"$COMMIT_SHA\" and .name == \"CI: Security Scan\") | .conclusion" | head -1)
+          BUILD_STATUS=$(gh api repos/${{ github.repository }}/actions/runs --jq ".workflow_runs[] | select(.head_sha == \"$COMMIT_SHA\" and .name == \"CI: Build & Package\") | .conclusion" | head -1)
           
           echo "quality_status=${QUALITY_STATUS:-unknown}" >> $GITHUB_OUTPUT
           echo "security_status=${SECURITY_STATUS:-unknown}" >> $GITHUB_OUTPUT
@@ -170,18 +170,18 @@ jobs:
         run: |
           COMMIT_SHA="${{ needs.check-pipelines.outputs.commit-sha }}"
           
-          # Get the most recent successful Build Pipeline run for this commit
+          # Get the most recent successful CI: Build & Package run for this commit
           BUILD_RUN_ID=$(gh api repos/${{ github.repository }}/actions/runs \
-            --jq ".workflow_runs[] | select(.head_sha == \"$COMMIT_SHA\" and .name == \"Build Pipeline\" and .conclusion == \"success\") | .id" \
+            --jq ".workflow_runs[] | select(.head_sha == \"$COMMIT_SHA\" and .name == \"CI: Build & Package\" and .conclusion == \"success\") | .id" \
             | head -1)
           
           if [ -z "$BUILD_RUN_ID" ]; then
-            echo "❌ No successful Build Pipeline run found for commit: $COMMIT_SHA"
+            echo "❌ No successful CI: Build & Package run found for commit: $COMMIT_SHA"
             exit 1
           fi
           
           echo "build_run_id=$BUILD_RUN_ID" >> $GITHUB_OUTPUT
-          echo "✅ Found Build Pipeline run: $BUILD_RUN_ID"
+          echo "✅ Found CI: Build & Package run: $BUILD_RUN_ID"
         env:
           GH_TOKEN: ${{ github.token }}
 
