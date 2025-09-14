@@ -10,19 +10,9 @@
     "explanation": "Use 'are' with the pronoun 'you'"
   },
   {
-    "left": "He/She/It ___ tall",
+    "left": "The cat ___ sleeping",
     "right": "is",
-    "explanation": "Use 'is' with he, she, it and singular nouns"
-  },
-  {
-    "left": "We ___ happy",
-    "right": "are",
-    "explanation": "Use 'are' with the pronoun 'we'"
-  },
-  {
-    "left": "They ___ from Spain",
-    "right": "are",
-    "explanation": "Use 'are' with the pronoun 'they'"
+    "explanation": "Use 'is' with singular nouns"
   },
   {
     "left": "I ___ a car",
@@ -145,9 +135,9 @@
     "explanation": "Use 'don't' for negative with I, you, we, they"
   },
   {
-    "left": "He doesn't like ___",
-    "right": "tea",
-    "explanation": "Use 'doesn't' for negative with he, she, it"
+    "left": "She ___ not at home",
+    "right": "is (singular)",
+    "explanation": "Use 'is not' or 'isn't' for negative with he, she, it"
   },
   {
     "left": "Do you like ___?",
@@ -208,5 +198,25 @@
     "left": "She can't ___ a car",
     "right": "drive",
     "explanation": "'Can't' shows inability"
+  },
+  {
+    "left": "We ___ from different countries",
+    "right": "come",
+    "explanation": "Use base form of verb with 'we'"
+  },
+  {
+    "left": "They ___ in the garden",
+    "right": "work",
+    "explanation": "Use base form of verb with 'they'"
+  },
+  {
+    "left": "The children ___ loudly",
+    "right": "laugh",
+    "explanation": "Use base form of verb with plural nouns"
+  },
+  {
+    "left": "My brother ___ football",
+    "right": "plays",
+    "explanation": "Add 's' to verbs with singular nouns"
   }
 ]

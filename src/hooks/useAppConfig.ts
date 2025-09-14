@@ -37,7 +37,7 @@ export const useAppConfig = () => {
     queryKey: ['app-config'],
     queryFn: async (): Promise<AppConfig> => {
       try {
-        const configPath = getAssetPath('src/assets/data/app-config.json');
+        const configPath = getAssetPath('app-config.json');
         const config = await secureJsonFetch<AppConfig>(configPath);
 
         logDebug(

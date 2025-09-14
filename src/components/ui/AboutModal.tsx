@@ -114,9 +114,13 @@ export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose }) => {
                   </p>
                   <p className="about-modal__build-date">
                     <span className="about-modal__build-icon">🔨</span>
-                    {language === 'es'
-                      ? `${new Date().toLocaleDateString('es-ES')} ${new Date().toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })}`
-                      : `${new Date().toLocaleDateString()} ${new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}`}
+                    {(() => {
+                      const buildTime = window.__BUILD_TIME__ || new Date().toISOString();
+                      const buildDate = new Date(buildTime);
+                      return language === 'es'
+                        ? `${buildDate.toLocaleDateString('es-ES')} ${buildDate.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })}`
+                        : `${buildDate.toLocaleDateString()} ${buildDate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}`;
+                    })()}
                   </p>
                 </div>
               </div>
