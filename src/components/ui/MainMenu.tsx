@@ -3,12 +3,14 @@ import { SearchBar } from './SearchBar';
 import { ModuleCard } from './ModuleCard';
 import { ModuleGridSkeleton } from './LoadingSkeleton';
 import { useAllModules } from '../../hooks/useModuleData';
+import { useProgression } from '../../hooks/useProgression';
 import { useSearch } from '../../hooks/useSearch';
 import { useAppStore } from '../../stores/appStore';
 import { toast } from '../../stores/toastStore';
 
 export const MainMenu: React.FC = () => {
   const { data: modules = [], isLoading, error } = useAllModules();
+  const progression = useProgression();
   const { query, setQuery, results } = useSearch(modules);
   const { setCurrentModule, setCurrentView } = useAppStore();
 
@@ -32,6 +34,15 @@ export const MainMenu: React.FC = () => {
   }, [error]);
 
   const handleModuleClick = (module: any) => {
+    // Check if module is accessible
+    if (!progression.canAccessModule(module.id)) {
+      const missingPrereqs = progression.getMissingPrerequisites(module.id);
+      const prereqNames = missingPrereqs.map(p => p.name).join(', ');
+
+      toast.warning('Módulo bloqueado', `Completa primero: ${prereqNames}`, { duration: 3000 });
+      return;
+    }
+
     // Save scroll position before changing view
     const gridElement = document.querySelector('.main-menu__grid');
     if (gridElement) {

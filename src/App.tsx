@@ -1,12 +1,8 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useEffect } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ErrorBoundary } from './components/common/ErrorBoundary';
 import { AppRouter } from './components/layout/AppRouter';
-import {
-  MemoizedHeader,
-  MemoizedDashboard,
-  MemoizedToastContainer,
-} from './components/ui/MemoizedComponents';
+import { MemoizedHeader, MemoizedToastContainer } from './components/ui/MemoizedComponents';
 import { useAppStore } from './stores/appStore';
 import { useMaxLimits } from './hooks/useMaxLimits';
 import { toast } from './stores/toastStore';
@@ -34,23 +30,9 @@ const queryClient = new QueryClient({
 
 const AppContent: React.FC = () => {
   const { currentView } = useAppStore();
-  const [showDashboard, setShowDashboard] = useState(false);
 
   // Calculate max limits based on available data
   useMaxLimits();
-
-  // Memoized callbacks to prevent unnecessary re-renders
-  const handleMenuToggle = useCallback(() => {
-    setShowDashboard(prev => !prev);
-  }, []);
-
-  const handleDashboardToggle = useCallback(() => {
-    setShowDashboard(prev => !prev);
-  }, []);
-
-  const handleDashboardClose = useCallback(() => {
-    setShowDashboard(false);
-  }, []);
 
   // Handle view changes and cleanup
   useEffect(() => {
@@ -84,10 +66,10 @@ const AppContent: React.FC = () => {
   return (
     <ErrorBoundary>
       <div className="layout-container">
-        <MemoizedHeader onMenuToggle={handleMenuToggle} onDashboardToggle={handleDashboardToggle} />
+        <MemoizedHeader />
 
         <main className="layout-main">
-          {showDashboard ? <MemoizedDashboard onClose={handleDashboardClose} /> : <AppRouter />}
+          <AppRouter />
         </main>
 
         <MemoizedToastContainer />

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { User, Settings, Menu, BarChart3 } from 'lucide-react';
+import { User, Settings, Menu, BarChart3, BookOpen } from 'lucide-react';
 import '../../styles/components/header.css';
 import { useAppStore } from '../../stores/appStore';
 import { useUserStore } from '../../stores/userStore';
@@ -11,13 +11,14 @@ import { AdvancedSettingsModal } from './AdvancedSettingsModal';
 import { AboutModal } from './AboutModal';
 import { ScoreDisplay } from './ScoreDisplay';
 import { FluentFlowLogo } from './FluentFlowLogo';
+import { LazyProgressDashboard } from './LazyProgressDashboard';
+import { LazyModuleProgressionView } from './LazyModuleProgressionView';
 
 interface HeaderProps {
   onMenuToggle?: () => void;
-  onDashboardToggle?: () => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ onDashboardToggle }) => {
+export const Header: React.FC<HeaderProps> = () => {
   const { setCurrentView, currentView } = useAppStore();
   const { user } = useUserStore();
   const { theme } = useSettingsStore();
@@ -25,6 +26,8 @@ export const Header: React.FC<HeaderProps> = ({ onDashboardToggle }) => {
   const [showSettings, setShowSettings] = useState(false);
   const [showAbout, setShowAbout] = useState(false);
   const [showSideMenu, setShowSideMenu] = useState(false);
+  const [showProgressDashboard, setShowProgressDashboard] = useState(false);
+  const [showModuleProgression, setShowModuleProgression] = useState(false);
 
   // Determine header layout mode
   const isInGame = currentView !== 'menu';
@@ -114,15 +117,7 @@ export const Header: React.FC<HeaderProps> = ({ onDashboardToggle }) => {
 
           {/* Quick Actions - Only Essential Controls */}
           <div className="header-redesigned__quick-actions">
-            <button
-              onClick={onDashboardToggle}
-              className="header-redesigned__control-btn header-redesigned__control-btn--primary"
-              title="Dashboard & Statistics"
-              aria-label="Open dashboard and statistics"
-            >
-              <BarChart3 className="w-4 h-4" />
-              <span className="hidden lg:inline ml-1">Stats</span>
-            </button>
+            {/* Progress dashboard moved to hamburger menu for better UX */}
           </div>
         </div>
       </div>
@@ -132,6 +127,16 @@ export const Header: React.FC<HeaderProps> = ({ onDashboardToggle }) => {
       <AdvancedSettingsModal isOpen={showSettings} onClose={() => setShowSettings(false)} />
 
       <AboutModal isOpen={showAbout} onClose={() => setShowAbout(false)} />
+
+      <LazyProgressDashboard
+        isOpen={showProgressDashboard}
+        onClose={() => setShowProgressDashboard(false)}
+      />
+
+      <LazyModuleProgressionView
+        isOpen={showModuleProgression}
+        onClose={() => setShowModuleProgression(false)}
+      />
 
       {showSideMenu && (
         <div
@@ -165,14 +170,25 @@ export const Header: React.FC<HeaderProps> = ({ onDashboardToggle }) => {
                 </button>
                 <button
                   onClick={() => {
-                    onDashboardToggle?.();
+                    setShowProgressDashboard(true);
                     setShowSideMenu(false);
                   }}
                   className="header-side-menu__item"
-                  aria-label="Ver dashboard y estadísticas"
+                  aria-label="Ver dashboard completo de progreso y estadísticas"
                 >
                   <BarChart3 className="header-side-menu__icon" aria-hidden="true" />
-                  <span className="header-side-menu__text">Dashboard</span>
+                  <span className="header-side-menu__text">Dashboard de Progreso</span>
+                </button>
+                <button
+                  onClick={() => {
+                    setShowModuleProgression(true);
+                    setShowSideMenu(false);
+                  }}
+                  className="header-side-menu__item"
+                  aria-label="Ver progresión de módulos y ruta de aprendizaje"
+                >
+                  <BookOpen className="header-side-menu__icon" aria-hidden="true" />
+                  <span className="header-side-menu__text">Ruta de Aprendizaje</span>
                 </button>
               </div>
 

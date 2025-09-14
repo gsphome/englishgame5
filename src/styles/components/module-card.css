@@ -190,6 +190,7 @@
 /* State Modifiers - BEM-Like */
 .module-card--completed {
   position: relative;
+  border: 2px solid rgba(16, 185, 129, 0.3);
 }
 
 .module-card--completed::after {
@@ -209,29 +210,80 @@
   font-weight: 600;
 }
 
+.module-card--unlocked {
+  border: 2px solid rgba(59, 130, 246, 0.2);
+}
+
 .module-card--locked {
-  opacity: 0.6;
+  opacity: 0.4;
   cursor: not-allowed;
-  filter: grayscale(0.5);
+  filter: grayscale(0.8) brightness(0.9);
+  border: 2px solid rgba(156, 163, 175, 0.2);
+  position: relative;
 }
 
 .module-card--locked:hover {
   transform: none;
   box-shadow: var(--card-shadow);
+  border-color: rgba(156, 163, 175, 0.3);
+  opacity: 0.5;
+}
+
+.module-card--locked::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: inherit;
+  pointer-events: none;
 }
 
 .module-card--locked .module-card__content {
   position: relative;
 }
 
-.module-card--locked .module-card__content::before {
-  content: '🔒';
+.module-card--loading {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+/* Header section for icon and status */
+.module-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  margin-bottom: 0.125rem;
+}
+
+.module-card__status-icon {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 1.5rem;
-  z-index: 1;
+  top: -0.25rem;
+  right: -0.25rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  padding: 0.125rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.module-card__status {
+  position: absolute;
+  top: 0.25rem;
+  right: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 /* Removed obsolete styles - now using structured BEM-Like approach */

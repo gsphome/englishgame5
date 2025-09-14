@@ -1,6 +1,8 @@
 /* Component-specific styles - Clean separation */
 /* Import component styles from organized structure */
 @import './components/index.css';
+@import './components/progression-info.css';
+@import './components/module-progression.css';
 
 /* ========================================
    GLOBAL SVG ICON RULES - ENHANCED CONTRAST SYSTEM

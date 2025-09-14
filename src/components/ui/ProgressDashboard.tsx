@@ -11,23 +11,20 @@ import {
   ComposedChart,
 } from 'recharts';
 import { Trophy, Target, Clock, TrendingUp, X, HelpCircle } from 'lucide-react';
-import '../../styles/components/dashboard.css';
+
+import { useProgressStore } from '../../stores/progressStore';
 import { useUserStore } from '../../stores/userStore';
 import { useSettingsStore } from '../../stores/settingsStore';
-import { useProgressStore } from '../../stores/progressStore';
-import { useTranslation } from '../../utils/i18n';
-// import { toast } from '../../stores/toastStore';
 
-interface DashboardProps {
+interface ProgressDashboardProps {
+  isOpen: boolean;
   onClose: () => void;
 }
 
-export const Dashboard: React.FC<DashboardProps> = ({ onClose }) => {
-  const { userScores, getTotalScore } = useUserStore();
-  const { language, theme } = useSettingsStore();
+export const ProgressDashboard: React.FC<ProgressDashboardProps> = ({ isOpen, onClose }) => {
   const { getProgressData, getWeeklyAverage } = useProgressStore();
-  const { t } = useTranslation(language);
-  // const { showInfo } = useToast(); // Commented out as not currently used
+  const { userScores, getTotalScore } = useUserStore();
+  const { theme } = useSettingsStore();
   const [isLoading, setIsLoading] = React.useState(true);
   const [showHelpModal, setShowHelpModal] = React.useState(false);
 
@@ -98,6 +95,8 @@ export const Dashboard: React.FC<DashboardProps> = ({ onClose }) => {
       ? Math.round(moduleData.reduce((sum, m) => sum + m.score, 0) / moduleData.length)
       : 0);
 
+  if (!isOpen) return null;
+
   if (isLoading) {
     return (
       <div className="dashboard-modal-overlay">
@@ -106,13 +105,13 @@ export const Dashboard: React.FC<DashboardProps> = ({ onClose }) => {
             {/* Enhanced Header with Better Contrast */}
             <div className="dashboard-header">
               <h2 className="dashboard-title" id="dashboard-title">
-                {t('dashboard.learningDashboard')}
+                Learning Dashboard
               </h2>
               <div className="dashboard-action-buttons">
                 <button
                   onClick={() => setShowHelpModal(true)}
                   className="dashboard-help-button"
-                  title={t('dashboard.helpButton')}
+                  title="Help"
                   aria-label="Help"
                 >
                   <HelpCircle className="dashboard-help-icon" />
@@ -172,13 +171,13 @@ export const Dashboard: React.FC<DashboardProps> = ({ onClose }) => {
           {/* Enhanced Header with Better Contrast */}
           <div className="dashboard-header">
             <h2 className="dashboard-title" id="dashboard-title">
-              {t('dashboard.learningDashboard')}
+              Learning Dashboard
             </h2>
             <div className="dashboard-action-buttons">
               <button
                 onClick={() => setShowHelpModal(true)}
                 className="dashboard-help-button"
-                title={t('dashboard.helpButton')}
+                title="Help"
                 aria-label="Help"
               >
                 <HelpCircle className="dashboard-help-icon" />
@@ -325,7 +324,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onClose }) => {
                   className="text-base font-semibold text-gray-900 dark:text-white"
                   id="progress-chart-title"
                 >
-                  {t('dashboard.weeklyProgress')}
+                  Weekly Progress
                 </h3>
                 {/* Legend - Accuracy first (primary) */}
                 <div className="dashboard-legend">
@@ -345,8 +344,8 @@ export const Dashboard: React.FC<DashboardProps> = ({ onClose }) => {
                 <div className="dashboard-no-data text-gray-500 dark:text-gray-400">
                   <div className="text-center">
                     <TrendingUp className="dashboard-no-data-icon" />
-                    <p className="text-lg font-medium mb-2">{t('dashboard.noProgressData')}</p>
-                    <p className="text-sm">{t('dashboard.completeModulesMessage')}</p>
+                    <p className="text-lg font-medium mb-2">No progress data yet</p>
+                    <p className="text-sm">Complete some modules to see your progress</p>
                   </div>
                 </div>
               ) : (
@@ -478,7 +477,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onClose }) => {
                   className="text-base font-semibold text-gray-900 dark:text-white"
                   id="performance-chart-title"
                 >
-                  {t('dashboard.modulePerformance')}
+                  Module Performance
                 </h3>
                 {/* Legend for Module Performance */}
                 <div className="dashboard-legend">
@@ -497,8 +496,8 @@ export const Dashboard: React.FC<DashboardProps> = ({ onClose }) => {
                 <div className="dashboard-no-data text-gray-500 dark:text-gray-400">
                   <div className="text-center">
                     <Target className="dashboard-no-data-icon" />
-                    <p className="text-lg font-medium mb-2">{t('dashboard.noModuleData')}</p>
-                    <p className="text-sm">{t('dashboard.completeModulesMessage')}</p>
+                    <p className="text-lg font-medium mb-2">No module data yet</p>
+                    <p className="text-sm">Complete some modules to see your performance</p>
                   </div>
                 </div>
               ) : (
@@ -594,7 +593,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onClose }) => {
           <div className="dashboard-help-modal-content">
             <div className="p-6">
               <div className="dashboard-help-modal-header">
-                <h3 className="dashboard-help-modal-title">{t('dashboard.helpTitle')}</h3>
+                <h3 className="dashboard-help-modal-title">Dashboard Help</h3>
                 <button
                   onClick={() => setShowHelpModal(false)}
                   className="dashboard-help-modal-close"
@@ -611,11 +610,9 @@ export const Dashboard: React.FC<DashboardProps> = ({ onClose }) => {
                     <Trophy className="h-5 w-5 dashboard-help-icon-yellow" />
                   </div>
                   <div>
-                    <h4 className="dashboard-help-metric-title">
-                      {t('dashboard.helpPointsTitle')}
-                    </h4>
+                    <h4 className="dashboard-help-metric-title">Points System</h4>
                     <p className="dashboard-help-metric-description">
-                      {t('dashboard.helpPointsDesc')}
+                      Earn points by completing modules and achieving high scores
                     </p>
                   </div>
                 </div>
@@ -626,11 +623,9 @@ export const Dashboard: React.FC<DashboardProps> = ({ onClose }) => {
                     <Target className="h-5 w-5 dashboard-help-icon-blue" />
                   </div>
                   <div>
-                    <h4 className="dashboard-help-metric-title">
-                      {t('dashboard.helpAccuracyTitle')}
-                    </h4>
+                    <h4 className="dashboard-help-metric-title">Accuracy Score</h4>
                     <p className="dashboard-help-metric-description">
-                      {t('dashboard.helpAccuracyDesc')}
+                      Your average percentage of correct answers across all modules
                     </p>
                   </div>
                 </div>
@@ -641,11 +636,9 @@ export const Dashboard: React.FC<DashboardProps> = ({ onClose }) => {
                     <Clock className="h-5 w-5 dashboard-help-icon-green" />
                   </div>
                   <div>
-                    <h4 className="dashboard-help-metric-title">
-                      {t('dashboard.helpSessionsTitle')}
-                    </h4>
+                    <h4 className="dashboard-help-metric-title">Study Sessions</h4>
                     <p className="dashboard-help-metric-description">
-                      {t('dashboard.helpSessionsDesc')}
+                      Number of learning sessions completed this week
                     </p>
                   </div>
                 </div>
@@ -656,9 +649,9 @@ export const Dashboard: React.FC<DashboardProps> = ({ onClose }) => {
                     <TrendingUp className="h-5 w-5 dashboard-help-icon-purple" />
                   </div>
                   <div>
-                    <h4 className="dashboard-help-metric-title">{t('dashboard.helpTimeTitle')}</h4>
+                    <h4 className="dashboard-help-metric-title">Practice Time</h4>
                     <p className="dashboard-help-metric-description">
-                      {t('dashboard.helpTimeDesc')}
+                      Total time spent actively learning and practicing
                     </p>
                   </div>
                 </div>
@@ -668,29 +661,18 @@ export const Dashboard: React.FC<DashboardProps> = ({ onClose }) => {
               <div className="dashboard-help-charts-section">
                 <div className="dashboard-help-charts-grid">
                   <div>
-                    <h4 className="dashboard-help-chart-title">
-                      {t('dashboard.helpProgressTitle')}
-                    </h4>
+                    <h4 className="dashboard-help-chart-title">Weekly Progress</h4>
                     <p className="dashboard-help-chart-description">
-                      {t('dashboard.helpProgressDesc')}
+                      Shows your daily accuracy and session count over the past week
                     </p>
                   </div>
                   <div>
-                    <h4 className="dashboard-help-chart-title">{t('dashboard.helpModuleTitle')}</h4>
+                    <h4 className="dashboard-help-chart-title">Module Performance</h4>
                     <p className="dashboard-help-chart-description">
-                      {t('dashboard.helpModuleDesc')}
+                      Displays your average scores by learning mode type
                     </p>
                   </div>
                 </div>
-              </div>
-
-              <div className="dashboard-help-footer">
-                <button
-                  onClick={() => setShowHelpModal(false)}
-                  className="dashboard-help-close-button"
-                >
-                  {t('dashboard.closeHelp')}
-                </button>
               </div>
             </div>
           </div>

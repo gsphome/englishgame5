@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import { useProgressStore } from './progressStore';
 import type { User, ModuleScore } from '../types';
 
 interface UserStore {
@@ -40,6 +41,12 @@ export const useUserStore = create<UserStore>()(
             lastAttempt: new Date().toISOString(),
             timeSpent: existingScore ? existingScore.timeSpent + timeSpent : timeSpent,
           };
+
+          // Mark module as completed in progression system if score is good enough (>= 70%)
+          if (score >= 70) {
+            const progressStore = useProgressStore.getState();
+            progressStore.completeModule(moduleId, score);
+          }
 
           return {
             userScores: {

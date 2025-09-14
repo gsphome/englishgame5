@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import { progressionService } from '../services/progressionService';
 
 export interface ProgressEntry {
   date: string; // YYYY-MM-DD format
@@ -22,9 +23,17 @@ export interface DailyProgress {
   modules: string[];
 }
 
+export interface ModuleCompletion {
+  moduleId: string;
+  completedAt: string;
+  bestScore: number;
+  attempts: number;
+}
+
 interface ProgressStore {
   progressHistory: ProgressEntry[];
   dailyProgress: Record<string, DailyProgress>;
+  completedModules: Record<string, ModuleCompletion>;
 
   // Actions
   addProgressEntry: (entry: Omit<ProgressEntry, 'date'>) => void;
@@ -33,6 +42,13 @@ interface ProgressStore {
   getWeeklyAverage: () => number;
   getMonthlyAverage: () => number;
   clearOldProgress: (daysToKeep?: number) => void;
+
+  // Module completion actions
+  completeModule: (moduleId: string, score: number) => void;
+  isModuleCompleted: (moduleId: string) => boolean;
+  getCompletedModuleIds: () => string[];
+  getModuleCompletion: (moduleId: string) => ModuleCompletion | null;
+  resetProgress: () => void;
 }
 
 const getTodayString = (): string => {
@@ -50,6 +66,7 @@ export const useProgressStore = create<ProgressStore>()(
     (set, get) => ({
       progressHistory: [],
       dailyProgress: {},
+      completedModules: {},
 
       addProgressEntry: entry =>
         set(state => {
@@ -175,6 +192,56 @@ export const useProgressStore = create<ProgressStore>()(
             dailyProgress: filteredDaily,
           };
         }),
+
+      // Module completion actions
+      completeModule: (moduleId: string, score: number) =>
+        set(state => {
+          const today = getTodayString();
+          const existing = state.completedModules[moduleId];
+
+          const completion: ModuleCompletion = {
+            moduleId,
+            completedAt: existing?.completedAt || today,
+            bestScore: existing ? Math.max(existing.bestScore, score) : score,
+            attempts: existing ? existing.attempts + 1 : 1,
+          };
+
+          // Update progression service
+          progressionService.completeModule(moduleId);
+
+          return {
+            ...state,
+            completedModules: {
+              ...state.completedModules,
+              [moduleId]: completion,
+            },
+          };
+        }),
+
+      isModuleCompleted: (moduleId: string) => {
+        const { completedModules } = get();
+        return moduleId in completedModules;
+      },
+
+      getCompletedModuleIds: () => {
+        const { completedModules } = get();
+        return Object.keys(completedModules);
+      },
+
+      getModuleCompletion: (moduleId: string) => {
+        const { completedModules } = get();
+        return completedModules[moduleId] || null;
+      },
+
+      resetProgress: () =>
+        set(() => {
+          progressionService.reset();
+          return {
+            progressHistory: [],
+            dailyProgress: {},
+            completedModules: {},
+          };
+        }),
     }),
     {
       name: 'progress-storage',
@@ -182,6 +249,7 @@ export const useProgressStore = create<ProgressStore>()(
       partialize: state => ({
         progressHistory: state.progressHistory,
         dailyProgress: state.dailyProgress,
+        completedModules: state.completedModules,
       }),
     }
   )

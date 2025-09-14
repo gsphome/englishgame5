@@ -53,7 +53,6 @@
     "gh:current": "node scripts/git/gh-status.js current",
     "gh:watch": "node scripts/git/gh-status.js watch",
     "gh:logs": "node scripts/git/gh-status.js logs",
-
     "flow:full": "npm run build:full",
     "tools": "node scripts/tools.js",
     "tools:list": "node scripts/tools.js list",
@@ -75,7 +74,7 @@
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.54.0",
     "react-i18next": "^15.1.2",
-    "recharts": "^2.13.3",
+    "recharts": "^2.15.4",
     "zod": "^3.24.1",
     "zustand": "^5.0.2"
   },
