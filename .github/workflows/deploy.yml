@@ -1,9 +1,9 @@
 name: Deploy Pipeline
 
 on:
-  # Trigger when individual pipelines complete successfully
+  # Trigger only when Build Pipeline completes (as it's usually the last one)
   workflow_run:
-    workflows: ["Quality Checks", "Security Checks", "Build Pipeline"]
+    workflows: ["Build Pipeline"]
     types:
       - completed
     branches: [main]
