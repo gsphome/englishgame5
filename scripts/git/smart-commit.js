@@ -462,11 +462,44 @@ async function main() {
       // Branch might not have upstream, ignore error
     }
 
-    if (statusLines.length === 0 || statusLines[0] === '') {
-      // No working directory changes
+    // SIMPLIFIED LOGIC FOR build:full - Always execute git add . if shouldStageAll is true
+    if (shouldStageAll) {
+      logInfo('Auto-staging all changes with `git add .`...');
+      
+      // Show what files will be added (both staged and unstaged)
+      const allStatus = execSync('git status --porcelain', { encoding: 'utf8', cwd: rootDir });
+      if (allStatus.trim()) {
+        const files = allStatus.trim().split('\n').slice(0, 5); // Show first 5 files
+        files.forEach(file => {
+          const status = file.substring(0, 2);
+          const filename = file.substring(3);
+          let icon = '•';
+          if (status.includes('M')) icon = '~';
+          if (status.includes('A')) icon = '+';
+          if (status.includes('D')) icon = '-';
+          if (status.includes('??')) icon = '?';
+          log(`  ${icon} ${filename}`, colors.cyan);
+        });
+        if (allStatus.trim().split('\n').length > 5) {
+          log(`  ... and ${allStatus.trim().split('\n').length - 5} more files`, colors.white);
+        }
+      }
+      
+      // Always execute git add . regardless of current state
+      execSync('git add .', { cwd: rootDir });
+      logSuccess('All changes staged successfully!');
+    }
+
+    // Check current state after staging
+    let diffLines = getGitDiff();
+    const hasWorkingChanges = statusLines.length > 0 && statusLines[0] !== '';
+    const hasStagedChanges = diffLines.length > 0 && diffLines[0] !== '';
+
+    // Determine what to do based on current state
+    if (!hasStagedChanges && !hasWorkingChanges) {
+      // No changes at all
       if (hasUnpushedCommits && shouldPush) {
         logInfo('No working directory changes, but found unpushed commits.');
-        // Skip to push section
         logInfo('\nPushing to remote...');
         try {
           execSync('git push', { stdio: 'inherit', cwd: rootDir });
@@ -483,120 +516,31 @@ async function main() {
           log('\n✨ Smart commit completed successfully (no changes detected)!', colors.green);
           process.exit(0);
         } else {
-          logWarning('No changes detected. Stage your changes first with `git add`.');
+          logInfo('No changes detected and no unpushed commits.');
+          log('\n✨ Smart commit completed successfully (nothing to do)!', colors.green);
           process.exit(0);
         }
       }
     }
 
-    // Check if there are staged changes
-    let diffLines = getGitDiff();
-    if (diffLines.length === 0 || diffLines[0] === '') {
-      if (shouldStageAll) {
-        logInfo('Auto-staging all changes with `git add .`...');
-        
-        // Show what files will be added
-        const unstagedFiles = execSync('git status --porcelain', { encoding: 'utf8', cwd: rootDir });
-        if (unstagedFiles.trim()) {
-          const files = unstagedFiles.trim().split('\n').slice(0, 5); // Show first 5 files
-          files.forEach(file => {
-            const status = file.substring(0, 2);
-            const filename = file.substring(3);
-            let icon = '•';
-            if (status.includes('M')) icon = '~';
-            if (status.includes('A')) icon = '+';
-            if (status.includes('D')) icon = '-';
-            if (status.includes('??')) icon = '?';
-            log(`  ${icon} ${filename}`, colors.cyan);
-          });
-          if (unstagedFiles.trim().split('\n').length > 5) {
-            log(`  ... and ${unstagedFiles.trim().split('\n').length - 5} more files`, colors.white);
-          }
+    if (!hasStagedChanges) {
+      // No staged changes but there might be working changes
+      if (hasUnpushedCommits && shouldPush) {
+        logInfo('No staged changes to commit, but found unpushed commits.');
+        logInfo('\nPushing to remote...');
+        try {
+          execSync('git push', { stdio: 'inherit', cwd: rootDir });
+          logSuccess('Push completed successfully!');
+          log('\n✨ Smart commit completed successfully!', colors.green);
+          process.exit(0);
+        } catch (error) {
+          logError('Push failed. You may need to push manually.');
+          process.exit(1);
         }
-        
-        execSync('git add .', { cwd: rootDir });
-        logSuccess('All changes staged successfully!');
-        diffLines = getGitDiff();
       } else {
-        logWarning('No staged changes detected.');
-
-        // Check if there are unstaged changes
-        const unstagedStatus = execSync('git status --porcelain', { encoding: 'utf8', cwd: rootDir });
-        if (unstagedStatus.trim()) {
-          logInfo('Auto-staging all changes with `git add .`...');
-          
-          // Show what files will be added
-          const files = unstagedStatus.trim().split('\n').slice(0, 5); // Show first 5 files
-          files.forEach(file => {
-            const status = file.substring(0, 2);
-            const filename = file.substring(3);
-            let icon = '•';
-            if (status.includes('M')) icon = '~';
-            if (status.includes('A')) icon = '+';
-            if (status.includes('D')) icon = '-';
-            if (status.includes('??')) icon = '?';
-            log(`  ${icon} ${filename}`, colors.cyan);
-          });
-          if (unstagedStatus.trim().split('\n').length > 5) {
-            log(`  ... and ${unstagedStatus.trim().split('\n').length - 5} more files`, colors.white);
-          }
-          
-          execSync('git add .', { cwd: rootDir });
-          logSuccess('All changes staged successfully!');
-          diffLines = getGitDiff();
-        } else {
-          // No unstaged changes, but check for unpushed commits
-          if (hasUnpushedCommits && shouldPush) {
-            logInfo('No working directory changes, but found unpushed commits.');
-            // Skip to push section
-            logInfo('\nPushing to remote...');
-            try {
-              execSync('git push', { stdio: 'inherit', cwd: rootDir });
-              logSuccess('Push completed successfully!');
-              log('\n✨ Smart commit completed successfully!', colors.green);
-              process.exit(0);
-            } catch (error) {
-              logError('Push failed. You may need to push manually.');
-              process.exit(1);
-            }
-          } else {
-            if (allowEmpty) {
-              logInfo('No changes found in working directory, but continuing due to --allow-empty flag.');
-              log('\n✨ Smart commit completed successfully (no changes found)!', colors.green);
-              process.exit(0);
-            } else {
-              logInfo('No changes found in working directory.');
-              process.exit(0);
-            }
-          }
-        }
-      }
-      
-      if (diffLines.length === 0 || diffLines[0] === '') {
-        // Still no staged changes after attempting to stage
-        if (hasUnpushedCommits && shouldPush) {
-          logInfo('No changes to commit, but found unpushed commits.');
-          // Skip to push section
-          logInfo('\nPushing to remote...');
-          try {
-            execSync('git push', { stdio: 'inherit', cwd: rootDir });
-            logSuccess('Push completed successfully!');
-            log('\n✨ Smart commit completed successfully!', colors.green);
-            process.exit(0);
-          } catch (error) {
-            logError('Push failed. You may need to push manually.');
-            process.exit(1);
-          }
-        } else {
-          if (allowEmpty) {
-            logInfo('No changes to commit after staging, but continuing due to --allow-empty flag.');
-            log('\n✨ Smart commit completed successfully (no changes to commit)!', colors.green);
-            process.exit(0);
-          } else {
-            logWarning('No changes to commit after staging.');
-            process.exit(0);
-          }
-        }
+        logInfo('No staged changes to commit.');
+        log('\n✨ Smart commit completed successfully (nothing to commit)!', colors.green);
+        process.exit(0);
       }
     }
 
