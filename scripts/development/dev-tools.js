@@ -330,8 +330,9 @@ async function runWorkflow(workflowKey) {
       }
 
       console.log('');
-      log('🚀 NEXT STEP: Deploy to production', colors.bright + colors.cyan);
-      log('   Run: npm run deploy:full', colors.cyan);
+      log('🎉 APPLICATION DEPLOYED SUCCESSFULLY!', colors.bright + colors.green);
+      log('   🌐 Your app is live at: https://gsphome.github.io/englishgame5/', colors.cyan);
+      log('   📊 Monitor status: npm run gh:current', colors.cyan);
       console.log('='.repeat(60));
     }
   } else {
