@@ -494,7 +494,7 @@ async function main() {
     if (diffLines.length === 0 || diffLines[0] === '') {
       if (shouldStageAll) {
         logInfo('Auto-staging all changes with `git add .`...');
-        execSync('git add .', { cwd: rootDir });
+        execSync('git add .', { stdio: 'inherit', cwd: rootDir });
         logSuccess('All changes staged successfully!');
         diffLines = getGitDiff();
       } else {
@@ -504,7 +504,7 @@ async function main() {
         const unstagedStatus = execSync('git status --porcelain', { encoding: 'utf8', cwd: rootDir });
         if (unstagedStatus.trim()) {
           logInfo('Auto-staging all changes with `git add .`...');
-          execSync('git add .', { cwd: rootDir });
+          execSync('git add .', { stdio: 'inherit', cwd: rootDir });
           logSuccess('All changes staged successfully!');
           diffLines = getGitDiff();
         } else {
