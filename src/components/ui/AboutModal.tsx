@@ -117,9 +117,12 @@ export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose }) => {
                     {(() => {
                       const buildTime = window.__BUILD_TIME__ || new Date().toISOString();
                       const buildDate = new Date(buildTime);
-                      return language === 'es'
-                        ? `${buildDate.toLocaleDateString('es-ES')} ${buildDate.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })}`
-                        : `${buildDate.toLocaleDateString()} ${buildDate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}`;
+                      const year = buildDate.getFullYear();
+                      const month = String(buildDate.getMonth() + 1).padStart(2, '0');
+                      const day = String(buildDate.getDate()).padStart(2, '0');
+                      const hours = String(buildDate.getHours()).padStart(2, '0');
+                      const minutes = String(buildDate.getMinutes()).padStart(2, '0');
+                      return `${year}/${month}/${day} ${hours}:${minutes}`;
                     })()}
                   </p>
                 </div>

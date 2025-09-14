@@ -53,9 +53,7 @@
     "gh:current": "node scripts/git/gh-status.js current",
     "gh:watch": "node scripts/git/gh-status.js watch",
     "gh:logs": "node scripts/git/gh-status.js logs",
-    "deploy:full": "node scripts/deployment/deploy.js",
-    "deploy:help": "node scripts/deployment/deploy.js --help",
-    "deploy:manual": "npm run deploy:full",
+
     "flow:full": "npm run build:full",
     "tools": "node scripts/tools.js",
     "tools:list": "node scripts/tools.js list",

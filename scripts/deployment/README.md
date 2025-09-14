@@ -1,27 +1,47 @@
 # Scripts de Despliegue
 
-Herramientas para despliegue y gestión de producción.
+> **Nota**: Los scripts de deploy manual han sido consolidados en el flujo de desarrollo principal.
 
-## Scripts Disponibles
+## Flujo de Despliegue Actual
 
-### deploy.js
-Disparador manual del pipeline de despliegue
+El despliegue ahora se maneja automáticamente a través del flujo de desarrollo:
 
 ```bash
-node scripts/deployment/deploy.js
+# Flujo completo con despliegue automático
+npm run build:full
+
+# Flujo rápido sin tests (también despliega)
+npm run build:light
 ```
 
-## Uso General
+## Cómo Funciona
 
-Todos los scripts en esta carpeta siguen las convenciones estándar del proyecto:
-- Soporte para `--help` para mostrar ayuda
-- Códigos de salida estándar (0 = éxito, 1 = error)
-- Logging consistente con colores
-- Manejo robusto de errores
+1. **`build:full`** ejecuta todos los pipelines (quality, security, build)
+2. **Commit automático** con AI y push
+3. **GitHub Actions** se dispara automáticamente con el push
+4. **CD Deploy** se ejecuta automáticamente si todos los pipelines pasan
 
-## Dependencias
+## Ventajas del Nuevo Flujo
 
-Los scripts utilizan las utilidades compartidas en `scripts/utils/`:
-- `logger.js` - Sistema de logging consistente
-- `git-utils.js` - Operaciones de Git compartidas
-- `ai-analyzer.js` - Análisis inteligente de cambios
+- ✅ **Simplificado**: Un solo comando para todo
+- ✅ **Automático**: No requiere intervención manual
+- ✅ **Seguro**: Solo despliega si pasan todas las validaciones
+- ✅ **Monitoreo**: Incluye seguimiento de GitHub Actions
+
+## Comandos Disponibles
+
+```bash
+# Desarrollo completo (recomendado)
+npm run build:full
+
+# Desarrollo rápido (sin tests)
+npm run build:light
+
+# Solo build local
+npm run build
+
+# Monitoreo de GitHub Actions
+npm run gh:status
+npm run gh:current
+npm run gh:watch
+```
