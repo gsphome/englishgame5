@@ -59,13 +59,13 @@ function executeCommand(command, description, options = {}) {
   const startTime = Date.now();
   try {
     log(`\n🔄 ${description}...`, colors.cyan);
-    
-    execSync(command, { 
-      stdio: options.silent ? 'pipe' : 'inherit', 
+
+    execSync(command, {
+      stdio: options.silent ? 'pipe' : 'inherit',
       cwd: rootDir,
       env: { ...process.env, FORCE_COLOR: '1' }
     });
-    
+
     const duration = ((Date.now() - startTime) / 1000).toFixed(1);
     logSuccess(`${description} completed in ${duration}s`);
     return true;
@@ -168,19 +168,19 @@ async function promptUser(question) {
 
 function showMainMenu() {
   logHeader('🎭 Development Tools - Unified Workflow Orchestrator');
-  
+
   log('\n📋 Available Pipelines:', colors.bright);
   Object.entries(pipelines).forEach(([key, pipeline]) => {
     log(`  ${key.padEnd(10)} ${pipeline.name}`, pipeline.color);
     log(`             ${pipeline.description}`, colors.white);
   });
-  
+
   log('\n🔄 Available Workflows:', colors.bright);
   Object.entries(workflows).forEach(([key, workflow]) => {
     log(`  ${key.padEnd(10)} ${workflow.name}`, colors.magenta);
     log(`             ${workflow.description}`, colors.white);
   });
-  
+
   log('\n⚡ Quick Commands:', colors.bright);
   log('  q          Quality pipeline', colors.blue);
   log('  s          Security pipeline', colors.red);
@@ -199,13 +199,13 @@ async function runPipeline(pipelineKey) {
     logError(`Unknown pipeline: ${pipelineKey}`);
     return false;
   }
-  
+
   logHeader(`${pipeline.name} - Execution`);
   logInfo(`Description: ${pipeline.description}`);
-  
+
   const startTime = Date.now();
   let allSuccess = true;
-  
+
   for (const command of pipeline.commands) {
     const success = executeCommand(command.cmd, command.desc);
     if (!success) {
@@ -213,15 +213,15 @@ async function runPipeline(pipelineKey) {
       break;
     }
   }
-  
+
   const totalDuration = ((Date.now() - startTime) / 1000).toFixed(1);
-  
+
   if (allSuccess) {
     logSuccess(`${pipeline.name} completed successfully in ${totalDuration}s`);
   } else {
     logError(`${pipeline.name} failed after ${totalDuration}s`);
   }
-  
+
   return allSuccess;
 }
 
@@ -231,14 +231,14 @@ async function runWorkflow(workflowKey) {
     logError(`Unknown workflow: ${workflowKey}`);
     return false;
   }
-  
+
   logHeader(`${workflow.name} - Execution`);
   logInfo(`Description: ${workflow.description}`);
-  
+
   const startTime = Date.now();
   let allSuccess = true;
   let githubActionsStatus = null;
-  
+
   for (const step of workflow.steps) {
     if (step.type === 'pipeline') {
       const success = await runPipeline(step.target);
@@ -258,16 +258,16 @@ async function runWorkflow(workflowKey) {
           break;
         }
       }
-      
+
       // Capture GitHub Actions final status for full workflow
       if (workflowKey === 'full' && step.desc === 'Final GitHub Actions status') {
         try {
           const { execSync } = await import('child_process');
-          const output = execSync('node scripts/git/gh-status.js current', { 
-            encoding: 'utf8', 
-            cwd: rootDir 
+          const output = execSync('node scripts/git/gh-status.js current', {
+            encoding: 'utf8',
+            cwd: rootDir
           });
-          
+
           // Parse the output to determine if GitHub Actions succeeded
           if (output.includes('Pipeline Status: SUCCESS')) {
             githubActionsStatus = 'SUCCESS';
@@ -284,12 +284,12 @@ async function runWorkflow(workflowKey) {
       }
     }
   }
-  
+
   const totalDuration = ((Date.now() - startTime) / 1000).toFixed(1);
-  
+
   if (allSuccess) {
     logSuccess(`${workflow.name} completed successfully in ${totalDuration}s`);
-    
+
     // Special message for full workflow completion with GitHub Actions status
     if (workflowKey === 'full') {
       console.log('\n' + '='.repeat(60));
@@ -298,7 +298,7 @@ async function runWorkflow(workflowKey) {
       log('✅ All local pipelines passed', colors.green);
       log('✅ Code committed and pushed to GitHub', colors.green);
       log('✅ GitHub Actions monitoring completed', colors.green);
-      
+
       // Show final GitHub Actions status
       if (githubActionsStatus) {
         console.log('');
@@ -328,7 +328,7 @@ async function runWorkflow(workflowKey) {
             break;
         }
       }
-      
+
       console.log('');
       log('🚀 NEXT STEP: Deploy to production', colors.bright + colors.cyan);
       log('   Run: npm run deploy:full', colors.cyan);
@@ -336,7 +336,7 @@ async function runWorkflow(workflowKey) {
     }
   } else {
     logError(`${workflow.name} failed after ${totalDuration}s`);
-    
+
     if (workflowKey === 'full') {
       console.log('\n' + '='.repeat(60));
       log('❌ DEVELOPMENT FLOW FAILED!', colors.bright + colors.red);
@@ -348,16 +348,16 @@ async function runWorkflow(workflowKey) {
       console.log('='.repeat(60));
     }
   }
-  
+
   return allSuccess;
 }
 
 async function runAllPipelines() {
   logHeader('🚀 All Pipelines - Sequential Execution');
-  
+
   const pipelineOrder = ['quality', 'security', 'build'];
   let allSuccess = true;
-  
+
   for (const pipelineKey of pipelineOrder) {
     const success = await runPipeline(pipelineKey);
     if (!success) {
@@ -365,7 +365,7 @@ async function runAllPipelines() {
       break;
     }
   }
-  
+
   return allSuccess;
 }
 
@@ -373,7 +373,7 @@ function showGitStatus() {
   try {
     const status = execSync('git status --porcelain', { encoding: 'utf8', cwd: rootDir });
     const hasChanges = status.trim().length > 0;
-    
+
     if (hasChanges) {
       log('\n📊 Git Status:', colors.bright);
       const lines = status.trim().split('\n');
@@ -382,22 +382,22 @@ function showGitStatus() {
         const file = line.substring(3);
         let color = colors.white;
         let icon = '•';
-        
+
         if (status.includes('M')) { color = colors.yellow; icon = '~'; }
         if (status.includes('A')) { color = colors.green; icon = '+'; }
         if (status.includes('D')) { color = colors.red; icon = '-'; }
         if (status.includes('??')) { color = colors.cyan; icon = '?'; }
-        
+
         log(`  ${icon} ${file}`, color);
       });
-      
+
       if (lines.length > 10) {
         log(`  ... and ${lines.length - 10} more files`, colors.white);
       }
     } else {
       log('\n✨ Working directory is clean', colors.green);
     }
-    
+
     return hasChanges;
   } catch (error) {
     logWarning('Not a git repository or git not available');
@@ -409,10 +409,10 @@ async function interactiveMode() {
   console.clear();
   showMainMenu();
   showGitStatus();
-  
+
   while (true) {
     const input = await promptUser('\n🎯 Select option:');
-    
+
     switch (input.toLowerCase()) {
       case 'q':
       case 'quality':
@@ -507,22 +507,22 @@ NPM Integration:
 
 async function main() {
   const args = process.argv.slice(2);
-  
+
   // Check for CI mode
   const isCIMode = args.includes('--ci-mode') || process.env.CI === 'true' || process.env.GITHUB_ACTIONS === 'true';
   const filteredArgs = args.filter(arg => arg !== '--ci-mode');
-  
+
   // Configure for CI environment
   if (isCIMode) {
     logInfo('🤖 Running in CI mode');
     // Disable interactive features in CI
     process.env.CI_MODE = 'true';
   }
-  
+
   // Handle command line arguments
   if (filteredArgs.length > 0) {
     const command = filteredArgs[0].toLowerCase();
-    
+
     switch (command) {
       case 'quality':
       case 'q':
