@@ -1,13 +1,11 @@
-name: CD: Deploy
+name: CD Deploy
 
 on:
-  # Trigger only when CI: Build & Package completes (as it's usually the last one)
   workflow_run:
-    workflows: ["CI: Build & Package"]
+    workflows: ["CI Build"]
     types:
       - completed
     branches: [main]
-  # Allow manual trigger
   workflow_dispatch:
     inputs:
       force-deploy:
@@ -22,30 +20,19 @@ permissions:
   id-token: write
   actions: read
 
-# Only one deployment at a time
 concurrency:
   group: deploy-production
   cancel-in-progress: false
-
-env:
-  NODE_VERSION: '18'
 
 jobs:
   check-pipelines:
     name: Check All Pipelines
     runs-on: ubuntu-latest
-    # Only run if the triggering workflow succeeded OR manual force deploy
     if: github.event.workflow_run.conclusion == 'success' || inputs.force-deploy == true
     outputs:
       should-deploy: ${{ steps.pipeline-check.outputs.should_deploy }}
       commit-sha: ${{ steps.commit-details.outputs.commit_sha }}
-      quality-status: ${{ steps.pipeline-check.outputs.quality_status }}
-      security-status: ${{ steps.pipeline-check.outputs.security_status }}
-      build-status: ${{ steps.pipeline-check.outputs.build_status }}
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
       - name: Get commit details
         id: commit-details
         run: |
@@ -55,7 +42,6 @@ jobs:
             COMMIT_SHA="${{ github.event.workflow_run.head_sha }}"
           fi
           echo "commit_sha=$COMMIT_SHA" >> $GITHUB_OUTPUT
-          echo "🔍 Checking pipelines for commit: $COMMIT_SHA"
 
       - name: Check pipeline status
         id: pipeline-check
@@ -63,146 +49,60 @@ jobs:
           COMMIT_SHA="${{ steps.commit-details.outputs.commit_sha }}"
           
           if [ "${{ inputs.force-deploy }}" = "true" ]; then
-            echo "🚀 Force deploy enabled - skipping pipeline checks"
+            echo "🚀 Force deploy enabled"
             echo "should_deploy=true" >> $GITHUB_OUTPUT
-            echo "quality_status=force-deploy" >> $GITHUB_OUTPUT
-            echo "security_status=force-deploy" >> $GITHUB_OUTPUT
-            echo "build_status=force-deploy" >> $GITHUB_OUTPUT
             exit 0
           fi
           
-          echo "🔍 Checking pipeline status for commit: $COMMIT_SHA"
-          
           # Get workflow runs for this commit
-          QUALITY_STATUS=$(gh api repos/${{ github.repository }}/actions/runs --jq ".workflow_runs[] | select(.head_sha == \"$COMMIT_SHA\" and .name == \"CI: Code Quality\") | .conclusion" | head -1)
-          SECURITY_STATUS=$(gh api repos/${{ github.repository }}/actions/runs --jq ".workflow_runs[] | select(.head_sha == \"$COMMIT_SHA\" and .name == \"CI: Security Scan\") | .conclusion" | head -1)
-          BUILD_STATUS=$(gh api repos/${{ github.repository }}/actions/runs --jq ".workflow_runs[] | select(.head_sha == \"$COMMIT_SHA\" and .name == \"CI: Build & Package\") | .conclusion" | head -1)
-          
-          echo "quality_status=${QUALITY_STATUS:-unknown}" >> $GITHUB_OUTPUT
-          echo "security_status=${SECURITY_STATUS:-unknown}" >> $GITHUB_OUTPUT
-          echo "build_status=${BUILD_STATUS:-unknown}" >> $GITHUB_OUTPUT
+          QUALITY_STATUS=$(gh api repos/${{ github.repository }}/actions/runs --jq ".workflow_runs[] | select(.head_sha == \"$COMMIT_SHA\" and .name == \"CI Quality\") | .conclusion" | head -1)
+          SECURITY_STATUS=$(gh api repos/${{ github.repository }}/actions/runs --jq ".workflow_runs[] | select(.head_sha == \"$COMMIT_SHA\" and .name == \"CI Security\") | .conclusion" | head -1)
+          BUILD_STATUS=$(gh api repos/${{ github.repository }}/actions/runs --jq ".workflow_runs[] | select(.head_sha == \"$COMMIT_SHA\" and .name == \"CI Build\") | .conclusion" | head -1)
           
           echo "📊 Pipeline Status:"
           echo "- Quality: ${QUALITY_STATUS:-unknown}"
           echo "- Security: ${SECURITY_STATUS:-unknown}"
           echo "- Build: ${BUILD_STATUS:-unknown}"
           
-          # Check if all required pipelines succeeded
           if [[ "$QUALITY_STATUS" == "success" && "$SECURITY_STATUS" == "success" && "$BUILD_STATUS" == "success" ]]; then
             echo "should_deploy=true" >> $GITHUB_OUTPUT
-            echo "✅ All pipelines succeeded - ready for deployment"
+            echo "✅ All pipelines succeeded"
           else
             echo "should_deploy=false" >> $GITHUB_OUTPUT
             echo "⏳ Not all pipelines completed successfully"
-            echo "Deployment blocked until all pipelines pass"
           fi
         env:
           GH_TOKEN: ${{ github.token }}
 
-      - name: Pipeline summary
-        run: |
-          echo "## 🚀 DEPLOY PIPELINE - GATE CHECK" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Commit:** ${{ steps.commit-details.outputs.commit_sha }}" >> $GITHUB_STEP_SUMMARY
-          echo "**Trigger:** ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "### 📊 Pipeline Gate Status" >> $GITHUB_STEP_SUMMARY
-          echo "| Pipeline | Status | Required | Result |" >> $GITHUB_STEP_SUMMARY
-          echo "|----------|--------|----------|--------|" >> $GITHUB_STEP_SUMMARY
-          echo "| Quality | ${{ steps.pipeline-check.outputs.quality_status }} | ✅ Success | ${{ steps.pipeline-check.outputs.quality_status == 'success' && '✅ PASS' || '❌ FAIL' }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| Security | ${{ steps.pipeline-check.outputs.security_status }} | ✅ Success | ${{ steps.pipeline-check.outputs.security_status == 'success' && '✅ PASS' || '❌ FAIL' }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| Build | ${{ steps.pipeline-check.outputs.build_status }} | ✅ Success | ${{ steps.pipeline-check.outputs.build_status == 'success' && '✅ PASS' || '❌ FAIL' }} |" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          
-          if [[ "${{ steps.pipeline-check.outputs.should_deploy }}" == "true" ]]; then
-            echo "### ✅ DEPLOYMENT: PROCEEDING" >> $GITHUB_STEP_SUMMARY
-            echo "All quality gates passed - deployment will proceed" >> $GITHUB_STEP_SUMMARY
-          else
-            echo "### ⏳ DEPLOYMENT: BLOCKED" >> $GITHUB_STEP_SUMMARY
-            echo "Waiting for all pipelines to complete successfully" >> $GITHUB_STEP_SUMMARY
-          fi
-
-  pre-deploy-checks:
-    name: Pre-Deploy Verification
+  deploy:
+    name: Deploy to Production
     runs-on: ubuntu-latest
     needs: check-pipelines
     if: needs.check-pipelines.outputs.should-deploy == 'true'
     environment: production
     steps:
-      - name: Gate verification
-        run: |
-          echo "🎯 Verifying deployment gates..."
-          
-          QUALITY_STATUS="${{ needs.check-pipelines.outputs.quality-status }}"
-          SECURITY_STATUS="${{ needs.check-pipelines.outputs.security-status }}"
-          BUILD_STATUS="${{ needs.check-pipelines.outputs.build-status }}"
-          
-          if [ "${{ inputs.force-deploy }}" = "true" ]; then
-            echo "🚀 Force deploy mode - skipping gate verification"
-            echo "⚠️ WARNING: Deploying without full pipeline validation"
-            exit 0
-          fi
-          
-          echo "📊 Gate Status:"
-          echo "- Quality: $QUALITY_STATUS"
-          echo "- Security: $SECURITY_STATUS"
-          echo "- Build: $BUILD_STATUS"
-          
-          if [[ "$QUALITY_STATUS" != "success" || "$SECURITY_STATUS" != "success" || "$BUILD_STATUS" != "success" ]]; then
-            echo "🚨 DEPLOY BLOCKED: Not all gates passed"
-            exit 1
-          fi
-          
-          echo "✅ All deployment gates verified"
-          echo "🎉 Proceeding with deployment..."
-
-  deploy:
-    name: Deploy to Production
-    runs-on: ubuntu-latest
-    needs: [check-pipelines, pre-deploy-checks]
-    environment: production
-    steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Get build workflow run ID
-        id: get-build-run
-        run: |
-          COMMIT_SHA="${{ needs.check-pipelines.outputs.commit-sha }}"
-          
-          # Get the most recent successful CI: Build & Package run for this commit
-          BUILD_RUN_ID=$(gh api repos/${{ github.repository }}/actions/runs \
-            --jq ".workflow_runs[] | select(.head_sha == \"$COMMIT_SHA\" and .name == \"CI: Build & Package\" and .conclusion == \"success\") | .id" \
-            | head -1)
-          
-          if [ -z "$BUILD_RUN_ID" ]; then
-            echo "❌ No successful CI: Build & Package run found for commit: $COMMIT_SHA"
-            exit 1
-          fi
-          
-          echo "build_run_id=$BUILD_RUN_ID" >> $GITHUB_OUTPUT
-          echo "✅ Found CI: Build & Package run: $BUILD_RUN_ID"
-        env:
-          GH_TOKEN: ${{ github.token }}
-
-      - name: Download build artifacts
+      - name: Get build artifacts
         run: |
           COMMIT_SHA="${{ needs.check-pipelines.outputs.commit-sha }}"
           ARTIFACT_NAME="build-files-$COMMIT_SHA"
-          BUILD_RUN_ID="${{ steps.get-build-run.outputs.build_run_id }}"
           
-          echo "🔍 Downloading artifact: $ARTIFACT_NAME from run: $BUILD_RUN_ID"
+          # Get the build run ID
+          BUILD_RUN_ID=$(gh api repos/${{ github.repository }}/actions/runs \
+            --jq ".workflow_runs[] | select(.head_sha == \"$COMMIT_SHA\" and .name == \"CI Build\" and .conclusion == \"success\") | .id" \
+            | head -1)
           
-          # Get artifact download URL
-          ARTIFACT_URL=$(gh api repos/${{ github.repository }}/actions/runs/$BUILD_RUN_ID/artifacts \
-            --jq ".artifacts[] | select(.name == \"$ARTIFACT_NAME\") | .archive_download_url")
-          
-          if [ -z "$ARTIFACT_URL" ]; then
-            echo "❌ Artifact not found: $ARTIFACT_NAME"
+          if [ -z "$BUILD_RUN_ID" ]; then
+            echo "❌ No successful CI Build run found"
             exit 1
           fi
           
-          # Download and extract artifact
+          # Download artifacts
+          ARTIFACT_URL=$(gh api repos/${{ github.repository }}/actions/runs/$BUILD_RUN_ID/artifacts \
+            --jq ".artifacts[] | select(.name == \"$ARTIFACT_NAME\") | .archive_download_url")
+          
           mkdir -p dist
           curl -L -H "Authorization: token ${{ github.token }}" \
             -H "Accept: application/vnd.github.v3+json" \
@@ -211,25 +111,9 @@ jobs:
           unzip -q artifact.zip -d dist/
           rm artifact.zip
           
-          echo "✅ Artifact downloaded and extracted to dist/"
+          echo "✅ Artifacts downloaded"
         env:
           GH_TOKEN: ${{ github.token }}
-
-      - name: Verify artifacts
-        run: |
-          if [ ! -d "dist" ]; then
-            echo "❌ Deploy failed: dist directory not found"
-            exit 1
-          fi
-          
-          if [ ! -f "dist/index.html" ]; then
-            echo "❌ Deploy failed: index.html not found"
-            exit 1
-          fi
-          
-          echo "✅ Artifacts verified"
-          echo "📊 Artifact contents:"
-          find dist/ -type f | head -10
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -243,113 +127,7 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-      - name: Deployment verification
-        run: |
-          echo "🚀 Verifying deployment..."
-          # Wait a moment for deployment to be ready
-          sleep 10
-          
-          # Basic check that the URL responds
-          DEPLOY_URL="${{ steps.deployment.outputs.page_url }}"
-          if curl -f -s "$DEPLOY_URL" > /dev/null; then
-            echo "✅ Deployment verification passed"
-          else
-            echo "⚠️ Deployment URL not immediately accessible (may take a few minutes)"
-          fi
-
-  deploy-summary:
-    name: Deploy Summary
-    runs-on: ubuntu-latest
-    needs: [check-pipelines, pre-deploy-checks, deploy]
-    if: always()
-    outputs:
-      status: ${{ steps.summary.outputs.status }}
-    steps:
-      - name: Generate deployment summary
-        id: summary
-        run: |
-          echo "## 🚀 DEPLOY PIPELINE - FINAL SUMMARY" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Pipeline:** Production Deployment" >> $GITHUB_STEP_SUMMARY
-          echo "**Timestamp:** $(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY
-          echo "**Commit:** ${{ needs.check-pipelines.outputs.commit-sha }}" >> $GITHUB_STEP_SUMMARY
-          echo "**Trigger:** ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
-          echo "**Force Deploy:** ${{ inputs.force-deploy || 'false' }}" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          
-          # Gate verification status
-          echo "### 🚪 Gate Verification Results" >> $GITHUB_STEP_SUMMARY
-          echo "| Gate | Status | Result | Action Required |" >> $GITHUB_STEP_SUMMARY
-          echo "|------|--------|--------|-----------------|" >> $GITHUB_STEP_SUMMARY
-          echo "| Quality | ${{ needs.check-pipelines.outputs.quality-status }} | ${{ needs.check-pipelines.outputs.quality-status == 'success' && '✅ PASS' || '❌ FAIL' }} | ${{ needs.check-pipelines.outputs.quality-status == 'success' && 'None' || 'Fix quality issues' }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| Security | ${{ needs.check-pipelines.outputs.security-status }} | ${{ needs.check-pipelines.outputs.security-status == 'success' && '✅ PASS' || '❌ FAIL' }} | ${{ needs.check-pipelines.outputs.security-status == 'success' && 'None' || 'Fix security issues' }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| Build | ${{ needs.check-pipelines.outputs.build-status }} | ${{ needs.check-pipelines.outputs.build-status == 'success' && '✅ PASS' || '❌ FAIL' }} | ${{ needs.check-pipelines.outputs.build-status == 'success' && 'None' || 'Fix build issues' }} |" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          
-          # Deployment steps status
-          echo "### 🔧 Deployment Steps" >> $GITHUB_STEP_SUMMARY
-          echo "| Step | Status | Description | Action Required |" >> $GITHUB_STEP_SUMMARY
-          echo "|------|--------|-------------|-----------------|" >> $GITHUB_STEP_SUMMARY
-          echo "| Pipeline Check | ${{ needs.check-pipelines.result == 'success' && '✅ PASS' || '❌ FAIL' }} | Gate verification | ${{ needs.check-pipelines.result == 'success' && 'None' || 'Check pipeline status' }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| Pre-Deploy | ${{ needs.pre-deploy-checks.result == 'success' && '✅ PASS' || needs.pre-deploy-checks.result == 'skipped' && '⏭️ SKIP' || '❌ FAIL' }} | Final verification | ${{ needs.pre-deploy-checks.result == 'success' && 'None' || 'Check gate failures' }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| Deploy | ${{ needs.deploy.result == 'success' && '✅ PASS' || needs.deploy.result == 'skipped' && '⏭️ SKIP' || '❌ FAIL' }} | GitHub Pages deployment | ${{ needs.deploy.result == 'success' && 'None' || 'Check deployment logs' }} |" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          
-          # Determine overall status
-          if [[ "${{ needs.check-pipelines.outputs.should-deploy }}" == "true" && 
-                "${{ needs.pre-deploy-checks.result }}" == "success" && 
-                "${{ needs.deploy.result }}" == "success" ]]; then
-            echo "status=success" >> $GITHUB_OUTPUT
-            echo "### ✅ OVERALL STATUS: SUCCESS" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "🎉 **Deployment completed successfully!**" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "**Deployment Details:**" >> $GITHUB_STEP_SUMMARY
-            echo "- 🌐 URL: GitHub Pages URL" >> $GITHUB_STEP_SUMMARY
-            echo "- 📦 Build SHA: ${{ needs.check-pipelines.outputs.commit-sha }}" >> $GITHUB_STEP_SUMMARY
-            echo "- 🕐 Deployed: $(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "**Security Verification:**" >> $GITHUB_STEP_SUMMARY
-            echo "- ✅ Quality gate: PASSED" >> $GITHUB_STEP_SUMMARY
-            echo "- ✅ Security gate: PASSED" >> $GITHUB_STEP_SUMMARY
-            echo "- ✅ Build gate: PASSED" >> $GITHUB_STEP_SUMMARY
-          elif [[ "${{ needs.check-pipelines.outputs.should-deploy }}" == "false" ]]; then
-            echo "status=blocked" >> $GITHUB_OUTPUT
-            echo "### ⏳ OVERALL STATUS: BLOCKED" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "**Deployment blocked - not all pipelines passed**" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "**Required Actions:**" >> $GITHUB_STEP_SUMMARY
-            echo "- Fix failing pipelines and push new commit" >> $GITHUB_STEP_SUMMARY
-            echo "- Or use manual deploy with force-deploy option" >> $GITHUB_STEP_SUMMARY
-          else
-            echo "status=failure" >> $GITHUB_OUTPUT
-            echo "### ❌ OVERALL STATUS: FAILURE" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "**Deployment failed during execution**" >> $GITHUB_STEP_SUMMARY
-            echo "Check the logs above for specific error details" >> $GITHUB_STEP_SUMMARY
-          fi
-          
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "---" >> $GITHUB_STEP_SUMMARY
-          echo "**For AI Analysis:** DEPLOY_PIPELINE_STATUS=${{ needs.deploy.result == 'success' && 'SUCCESS' || 'FAILURE' }}" >> $GITHUB_STEP_SUMMARY
-
-      - name: Success notification
-        if: needs.deploy.result == 'success'
+      - name: Deployment success
         run: |
           echo "🎉 Deployment successful!"
-          echo "🛡️ All security gates passed"
-          echo "📦 Build SHA: ${{ needs.check-pipelines.outputs.commit-sha }}"
-
-      - name: Blocked notification
-        if: needs.check-pipelines.outputs.should-deploy == 'false'
-        run: |
-          echo "⏳ Deployment blocked!"
-          echo "Not all pipelines completed successfully"
-          echo "Fix issues and push new commit, or use force-deploy option"
-
-      - name: Failure notification
-        if: needs.deploy.result == 'failure'
-        run: |
-          echo "❌ Deployment failed!"
-          echo "Check the deployment logs for details"
+          echo "📍 URL: ${{ steps.deployment.outputs.page_url }}"
