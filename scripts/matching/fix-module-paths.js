@@ -8,8 +8,8 @@
 import fs from 'fs';
 import path from 'path';
 
-const MODULES_FILE = 'public/src/assets/data/learningModules.json';
-const DATA_DIR = 'public/src/assets/data';
+const MODULES_FILE = 'public/data/learningModules.json';
+const DATA_DIR = 'public/data';
 
 /**
  * Mapeo de patrones de archivos a sus subcarpetas correctas
@@ -44,7 +44,7 @@ function fixDataPath(dataPath) {
   // Encontrar el mapeo correcto
   for (const [prefix, folder] of Object.entries(pathMappings)) {
     if (fileName.startsWith(prefix)) {
-      return `src/assets/data/${folder}${fileName}`;
+      return `data/${folder}${fileName}`;
     }
   }
   

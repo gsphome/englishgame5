@@ -13,7 +13,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Configuración
-const DATA_DIR = 'public/src/assets/data';
+const DATA_DIR = 'public/data';
 const MODULES_FILE = path.join(DATA_DIR, 'learningModules.json');
 
 /**

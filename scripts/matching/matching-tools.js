@@ -90,7 +90,7 @@ function showStatus() {
   
   try {
     // Verificar archivos principales
-    const modulesPath = 'public/src/assets/data/learningModules.json';
+    const modulesPath = 'public/data/learningModules.json';
     const componentPath = 'src/components/learning/MatchingComponent.tsx';
     
     console.log(`${colors.bright}📁 Archivos principales:${colors.reset}`);

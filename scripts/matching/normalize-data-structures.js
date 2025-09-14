@@ -8,7 +8,7 @@
 import fs from 'fs';
 import path from 'path';
 
-const MODULES_FILE = 'public/src/assets/data/learningModules.json';
+const MODULES_FILE = 'public/data/learningModules.json';
 
 /**
  * Normaliza datos de flashcard
