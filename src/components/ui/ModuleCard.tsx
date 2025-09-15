@@ -1,5 +1,14 @@
 import React from 'react';
-import { CreditCard, HelpCircle, PenTool, BarChart3, Link, Lock, CheckCircle } from 'lucide-react';
+import {
+  CreditCard,
+  HelpCircle,
+  PenTool,
+  BarChart3,
+  Link,
+  Lock,
+  LockOpen,
+  CheckCircle,
+} from 'lucide-react';
 import { useModuleProgression } from '../../hooks/useProgression';
 import type { LearningModule } from '../../types';
 
@@ -83,14 +92,14 @@ export const ModuleCard: React.FC<ModuleCardProps> = ({
       case 'completed':
         return {
           className: 'module-card--completed',
-          statusIcon: <CheckCircle size={16} className="text-green-600" />,
+          statusIcon: <CheckCircle size={12} className="text-white" />,
           statusText: 'Completed',
           disabled: false,
         };
       case 'unlocked':
         return {
           className: 'module-card--unlocked',
-          statusIcon: null,
+          statusIcon: <LockOpen size={12} className="text-white" />,
           statusText: 'Available',
           disabled: false,
         };
@@ -136,11 +145,6 @@ export const ModuleCard: React.FC<ModuleCardProps> = ({
           <div className="module-card__icon" aria-hidden="true">
             {statusInfo.disabled ? statusInfo.statusIcon : getIcon(module.learningMode)}
           </div>
-          {statusInfo.statusIcon && !statusInfo.disabled && (
-            <div className="module-card__status-icon" aria-hidden="true">
-              {statusInfo.statusIcon}
-            </div>
-          )}
         </div>
         <h3 className="module-card__title">{module.name}</h3>
         <div className="module-card__type" aria-label={`Exercise type: ${learningModeLabel}`}>
@@ -149,8 +153,21 @@ export const ModuleCard: React.FC<ModuleCardProps> = ({
         <div className="module-card__level" aria-label={`Difficulty level: ${difficultyLevel}`}>
           {difficultyLevel}
         </div>
+
+        {/* Status indicators - Same level for consistent positioning */}
+        {statusInfo.statusIcon && !statusInfo.disabled && (
+          <div
+            className={`module-card__status-indicator module-card__status-indicator--${progression.status}`}
+            aria-hidden="true"
+          >
+            {statusInfo.statusIcon}
+          </div>
+        )}
         {statusInfo.disabled && (
-          <div className="module-card__status" aria-label={statusInfo.statusText}>
+          <div
+            className="module-card__status-indicator module-card__status-indicator--locked"
+            aria-label={statusInfo.statusText}
+          >
             <Lock size={12} />
           </div>
         )}

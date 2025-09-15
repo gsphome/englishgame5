@@ -3,7 +3,6 @@ import { renderHook, waitFor } from '@testing-library/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import React from 'react';
 import { useAppConfig } from '../../../src/hooks/useAppConfig';
-import { useProgression } from '../../../src/hooks/useProgression';
 import { apiService } from '../../../src/services/api';
 import * as secureHttp from '../../../src/utils/secureHttp';
 import * as pathUtils from '../../../src/utils/pathUtils';
