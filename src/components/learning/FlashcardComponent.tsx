@@ -53,7 +53,7 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
         timeSpent: timeSpent,
       });
 
-      updateUserScore(module.id, randomizedFlashcards.length, timeSpent);
+      updateUserScore(module.id, 100, timeSpent); // 100% completion for finishing all flashcards
       setCurrentView('menu');
     }
   }, [
