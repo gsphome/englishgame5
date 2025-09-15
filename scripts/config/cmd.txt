@@ -1,3 +1,2 @@
 npm run build:full
-npm run deploy:full
-
+npm run gh:watch
