@@ -198,25 +198,5 @@
     "left": "She can't ___ a car",
     "right": "drive",
     "explanation": "'Can't' shows inability"
-  },
-  {
-    "left": "We ___ from different countries",
-    "right": "come",
-    "explanation": "Use base form of verb with 'we'"
-  },
-  {
-    "left": "They ___ in the garden",
-    "right": "work",
-    "explanation": "Use base form of verb with 'they'"
-  },
-  {
-    "left": "The children ___ loudly",
-    "right": "laugh",
-    "explanation": "Use base form of verb with plural nouns"
-  },
-  {
-    "left": "My brother ___ football",
-    "right": "plays",
-    "explanation": "Add 's' to verbs with singular nouns"
   }
 ]
