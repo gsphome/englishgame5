@@ -113,13 +113,13 @@ Basado en Nielsen Norman Group, mostrar inicialmente solo la información esenci
 
 ##### Patrón Visual para Flashcards
 ```
-┌─────────────────────────────────────┐
-│ Hello                               │
-│ Hola                               │
-│ /həˈloʊ/                           │
-│                                    │
+┌───────────────────────────────────┐
+│ Hello                             │
+│ Hola                              │
+│ /həˈloʊ/                          │
+│                                   │
 │ [💡 Tips] [🧠 Memory] [ℹ️ More]    │
-└─────────────────────────────────────┘
+└───────────────────────────────────┘
 
 Al hacer clic en [💡 Tips]:
 ┌─────────────────────────────────────┐
@@ -127,8 +127,8 @@ Al hacer clic en [💡 Tips]:
 │ • Used in formal and informal       │
 │   situations                        │
 │ • Standard greeting worldwide       │
-│                                    │
-│ [← Back] [🧠 Memory] [ℹ️ More]     │
+│                                     │
+│ [← Back] [🧠 Memory] [ℹ️ More]      │
 └─────────────────────────────────────┘
 ```
 
@@ -1317,32 +1317,183 @@ interface ContentCreationTask {
 }
 ```
 
-#### Fase 2: Crear Contenido Nuevo (Después de actualizar existente)
+#### Fase 2: Crear Contenido Nuevo Específico
+
+**Total de Módulos Nuevos a Crear: 18 módulos**
+
+##### A1 - Completar con 3 módulos temáticos (Prioridad Alta)
 ```json
-// new-content-creation-plan.json
 {
-  "phases": [
+  "level": "A1",
+  "currentModules": 5,
+  "targetModules": 8,
+  "newModules": [
     {
-      "id": "phase-2",
-      "name": "Completar A1 con contenido temático",
-      "targets": ["a1-business", "a1-travel", "a1-daily-life"],
-      "priority": "high",
-      "note": "Solo después de completar Fase 1"
+      "id": "a1-flashcard-business-basics",
+      "name": "Business Basics",
+      "learningMode": "flashcard",
+      "category": "Vocabulary",
+      "theme": "Business",
+      "estimatedItems": 20
     },
     {
-      "id": "phase-3", 
-      "name": "Balancear Business/Travel/Daily Life en A2-C2",
-      "targets": ["business-modules", "travel-modules", "daily-life-modules"],
-      "priority": "medium"
+      "id": "a1-flashcard-travel-essentials", 
+      "name": "Travel Essentials",
+      "learningMode": "flashcard",
+      "category": "Vocabulary", 
+      "theme": "Travel",
+      "estimatedItems": 20
     },
     {
-      "id": "phase-4",
-      "name": "Completar representación en todos los modos",
-      "targets": ["flashcard", "quiz", "completion", "sorting", "matching"],
-      "priority": "low"
+      "id": "a1-completion-daily-life-basics",
+      "name": "Daily Life Basics",
+      "learningMode": "completion",
+      "category": "Grammar",
+      "theme": "Daily Life", 
+      "estimatedItems": 15
     }
   ]
 }
+```
+
+##### A2-C2 - Balancear Rutas Temáticas (15 módulos adicionales)
+```json
+{
+  "thematicBalance": {
+    "business": {
+      "a2-quiz-business-communication": {
+        "name": "Business Communication",
+        "learningMode": "quiz",
+        "category": "Vocabulary",
+        "estimatedItems": 25
+      },
+      "b1-completion-business-meetings": {
+        "name": "Business Meetings", 
+        "learningMode": "completion",
+        "category": "Grammar",
+        "estimatedItems": 20
+      },
+      "b2-matching-business-idioms": {
+        "name": "Business Idioms",
+        "learningMode": "matching", 
+        "category": "Idioms",
+        "estimatedItems": 30
+      },
+      "c1-sorting-business-formal-language": {
+        "name": "Formal Business Language",
+        "learningMode": "sorting",
+        "category": "Vocabulary", 
+        "estimatedItems": 25
+      },
+      "c2-quiz-business-negotiations": {
+        "name": "Business Negotiations",
+        "learningMode": "quiz",
+        "category": "Vocabulary",
+        "estimatedItems": 30
+      }
+    },
+    "travel": {
+      "a2-completion-travel-past-experiences": {
+        "name": "Travel Past Experiences",
+        "learningMode": "completion",
+        "category": "Grammar",
+        "estimatedItems": 20
+      },
+      "b1-matching-travel-phrasal-verbs": {
+        "name": "Travel Phrasal Verbs", 
+        "learningMode": "matching",
+        "category": "PhrasalVerbs",
+        "estimatedItems": 25
+      },
+      "b2-flashcard-travel-advanced": {
+        "name": "Advanced Travel Vocabulary",
+        "learningMode": "flashcard",
+        "category": "Vocabulary",
+        "estimatedItems": 35
+      },
+      "c1-quiz-travel-cultural-awareness": {
+        "name": "Travel Cultural Awareness",
+        "learningMode": "quiz", 
+        "category": "Vocabulary",
+        "estimatedItems": 25
+      },
+      "c2-sorting-travel-formal-complaints": {
+        "name": "Travel Formal Complaints",
+        "learningMode": "sorting",
+        "category": "Grammar",
+        "estimatedItems": 20
+      }
+    },
+    "dailyLife": {
+      "a2-flashcard-daily-routines": {
+        "name": "Daily Routines",
+        "learningMode": "flashcard", 
+        "category": "Vocabulary",
+        "estimatedItems": 25
+      },
+      "b1-sorting-daily-life-expressions": {
+        "name": "Daily Life Expressions",
+        "learningMode": "sorting",
+        "category": "Vocabulary", 
+        "estimatedItems": 30
+      },
+      "b2-completion-daily-life-conditionals": {
+        "name": "Daily Life Conditionals",
+        "learningMode": "completion",
+        "category": "Grammar",
+        "estimatedItems": 20
+      },
+      "c1-matching-daily-life-advanced-idioms": {
+        "name": "Advanced Daily Life Idioms", 
+        "learningMode": "matching",
+        "category": "Idioms",
+        "estimatedItems": 25
+      },
+      "c2-flashcard-daily-life-nuanced-vocabulary": {
+        "name": "Nuanced Daily Vocabulary",
+        "learningMode": "flashcard",
+        "category": "Vocabulary",
+        "estimatedItems": 30
+      }
+    }
+  }
+}
+```
+
+##### Resumen de Módulos Nuevos por Nivel
+```
+A1: 3 módulos nuevos (5 → 8 total)
+A2: 3 módulos nuevos (8 → 11 total) 
+B1: 3 módulos nuevos (8 → 11 total)
+B2: 3 módulos nuevos (9 → 12 total)
+C1: 3 módulos nuevos (8 → 11 total)
+C2: 3 módulos nuevos (8 → 11 total)
+
+Total: 18 módulos nuevos
+Total final: 64 módulos (46 existentes + 18 nuevos)
+```
+
+##### Distribución por Tema y Modo
+```
+Business: 6 módulos (A1-C2)
+├── Flashcard: 1 (A1)
+├── Quiz: 2 (A2, C2) 
+├── Completion: 1 (B1)
+├── Matching: 1 (B2)
+└── Sorting: 1 (C1)
+
+Travel: 6 módulos (A1-C2)
+├── Flashcard: 2 (A1, B2)
+├── Completion: 1 (A2)
+├── Matching: 1 (B1)
+├── Quiz: 1 (C1)
+└── Sorting: 1 (C2)
+
+Daily Life: 6 módulos (A1-C2)
+├── Completion: 2 (A1, B2)
+├── Flashcard: 2 (A2, C2)
+├── Sorting: 1 (B1)
+└── Matching: 1 (C1)
 ```
 
 #### Estrategia de Actualización de Módulos Existentes
