@@ -98,3 +98,17 @@ Las mejoras están diseñadas para implementarse de forma incremental sin requer
 3. WHEN un usuario demuestra dominio THEN el sistema SHALL extender intervalos de revisión apropiadamente
 4. IF contenido de revisión está pendiente THEN el sistema SHALL priorizarlo en desafíos diarios y micro-sesiones
 5. WHEN se calculan horarios de revisión THEN el sistema SHALL usar algoritmos de repetición espaciada considerando factor de facilidad y timing de intervalos
+
+### Requerimiento 8: Completar Contenido para Rutas Temáticas
+
+**Historia de Usuario:** Como estudiante de idiomas, quiero tener suficiente contenido en todas las rutas temáticas y niveles, para poder seguir un camino de aprendizaje completo y coherente.
+
+#### Criterios de Aceptación
+
+1. WHEN se implementen rutas temáticas THEN cada nivel (A1-C2) SHALL tener al menos 3 módulos por tema principal (Business, Travel, Daily Life)
+2. WHEN se analice contenido actual THEN el sistema SHALL identificar gaps de contenido por nivel y categoría
+3. WHEN se cree nuevo contenido THEN el sistema SHALL priorizar niveles con menos módulos disponibles (A1: 5 módulos vs otros niveles: 8-9 módulos)
+4. IF un nivel no tiene suficiente contenido para una ruta temática THEN el sistema SHALL crear módulos faltantes antes de habilitar esa ruta
+5. WHEN se generen módulos nuevos THEN el sistema SHALL mantener balance entre categorías (Vocabulary, Grammar, PhrasalVerbs, Idioms)
+6. WHEN se complete contenido faltante THEN cada nivel SHALL tener representación en todos los modos de aprendizaje (flashcard, quiz, completion, sorting, matching)
+7. IF se detectan gaps temáticos THEN el sistema SHALL crear contenido específico para Business, Travel, Daily Life y Academic en todos los niveles
