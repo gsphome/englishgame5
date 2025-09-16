@@ -1233,62 +1233,32 @@ const useAnalytics = () => {
 
 ### Estrategia de Completar Contenido
 
-### Análisis de Gaps Actuales para Inglés A1-C2
+### Estado Actual y Objetivo
 ```
 Distribución Actual de Módulos:
-- A1: 5 módulos (insuficiente para rutas temáticas)
-- A2: 8 módulos 
-- B1: 8 módulos
-- B2: 9 módulos  
-- C1: 8 módulos
-- C2: 8 módulos
+- A1: 5 módulos → Objetivo: 8 módulos (+3 temáticos)
+- A2: 8 módulos → Objetivo: 11 módulos (+3 temáticos)
+- B1: 8 módulos → Objetivo: 11 módulos (+3 temáticos)
+- B2: 9 módulos → Objetivo: 12 módulos (+3 temáticos)
+- C1: 8 módulos → Objetivo: 11 módulos (+3 temáticos)
+- C2: 8 módulos → Objetivo: 11 módulos (+3 temáticos)
 
-Categorías A1 Actuales:
-- Vocabulary: 2 módulos
-- Grammar: 2 módulos  
-- Review: 1 módulo
-- Faltantes: Business, Travel, Daily Life content
-
-Objetivo: Completar A1-C2 con contenido temático específico
+Total: 46 módulos existentes → 64 módulos finales (+18 nuevos)
 ```
 
-### Configuración de Contenido Inglés
+### Configuración de Contenido Temático
 ```json
 {
-  "contentRequirements": {
-    "levels": ["a1", "a2", "b1", "b2", "c1", "c2"],
+  "thematicContent": {
     "themes": ["business", "travel", "daily-life"],
-    "minimumModulesPerLevel": 8,
-    "minimumModulesPerTheme": 3,
-    "requiredCategories": ["Vocabulary", "Grammar", "PhrasalVerbs", "Idioms"],
-    "learningModes": ["flashcard", "quiz", "completion", "sorting", "matching"]
+    "modulesPerTheme": 6,
+    "totalNewModules": 18,
+    "distribution": {
+      "business": ["a1-flashcard-business-basics", "a2-quiz-business-communication", "..."],
+      "travel": ["a1-flashcard-travel-essentials", "a2-completion-travel-past-experiences", "..."],
+      "dailyLife": ["a1-completion-daily-life-basics", "a2-flashcard-daily-routines", "..."]
+    }
   }
-}
-```
-
-### Servicio de Análisis de Contenido
-```typescript
-interface ContentGapAnalysisService {
-  analyzeContentGaps(): ContentGapReport;
-  generateMissingModules(level: DifficultyLevel, theme: string): LearningModule[];
-  prioritizeContentCreation(): ContentCreationPlan;
-  validateThematicPathCompleteness(theme: string): boolean;
-}
-
-interface ContentGapReport {
-  levelGaps: Record<DifficultyLevel, number>;
-  thematicGaps: Record<string, DifficultyLevel[]>;
-  categoryGaps: Record<Category, DifficultyLevel[]>;
-  priorityList: ContentCreationTask[];
-}
-
-interface ContentCreationTask {
-  level: DifficultyLevel;
-  category: Category;
-  theme: string;
-  learningMode: LearningMode;
-  priority: 'high' | 'medium' | 'low';
-  estimatedEffort: number;
 }
 ```
 
