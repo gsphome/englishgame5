@@ -514,21 +514,35 @@ interface ConfigurationService {
 
 ### Estrategia de Completar Contenido
 
-### Análisis de Gaps Dinámico
+### Análisis de Gaps Actuales para Inglés A1-C2
 ```
-El sistema analizará dinámicamente:
-- Distribución de módulos por nivel (configurables)
-- Categorías disponibles vs requeridas (desde configuración)
-- Suficiencia de contenido por ruta temática (reglas configurables)
-- Balance entre modos de aprendizaje (criterios desde JSON)
+Distribución Actual de Módulos:
+- A1: 5 módulos (insuficiente para rutas temáticas)
+- A2: 8 módulos 
+- B1: 8 módulos
+- B2: 9 módulos  
+- C1: 8 módulos
+- C2: 8 módulos
 
-Ejemplo de configuración:
+Categorías A1 Actuales:
+- Vocabulary: 2 módulos
+- Grammar: 2 módulos  
+- Review: 1 módulo
+- Faltantes: Business, Travel, Daily Life content
+
+Objetivo: Completar A1-C2 con contenido temático específico
+```
+
+### Configuración de Contenido Inglés
+```json
 {
   "contentRequirements": {
-    "minimumModulesPerLevel": 6,
+    "levels": ["a1", "a2", "b1", "b2", "c1", "c2"],
+    "themes": ["business", "travel", "daily-life"],
+    "minimumModulesPerLevel": 8,
     "minimumModulesPerTheme": 3,
-    "requiredCategories": ["configurable", "desde", "JSON"],
-    "balanceRules": "definidas en configuración"
+    "requiredCategories": ["Vocabulary", "Grammar", "PhrasalVerbs", "Idioms"],
+    "learningModes": ["flashcard", "quiz", "completion", "sorting", "matching"]
   }
 }
 ```
@@ -559,24 +573,28 @@ interface ContentCreationTask {
 }
 ```
 
-### Plan de Creación de Contenido Configurable
+### Plan de Creación de Contenido Inglés A1-C2
 ```json
-// content-creation-plan.json
+// english-content-creation-plan.json
 {
   "phases": [
     {
       "id": "phase-1",
-      "name": "Completar niveles con déficit",
-      "criteria": "configurables desde JSON",
+      "name": "Completar A1 con contenido temático",
+      "targets": ["a1-business", "a1-travel", "a1-daily-life"],
       "priority": "high"
     },
     {
       "id": "phase-2", 
-      "name": "Balancear categorías",
-      "rules": "definidas en configuración"
+      "name": "Balancear Business/Travel/Daily Life en A2-C2",
+      "targets": ["business-modules", "travel-modules", "daily-life-modules"]
+    },
+    {
+      "id": "phase-3",
+      "name": "Completar representación en todos los modos",
+      "targets": ["flashcard", "quiz", "completion", "sorting", "matching"]
     }
-  ],
-  "creationRules": "completamente configurables"
+  ]
 }
 ```
 

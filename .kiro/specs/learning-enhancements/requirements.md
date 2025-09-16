@@ -103,14 +103,14 @@ Las mejoras están diseñadas para implementarse de forma incremental sin requer
 
 ### Requerimiento 8: Completar Contenido para Rutas Temáticas
 
-**Historia de Usuario:** Como usuario de la aplicación de aprendizaje, quiero tener suficiente contenido en todas las rutas temáticas y niveles, para poder seguir un camino de aprendizaje completo y coherente.
+**Historia de Usuario:** Como estudiante de inglés, quiero tener suficiente contenido en todas las rutas temáticas y niveles A1-C2, para poder seguir un camino de aprendizaje completo y coherente en Business, Travel y Daily Life.
 
 #### Criterios de Aceptación
 
-1. WHEN se implementen rutas temáticas THEN el sistema SHALL validar suficiencia de contenido según reglas configurables por ruta
-2. WHEN se analice contenido actual THEN el sistema SHALL identificar gaps usando algoritmos configurables de análisis
-3. WHEN se cree nuevo contenido THEN el sistema SHALL seguir reglas de priorización definidas en configuración de contenido
-4. IF un nivel no tiene suficiente contenido para una ruta temática THEN el sistema SHALL aplicar estrategias configurables de habilitación
-5. WHEN se generen módulos nuevos THEN el sistema SHALL mantener balance según reglas configurables de distribución
-6. WHEN se complete contenido faltante THEN el sistema SHALL validar representación usando criterios configurables por modo de aprendizaje
-7. IF se detectan gaps temáticos THEN el sistema SHALL usar plantillas configurables para creación de contenido específico
+1. WHEN se implementen rutas temáticas THEN cada nivel A1-C2 SHALL tener al menos 3 módulos para Business, Travel y Daily Life
+2. WHEN se analice contenido actual THEN el sistema SHALL identificar que A1 tiene solo 5 módulos vs 8-9 en otros niveles
+3. WHEN se cree nuevo contenido THEN el sistema SHALL priorizar A1 y completar gaps en Business, Travel, Daily Life para todos los niveles
+4. IF un nivel no tiene suficiente contenido para una ruta temática THEN el sistema SHALL crear módulos específicos antes de habilitar esa ruta
+5. WHEN se generen módulos nuevos THEN el sistema SHALL mantener balance entre categorías (Vocabulary, Grammar, PhrasalVerbs, Idioms)
+6. WHEN se complete contenido faltante THEN cada nivel A1-C2 SHALL tener representación en todos los modos de aprendizaje (flashcard, quiz, completion, sorting, matching)
+7. IF se detectan gaps temáticos THEN el sistema SHALL crear contenido específico de inglés para Business, Travel, Daily Life en todos los niveles A1-C2
