@@ -1,0 +1,158 @@
+/**
+ * FluentFlow Design System - Color Palette
+ * 
+ * Extracted from existing system components to maintain visual consistency
+ * for new learning enhancement features.
+ * 
+ * Usage: Import this file in new components to access standardized colors
+ */
+
+:root {
+  /* === HEADER SYSTEM COLORS === */
+  /* Light Mode */
+  --header-bg: #ffffff;
+  --header-border: #e5e7eb;
+  --header-text-primary: #111827;
+  --header-text-secondary: #6b7280;
+  --header-icon-color: #374151;
+  --header-icon-hover: #111827;
+  --header-button-hover-bg: #f3f4f6;
+  --header-button-active-bg: #e5e7eb;
+  --header-focus-ring: #3b82f6;
+
+  /* Side Menu */
+  --menu-bg: #ffffff;
+  --menu-border: #e5e7eb;
+  --menu-header-bg: #f9fafb;
+  --menu-item-hover: #f3f4f6;
+  --menu-item-active: #e5e7eb;
+
+  /* === SETTINGS SYSTEM COLORS === */
+  --settings-bg: #ffffff;
+  --settings-border: #e5e7eb;
+  --settings-text-primary: #111827;
+  --settings-text-secondary: #6b7280;
+  --settings-section-bg: #faf5ff;
+  --settings-section-border: #d8b4fe;
+  --settings-input-bg: #ffffff;
+  --settings-input-border: #d1d5db;
+  --settings-focus-ring: #8b5cf6;
+
+  /* === PRIMARY SYSTEM COLORS === */
+  --primary-blue: #3b82f6;
+  --primary-blue-hover: #2563eb;
+  --primary-blue-active: #1d4ed8;
+  --primary-purple: #8b5cf6;
+  --primary-purple-hover: #7c3aed;
+  --primary-purple-light: #d8b4fe;
+
+  /* === ENHANCEMENT COLORS FOR NEW FEATURES === */
+  /* Gamification */
+  --points-color: #f59e0b;
+  --streak-color: #ef4444;
+  --badge-gold: #fbbf24;
+  --badge-silver: #9ca3af;
+  --badge-bronze: #d97706;
+
+  /* Progress States */
+  --progress-complete: #10b981;
+  --progress-partial: #f59e0b;
+  --progress-locked: #6b7280;
+  --progress-available: #3b82f6;
+
+  /* Daily Challenges */
+  --challenge-available: #8b5cf6;
+  --challenge-completed: #10b981;
+  --challenge-missed: #ef4444;
+  --challenge-streak: #f59e0b;
+
+  /* Status Colors */
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --info: #3b82f6;
+
+  /* Neutral Grays */
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+}
+
+/* === DARK MODE COLORS === */
+.dark {
+  /* Header Dark Mode */
+  --header-bg: #1f2937;
+  --header-border: #4b5563;
+  --header-text-primary: #ffffff;
+  --header-text-secondary: #e5e7eb;
+  --header-icon-color: #e5e7eb;
+  --header-icon-hover: #ffffff;
+  --header-button-hover-bg: #4b5563;
+  --header-button-active-bg: #6b7280;
+
+  /* Settings Dark Mode */
+  --settings-bg: #1f2937;
+  --settings-border: #374151;
+  --settings-text-primary: #ffffff;
+  --settings-text-secondary: #d1d5db;
+  --settings-section-bg: rgba(139, 92, 246, 0.15);
+  --settings-section-border: #7c3aed;
+  --settings-input-bg: #374151;
+  --settings-input-border: #4b5563;
+  --settings-focus-ring: #a78bfa;
+
+  /* Enhancement Colors Dark Mode Adjustments */
+  --points-color: #fbbf24;
+  --streak-color: #f87171;
+  --badge-gold: #fcd34d;
+  --badge-silver: #d1d5db;
+  --badge-bronze: #fb923c;
+
+  --progress-complete: #34d399;
+  --progress-partial: #fbbf24;
+  --progress-locked: #9ca3af;
+  --progress-available: #60a5fa;
+
+  --challenge-available: #a78bfa;
+  --challenge-completed: #34d399;
+  --challenge-missed: #f87171;
+  --challenge-streak: #fbbf24;
+
+  --success: #34d399;
+  --warning: #fbbf24;
+  --error: #f87171;
+  --info: #60a5fa;
+}
+
+/* === ACCESSIBILITY HELPERS === */
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --header-text-primary: #000000;
+    --header-text-secondary: #333333;
+    --settings-text-primary: #000000;
+    --settings-text-secondary: #333333;
+  }
+
+  .dark {
+    --header-text-primary: #ffffff;
+    --header-text-secondary: #e5e5e5;
+    --settings-text-primary: #ffffff;
+    --settings-text-secondary: #e5e5e5;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
