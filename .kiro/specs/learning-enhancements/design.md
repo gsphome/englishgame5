@@ -1236,14 +1236,20 @@ const useAnalytics = () => {
 ### Estado Actual y Objetivo
 ```
 Distribución Actual de Módulos:
-- A1: 5 módulos → Objetivo: 8 módulos (+3 temáticos)
-- A2: 8 módulos → Objetivo: 11 módulos (+3 temáticos)
-- B1: 8 módulos → Objetivo: 11 módulos (+3 temáticos)
+- A1: 5 módulos → Objetivo: 10 módulos (+5 temáticos)
+- A2: 8 módulos → Objetivo: 12 módulos (+4 temáticos)
+- B1: 8 módulos → Objetivo: 12 módulos (+4 temáticos)
 - B2: 9 módulos → Objetivo: 12 módulos (+3 temáticos)
-- C1: 8 módulos → Objetivo: 11 módulos (+3 temáticos)
-- C2: 8 módulos → Objetivo: 11 módulos (+3 temáticos)
+- C1: 8 módulos → Objetivo: 12 módulos (+4 temáticos)
+- C2: 8 módulos → Objetivo: 12 módulos (+4 temáticos)
 
-Total: 46 módulos existentes → 64 módulos finales (+18 nuevos)
+Total: 46 módulos existentes → 70 módulos finales (+24 nuevos)
+
+Justificación de la distribución:
+- A1 necesita más módulos (+5) por ser nivel base fundamental
+- B2 necesita menos (+3) porque ya tiene 9 módulos
+- Todos los demás niveles se balancean a 12 módulos
+- Objetivo: 12 módulos por nivel para rutas temáticas robustas
 ```
 
 ### Configuración de Contenido Temático
@@ -1289,9 +1295,9 @@ Total: 46 módulos existentes → 64 módulos finales (+18 nuevos)
 
 #### Fase 2: Crear Contenido Nuevo Específico
 
-**Total de Módulos Nuevos a Crear: 18 módulos**
+**Total de Módulos Nuevos a Crear: 24 módulos**
 
-##### A1 - Completar con 3 módulos temáticos (Prioridad Alta)
+##### A1 - Completar con 5 módulos temáticos (Prioridad Alta)
 ```json
 {
   "level": "A1",
@@ -1326,7 +1332,7 @@ Total: 46 módulos existentes → 64 módulos finales (+18 nuevos)
 }
 ```
 
-##### A2-C2 - Balancear Rutas Temáticas (15 módulos adicionales)
+##### A2-C2 - Balancear Rutas Temáticas (19 módulos adicionales)
 ```json
 {
   "thematicBalance": {
@@ -1432,15 +1438,15 @@ Total: 46 módulos existentes → 64 módulos finales (+18 nuevos)
 
 ##### Resumen de Módulos Nuevos por Nivel
 ```
-A1: 3 módulos nuevos (5 → 8 total)
-A2: 3 módulos nuevos (8 → 11 total) 
-B1: 3 módulos nuevos (8 → 11 total)
+A1: 5 módulos nuevos (5 → 10 total)
+A2: 4 módulos nuevos (8 → 12 total) 
+B1: 4 módulos nuevos (8 → 12 total)
 B2: 3 módulos nuevos (9 → 12 total)
-C1: 3 módulos nuevos (8 → 11 total)
-C2: 3 módulos nuevos (8 → 11 total)
+C1: 4 módulos nuevos (8 → 12 total)
+C2: 4 módulos nuevos (8 → 12 total)
 
-Total: 18 módulos nuevos
-Total final: 64 módulos (46 existentes + 18 nuevos)
+Total: 24 módulos nuevos
+Total final: 70 módulos (46 existentes + 24 nuevos)
 ```
 
 ##### Distribución por Tema y Modo

@@ -119,18 +119,18 @@ Las mejoras están diseñadas para implementarse de forma incremental sin requer
 7. IF un módulo existente no tiene campos enriquecidos THEN el sistema SHALL priorizar su actualización antes de crear contenido nuevo
 8. WHEN se complete la actualización THEN todos los 46 módulos existentes (A1: 5, A2: 8, B1: 8, B2: 9, C1: 8, C2: 8) SHALL tener contenido enriquecido
 
-### Requerimiento 9: Crear 18 Módulos Nuevos para Rutas Temáticas
+### Requerimiento 9: Crear 24 Módulos Nuevos para Rutas Temáticas
 
 **Historia de Usuario:** Como estudiante de inglés, quiero tener suficiente contenido específico en Business, Travel y Daily Life en todos los niveles A1-C2, para poder seguir rutas de aprendizaje temáticas completas y coherentes.
 
 #### Criterios de Aceptación
 
-1. WHEN se implementen rutas temáticas THEN el sistema SHALL crear exactamente 18 módulos nuevos distribuidos en 3 temas
-2. WHEN se complete A1 THEN el sistema SHALL añadir 3 módulos específicos: Business Basics (flashcard), Travel Essentials (flashcard), Daily Life Basics (completion)
-3. WHEN se balanceen A2-C2 THEN el sistema SHALL crear 15 módulos adicionales: 5 Business + 5 Travel + 5 Daily Life
+1. WHEN se implementen rutas temáticas THEN el sistema SHALL crear exactamente 24 módulos nuevos distribuidos en 3 temas
+2. WHEN se complete A1 THEN el sistema SHALL añadir 5 módulos específicos para alcanzar 10 módulos totales
+3. WHEN se balanceen A2-C2 THEN el sistema SHALL crear 19 módulos adicionales para alcanzar 12 módulos por nivel
 4. WHEN se distribuyan por modos THEN cada tema SHALL tener representación en todos los modos de aprendizaje (flashcard, quiz, completion, sorting, matching)
 5. WHEN se creen módulos Business THEN el sistema SHALL incluir: Business Communication (A2), Business Meetings (B1), Business Idioms (B2), Formal Business Language (C1), Business Negotiations (C2)
 6. WHEN se creen módulos Travel THEN el sistema SHALL incluir: Travel Past Experiences (A2), Travel Phrasal Verbs (B1), Advanced Travel Vocabulary (B2), Travel Cultural Awareness (C1), Travel Formal Complaints (C2)
 7. WHEN se creen módulos Daily Life THEN el sistema SHALL incluir: Daily Routines (A2), Daily Life Expressions (B1), Daily Life Conditionals (B2), Advanced Daily Life Idioms (C1), Nuanced Daily Vocabulary (C2)
-8. WHEN se complete la creación THEN el sistema SHALL tener 64 módulos totales (46 existentes + 18 nuevos) distribuidos equilibradamente
+8. WHEN se complete la creación THEN el sistema SHALL tener 70 módulos totales (46 existentes + 24 nuevos) con 12 módulos por nivel
 9. WHEN se cree contenido nuevo THEN todos los módulos SHALL incluir campos enriquecidos desde su creación inicial
