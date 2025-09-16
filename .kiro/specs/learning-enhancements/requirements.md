@@ -101,7 +101,22 @@ Las mejoras están diseñadas para implementarse de forma incremental sin requer
 4. IF contenido de revisión está pendiente THEN el sistema SHALL priorizarlo en desafíos diarios y micro-sesiones
 5. WHEN se calculan horarios de revisión THEN el sistema SHALL usar algoritmos de repetición espaciada considerando factor de facilidad y timing de intervalos
 
-### Requerimiento 8: Completar Contenido para Rutas Temáticas
+### Requerimiento 8: Mejorar Módulos Existentes con Campos Enriquecidos
+
+**Historia de Usuario:** Como estudiante de inglés, quiero que todos los módulos existentes tengan explicaciones detalladas y contenido enriquecido, para poder aprender de manera más efectiva con el contenido que ya está disponible.
+
+#### Criterios de Aceptación
+
+1. WHEN se implementen mejoras de contenido THEN TODOS los archivos JSON existentes SHALL ser actualizados con campos enriquecidos
+2. WHEN se actualicen flashcards existentes THEN el sistema SHALL añadir contextualTips, memoryAids, culturalNotes y commonMistakes
+3. WHEN se actualicen quizzes existentes THEN el sistema SHALL añadir detailedExplanation, whyWrong, contextualInfo y memoryTricks
+4. WHEN se actualicen completion exercises existentes THEN el sistema SHALL añadir detailedExplanation, grammarRule, patternTips y relatedConcepts
+5. WHEN se actualicen sorting exercises existentes THEN el sistema SHALL añadir categoryExplanation, examples, relatedWords y usageNotes
+6. WHEN se actualicen matching exercises existentes THEN el sistema SHALL añadir connectionReason, alternativeMatches, contextExamples y memoryAids
+7. IF un módulo existente no tiene campos enriquecidos THEN el sistema SHALL priorizar su actualización antes de crear contenido nuevo
+8. WHEN se complete la actualización THEN todos los 46 módulos existentes (A1: 5, A2: 8, B1: 8, B2: 9, C1: 8, C2: 8) SHALL tener contenido enriquecido
+
+### Requerimiento 9: Completar Contenido para Rutas Temáticas
 
 **Historia de Usuario:** Como estudiante de inglés, quiero tener suficiente contenido en todas las rutas temáticas y niveles A1-C2, para poder seguir un camino de aprendizaje completo y coherente en Business, Travel y Daily Life.
 
@@ -114,3 +129,4 @@ Las mejoras están diseñadas para implementarse de forma incremental sin requer
 5. WHEN se generen módulos nuevos THEN el sistema SHALL mantener balance entre categorías (Vocabulary, Grammar, PhrasalVerbs, Idioms)
 6. WHEN se complete contenido faltante THEN cada nivel A1-C2 SHALL tener representación en todos los modos de aprendizaje (flashcard, quiz, completion, sorting, matching)
 7. IF se detectan gaps temáticos THEN el sistema SHALL crear contenido específico de inglés para Business, Travel, Daily Life en todos los niveles A1-C2
+8. WHEN se cree contenido nuevo THEN el sistema SHALL usar los campos enriquecidos definidos en el Requerimiento 8

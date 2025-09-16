@@ -1036,29 +1036,72 @@ interface ContentCreationTask {
 }
 ```
 
-### Plan de Creación de Contenido Inglés A1-C2
+### Plan de Actualización y Creación de Contenido
+
+#### Fase 1: Actualizar Módulos Existentes (Prioridad Alta)
 ```json
-// english-content-creation-plan.json
+// existing-content-enhancement-plan.json
 {
   "phases": [
     {
       "id": "phase-1",
-      "name": "Completar A1 con contenido temático",
-      "targets": ["a1-business", "a1-travel", "a1-daily-life"],
-      "priority": "high"
-    },
-    {
-      "id": "phase-2", 
-      "name": "Balancear Business/Travel/Daily Life en A2-C2",
-      "targets": ["business-modules", "travel-modules", "daily-life-modules"]
-    },
-    {
-      "id": "phase-3",
-      "name": "Completar representación en todos los modos",
-      "targets": ["flashcard", "quiz", "completion", "sorting", "matching"]
+      "name": "Enriquecer todos los módulos existentes",
+      "description": "Actualizar 46 módulos existentes con campos enriquecidos",
+      "targets": {
+        "a1": ["a1-flashcard-basic-vocabulary", "a1-matching-basic-grammar", "a1-matching-numbers-quantities", "a1-completion-basic-sentences", "a1-quiz-basic-review"],
+        "a2": ["a2-flashcard-family", "a2-flashcard-home", "a2-sorting-past-tense", "a2-completion-past-stories", "a2-matching-time-expressions", "a2-completion-comparatives-superlatives", "a2-completion-used-to", "a2-quiz-elementary-review"],
+        "b1": ["b1-flashcard-travel-leisure", "b1-sorting-modal-verbs", "b1-sorting-prepositions", "b1-completion-future-forms", "b1-matching-common-phrasal-verbs", "b1-quiz-idioms-everyday-situations", "b1-quiz-idioms-everyday-situations-alt", "b1-quiz-intermediate-review"],
+        "b2": ["b2-flashcard-ielts-general", "b2-completion-phrasal-verbs", "b2-sorting-connector-words", "b2-quiz-idioms-emotions-feelings", "b2-quiz-idioms-success-failure", "b2-quiz-idioms-time", "b2-quiz-idioms-nature-animals", "b2-flashcard-ielts-clothing-appearance", "b2-flashcard-ielts-technology"],
+        "c1": ["c1-flashcard-ielts-business", "c1-flashcard-ielts-home-daily-life", "c1-flashcard-ielts-problem-solving", "c1-quiz-advanced-grammar-conditionals", "c1-quiz-advanced-grammar-inversions", "c1-quiz-advanced-grammar-participles", "c1-quiz-advanced-grammar-subjunctive", "c1-matching-sample"],
+        "c2": ["c2-flashcard-academic", "c2-quiz-advanced-collocations-idioms", "c2-quiz-advanced-grammatical-structures", "c2-quiz-formal-vocabulary-nuance", "c2-sorting-nuance-vocabulary", "c2-completion-advanced-phrasal-verbs", "c2-completion-complex-prepositions-conjunctions", "c2-quiz-mastery-assessment"]
+      },
+      "priority": "critical"
     }
   ]
 }
+```
+
+#### Fase 2: Crear Contenido Nuevo (Después de actualizar existente)
+```json
+// new-content-creation-plan.json
+{
+  "phases": [
+    {
+      "id": "phase-2",
+      "name": "Completar A1 con contenido temático",
+      "targets": ["a1-business", "a1-travel", "a1-daily-life"],
+      "priority": "high",
+      "note": "Solo después de completar Fase 1"
+    },
+    {
+      "id": "phase-3", 
+      "name": "Balancear Business/Travel/Daily Life en A2-C2",
+      "targets": ["business-modules", "travel-modules", "daily-life-modules"],
+      "priority": "medium"
+    },
+    {
+      "id": "phase-4",
+      "name": "Completar representación en todos los modos",
+      "targets": ["flashcard", "quiz", "completion", "sorting", "matching"],
+      "priority": "low"
+    }
+  ]
+}
+```
+
+#### Estrategia de Actualización de Módulos Existentes
+```typescript
+interface ContentEnhancementStrategy {
+  updateExistingModule(moduleId: string, learningMode: LearningMode): Promise<void>;
+  validateEnhancedContent(data: LearningData[]): ValidationResult;
+  prioritizeModuleUpdates(): string[]; // Lista priorizada de módulos a actualizar
+}
+
+// Orden de prioridad para actualización:
+// 1. A1 modules (base fundamental)
+// 2. A2 modules (construcción sobre base)
+// 3. B1-B2 modules (nivel intermedio)
+// 4. C1-C2 modules (nivel avanzado)
 ```
 
 ## Documentación de Paleta de Colores Existente
