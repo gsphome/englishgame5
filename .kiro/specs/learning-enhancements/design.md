@@ -558,6 +558,150 @@ interface ConfigurationService {
 }
 ```
 
+## Sistema de Diseño y Consistencia Visual
+
+### Principios de Diseño Visual
+1. **BEM-Like Naming Convention**: Mantener consistencia con sistema existente
+2. **Separación de Responsabilidades**: HTML semántico + CSS dedicado + Tailwind con @apply
+3. **Modo Light/Dark**: Soporte completo para ambos temas
+4. **Diseño Compacto**: Mantener el estilo minimalista y eficiente existente
+5. **Paleta de Colores Homóloga**: Usar colores existentes del sistema
+
+### Estructura CSS para Nuevas Funcionalidades
+```css
+/* src/styles/components/daily-challenge.css */
+.daily-challenge {
+  /* Estilos base usando @apply */
+}
+
+.daily-challenge__header {
+  /* BEM-like element */
+}
+
+.daily-challenge--active {
+  /* BEM-like modifier */
+}
+
+.daily-challenge__notification {
+  /* Elemento de notificación */
+}
+```
+
+### Paleta de Colores del Sistema Existente
+```css
+/* Extraer de sistema actual para documentar */
+:root {
+  /* Colores primarios existentes */
+  --primary-color: /* valor actual */;
+  --secondary-color: /* valor actual */;
+  --accent-color: /* valor actual */;
+  
+  /* Colores de estado existentes */
+  --success-color: /* valor actual */;
+  --error-color: /* valor actual */;
+  --warning-color: /* valor actual */;
+  
+  /* Colores de tema existentes */
+  --bg-primary-light: /* valor actual */;
+  --bg-primary-dark: /* valor actual */;
+  --text-primary-light: /* valor actual */;
+  --text-primary-dark: /* valor actual */;
+}
+```
+
+### Componentes de Diseño Nuevos
+```typescript
+// Todos los nuevos componentes seguirán el patrón existente:
+interface ComponentProps {
+  className?: string;  // Para BEM-like classes
+  theme?: 'light' | 'dark';  // Soporte de tema
+}
+
+// Ejemplo de componente con diseño consistente
+const DailyChallengeCard: React.FC<ComponentProps> = ({ className, theme }) => {
+  return (
+    <div className={`daily-challenge ${className || ''}`}>
+      {/* Contenido usando clases BEM-like */}
+    </div>
+  );
+};
+```
+
+## Internacionalización (i18n)
+
+### Soporte Completo de i18n
+Todas las nuevas funcionalidades deben soportar el sistema i18n existente:
+
+```typescript
+// Claves de traducción para nuevas funcionalidades
+interface EnhancementTranslations {
+  dailyChallenge: {
+    title: string;
+    description: string;
+    startButton: string;
+    completedMessage: string;
+    streakMessage: string;
+  };
+  gamification: {
+    points: string;
+    badges: string;
+    achievements: string;
+    streak: string;
+  };
+  progress: {
+    analytics: string;
+    trends: string;
+    completion: string;
+    performance: string;
+  };
+  themes: {
+    business: string;
+    travel: string;
+    dailyLife: string;
+    academic: string;
+  };
+}
+```
+
+### Archivos de Traducción
+```json
+// public/locales/en/enhancements.json
+{
+  "dailyChallenge": {
+    "title": "Daily Challenge",
+    "description": "Complete today's mixed learning challenge",
+    "startButton": "Start Challenge",
+    "completedMessage": "Challenge completed! +{{points}} points",
+    "streakMessage": "{{days}} day streak! 🔥"
+  }
+}
+
+// public/locales/es/enhancements.json  
+{
+  "dailyChallenge": {
+    "title": "Desafío Diario",
+    "description": "Completa el desafío de aprendizaje mixto de hoy",
+    "startButton": "Iniciar Desafío",
+    "completedMessage": "¡Desafío completado! +{{points}} puntos",
+    "streakMessage": "¡Racha de {{days}} días! 🔥"
+  }
+}
+```
+
+### Hook de Traducción para Nuevas Funcionalidades
+```typescript
+const useEnhancementTranslations = () => {
+  const { t } = useTranslation('enhancements');
+  
+  return {
+    dailyChallenge: t('dailyChallenge', { returnObjects: true }),
+    gamification: t('gamification', { returnObjects: true }),
+    progress: t('progress', { returnObjects: true }),
+    themes: t('themes', { returnObjects: true })
+  };
+};
+```
+
 ## Integración No Invasiva con UI Existente
 
 ### Principios de Diseño UI
@@ -714,9 +858,64 @@ interface ContentCreationTask {
 }
 ```
 
+## Documentación de Paleta de Colores Existente
+
+### Tarea Previa: Extraer Paleta Actual
+Antes de implementar nuevas funcionalidades, se debe crear:
+
+```
+src/styles/design-system/
+├── color-palette.css          # Paleta extraída del sistema actual
+├── typography.css             # Tipografías existentes
+├── spacing.css                # Espaciados y medidas
+└── components-reference.css   # Referencia de componentes existentes
+```
+
+### Proceso de Extracción de Colores
+1. **Analizar CSS existente** para identificar colores usados
+2. **Documentar variables CSS** actuales
+3. **Crear paleta de referencia** para nuevos componentes
+4. **Validar consistencia** entre light y dark mode
+5. **Generar guía de uso** para nuevas funcionalidades
+
+### Ejemplo de Documentación de Paleta
+```css
+/* src/styles/design-system/color-palette.css */
+/* EXTRAÍDO DEL SISTEMA ACTUAL - NO INVENTAR COLORES */
+
+/* Colores Primarios */
+:root {
+  --primary-50: /* extraer del CSS actual */;
+  --primary-100: /* extraer del CSS actual */;
+  --primary-500: /* extraer del CSS actual */;
+  --primary-900: /* extraer del CSS actual */;
+}
+
+/* Colores de Estado */
+:root {
+  --success: /* extraer del CSS actual */;
+  --error: /* extraer del CSS actual */;
+  --warning: /* extraer del CSS actual */;
+  --info: /* extraer del CSS actual */;
+}
+
+/* Modo Dark */
+[data-theme="dark"] {
+  --primary-50: /* versión dark extraída */;
+  /* ... resto de colores dark mode */
+}
+```
+
+### Validación de Consistencia Visual
+- **Audit de colores actuales**: Identificar todos los colores en uso
+- **Mapeo de componentes**: Documentar qué colores usa cada componente
+- **Test de contraste**: Validar accesibilidad en ambos modos
+- **Guía de uso**: Cuándo usar cada color y variante
+
 ## Monitoring
 - Track performance impact of new features
-- Monitor bundle size increases
+- Monitor bundle size increases  
 - Measure user engagement with new features
 - Analytics on feature adoption rates
 - Monitor content gap resolution progress
+- **Visual consistency monitoring**: Ensure new components match existing design system
