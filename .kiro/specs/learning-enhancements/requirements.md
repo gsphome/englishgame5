@@ -1,93 +1,93 @@
-# Requirements Document
+# Documento de Requerimientos
 
-## Introduction
+## Introducción
 
-This feature enhances the FluentFlow learning application by implementing key improvements identified through competitive analysis with leading language learning platforms (Duolingo, Babbel, Memrise, Busuu). The enhancements focus on improving user engagement, learning effectiveness, and content quality while leveraging the existing robust architecture.
+Esta funcionalidad mejora la aplicación de aprendizaje FluentFlow implementando mejoras clave identificadas a través del análisis competitivo con plataformas líderes de aprendizaje de idiomas (Duolingo, Babbel, Memrise, Busuu). Las mejoras se enfocan en mejorar el engagement del usuario, la efectividad del aprendizaje y la calidad del contenido, aprovechando la arquitectura robusta existente.
 
-The improvements are designed to be implemented incrementally without requiring major architectural changes, utilizing existing components, stores, and data structures.
+Las mejoras están diseñadas para implementarse de forma incremental sin requerir cambios arquitectónicos mayores, utilizando componentes, stores y estructuras de datos existentes.
 
-## Requirements
+## Requerimientos
 
-### Requirement 1: Enhanced Content Quality
+### Requerimiento 1: Calidad de Contenido Mejorada
 
-**User Story:** As a language learner, I want more detailed explanations and contextual information in exercises, so that I can better understand grammar rules and usage patterns.
+**Historia de Usuario:** Como estudiante de idiomas, quiero explicaciones más detalladas e información contextual en los ejercicios, para poder entender mejor las reglas gramaticales y patrones de uso.
 
-#### Acceptance Criteria
+#### Criterios de Aceptación
 
-1. WHEN a user completes a completion exercise THEN the system SHALL display detailed explanations that include grammar rules and usage context
-2. WHEN a user views a flashcard THEN the system SHALL provide contextual tips and memory aids beyond basic translations
-3. WHEN a user answers incorrectly THEN the system SHALL show comprehensive feedback with learning hints
-4. IF an exercise involves grammar concepts THEN the system SHALL include pattern recognition tips and common mistake warnings
+1. WHEN un usuario completa un ejercicio de completion THEN el sistema SHALL mostrar explicaciones detalladas que incluyan reglas gramaticales y contexto de uso
+2. WHEN un usuario ve una flashcard THEN el sistema SHALL proporcionar tips contextuales y ayudas de memoria más allá de traducciones básicas
+3. WHEN un usuario responde incorrectamente THEN el sistema SHALL mostrar feedback comprensivo con hints de aprendizaje
+4. IF un ejercicio involucra conceptos gramaticales THEN el sistema SHALL incluir tips de reconocimiento de patrones y advertencias de errores comunes
 
-### Requirement 2: Daily Challenge System
+### Requerimiento 2: Sistema de Desafío Diario
 
-**User Story:** As a language learner, I want a daily challenge that combines different learning modes, so that I can maintain consistent study habits and experience varied practice.
+**Historia de Usuario:** Como estudiante de idiomas, quiero un desafío diario que combine diferentes modos de aprendizaje, para poder mantener hábitos de estudio consistentes y experimentar práctica variada.
 
-#### Acceptance Criteria
+#### Criterios de Aceptación
 
-1. WHEN a user opens the app each day THEN the system SHALL present a unique daily challenge combining 3-5 different learning modes
-2. WHEN a user completes a daily challenge THEN the system SHALL award bonus points and track streak progress
-3. WHEN generating daily challenges THEN the system SHALL select content appropriate to the user's current level and progress
-4. IF a user misses a day THEN the system SHALL reset the streak counter but preserve the challenge availability
-5. WHEN a daily challenge is completed THEN the system SHALL unlock the next day's challenge
+1. WHEN un usuario abre la app cada día THEN el sistema SHALL presentar un desafío diario único combinando 3-5 modos de aprendizaje diferentes
+2. WHEN un usuario completa un desafío diario THEN el sistema SHALL otorgar puntos bonus y rastrear el progreso de racha
+3. WHEN se generan desafíos diarios THEN el sistema SHALL seleccionar contenido apropiado al nivel actual y progreso del usuario
+4. IF un usuario pierde un día THEN el sistema SHALL resetear el contador de racha pero preservar la disponibilidad del desafío
+5. WHEN un desafío diario es completado THEN el sistema SHALL desbloquear el desafío del siguiente día
 
-### Requirement 3: Visual Progress Tracking
+### Requerimiento 3: Seguimiento Visual de Progreso
 
-**User Story:** As a language learner, I want to see visual representations of my learning progress, so that I can stay motivated and understand my strengths and areas for improvement.
+**Historia de Usuario:** Como estudiante de idiomas, quiero ver representaciones visuales de mi progreso de aprendizaje, para mantenerme motivado y entender mis fortalezas y áreas de mejora.
 
-#### Acceptance Criteria
+#### Criterios de Aceptación
 
-1. WHEN a user views their progress THEN the system SHALL display visual charts showing accuracy trends over time
-2. WHEN a user completes modules THEN the system SHALL update progress bars showing completion percentage by level (A1-C2)
-3. WHEN a user accesses the progress section THEN the system SHALL show module completion status with visual indicators
-4. IF a user has completed multiple sessions THEN the system SHALL display performance analytics including time spent and improvement trends
-5. WHEN viewing progress THEN the system SHALL highlight achievements and milestones reached
+1. WHEN un usuario ve su progreso THEN el sistema SHALL mostrar gráficos visuales mostrando tendencias de precisión a lo largo del tiempo
+2. WHEN un usuario completa módulos THEN el sistema SHALL actualizar barras de progreso mostrando porcentaje de completación por nivel (A1-C2)
+3. WHEN un usuario accede a la sección de progreso THEN el sistema SHALL mostrar estado de completación de módulos con indicadores visuales
+4. IF un usuario ha completado múltiples sesiones THEN el sistema SHALL mostrar analytics de rendimiento incluyendo tiempo gastado y tendencias de mejora
+5. WHEN se ve el progreso THEN el sistema SHALL resaltar logros y hitos alcanzados
 
-### Requirement 4: Gamification and Achievement System
+### Requerimiento 4: Sistema de Gamificación y Logros
 
-**User Story:** As a language learner, I want to earn points and badges for my learning activities, so that I feel motivated and rewarded for consistent study.
+**Historia de Usuario:** Como estudiante de idiomas, quiero ganar puntos y badges por mis actividades de aprendizaje, para sentirme motivado y recompensado por el estudio consistente.
 
-#### Acceptance Criteria
+#### Criterios de Aceptación
 
-1. WHEN a user answers correctly THEN the system SHALL award points based on difficulty and accuracy
-2. WHEN a user completes a module THEN the system SHALL award completion bonuses and update total score
-3. WHEN a user reaches point milestones THEN the system SHALL unlock achievement badges
-4. IF a user studies consecutively THEN the system SHALL track and reward study streaks
-5. WHEN a user views their profile THEN the system SHALL display earned badges, total points, and current streak
-6. WHEN calculating points THEN the system SHALL consider factors like difficulty level, time taken, and accuracy percentage
+1. WHEN un usuario responde correctamente THEN el sistema SHALL otorgar puntos basados en dificultad y precisión
+2. WHEN un usuario completa un módulo THEN el sistema SHALL otorgar bonos de completación y actualizar puntaje total
+3. WHEN un usuario alcanza hitos de puntos THEN el sistema SHALL desbloquear badges de logro
+4. IF un usuario estudia consecutivamente THEN el sistema SHALL rastrear y recompensar rachas de estudio
+5. WHEN un usuario ve su perfil THEN el sistema SHALL mostrar badges ganados, puntos totales y racha actual
+6. WHEN se calculan puntos THEN el sistema SHALL considerar factores como nivel de dificultad, tiempo tomado y porcentaje de precisión
 
-### Requirement 5: Thematic Learning Paths
+### Requerimiento 5: Rutas de Aprendizaje Temáticas
 
-**User Story:** As a language learner, I want to follow themed learning paths that group related content, so that I can focus on specific topics relevant to my goals.
+**Historia de Usuario:** Como estudiante de idiomas, quiero seguir rutas de aprendizaje temáticas que agrupen contenido relacionado, para poder enfocarme en temas específicos relevantes a mis objetivos.
 
-#### Acceptance Criteria
+#### Criterios de Aceptación
 
-1. WHEN a user browses learning content THEN the system SHALL organize modules into thematic paths (Business, Travel, Daily Life, Academic)
-2. WHEN a user selects a thematic path THEN the system SHALL show a curated sequence of related modules across different learning modes
-3. WHEN a user completes modules in a path THEN the system SHALL track thematic progress separately from overall progress
-4. IF a user is following a thematic path THEN the system SHALL recommend the next logical module in that theme
-5. WHEN viewing thematic paths THEN the system SHALL display estimated completion time and difficulty level
+1. WHEN un usuario navega contenido de aprendizaje THEN el sistema SHALL organizar módulos en rutas temáticas (Business, Travel, Daily Life, Academic)
+2. WHEN un usuario selecciona una ruta temática THEN el sistema SHALL mostrar una secuencia curada de módulos relacionados a través de diferentes modos de aprendizaje
+3. WHEN un usuario completa módulos en una ruta THEN el sistema SHALL rastrear progreso temático separadamente del progreso general
+4. IF un usuario está siguiendo una ruta temática THEN el sistema SHALL recomendar el siguiente módulo lógico en ese tema
+5. WHEN se ven rutas temáticas THEN el sistema SHALL mostrar tiempo estimado de completación y nivel de dificultad
 
-### Requirement 6: Micro-Learning Sessions
+### Requerimiento 6: Sesiones de Micro-Aprendizaje
 
-**User Story:** As a busy language learner, I want short, focused learning sessions of 5-10 minutes, so that I can study effectively even with limited time.
+**Historia de Usuario:** Como estudiante ocupado de idiomas, quiero sesiones cortas y enfocadas de aprendizaje de 5-10 minutos, para poder estudiar efectivamente incluso con tiempo limitado.
 
-#### Acceptance Criteria
+#### Criterios de Aceptación
 
-1. WHEN a user selects micro-learning THEN the system SHALL create sessions lasting 5-10 minutes with mixed content types
-2. WHEN generating micro-sessions THEN the system SHALL combine 2-3 different learning modes for variety
-3. WHEN a user completes a micro-session THEN the system SHALL provide immediate feedback and progress updates
-4. IF a user has limited time THEN the system SHALL prioritize high-impact content based on spaced repetition algorithms
-5. WHEN creating micro-sessions THEN the system SHALL ensure content difficulty matches user's current level
+1. WHEN un usuario selecciona micro-learning THEN el sistema SHALL crear sesiones de 5-10 minutos con tipos de contenido mixto
+2. WHEN se generan micro-sesiones THEN el sistema SHALL combinar 2-3 modos de aprendizaje diferentes para variedad
+3. WHEN un usuario completa una micro-sesión THEN el sistema SHALL proporcionar feedback inmediato y actualizaciones de progreso
+4. IF un usuario tiene tiempo limitado THEN el sistema SHALL priorizar contenido de alto impacto basado en algoritmos de repetición espaciada
+5. WHEN se crean micro-sesiones THEN el sistema SHALL asegurar que la dificultad del contenido coincida con el nivel actual del usuario
 
-### Requirement 7: Enhanced Spaced Repetition
+### Requerimiento 7: Repetición Espaciada Mejorada
 
-**User Story:** As a language learner, I want the system to intelligently schedule review of previously learned content, so that I can improve long-term retention.
+**Historia de Usuario:** Como estudiante de idiomas, quiero que el sistema programe inteligentemente la revisión de contenido previamente aprendido, para poder mejorar la retención a largo plazo.
 
-#### Acceptance Criteria
+#### Criterios de Aceptación
 
-1. WHEN a user completes content THEN the system SHALL schedule future reviews based on performance and difficulty
-2. WHEN a user struggles with content THEN the system SHALL increase review frequency for that material
-3. WHEN a user demonstrates mastery THEN the system SHALL extend review intervals appropriately
-4. IF review content is due THEN the system SHALL prioritize it in daily challenges and micro-sessions
-5. WHEN calculating review schedules THEN the system SHALL use spaced repetition algorithms considering ease factor and interval timing
+1. WHEN un usuario completa contenido THEN el sistema SHALL programar revisiones futuras basadas en rendimiento y dificultad
+2. WHEN un usuario tiene dificultades con contenido THEN el sistema SHALL aumentar la frecuencia de revisión para ese material
+3. WHEN un usuario demuestra dominio THEN el sistema SHALL extender intervalos de revisión apropiadamente
+4. IF contenido de revisión está pendiente THEN el sistema SHALL priorizarlo en desafíos diarios y micro-sesiones
+5. WHEN se calculan horarios de revisión THEN el sistema SHALL usar algoritmos de repetición espaciada considerando factor de facilidad y timing de intervalos
