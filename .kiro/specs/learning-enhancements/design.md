@@ -98,10 +98,27 @@ interface ChallengeResults {
 ```
 
 #### Componentes UI de Desafío Diario
-- `DailyChallengeCard`: Presentación principal del desafío
+
+**Integración No Invasiva con Menú Existente:**
+- `DailyChallengeNotification`: Badge/indicador en header existente
+- `DailyChallengeModal`: Modal overlay que se abre desde la notificación
+- `DailyChallengeCard`: Presentación principal del desafío dentro del modal
 - `ChallengeProgress`: Progreso en tiempo real durante el desafío
 - `ChallengeResults`: Resultados e información de racha
-- `ChallengeHistory`: Desafíos pasados y rendimiento
+- `ChallengeHistory`: Desafíos pasados y rendimiento (sección separada)
+
+**Flujo de UI:**
+```
+Header Existente → Notification Badge → Modal Overlay → Desafío
+     ↓                    ↓                ↓            ↓
+Sin cambios        Indicador visual    No recarga    Experiencia
+al menú           (nuevo disponible)   menú principal  completa
+```
+
+**Ubicación Visual:**
+- Badge de notificación en el header existente (junto a otros elementos)
+- Modal que se superpone sin afectar el estado del menú principal
+- Sistema de notificaciones toast para completaciones y logros
 
 ### 3. Sistema de Progreso Visual
 
@@ -165,11 +182,22 @@ interface StreakInfo {
 }
 ```
 
-#### Gamification UI Components
-- `PointsDisplay`: Real-time points counter
-- `BadgeCollection`: User's earned badges
-- `StreakIndicator`: Current streak status
-- `AchievementNotification`: Toast-style achievement alerts
+#### Componentes UI de Gamificación
+
+**Integración Sutil en UI Existente:**
+- `PointsDisplay`: Contador en tiempo real en header (no invasivo)
+- `StreakIndicator`: Indicador de racha junto a puntos
+- `BadgeNotification`: Toast cuando se desbloquea nuevo badge
+- `AchievementModal`: Modal para ver colección completa de badges
+- `ProgressToast`: Notificaciones de logros y hitos
+
+**Sistema de Notificaciones:**
+```
+Acción Usuario → Cálculo Puntos → Toast Notification → Update Header
+     ↓               ↓                ↓                    ↓
+Sin interrumpir  Background      Feedback visual    Estado persistente
+flujo actual    processing      no invasivo        en header
+```
 
 ### 5. Thematic Learning Paths
 
@@ -321,6 +349,34 @@ interface AnalyticsStore {
 - **Visual Consistency**: Maintain design system compliance
 - **Accessibility**: Test new components with screen readers
 - **Mobile Responsiveness**: Verify all new UI components work on mobile
+
+## Integración No Invasiva con UI Existente
+
+### Principios de Diseño UI
+1. **No Modificar Menú Principal**: Todas las nuevas funcionalidades se integran sin cambiar la estructura del menú existente
+2. **Sistema de Notificaciones**: Usar badges, toasts y modals para nuevas funcionalidades
+3. **Header Enhancement**: Añadir elementos sutiles al header existente (puntos, racha, notificaciones)
+4. **Modal Overlays**: Usar modals para experiencias completas sin navegar fuera del contexto actual
+
+### Implementación Visual
+
+#### Header Existente + Mejoras
+```
+[Logo] [Navigation] [Points: 1250] [Streak: 🔥7] [🔔 Daily Challenge] [Settings]
+                    ↑ Nuevo      ↑ Nuevo      ↑ Nuevo badge
+```
+
+#### Sistema de Modals
+- **Daily Challenge Modal**: Se abre desde badge de notificación
+- **Progress Analytics Modal**: Se abre desde puntos/racha
+- **Badge Collection Modal**: Se abre desde notificaciones de logros
+- **Thematic Paths Modal**: Se abre desde nuevo botón en header
+
+#### Toast Notifications
+- Logros desbloqueados
+- Puntos ganados
+- Racha mantenida/perdida
+- Desafío diario completado
 
 ## Performance Considerations
 
