@@ -2,7 +2,9 @@
 
 ## Introducción
 
-Esta funcionalidad mejora la aplicación de aprendizaje FluentFlow implementando mejoras clave identificadas a través del análisis competitivo con plataformas líderes de aprendizaje de idiomas (Duolingo, Babbel, Memrise, Busuu). Las mejoras se enfocan en mejorar el engagement del usuario, la efectividad del aprendizaje y la calidad del contenido, aprovechando la arquitectura robusta existente.
+Esta funcionalidad mejora la aplicación modular de aprendizaje FluentFlow implementando mejoras clave identificadas a través del análisis competitivo con plataformas líderes. Las mejoras se enfocan en mejorar el engagement del usuario, la efectividad del aprendizaje y la calidad del contenido, aprovechando la arquitectura robusta y extensible existente.
+
+La aplicación está diseñada para ser completamente modular y data-driven, permitiendo su uso para cualquier dominio de aprendizaje más allá del inglés, utilizando el sistema de modos de aprendizaje universales (flashcard, quiz, completion, sorting, matching).
 
 Las mejoras están diseñadas para implementarse de forma incremental sin requerir cambios arquitectónicos mayores, utilizando componentes, stores y estructuras de datos existentes.
 
@@ -10,41 +12,41 @@ Las mejoras están diseñadas para implementarse de forma incremental sin requer
 
 ### Requerimiento 1: Calidad de Contenido Mejorada
 
-**Historia de Usuario:** Como estudiante de idiomas, quiero explicaciones más detalladas e información contextual en los ejercicios, para poder entender mejor las reglas gramaticales y patrones de uso.
+**Historia de Usuario:** Como usuario de la aplicación de aprendizaje, quiero explicaciones más detalladas e información contextual en los ejercicios, para poder entender mejor los conceptos y patrones de uso del dominio que estoy estudiando.
 
 #### Criterios de Aceptación
 
-1. WHEN un usuario completa un ejercicio de completion THEN el sistema SHALL mostrar explicaciones detalladas que incluyan reglas gramaticales y contexto de uso
-2. WHEN un usuario ve una flashcard THEN el sistema SHALL proporcionar tips contextuales y ayudas de memoria más allá de traducciones básicas
-3. WHEN un usuario responde incorrectamente THEN el sistema SHALL mostrar feedback comprensivo con hints de aprendizaje
-4. IF un ejercicio involucra conceptos gramaticales THEN el sistema SHALL incluir tips de reconocimiento de patrones y advertencias de errores comunes
+1. WHEN un usuario completa cualquier ejercicio THEN el sistema SHALL mostrar explicaciones detalladas configuradas desde la capa de datos
+2. WHEN un usuario ve contenido de aprendizaje THEN el sistema SHALL proporcionar tips contextuales y ayudas configurables desde JSON
+3. WHEN un usuario responde incorrectamente THEN el sistema SHALL mostrar feedback comprensivo definido en la configuración de contenido
+4. IF un ejercicio tiene campos de explicación configurados THEN el sistema SHALL mostrar tips de reconocimiento de patrones y advertencias definidas en los datos
 
 ### Requerimiento 2: Sistema de Desafío Diario
 
-**Historia de Usuario:** Como estudiante de idiomas, quiero un desafío diario que combine diferentes modos de aprendizaje, para poder mantener hábitos de estudio consistentes y experimentar práctica variada.
+**Historia de Usuario:** Como usuario de la aplicación de aprendizaje, quiero un desafío diario que combine diferentes modos de aprendizaje, para poder mantener hábitos de estudio consistentes y experimentar práctica variada.
 
 #### Criterios de Aceptación
 
-1. WHEN un usuario abre la app cada día THEN el sistema SHALL presentar un desafío diario único combinando 3-5 modos de aprendizaje diferentes
+1. WHEN un usuario abre la app cada día THEN el sistema SHALL presentar un desafío diario único según configuración de desafíos cargada desde JSON
 2. WHEN se generan desafíos diarios THEN el sistema SHALL seleccionar SOLO módulos desbloqueados según el sistema de progresión existente
-3. WHEN se generan desafíos diarios THEN el sistema SHALL priorizar módulos completados para repaso y módulos disponibles para nuevo aprendizaje
-4. IF un usuario no tiene suficientes módulos desbloqueados THEN el sistema SHALL crear desafíos con módulos repetidos en diferentes modos de aprendizaje
-5. WHEN un usuario completa un desafío diario THEN el sistema SHALL otorgar puntos bonus y rastrear el progreso de racha
-6. WHEN se calcula contenido del desafío THEN el sistema SHALL respetar prerequisites y unit progression (1-6: Foundation → Mastery)
-7. IF un usuario pierde un día THEN el sistema SHALL resetear el contador de racha pero preservar la disponibilidad del desafío
-8. WHEN un desafío diario es completado THEN el sistema SHALL desbloquear el desafío del siguiente día
+3. WHEN se generan desafíos diarios THEN el sistema SHALL usar reglas de priorización configurables desde la capa de datos
+4. IF un usuario no tiene suficientes módulos desbloqueados THEN el sistema SHALL aplicar reglas de fallback definidas en la configuración
+5. WHEN un usuario completa un desafío diario THEN el sistema SHALL otorgar puntos según reglas configurables de gamificación
+6. WHEN se calcula contenido del desafío THEN el sistema SHALL respetar prerequisites y unit progression definidos en los módulos
+7. IF un usuario pierde un día THEN el sistema SHALL aplicar reglas de racha configurables desde JSON
+8. WHEN un desafío diario es completado THEN el sistema SHALL seguir reglas de progresión configurables
 
 ### Requerimiento 3: Seguimiento Visual de Progreso
 
-**Historia de Usuario:** Como estudiante de idiomas, quiero ver representaciones visuales de mi progreso de aprendizaje, para mantenerme motivado y entender mis fortalezas y áreas de mejora.
+**Historia de Usuario:** Como usuario de la aplicación de aprendizaje, quiero ver representaciones visuales de mi progreso de aprendizaje, para mantenerme motivado y entender mis fortalezas y áreas de mejora.
 
 #### Criterios de Aceptación
 
-1. WHEN un usuario ve su progreso THEN el sistema SHALL mostrar gráficos visuales mostrando tendencias de precisión a lo largo del tiempo
-2. WHEN un usuario completa módulos THEN el sistema SHALL actualizar barras de progreso mostrando porcentaje de completación por nivel (A1-C2)
-3. WHEN un usuario accede a la sección de progreso THEN el sistema SHALL mostrar estado de completación de módulos con indicadores visuales
-4. IF un usuario ha completado múltiples sesiones THEN el sistema SHALL mostrar analytics de rendimiento incluyendo tiempo gastado y tendencias de mejora
-5. WHEN se ve el progreso THEN el sistema SHALL resaltar logros y hitos alcanzados
+1. WHEN un usuario ve su progreso THEN el sistema SHALL mostrar gráficos visuales configurables mostrando métricas definidas en la configuración
+2. WHEN un usuario completa módulos THEN el sistema SHALL actualizar visualizaciones de progreso basadas en niveles y unidades definidas en los datos
+3. WHEN un usuario accede a la sección de progreso THEN el sistema SHALL mostrar estado de completación usando indicadores configurables
+4. IF un usuario ha completado múltiples sesiones THEN el sistema SHALL mostrar analytics según métricas configurables en JSON
+5. WHEN se ve el progreso THEN el sistema SHALL resaltar logros y hitos definidos en la configuración de gamificación
 
 ### Requerimiento 4: Sistema de Gamificación y Logros
 
@@ -61,17 +63,17 @@ Las mejoras están diseñadas para implementarse de forma incremental sin requer
 
 ### Requerimiento 5: Rutas de Aprendizaje Temáticas
 
-**Historia de Usuario:** Como estudiante de idiomas, quiero seguir rutas de aprendizaje temáticas que agrupen contenido relacionado, para poder enfocarme en temas específicos relevantes a mis objetivos.
+**Historia de Usuario:** Como usuario de la aplicación de aprendizaje, quiero seguir rutas de aprendizaje temáticas que agrupen contenido relacionado, para poder enfocarme en temas específicos relevantes a mis objetivos.
 
 #### Criterios de Aceptación
 
-1. WHEN un usuario navega contenido de aprendizaje THEN el sistema SHALL organizar módulos desbloqueados en rutas temáticas (Business, Travel, Daily Life, Academic)
-2. WHEN un usuario selecciona una ruta temática THEN el sistema SHALL mostrar SOLO módulos disponibles según su progresión actual
-3. WHEN se muestra una ruta temática THEN el sistema SHALL indicar claramente módulos desbloqueados, bloqueados y completados
-4. WHEN un usuario completa módulos en una ruta THEN el sistema SHALL rastrear progreso temático separadamente del progreso general
-5. IF un usuario está siguiendo una ruta temática THEN el sistema SHALL recomendar el siguiente módulo lógico disponible en ese tema
-6. WHEN se ven rutas temáticas THEN el sistema SHALL mostrar tiempo estimado de completación y nivel de dificultad para módulos disponibles
-7. WHEN se organizan rutas temáticas THEN el sistema SHALL respetar el sistema de prerequisites existente
+1. WHEN un usuario navega contenido de aprendizaje THEN el sistema SHALL organizar módulos en rutas temáticas definidas en la configuración JSON
+2. WHEN un usuario selecciona una ruta temática THEN el sistema SHALL mostrar SOLO módulos disponibles según filtros configurables y progresión actual
+3. WHEN se muestra una ruta temática THEN el sistema SHALL indicar estados usando configuración visual definida en datos
+4. WHEN un usuario completa módulos en una ruta THEN el sistema SHALL rastrear progreso según métricas configurables por ruta
+5. IF un usuario está siguiendo una ruta temática THEN el sistema SHALL usar algoritmos de recomendación configurables desde JSON
+6. WHEN se ven rutas temáticas THEN el sistema SHALL mostrar información calculada dinámicamente desde configuración de módulos
+7. WHEN se organizan rutas temáticas THEN el sistema SHALL aplicar reglas de filtrado y prerequisites configurables
 
 ### Requerimiento 6: Sesiones de Micro-Aprendizaje
 
@@ -101,14 +103,14 @@ Las mejoras están diseñadas para implementarse de forma incremental sin requer
 
 ### Requerimiento 8: Completar Contenido para Rutas Temáticas
 
-**Historia de Usuario:** Como estudiante de idiomas, quiero tener suficiente contenido en todas las rutas temáticas y niveles, para poder seguir un camino de aprendizaje completo y coherente.
+**Historia de Usuario:** Como usuario de la aplicación de aprendizaje, quiero tener suficiente contenido en todas las rutas temáticas y niveles, para poder seguir un camino de aprendizaje completo y coherente.
 
 #### Criterios de Aceptación
 
-1. WHEN se implementen rutas temáticas THEN cada nivel (A1-C2) SHALL tener al menos 3 módulos por tema principal (Business, Travel, Daily Life)
-2. WHEN se analice contenido actual THEN el sistema SHALL identificar gaps de contenido por nivel y categoría
-3. WHEN se cree nuevo contenido THEN el sistema SHALL priorizar niveles con menos módulos disponibles (A1: 5 módulos vs otros niveles: 8-9 módulos)
-4. IF un nivel no tiene suficiente contenido para una ruta temática THEN el sistema SHALL crear módulos faltantes antes de habilitar esa ruta
-5. WHEN se generen módulos nuevos THEN el sistema SHALL mantener balance entre categorías (Vocabulary, Grammar, PhrasalVerbs, Idioms)
-6. WHEN se complete contenido faltante THEN cada nivel SHALL tener representación en todos los modos de aprendizaje (flashcard, quiz, completion, sorting, matching)
-7. IF se detectan gaps temáticos THEN el sistema SHALL crear contenido específico para Business, Travel, Daily Life y Academic en todos los niveles
+1. WHEN se implementen rutas temáticas THEN el sistema SHALL validar suficiencia de contenido según reglas configurables por ruta
+2. WHEN se analice contenido actual THEN el sistema SHALL identificar gaps usando algoritmos configurables de análisis
+3. WHEN se cree nuevo contenido THEN el sistema SHALL seguir reglas de priorización definidas en configuración de contenido
+4. IF un nivel no tiene suficiente contenido para una ruta temática THEN el sistema SHALL aplicar estrategias configurables de habilitación
+5. WHEN se generen módulos nuevos THEN el sistema SHALL mantener balance según reglas configurables de distribución
+6. WHEN se complete contenido faltante THEN el sistema SHALL validar representación usando criterios configurables por modo de aprendizaje
+7. IF se detectan gaps temáticos THEN el sistema SHALL usar plantillas configurables para creación de contenido específico

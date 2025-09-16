@@ -406,10 +406,34 @@ interface AnalyticsStore {
 - **Accessibility**: Test new components with screen readers
 - **Mobile Responsiveness**: Verify all new UI components work on mobile
 
-## Enfoque Data-Driven
+## Enfoque Data-Driven y Extensibilidad Universal
 
 ### Principio Fundamental
 **TODO configurable desde la capa de datos** - Ninguna lógica de negocio hardcodeada en el código.
+
+### Extensibilidad Universal
+La aplicación está diseñada para ser **dominio-agnóstica**:
+- **Modos de aprendizaje universales**: flashcard, quiz, completion, sorting, matching funcionan para cualquier dominio
+- **Sistema modular**: Puede adaptarse a matemáticas, historia, ciencias, idiomas, etc.
+- **Configuración completa**: Desde terminología hasta reglas de negocio, todo configurable
+- **Sin dependencias de dominio**: No hay referencias hardcodeadas a "inglés", "idiomas" o conceptos específicos
+
+### Ejemplos de Extensibilidad
+```json
+// Para matemáticas
+{
+  "domain": "mathematics",
+  "levels": ["basic", "intermediate", "advanced"],
+  "categories": ["algebra", "geometry", "calculus"]
+}
+
+// Para historia  
+{
+  "domain": "history",
+  "levels": ["ancient", "medieval", "modern"],
+  "categories": ["events", "figures", "dates"]
+}
+```
 
 ### Estructura de Configuración JSON
 ```
@@ -490,21 +514,23 @@ interface ConfigurationService {
 
 ### Estrategia de Completar Contenido
 
-### Análisis de Gaps Actuales
+### Análisis de Gaps Dinámico
 ```
-Distribución Actual de Módulos:
-- A1: 5 módulos (insuficiente para rutas temáticas)
-- A2: 8 módulos 
-- B1: 8 módulos
-- B2: 9 módulos  
-- C1: 8 módulos
-- C2: 8 módulos
+El sistema analizará dinámicamente:
+- Distribución de módulos por nivel (configurables)
+- Categorías disponibles vs requeridas (desde configuración)
+- Suficiencia de contenido por ruta temática (reglas configurables)
+- Balance entre modos de aprendizaje (criterios desde JSON)
 
-Categorías A1 Actuales:
-- Vocabulary: 2 módulos
-- Grammar: 2 módulos  
-- Review: 1 módulo
-- Faltantes: Business, Travel, Daily Life, Academic
+Ejemplo de configuración:
+{
+  "contentRequirements": {
+    "minimumModulesPerLevel": 6,
+    "minimumModulesPerTheme": 3,
+    "requiredCategories": ["configurable", "desde", "JSON"],
+    "balanceRules": "definidas en configuración"
+  }
+}
 ```
 
 ### Servicio de Análisis de Contenido
@@ -533,10 +559,26 @@ interface ContentCreationTask {
 }
 ```
 
-### Plan de Creación de Contenido
-1. **Fase 1**: Completar A1 con módulos temáticos básicos
-2. **Fase 2**: Balancear categorías faltantes en todos los niveles
-3. **Fase 3**: Crear contenido específico para rutas temáticas completas
+### Plan de Creación de Contenido Configurable
+```json
+// content-creation-plan.json
+{
+  "phases": [
+    {
+      "id": "phase-1",
+      "name": "Completar niveles con déficit",
+      "criteria": "configurables desde JSON",
+      "priority": "high"
+    },
+    {
+      "id": "phase-2", 
+      "name": "Balancear categorías",
+      "rules": "definidas en configuración"
+    }
+  ],
+  "creationRules": "completamente configurables"
+}
+```
 
 ## Monitoring
 - Track performance impact of new features
