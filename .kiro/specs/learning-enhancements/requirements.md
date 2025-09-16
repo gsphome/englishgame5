@@ -133,7 +133,22 @@ Las mejoras están diseñadas para implementarse de forma incremental sin requer
 6. WHEN se implemente reading mode THEN el sistema SHALL usar Progressive Disclosure para organizar el contenido en secciones navegables
 7. WHEN se complete un módulo reading THEN el sistema SHALL desbloquear los módulos interactivos relacionados
 
-### Requerimiento 10: Crear 24 Módulos Nuevos para Rutas Temáticas
+### Requerimiento 10: Balancear Todas las Categorías de Aprendizaje
+
+**Historia de Usuario:** Como estudiante de inglés, quiero tener módulos en todas las categorías de aprendizaje (Vocabulary, Grammar, PhrasalVerbs, Idioms, Pronunciation, Listening, Reading, Writing, Speaking, Review), para poder desarrollar habilidades completas del idioma.
+
+#### Criterios de Aceptación
+
+1. WHEN se analice el balance actual THEN el sistema SHALL identificar que faltan módulos en Pronunciation (0), Listening (0), Writing (0), Speaking (0) y pocos en PhrasalVerbs (3)
+2. WHEN se creen módulos de balance THEN el sistema SHALL añadir 12 módulos de Pronunciation distribuidos en todos los niveles A1-C2
+3. WHEN se creen módulos de balance THEN el sistema SHALL añadir 12 módulos de Listening distribuidos en todos los niveles A1-C2
+4. WHEN se creen módulos de balance THEN el sistema SHALL añadir 6 módulos de Writing distribuidos en niveles B1-C2
+5. WHEN se creen módulos de balance THEN el sistema SHALL añadir 6 módulos de Speaking distribuidos en niveles B1-C2
+6. WHEN se creen módulos de balance THEN el sistema SHALL añadir 9 módulos adicionales de PhrasalVerbs (3→12 total)
+7. WHEN se complete el balance THEN cada categoría SHALL tener representación adecuada según su importancia pedagógica
+8. WHEN se distribuyan por niveles THEN las categorías básicas (Vocabulary, Grammar, Pronunciation) SHALL estar presentes desde A1, y las avanzadas (Writing, Speaking) desde B1
+
+### Requerimiento 11: Crear 24 Módulos Nuevos para Rutas Temáticas
 
 **Historia de Usuario:** Como estudiante de inglés, quiero tener suficiente contenido específico en Business, Travel y Daily Life en todos los niveles A1-C2, para poder seguir rutas de aprendizaje temáticas completas y coherentes.
 

@@ -1321,9 +1321,19 @@ Distribución Actual de Módulos:
 - C1: 8 módulos → Objetivo: 12 módulos (+4 temáticos)
 - C2: 8 módulos → Objetivo: 12 módulos (+4 temáticos)
 
-Total: 46 módulos existentes → 88 módulos finales (+42 nuevos)
-- 18 módulos Reading (contenido base orientativo)  
-- 24 módulos interactivos (ejercicios temáticos)
+Total: 46 módulos existentes → 118 módulos finales (+72 nuevos)
+
+Distribución balanceada por categorías (objetivo final):
+- Vocabulary: 17 → 25 módulos (+8)
+- Grammar: 16 → 25 módulos (+9)  
+- Reading: 0 → 18 módulos (+18)
+- PhrasalVerbs: 3 → 12 módulos (+9)
+- Idioms: 6 → 12 módulos (+6)
+- Pronunciation: 0 → 12 módulos (+12)
+- Listening: 0 → 12 módulos (+12)
+- Writing: 0 → 6 módulos (+6)
+- Speaking: 0 → 6 módulos (+6)
+- Review: 4 → 6 módulos (+2)
 
 Justificación de la distribución:
 - A1 necesita más módulos (+5) por ser nivel base fundamental
@@ -1375,9 +1385,10 @@ Justificación de la distribución:
 
 #### Fase 2: Crear Contenido Nuevo Específico
 
-**Total de Módulos Nuevos a Crear: 42 módulos**
+**Total de Módulos Nuevos a Crear: 72 módulos**
 - 18 módulos Reading (contenido base orientativo)
-- 24 módulos interactivos (ejercicios temáticos)
+- 24 módulos interactivos temáticos (Business, Travel, Daily Life)
+- 30 módulos para balancear categorías faltantes (Pronunciation, Listening, Writing, Speaking + más PhrasalVerbs)
 
 ##### A1 - Completar con 8 módulos (3 Reading + 5 interactivos) (Prioridad Alta)
 ```json
@@ -1444,7 +1455,50 @@ Justificación de la distribución:
 }
 ```
 
-##### A2-C2 - Balancear Rutas Temáticas (19 módulos adicionales)
+##### A1-C2 - Balancear Categorías Faltantes (30 módulos)
+```json
+{
+  "categoryBalance": {
+    "pronunciation": {
+      "a1-pronunciation-basics": "Basic sounds and stress patterns",
+      "a2-pronunciation-vowels": "Vowel sounds and diphthongs", 
+      "b1-pronunciation-consonants": "Difficult consonant clusters",
+      "b2-pronunciation-intonation": "Sentence stress and intonation",
+      "c1-pronunciation-advanced": "Advanced phonetic features",
+      "c2-pronunciation-mastery": "Native-like pronunciation patterns"
+    },
+    "listening": {
+      "a1-listening-basic-conversations": "Simple daily conversations",
+      "a2-listening-descriptions": "Descriptions and narratives",
+      "b1-listening-interviews": "Interviews and discussions", 
+      "b2-listening-presentations": "Formal presentations",
+      "c1-listening-debates": "Complex debates and arguments",
+      "c2-listening-lectures": "Academic lectures and speeches"
+    },
+    "writing": {
+      "b1-writing-emails": "Formal and informal emails",
+      "b2-writing-essays": "Opinion and argumentative essays",
+      "c1-writing-reports": "Business and academic reports",
+      "c2-writing-creative": "Creative and analytical writing"
+    },
+    "speaking": {
+      "b1-speaking-presentations": "Basic presentations and talks",
+      "b2-speaking-discussions": "Group discussions and debates", 
+      "c1-speaking-negotiations": "Professional negotiations",
+      "c2-speaking-advanced": "Advanced discourse and rhetoric"
+    },
+    "additionalPhrasalVerbs": {
+      "a2-phrasal-verbs-daily": "Daily life phrasal verbs",
+      "b1-phrasal-verbs-business": "Business phrasal verbs",
+      "b2-phrasal-verbs-academic": "Academic phrasal verbs",
+      "c1-phrasal-verbs-advanced": "Advanced phrasal verbs",
+      "c2-phrasal-verbs-idiomatic": "Idiomatic phrasal verbs"
+    }
+  }
+}
+```
+
+##### A2-C2 - Rutas Temáticas Interactivas (24 módulos adicionales)
 ```json
 {
   "thematicBalance": {
@@ -1550,15 +1604,19 @@ Justificación de la distribución:
 
 ##### Resumen de Módulos Nuevos por Nivel
 ```
-A1: 8 módulos nuevos (3 Reading + 5 interactivos) → 13 total
-A2: 7 módulos nuevos (3 Reading + 4 interactivos) → 15 total
-B1: 7 módulos nuevos (3 Reading + 4 interactivos) → 15 total  
-B2: 6 módulos nuevos (3 Reading + 3 interactivos) → 15 total
-C1: 7 módulos nuevos (3 Reading + 4 interactivos) → 15 total
-C2: 7 módulos nuevos (3 Reading + 4 interactivos) → 15 total
+A1: 13 módulos nuevos (3 Reading + 5 temáticos + 5 categorías) → 18 total
+A2: 12 módulos nuevos (3 Reading + 4 temáticos + 5 categorías) → 20 total
+B1: 14 módulos nuevos (3 Reading + 4 temáticos + 7 categorías) → 22 total  
+B2: 13 módulos nuevos (3 Reading + 3 temáticos + 7 categorías) → 22 total
+C1: 14 módulos nuevos (3 Reading + 4 temáticos + 7 categorías) → 22 total
+C2: 16 módulos nuevos (3 Reading + 4 temáticos + 9 categorías) → 24 total
 
-Total: 42 módulos nuevos (18 Reading + 24 interactivos)
-Total final: 88 módulos (46 existentes + 42 nuevos)
+Total: 72 módulos nuevos
+- 18 Reading (contenido base)
+- 24 temáticos (Business, Travel, Daily Life)  
+- 30 balance de categorías (Pronunciation, Listening, Writing, Speaking, PhrasalVerbs)
+
+Total final: 118 módulos (46 existentes + 72 nuevos)
 ```
 
 ##### Distribución por Tema y Modo
