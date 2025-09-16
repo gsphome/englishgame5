@@ -69,9 +69,15 @@ interface DetailedExplanation {
 #### Componentes de Desafío Diario
 ```typescript
 interface DailyChallengeService {
-  generateDailyChallenge(userLevel: DifficultyLevel, date: Date): DailyChallenge;
+  generateDailyChallenge(
+    userId: string, 
+    userProgress: UserProgress, 
+    date: Date
+  ): DailyChallenge;
+  getAvailableModules(userId: string): LearningModule[];
   checkChallengeAvailability(userId: string): boolean;
   completeDailyChallenge(userId: string, results: ChallengeResults): void;
+  respectProgressionSystem(modules: LearningModule[], userProgress: UserProgress): LearningModule[];
 }
 
 interface DailyChallenge {
@@ -170,10 +176,11 @@ interface StreakInfo {
 #### Theme Organization Service
 ```typescript
 interface ThemeService {
-  getThematicPaths(): ThematicPath[];
-  getModulesForTheme(theme: string): LearningModule[];
+  getThematicPaths(userId: string): ThematicPath[];
+  getAvailableModulesForTheme(userId: string, theme: string): LearningModule[];
   calculateThemeProgress(userId: string, theme: string): ThemeProgress;
   recommendNextModule(userId: string, theme: string): LearningModule | null;
+  filterByProgressionSystem(modules: LearningModule[], userProgress: UserProgress): LearningModule[];
 }
 
 interface ThematicPath {

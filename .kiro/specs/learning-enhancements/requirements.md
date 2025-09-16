@@ -26,10 +26,13 @@ Las mejoras están diseñadas para implementarse de forma incremental sin requer
 #### Criterios de Aceptación
 
 1. WHEN un usuario abre la app cada día THEN el sistema SHALL presentar un desafío diario único combinando 3-5 modos de aprendizaje diferentes
-2. WHEN un usuario completa un desafío diario THEN el sistema SHALL otorgar puntos bonus y rastrear el progreso de racha
-3. WHEN se generan desafíos diarios THEN el sistema SHALL seleccionar contenido apropiado al nivel actual y progreso del usuario
-4. IF un usuario pierde un día THEN el sistema SHALL resetear el contador de racha pero preservar la disponibilidad del desafío
-5. WHEN un desafío diario es completado THEN el sistema SHALL desbloquear el desafío del siguiente día
+2. WHEN se generan desafíos diarios THEN el sistema SHALL seleccionar SOLO módulos desbloqueados según el sistema de progresión existente
+3. WHEN se generan desafíos diarios THEN el sistema SHALL priorizar módulos completados para repaso y módulos disponibles para nuevo aprendizaje
+4. IF un usuario no tiene suficientes módulos desbloqueados THEN el sistema SHALL crear desafíos con módulos repetidos en diferentes modos de aprendizaje
+5. WHEN un usuario completa un desafío diario THEN el sistema SHALL otorgar puntos bonus y rastrear el progreso de racha
+6. WHEN se calcula contenido del desafío THEN el sistema SHALL respetar prerequisites y unit progression (1-6: Foundation → Mastery)
+7. IF un usuario pierde un día THEN el sistema SHALL resetear el contador de racha pero preservar la disponibilidad del desafío
+8. WHEN un desafío diario es completado THEN el sistema SHALL desbloquear el desafío del siguiente día
 
 ### Requerimiento 3: Seguimiento Visual de Progreso
 
@@ -62,11 +65,13 @@ Las mejoras están diseñadas para implementarse de forma incremental sin requer
 
 #### Criterios de Aceptación
 
-1. WHEN un usuario navega contenido de aprendizaje THEN el sistema SHALL organizar módulos en rutas temáticas (Business, Travel, Daily Life, Academic)
-2. WHEN un usuario selecciona una ruta temática THEN el sistema SHALL mostrar una secuencia curada de módulos relacionados a través de diferentes modos de aprendizaje
-3. WHEN un usuario completa módulos en una ruta THEN el sistema SHALL rastrear progreso temático separadamente del progreso general
-4. IF un usuario está siguiendo una ruta temática THEN el sistema SHALL recomendar el siguiente módulo lógico en ese tema
-5. WHEN se ven rutas temáticas THEN el sistema SHALL mostrar tiempo estimado de completación y nivel de dificultad
+1. WHEN un usuario navega contenido de aprendizaje THEN el sistema SHALL organizar módulos desbloqueados en rutas temáticas (Business, Travel, Daily Life, Academic)
+2. WHEN un usuario selecciona una ruta temática THEN el sistema SHALL mostrar SOLO módulos disponibles según su progresión actual
+3. WHEN se muestra una ruta temática THEN el sistema SHALL indicar claramente módulos desbloqueados, bloqueados y completados
+4. WHEN un usuario completa módulos en una ruta THEN el sistema SHALL rastrear progreso temático separadamente del progreso general
+5. IF un usuario está siguiendo una ruta temática THEN el sistema SHALL recomendar el siguiente módulo lógico disponible en ese tema
+6. WHEN se ven rutas temáticas THEN el sistema SHALL mostrar tiempo estimado de completación y nivel de dificultad para módulos disponibles
+7. WHEN se organizan rutas temáticas THEN el sistema SHALL respetar el sistema de prerequisites existente
 
 ### Requerimiento 6: Sesiones de Micro-Aprendizaje
 
@@ -75,10 +80,12 @@ Las mejoras están diseñadas para implementarse de forma incremental sin requer
 #### Criterios de Aceptación
 
 1. WHEN un usuario selecciona micro-learning THEN el sistema SHALL crear sesiones de 5-10 minutos con tipos de contenido mixto
-2. WHEN se generan micro-sesiones THEN el sistema SHALL combinar 2-3 modos de aprendizaje diferentes para variedad
-3. WHEN un usuario completa una micro-sesión THEN el sistema SHALL proporcionar feedback inmediato y actualizaciones de progreso
-4. IF un usuario tiene tiempo limitado THEN el sistema SHALL priorizar contenido de alto impacto basado en algoritmos de repetición espaciada
-5. WHEN se crean micro-sesiones THEN el sistema SHALL asegurar que la dificultad del contenido coincida con el nivel actual del usuario
+2. WHEN se generan micro-sesiones THEN el sistema SHALL usar SOLO módulos desbloqueados según el sistema de progresión existente
+3. WHEN se generan micro-sesiones THEN el sistema SHALL combinar 2-3 modos de aprendizaje diferentes para variedad
+4. WHEN se selecciona contenido para micro-sesiones THEN el sistema SHALL respetar prerequisites y unit progression del usuario
+5. WHEN un usuario completa una micro-sesión THEN el sistema SHALL proporcionar feedback inmediato y actualizaciones de progreso
+6. IF un usuario tiene tiempo limitado THEN el sistema SHALL priorizar contenido de alto impacto basado en algoritmos de repetición espaciada
+7. WHEN se crean micro-sesiones THEN el sistema SHALL balancear entre repaso de módulos completados y progreso en módulos disponibles
 
 ### Requerimiento 7: Repetición Espaciada Mejorada
 
