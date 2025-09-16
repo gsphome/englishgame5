@@ -35,6 +35,54 @@ Actualización → Gamificación → Seguimiento Progreso → Actualizaciones UI
 Contenido
 ```
 
+### Arquitectura Modular para Evitar Bundle Bloat
+
+#### Principios de Modularidad
+1. **Lazy Loading**: Cargar funcionalidades solo cuando se necesiten
+2. **Code Splitting**: Separar cada funcionalidad en chunks independientes
+3. **Servicios Independientes**: Cada servicio en su propio archivo
+4. **Componentes Bajo Demanda**: UI components cargados dinámicamente
+
+#### Estructura de Archivos Modular
+```
+src/
+├── services/
+│   ├── analytics/
+│   │   ├── progressAnalyticsService.ts    # Lazy loaded
+│   │   └── index.ts
+│   ├── gamification/
+│   │   ├── gamificationEngine.ts          # Lazy loaded
+│   │   └── index.ts
+│   ├── challenges/
+│   │   ├── dailyChallengeService.ts       # Lazy loaded
+│   │   └── index.ts
+│   └── themes/
+│       ├── themeService.ts                # Lazy loaded
+│       └── index.ts
+├── components/
+│   ├── enhancements/                      # Lazy loaded components
+│   │   ├── DailyChallengeModal.tsx
+│   │   ├── ProgressDashboard.tsx
+│   │   ├── BadgeCollection.tsx
+│   │   └── index.ts
+│   └── existing structure...
+└── stores/
+    ├── enhancementsStore.ts               # Separate store
+    └── existing stores...
+```
+
+#### Lazy Loading Strategy
+```typescript
+// Lazy loading de servicios
+const loadAnalyticsService = () => import('../services/analytics');
+const loadGamificationEngine = () => import('../services/gamification');
+const loadChallengeService = () => import('../services/challenges');
+
+// Lazy loading de componentes
+const DailyChallengeModal = lazy(() => import('./enhancements/DailyChallengeModal'));
+const ProgressDashboard = lazy(() => import('./enhancements/ProgressDashboard'));
+```
+
 ## Componentes e Interfaces
 
 ### 1. Sistema de Contenido Mejorado
@@ -82,8 +130,9 @@ interface CompletionData extends BaseLearningData {
 
 ### 2. Sistema de Desafío Diario
 
-#### Componentes de Desafío Diario
+#### Componentes de Desafío Diario (Modular)
 ```typescript
+// src/services/challenges/dailyChallengeService.ts - Lazy loaded
 interface DailyChallengeService {
   loadChallengeConfig(): Promise<ChallengeConfiguration>;
   generateDailyChallenge(userId: string, date: Date): Promise<DailyChallenge>;
@@ -91,6 +140,17 @@ interface DailyChallengeService {
   checkChallengeAvailability(userId: string): boolean;
   completeDailyChallenge(userId: string, results: ChallengeResults): void;
 }
+
+// Hook para lazy loading del servicio
+const useDailyChallengeService = () => {
+  const loadService = useCallback(async () => {
+    const { DailyChallengeService } = await import('../services/challenges');
+    return new DailyChallengeService();
+  }, []);
+  
+  return { loadService };
+};
+```
 
 // Configuración desde JSON - NO hardcoded
 interface ChallengeConfiguration {
@@ -526,11 +586,45 @@ interface ConfigurationService {
 - Racha mantenida/perdida
 - Desafío diario completado
 
-## Performance Considerations
+## Performance Considerations y Bundle Size
+
+### Estrategias Anti-Bundle Bloat
+- **Code Splitting Agresivo**: Cada funcionalidad en chunk separado
+- **Lazy Loading Obligatorio**: NO cargar nada hasta que se use
+- **Tree Shaking**: Importaciones específicas, no imports completos
+- **Dynamic Imports**: Servicios cargados solo cuando se necesiten
+
+### Implementación de Lazy Loading
+```typescript
+// ❌ MAL - Carga todo en el bundle principal
+import { AnalyticsService } from '../services/analytics';
+import { GamificationEngine } from '../services/gamification';
+
+// ✅ BIEN - Carga bajo demanda
+const useAnalytics = () => {
+  const [service, setService] = useState(null);
+  
+  const loadService = useCallback(async () => {
+    if (!service) {
+      const { AnalyticsService } = await import('../services/analytics');
+      setService(new AnalyticsService());
+    }
+    return service;
+  }, [service]);
+  
+  return { loadService };
+};
+```
+
+### Bundle Size Monitoring
+- **Límite por chunk**: Máximo 50KB por funcionalidad nueva
+- **Análisis de dependencias**: Evitar librerías pesadas innecesarias
+- **Webpack Bundle Analyzer**: Monitoreo continuo del tamaño
+- **Core bundle protection**: Mantener index.js bajo 500KB
 
 ### Optimization Strategies
 - **Lazy Loading**: Load analytics and gamification data on demand
-- **Caching**: Cache challenge generation and theme calculations
+- **Caching**: Cache challenge generation and theme calculations  
 - **Debouncing**: Debounce progress updates and analytics calculations
 - **Memory Management**: Efficient cleanup of chart data and analytics
 
