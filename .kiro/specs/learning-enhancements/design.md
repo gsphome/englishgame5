@@ -145,6 +145,52 @@ interface CompletionData extends BaseLearningData {
   patternTips?: string[];        
   relatedConcepts?: string[];    
 }
+
+// QuizData (extendida)
+interface QuizData extends BaseLearningData {
+  question?: string;
+  sentence?: string;
+  idiom?: string;
+  options: string[];
+  correct: number | string;
+  explanation?: string;
+  // Campos mejorados opcionales desde JSON:
+  detailedExplanation?: string;
+  whyWrong?: string[];           // Explicación de por qué otras opciones son incorrectas
+  contextualInfo?: string;       // Información contextual adicional
+  relatedQuestions?: string[];   // Referencias a preguntas relacionadas
+  difficultyNotes?: string;      // Notas sobre la dificultad del concepto
+  memoryTricks?: string[];       // Trucos mnemotécnicos
+}
+
+// SortingData (extendida)
+interface SortingData extends BaseLearningData {
+  word: string;
+  category: Category;
+  subcategory?: string;
+  // Campos mejorados opcionales desde JSON:
+  categoryExplanation?: string;  // Por qué pertenece a esta categoría
+  examples?: string[];           // Ejemplos de uso en contexto
+  relatedWords?: string[];       // Palabras relacionadas en la misma categoría
+  commonConfusions?: string[];   // Categorías con las que se suele confundir
+  usageNotes?: string;           // Notas sobre el uso correcto
+}
+
+// MatchingData (extendida)
+interface MatchingData extends BaseLearningData {
+  left: string;
+  right: string;
+  explanation?: string;
+  type?: 'word-definition' | 'word-translation' | 'question-answer';
+  pairs?: { left: string; right: string }[];
+  // Campos mejorados opcionales desde JSON:
+  detailedExplanation?: string;
+  connectionReason?: string;     // Por qué estos elementos se conectan
+  alternativeMatches?: string[]; // Otras posibles conexiones válidas
+  contextExamples?: string[];    // Ejemplos de uso en contexto
+  memoryAids?: string[];         // Ayudas para recordar la conexión
+  culturalContext?: string;      // Contexto cultural si aplica
+}
 ```
 
 ### 2. Sistema de Desafío Diario
@@ -569,7 +615,9 @@ public/data/
 └── existing structure...
 ```
 
-### Ejemplo de Extensión Directa de Datos
+### Ejemplos de Extensión Directa de Datos
+
+#### Flashcard Mejorada
 ```json
 // a1-flashcard-basic-vocabulary.json (extendido)
 [
@@ -584,7 +632,91 @@ public/data/
     // Campos opcionales mejorados:
     "contextualTips": ["Used in formal and informal situations"],
     "memoryAids": ["Think 'hola' sounds like 'hello'"],
-    "culturalNotes": "Standard greeting in most English-speaking countries"
+    "culturalNotes": "Standard greeting in most English-speaking countries",
+    "commonMistakes": ["Don't confuse with 'Hi' which is more casual"]
+  }
+]
+```
+
+#### Quiz Mejorado
+```json
+// b1-quiz-idioms-everyday-situations.json (extendido)
+[
+  {
+    "question": "What does 'break the ice' mean?",
+    "options": ["to make ice cubes", "to start a conversation", "to cool down", "to break something"],
+    "correct": "to start a conversation",
+    "explanation": "This idiom means to initiate conversation in a social situation.",
+    // Campos opcionales mejorados:
+    "detailedExplanation": "The phrase comes from ships breaking through ice to create a path. Similarly, it means creating a comfortable atmosphere for conversation.",
+    "whyWrong": [
+      "Literal interpretation - idioms are figurative",
+      "Related to temperature but not the meaning",
+      "Physical action, but idiom is about social interaction"
+    ],
+    "contextualInfo": "Commonly used in business networking and social events",
+    "memoryTricks": ["Think of ice as awkward silence that needs to be 'broken'"]
+  }
+]
+```
+
+#### Sorting Mejorado
+```json
+// a2-sorting-past-tense.json (extendido)
+[
+  {
+    "word": "went",
+    "category": "Grammar",
+    "subcategory": "Irregular Past Tense",
+    // Campos opcionales mejorados:
+    "categoryExplanation": "Irregular past tense verbs don't follow the standard -ed pattern",
+    "examples": ["I went to school yesterday", "She went shopping last week"],
+    "relatedWords": ["go", "gone", "going"],
+    "commonConfusions": ["Often confused with 'want' due to similar spelling"],
+    "usageNotes": "Past tense of 'go' - one of the most common irregular verbs"
+  }
+]
+```
+
+#### Matching Mejorado
+```json
+// b1-matching-common-phrasal-verbs.json (extendido)
+[
+  {
+    "left": "give up",
+    "right": "stop trying",
+    "explanation": "To quit or surrender",
+    "type": "word-definition",
+    // Campos opcionales mejorados:
+    "detailedExplanation": "This phrasal verb means to stop making an effort or to surrender. It's separable: 'give it up' or 'give up trying'.",
+    "connectionReason": "Both express the concept of stopping an effort or attempt",
+    "alternativeMatches": ["quit", "surrender", "abandon"],
+    "contextExamples": [
+      "Don't give up on your dreams",
+      "I gave up smoking last year",
+      "She never gives up easily"
+    ],
+    "memoryAids": ["Think 'give' your effort 'up' to the universe - you're done trying"]
+  }
+]
+```
+
+#### Completion Mejorado
+```json
+// a1-completion-basic-sentences.json (extendido)
+[
+  {
+    "sentence": "I _____ to the store yesterday",
+    "correct": "went",
+    "missing": "went",
+    "options": ["go", "went", "going", "goes"],
+    "hint": "Past tense",
+    "explanation": "Past tense of 'go'",
+    // Campos opcionales mejorados:
+    "detailedExplanation": "We use 'went' because 'yesterday' indicates a completed action in the past. 'Go' is irregular: go → went → gone.",
+    "grammarRule": "Simple Past Tense for completed actions with time markers",
+    "patternTips": ["Look for time words like 'yesterday', 'last week', 'ago'"],
+    "relatedConcepts": ["Past time expressions", "Irregular verbs", "Time markers"]
   }
 ]
 ```
