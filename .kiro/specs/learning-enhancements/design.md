@@ -241,10 +241,88 @@ Al hacer clic en [🔗 Why?]:
 └─────────────────────────────────────┘
 ```
 
+#### Nuevo Modo de Aprendizaje: Reading
+
+**Extensión de Tipos Existentes:**
+```typescript
+// Extender LearningMode existente en src/types/index.ts
+export type LearningMode = 'flashcard' | 'quiz' | 'completion' | 'sorting' | 'matching' | 'reading';
+
+// Nueva interface para contenido de lectura
+interface ReadingData extends BaseLearningData {
+  title: string;
+  sections: ReadingSection[];
+  estimatedReadingTime: number;
+  learningObjectives: string[];
+  keyVocabulary: KeyTerm[];
+  grammarPoints?: GrammarPoint[];
+  culturalNotes?: string[];
+  nextModules?: string[]; // IDs de módulos que se desbloquean
+}
+
+interface ReadingSection {
+  id: string;
+  title: string;
+  content: string;
+  type: 'introduction' | 'theory' | 'examples' | 'summary';
+  interactive?: InteractiveElement[];
+}
+
+interface KeyTerm {
+  term: string;
+  definition: string;
+  example: string;
+  pronunciation?: string;
+}
+
+interface GrammarPoint {
+  rule: string;
+  explanation: string;
+  examples: string[];
+  commonMistakes?: string[];
+}
+
+interface InteractiveElement {
+  type: 'highlight' | 'tooltip' | 'expandable' | 'audio';
+  content: string;
+  trigger: string;
+}
+```
+
+#### Patrón Visual para Reading Mode
+```
+┌─────────────────────────────────────┐
+│ 📖 Business English - A1 Level     │
+│ ⏱️ 8 min read                      │
+│                                    │
+│ 🎯 Learning Objectives:            │
+│ • Basic business vocabulary        │
+│ • Professional greetings           │
+│ • Office environment terms         │
+│                                    │
+│ [📚 Start Reading] [🔖 Bookmark]   │
+└─────────────────────────────────────┘
+
+Durante la lectura:
+┌─────────────────────────────────────┐
+│ 📖 Section 1: Professional Greetings│
+│ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                    │
+│ In business environments, proper    │
+│ greetings set the tone for         │
+│ professional relationships...       │
+│                                    │
+│ Key Terms: [meeting] [colleague]    │
+│                                    │
+│ [← Previous] [Next →] [💡 Notes]   │
+└─────────────────────────────────────┘
+```
+
 #### Servicio de Mejora de Contenido
 ```typescript
 interface EnhancedContentService {
   loadContentWithEnhancements(moduleId: string): Promise<LearningData[]>;
+  loadReadingContent(moduleId: string): Promise<ReadingData>;
   validateContentStructure(data: any): boolean;
 }
 
@@ -1243,7 +1321,9 @@ Distribución Actual de Módulos:
 - C1: 8 módulos → Objetivo: 12 módulos (+4 temáticos)
 - C2: 8 módulos → Objetivo: 12 módulos (+4 temáticos)
 
-Total: 46 módulos existentes → 70 módulos finales (+24 nuevos)
+Total: 46 módulos existentes → 88 módulos finales (+42 nuevos)
+- 18 módulos Reading (contenido base orientativo)  
+- 24 módulos interactivos (ejercicios temáticos)
 
 Justificación de la distribución:
 - A1 necesita más módulos (+5) por ser nivel base fundamental
@@ -1295,9 +1375,11 @@ Justificación de la distribución:
 
 #### Fase 2: Crear Contenido Nuevo Específico
 
-**Total de Módulos Nuevos a Crear: 24 módulos**
+**Total de Módulos Nuevos a Crear: 42 módulos**
+- 18 módulos Reading (contenido base orientativo)
+- 24 módulos interactivos (ejercicios temáticos)
 
-##### A1 - Completar con 5 módulos temáticos (Prioridad Alta)
+##### A1 - Completar con 8 módulos (3 Reading + 5 interactivos) (Prioridad Alta)
 ```json
 {
   "level": "A1",
@@ -1305,12 +1387,31 @@ Justificación de la distribución:
   "targetModules": 8,
   "newModules": [
     {
+      "id": "a1-reading-business-introduction",
+      "name": "Business English Introduction",
+      "learningMode": "reading",
+      "category": "Reading",
+      "theme": "Business",
+      "estimatedTime": 8,
+      "prerequisites": []
+    },
+    {
       "id": "a1-flashcard-business-basics",
       "name": "Business Basics",
       "learningMode": "flashcard",
       "category": "Vocabulary",
       "theme": "Business",
-      "estimatedItems": 20
+      "estimatedItems": 20,
+      "prerequisites": ["a1-reading-business-introduction"]
+    },
+    {
+      "id": "a1-reading-travel-introduction",
+      "name": "Travel English Introduction", 
+      "learningMode": "reading",
+      "category": "Reading",
+      "theme": "Travel",
+      "estimatedTime": 8,
+      "prerequisites": []
     },
     {
       "id": "a1-flashcard-travel-essentials", 
@@ -1318,7 +1419,17 @@ Justificación de la distribución:
       "learningMode": "flashcard",
       "category": "Vocabulary", 
       "theme": "Travel",
-      "estimatedItems": 20
+      "estimatedItems": 20,
+      "prerequisites": ["a1-reading-travel-introduction"]
+    },
+    {
+      "id": "a1-reading-daily-life-introduction",
+      "name": "Daily Life English Introduction",
+      "learningMode": "reading", 
+      "category": "Reading",
+      "theme": "Daily Life",
+      "estimatedTime": 8,
+      "prerequisites": []
     },
     {
       "id": "a1-completion-daily-life-basics",
@@ -1326,7 +1437,8 @@ Justificación de la distribución:
       "learningMode": "completion",
       "category": "Grammar",
       "theme": "Daily Life", 
-      "estimatedItems": 15
+      "estimatedItems": 15,
+      "prerequisites": ["a1-reading-daily-life-introduction"]
     }
   ]
 }
@@ -1438,15 +1550,15 @@ Justificación de la distribución:
 
 ##### Resumen de Módulos Nuevos por Nivel
 ```
-A1: 5 módulos nuevos (5 → 10 total)
-A2: 4 módulos nuevos (8 → 12 total) 
-B1: 4 módulos nuevos (8 → 12 total)
-B2: 3 módulos nuevos (9 → 12 total)
-C1: 4 módulos nuevos (8 → 12 total)
-C2: 4 módulos nuevos (8 → 12 total)
+A1: 8 módulos nuevos (3 Reading + 5 interactivos) → 13 total
+A2: 7 módulos nuevos (3 Reading + 4 interactivos) → 15 total
+B1: 7 módulos nuevos (3 Reading + 4 interactivos) → 15 total  
+B2: 6 módulos nuevos (3 Reading + 3 interactivos) → 15 total
+C1: 7 módulos nuevos (3 Reading + 4 interactivos) → 15 total
+C2: 7 módulos nuevos (3 Reading + 4 interactivos) → 15 total
 
-Total: 24 módulos nuevos
-Total final: 70 módulos (46 existentes + 24 nuevos)
+Total: 42 módulos nuevos (18 Reading + 24 interactivos)
+Total final: 88 módulos (46 existentes + 42 nuevos)
 ```
 
 ##### Distribución por Tema y Modo

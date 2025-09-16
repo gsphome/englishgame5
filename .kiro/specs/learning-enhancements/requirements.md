@@ -119,7 +119,21 @@ Las mejoras están diseñadas para implementarse de forma incremental sin requer
 7. IF un módulo existente no tiene campos enriquecidos THEN el sistema SHALL priorizar su actualización antes de crear contenido nuevo
 8. WHEN se complete la actualización THEN todos los 46 módulos existentes (A1: 5, A2: 8, B1: 8, B2: 9, C1: 8, C2: 8) SHALL tener contenido enriquecido
 
-### Requerimiento 9: Crear 24 Módulos Nuevos para Rutas Temáticas
+### Requerimiento 9: Nuevo Modo de Aprendizaje "Reading" para Contenido Base
+
+**Historia de Usuario:** Como estudiante de inglés, quiero tener módulos de lectura que me orienten y presenten todos los elementos que voy a estudiar en cada nivel y temática, para poder entender el contexto antes de hacer los ejercicios interactivos.
+
+#### Criterios de Aceptación
+
+1. WHEN se implemente el nuevo modo THEN el sistema SHALL añadir "reading" como sexto modo de aprendizaje
+2. WHEN se cree un módulo reading THEN el sistema SHALL presentar contenido estructurado con teoría, ejemplos y contexto
+3. WHEN un usuario accede a una ruta temática THEN el sistema SHALL mostrar el módulo reading como prerequisito de los ejercicios interactivos
+4. WHEN se diseñe contenido reading THEN el sistema SHALL incluir: introducción al tema, vocabulario clave, reglas gramaticales, ejemplos contextuales, y preparación para ejercicios
+5. IF un nivel tiene módulos temáticos THEN el sistema SHALL crear módulos reading correspondientes: "Business Reading", "Travel Reading", "Daily Life Reading"
+6. WHEN se implemente reading mode THEN el sistema SHALL usar Progressive Disclosure para organizar el contenido en secciones navegables
+7. WHEN se complete un módulo reading THEN el sistema SHALL desbloquear los módulos interactivos relacionados
+
+### Requerimiento 10: Crear 24 Módulos Nuevos para Rutas Temáticas
 
 **Historia de Usuario:** Como estudiante de inglés, quiero tener suficiente contenido específico en Business, Travel y Daily Life en todos los niveles A1-C2, para poder seguir rutas de aprendizaje temáticas completas y coherentes.
 
