@@ -106,6 +106,141 @@ src/styles/components/enhancements/
 
 ### 1. Sistema de Contenido Mejorado
 
+#### Implementación Visual de Contenido Enriquecido
+
+**Principio de Diseño: Progressive Disclosure**
+Basado en Nielsen Norman Group, mostrar inicialmente solo la información esencial y revelar detalles adicionales bajo demanda.
+
+##### Patrón Visual para Flashcards
+```
+┌─────────────────────────────────────┐
+│ Hello                               │
+│ Hola                               │
+│ /həˈloʊ/                           │
+│                                    │
+│ [💡 Tips] [🧠 Memory] [ℹ️ More]    │
+└─────────────────────────────────────┘
+
+Al hacer clic en [💡 Tips]:
+┌─────────────────────────────────────┐
+│ ✨ Contextual Tips                  │
+│ • Used in formal and informal       │
+│   situations                        │
+│ • Standard greeting worldwide       │
+│                                    │
+│ [← Back] [🧠 Memory] [ℹ️ More]     │
+└─────────────────────────────────────┘
+```
+
+##### Patrón Visual para Quiz
+```
+┌─────────────────────────────────────┐
+│ What does 'break the ice' mean?     │
+│                                    │
+│ ○ to make ice cubes                │
+│ ● to start a conversation          │
+│ ○ to cool down                     │
+│ ○ to break something               │
+│                                    │
+│ [Check Answer]                     │
+└─────────────────────────────────────┘
+
+Después de responder:
+┌─────────────────────────────────────┐
+│ ✅ Correct!                        │
+│ Basic: Initiate conversation       │
+│                                    │
+│ [🔍 Why Wrong?] [💡 Context] [🧠 Memory] │
+└─────────────────────────────────────┘
+
+Al hacer clic en [🔍 Why Wrong?]:
+┌─────────────────────────────────────┐
+│ 🔍 Why Other Options Are Wrong      │
+│ • "make ice cubes" - literal        │
+│   interpretation, idioms are        │
+│   figurative                       │
+│ • "cool down" - temperature related │
+│   but not the meaning              │
+│                                    │
+│ [← Back] [💡 Context] [🧠 Memory]   │
+└─────────────────────────────────────┘
+```
+
+##### Patrón Visual para Completion
+```
+┌─────────────────────────────────────┐
+│ I _____ to the store yesterday      │
+│                                    │
+│ [went] ✅                          │
+│                                    │
+│ Basic: Past tense of 'go'          │
+│                                    │
+│ [📚 Grammar Rule] [💡 Pattern] [🔗 Related] │
+└─────────────────────────────────────┘
+
+Al hacer clic en [📚 Grammar Rule]:
+┌─────────────────────────────────────┐
+│ 📚 Grammar Rule                     │
+│ Simple Past Tense for completed     │
+│ actions with time markers           │
+│                                    │
+│ Pattern: Subject + Past Verb +      │
+│ Time Expression                     │
+│                                    │
+│ [← Back] [💡 Pattern] [🔗 Related]  │
+└─────────────────────────────────────┘
+```
+
+##### Patrón Visual para Sorting
+```
+┌─────────────────────────────────────┐
+│ Drag "went" to correct category:    │
+│                                    │
+│ [Irregular Past Tense] ← went      │
+│ [Regular Past Tense]               │
+│ [Present Tense]                    │
+│                                    │
+│ ✅ Correct!                        │
+│ [📖 Why?] [📝 Examples] [🔗 Related] │
+└─────────────────────────────────────┘
+
+Al hacer clic en [📖 Why?]:
+┌─────────────────────────────────────┐
+│ 📖 Why This Category?               │
+│ Irregular past tense verbs don't    │
+│ follow the standard -ed pattern     │
+│                                    │
+│ go → went (not "goed")             │
+│                                    │
+│ [← Back] [📝 Examples] [🔗 Related] │
+└─────────────────────────────────────┘
+```
+
+##### Patrón Visual para Matching
+```
+┌─────────────────────────────────────┐
+│ Match the phrasal verb:             │
+│                                    │
+│ give up ────────── stop trying     │
+│                                    │
+│ ✅ Perfect Match!                  │
+│                                    │
+│ [🔗 Why?] [📝 Examples] [🧠 Memory] │
+└─────────────────────────────────────┘
+
+Al hacer clic en [🔗 Why?]:
+┌─────────────────────────────────────┐
+│ 🔗 Connection Reason                │
+│ Both express stopping an effort     │
+│ or attempt                         │
+│                                    │
+│ Alternative matches: quit,          │
+│ surrender, abandon                  │
+│                                    │
+│ [← Back] [📝 Examples] [🧠 Memory]  │
+└─────────────────────────────────────┘
+```
+
 #### Servicio de Mejora de Contenido
 ```typescript
 interface EnhancedContentService {
@@ -746,6 +881,127 @@ interface ConfigurationService {
 }
 ```
 
+## Principios de UX Educativo
+
+### Progressive Disclosure para Contenido Enriquecido
+
+**Basado en Nielsen Norman Group Research:**
+1. **Mostrar inicialmente solo información esencial** - Respuesta básica y feedback inmediato
+2. **Revelar detalles bajo demanda** - Botones contextuales para información adicional
+3. **Evitar sobrecarga cognitiva** - Máximo 3-4 botones de acción adicional
+4. **Navegación clara** - Siempre mostrar cómo regresar al estado anterior
+
+### Patrones de Interacción Educativa
+
+#### 1. Botones Contextuales Semánticos
+```css
+/* Iconografía consistente */
+💡 Tips/Consejos - Información contextual
+🧠 Memory/Memoria - Ayudas mnemotécnicas  
+📚 Grammar/Gramática - Reglas gramaticales
+🔍 Analysis/Análisis - Por qué es correcto/incorrecto
+📝 Examples/Ejemplos - Casos de uso adicionales
+🔗 Related/Relacionado - Conceptos conectados
+ℹ️ More/Más - Información cultural/adicional
+```
+
+#### 2. Estados de Revelación Progresiva
+```
+Estado 1: Contenido Base
+├── Pregunta/Ejercicio
+├── Respuesta del usuario
+├── Feedback básico (✅/❌)
+└── [Botones contextuales]
+
+Estado 2: Información Expandida
+├── Detalle específico solicitado
+├── Navegación de regreso
+└── [Otros botones contextuales]
+
+Estado 3: Información Profunda
+├── Contenido más detallado
+├── Ejemplos adicionales
+└── [Navegación completa]
+```
+
+#### 3. Micro-Interacciones Educativas
+- **Hover states** - Preview del contenido adicional
+- **Smooth transitions** - Entre estados de información
+- **Visual feedback** - Confirmación de acciones
+- **Breadcrumbs** - Navegación en información anidada
+
+### Implementación Técnica de UI
+
+#### Componente Base Expandible
+```typescript
+interface ExpandableContentProps {
+  baseContent: React.ReactNode;
+  enhancedContent: {
+    tips?: string[];
+    memory?: string[];
+    grammar?: string;
+    examples?: string[];
+    related?: string[];
+    cultural?: string;
+  };
+  mode: LearningMode;
+}
+
+const ExpandableContent: React.FC<ExpandableContentProps> = ({
+  baseContent,
+  enhancedContent,
+  mode
+}) => {
+  const [activeSection, setActiveSection] = useState<string | null>(null);
+  
+  return (
+    <div className="expandable-content">
+      <div className="expandable-content__base">
+        {baseContent}
+      </div>
+      
+      {activeSection === null && (
+        <div className="expandable-content__actions">
+          {enhancedContent.tips && (
+            <button 
+              className="expandable-content__action expandable-content__action--tips"
+              onClick={() => setActiveSection('tips')}
+            >
+              💡 Tips
+            </button>
+          )}
+          {enhancedContent.memory && (
+            <button 
+              className="expandable-content__action expandable-content__action--memory"
+              onClick={() => setActiveSection('memory')}
+            >
+              🧠 Memory
+            </button>
+          )}
+          {/* Más botones según contenido disponible */}
+        </div>
+      )}
+      
+      {activeSection && (
+        <div className="expandable-content__expanded">
+          <div className="expandable-content__expanded-header">
+            <button 
+              className="expandable-content__back"
+              onClick={() => setActiveSection(null)}
+            >
+              ← Back
+            </button>
+          </div>
+          <div className="expandable-content__expanded-content">
+            {renderExpandedContent(activeSection, enhancedContent)}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+```
+
 ## Sistema de Diseño y Consistencia Visual
 
 ### Principios de Diseño Visual
@@ -936,7 +1192,7 @@ Menú Lateral Existente:
 ## Performance Considerations y Bundle Size
 
 ### Estrategias Anti-Bundle Bloat
-- **Code Splitting Agresivo**: Cada funcionalidad en chunk separado
+- **Code Splitting Agresivo**: Cada nueva funcionalidad en chunk separado
 - **Lazy Loading Obligatorio**: NO cargar nada hasta que se use
 - **Tree Shaking**: Importaciones específicas, no imports completos
 - **Dynamic Imports**: Servicios cargados solo cuando se necesiten
@@ -964,7 +1220,7 @@ const useAnalytics = () => {
 ```
 
 ### Bundle Size Monitoring
-- **Límite por chunk**: Máximo 50KB por funcionalidad nueva
+- **Límite por chunk**: Máximo 100KB por funcionalidad nueva
 - **Análisis de dependencias**: Evitar librerías pesadas innecesarias
 - **Webpack Bundle Analyzer**: Monitoreo continuo del tamaño
 - **Core bundle protection**: Mantener index.js bajo 500KB

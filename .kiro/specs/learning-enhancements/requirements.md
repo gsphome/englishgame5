@@ -10,16 +10,19 @@ Las mejoras están diseñadas para implementarse de forma incremental sin requer
 
 ## Requerimientos
 
-### Requerimiento 1: Calidad de Contenido Mejorada
+### Requerimiento 1: Calidad de Contenido Mejorada con UX Progresivo
 
-**Historia de Usuario:** Como usuario de la aplicación de aprendizaje, quiero explicaciones más detalladas e información contextual en los ejercicios, para poder entender mejor los conceptos y patrones de uso del dominio que estoy estudiando.
+**Historia de Usuario:** Como usuario de la aplicación de aprendizaje, quiero acceder a explicaciones detalladas e información contextual de manera progresiva, para poder profundizar en los conceptos sin sobrecargar la interfaz inicial.
 
 #### Criterios de Aceptación
 
-1. WHEN un usuario completa cualquier ejercicio THEN el sistema SHALL mostrar explicaciones detalladas configuradas desde la capa de datos
-2. WHEN un usuario ve contenido de aprendizaje THEN el sistema SHALL proporcionar tips contextuales y ayudas configurables desde JSON
-3. WHEN un usuario responde incorrectamente THEN el sistema SHALL mostrar feedback comprensivo definido en la configuración de contenido
-4. IF un ejercicio tiene campos de explicación configurados THEN el sistema SHALL mostrar tips de reconocimiento de patrones y advertencias definidas en los datos
+1. WHEN un usuario completa cualquier ejercicio THEN el sistema SHALL mostrar feedback básico inmediato y botones contextuales para información adicional
+2. WHEN un usuario hace clic en botones contextuales (💡 Tips, 🧠 Memory, 📚 Grammar) THEN el sistema SHALL revelar información específica usando Progressive Disclosure
+3. WHEN se muestra contenido expandido THEN el sistema SHALL proporcionar navegación clara de regreso al estado anterior
+4. IF un ejercicio tiene múltiples tipos de información enriquecida THEN el sistema SHALL mostrar máximo 3-4 botones contextuales para evitar sobrecarga cognitiva
+5. WHEN un usuario navega entre secciones expandidas THEN el sistema SHALL mantener transiciones suaves y estados claros
+6. WHEN se implementen mejoras visuales THEN el sistema SHALL usar iconografía semántica consistente (💡📚🧠🔍📝🔗ℹ️)
+7. IF el contenido enriquecido no está disponible THEN el sistema SHALL ocultar los botones contextuales correspondientes
 
 ### Requerimiento 2: Sistema de Desafío Diario
 
