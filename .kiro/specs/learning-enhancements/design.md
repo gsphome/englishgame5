@@ -8,23 +8,23 @@ Este documento de diseño describe el enfoque de implementación para mejorar la
 
 ### Arquitectura de Alto Nivel
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                    FluentFlow App                           │
-├─────────────────────────────────────────────────────────────┤
+┌────────────────────────────────────────────────────────────┐
+│                    FluentFlow App                          │
+├────────────────────────────────────────────────────────────┤
 │  Capa de Funcionalidades de Aprendizaje Mejoradas          │
 │  ┌─────────────────┐ ┌─────────────────┐ ┌───────────────┐ │
 │  │ Sistema de      │ │ Analytics       │ │ Sistema de    │ │
 │  │ Desafío Diario  │ │ Visuales de     │ │ Gamificación  │ │
 │  │                 │ │ Progreso        │ │               │ │
 │  └─────────────────┘ └─────────────────┘ └───────────────┘ │
-├─────────────────────────────────────────────────────────────┤
+├────────────────────────────────────────────────────────────┤
 │  Arquitectura Core Existente                               │
 │  ┌─────────────────┐ ┌─────────────────┐ ┌───────────────┐ │
 │  │ Componentes de  │ │ Zustand Stores  │ │ Servicios de  │ │
 │  │ Modos de        │ │ (App, Progress, │ │ Datos y       │ │
 │  │ Aprendizaje     │ │ Settings, User) │ │ Validación    │ │
 │  └─────────────────┘ └─────────────────┘ └───────────────┘ │
-└─────────────────────────────────────────────────────────────┘
+└────────────────────────────────────────────────────────────┘
 ```
 
 ### Flujo de Datos Mejorado
@@ -202,26 +202,56 @@ interface ChallengeResults {
 
 #### Componentes UI de Desafío Diario
 
-**Integración No Invasiva con Menú Existente:**
-- `DailyChallengeNotification`: Badge/indicador en header existente
-- `DailyChallengeModal`: Modal overlay que se abre desde la notificación
+**Integración en Menú Hamburguesa:**
+- `DailyChallengeMenuItem`: Nueva opción "🎯 Desafío Diario" en menú lateral
+- `DailyChallengeModal`: Modal overlay que se abre desde el menú
 - `DailyChallengeCard`: Presentación principal del desafío dentro del modal
 - `ChallengeProgress`: Progreso en tiempo real durante el desafío
 - `ChallengeResults`: Resultados e información de racha
-- `ChallengeHistory`: Desafíos pasados y rendimiento (sección separada)
+- `ChallengeHistory`: Desafíos pasados y rendimiento
 
-**Flujo de UI:**
+**Flujo de UI Mejorado:**
 ```
-Header Existente → Notification Badge → Modal Overlay → Desafío
-     ↓                    ↓                ↓            ↓
-Sin cambios        Indicador visual    No recarga    Experiencia
-al menú           (nuevo disponible)   menú principal  completa
+Menú Hamburguesa → "🎯 Desafío Diario" → Modal Overlay → Desafío
+       ↓                    ↓                ↓            ↓
+Acceso permanente    Siempre disponible   No recarga    Experiencia
+sin modificar        sin depender de      menú principal  completa
+header existente     toasts temporales
 ```
 
-**Ubicación Visual:**
-- Badge de notificación en el header existente (junto a otros elementos)
-- Modal que se superpone sin afectar el estado del menú principal
-- Sistema de notificaciones toast para completaciones y logros
+**Implementación del Menú:**
+```typescript
+// Extensión del menú hamburguesa existente
+const enhancedMenuItems = [
+  ...existingMenuItems,
+  { separator: true },
+  { 
+    id: 'achievements', 
+    icon: '🏆', 
+    label: 'Mis Logros',
+    component: 'AchievementsModal'
+  },
+  { 
+    id: 'progress', 
+    icon: '📊', 
+    label: 'Mi Progreso',
+    component: 'ProgressDashboard'
+  },
+  { 
+    id: 'daily-challenge', 
+    icon: '🎯', 
+    label: 'Desafío Diario',
+    component: 'DailyChallengeModal',
+    badge: challengeAvailable ? 'nuevo' : null
+  },
+  { 
+    id: 'thematic-paths', 
+    icon: '🛤️', 
+    label: 'Rutas Temáticas',
+    component: 'ThematicPathsModal'
+  }
+];
+```
 
 ### 3. Sistema de Progreso Visual
 
@@ -308,20 +338,27 @@ interface StreakInfo {
 
 #### Componentes UI de Gamificación
 
-**Integración Sutil en UI Existente:**
-- `PointsDisplay`: Contador en tiempo real en header (no invasivo)
-- `StreakIndicator`: Indicador de racha junto a puntos
+**Integración en Menú Hamburguesa:**
+- `AchievementsMenuItem`: "🏆 Mis Logros" en menú lateral
+- `AchievementModal`: Modal completo con badges, puntos, racha
 - `BadgeNotification`: Toast cuando se desbloquea nuevo badge
-- `AchievementModal`: Modal para ver colección completa de badges
 - `ProgressToast`: Notificaciones de logros y hitos
+- `AchievementBadge`: Indicador sutil en menú cuando hay nuevos logros
 
-**Sistema de Notificaciones:**
+**Sistema Dual de Feedback:**
 ```
-Acción Usuario → Cálculo Puntos → Toast Notification → Update Header
+Acción Usuario → Cálculo Puntos → Toast Notification → Badge en Menú
      ↓               ↓                ↓                    ↓
-Sin interrumpir  Background      Feedback visual    Estado persistente
-flujo actual    processing      no invasivo        en header
+Sin interrumpir  Background      Feedback inmediato   Acceso permanente
+flujo actual    processing      no invasivo          via menú hamburguesa
 ```
+
+**Componentes del Modal de Logros:**
+- `PointsDisplay`: Puntos totales y progreso hacia siguiente nivel
+- `StreakIndicator`: Racha actual y récord personal
+- `BadgeCollection`: Galería de badges desbloqueados
+- `AchievementTimeline`: Historial de logros recientes
+- `NextGoals`: Próximos objetivos y badges por desbloquear
 
 ### 5. Thematic Learning Paths
 
@@ -724,30 +761,45 @@ const useEnhancementTranslations = () => {
 ## Integración No Invasiva con UI Existente
 
 ### Principios de Diseño UI
-1. **No Modificar Menú Principal**: Todas las nuevas funcionalidades se integran sin cambiar la estructura del menú existente
-2. **Sistema de Notificaciones**: Usar badges, toasts y modals para nuevas funcionalidades
-3. **Header Enhancement**: Añadir elementos sutiles al header existente (puntos, racha, notificaciones)
+1. **No Modificar Header**: Mantener el header limpio sin sobrecargar con nuevos elementos
+2. **Integración en Menú Hamburguesa**: Añadir nuevas funcionalidades como opciones en el menú lateral existente
+3. **Sistema de Notificaciones**: Usar toasts para feedback inmediato, pero con acceso permanente via menú
 4. **Modal Overlays**: Usar modals para experiencias completas sin navegar fuera del contexto actual
 
-### Implementación Visual
+### Implementación Visual Mejorada
 
-#### Header Existente + Mejoras
+#### Menú Hamburguesa Extendido (Acceso Permanente)
 ```
-[Logo] [Navigation] [Points: 1250] [Streak: 🔥7] [🔔 Daily Challenge] [Settings]
-                    ↑ Nuevo      ↑ Nuevo      ↑ Nuevo badge
+Menú Lateral Existente:
+├── Configuración
+├── Acerca de
+├── --- NUEVO SEPARADOR ---
+├── 🏆 Mis Logros (badges, puntos, racha)
+├── 📊 Mi Progreso (analytics, tendencias)
+├── 🎯 Desafío Diario (disponible/completado)
+├── 🛤️ Rutas Temáticas (Business, Travel, etc.)
+└── 📈 Estadísticas Detalladas
 ```
 
-#### Sistema de Modals
-- **Daily Challenge Modal**: Se abre desde badge de notificación
-- **Progress Analytics Modal**: Se abre desde puntos/racha
-- **Badge Collection Modal**: Se abre desde notificaciones de logros
-- **Thematic Paths Modal**: Se abre desde nuevo botón en header
-
-#### Toast Notifications
+#### Sistema Dual de Notificaciones
+**1. Toast Notifications (Feedback Inmediato):**
 - Logros desbloqueados
 - Puntos ganados
 - Racha mantenida/perdida
 - Desafío diario completado
+
+**2. Acceso Permanente (Menú Hamburguesa):**
+- **"🏆 Mis Logros"** → Modal con badges, puntos totales, racha actual
+- **"📊 Mi Progreso"** → Dashboard de analytics y tendencias
+- **"🎯 Desafío Diario"** → Estado actual, historial, próximos desafíos
+- **"🛤️ Rutas Temáticas"** → Explorar y seguir rutas de aprendizaje
+
+#### Ventajas del Diseño Mejorado
+✅ **Header limpio** - No se sobrecarga con nuevos elementos
+✅ **Acceso permanente** - Usuario puede ver logros/desafíos cuando quiera
+✅ **Consistente** - Usa el patrón de menú hamburguesa existente
+✅ **Escalable** - Fácil añadir nuevas funcionalidades al menú
+✅ **No invasivo** - No modifica la estructura principal de navegación
 
 ## Performance Considerations y Bundle Size
 
