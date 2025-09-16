@@ -42,38 +42,41 @@ Contenido
 #### Servicio de Mejora de Contenido
 ```typescript
 interface EnhancedContentService {
-  loadEnhancedContent(moduleId: string): Promise<EnhancedLearningData>;
+  loadContentWithEnhancements(moduleId: string): Promise<LearningData[]>;
   validateContentStructure(data: any): boolean;
-  mergeEnhancedFields(baseData: LearningData, enhancedData: any): LearningData;
 }
 
-// Extensión de datos existentes desde JSON - NO hardcoded
-interface EnhancedFlashcardData extends FlashcardData {
-  contextualTips?: string[];     // Desde JSON
-  memoryAids?: string[];         // Desde JSON
-  culturalNotes?: string;        // Desde JSON
-  commonMistakes?: string[];     // Desde JSON
+// Extensión DIRECTA de interfaces existentes - NO nuevas interfaces
+// Los campos opcionales se añaden directamente a las interfaces existentes:
+
+// FlashcardData (extendida)
+interface FlashcardData extends BaseLearningData {
+  en: string;
+  es: string;
+  ipa?: string;
+  example?: string;
+  example_es?: string;
+  // Campos mejorados opcionales desde JSON:
+  contextualTips?: string[];     
+  memoryAids?: string[];         
+  culturalNotes?: string;        
+  commonMistakes?: string[];     
 }
 
-interface EnhancedCompletionData extends CompletionData {
-  detailedExplanation?: string;  // Desde JSON
-  grammarRule?: string;          // Desde JSON
-  patternTips?: string[];        // Desde JSON
-  relatedConcepts?: string[];    // Desde JSON
-}
-
-// Estructura de datos JSON para contenido mejorado
-interface ContentEnhancementConfig {
-  moduleId: string;
-  enhancements: {
-    [itemId: string]: {
-      contextualTips?: string[];
-      memoryAids?: string[];
-      detailedExplanation?: string;
-      grammarRule?: string;
-      // Todos los campos configurables desde JSON
-    };
-  };
+// CompletionData (extendida)
+interface CompletionData extends BaseLearningData {
+  sentence: string;
+  correct: string;
+  missing?: string;
+  options?: string[];
+  hint?: string;
+  tip?: string;
+  explanation?: string;
+  // Campos mejorados opcionales desde JSON:
+  detailedExplanation?: string;  
+  grammarRule?: string;          
+  patternTips?: string[];        
+  relatedConcepts?: string[];    
 }
 ```
 
@@ -438,30 +441,49 @@ La aplicación está diseñada para ser **dominio-agnóstica**:
 ### Estructura de Configuración JSON
 ```
 public/data/
-├── enhancements/
-│   ├── content-enhancements.json     # Mejoras de contenido por módulo
-│   ├── daily-challenges-config.json  # Configuración de desafíos
-│   ├── gamification-config.json      # Puntos, badges, reglas
-│   ├── thematic-paths-config.json    # Definición de rutas temáticas
-│   └── spaced-repetition-config.json # Algoritmos y parámetros
+├── existing module files (extended with optional enhancement fields)
+│   ├── a1/a1-flashcard-basic-vocabulary.json  # Campos opcionales añadidos
+│   ├── a1/a1-completion-basic-sentences.json  # Campos opcionales añadidos
+│   └── ... (todos los archivos existentes)
+├── config/
+│   ├── daily-challenges-config.json    # Configuración de desafíos
+│   ├── gamification-config.json        # Puntos, badges, reglas
+│   ├── thematic-paths-config.json      # Definición de rutas temáticas
+│   └── spaced-repetition-config.json   # Algoritmos y parámetros
 └── existing structure...
 ```
 
-### Ejemplo de Configuración Data-Driven
+### Ejemplo de Extensión Directa de Datos
 ```json
-// thematic-paths-config.json
+// a1-flashcard-basic-vocabulary.json (extendido)
+[
+  {
+    "front": "Hello",
+    "back": "Hola", 
+    "ipa": "/həˈloʊ/",
+    "example": "Hello, how are you?",
+    "example_es": "Hola, ¿cómo estás?",
+    "en": "Hello",
+    "es": "Hola",
+    // Campos opcionales mejorados:
+    "contextualTips": ["Used in formal and informal situations"],
+    "memoryAids": ["Think 'hola' sounds like 'hello'"],
+    "culturalNotes": "Standard greeting in most English-speaking countries"
+  }
+]
+```
+
+```json
+// config/thematic-paths-config.json
 {
   "paths": [
     {
       "id": "business-path",
-      "name": "Business English",
-      "description": "Professional communication skills",
+      "name": "Business English", 
       "moduleFilters": {
         "categories": ["Vocabulary", "Grammar"],
-        "tags": ["business", "professional"],
-        "levels": ["b1", "b2", "c1"]
-      },
-      "icon": "briefcase"
+        "tags": ["business", "professional"]
+      }
     }
   ]
 }
