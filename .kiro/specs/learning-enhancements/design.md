@@ -42,25 +42,38 @@ Contenido
 #### Servicio de Mejora de Contenido
 ```typescript
 interface EnhancedContentService {
-  enrichFlashcard(data: FlashcardData): EnhancedFlashcardData;
-  enrichCompletion(data: CompletionData): EnhancedCompletionData;
-  generateContextualTips(content: string, level: DifficultyLevel): string[];
-  generateGrammarExplanation(rule: string): DetailedExplanation;
+  loadEnhancedContent(moduleId: string): Promise<EnhancedLearningData>;
+  validateContentStructure(data: any): boolean;
+  mergeEnhancedFields(baseData: LearningData, enhancedData: any): LearningData;
 }
 
+// Extensión de datos existentes desde JSON - NO hardcoded
 interface EnhancedFlashcardData extends FlashcardData {
-  contextualTips: string[];
-  memoryAids: string[];
-  culturalNotes?: string;
-  commonMistakes?: string[];
+  contextualTips?: string[];     // Desde JSON
+  memoryAids?: string[];         // Desde JSON
+  culturalNotes?: string;        // Desde JSON
+  commonMistakes?: string[];     // Desde JSON
 }
 
-interface DetailedExplanation {
-  rule: string;
-  examples: string[];
-  commonMistakes: string[];
-  tips: string[];
-  relatedConcepts: string[];
+interface EnhancedCompletionData extends CompletionData {
+  detailedExplanation?: string;  // Desde JSON
+  grammarRule?: string;          // Desde JSON
+  patternTips?: string[];        // Desde JSON
+  relatedConcepts?: string[];    // Desde JSON
+}
+
+// Estructura de datos JSON para contenido mejorado
+interface ContentEnhancementConfig {
+  moduleId: string;
+  enhancements: {
+    [itemId: string]: {
+      contextualTips?: string[];
+      memoryAids?: string[];
+      detailedExplanation?: string;
+      grammarRule?: string;
+      // Todos los campos configurables desde JSON
+    };
+  };
 }
 ```
 
@@ -69,24 +82,32 @@ interface DetailedExplanation {
 #### Componentes de Desafío Diario
 ```typescript
 interface DailyChallengeService {
-  generateDailyChallenge(
-    userId: string, 
-    userProgress: UserProgress, 
-    date: Date
-  ): DailyChallenge;
+  loadChallengeConfig(): Promise<ChallengeConfiguration>;
+  generateDailyChallenge(userId: string, date: Date): Promise<DailyChallenge>;
   getAvailableModules(userId: string): LearningModule[];
   checkChallengeAvailability(userId: string): boolean;
   completeDailyChallenge(userId: string, results: ChallengeResults): void;
-  respectProgressionSystem(modules: LearningModule[], userProgress: UserProgress): LearningModule[];
+}
+
+// Configuración desde JSON - NO hardcoded
+interface ChallengeConfiguration {
+  rules: {
+    modulesPerChallenge: number;
+    bonusPointsMultiplier: number;
+    streakBonusRules: StreakRule[];
+    difficultyBalancing: boolean;
+  };
+  themes: ThemeConfig[];
+  pointsSystem: PointsConfiguration;
 }
 
 interface DailyChallenge {
   id: string;
   date: Date;
-  modules: LearningModule[];
-  estimatedTime: number;
-  bonusPoints: number;
-  theme?: string;
+  modules: LearningModule[];  // Seleccionados dinámicamente
+  estimatedTime: number;      // Calculado desde módulos
+  bonusPoints: number;        // Desde configuración JSON
+  theme?: string;             // Desde configuración JSON
 }
 
 interface ChallengeResults {
@@ -159,19 +180,40 @@ interface TrendData {
 #### Gamification Engine
 ```typescript
 interface GamificationEngine {
+  loadGamificationConfig(): Promise<GamificationConfiguration>;
   calculatePoints(action: UserAction, context: ActionContext): number;
   checkBadgeEligibility(userId: string): Badge[];
   updateStreak(userId: string, studyDate: Date): StreakInfo;
-  generateLeaderboard(scope: LeaderboardScope): LeaderboardEntry[];
 }
 
-interface Badge {
+// Configuración desde JSON - NO hardcoded
+interface GamificationConfiguration {
+  pointsRules: {
+    correctAnswer: number;
+    moduleCompletion: number;
+    streakMultiplier: number;
+    difficultyMultipliers: Record<DifficultyLevel, number>;
+  };
+  badges: BadgeDefinition[];
+  streakRules: {
+    resetOnMissedDay: boolean;
+    bonusPointsPerDay: number;
+    milestones: number[];
+  };
+}
+
+interface BadgeDefinition {
   id: string;
-  name: string;
-  description: string;
-  icon: string;
+  name: string;                    // Desde JSON config
+  description: string;             // Desde JSON config
+  icon: string;                    // Desde JSON config
   rarity: 'common' | 'rare' | 'epic' | 'legendary';
-  unlockedAt?: Date;
+  criteria: {                      // Criterios configurables
+    pointsRequired?: number;
+    streakRequired?: number;
+    modulesCompleted?: number;
+    accuracyRequired?: number;
+  };
 }
 
 interface StreakInfo {
@@ -204,21 +246,35 @@ flujo actual    processing      no invasivo        en header
 #### Theme Organization Service
 ```typescript
 interface ThemeService {
+  loadThematicPathsConfig(): Promise<ThematicPathsConfiguration>;
   getThematicPaths(userId: string): ThematicPath[];
   getAvailableModulesForTheme(userId: string, theme: string): LearningModule[];
   calculateThemeProgress(userId: string, theme: string): ThemeProgress;
   recommendNextModule(userId: string, theme: string): LearningModule | null;
-  filterByProgressionSystem(modules: LearningModule[], userProgress: UserProgress): LearningModule[];
+}
+
+// Configuración desde JSON - NO hardcoded
+interface ThematicPathsConfiguration {
+  paths: ThematicPath[];
+  pathRules: {
+    minimumModulesPerPath: number;
+    balanceAcrossLevels: boolean;
+    respectPrerequisites: boolean;
+  };
 }
 
 interface ThematicPath {
   id: string;
-  name: string;
-  description: string;
-  modules: string[]; // module IDs
-  estimatedTime: number;
-  difficulty: number;
-  prerequisites: string[];
+  name: string;                    // Desde JSON config
+  description: string;             // Desde JSON config
+  moduleFilters: {                 // Filtros dinámicos, NO lista fija
+    categories: Category[];
+    levels: DifficultyLevel[];
+    tags?: string[];
+  };
+  estimatedTime: number;           // Calculado dinámicamente
+  difficulty: number;              // Calculado desde módulos
+  icon?: string;                   // Desde JSON config
 }
 
 interface ThemeProgress {
@@ -349,6 +405,52 @@ interface AnalyticsStore {
 - **Visual Consistency**: Maintain design system compliance
 - **Accessibility**: Test new components with screen readers
 - **Mobile Responsiveness**: Verify all new UI components work on mobile
+
+## Enfoque Data-Driven
+
+### Principio Fundamental
+**TODO configurable desde la capa de datos** - Ninguna lógica de negocio hardcodeada en el código.
+
+### Estructura de Configuración JSON
+```
+public/data/
+├── enhancements/
+│   ├── content-enhancements.json     # Mejoras de contenido por módulo
+│   ├── daily-challenges-config.json  # Configuración de desafíos
+│   ├── gamification-config.json      # Puntos, badges, reglas
+│   ├── thematic-paths-config.json    # Definición de rutas temáticas
+│   └── spaced-repetition-config.json # Algoritmos y parámetros
+└── existing structure...
+```
+
+### Ejemplo de Configuración Data-Driven
+```json
+// thematic-paths-config.json
+{
+  "paths": [
+    {
+      "id": "business-path",
+      "name": "Business English",
+      "description": "Professional communication skills",
+      "moduleFilters": {
+        "categories": ["Vocabulary", "Grammar"],
+        "tags": ["business", "professional"],
+        "levels": ["b1", "b2", "c1"]
+      },
+      "icon": "briefcase"
+    }
+  ]
+}
+```
+
+### Servicios de Configuración
+```typescript
+interface ConfigurationService {
+  loadConfig<T>(configFile: string): Promise<T>;
+  validateConfig(config: any, schema: any): boolean;
+  reloadConfigurations(): Promise<void>;
+}
+```
 
 ## Integración No Invasiva con UI Existente
 
