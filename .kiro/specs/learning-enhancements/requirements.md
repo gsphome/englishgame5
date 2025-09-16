@@ -133,20 +133,19 @@ Las mejoras están diseñadas para implementarse de forma incremental sin requer
 6. WHEN se implemente reading mode THEN el sistema SHALL usar Progressive Disclosure para organizar el contenido en secciones navegables
 7. WHEN se complete un módulo reading THEN el sistema SHALL desbloquear los módulos interactivos relacionados
 
-### Requerimiento 10: Balancear Todas las Categorías de Aprendizaje
+### Requerimiento 10: Balancear Niveles y Categorías Implementadas
 
-**Historia de Usuario:** Como estudiante de inglés, quiero tener módulos en todas las categorías de aprendizaje (Vocabulary, Grammar, PhrasalVerbs, Idioms, Pronunciation, Listening, Reading, Writing, Speaking, Review), para poder desarrollar habilidades completas del idioma.
+**Historia de Usuario:** Como estudiante de inglés, quiero tener un balance equilibrado de módulos entre todos los niveles A1-C2 y en las categorías que tienen componentes implementados, para poder progresar de manera uniforme.
 
 #### Criterios de Aceptación
 
-1. WHEN se analice el balance actual THEN el sistema SHALL identificar que faltan módulos en Pronunciation (0), Listening (0), Writing (0), Speaking (0) y pocos en PhrasalVerbs (3)
-2. WHEN se creen módulos de balance THEN el sistema SHALL añadir 12 módulos de Pronunciation distribuidos en todos los niveles A1-C2
-3. WHEN se creen módulos de balance THEN el sistema SHALL añadir 12 módulos de Listening distribuidos en todos los niveles A1-C2
-4. WHEN se creen módulos de balance THEN el sistema SHALL añadir 6 módulos de Writing distribuidos en niveles B1-C2
-5. WHEN se creen módulos de balance THEN el sistema SHALL añadir 6 módulos de Speaking distribuidos en niveles B1-C2
-6. WHEN se creen módulos de balance THEN el sistema SHALL añadir 9 módulos adicionales de PhrasalVerbs (3→12 total)
-7. WHEN se complete el balance THEN cada categoría SHALL tener representación adecuada según su importancia pedagógica
-8. WHEN se distribuyan por niveles THEN las categorías básicas (Vocabulary, Grammar, Pronunciation) SHALL estar presentes desde A1, y las avanzadas (Writing, Speaking) desde B1
+1. WHEN se analice el balance actual THEN el sistema SHALL identificar desbalance entre niveles: A1(5), A2(8), B1(8), B2(9), C1(8), C2(8)
+2. WHEN se balanceen niveles THEN cada nivel A1-C2 SHALL tener aproximadamente 15-16 módulos para progresión uniforme
+3. WHEN se identifiquen categorías implementadas THEN el sistema SHALL trabajar SOLO con: Vocabulary, Grammar, PhrasalVerbs, Idioms, Review, Reading
+4. WHEN se excluyan categorías THEN el sistema SHALL omitir Pronunciation, Listening, Writing, Speaking por falta de componentes implementados
+5. WHEN se añadan módulos PhrasalVerbs THEN el sistema SHALL crear 6 módulos adicionales (3→9 total) distribuidos en A2-C2
+6. WHEN se balancee contenido THEN el sistema SHALL priorizar Reading (18 módulos) como nueva categoría principal
+7. WHEN se complete el balance THEN cada nivel SHALL tener representación equilibrada de las categorías implementadas
 
 ### Requerimiento 11: Crear 24 Módulos Nuevos para Rutas Temáticas
 
