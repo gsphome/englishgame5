@@ -186,6 +186,23 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
     setCurrentView('menu');
   };
 
+  const showSummaryModal = () => {
+    setShowExplanation(false);
+    setSelectedTerm(null);
+    // Create a summary object with all pairs and their explanations
+    const summaryData = {
+      pairs: pairs,
+      matches: matches,
+      results: pairs.map(pair => ({
+        ...pair,
+        userAnswer: matches[pair.left] || 'No answer',
+        isCorrect: matches[pair.left] === pair.right,
+      })),
+    };
+    setSelectedTerm(summaryData);
+    setShowExplanation(true);
+  };
+
   const allMatched = Object.keys(matches).length === pairs.length;
 
   const getItemStatus = (item: string, isLeft: boolean) => {
@@ -391,19 +408,28 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
             </button>
           </>
         ) : (
-          <button
-            onClick={finishExercise}
-            className="flex items-center gap-2 px-6 py-2.5 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors text-sm font-medium shadow-sm"
-          >
-            <span>Finish Exercise</span>
-          </button>
+          <>
+            <button
+              onClick={showSummaryModal}
+              className="flex items-center gap-2 px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors text-sm font-medium shadow-sm"
+            >
+              <Info className="h-4 w-4" />
+              <span>View Summary</span>
+            </button>
+            <button
+              onClick={finishExercise}
+              className="flex items-center gap-2 px-6 py-2.5 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors text-sm font-medium shadow-sm"
+            >
+              <span>Finish Exercise</span>
+            </button>
+          </>
         )}
       </div>
 
-      {/* Explanation Modal */}
+      {/* Explanation/Summary Modal */}
       {showExplanation && selectedTerm && (
         <div className="fixed inset-0 bg-black bg-opacity-50 dark:bg-black dark:bg-opacity-80 flex items-center justify-center p-4 z-50">
-          <div className="bg-white dark:!bg-slate-800 border-0 dark:border dark:!border-slate-600 rounded-xl shadow-2xl max-w-md w-full max-h-[80vh] overflow-y-auto">
+          <div className="bg-white dark:!bg-slate-800 border-0 dark:border dark:!border-slate-600 rounded-xl shadow-2xl max-w-4xl w-full max-h-[80vh] overflow-y-auto">
             <div className="p-6">
               <div className="flex justify-between items-start mb-4">
                 <h3
@@ -414,7 +440,7 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
                       : undefined,
                   }}
                 >
-                  {selectedTerm.left}
+                  {selectedTerm.pairs ? 'Exercise Summary' : selectedTerm.left}
                 </h3>
                 <button
                   onClick={() => setShowExplanation(false)}
@@ -429,31 +455,118 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
                 </button>
               </div>
 
-              <div className="space-y-4">
-                <div>
-                  <h4
-                    className="text-sm font-medium text-gray-700 mb-1"
-                    style={{
-                      color: document.documentElement.classList.contains('dark')
-                        ? '#e5e7eb'
-                        : undefined,
-                    }}
-                  >
-                    Match:
-                  </h4>
-                  <p
-                    className="text-gray-900"
-                    style={{
-                      color: document.documentElement.classList.contains('dark')
-                        ? '#ffffff'
-                        : undefined,
-                    }}
-                  >
-                    {selectedTerm.right}
-                  </p>
-                </div>
+              {selectedTerm.pairs ? (
+                /* Summary View */
+                <div className="space-y-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {selectedTerm.results.map((result: any, index: number) => (
+                      <div
+                        key={index}
+                        className={`p-4 rounded-lg border-2 ${
+                          result.isCorrect
+                            ? 'border-green-200 bg-green-50 dark:border-green-800 dark:bg-green-900/20'
+                            : 'border-red-200 bg-red-50 dark:border-red-800 dark:bg-red-900/20'
+                        }`}
+                      >
+                        <div className="flex items-start justify-between mb-2">
+                          <h4
+                            className="font-medium text-gray-900"
+                            style={{
+                              color: document.documentElement.classList.contains('dark')
+                                ? '#ffffff'
+                                : undefined,
+                            }}
+                          >
+                            {result.left}
+                          </h4>
+                          <span
+                            className={`text-sm ${result.isCorrect ? 'text-green-600' : 'text-red-600'}`}
+                          >
+                            {result.isCorrect ? '✓' : '✗'}
+                          </span>
+                        </div>
 
-                {selectedTerm.explanation && (
+                        <div className="space-y-2">
+                          <div>
+                            <span
+                              className="text-sm font-medium text-gray-700"
+                              style={{
+                                color: document.documentElement.classList.contains('dark')
+                                  ? '#e5e7eb'
+                                  : undefined,
+                              }}
+                            >
+                              Correct answer:
+                            </span>
+                            <p
+                              className="text-sm text-gray-900"
+                              style={{
+                                color: document.documentElement.classList.contains('dark')
+                                  ? '#ffffff'
+                                  : undefined,
+                              }}
+                            >
+                              {result.right}
+                            </p>
+                          </div>
+
+                          {!result.isCorrect && (
+                            <div>
+                              <span
+                                className="text-sm font-medium text-gray-700"
+                                style={{
+                                  color: document.documentElement.classList.contains('dark')
+                                    ? '#e5e7eb'
+                                    : undefined,
+                                }}
+                              >
+                                Your answer:
+                              </span>
+                              <p
+                                className="text-sm text-red-600"
+                                style={{
+                                  color: document.documentElement.classList.contains('dark')
+                                    ? '#fca5a5'
+                                    : undefined,
+                                }}
+                              >
+                                {result.userAnswer}
+                              </p>
+                            </div>
+                          )}
+
+                          {result.explanation && (
+                            <div>
+                              <span
+                                className="text-sm font-medium text-gray-700"
+                                style={{
+                                  color: document.documentElement.classList.contains('dark')
+                                    ? '#e5e7eb'
+                                    : undefined,
+                                }}
+                              >
+                                Explanation:
+                              </span>
+                              <p
+                                className="text-sm text-gray-600"
+                                style={{
+                                  color: document.documentElement.classList.contains('dark')
+                                    ? '#d1d5db'
+                                    : undefined,
+                                }}
+                              >
+                                {result.explanation}
+                              </p>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                /* Individual Explanation View */
+                <div className="space-y-4">
                   <div>
                     <h4
                       className="text-sm font-medium text-gray-700 mb-1"
@@ -463,21 +576,46 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
                           : undefined,
                       }}
                     >
-                      Explanation:
+                      Match:
                     </h4>
                     <p
-                      className="text-gray-600 text-sm"
+                      className="text-gray-900"
                       style={{
                         color: document.documentElement.classList.contains('dark')
                           ? '#ffffff'
                           : undefined,
                       }}
                     >
-                      {selectedTerm.explanation}
+                      {selectedTerm.right}
                     </p>
                   </div>
-                )}
-              </div>
+
+                  {selectedTerm.explanation && (
+                    <div>
+                      <h4
+                        className="text-sm font-medium text-gray-700 mb-1"
+                        style={{
+                          color: document.documentElement.classList.contains('dark')
+                            ? '#e5e7eb'
+                            : undefined,
+                        }}
+                      >
+                        Explanation:
+                      </h4>
+                      <p
+                        className="text-gray-600 text-sm"
+                        style={{
+                          color: document.documentElement.classList.contains('dark')
+                            ? '#ffffff'
+                            : undefined,
+                        }}
+                      >
+                        {selectedTerm.explanation}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              )}
 
               <button
                 onClick={() => setShowExplanation(false)}

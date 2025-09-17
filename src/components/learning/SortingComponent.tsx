@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { RotateCcw, Check } from 'lucide-react';
+import { RotateCcw, Check, Info, X } from 'lucide-react';
 import { useAppStore } from '../../stores/appStore';
 import { useUserStore } from '../../stores/userStore';
 import { useSettingsStore } from '../../stores/settingsStore';
@@ -42,6 +42,8 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
   const [showResult, setShowResult] = useState(false);
   const [startTime] = useState(Date.now());
   const [dragOverCategory, setDragOverCategory] = useState<string | null>(null);
+  const [showExplanation, setShowExplanation] = useState(false);
+  const [selectedTerm, setSelectedTerm] = useState<any>(null);
 
   const { updateSessionScore, setCurrentView } = useAppStore();
   const { updateUserScore } = useUserStore();
@@ -54,14 +56,18 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
   // Keyboard navigation
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
+      if (showExplanation) {
+        if (e.key === 'Enter' || e.key === 'Escape') {
+          setShowExplanation(false);
+        }
+      } else if (e.key === 'Escape') {
         setCurrentView('menu');
       }
     };
 
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [setCurrentView]);
+  }, [showExplanation, setCurrentView]);
 
   useEffect(() => {
     let newExercise: SortingData = { id: '', words: [], categories: [] };
@@ -232,6 +238,37 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
     setCurrentView('menu');
   };
 
+  const showSummaryModal = () => {
+    setShowExplanation(false);
+    setSelectedTerm(null);
+    
+    // Create a summary object with all words and their explanations
+    const summaryData = {
+      categories: exercise.categories,
+      sortedItems: sortedItems,
+      results: (exercise.categories || []).flatMap(category => 
+        category.items.map(word => {
+          const userCategory = Object.keys(sortedItems).find(catName => 
+            (sortedItems[catName] || []).includes(word)
+          );
+          const isCorrect = userCategory === category.name;
+          const wordData = (module.data as any[])?.find((item: any) => item.word === word);
+          
+          return {
+            word,
+            correctCategory: category.name,
+            userCategory: userCategory || 'Not sorted',
+            isCorrect,
+            explanation: wordData?.explanation || `This word belongs to ${category.name}`
+          };
+        })
+      )
+    };
+    
+    setSelectedTerm(summaryData);
+    setShowExplanation(true);
+  };
+
   const allWordsSorted = availableWords.length === 0;
 
   return (
@@ -390,14 +427,170 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
             </button>
           </>
         ) : (
-          <button
-            onClick={finishExercise}
-            className="flex items-center gap-2 px-6 py-2.5 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors text-sm font-medium shadow-sm"
-          >
-            <span>Finish Exercise</span>
-          </button>
+          <>
+            <button
+              onClick={showSummaryModal}
+              className="flex items-center gap-2 px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors text-sm font-medium shadow-sm"
+            >
+              <Info className="h-4 w-4" />
+              <span>View Summary</span>
+            </button>
+            <button
+              onClick={finishExercise}
+              className="flex items-center gap-2 px-6 py-2.5 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors text-sm font-medium shadow-sm"
+            >
+              <span>Finish Exercise</span>
+            </button>
+          </>
         )}
       </div>
+
+      {/* Explanation/Summary Modal */}
+      {showExplanation && selectedTerm && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 dark:bg-black dark:bg-opacity-80 flex items-center justify-center p-4 z-50">
+          <div className="bg-white dark:!bg-slate-800 border-0 dark:border dark:!border-slate-600 rounded-xl shadow-2xl max-w-4xl w-full max-h-[80vh] overflow-y-auto">
+            <div className="p-6">
+              <div className="flex justify-between items-start mb-4">
+                <h3
+                  className="text-lg font-semibold text-gray-900"
+                  style={{
+                    color: document.documentElement.classList.contains('dark')
+                      ? '#ffffff'
+                      : undefined,
+                  }}
+                >
+                  Exercise Summary - Past Tense Verbs
+                </h3>
+                <button
+                  onClick={() => setShowExplanation(false)}
+                  className="text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-100 transition-colors"
+                  style={{
+                    color: document.documentElement.classList.contains('dark')
+                      ? '#d1d5db'
+                      : undefined,
+                  }}
+                >
+                  <X className="h-5 w-5" />
+                </button>
+              </div>
+
+              {/* Summary View */}
+              <div className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {selectedTerm.results.map((result: any, index: number) => (
+                    <div
+                      key={index}
+                      className={`p-4 rounded-lg border-2 ${
+                        result.isCorrect
+                          ? 'border-green-200 bg-green-50 dark:border-green-800 dark:bg-green-900/20'
+                          : 'border-red-200 bg-red-50 dark:border-red-800 dark:bg-red-900/20'
+                      }`}
+                    >
+                      <div className="flex items-start justify-between mb-2">
+                        <h4
+                          className="font-medium text-gray-900"
+                          style={{
+                            color: document.documentElement.classList.contains('dark')
+                              ? '#ffffff'
+                              : undefined,
+                          }}
+                        >
+                          {result.word}
+                        </h4>
+                        <span className={`text-sm ${result.isCorrect ? 'text-green-600' : 'text-red-600'}`}>
+                          {result.isCorrect ? '✓' : '✗'}
+                        </span>
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <div>
+                          <span
+                            className="text-sm font-medium text-gray-700"
+                            style={{
+                              color: document.documentElement.classList.contains('dark')
+                                ? '#e5e7eb'
+                                : undefined,
+                            }}
+                          >
+                            Correct category: 
+                          </span>
+                          <p
+                            className="text-sm text-gray-900"
+                            style={{
+                              color: document.documentElement.classList.contains('dark')
+                                ? '#ffffff'
+                                : undefined,
+                            }}
+                          >
+                            {result.correctCategory}
+                          </p>
+                        </div>
+                        
+                        {!result.isCorrect && (
+                          <div>
+                            <span
+                              className="text-sm font-medium text-gray-700"
+                              style={{
+                                color: document.documentElement.classList.contains('dark')
+                                  ? '#e5e7eb'
+                                  : undefined,
+                              }}
+                            >
+                              Your answer: 
+                            </span>
+                            <p
+                              className="text-sm text-red-600"
+                              style={{
+                                color: document.documentElement.classList.contains('dark')
+                                  ? '#fca5a5'
+                                  : undefined,
+                              }}
+                            >
+                              {result.userCategory}
+                            </p>
+                          </div>
+                        )}
+                        
+                        {result.explanation && (
+                          <div>
+                            <span
+                              className="text-sm font-medium text-gray-700"
+                              style={{
+                                color: document.documentElement.classList.contains('dark')
+                                  ? '#e5e7eb'
+                                  : undefined,
+                              }}
+                            >
+                              Explanation: 
+                            </span>
+                            <p
+                              className="text-sm text-gray-600"
+                              style={{
+                                color: document.documentElement.classList.contains('dark')
+                                  ? '#d1d5db'
+                                  : undefined,
+                              }}
+                            >
+                              {result.explanation}
+                            </p>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <button
+                onClick={() => setShowExplanation(false)}
+                className="w-full mt-6 px-4 py-2 bg-blue-600 hover:bg-blue-700 dark:!bg-blue-600 dark:hover:!bg-blue-500 text-white rounded-lg transition-colors"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

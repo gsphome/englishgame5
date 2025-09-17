@@ -14,48 +14,72 @@ background-color: var(--header-bg);
 border: 1px solid var(--header-border);
 
 /* For text */
-color: var(--header-text-primary);    /* Main text */
-color: var(--header-text-secondary);  /* Secondary text */
+color: var(--header-text-primary); /* Main text */
+color: var(--header-text-secondary); /* Secondary text */
 ```
 
 ### 2. Enhancement-Specific Colors
 
 #### Gamification Elements
+
 ```css
 /* Points display */
 .points-display {
-  color: var(--points-color);  /* #f59e0b light, #fbbf24 dark */
+  color: var(--points-color); /* #f59e0b light, #fbbf24 dark */
 }
 
 /* Streak indicators */
 .streak-indicator {
-  color: var(--streak-color);  /* #ef4444 light, #f87171 dark */
+  color: var(--streak-color); /* #ef4444 light, #f87171 dark */
 }
 
 /* Badge types */
-.badge--gold { color: var(--badge-gold); }
-.badge--silver { color: var(--badge-silver); }
-.badge--bronze { color: var(--badge-bronze); }
+.badge--gold {
+  color: var(--badge-gold);
+}
+.badge--silver {
+  color: var(--badge-silver);
+}
+.badge--bronze {
+  color: var(--badge-bronze);
+}
 ```
 
 #### Progress States
+
 ```css
-.progress--complete { color: var(--progress-complete); }
-.progress--partial { color: var(--progress-partial); }
-.progress--locked { color: var(--progress-locked); }
-.progress--available { color: var(--progress-available); }
+.progress--complete {
+  color: var(--progress-complete);
+}
+.progress--partial {
+  color: var(--progress-partial);
+}
+.progress--locked {
+  color: var(--progress-locked);
+}
+.progress--available {
+  color: var(--progress-available);
+}
 ```
 
 #### Daily Challenge States
+
 ```css
-.challenge--available { border-color: var(--challenge-available); }
-.challenge--completed { border-color: var(--challenge-completed); }
-.challenge--missed { border-color: var(--challenge-missed); }
+.challenge--available {
+  border-color: var(--challenge-available);
+}
+.challenge--completed {
+  border-color: var(--challenge-completed);
+}
+.challenge--missed {
+  border-color: var(--challenge-missed);
+}
 ```
 
 ## BEM-Like Naming Convention
 
 ### Structure
+
 ```
 .block-name
 .block-name__element
@@ -66,6 +90,7 @@ color: var(--header-text-secondary);  /* Secondary text */
 ### Examples for New Components
 
 #### Daily Challenge Card
+
 ```css
 .daily-challenge                    /* Block */
 .daily-challenge__header           /* Element */
@@ -77,6 +102,7 @@ color: var(--header-text-secondary);  /* Secondary text */
 ```
 
 #### Progress Analytics
+
 ```css
 .progress-analytics
 .progress-analytics__chart
@@ -87,6 +113,7 @@ color: var(--header-text-secondary);  /* Secondary text */
 ```
 
 #### Gamification Elements
+
 ```css
 .gamification-panel
 .gamification-panel__points
@@ -157,11 +184,13 @@ color: var(--header-text-secondary);  /* Secondary text */
 ## Accessibility Requirements
 
 ### 1. Color Contrast
+
 - Text on background: minimum 4.5:1 ratio (AA)
 - Large text: minimum 3:1 ratio (AA)
 - Interactive elements: minimum 3:1 ratio
 
 ### 2. Focus States
+
 ```css
 .interactive-element:focus {
   outline: 2px solid var(--header-focus-ring);
@@ -170,6 +199,7 @@ color: var(--header-text-secondary);  /* Secondary text */
 ```
 
 ### 3. Reduced Motion Support
+
 ```css
 @media (prefers-reduced-motion: reduce) {
   .animated-element {
@@ -182,6 +212,7 @@ color: var(--header-text-secondary);  /* Secondary text */
 ## Responsive Design
 
 ### Breakpoints (following existing system)
+
 ```css
 /* Mobile first approach */
 .component {

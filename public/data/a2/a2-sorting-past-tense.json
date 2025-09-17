@@ -2,202 +2,202 @@
   "categories": ["Regular Verbs", "Irregular Verbs"],
   "data": [
     {
-      "text": "walked (walk)",
+      "word": "walk",
       "category": "Regular Verbs",
       "explanation": "Walk becomes walked by adding -ed"
     },
     {
-      "text": "played (play)",
+      "word": "play",
       "category": "Regular Verbs",
       "explanation": "Play becomes played by adding -ed"
     },
     {
-      "text": "worked (work)",
+      "word": "work",
       "category": "Regular Verbs",
       "explanation": "Work becomes worked by adding -ed"
     },
     {
-      "text": "talked (talk)",
+      "word": "talk",
       "category": "Regular Verbs",
       "explanation": "Talk becomes talked by adding -ed"
     },
     {
-      "text": "watched (watch)",
+      "word": "watch",
       "category": "Regular Verbs",
       "explanation": "Watch becomes watched by adding -ed"
     },
     {
-      "text": "listened (listen)",
+      "word": "listen",
       "category": "Regular Verbs",
       "explanation": "Listen becomes listened by adding -ed"
     },
     {
-      "text": "cooked (cook)",
+      "word": "cook",
       "category": "Regular Verbs",
       "explanation": "Cook becomes cooked by adding -ed"
     },
     {
-      "text": "cleaned (clean)",
+      "word": "clean",
       "category": "Regular Verbs",
       "explanation": "Clean becomes cleaned by adding -ed"
     },
     {
-      "text": "helped (help)",
+      "word": "help",
       "category": "Regular Verbs",
       "explanation": "Help becomes helped by adding -ed"
     },
     {
-      "text": "opened (open)",
+      "word": "open",
       "category": "Regular Verbs",
       "explanation": "Open becomes opened by adding -ed"
     },
     {
-      "text": "closed (close)",
+      "word": "close",
       "category": "Regular Verbs",
       "explanation": "Close becomes closed by adding -ed"
     },
     {
-      "text": "started (start)",
+      "word": "start",
       "category": "Regular Verbs",
       "explanation": "Start becomes started by adding -ed"
     },
     {
-      "text": "finished (finish)",
+      "word": "finish",
       "category": "Regular Verbs",
       "explanation": "Finish becomes finished by adding -ed"
     },
     {
-      "text": "visited (visit)",
+      "word": "visit",
       "category": "Regular Verbs",
       "explanation": "Visit becomes visited by adding -ed"
     },
     {
-      "text": "lived (live)",
+      "word": "live",
       "category": "Regular Verbs",
       "explanation": "Live becomes lived by adding -ed"
     },
     {
-      "text": "moved (move)",
+      "word": "move",
       "category": "Regular Verbs",
       "explanation": "Move becomes moved by adding -ed"
     },
     {
-      "text": "studied (study)",
+      "word": "study",
       "category": "Regular Verbs",
       "explanation": "Study becomes studied (y changes to i + ed)"
     },
     {
-      "text": "tried (try)",
+      "word": "try",
       "category": "Regular Verbs",
       "explanation": "Try becomes tried (y changes to i + ed)"
     },
     {
-      "text": "carried (carry)",
+      "word": "carry",
       "category": "Regular Verbs",
       "explanation": "Carry becomes carried (y changes to i + ed)"
     },
     {
-      "text": "stopped (stop)",
+      "word": "stop",
       "category": "Regular Verbs",
       "explanation": "Stop becomes stopped (double p + ed)"
     },
     {
-      "text": "went (go)",
+      "word": "go",
       "category": "Irregular Verbs",
       "explanation": "Go becomes went - completely different form"
     },
     {
-      "text": "came (come)",
+      "word": "come",
       "category": "Irregular Verbs",
       "explanation": "Come becomes came - vowel change"
     },
     {
-      "text": "saw (see)",
+      "word": "see",
       "category": "Irregular Verbs",
       "explanation": "See becomes saw - completely different form"
     },
     {
-      "text": "ate (eat)",
+      "word": "eat",
       "category": "Irregular Verbs",
       "explanation": "Eat becomes ate - vowel change"
     },
     {
-      "text": "drank (drink)",
+      "word": "drink",
       "category": "Irregular Verbs",
       "explanation": "Drink becomes drank - vowel change"
     },
     {
-      "text": "slept (sleep)",
+      "word": "sleep",
       "category": "Irregular Verbs",
       "explanation": "Sleep becomes slept - vowel change"
     },
     {
-      "text": "took (take)",
+      "word": "take",
       "category": "Irregular Verbs",
       "explanation": "Take becomes took - vowel change"
     },
     {
-      "text": "gave (give)",
+      "word": "give",
       "category": "Irregular Verbs",
       "explanation": "Give becomes gave - vowel change"
     },
     {
-      "text": "made (make)",
+      "word": "make",
       "category": "Irregular Verbs",
       "explanation": "Make becomes made - vowel change"
     },
     {
-      "text": "had (have)",
+      "word": "have",
       "category": "Irregular Verbs",
       "explanation": "Have becomes had - completely different form"
     },
     {
-      "text": "was/were (be)",
+      "word": "be",
       "category": "Irregular Verbs",
       "explanation": "Be becomes was/were - completely different forms"
     },
     {
-      "text": "did (do)",
+      "word": "do",
       "category": "Irregular Verbs",
       "explanation": "Do becomes did - completely different form"
     },
     {
-      "text": "said (say)",
+      "word": "say",
       "category": "Irregular Verbs",
       "explanation": "Say becomes said - vowel change"
     },
     {
-      "text": "got (get)",
+      "word": "get",
       "category": "Irregular Verbs",
       "explanation": "Get becomes got - vowel change"
     },
     {
-      "text": "put (put)",
+      "word": "put",
       "category": "Irregular Verbs",
       "explanation": "Put stays the same - no change"
     },
     {
-      "text": "cut (cut)",
+      "word": "cut",
       "category": "Irregular Verbs",
       "explanation": "Cut stays the same - no change"
     },
     {
-      "text": "read (read)",
+      "word": "read",
       "category": "Irregular Verbs",
       "explanation": "Read stays the same spelling but pronunciation changes"
     },
     {
-      "text": "bought (buy)",
+      "word": "buy",
       "category": "Irregular Verbs",
       "explanation": "Buy becomes bought - completely different form"
     },
     {
-      "text": "thought (think)",
+      "word": "think",
       "category": "Irregular Verbs",
       "explanation": "Think becomes thought - completely different form"
     },
     {
-      "text": "brought (bring)",
+      "word": "bring",
       "category": "Irregular Verbs",
       "explanation": "Bring becomes brought - completely different form"
     }
