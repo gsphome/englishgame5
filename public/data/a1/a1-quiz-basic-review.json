@@ -74,7 +74,7 @@
       "I no like"
     ],
     "correct": "I don't like",
-    "explanation": "Use <don>t' for negative sentences with I, you, we, they."
+    "explanation": "Use <don't> for negative sentences with I, you, we, they."
   },
   {
     "question": "What is the number <fifteen> as digits?",
@@ -151,7 +151,7 @@
       "three clock"
     ],
     "correct": "three o'clock",
-    "explanation": "We say <three o>clock' for the time 3:00."
+    "explanation": "We say <three o'clock> for the time 3:00."
   },
   {
     "question": "Which word means <a lot of> for countable nouns?",
@@ -261,7 +261,7 @@
       "She no like"
     ],
     "correct": "She doesn't like",
-    "explanation": "Use <doesn>t' for negative sentences with he, she, it."
+    "explanation": "Use <doesn't> for negative sentences with he, she, it."
   },
   {
     "question": "How do you ask for help politely?",

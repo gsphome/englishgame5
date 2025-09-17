@@ -1,6 +1,6 @@
 [
   {
-    "sentence": "<span class=\"font-bold text-blue-500\">Seldom do we see</span> such dedication in young athletes.",
+    "sentence": "<Seldom do we see> such dedication in young athletes.",
     "idiom": "Seldom do we see",
     "options": [
       "We seldom see",
@@ -12,7 +12,7 @@
     "explanation": "Inversion with <seldom> requires the auxiliary verb before the subject."
   },
   {
-    "sentence": "<span class=\"font-bold text-blue-500\">Had I known</span> about the party, I would have attended.",
+    "sentence": "<Had I known> about the party, I would have attended.",
     "idiom": "Had I known",
     "options": [
       "If I knew",
@@ -24,7 +24,7 @@
     "explanation": "This is an inverted conditional sentence, equivalent to <If I had known>."
   },
   {
-    "sentence": "<span class=\"font-bold text-blue-500\">Not only did he finish</span> the race, but he also won it.",
+    "sentence": "<Not only did he finish> the race, but he also won it.",
     "idiom": "Not only did he finish",
     "options": [
       "He not only finished",
@@ -36,7 +36,7 @@
     "explanation": "Inversion with <not only> requires the auxiliary verb before the subject."
   },
   {
-    "sentence": "<span class=\"font-bold text-blue-500\">No sooner had she arrived</span> than the phone rang.",
+    "sentence": "<No sooner had she arrived> than the phone rang.",
     "idiom": "No sooner had she arrived",
     "options": [
       "She had no sooner arrived",
@@ -48,7 +48,7 @@
     "explanation": "Inversion with 'no sooner... than' requires the auxiliary verb before the subject."
   },
   {
-    "sentence": "<span class=\"font-bold text-blue-500\">Little did he know</span> the challenges that lay ahead.",
+    "sentence": "<Little did he know> the challenges that lay ahead.",
     "idiom": "Little did he know",
     "options": [
       "He little knew",
@@ -60,7 +60,7 @@
     "explanation": "Inversion with <little> (meaning <not much>) requires the auxiliary verb before the subject."
   },
   {
-    "sentence": "<span class=\"font-bold text-blue-500\">Only when the sun set</span> did they decide to leave.",
+    "sentence": "<Only when the sun set> did they decide to leave.",
     "idiom": "Only when the sun set",
     "options": [
       "They decided to leave only when the sun set",
@@ -72,7 +72,7 @@
     "explanation": "Inversion with <only when> occurs in the main clause, not the <only> clause."
   },
   {
-    "sentence": "<span class=\"font-bold text-blue-500\">Such was the impact</span> of the speech that everyone was moved.",
+    "sentence": "<Such was the impact> of the speech that everyone was moved.",
     "idiom": "Such was the impact",
     "options": [
       "The impact was such",
@@ -84,7 +84,7 @@
     "explanation": "Inversion with <such> emphasizes the degree of something."
   },
   {
-    "sentence": "<span class=\"font-bold text-blue-500\">Under no circumstances should you open</span> that door.",
+    "sentence": "<Under no circumstances should you open> that door.",
     "idiom": "Under no circumstances should you open",
     "options": [
       "You should open under no circumstances",
@@ -96,7 +96,7 @@
     "explanation": "Inversion with negative expressions like <under no circumstances> requires the auxiliary verb before the subject."
   },
   {
-    "sentence": "<span class=\"font-bold text-blue-500\">Rarely have I seen</span> such a beautiful painting.",
+    "sentence": "<Rarely have I seen> such a beautiful painting.",
     "idiom": "Rarely have I seen",
     "options": [
       "I have rarely seen",
@@ -108,7 +108,7 @@
     "explanation": "Inversion with <rarely> requires the auxiliary verb before the subject."
   },
   {
-    "sentence": "<span class=\"font-bold text-blue-500\">No sooner had he finished</span> his work than he went home.",
+    "sentence": "<No sooner had he finished> his work than he went home.",
     "idiom": "No sooner had he finished",
     "options": [
       "He had no sooner finished",
@@ -120,7 +120,7 @@
     "explanation": "Inversion with 'no sooner... than' requires the auxiliary verb before the subject."
   },
   {
-    "sentence": "<span class=\"font-bold text-blue-500\">Hardly had she left</span> when it started to rain.",
+    "sentence": "<Hardly had she left> when it started to rain.",
     "idiom": "Hardly had she left",
     "options": [
       "She had hardly left",
@@ -132,7 +132,7 @@
     "explanation": "Inversion with 'hardly... when' requires the auxiliary verb before the subject."
   },
   {
-    "sentence": "<span class=\"font-bold text-blue-500\">So successful was the project</span> that it was expanded globally.",
+    "sentence": "<So successful was the project> that it was expanded globally.",
     "idiom": "So successful was the project",
     "options": [
       "The project was so successful",
@@ -144,7 +144,7 @@
     "explanation": "Inversion with 'so + adjective/adverb' emphasizes the degree of something."
   },
   {
-    "sentence": "<span class=\"font-bold text-blue-500\">Never before has technology advanced</span> so rapidly.",
+    "sentence": "<Never before has technology advanced> so rapidly.",
     "idiom": "Never before has technology advanced",
     "options": [
       "Technology has never before advanced",
@@ -156,7 +156,7 @@
     "explanation": "Inversion with <never before> requires the auxiliary verb before the subject."
   },
   {
-    "sentence": "<span class=\"font-bold text-blue-500\">On no account are you to disclose</span> this information.",
+    "sentence": "<On no account are you to disclose> this information.",
     "idiom": "On no account are you to disclose",
     "options": [
       "You are on no account to disclose",
@@ -168,7 +168,7 @@
     "explanation": "Inversion with <on no account> requires the auxiliary verb before the subject."
   },
   {
-    "sentence": "<span class=\"font-bold text-blue-500\">Were I to win</span> the lottery, I would travel the world.",
+    "sentence": "<Were I to win> the lottery, I would travel the world.",
     "idiom": "Were I to win",
     "options": [
       "If I won",
@@ -180,7 +180,7 @@
     "explanation": "This is an inverted conditional sentence, equivalent to <If I were to win>."
   },
   {
-    "sentence": "<span class=\"font-bold text-blue-500\">Only by working together can we achieve</span> our goals.",
+    "sentence": "<Only by working together can we achieve> our goals.",
     "idiom": "Only by working together can we achieve",
     "options": [
       "We can achieve our goals only by working together",
@@ -192,7 +192,7 @@
     "explanation": "Inversion with <only by> occurs in the main clause."
   },
   {
-    "sentence": "<span class=\"font-bold text-blue-500\">Not until all the guests had left</span> did she finally relax.",
+    "sentence": "<Not until all the guests had left> did she finally relax.",
     "idiom": "Not until all the guests had left",
     "options": [
       "She finally relaxed not until all the guests had left",
@@ -204,7 +204,7 @@
     "explanation": "Inversion with <not until> occurs in the main clause."
   },
   {
-    "sentence": "<span class=\"font-bold text-blue-500\">So quickly did he run</span> that he broke the world record.",
+    "sentence": "<So quickly did he run> that he broke the world record.",
     "idiom": "So quickly did he run",
     "options": [
       "He ran so quickly",
@@ -216,7 +216,7 @@
     "explanation": "Inversion with 'so + adverb' emphasizes the degree of something."
   },
   {
-    "sentence": "<span class=\"font-bold text-blue-500\">Should you require</span> any further assistance, please do not hesitate to ask.",
+    "sentence": "<Should you require> any further assistance, please do not hesitate to ask.",
     "idiom": "Should you require",
     "options": [
       "If you require",
@@ -228,7 +228,7 @@
     "explanation": "This is an inverted conditional sentence, equivalent to <If you require>."
   },
   {
-    "sentence": "<span class=\"font-bold text-blue-500\">In no way is he responsible</span> for the accident.",
+    "sentence": "<In no way is he responsible> for the accident.",
     "idiom": "In no way is he responsible",
     "options": [
       "He is in no way responsible",
@@ -240,7 +240,7 @@
     "explanation": "Inversion with <in no way> requires the auxiliary verb before the subject."
   },
   {
-    "sentence": "<span class=\"font-bold text-blue-500\">Nowhere else will you find</span> such a diverse collection of art.",
+    "sentence": "<Nowhere else will you find> such a diverse collection of art.",
     "idiom": "Nowhere else will you find",
     "options": [
       "You will find nowhere else",
@@ -252,7 +252,7 @@
     "explanation": "Inversion with <Nowhere else> requires the auxiliary verb before the subject."
   },
   {
-    "sentence": "<span class=\"font-bold text-blue-500\">At no time was the president</span> aware of the secret plan.",
+    "sentence": "<At no time was the president> aware of the secret plan.",
     "idiom": "At no time was the president",
     "options": [
       "The president was at no time",
@@ -264,7 +264,7 @@
     "explanation": "Inversion with <At no time> requires the auxiliary verb before the subject."
   },
   {
-    "sentence": "<span class=\"font-bold text-blue-500\">Were she to accept</span> the offer, she would have to relocate.",
+    "sentence": "<Were she to accept> the offer, she would have to relocate.",
     "idiom": "Were she to accept",
     "options": [
       "If she accepted",
@@ -276,7 +276,7 @@
     "explanation": "This is an inverted conditional, equivalent to <If she were to accept>."
   },
   {
-    "sentence": "<span class=\"font-bold text-blue-500\">It was his arrogance that</span> I found so irritating.",
+    "sentence": "<It was his arrogance that> I found so irritating.",
     "idiom": "It was his arrogance that",
     "options": [
       "His arrogance was what",
@@ -288,7 +288,7 @@
     "explanation": "This is a cleft sentence used for emphasis, starting with 'It was... that...'"
   },
   {
-    "sentence": "<span class=\"font-bold text-blue-500\">What I need is</span> a long holiday, not more work.",
+    "sentence": "<What I need is> a long holiday, not more work.",
     "idiom": "What I need is",
     "options": [
       "I need is",
@@ -300,7 +300,7 @@
     "explanation": "This is a <wh-> cleft sentence used to emphasize the object of the need."
   },
   {
-    "sentence": "<span class=\"font-bold text-blue-500\">Having been warned</span> about the storm, they stayed indoors.",
+    "sentence": "<Having been warned> about the storm, they stayed indoors.",
     "idiom": "Having been warned",
     "options": [
       "Warning",
@@ -312,7 +312,7 @@
     "explanation": "A perfect participle clause (<Having been> + past participle) is used to show that one action happened before another."
   },
   {
-    "sentence": "<span class=\"font-bold text-blue-500\">Exhausted from the journey,</span> he went straight to bed.",
+    "sentence": "<Exhausted from the journey,> he went straight to bed.",
     "idiom": "Exhausted from the journey,",
     "options": [
       "Because he exhausted",
@@ -324,7 +324,7 @@
     "explanation": "A past participle clause at the beginning of a sentence can explain the reason for the main action."
   },
   {
-    "sentence": "<span class=\"font-bold text-blue-500\">It is imperative that the matter be</span> investigated immediately.",
+    "sentence": "<It is imperative that the matter be> investigated immediately.",
     "idiom": "It is imperative that the matter be",
     "options": [
       "the matter is",
@@ -336,7 +336,7 @@
     "explanation": "The subjunctive <be> is used after expressions like 'It is imperative that...'"
   },
   {
-    "sentence": "<span class=\"font-bold text-blue-500\">The harder you study,</span> the more you will learn.",
+    "sentence": "<The harder you study,> the more you will learn.",
     "idiom": "The harder you study,",
     "options": [
       "Harder you study,",
@@ -348,7 +348,7 @@
     "explanation": "This is a double comparative structure: 'The + comparative, the + comparative'."
   },
   {
-    "sentence": "<span class=\"font-bold text-blue-500\">A great writer he was,</span> but a difficult person to know.",
+    "sentence": "<A great writer he was,> but a difficult person to know.",
     "idiom": "A great writer he was,",
     "options": [
       "He was a great writer,",
@@ -360,7 +360,7 @@
     "explanation": "This is an example of fronting, where a part of the sentence is moved to the front for emphasis."
   },
   {
-    "sentence": "<span class=\"font-bold text-blue-500\">Not for a moment did I think</span> I would get the job.",
+    "sentence": "<Not for a moment did I think> I would get the job.",
     "idiom": "Not for a moment did I think",
     "options": [
       "I did not think for a moment",
@@ -372,7 +372,7 @@
     "explanation": "Inversion is used after the negative expression <Not for a moment>."
   },
   {
-    "sentence": "<span class=\"font-bold text-blue-500\">Only after his speech did I understand</span> the full situation.",
+    "sentence": "<Only after his speech did I understand> the full situation.",
     "idiom": "Only after his speech did I understand",
     "options": [
       "I understood only after his speech",
@@ -384,7 +384,7 @@
     "explanation": "When a sentence starts with <Only after>, the main clause is inverted."
   },
   {
-    "sentence": "<span class=\"font-bold text-blue-500\">Should the situation worsen,</span> we have a contingency plan.",
+    "sentence": "<Should the situation worsen,> we have a contingency plan.",
     "idiom": "Should the situation worsen,",
     "options": [
       "If the situation should worsen,",
@@ -396,7 +396,7 @@
     "explanation": "This inverted conditional is a more formal way of saying <If the situation should worsen>."
   },
   {
-    "sentence": "<span class=\"font-bold text-blue-500\">Built in the 16th century,</span> the castle is a major tourist attraction.",
+    "sentence": "<Built in the 16th century,> the castle is a major tourist attraction.",
     "idiom": "Built in the 16th century,",
     "options": [
       "It was built in the 16th century,",
@@ -408,7 +408,7 @@
     "explanation": "A past participle clause is used to give more information about the noun <the castle>."
   },
   {
-    "sentence": "<span class=\"font-bold text-blue-500\">The board proposed that the new policy be</span> implemented next year.",
+    "sentence": "<The board proposed that the new policy be> implemented next year.",
     "idiom": "The board proposed that the new policy be",
     "options": [
       "the new policy is",
@@ -420,7 +420,7 @@
     "explanation": "The subjunctive <be> is used after verbs of suggestion like <propose>."
   },
   {
-    "sentence": "<span class=\"font-bold text-blue-500\">The sooner we leave,</span> the earlier we will arrive.",
+    "sentence": "<The sooner we leave,> the earlier we will arrive.",
     "idiom": "The sooner we leave,",
     "options": [
       "Sooner we leave,",
@@ -432,7 +432,7 @@
     "explanation": "This is a double comparative structure: 'The + comparative, the + comparative'."
   },
   {
-    "sentence": "<span class=\"font-bold text-blue-500\">Into the room walked</span> the mysterious stranger.",
+    "sentence": "<Into the room walked> the mysterious stranger.",
     "idiom": "Into the room walked",
     "options": [
       "The mysterious stranger walked into the room",
@@ -444,7 +444,7 @@
     "explanation": "This is an example of fronting a prepositional phrase for dramatic effect, followed by inversion."
   },
   {
-    "sentence": "<span class=\"font-bold text-blue-500\">Not a single mistake did she make</span> in the entire performance.",
+    "sentence": "<Not a single mistake did she make> in the entire performance.",
     "idiom": "Not a single mistake did she make",
     "options": [
       "She did not make a single mistake",
@@ -456,7 +456,7 @@
     "explanation": "Inversion is used after the negative expression 'Not a single...'"
   },
   {
-    "sentence": "<span class=\"font-bold text-blue-500\">The problem is thought to be</span> more complex than initially assumed.",
+    "sentence": "<The problem is thought to be> more complex than initially assumed.",
     "idiom": "The problem is thought to be",
     "options": [
       "People think the problem is",
@@ -468,7 +468,7 @@
     "explanation": "This is a common complex passive structure used in formal or academic writing."
   },
   {
-    "sentence": "<span class=\"font-bold text-blue-500\">On no condition are you to</span> leave this room.",
+    "sentence": "<On no condition are you to> leave this room.",
     "idiom": "On no condition are you to",
     "options": [
       "You are on no condition to",

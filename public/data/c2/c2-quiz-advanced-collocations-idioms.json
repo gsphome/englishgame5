@@ -1,6 +1,6 @@
 [
   {
-    "sentence": "It's important to <span class=\"font-bold text-blue-500\">bear in mind</span> that not all information online is reliable.",
+    "sentence": "It's important to <bear in mind> that not all information online is reliable.",
     "idiom": "bear in mind",
     "options": [
       "remember",
@@ -12,7 +12,7 @@
     "explanation": "To <bear in mind> means to remember or consider something."
   },
   {
-    "sentence": "The new policy will <span class=\"font-bold text-blue-500\">have a profound impact</span> on the economy.",
+    "sentence": "The new policy will <have a profound impact> on the economy.",
     "idiom": "have a profound impact",
     "options": [
       "have a small effect",
@@ -24,7 +24,7 @@
     "explanation": "To <have a profound impact> means to have a very great or intense effect."
   },
   {
-    "sentence": "She managed to <span class=\"font-bold text-blue-500\">strike a balance</span> between her career and family life.",
+    "sentence": "She managed to <strike a balance> between her career and family life.",
     "idiom": "strike a balance",
     "options": [
       "find a compromise",
@@ -36,7 +36,7 @@
     "explanation": "To <strike a balance> means to find a satisfactory compromise between two extremes."
   },
   {
-    "sentence": "His arguments <span class=\"font-bold text-blue-500\">hold water</span>, despite initial skepticism.",
+    "sentence": "His arguments <hold water>, despite initial skepticism.",
     "idiom": "hold water",
     "options": [
       "are illogical",
@@ -48,7 +48,7 @@
     "explanation": "If an argument or statement <holds water>, it is valid and sound."
   },
   {
-    "sentence": "The new evidence <span class=\"font-bold text-blue-500\">sheds light on</span> the mysterious disappearance.",
+    "sentence": "The new evidence <sheds light on> the mysterious disappearance.",
     "idiom": "sheds light on",
     "options": [
       "darkens",
@@ -60,7 +60,7 @@
     "explanation": "To <shed light on> something means to help to explain it."
   },
   {
-    "sentence": "We need to <span class=\"font-bold text-blue-500\">iron out the kinks</span> before the system goes live.",
+    "sentence": "We need to <iron out the kinks> before the system goes live.",
     "idiom": "iron out the kinks",
     "options": [
       "create problems",
@@ -72,7 +72,7 @@
     "explanation": "To <iron out the kinks> means to resolve minor problems or difficulties."
   },
   {
-    "sentence": "The decision was made <span class=\"font-bold text-blue-500\">at the eleventh hour</span>.",
+    "sentence": "The decision was made <at the eleventh hour>.",
     "idiom": "at the eleventh hour",
     "options": [
       "very early",
@@ -84,7 +84,7 @@
     "explanation": "To do something <at the eleventh hour> means to do it at the last possible moment."
   },
   {
-    "sentence": "He tends to <span class=\"font-bold text-blue-500\">jump the gun</span> and make decisions too quickly.",
+    "sentence": "He tends to <jump the gun> and make decisions too quickly.",
     "idiom": "jump the gun",
     "options": [
       "act prematurely",
@@ -96,7 +96,7 @@
     "explanation": "To <jump the gun> means to act too soon or before the proper time."
   },
   {
-    "sentence": "The new manager is determined to <span class=\"font-bold text-blue-500\">turn over a new leaf</span> and improve team morale.",
+    "sentence": "The new manager is determined to <turn over a new leaf> and improve team morale.",
     "idiom": "turn over a new leaf",
     "options": [
       "continue old habits",
@@ -108,7 +108,7 @@
     "explanation": "To <turn over a new leaf> means to make a fresh start and change your behavior for the better."
   },
   {
-    "sentence": "The company is <span class=\"font-bold text-blue-500\">on the cusp of</span> a major breakthrough.",
+    "sentence": "The company is <on the cusp of> a major breakthrough.",
     "idiom": "on the cusp of",
     "options": [
       "far from",
@@ -120,7 +120,7 @@
     "explanation": "To be <on the cusp of> something means to be at the point when something is about to happen."
   },
   {
-    "sentence": "His explanation didn't <span class=\"font-bold text-blue-500\">ring true</span> to me.",
+    "sentence": "His explanation didn't <ring true> to me.",
     "idiom": "ring true",
     "options": [
       "seem false",
@@ -132,7 +132,7 @@
     "explanation": "If something <rings true>, it seems to be true or genuine."
   },
   {
-    "sentence": "She has a tendency to <span class=\"font-bold text-blue-500\">make a mountain out of a molehill</span>.",
+    "sentence": "She has a tendency to <make a mountain out of a molehill>.",
     "idiom": "make a mountain out of a molehill",
     "options": [
       "exaggerate a minor problem",
@@ -144,7 +144,7 @@
     "explanation": "To <make a mountain out of a molehill> means to exaggerate the importance of a small problem."
   },
   {
-    "sentence": "The project was a success, <span class=\"font-bold text-blue-500\">by and large</span>.",
+    "sentence": "The project was a success, <by and large>.",
     "idiom": "by and large",
     "options": [
       "completely",
@@ -156,7 +156,7 @@
     "explanation": "<By and large> means generally or mostly."
   },
   {
-    "sentence": "He decided to <span class=\"font-bold text-blue-500\">take the plunge</span> and start his own business.",
+    "sentence": "He decided to <take the plunge> and start his own business.",
     "idiom": "take the plunge",
     "options": [
       "hesitate",
@@ -168,7 +168,7 @@
     "explanation": "To <take the plunge> means to decide to do something important or difficult that you have been thinking about doing for a long time."
   },
   {
-    "sentence": "The new regulations will <span class=\"font-bold text-blue-500\">level the playing field</span> for all competitors.",
+    "sentence": "The new regulations will <level the playing field> for all competitors.",
     "idiom": "level the playing field",
     "options": [
       "create an unfair advantage",
@@ -180,7 +180,7 @@
     "explanation": "To <level the playing field> means to make a situation fair for everyone."
   },
   {
-    "sentence": "She's always been able to <span class=\"font-bold text-blue-500\">read between the lines</span>.",
+    "sentence": "She's always been able to <read between the lines>.",
     "idiom": "read between the lines",
     "options": [
       "read quickly",
@@ -192,7 +192,7 @@
     "explanation": "To <read between the lines> means to understand the real meaning of something, even if it is not stated directly."
   },
   {
-    "sentence": "The company is trying to <span class=\"font-bold text-blue-500\">get its act together</span> after a series of setbacks.",
+    "sentence": "The company is trying to <get its act together> after a series of setbacks.",
     "idiom": "get its act together",
     "options": [
       "become disorganized",
@@ -204,7 +204,7 @@
     "explanation": "To <get your act together> means to organize yourself and your affairs so that you can achieve something."
   },
   {
-    "sentence": "His comments were <span class=\"font-bold text-blue-500\">a breath of fresh air</span>.",
+    "sentence": "His comments were <a breath of fresh air>.",
     "idiom": "a breath of fresh air",
     "options": [
       "something new and refreshing",
@@ -216,7 +216,7 @@
     "explanation": "A <breath of fresh air> is something new and refreshing that makes a situation better."
   },
   {
-    "sentence": "We need to <span class=\"font-bold text-blue-500\">nip it in the bud</span> before it becomes a bigger problem.",
+    "sentence": "We need to <nip it in the bud> before it becomes a bigger problem.",
     "idiom": "nip it in the bud",
     "options": [
       "allow it to grow",
@@ -228,7 +228,7 @@
     "explanation": "To <nip something in the bud> means to stop a problem at an early stage before it gets worse."
   },
   {
-    "sentence": "The company decided to <span class=\"font-bold text-blue-500\">turn a blind eye</span> to the minor infractions.",
+    "sentence": "The company decided to <turn a blind eye> to the minor infractions.",
     "idiom": "turn a blind eye",
     "options": [
       "ignore deliberately",
@@ -240,7 +240,7 @@
     "explanation": "To <turn a blind eye> means to deliberately ignore something that you know is wrong."
   },
   {
-    "sentence": "It's time to <span class=\"font-bold text-blue-500\">clear the air</span> and discuss our differences openly.",
+    "sentence": "It's time to <clear the air> and discuss our differences openly.",
     "idiom": "clear the air",
     "options": [
       "make things worse",
@@ -252,7 +252,7 @@
     "explanation": "To <clear the air> means to resolve misunderstandings or disagreements."
   },
   {
-    "sentence": "He always <span class=\"font-bold text-blue-500\">gets cold feet</span> before a big presentation.",
+    "sentence": "He always <gets cold feet> before a big presentation.",
     "idiom": "gets cold feet",
     "options": [
       "becomes nervous or afraid",
@@ -264,7 +264,7 @@
     "explanation": "To <get cold feet> means to become nervous or afraid to do something you had planned."
   },
   {
-    "sentence": "She managed to <span class=\"font-bold text-blue-500\">keep a low profile</span> during the scandal.",
+    "sentence": "She managed to <keep a low profile> during the scandal.",
     "idiom": "keep a low profile",
     "options": [
       "attract attention",
@@ -276,7 +276,7 @@
     "explanation": "To <keep a low profile> means to avoid attracting attention to yourself."
   },
   {
-    "sentence": "His comments <span class=\"font-bold text-blue-500\">hit a raw nerve</span> with many people.",
+    "sentence": "His comments <hit a raw nerve> with many people.",
     "idiom": "hit a raw nerve",
     "options": [
       "made them happy",
@@ -288,7 +288,7 @@
     "explanation": "To <hit a raw nerve> means to touch on a sensitive subject that makes someone feel upset or angry."
   },
   {
-    "sentence": "The company is <span class=\"font-bold text-blue-500\">at a crossroads</span> regarding its future strategy.",
+    "sentence": "The company is <at a crossroads> regarding its future strategy.",
     "idiom": "at a crossroads",
     "options": [
       "making rapid progress",
@@ -300,7 +300,7 @@
     "explanation": "To be <at a crossroads> means to be at a point where a crucial decision must be made."
   },
   {
-    "sentence": "It's important to <span class=\"font-bold text-blue-500\">keep your ear to the ground</span> for new opportunities.",
+    "sentence": "It's important to <keep your ear to the ground> for new opportunities.",
     "idiom": "keep your ear to the ground",
     "options": [
       "ignore rumors",
@@ -312,7 +312,7 @@
     "explanation": "To <keep your ear to the ground> means to pay attention to rumors or what people are saying so that you can find out about new developments."
   },
   {
-    "sentence": "The project was a <span class=\"font-bold text-blue-500\">baptism of fire</span> for the new manager.",
+    "sentence": "The project was a <baptism of fire> for the new manager.",
     "idiom": "baptism of fire",
     "options": [
       "an easy start",
@@ -324,7 +324,7 @@
     "explanation": "A <baptism of fire> is a difficult or unpleasant first experience of something."
   },
   {
-    "sentence": "He decided to <span class=\"font-bold text-blue-500\">take the bull by the horns</span> and confront the problem.",
+    "sentence": "He decided to <take the bull by the horns> and confront the problem.",
     "idiom": "take the bull by the horns",
     "options": [
       "avoid the problem",
@@ -336,7 +336,7 @@
     "explanation": "To <take the bull by the horns> means to deal with a difficult situation directly and bravely."
   },
   {
-    "sentence": "We need to <span class=\"font-bold text-blue-500\">iron out the kinks</span> before the system goes live.",
+    "sentence": "We need to <iron out the kinks> before the system goes live.",
     "idiom": "iron out the kinks",
     "options": [
       "create problems",
@@ -348,7 +348,7 @@
     "explanation": "To <iron out the kinks> means to resolve minor problems or difficulties."
   },
   {
-    "sentence": "The new regulations will <span class=\"font-bold text-blue-500\">level the playing field</span> for all competitors.",
+    "sentence": "The new regulations will <level the playing field> for all competitors.",
     "idiom": "level the playing field",
     "options": [
       "create an unfair advantage",
@@ -360,7 +360,7 @@
     "explanation": "To <level the playing field> means to make a situation fair for everyone."
   },
   {
-    "sentence": "He always <span class=\"font-bold text-blue-500\">calls a spade a spade</span>, even if it's unpopular.",
+    "sentence": "He always <calls a spade a spade>, even if it's unpopular.",
     "idiom": "calls a spade a spade",
     "options": [
       "speaks indirectly",
@@ -372,7 +372,7 @@
     "explanation": "To <call a spade a spade> means to speak frankly and directly, even if it is impolite or unpleasant."
   },
   {
-    "sentence": "The company is trying to <span class=\"font-bold text-blue-500\">rein in spending</span> after a period of rapid growth.",
+    "sentence": "The company is trying to <rein in spending> after a period of rapid growth.",
     "idiom": "rein in spending",
     "options": [
       "increase spending",
@@ -384,7 +384,7 @@
     "explanation": "To <rein in> means to control or limit something."
   },
   {
-    "sentence": "She has a knack for <span class=\"font-bold text-blue-500\">reading between the lines</span>.",
+    "sentence": "She has a knack for <reading between the lines>.",
     "idiom": "reading between the lines",
     "options": [
       "reading quickly",
@@ -396,7 +396,7 @@
     "explanation": "To <read between the lines> means to understand the real meaning of something, even if it is not stated directly."
   },
   {
-    "sentence": "His proposal was met with <span class=\"font-bold text-blue-500\">a mixed bag</span> of reactions.",
+    "sentence": "His proposal was met with <a mixed bag> of reactions.",
     "idiom": "a mixed bag",
     "options": [
       "uniform approval",
@@ -408,7 +408,7 @@
     "explanation": "A <mixed bag> refers to a collection of various things, some good and some bad."
   },
   {
-    "sentence": "The company needs to <span class=\"font-bold text-blue-500\">get its house in order</span> before expanding.",
+    "sentence": "The company needs to <get its house in order> before expanding.",
     "idiom": "get its house in order",
     "options": [
       "expand rapidly",
@@ -420,7 +420,7 @@
     "explanation": "To <get its house in order> means to organize one's affairs or business."
   },
   {
-    "sentence": "His argument doesn't <span class=\"font-bold text-blue-500\">hold water</span>.",
+    "sentence": "His argument doesn't <hold water>.",
     "idiom": "hold water",
     "options": [
       "is valid",
@@ -432,7 +432,7 @@
     "explanation": "If an argument or statement doesn<t >hold water', it is not valid or sound."
   },
   {
-    "sentence": "She's always <span class=\"font-bold text-blue-500\">on the ball</span> when it comes to planning events.",
+    "sentence": "She's always <on the ball> when it comes to planning events.",
     "idiom": "on the ball",
     "options": [
       "unprepared",
@@ -444,7 +444,7 @@
     "explanation": "To be <on the ball> means to be alert, quick to understand, and competent."
   },
   {
-    "sentence": "It's time to <span class=\"font-bold text-blue-500\">clear the air</span> and discuss our differences openly.",
+    "sentence": "It's time to <clear the air> and discuss our differences openly.",
     "idiom": "clear the air",
     "options": [
       "make things worse",
@@ -456,7 +456,7 @@
     "explanation": "To <clear the air> means to resolve misunderstandings or disagreements."
   },
   {
-    "sentence": "He decided to <span class=\"font-bold text-blue-500\">take the plunge</span> and start his own business.",
+    "sentence": "He decided to <take the plunge> and start his own business.",
     "idiom": "take the plunge",
     "options": [
       "hesitate",
@@ -468,7 +468,7 @@
     "explanation": "To <take the plunge> means to decide to do something important or difficult that you have been thinking about for a long time."
   },
   {
-    "sentence": "We need to <span class=\"font-bold text-blue-500\">nip it in the bud</span> before it becomes a bigger problem.",
+    "sentence": "We need to <nip it in the bud> before it becomes a bigger problem.",
     "idiom": "nip it in the bud",
     "options": [
       "allow it to grow",
