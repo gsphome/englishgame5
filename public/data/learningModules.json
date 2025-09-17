@@ -184,23 +184,7 @@
     "estimatedTime": 5,
     "difficulty": 2
   },
-  {
-    "id": "completion-used-to-a2",
-    "name": "Used To",
-    "learningMode": "completion",
-    "dataPath": "data/a2/a2-completion-used-to.json",
-    "level": [
-      "a2"
-    ],
-    "category": "Grammar",
-    "unit": 2,
-    "prerequisites": [
-      "completion-comparatives-superlatives-a2"
-    ],
-    "description": "Past habits and states with 'used to'",
-    "estimatedTime": 5,
-    "difficulty": 2
-  },
+
   {
     "id": "quiz-elementary-review-a2",
     "name": "Elementary Review",
@@ -212,7 +196,7 @@
     "category": "Review",
     "unit": 2,
     "prerequisites": [
-      "completion-used-to-a2"
+      "completion-comparatives-superlatives-a2"
     ],
     "description": "Comprehensive review of A2 level concepts",
     "estimatedTime": 5,
@@ -355,6 +339,40 @@
     "difficulty": 3
   },
   {
+    "id": "completion-used-to-b2",
+    "name": "Used To",
+    "learningMode": "completion",
+    "dataPath": "data/b2/b2-completion-used-to.json",
+    "level": [
+      "b2"
+    ],
+    "category": "Grammar",
+    "unit": 4,
+    "prerequisites": [
+      "quiz-intermediate-review-b1"
+    ],
+    "description": "Advanced usage of 'used to', 'be used to', and 'get used to'",
+    "estimatedTime": 8,
+    "difficulty": 4
+  },
+  {
+    "id": "quiz-used-to-advanced-b2",
+    "name": "Used To - Advanced Quiz",
+    "learningMode": "quiz",
+    "dataPath": "data/b2/b2-quiz-used-to-advanced.json",
+    "level": [
+      "b2"
+    ],
+    "category": "Grammar",
+    "unit": 4,
+    "prerequisites": [
+      "completion-used-to-b2"
+    ],
+    "description": "Advanced quiz on complex usage patterns of 'used to' structures",
+    "estimatedTime": 10,
+    "difficulty": 4
+  },
+  {
     "id": "flashcard-ielts-general",
     "name": "General Vocab",
     "learningMode": "flashcard",
@@ -365,7 +383,7 @@
     "category": "Vocabulary",
     "unit": 4,
     "prerequisites": [
-      "quiz-intermediate-review-b1"
+      "quiz-used-to-advanced-b2"
     ],
     "description": "General IELTS vocabulary",
     "estimatedTime": 5,
