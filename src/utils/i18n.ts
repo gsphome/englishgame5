@@ -259,7 +259,8 @@ export const translations = {
       developmentMode: 'Modo Desarrollo',
       enabled: 'Habilitado',
       disabled: 'Deshabilitado',
-      developmentModeDescription: 'Habilita todos los modos de aprendizaje para desarrollo y pruebas',
+      developmentModeDescription:
+        'Habilita todos los modos de aprendizaje para desarrollo y pruebas',
     },
     about: {
       title: 'Acerca de FluentFlow',

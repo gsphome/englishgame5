@@ -46,7 +46,11 @@ export const useModuleData = (moduleId: string) => {
 
         const filteredData = apiService.filterModuleData(
           module.data,
-          { categories: developmentMode ? [] : categories, level: developmentMode ? 'all' : level, limit },
+          {
+            categories: developmentMode ? [] : categories,
+            level: developmentMode ? 'all' : level,
+            limit,
+          },
           moduleId
         );
 

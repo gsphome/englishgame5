@@ -280,7 +280,10 @@ export const AdvancedSettingsModal: React.FC<AdvancedSettingsModalProps> = ({
                       onChange={e => setLocalDevelopmentMode(e.target.checked)}
                       disabled={!isEditMode}
                     />
-                    <label htmlFor="developmentMode" className="advanced-settings-modal__toggle-label">
+                    <label
+                      htmlFor="developmentMode"
+                      className="advanced-settings-modal__toggle-label"
+                    >
                       <span className="advanced-settings-modal__toggle-text">
                         {localDevelopmentMode ? t('settings.enabled') : t('settings.disabled')}
                       </span>
