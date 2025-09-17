@@ -428,28 +428,16 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
 
       {/* Explanation/Summary Modal */}
       {showExplanation && selectedTerm && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 dark:bg-black dark:bg-opacity-80 flex items-center justify-center p-4 z-50">
-          <div className="bg-white dark:!bg-slate-800 border-0 dark:border dark:!border-slate-600 rounded-xl shadow-2xl max-w-4xl w-full max-h-[80vh] overflow-y-auto">
+        <div className="fixed inset-0 bg-black/50 dark:bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+          <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl shadow-2xl max-w-4xl w-full max-h-[80vh] overflow-y-auto">
             <div className="p-6">
               <div className="flex justify-between items-start mb-4">
-                <h3
-                  className="text-lg font-semibold text-gray-900"
-                  style={{
-                    color: document.documentElement.classList.contains('dark')
-                      ? '#ffffff'
-                      : undefined,
-                  }}
-                >
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                   {selectedTerm.pairs ? 'Exercise Summary' : selectedTerm.left}
                 </h3>
                 <button
                   onClick={() => setShowExplanation(false)}
-                  className="text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-100 transition-colors"
-                  style={{
-                    color: document.documentElement.classList.contains('dark')
-                      ? '#d1d5db'
-                      : undefined,
-                  }}
+                  className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors p-1 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800"
                 >
                   <X className="h-5 w-5" />
                 </button>

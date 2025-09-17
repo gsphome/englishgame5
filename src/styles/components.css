@@ -3,6 +3,7 @@
 @import './components/index.css';
 @import './components/progression-info.css';
 @import './components/module-progression.css';
+@import './components/sorting-modal.css';
 
 /* ========================================
    GLOBAL SVG ICON RULES - ENHANCED CONTRAST SYSTEM

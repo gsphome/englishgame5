@@ -1,0 +1,229 @@
+/* Sorting Modal Component - BEM-like Classes */
+
+/* Modal Overlay */
+.sorting-modal-overlay {
+  @apply fixed inset-0 flex items-center justify-center p-4 z-50;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+.dark .sorting-modal-overlay {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Modal Container */
+.sorting-modal-container {
+  @apply bg-white border border-gray-200 rounded-xl shadow-2xl max-w-4xl w-full max-h-[80vh] overflow-y-auto;
+}
+
+.dark .sorting-modal-container {
+  @apply bg-gray-900 border-gray-700;
+}
+
+/* Modal Header */
+.sorting-modal__header {
+  @apply flex justify-between items-start mb-4;
+}
+
+.sorting-modal__title {
+  @apply text-lg font-semibold text-gray-900;
+}
+
+.dark .sorting-modal__title {
+  @apply text-white;
+}
+
+.sorting-modal__close-btn {
+  @apply text-gray-500 hover:text-gray-700 transition-colors p-1 rounded-md hover:bg-gray-100;
+}
+
+.dark .sorting-modal__close-btn {
+  @apply text-gray-400 hover:text-gray-200 hover:bg-gray-800;
+}
+
+/* Modal Content */
+.sorting-modal__content {
+  @apply p-6;
+}
+
+.sorting-modal__summary {
+  @apply space-y-4;
+}
+
+.sorting-modal__results-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-4;
+}
+
+/* Result Card */
+.sorting-result-card {
+  @apply p-4 rounded-lg border-2 transition-all duration-200 shadow-sm;
+}
+
+.sorting-result-card--correct {
+  @apply border-green-300 bg-green-50 shadow-green-100;
+}
+
+.dark .sorting-result-card--correct {
+  @apply border-green-600 bg-green-900/30 shadow-green-900/20;
+}
+
+.sorting-result-card--incorrect {
+  @apply border-red-300 bg-red-50 shadow-red-100;
+}
+
+.dark .sorting-result-card--incorrect {
+  @apply border-red-600 bg-red-900/30 shadow-red-900/20;
+}
+
+/* Result Card Header */
+.sorting-result-card__header {
+  @apply flex items-start justify-between mb-3;
+}
+
+.sorting-result-card__word {
+  @apply font-semibold text-gray-900 text-base;
+}
+
+.dark .sorting-result-card__word {
+  @apply text-white;
+}
+
+.sorting-result-card__status {
+  @apply text-lg font-bold;
+}
+
+.sorting-result-card__status--correct {
+  @apply text-green-600;
+}
+
+.dark .sorting-result-card__status--correct {
+  @apply text-green-400;
+}
+
+.sorting-result-card__status--incorrect {
+  @apply text-red-600;
+}
+
+.dark .sorting-result-card__status--incorrect {
+  @apply text-red-400;
+}
+
+/* Result Card Content */
+.sorting-result-card__content {
+  @apply space-y-3;
+}
+
+.sorting-result-card__field {
+  /* Base field styling */
+}
+
+.sorting-result-card__label {
+  @apply text-sm font-medium text-gray-600 block mb-1;
+}
+
+.dark .sorting-result-card__label {
+  @apply text-gray-300;
+}
+
+.sorting-result-card__value {
+  @apply text-sm font-medium px-2 py-1 rounded border;
+}
+
+.sorting-result-card__value--correct {
+  @apply text-gray-900 bg-white border-gray-200;
+}
+
+.dark .sorting-result-card__value--correct {
+  @apply text-white bg-gray-800 border-gray-600;
+}
+
+.sorting-result-card__value--incorrect {
+  @apply text-red-700 bg-red-100 border-red-200;
+}
+
+.dark .sorting-result-card__value--incorrect {
+  @apply text-red-300 bg-red-900/50 border-red-700;
+}
+
+.sorting-result-card__explanation {
+  @apply text-sm text-gray-700 bg-gray-50 px-3 py-2 rounded border border-gray-200 leading-relaxed;
+}
+
+.dark .sorting-result-card__explanation {
+  @apply text-gray-200 bg-gray-800/50 border-gray-600;
+}
+
+/* Modal Actions */
+.sorting-modal__actions {
+  @apply w-full mt-6;
+}
+
+.sorting-modal__close-button {
+  @apply w-full px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors font-medium shadow-sm hover:shadow-md;
+}
+
+.dark .sorting-modal__close-button {
+  @apply bg-blue-600 hover:bg-blue-500;
+}
+
+/* Control Buttons */
+.sorting-controls {
+  @apply flex justify-center items-center gap-3 flex-wrap mt-6;
+}
+
+.sorting-controls__separator {
+  @apply w-px h-6 bg-gray-300 mx-1;
+}
+
+.sorting-controls__button {
+  @apply flex items-center gap-2 px-6 py-2.5 rounded-lg transition-colors text-sm font-medium shadow-sm;
+}
+
+.sorting-controls__button--reset {
+  @apply p-2.5 bg-gray-500 hover:bg-gray-600 text-white;
+}
+
+.sorting-controls__button--check {
+  @apply bg-orange-600 hover:bg-orange-700 disabled:bg-gray-400 text-white;
+}
+
+.sorting-controls__button--summary {
+  @apply bg-blue-600 hover:bg-blue-700 text-white;
+}
+
+.sorting-controls__button--finish {
+  @apply bg-green-600 hover:bg-green-700 text-white;
+}
+
+/* Header Progress */
+.sorting-header {
+  @apply mb-4;
+}
+
+.sorting-header__top {
+  @apply flex justify-between items-center mb-3;
+}
+
+.sorting-header__title {
+  @apply text-lg sm:text-xl font-bold text-gray-900;
+}
+
+.dark .sorting-header__title {
+  @apply text-white;
+}
+
+.sorting-header__progress-badge {
+  @apply text-sm font-medium text-gray-600 bg-gray-100 px-3 py-1 rounded-full;
+}
+
+.dark .sorting-header__progress-badge {
+  @apply text-gray-300 bg-gray-700;
+}
+
+.sorting-header__progress-bar {
+  @apply w-full bg-gray-200 rounded-full h-1.5;
+}
+
+.sorting-header__progress-fill {
+  @apply bg-orange-600 h-1.5 rounded-full transition-all duration-300;
+}
