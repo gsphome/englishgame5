@@ -11,6 +11,15 @@ export default defineConfig({
       provider: 'v8',
       reporter: ['text', 'json', 'html', 'lcov'],
       reportsDirectory: './coverage',
+      // Thresholds para mantener calidad
+      thresholds: {
+        global: {
+          branches: 70,
+          functions: 70,
+          lines: 70,
+          statements: 70
+        }
+      },
       exclude: [
         'node_modules/',
         'tests/',
@@ -21,7 +30,11 @@ export default defineConfig({
         '**/*.config.{js,ts}',
         '**/vite.config.ts',
         '**/vitest.config.ts'
-      ]
+      ],
+      // Incluir solo src/ para coverage más preciso
+      include: ['src/**/*.{ts,tsx}'],
+      // Reportar archivos no cubiertos
+      all: true
     }
   }
 });

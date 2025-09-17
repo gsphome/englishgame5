@@ -49,9 +49,23 @@ jobs:
       - name: Generate coverage
         run: npm run test:coverage
 
+      - name: Diagnose coverage (debug)
+        if: always()
+        run: |
+          echo "🔍 Coverage diagnostic:"
+          ls -la coverage/ || echo "Coverage directory not found"
+          if [ -f coverage/lcov.info ]; then
+            echo "✅ lcov.info exists ($(wc -l < coverage/lcov.info) lines)"
+            head -10 coverage/lcov.info
+          else
+            echo "❌ lcov.info missing"
+          fi
+
       - name: Upload coverage
         uses: codecov/codecov-action@v4
         with:
           file: ./coverage/lcov.info
           flags: unittests
           name: ci-quality
+          verbose: true
+          fail_ci_if_error: false

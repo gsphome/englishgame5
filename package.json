@@ -12,6 +12,8 @@
     "test": "vitest run --config config/vitest.config.ts",
     "test:watch": "vitest --config config/vitest.config.ts",
     "test:coverage": "vitest run --coverage --config config/vitest.config.ts",
+    "test:coverage:validate": "npm run test:coverage && node -e \"const fs = require('fs'); if (!fs.existsSync('./coverage/lcov.info')) { console.error('❌ lcov.info not found'); process.exit(1); } else { console.log('✅ Coverage files generated successfully'); }\"",
+    "ci:diagnose": "node scripts/ci/diagnose-coverage.js",
     "test:unit": "vitest run tests/unit --config config/vitest.config.ts",
     "test:integration": "vitest run tests/integration --config config/vitest.config.ts",
     "test:e2e": "vitest run tests/e2e --config config/vitest.config.ts",
