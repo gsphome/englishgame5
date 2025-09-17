@@ -84,7 +84,6 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
         
         // Use all available categories (no artificial limit)
         const selectedCategories = shuffledCategories;
-        const categoryCount = selectedCategories.length;
         
         // Collect all available words first
         const allAvailableWords = (module.data || []).map((item: any) => ({
