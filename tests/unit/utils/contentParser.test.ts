@@ -66,7 +66,7 @@ describe('ContentParser', () => {
       
       // This test demonstrates why we need angle brackets
       // The legacy quote system has issues with contractions
-      const termSegments = result.segments.filter(s => s.type === 'term');
+      const _termSegments = result.segments.filter(s => s.type === 'term');
       
       // May or may not find 'hello' depending on parsing conflicts
       const textContent = result.segments.map(s => s.content).join('');
@@ -185,7 +185,7 @@ describe('ContentParser', () => {
     it('should show why angle brackets solve the contraction problem', () => {
       // Problem with legacy quotes
       const legacyInput = "The word 'hello' is good but I'm not sure about 'can't'";
-      const legacyResult = ContentParser.parseQuizContent(legacyInput);
+      const _legacyResult = ContentParser.parseQuizContent(legacyInput);
       
       // Solution with angle brackets
       const modernInput = "The word <hello> is good but I'm not sure about <can't>";

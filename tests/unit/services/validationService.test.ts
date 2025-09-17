@@ -21,8 +21,8 @@ describe('ValidationService', () => {
         prerequisites: [],
         data: Array(40).fill({
           id: '1',
-          en: 'Hello',
-          es: 'Hola',
+          front: 'Hello',
+          back: 'Hola',
           ipa: '/həˈloʊ/',
           example: 'Hello, how are you?',
           example_es: 'Hola, ¿cómo estás?'
@@ -36,7 +36,7 @@ describe('ValidationService', () => {
 
     it('should handle strict mode with warnings', () => {
       const strictService = new ValidationService({ strictMode: true });
-      
+
       const moduleWithWarnings: LearningModule = {
         id: 'flashcard-basic-vocabulary-a1',
         name: 'Basic Vocabulary',
@@ -47,8 +47,8 @@ describe('ValidationService', () => {
         prerequisites: [],
         data: Array(40).fill({
           id: '1',
-          en: 'Hello',
-          es: 'Hola'
+          front: 'Hello',
+          back: 'Hola'
           // Missing ipa and example - will generate warnings
         } as FlashcardData)
       };
@@ -71,8 +71,8 @@ describe('ValidationService', () => {
         prerequisites: [],
         data: Array(40).fill({
           id: '1',
-          en: 'Hello',
-          es: 'Hola',
+          front: 'Hello',
+          back: 'Hola',
           ipa: '/həˈloʊ/',
           example: 'Hello, how are you?'
         } as FlashcardData)
@@ -88,13 +88,13 @@ describe('ValidationService', () => {
         prerequisites: [],
         data: Array(20).fill({ // Wrong count
           id: '1',
-          en: 'Hello',
-          es: 'Hola'
+          front: 'Hello',
+          back: 'Hola'
         } as FlashcardData)
       };
 
       const result = service.validateModules([validModule, invalidModule]);
-      
+
       expect(result.overallSuccess).toBe(false);
       expect(result.summary.totalModules).toBe(2);
       expect(result.summary.validModules).toBe(1);

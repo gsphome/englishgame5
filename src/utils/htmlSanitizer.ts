@@ -77,9 +77,7 @@ export const sanitizeHTML = (html: string): string => {
         if (attrName.toLowerCase() === 'class') {
           // Only allow classes that are explicitly in our allowed list
           const classes = attrValue.split(/\s+/);
-          const allowedClasses = classes.filter(cls =>
-            ALLOWED_CLASSES.includes(cls)
-          );
+          const allowedClasses = classes.filter(cls => ALLOWED_CLASSES.includes(cls));
 
           if (allowedClasses.length > 0) {
             return `${attrName}="${allowedClasses.join(' ')}"`;
@@ -104,7 +102,9 @@ export const sanitizeHTML = (html: string): string => {
  * @returns Sanitized HTML object
  */
 export const createSanitizedHTML = (html: string): SanitizedHTML => {
-  console.warn('createSanitizedHTML is deprecated. Use ContentRenderer with structured content instead.');
+  console.warn(
+    'createSanitizedHTML is deprecated. Use ContentRenderer with structured content instead.'
+  );
   return {
     __html: sanitizeHTML(html),
   };

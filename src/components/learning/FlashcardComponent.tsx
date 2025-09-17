@@ -162,8 +162,9 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
 
       {/* Flashcard */}
       <div
-        className={`flashcard relative h-56 sm:h-64 w-full cursor-pointer ${isFlipped ? 'flipped' : ''
-          }`}
+        className={`flashcard relative h-56 sm:h-64 w-full cursor-pointer ${
+          isFlipped ? 'flipped' : ''
+        }`}
         onClick={handleFlip}
       >
         <div className="flashcard-inner">
@@ -184,9 +185,11 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
             )}
             {currentCard?.example && (
               <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 italic text-center px-2">
-                "<ContentRenderer
+                "
+                <ContentRenderer
                   content={ContentAdapter.ensureStructured(currentCard.example, 'flashcard')}
-                />"
+                />
+                "
               </div>
             )}
           </div>
@@ -217,15 +220,19 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
             {currentCard?.example && (
               <div className="text-center">
                 <div className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 italic mb-1 px-2">
-                  "<ContentRenderer
+                  "
+                  <ContentRenderer
                     content={ContentAdapter.ensureStructured(currentCard.example, 'flashcard')}
-                  />"
+                  />
+                  "
                 </div>
                 {currentCard.example_es && (
                   <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 italic px-2">
-                    "<ContentRenderer
+                    "
+                    <ContentRenderer
                       content={ContentAdapter.ensureStructured(currentCard.example_es, 'flashcard')}
-                    />"
+                    />
+                    "
                   </div>
                 )}
               </div>

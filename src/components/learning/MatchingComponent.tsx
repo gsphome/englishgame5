@@ -270,9 +270,10 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
               let className = 'matching-component__item ';
 
               if (showResult) {
-                className += status === 'correct'
-                  ? 'matching-component__item--correct'
-                  : 'matching-component__item--incorrect';
+                className +=
+                  status === 'correct'
+                    ? 'matching-component__item--correct'
+                    : 'matching-component__item--incorrect';
               } else if (isMatched) {
                 className += 'matching-component__item--matched';
               } else if (isSelected) {
@@ -292,9 +293,7 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
                       {String.fromCharCode(65 + index)}
                     </span>
                     <span className="matching-component__item-text">
-                      <ContentRenderer 
-                        content={ContentAdapter.ensureStructured(item, 'quiz')}
-                      />
+                      <ContentRenderer content={ContentAdapter.ensureStructured(item, 'quiz')} />
                     </span>
                     <div className="matching-component__item-actions">
                       {showResult && (
@@ -327,9 +326,7 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
 
           {/* Definitions Column */}
           <div className="matching-component__column">
-            <h3 className="matching-component__column-header">
-              Definitions
-            </h3>
+            <h3 className="matching-component__column-header">Definitions</h3>
             {rightItems.map((item, index) => {
               const isMatched = Object.values(matches).includes(item);
               const isSelected = selectedRight === item;
@@ -338,11 +335,12 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
               let className = 'matching-component__item ';
 
               if (showResult) {
-                className += status === 'correct'
-                  ? 'matching-component__item--correct'
-                  : status === 'incorrect'
-                    ? 'matching-component__item--incorrect'
-                    : 'matching-component__item--unmatched';
+                className +=
+                  status === 'correct'
+                    ? 'matching-component__item--correct'
+                    : status === 'incorrect'
+                      ? 'matching-component__item--incorrect'
+                      : 'matching-component__item--unmatched';
               } else if (isMatched) {
                 className += 'matching-component__item--matched-inactive';
               } else if (isSelected) {
@@ -359,13 +357,14 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
                   className={className}
                 >
                   <div className="matching-component__item-content">
-                    <span className="matching-component__item-letter" style={{ backgroundColor: '#f97316' }}>
+                    <span
+                      className="matching-component__item-letter"
+                      style={{ backgroundColor: '#f97316' }}
+                    >
                       {index + 1}
                     </span>
                     <span className="matching-component__item-text">
-                      <ContentRenderer 
-                        content={ContentAdapter.ensureStructured(item, 'quiz')}
-                      />
+                      <ContentRenderer content={ContentAdapter.ensureStructured(item, 'quiz')} />
                     </span>
                     {isMatched && (
                       <span className="matching-component__item-letter">
@@ -454,20 +453,20 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
                     {selectedTerm.results.map((result: any, index: number) => (
                       <div
                         key={index}
-                        className={`matching-result-card ${result.isCorrect
-                          ? 'matching-result-card--correct'
-                          : 'matching-result-card--incorrect'
-                          }`}
+                        className={`matching-result-card ${
+                          result.isCorrect
+                            ? 'matching-result-card--correct'
+                            : 'matching-result-card--incorrect'
+                        }`}
                       >
                         <div className="matching-result-card__header">
-                          <h4 className="matching-result-card__term">
-                            {result.left}
-                          </h4>
+                          <h4 className="matching-result-card__term">{result.left}</h4>
                           <span
-                            className={`matching-result-card__status ${result.isCorrect
-                              ? 'matching-result-card__status--correct'
-                              : 'matching-result-card__status--incorrect'
-                              }`}
+                            className={`matching-result-card__status ${
+                              result.isCorrect
+                                ? 'matching-result-card__status--correct'
+                                : 'matching-result-card__status--incorrect'
+                            }`}
                           >
                             {result.isCorrect ? '✓' : '✗'}
                           </span>
@@ -475,9 +474,7 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
 
                         <div className="matching-result-card__content">
                           <div className="matching-result-card__field">
-                            <span className="matching-result-card__label">
-                              Correct answer:
-                            </span>
+                            <span className="matching-result-card__label">Correct answer:</span>
                             <p className="matching-result-card__value matching-result-card__value--correct">
                               {result.right}
                             </p>
@@ -485,9 +482,7 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
 
                           {!result.isCorrect && (
                             <div className="matching-result-card__field">
-                              <span className="matching-result-card__label">
-                                Your answer:
-                              </span>
+                              <span className="matching-result-card__label">Your answer:</span>
                               <p className="matching-result-card__value matching-result-card__value--incorrect">
                                 {result.userAnswer}
                               </p>
@@ -496,9 +491,7 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
 
                           {result.explanation && (
                             <div className="matching-result-card__field">
-                              <span className="matching-result-card__label">
-                                Explanation:
-                              </span>
+                              <span className="matching-result-card__label">Explanation:</span>
                               <p className="matching-result-card__explanation">
                                 {result.explanation}
                               </p>
@@ -521,8 +514,11 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
                     <div className="matching-individual__field">
                       <h4 className="matching-individual__label">Explanation:</h4>
                       <div className="matching-individual__explanation">
-                        <ContentRenderer 
-                          content={ContentAdapter.ensureStructured(selectedTerm.explanation, 'explanation')}
+                        <ContentRenderer
+                          content={ContentAdapter.ensureStructured(
+                            selectedTerm.explanation,
+                            'explanation'
+                          )}
                         />
                       </div>
                     </div>

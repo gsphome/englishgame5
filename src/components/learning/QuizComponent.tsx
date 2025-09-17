@@ -184,7 +184,7 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
       {/* Question */}
       <div className="quiz-question bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 sm:p-6 mb-4">
         <h3 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6" style={{ color: textColor }}>
-          <ContentRenderer 
+          <ContentRenderer
             content={ContentAdapter.ensureStructured(
               currentQuestion?.question || currentQuestion?.sentence || 'Loading question...',
               'quiz'
@@ -264,7 +264,7 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
               Explanation:
             </h4>
             <div style={{ color: textColor }}>
-              <ContentRenderer 
+              <ContentRenderer
                 content={ContentAdapter.ensureStructured(
                   currentQuestion?.explanation || '',
                   'explanation'

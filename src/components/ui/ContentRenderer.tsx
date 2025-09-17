@@ -23,7 +23,7 @@ const ContentSegmentComponent: React.FC<ContentSegmentProps> = ({ segment, forma
   switch (type) {
     case 'term':
       return (
-        <span 
+        <span
           className={`content-segment content-segment--term ${format ? `content-segment--${format}` : ''}`}
           title={metadata?.definition}
         >
@@ -33,28 +33,36 @@ const ContentSegmentComponent: React.FC<ContentSegmentProps> = ({ segment, forma
 
     case 'emphasis':
       return (
-        <strong className={`content-segment content-segment--emphasis ${format ? `content-segment--${format}` : ''}`}>
+        <strong
+          className={`content-segment content-segment--emphasis ${format ? `content-segment--${format}` : ''}`}
+        >
           {content}
         </strong>
       );
 
     case 'code':
       return (
-        <code className={`content-segment content-segment--code ${format ? `content-segment--${format}` : ''}`}>
+        <code
+          className={`content-segment content-segment--code ${format ? `content-segment--${format}` : ''}`}
+        >
           {content}
         </code>
       );
 
     case 'variable':
       return (
-        <span className={`content-segment content-segment--variable ${format ? `content-segment--${format}` : ''}`}>
+        <span
+          className={`content-segment content-segment--variable ${format ? `content-segment--${format}` : ''}`}
+        >
           {content}
         </span>
       );
 
     case 'link':
       return (
-        <span className={`content-segment content-segment--link ${format ? `content-segment--${format}` : ''}`}>
+        <span
+          className={`content-segment content-segment--link ${format ? `content-segment--${format}` : ''}`}
+        >
           {content}
         </span>
       );
@@ -65,22 +73,17 @@ const ContentSegmentComponent: React.FC<ContentSegmentProps> = ({ segment, forma
   }
 };
 
-export const ContentRenderer: React.FC<ContentRendererProps> = ({ 
-  content, 
-  className = '' 
-}) => {
+export const ContentRenderer: React.FC<ContentRendererProps> = ({ content, className = '' }) => {
   if (!content || !content.segments || content.segments.length === 0) {
     return <span className={`content-renderer ${className}`}>Loading...</span>;
   }
 
   return (
-    <span className={`content-renderer ${className} ${content.format ? `content-renderer--${content.format}` : ''}`}>
+    <span
+      className={`content-renderer ${className} ${content.format ? `content-renderer--${content.format}` : ''}`}
+    >
       {content.segments.map((segment, index) => (
-        <ContentSegmentComponent 
-          key={index} 
-          segment={segment} 
-          format={content.format}
-        />
+        <ContentSegmentComponent key={index} segment={segment} format={content.format} />
       ))}
     </span>
   );

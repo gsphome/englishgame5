@@ -45,12 +45,12 @@ export class ContentParser {
       let match;
       while ((match = regex.exec(text)) !== null) {
         const content = match[1]; // Captured group (content without delimiters)
-        
+
         // Apply validator if present (for legacy single quotes)
         if (validator && !validator(content)) {
           continue; // Skip this match if validation fails
         }
-        
+
         matches.push({
           start: match.index,
           end: match.index + match[0].length,
@@ -143,7 +143,7 @@ export class ContentParser {
 
     // Allow single letters (like 'I', 'a') and vocabulary words
     // This is more permissive than before
-    return /^[a-zA-Z\s\-]+$/.test(content);
+    return /^[a-zA-Z\s-]+$/.test(content);
   }
 
   /**
@@ -153,22 +153,64 @@ export class ContentParser {
   private static isContraction(text: string): boolean {
     const contractions = new Set([
       // Common contractions (lowercase for case-insensitive matching)
-      "i'm", "you're", "he's", "she's", "it's", "we're", "they're",
-      "i'll", "you'll", "he'll", "she'll", "it'll", "we'll", "they'll", 
-      "i'd", "you'd", "he'd", "she'd", "it'd", "we'd", "they'd",
-      "can't", "won't", "don't", "doesn't", "didn't", "haven't", "hasn't",
-      "hadn't", "shouldn't", "wouldn't", "couldn't", "isn't", "aren't", 
-      "wasn't", "weren't", "let's", "that's", "what's", "where's", 
-      "when's", "why's", "how's", "who's", "there's", "here's"
+      "i'm",
+      "you're",
+      "he's",
+      "she's",
+      "it's",
+      "we're",
+      "they're",
+      "i'll",
+      "you'll",
+      "he'll",
+      "she'll",
+      "it'll",
+      "we'll",
+      "they'll",
+      "i'd",
+      "you'd",
+      "he'd",
+      "she'd",
+      "it'd",
+      "we'd",
+      "they'd",
+      "can't",
+      "won't",
+      "don't",
+      "doesn't",
+      "didn't",
+      "haven't",
+      "hasn't",
+      "hadn't",
+      "shouldn't",
+      "wouldn't",
+      "couldn't",
+      "isn't",
+      "aren't",
+      "wasn't",
+      "weren't",
+      "let's",
+      "that's",
+      "what's",
+      "where's",
+      "when's",
+      "why's",
+      "how's",
+      "who's",
+      "there's",
+      "here's",
     ]);
-    
+
     return contractions.has(text.toLowerCase());
   }
 
   /**
    * Legacy compatibility: convert current string content to structured
    */
-  static fromLegacyString(text: string, format: 'quiz' | 'flashcard' | 'explanation' = 'quiz'): StructuredContent {
+  static fromLegacyString(
+    text: string,
+    format: 'quiz' | 'flashcard' | 'explanation' = 'quiz'
+  ): StructuredContent {
     switch (format) {
       case 'quiz':
         return this.parseQuizContent(text);

@@ -166,9 +166,7 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
       if (part) {
         elements.push(
           <span key={`text-${index}`} className="text-gray-900 dark:text-white">
-            <ContentRenderer 
-              content={ContentAdapter.ensureStructured(part, 'quiz')}
-            />
+            <ContentRenderer content={ContentAdapter.ensureStructured(part, 'quiz')} />
           </span>
         );
       }
@@ -288,8 +286,11 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
               <div className="border-t border-blue-200 dark:border-blue-700 pt-2 mt-2">
                 <div className="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
                   <span className="font-medium">Explanation:</span>{' '}
-                  <ContentRenderer 
-                    content={ContentAdapter.ensureStructured(currentExercise.explanation, 'explanation')}
+                  <ContentRenderer
+                    content={ContentAdapter.ensureStructured(
+                      currentExercise.explanation,
+                      'explanation'
+                    )}
                   />
                 </div>
               </div>

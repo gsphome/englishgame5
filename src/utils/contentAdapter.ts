@@ -16,10 +16,10 @@ export class ContentAdapter {
     explanation?: StructuredContent;
   } {
     const questionText = quizData.question || quizData.sentence || quizData.idiom || '';
-    
+
     return {
       question: ContentParser.parseQuizContent(questionText),
-      explanation: quizData.explanation 
+      explanation: quizData.explanation
         ? ContentParser.parseExplanationContent(quizData.explanation)
         : undefined,
     };
@@ -36,7 +36,7 @@ export class ContentAdapter {
     return {
       front: ContentParser.parseFlashcardContent(flashcardData.front),
       back: ContentParser.parseFlashcardContent(flashcardData.back),
-      example: flashcardData.example 
+      example: flashcardData.example
         ? ContentParser.parseFlashcardContent(flashcardData.example)
         : undefined,
     };
@@ -46,7 +46,7 @@ export class ContentAdapter {
    * Generic string to structured content conversion
    */
   static adaptString(
-    text: string, 
+    text: string,
     format: 'quiz' | 'flashcard' | 'explanation' = 'quiz'
   ): StructuredContent {
     return ContentParser.fromLegacyString(text, format);
@@ -60,11 +60,12 @@ export class ContentAdapter {
       content &&
       typeof content === 'object' &&
       Array.isArray(content.segments) &&
-      content.segments.every((segment: any) => 
-        segment && 
-        typeof segment === 'object' && 
-        typeof segment.type === 'string' && 
-        typeof segment.content === 'string'
+      content.segments.every(
+        (segment: any) =>
+          segment &&
+          typeof segment === 'object' &&
+          typeof segment.type === 'string' &&
+          typeof segment.content === 'string'
       )
     );
   }
@@ -73,17 +74,17 @@ export class ContentAdapter {
    * Ensure content is structured (convert if needed)
    */
   static ensureStructured(
-    content: string | StructuredContent, 
+    content: string | StructuredContent,
     format: 'quiz' | 'flashcard' | 'explanation' = 'quiz'
   ): StructuredContent {
     if (this.isStructuredContent(content)) {
       return content;
     }
-    
+
     if (typeof content === 'string') {
       return this.adaptString(content, format);
     }
-    
+
     // Fallback for invalid content
     return {
       segments: [{ type: 'text', content: 'Invalid content' }],

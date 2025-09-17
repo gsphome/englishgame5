@@ -3,13 +3,13 @@
  * Structured approach to content that separates data from presentation
  */
 
-export type ContentSegmentType = 
-  | 'text'      // Regular text
-  | 'term'      // Highlighted terms (previously quoted text)
-  | 'emphasis'  // Bold/italic text
-  | 'code'      // Code snippets
-  | 'variable'  // Variables or placeholders
-  | 'link';     // Links or references
+export type ContentSegmentType =
+  | 'text' // Regular text
+  | 'term' // Highlighted terms (previously quoted text)
+  | 'emphasis' // Bold/italic text
+  | 'code' // Code snippets
+  | 'variable' // Variables or placeholders
+  | 'link'; // Links or references
 
 export interface ContentSegment {
   type: ContentSegmentType;

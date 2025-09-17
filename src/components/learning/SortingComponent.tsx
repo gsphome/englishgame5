@@ -83,20 +83,20 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
         const shuffledCategories = uniqueCategories.sort(() => Math.random() - 0.5);
         const { gameSettings } = useSettingsStore.getState();
         const totalWords = gameSettings.sortingMode.wordCount;
-        
+
         // Use all available categories (no artificial limit)
         const selectedCategories = shuffledCategories;
-        
+
         // Collect all available words first
         const allAvailableWords = (module.data || []).map((item: any) => ({
           word: item.word,
-          category: item.category
+          category: item.category,
         }));
-        
+
         // Shuffle and take exactly the requested number of words
         const shuffledWords = allAvailableWords.sort(() => Math.random() - 0.5);
         const selectedWords = shuffledWords.slice(0, totalWords);
-        
+
         // Group selected words by category
         const wordsByCategory: Record<string, string[]> = {};
         selectedWords.forEach(({ word, category }) => {
@@ -105,7 +105,7 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
           }
           wordsByCategory[category].push(word);
         });
-        
+
         // Create categories array with actual selected words
         const categories = selectedCategories
           .filter(categoryId => wordsByCategory[categoryId]) // Only include categories that have words
@@ -271,10 +271,10 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
             correctCategory: category.name,
             userCategory: userCategory || 'Not sorted',
             isCorrect,
-            explanation: wordData?.explanation || `This word belongs to ${category.name}`
+            explanation: wordData?.explanation || `This word belongs to ${category.name}`,
           };
         })
-      )
+      ),
     };
 
     setSelectedTerm(summaryData);
@@ -332,9 +332,7 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
                 onDragStart={e => handleDragStart(e, word)}
                 className="sorting-component__word-chip"
               >
-                <ContentRenderer 
-                  content={ContentAdapter.ensureStructured(word, 'quiz')}
-                />
+                <ContentRenderer content={ContentAdapter.ensureStructured(word, 'quiz')} />
               </div>
             ))}
           </div>
@@ -386,8 +384,8 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
                 {showResult && (
                   <span
                     className={`sorting-component__category-status ${
-                      isCorrect 
-                        ? 'sorting-component__category-status--correct' 
+                      isCorrect
+                        ? 'sorting-component__category-status--correct'
                         : 'sorting-component__category-status--incorrect'
                     }`}
                   >
@@ -399,7 +397,7 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
               <div className="sorting-component__sorted-items">
                 {userItems.map((word, index) => {
                   let itemClass = 'sorting-component__sorted-item ';
-                  
+
                   if (showResult) {
                     itemClass += category.items.includes(word)
                       ? 'sorting-component__sorted-item--correct'
@@ -414,9 +412,7 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
                       onClick={() => handleRemoveFromCategory(word, category.name)}
                       className={itemClass}
                     >
-                      <ContentRenderer 
-                        content={ContentAdapter.ensureStructured(word, 'quiz')}
-                      />
+                      <ContentRenderer content={ContentAdapter.ensureStructured(word, 'quiz')} />
                     </div>
                   );
                 })}
@@ -428,9 +424,7 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
                   <span className="sorting-component__feedback-text">
                     {category.items.map((item, idx) => (
                       <span key={idx}>
-                        <ContentRenderer 
-                          content={ContentAdapter.ensureStructured(item, 'quiz')}
-                        />
+                        <ContentRenderer content={ContentAdapter.ensureStructured(item, 'quiz')} />
                         {idx < category.items.length - 1 ? ', ' : ''}
                       </span>
                     ))}
@@ -496,9 +490,7 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
           <div className="sorting-modal-container">
             <div className="sorting-modal__content">
               <div className="sorting-modal__header">
-                <h3 className="sorting-modal__title">
-                  Exercise Summary - Past Tense Verbs
-                </h3>
+                <h3 className="sorting-modal__title">Exercise Summary - Past Tense Verbs</h3>
                 <button
                   onClick={() => setShowExplanation(false)}
                   className="sorting-modal__close-btn"
@@ -520,13 +512,11 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
                       }`}
                     >
                       <div className="sorting-result-card__header">
-                        <h4 className="sorting-result-card__word">
-                          {result.word}
-                        </h4>
-                        <span 
+                        <h4 className="sorting-result-card__word">{result.word}</h4>
+                        <span
                           className={`sorting-result-card__status ${
-                            result.isCorrect 
-                              ? 'sorting-result-card__status--correct' 
+                            result.isCorrect
+                              ? 'sorting-result-card__status--correct'
                               : 'sorting-result-card__status--incorrect'
                           }`}
                         >
@@ -536,9 +526,7 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
 
                       <div className="sorting-result-card__content">
                         <div className="sorting-result-card__field">
-                          <span className="sorting-result-card__label">
-                            Correct category:
-                          </span>
+                          <span className="sorting-result-card__label">Correct category:</span>
                           <p className="sorting-result-card__value sorting-result-card__value--correct">
                             {result.correctCategory}
                           </p>
@@ -546,9 +534,7 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
 
                         {!result.isCorrect && (
                           <div className="sorting-result-card__field">
-                            <span className="sorting-result-card__label">
-                              Your answer:
-                            </span>
+                            <span className="sorting-result-card__label">Your answer:</span>
                             <p className="sorting-result-card__value sorting-result-card__value--incorrect">
                               {result.userCategory}
                             </p>
@@ -557,12 +543,8 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
 
                         {result.explanation && (
                           <div className="sorting-result-card__field">
-                            <span className="sorting-result-card__label">
-                              Explanation:
-                            </span>
-                            <p className="sorting-result-card__explanation">
-                              {result.explanation}
-                            </p>
+                            <span className="sorting-result-card__label">Explanation:</span>
+                            <p className="sorting-result-card__explanation">{result.explanation}</p>
                           </div>
                         )}
                       </div>

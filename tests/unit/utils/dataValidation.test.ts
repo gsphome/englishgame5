@@ -15,8 +15,8 @@ describe('DataValidator', () => {
         prerequisites: [],
         data: Array(40).fill({
           id: '1',
-          en: 'Hello',
-          es: 'Hola',
+          front: 'Hello',
+          back: 'Hola',
           ipa: '/həˈloʊ/',
           example: 'Hello, how are you?',
           example_es: 'Hola, ¿cómo estás?'
@@ -81,8 +81,8 @@ describe('DataValidator', () => {
     it('should validate correct flashcard data', () => {
       const validData: FlashcardData = {
         id: '1',
-        en: 'Hello',
-        es: 'Hola',
+        front: 'Hello',
+        back: 'Hola',
         ipa: '/həˈloʊ/',
         example: 'Hello, how are you?',
         example_es: 'Hola, ¿cómo estás?'
@@ -96,20 +96,20 @@ describe('DataValidator', () => {
     it('should fail validation for missing required fields', () => {
       const invalidData = {
         id: '1',
-        // Missing en and es
+        // Missing front and back
       } as FlashcardData;
 
       const result = DataValidator.validateFlashcardData(invalidData, 'test[0]');
       expect(result.success).toBe(false);
-      expect(result.errors).toContain("test[0]: Flashcard must have valid 'en' field");
-      expect(result.errors).toContain("test[0]: Flashcard must have valid 'es' field");
+      expect(result.errors).toContain("test[0]: Flashcard must have valid 'front' field");
+      expect(result.errors).toContain("test[0]: Flashcard must have valid 'back' field");
     });
 
     it('should warn for missing optional fields', () => {
       const dataWithoutOptionals: FlashcardData = {
         id: '1',
-        en: 'Hello',
-        es: 'Hola'
+        front: 'Hello',
+        back: 'Hola'
         // Missing ipa and example
       };
 
@@ -329,8 +329,8 @@ describe('Utility functions', () => {
   it('should export validateModuleData', () => {
     const data: FlashcardData[] = [{
       id: '1',
-      en: 'Hello',
-      es: 'Hola'
+      front: 'Hello',
+      back: 'Hola'
     }];
 
     const result = validateModuleData(data, 'flashcard', 'test-module');
