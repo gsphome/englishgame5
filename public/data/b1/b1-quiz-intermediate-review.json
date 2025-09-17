@@ -8,7 +8,7 @@
       "could"
     ],
     "correct": "must",
-    "explanation": "'Must' expresses strong obligation or necessity."
+    "explanation": "<Must> expresses strong obligation or necessity."
   },
   {
     "question": "What is the correct future form: 'I _____ visit my parents next weekend.'",
@@ -19,7 +19,7 @@
       "have"
     ],
     "correct": "will",
-    "explanation": "'Will' is used for spontaneous decisions about future actions."
+    "explanation": "<Will> is used for spontaneous decisions about future actions."
   },
   {
     "question": "Which preposition is correct: 'The meeting is _____ Monday.'",
@@ -30,10 +30,10 @@
       "by"
     ],
     "correct": "on",
-    "explanation": "'On' is used with days of the week."
+    "explanation": "<On> is used with days of the week."
   },
   {
-    "question": "What does the phrasal verb 'break down' mean?",
+    "question": "What does the phrasal verb <break down> mean?",
     "options": [
       "to dance",
       "to stop working",
@@ -41,7 +41,7 @@
       "to break apart"
     ],
     "correct": "to stop working",
-    "explanation": "'Break down' means to stop functioning, especially for machines."
+    "explanation": "<Break down> means to stop functioning, especially for machines."
   },
   {
     "question": "Which sentence uses the present perfect correctly?",
@@ -52,10 +52,10 @@
       "I have seen that movie at 3 PM"
     ],
     "correct": "I have seen that movie before",
-    "explanation": "Present perfect is used with indefinite time expressions like 'before'."
+    "explanation": "Present perfect is used with indefinite time expressions like <before>."
   },
   {
-    "question": "What is the comparative form of 'good'?",
+    "question": "What is the comparative form of <good>?",
     "options": [
       "gooder",
       "more good",
@@ -63,7 +63,7 @@
       "best"
     ],
     "correct": "better",
-    "explanation": "'Better' is the irregular comparative form of 'good'."
+    "explanation": "<Better> is the irregular comparative form of <good>."
   },
   {
     "question": "Which modal verb expresses possibility?",
@@ -74,7 +74,7 @@
       "will"
     ],
     "correct": "might",
-    "explanation": "'Might' expresses possibility or uncertainty."
+    "explanation": "<Might> expresses possibility or uncertainty."
   },
   {
     "question": "What is the correct form: 'If I _____ you, I would apologize.'",
@@ -85,7 +85,7 @@
       "be"
     ],
     "correct": "were",
-    "explanation": "In second conditional, we use 'were' for all persons after 'if'."
+    "explanation": "In second conditional, we use <were> for all persons after <if>."
   },
   {
     "question": "Which preposition is correct: 'She arrived _____ the airport at 6 PM.'",
@@ -96,10 +96,10 @@
       "to"
     ],
     "correct": "at",
-    "explanation": "'At' is used with specific locations like airports, stations, etc."
+    "explanation": "<At> is used with specific locations like airports, stations, etc."
   },
   {
-    "question": "What does 'look forward to' mean?",
+    "question": "What does <look forward to> mean?",
     "options": [
       "to look ahead",
       "to anticipate with pleasure",
@@ -107,7 +107,7 @@
       "to face forward"
     ],
     "correct": "to anticipate with pleasure",
-    "explanation": "'Look forward to' means to anticipate something with excitement."
+    "explanation": "<Look forward to> means to anticipate something with excitement."
   },
   {
     "question": "Which sentence is in the passive voice?",
@@ -129,7 +129,7 @@
       "would"
     ],
     "correct": "could",
-    "explanation": "After 'wish', we use 'could' to express ability we don't have."
+    "explanation": "After <wish>, we use <could> to express ability we don't have."
   },
   {
     "question": "Which article is correct: '_____ information you gave me was very helpful.'",
@@ -140,10 +140,10 @@
       "No article"
     ],
     "correct": "The",
-    "explanation": "'The' is used when referring to specific information."
+    "explanation": "<The> is used when referring to specific information."
   },
   {
-    "question": "What does the idiom 'piece of cake' mean?",
+    "question": "What does the idiom <piece of cake> mean?",
     "options": [
       "dessert",
       "very easy",
@@ -151,7 +151,7 @@
       "sweet food"
     ],
     "correct": "very easy",
-    "explanation": "'Piece of cake' means something that is very easy to do."
+    "explanation": "<Piece of cake> means something that is very easy to do."
   },
   {
     "question": "Which sentence uses the correct reported speech?",
@@ -162,7 +162,7 @@
       "He said he came tomorrow"
     ],
     "correct": "He said he would come tomorrow",
-    "explanation": "In reported speech, 'will' changes to 'would'."
+    "explanation": "In reported speech, <will> changes to <would>."
   },
   {
     "question": "What is the correct form: 'By next year, I _____ graduated from university.'",
@@ -184,10 +184,10 @@
       "by"
     ],
     "correct": "on",
-    "explanation": "'On' is used when something is positioned on a surface."
+    "explanation": "<On> is used when something is positioned on a surface."
   },
   {
-    "question": "What does 'run into' mean?",
+    "question": "What does <run into> mean?",
     "options": [
       "to exercise",
       "to meet by chance",
@@ -195,7 +195,7 @@
       "to enter quickly"
     ],
     "correct": "to meet by chance",
-    "explanation": "'Run into' means to meet someone unexpectedly."
+    "explanation": "<Run into> means to meet someone unexpectedly."
   },
   {
     "question": "Which sentence is correct?",
@@ -206,10 +206,10 @@
       "I have been living here in 5 years"
     ],
     "correct": "I have been living here for 5 years",
-    "explanation": "'For' is used with periods of time in present perfect continuous."
+    "explanation": "<For> is used with periods of time in present perfect continuous."
   },
   {
-    "question": "What is the superlative form of 'interesting'?",
+    "question": "What is the superlative form of <interesting>?",
     "options": [
       "more interesting",
       "most interesting",
@@ -228,7 +228,7 @@
       "will"
     ],
     "correct": "should",
-    "explanation": "'Should' is used to give advice or recommendations."
+    "explanation": "<Should> is used to give advice or recommendations."
   },
   {
     "question": "What is the correct form: 'I _____ rather stay home tonight.'",
@@ -239,7 +239,7 @@
       "could"
     ],
     "correct": "would",
-    "explanation": "'Would rather' expresses preference."
+    "explanation": "<Would rather> expresses preference."
   },
   {
     "question": "Which sentence uses the correct conditional?",
@@ -253,7 +253,7 @@
     "explanation": "First conditional uses present simple in the if-clause and will + infinitive in the main clause."
   },
   {
-    "question": "What does 'give up' mean?",
+    "question": "What does <give up> mean?",
     "options": [
       "to donate",
       "to stop trying",
@@ -261,7 +261,7 @@
       "to surrender something"
     ],
     "correct": "to stop trying",
-    "explanation": "'Give up' means to stop making an effort or abandon something."
+    "explanation": "<Give up> means to stop making an effort or abandon something."
   },
   {
     "question": "Which sentence is grammatically correct?",
@@ -272,10 +272,10 @@
       "She is most tall than her sister"
     ],
     "correct": "She is taller than her sister",
-    "explanation": "Short adjectives form comparatives by adding '-er'."
+    "explanation": "Short adjectives form comparatives by adding <-er>."
   },
   {
-    "question": "What is the correct form: 'I'm used to _____ early.'",
+    "question": "What is the correct form: <I>m used to _____ early.'",
     "options": [
       "wake up",
       "waking up",
@@ -283,10 +283,10 @@
       "wake"
     ],
     "correct": "waking up",
-    "explanation": "'Be used to' is followed by gerund (-ing form)."
+    "explanation": "<Be used to> is followed by gerund (-ing form)."
   },
   {
-    "question": "Which preposition is correct: 'I'll see you _____ Christmas.'",
+    "question": "Which preposition is correct: <I>ll see you _____ Christmas.'",
     "options": [
       "in",
       "on",
@@ -294,10 +294,10 @@
       "by"
     ],
     "correct": "at",
-    "explanation": "'At' is used with holidays and festivals."
+    "explanation": "<At> is used with holidays and festivals."
   },
   {
-    "question": "What does the idiom 'break the ice' mean?",
+    "question": "What does the idiom <break the ice> mean?",
     "options": [
       "to make ice cubes",
       "to start a conversation",
@@ -305,7 +305,7 @@
       "to break something"
     ],
     "correct": "to start a conversation",
-    "explanation": "'Break the ice' means to initiate conversation in a social situation."
+    "explanation": "<Break the ice> means to initiate conversation in a social situation."
   },
   {
     "question": "Which sentence uses the present perfect continuous correctly?",
@@ -338,10 +338,10 @@
       "will"
     ],
     "correct": "may",
-    "explanation": "'May' is used to ask for or give formal permission."
+    "explanation": "<May> is used to ask for or give formal permission."
   },
   {
-    "question": "What does 'look after' mean?",
+    "question": "What does <look after> mean?",
     "options": [
       "to search behind",
       "to take care of",
@@ -349,7 +349,7 @@
       "to follow someone"
     ],
     "correct": "to take care of",
-    "explanation": "'Look after' means to be responsible for someone or something."
+    "explanation": "<Look after> means to be responsible for someone or something."
   },
   {
     "question": "Which sentence is correct?",
@@ -360,10 +360,10 @@
       "I go to Paris last year"
     ],
     "correct": "I went to Paris last year",
-    "explanation": "Past simple is used with specific past time expressions like 'last year'."
+    "explanation": "Past simple is used with specific past time expressions like <last year>."
   },
   {
-    "question": "What is the correct form: 'I'd better _____ now.'",
+    "question": "What is the correct form: <I>d better _____ now.'",
     "options": [
       "to go",
       "go",
@@ -371,7 +371,7 @@
       "went"
     ],
     "correct": "go",
-    "explanation": "'Had better' is followed by the base form of the verb."
+    "explanation": "<Had better> is followed by the base form of the verb."
   },
   {
     "question": "Which preposition is correct: 'The meeting starts _____ 9 AM.'",
@@ -382,10 +382,10 @@
       "by"
     ],
     "correct": "at",
-    "explanation": "'At' is used with specific times."
+    "explanation": "<At> is used with specific times."
   },
   {
-    "question": "What does 'put off' mean?",
+    "question": "What does <put off> mean?",
     "options": [
       "to turn off",
       "to postpone",
@@ -393,7 +393,7 @@
       "to discourage"
     ],
     "correct": "to postpone",
-    "explanation": "'Put off' means to delay something until a later time."
+    "explanation": "<Put off> means to delay something until a later time."
   },
   {
     "question": "Which sentence uses the correct tag question?",
@@ -415,7 +415,7 @@
       "would have"
     ],
     "correct": "had",
-    "explanation": "After 'wish' for past regrets, we use past perfect 'had + past participle'."
+    "explanation": "After <wish> for past regrets, we use past perfect 'had + past participle'."
   },
   {
     "question": "Which modal verb expresses strong probability?",
@@ -426,10 +426,10 @@
       "may"
     ],
     "correct": "must",
-    "explanation": "'Must' expresses strong probability or logical deduction."
+    "explanation": "<Must> expresses strong probability or logical deduction."
   },
   {
-    "question": "What does the idiom 'cost an arm and a leg' mean?",
+    "question": "What does the idiom <cost an arm and a leg> mean?",
     "options": [
       "be dangerous",
       "be very expensive",
@@ -437,6 +437,6 @@
       "be painful"
     ],
     "correct": "be very expensive",
-    "explanation": "'Cost an arm and a leg' means something is extremely expensive."
+    "explanation": "<Cost an arm and a leg> means something is extremely expensive."
   }
 ]

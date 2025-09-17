@@ -8,10 +8,10 @@
       "If I was there, I would help"
     ],
     "correct": "Were I to be there, I would help",
-    "explanation": "This inverted conditional with subjunctive 'were' shows mastery-level grammar."
+    "explanation": "This inverted conditional with subjunctive <were> shows mastery-level grammar."
   },
   {
-    "question": "Select the most nuanced synonym for 'ubiquitous':",
+    "question": "Select the most nuanced synonym for <ubiquitous>:",
     "options": [
       "everywhere",
       "common",
@@ -19,7 +19,7 @@
       "omnipresent"
     ],
     "correct": "omnipresent",
-    "explanation": "'Omnipresent' carries the most sophisticated connotation of being present everywhere simultaneously."
+    "explanation": "<Omnipresent> carries the most sophisticated connotation of being present everywhere simultaneously."
   },
   {
     "question": "Which collocation is most appropriate in academic discourse?",
@@ -30,7 +30,7 @@
       "build a hypothesis"
     ],
     "correct": "formulate a hypothesis",
-    "explanation": "'Formulate' is the precise academic collocation for developing hypotheses."
+    "explanation": "<Formulate> is the precise academic collocation for developing hypotheses."
   },
   {
     "question": "Identify the sentence with the most sophisticated discourse marker:",
@@ -41,7 +41,7 @@
       "But the data shows..."
     ],
     "correct": "Notwithstanding these limitations...",
-    "explanation": "'Notwithstanding' is a highly formal discourse marker showing mastery-level vocabulary."
+    "explanation": "<Notwithstanding> is a highly formal discourse marker showing mastery-level vocabulary."
   },
   {
     "question": "Which phrase demonstrates mastery of register variation?",
@@ -96,7 +96,7 @@
       "The argument was wrong"
     ],
     "correct": "The argument was specious",
-    "explanation": "'Specious' indicates an argument that appears valid but is actually fallacious."
+    "explanation": "<Specious> indicates an argument that appears valid but is actually fallacious."
   },
   {
     "question": "Select the most sophisticated way to express causation:",
@@ -126,7 +126,7 @@
       "I disagree with your point",
       "I beg to differ",
       "I must respectfully dissent from your position",
-      "I don't think you're right"
+      "I don<t think you>re right"
     ],
     "correct": "I must respectfully dissent from your position",
     "explanation": "This shows mastery of formal, diplomatic disagreement."
@@ -140,7 +140,7 @@
       "He's thrifty"
     ],
     "correct": "He's parsimonious",
-    "explanation": "'Parsimonious' carries sophisticated negative connotations of excessive frugality."
+    "explanation": "<Parsimonious> carries sophisticated negative connotations of excessive frugality."
   },
   {
     "question": "Select the most appropriate register for diplomatic communication:",
@@ -195,7 +195,7 @@
       "I remain somewhat circumspect"
     ],
     "correct": "I remain somewhat circumspect",
-    "explanation": "'Circumspect' shows sophisticated vocabulary for expressing careful uncertainty."
+    "explanation": "<Circumspect> shows sophisticated vocabulary for expressing careful uncertainty."
   },
   {
     "question": "Which demonstrates the highest level of stylistic sophistication?",
@@ -239,7 +239,7 @@
       "This is of quintessential significance"
     ],
     "correct": "This is of quintessential significance",
-    "explanation": "'Quintessential' represents the highest level of vocabulary sophistication."
+    "explanation": "<Quintessential> represents the highest level of vocabulary sophistication."
   },
   {
     "question": "Which demonstrates mastery of formal transition markers?",
@@ -327,7 +327,7 @@
       "Albeit, certain caveats must be acknowledged"
     ],
     "correct": "Albeit, certain caveats must be acknowledged",
-    "explanation": "'Albeit' with 'caveats' represents sophisticated limitation expression."
+    "explanation": "<Albeit> with <caveats> represents sophisticated limitation expression."
   },
   {
     "question": "Which demonstrates the highest level of register awareness?",
@@ -365,7 +365,7 @@
   {
     "question": "Select the most appropriate expression for diplomatic disagreement:",
     "options": [
-      "I don't think that's right",
+      "I don<t think that>s right",
       "I'm afraid I must disagree",
       "I venture to suggest an alternative perspective",
       "I feel constrained to proffer a somewhat divergent viewpoint"
@@ -382,7 +382,7 @@
       "The theoretical framework proves rather recondite"
     ],
     "correct": "The theoretical framework proves rather recondite",
-    "explanation": "'Recondite' represents sophisticated vocabulary for expressing complexity."
+    "explanation": "<Recondite> represents sophisticated vocabulary for expressing complexity."
   },
   {
     "question": "Identify the most sophisticated use of hedging language:",
@@ -415,7 +415,7 @@
       "She demonstrates consummate expertise"
     ],
     "correct": "She demonstrates consummate expertise",
-    "explanation": "'Consummate' represents the highest level of vocabulary for expressing excellence."
+    "explanation": "<Consummate> represents the highest level of vocabulary for expressing excellence."
   },
   {
     "question": "Which demonstrates mastery of complex temporal sequencing?",

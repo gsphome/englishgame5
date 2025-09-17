@@ -4,6 +4,8 @@ import { useAppStore } from '../../stores/appStore';
 import { useUserStore } from '../../stores/userStore';
 import { useToast } from '../../hooks/useToast';
 import { useLearningCleanup } from '../../hooks/useLearningCleanup';
+import { ContentAdapter } from '../../utils/contentAdapter';
+import ContentRenderer from '../ui/ContentRenderer';
 import NavigationButton from '../ui/NavigationButton';
 import '../../styles/components/matching-modal.css';
 import '../../styles/components/matching-component.css';
@@ -289,7 +291,11 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
                     <span className="matching-component__item-letter">
                       {String.fromCharCode(65 + index)}
                     </span>
-                    <span className="matching-component__item-text">{item}</span>
+                    <span className="matching-component__item-text">
+                      <ContentRenderer 
+                        content={ContentAdapter.ensureStructured(item, 'quiz')}
+                      />
+                    </span>
                     <div className="matching-component__item-actions">
                       {showResult && (
                         <div
@@ -356,7 +362,11 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
                     <span className="matching-component__item-letter" style={{ backgroundColor: '#f97316' }}>
                       {index + 1}
                     </span>
-                    <span className="matching-component__item-text">{item}</span>
+                    <span className="matching-component__item-text">
+                      <ContentRenderer 
+                        content={ContentAdapter.ensureStructured(item, 'quiz')}
+                      />
+                    </span>
                     {isMatched && (
                       <span className="matching-component__item-letter">
                         {String.fromCharCode(
@@ -510,7 +520,11 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
                   {selectedTerm.explanation && (
                     <div className="matching-individual__field">
                       <h4 className="matching-individual__label">Explanation:</h4>
-                      <p className="matching-individual__explanation">{selectedTerm.explanation}</p>
+                      <div className="matching-individual__explanation">
+                        <ContentRenderer 
+                          content={ContentAdapter.ensureStructured(selectedTerm.explanation, 'explanation')}
+                        />
+                      </div>
                     </div>
                   )}
                 </div>

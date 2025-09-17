@@ -5,7 +5,11 @@
   "learningMode": "quiz",
   "level": "intermediate",
   "category": "Grammar",
-  "tags": ["grammar", "quiz", "test"],
+  "tags": [
+    "grammar",
+    "quiz",
+    "test"
+  ],
   "estimatedTime": 10,
   "difficulty": 3,
   "data": [
@@ -19,11 +23,11 @@
         "She no likes coffee."
       ],
       "correct": 1,
-      "explanation": "The correct form uses 'doesn't' (does not) with third person singular subjects."
+      "explanation": "The correct form uses <doesn>t' (does not) with third person singular subjects."
     },
     {
       "id": "q2",
-      "question": "What is the past tense of 'go'?",
+      "question": "What is the past tense of <go>?",
       "options": [
         "goed",
         "gone",
@@ -31,7 +35,7 @@
         "going"
       ],
       "correct": 2,
-      "explanation": "'Went' is the simple past tense of 'go'. 'Gone' is the past participle."
+      "explanation": "<Went> is the simple past tense of <go>. <Gone> is the past participle."
     }
   ]
 }

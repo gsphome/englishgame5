@@ -111,7 +111,7 @@ Las mejoras están diseñadas para implementarse de forma incremental sin requer
 #### Criterios de Aceptación
 
 1. WHEN se implementen mejoras de contenido THEN TODOS los archivos JSON existentes SHALL ser actualizados con campos enriquecidos
-2. WHEN se actualicen flashcards existentes THEN el sistema SHALL añadir contextualTips, memoryAids, culturalNotes y commonMistakes (respetando estructura actual: front, back, en, es, ipa, example, example_es)
+2. WHEN se actualicen flashcards existentes THEN el sistema SHALL añadir contextualTips, memoryAids, culturalNotes y commonMistakes (respetando estructura actual: front, back, ipa, example, example_es - SIN campos en/es)
 3. WHEN se actualicen quizzes existentes THEN el sistema SHALL añadir detailedExplanation, whyWrong, contextualInfo y memoryTricks (respetando que correct es siempre string)
 4. WHEN se actualicen completion exercises existentes THEN el sistema SHALL añadir detailedExplanation, grammarRule, patternTips y relatedConcepts
 5. WHEN se actualicen sorting exercises existentes THEN el sistema SHALL añadir campos enriquecidos a la estructura real {categories: [], data: [{word, category, explanation}]}

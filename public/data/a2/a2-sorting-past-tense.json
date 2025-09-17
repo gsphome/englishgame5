@@ -1,5 +1,8 @@
 {
-  "categories": ["Regular Verbs", "Irregular Verbs"],
+  "categories": [
+    "Regular Verbs",
+    "Irregular Verbs"
+  ],
   "data": [
     {
       "word": "walk",

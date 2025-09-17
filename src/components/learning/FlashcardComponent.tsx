@@ -7,6 +7,8 @@ import { useProgressStore } from '../../stores/progressStore';
 import { useTranslation } from '../../utils/i18n';
 import { useLearningCleanup } from '../../hooks/useLearningCleanup';
 import { shuffleArray } from '../../utils/randomUtils';
+import { ContentAdapter } from '../../utils/contentAdapter';
+import ContentRenderer from '../ui/ContentRenderer';
 import NavigationButton from '../ui/NavigationButton';
 import type { FlashcardData, LearningModule } from '../../types';
 
@@ -160,51 +162,71 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
 
       {/* Flashcard */}
       <div
-        className={`flashcard relative h-56 sm:h-64 w-full cursor-pointer ${
-          isFlipped ? 'flipped' : ''
-        }`}
+        className={`flashcard relative h-56 sm:h-64 w-full cursor-pointer ${isFlipped ? 'flipped' : ''
+          }`}
         onClick={handleFlip}
       >
         <div className="flashcard-inner">
           {/* Front */}
           <div className="flashcard-front bg-white dark:bg-gray-700 shadow-lg border border-gray-200 dark:border-gray-600">
-            <p className="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white text-center mb-2">
-              {currentCard?.front || 'Loading...'}
-            </p>
+            <div className="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white text-center mb-2">
+              <ContentRenderer
+                content={ContentAdapter.ensureStructured(
+                  currentCard?.front || 'Loading...',
+                  'flashcard'
+                )}
+              />
+            </div>
             {currentCard?.ipa && (
               <p className="text-base sm:text-lg text-gray-500 dark:text-gray-300 text-center mb-3">
                 {currentCard.ipa}
               </p>
             )}
             {currentCard?.example && (
-              <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 italic text-center px-2">
-                "{currentCard.example}"
-              </p>
+              <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 italic text-center px-2">
+                "<ContentRenderer
+                  content={ContentAdapter.ensureStructured(currentCard.example, 'flashcard')}
+                />"
+              </div>
             )}
           </div>
 
           {/* Back */}
           <div className="flashcard-back bg-blue-50 dark:bg-blue-900 shadow-lg border border-blue-200 dark:border-blue-700">
-            <p className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white text-center mb-1">
-              {currentCard?.front || 'Loading...'}
-            </p>
+            <div className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white text-center mb-1">
+              <ContentRenderer
+                content={ContentAdapter.ensureStructured(
+                  currentCard?.front || 'Loading...',
+                  'flashcard'
+                )}
+              />
+            </div>
             {currentCard?.ipa && (
               <p className="text-sm sm:text-base text-gray-500 dark:text-gray-300 text-center mb-2">
                 {currentCard.ipa}
               </p>
             )}
-            <p className="text-xl sm:text-2xl font-bold text-blue-900 dark:text-blue-100 text-center mb-3">
-              {currentCard?.back || 'Loading...'}
-            </p>
+            <div className="text-xl sm:text-2xl font-bold text-blue-900 dark:text-blue-100 text-center mb-3">
+              <ContentRenderer
+                content={ContentAdapter.ensureStructured(
+                  currentCard?.back || 'Loading...',
+                  'flashcard'
+                )}
+              />
+            </div>
             {currentCard?.example && (
               <div className="text-center">
-                <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 italic mb-1 px-2">
-                  "{currentCard.example}"
-                </p>
+                <div className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 italic mb-1 px-2">
+                  "<ContentRenderer
+                    content={ContentAdapter.ensureStructured(currentCard.example, 'flashcard')}
+                  />"
+                </div>
                 {currentCard.example_es && (
-                  <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 italic px-2">
-                    "{currentCard.example_es}"
-                  </p>
+                  <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 italic px-2">
+                    "<ContentRenderer
+                      content={ContentAdapter.ensureStructured(currentCard.example_es, 'flashcard')}
+                    />"
+                  </div>
                 )}
               </div>
             )}

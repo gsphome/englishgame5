@@ -8,6 +8,8 @@ import { useTranslation } from '../../utils/i18n';
 import { useToast } from '../../hooks/useToast';
 import { useLearningCleanup } from '../../hooks/useLearningCleanup';
 import { shuffleArray } from '../../utils/randomUtils';
+import { ContentAdapter } from '../../utils/contentAdapter';
+import ContentRenderer from '../ui/ContentRenderer';
 import NavigationButton from '../ui/NavigationButton';
 import type { LearningModule } from '../../types';
 
@@ -160,11 +162,13 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
     const elements: React.ReactElement[] = [];
 
     parts.forEach((part, index) => {
-      // Add text part
+      // Add text part with structured content rendering
       if (part) {
         elements.push(
           <span key={`text-${index}`} className="text-gray-900 dark:text-white">
-            {part}
+            <ContentRenderer 
+              content={ContentAdapter.ensureStructured(part, 'quiz')}
+            />
           </span>
         );
       }
@@ -282,9 +286,12 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
             {/* Compact explanation */}
             {currentExercise?.explanation && (
               <div className="border-t border-blue-200 dark:border-blue-700 pt-2 mt-2">
-                <p className="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
-                  <span className="font-medium">Explanation:</span> {currentExercise.explanation}
-                </p>
+                <div className="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+                  <span className="font-medium">Explanation:</span>{' '}
+                  <ContentRenderer 
+                    content={ContentAdapter.ensureStructured(currentExercise.explanation, 'explanation')}
+                  />
+                </div>
               </div>
             )}
           </div>

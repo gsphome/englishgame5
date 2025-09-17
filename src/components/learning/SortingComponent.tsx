@@ -6,6 +6,8 @@ import { useSettingsStore } from '../../stores/settingsStore';
 import { useProgressStore } from '../../stores/progressStore';
 import { useToast } from '../../hooks/useToast';
 import { useLearningCleanup } from '../../hooks/useLearningCleanup';
+import { ContentAdapter } from '../../utils/contentAdapter';
+import ContentRenderer from '../ui/ContentRenderer';
 import NavigationButton from '../ui/NavigationButton';
 import '../../styles/components/sorting-modal.css';
 import '../../styles/components/sorting-component.css';
@@ -330,7 +332,9 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
                 onDragStart={e => handleDragStart(e, word)}
                 className="sorting-component__word-chip"
               >
-                {word}
+                <ContentRenderer 
+                  content={ContentAdapter.ensureStructured(word, 'quiz')}
+                />
               </div>
             ))}
           </div>
@@ -410,7 +414,9 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
                       onClick={() => handleRemoveFromCategory(word, category.name)}
                       className={itemClass}
                     >
-                      {word}
+                      <ContentRenderer 
+                        content={ContentAdapter.ensureStructured(word, 'quiz')}
+                      />
                     </div>
                   );
                 })}
@@ -419,7 +425,16 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
               {showResult && hasErrors && (
                 <div className="sorting-component__feedback sorting-component__feedback--error">
                   <span className="sorting-component__feedback-label">Correct items:</span>{' '}
-                  <span className="sorting-component__feedback-text">{category.items.join(', ')}</span>
+                  <span className="sorting-component__feedback-text">
+                    {category.items.map((item, idx) => (
+                      <span key={idx}>
+                        <ContentRenderer 
+                          content={ContentAdapter.ensureStructured(item, 'quiz')}
+                        />
+                        {idx < category.items.length - 1 ? ', ' : ''}
+                      </span>
+                    ))}
+                  </span>
                 </div>
               )}
             </div>

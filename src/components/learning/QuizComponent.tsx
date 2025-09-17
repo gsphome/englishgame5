@@ -7,7 +7,8 @@ import { useProgressStore } from '../../stores/progressStore';
 import { useToast } from '../../hooks/useToast';
 import { useLearningCleanup } from '../../hooks/useLearningCleanup';
 import { shuffleArray } from '../../utils/randomUtils';
-import { createSanitizedHTML } from '../../utils/htmlSanitizer';
+import { ContentAdapter } from '../../utils/contentAdapter';
+import ContentRenderer from '../ui/ContentRenderer';
 import NavigationButton from '../ui/NavigationButton';
 
 import type { LearningModule, QuizData } from '../../types';
@@ -183,9 +184,10 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
       {/* Question */}
       <div className="quiz-question bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 sm:p-6 mb-4">
         <h3 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6" style={{ color: textColor }}>
-          <div
-            dangerouslySetInnerHTML={createSanitizedHTML(
-              currentQuestion?.question || currentQuestion?.sentence || 'Loading question...'
+          <ContentRenderer 
+            content={ContentAdapter.ensureStructured(
+              currentQuestion?.question || currentQuestion?.sentence || 'Loading question...',
+              'quiz'
             )}
           />
         </h3>
@@ -261,7 +263,14 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
             <h4 className="font-medium mb-2" style={{ color: textColor }}>
               Explanation:
             </h4>
-            <p style={{ color: textColor }}>{currentQuestion?.explanation || ''}</p>
+            <div style={{ color: textColor }}>
+              <ContentRenderer 
+                content={ContentAdapter.ensureStructured(
+                  currentQuestion?.explanation || '',
+                  'explanation'
+                )}
+              />
+            </div>
           </div>
         </div>
       </div>

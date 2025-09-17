@@ -9,7 +9,7 @@
       "Seldom we do see"
     ],
     "correct": "Seldom do we see",
-    "explanation": "Inversion with 'seldom' requires the auxiliary verb before the subject."
+    "explanation": "Inversion with <seldom> requires the auxiliary verb before the subject."
   },
   {
     "sentence": "<span class=\"font-bold text-blue-500\">Had I known</span> about the party, I would have attended.",
@@ -21,7 +21,7 @@
       "Knowing"
     ],
     "correct": "If I had known",
-    "explanation": "This is an inverted conditional sentence, equivalent to 'If I had known'."
+    "explanation": "This is an inverted conditional sentence, equivalent to <If I had known>."
   },
   {
     "sentence": "<span class=\"font-bold text-blue-500\">Not only did he finish</span> the race, but he also won it.",
@@ -33,7 +33,7 @@
       "He finished not only"
     ],
     "correct": "Not only did he finish",
-    "explanation": "Inversion with 'not only' requires the auxiliary verb before the subject."
+    "explanation": "Inversion with <not only> requires the auxiliary verb before the subject."
   },
   {
     "sentence": "<span class=\"font-bold text-blue-500\">No sooner had she arrived</span> than the phone rang.",
@@ -57,7 +57,7 @@
       "He did little know"
     ],
     "correct": "Little did he know",
-    "explanation": "Inversion with 'little' (meaning 'not much') requires the auxiliary verb before the subject."
+    "explanation": "Inversion with <little> (meaning <not much>) requires the auxiliary verb before the subject."
   },
   {
     "sentence": "<span class=\"font-bold text-blue-500\">Only when the sun set</span> did they decide to leave.",
@@ -69,7 +69,7 @@
       "Only when the sun did set"
     ],
     "correct": "Only when the sun set",
-    "explanation": "Inversion with 'only when' occurs in the main clause, not the 'only' clause."
+    "explanation": "Inversion with <only when> occurs in the main clause, not the <only> clause."
   },
   {
     "sentence": "<span class=\"font-bold text-blue-500\">Such was the impact</span> of the speech that everyone was moved.",
@@ -81,7 +81,7 @@
       "The impact such was"
     ],
     "correct": "Such was the impact",
-    "explanation": "Inversion with 'such' emphasizes the degree of something."
+    "explanation": "Inversion with <such> emphasizes the degree of something."
   },
   {
     "sentence": "<span class=\"font-bold text-blue-500\">Under no circumstances should you open</span> that door.",
@@ -93,7 +93,7 @@
       "You should not open under any circumstances"
     ],
     "correct": "Under no circumstances should you open",
-    "explanation": "Inversion with negative expressions like 'under no circumstances' requires the auxiliary verb before the subject."
+    "explanation": "Inversion with negative expressions like <under no circumstances> requires the auxiliary verb before the subject."
   },
   {
     "sentence": "<span class=\"font-bold text-blue-500\">Rarely have I seen</span> such a beautiful painting.",
@@ -105,7 +105,7 @@
       "I rarely have seen"
     ],
     "correct": "Rarely have I seen",
-    "explanation": "Inversion with 'rarely' requires the auxiliary verb before the subject."
+    "explanation": "Inversion with <rarely> requires the auxiliary verb before the subject."
   },
   {
     "sentence": "<span class=\"font-bold text-blue-500\">No sooner had he finished</span> his work than he went home.",
@@ -153,7 +153,7 @@
       "Technology never before has advanced"
     ],
     "correct": "Never before has technology advanced",
-    "explanation": "Inversion with 'never before' requires the auxiliary verb before the subject."
+    "explanation": "Inversion with <never before> requires the auxiliary verb before the subject."
   },
   {
     "sentence": "<span class=\"font-bold text-blue-500\">On no account are you to disclose</span> this information.",
@@ -165,7 +165,7 @@
       "You are not to disclose on any account"
     ],
     "correct": "On no account are you to disclose",
-    "explanation": "Inversion with 'on no account' requires the auxiliary verb before the subject."
+    "explanation": "Inversion with <on no account> requires the auxiliary verb before the subject."
   },
   {
     "sentence": "<span class=\"font-bold text-blue-500\">Were I to win</span> the lottery, I would travel the world.",
@@ -177,7 +177,7 @@
       "Winning"
     ],
     "correct": "If I were to win",
-    "explanation": "This is an inverted conditional sentence, equivalent to 'If I were to win'."
+    "explanation": "This is an inverted conditional sentence, equivalent to <If I were to win>."
   },
   {
     "sentence": "<span class=\"font-bold text-blue-500\">Only by working together can we achieve</span> our goals.",
@@ -189,7 +189,7 @@
       "We can only achieve by working together"
     ],
     "correct": "Only by working together can we achieve",
-    "explanation": "Inversion with 'only by' occurs in the main clause."
+    "explanation": "Inversion with <only by> occurs in the main clause."
   },
   {
     "sentence": "<span class=\"font-bold text-blue-500\">Not until all the guests had left</span> did she finally relax.",
@@ -201,7 +201,7 @@
       "She did finally relax not until all the guests had left"
     ],
     "correct": "Not until all the guests had left",
-    "explanation": "Inversion with 'not until' occurs in the main clause."
+    "explanation": "Inversion with <not until> occurs in the main clause."
   },
   {
     "sentence": "<span class=\"font-bold text-blue-500\">So quickly did he run</span> that he broke the world record.",
@@ -225,7 +225,7 @@
       "Requiring"
     ],
     "correct": "If you require",
-    "explanation": "This is an inverted conditional sentence, equivalent to 'If you require'."
+    "explanation": "This is an inverted conditional sentence, equivalent to <If you require>."
   },
   {
     "sentence": "<span class=\"font-bold text-blue-500\">In no way is he responsible</span> for the accident.",
@@ -237,7 +237,7 @@
       "He is not responsible in any way"
     ],
     "correct": "In no way is he responsible",
-    "explanation": "Inversion with 'in no way' requires the auxiliary verb before the subject."
+    "explanation": "Inversion with <in no way> requires the auxiliary verb before the subject."
   },
   {
     "sentence": "<span class=\"font-bold text-blue-500\">Nowhere else will you find</span> such a diverse collection of art.",
@@ -249,7 +249,7 @@
       "Nowhere else will you find"
     ],
     "correct": "Nowhere else will you find",
-    "explanation": "Inversion with 'Nowhere else' requires the auxiliary verb before the subject."
+    "explanation": "Inversion with <Nowhere else> requires the auxiliary verb before the subject."
   },
   {
     "sentence": "<span class=\"font-bold text-blue-500\">At no time was the president</span> aware of the secret plan.",
@@ -261,7 +261,7 @@
       "At no time was the president"
     ],
     "correct": "At no time was the president",
-    "explanation": "Inversion with 'At no time' requires the auxiliary verb before the subject."
+    "explanation": "Inversion with <At no time> requires the auxiliary verb before the subject."
   },
   {
     "sentence": "<span class=\"font-bold text-blue-500\">Were she to accept</span> the offer, she would have to relocate.",
@@ -273,7 +273,7 @@
       "If she would accept"
     ],
     "correct": "If she were to accept",
-    "explanation": "This is an inverted conditional, equivalent to 'If she were to accept'."
+    "explanation": "This is an inverted conditional, equivalent to <If she were to accept>."
   },
   {
     "sentence": "<span class=\"font-bold text-blue-500\">It was his arrogance that</span> I found so irritating.",
@@ -297,7 +297,7 @@
       "What I need is"
     ],
     "correct": "What I need is",
-    "explanation": "This is a 'wh-' cleft sentence used to emphasize the object of the need."
+    "explanation": "This is a <wh-> cleft sentence used to emphasize the object of the need."
   },
   {
     "sentence": "<span class=\"font-bold text-blue-500\">Having been warned</span> about the storm, they stayed indoors.",
@@ -309,7 +309,7 @@
       "After they warned"
     ],
     "correct": "Having been warned",
-    "explanation": "A perfect participle clause ('Having been' + past participle) is used to show that one action happened before another."
+    "explanation": "A perfect participle clause (<Having been> + past participle) is used to show that one action happened before another."
   },
   {
     "sentence": "<span class=\"font-bold text-blue-500\">Exhausted from the journey,</span> he went straight to bed.",
@@ -333,7 +333,7 @@
       "the matter being"
     ],
     "correct": "the matter be",
-    "explanation": "The subjunctive 'be' is used after expressions like 'It is imperative that...'"
+    "explanation": "The subjunctive <be> is used after expressions like 'It is imperative that...'"
   },
   {
     "sentence": "<span class=\"font-bold text-blue-500\">The harder you study,</span> the more you will learn.",
@@ -369,7 +369,7 @@
       "I thought not for a moment"
     ],
     "correct": "Not for a moment did I think",
-    "explanation": "Inversion is used after the negative expression 'Not for a moment'."
+    "explanation": "Inversion is used after the negative expression <Not for a moment>."
   },
   {
     "sentence": "<span class=\"font-bold text-blue-500\">Only after his speech did I understand</span> the full situation.",
@@ -381,7 +381,7 @@
       "I did understand only after his speech"
     ],
     "correct": "Only after his speech did I understand",
-    "explanation": "When a sentence starts with 'Only after', the main clause is inverted."
+    "explanation": "When a sentence starts with <Only after>, the main clause is inverted."
   },
   {
     "sentence": "<span class=\"font-bold text-blue-500\">Should the situation worsen,</span> we have a contingency plan.",
@@ -393,7 +393,7 @@
       "The situation should worsen,"
     ],
     "correct": "If the situation should worsen,",
-    "explanation": "This inverted conditional is a more formal way of saying 'If the situation should worsen'."
+    "explanation": "This inverted conditional is a more formal way of saying <If the situation should worsen>."
   },
   {
     "sentence": "<span class=\"font-bold text-blue-500\">Built in the 16th century,</span> the castle is a major tourist attraction.",
@@ -405,7 +405,7 @@
       "Having built in the 16th century,"
     ],
     "correct": "Built in the 16th century,",
-    "explanation": "A past participle clause is used to give more information about the noun 'the castle'."
+    "explanation": "A past participle clause is used to give more information about the noun <the castle>."
   },
   {
     "sentence": "<span class=\"font-bold text-blue-500\">The board proposed that the new policy be</span> implemented next year.",
@@ -417,7 +417,7 @@
       "the new policy was"
     ],
     "correct": "the new policy be",
-    "explanation": "The subjunctive 'be' is used after verbs of suggestion like 'propose'."
+    "explanation": "The subjunctive <be> is used after verbs of suggestion like <propose>."
   },
   {
     "sentence": "<span class=\"font-bold text-blue-500\">The sooner we leave,</span> the earlier we will arrive.",
@@ -477,6 +477,6 @@
       "On no condition are you to"
     ],
     "correct": "On no condition are you to",
-    "explanation": "Inversion with the negative expression 'On no condition' requires the auxiliary verb before the subject."
+    "explanation": "Inversion with the negative expression <On no condition> requires the auxiliary verb before the subject."
   }
 ]

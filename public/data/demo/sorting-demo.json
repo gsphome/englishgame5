@@ -5,39 +5,66 @@
   "learningMode": "sorting",
   "level": "beginner",
   "category": "Vocabulary",
-  "tags": ["vocabulary", "sorting", "categories"],
+  "tags": [
+    "vocabulary",
+    "sorting",
+    "categories"
+  ],
   "estimatedTime": 5,
   "difficulty": 2,
   "data": [
     {
       "id": "s1",
-      "words": ["apple", "car", "dog", "banana"],
+      "words": [
+        "apple",
+        "car",
+        "dog",
+        "banana"
+      ],
       "categories": [
         {
           "name": "Fruits",
-          "items": ["apple", "banana"]
+          "items": [
+            "apple",
+            "banana"
+          ]
         },
         {
           "name": "Transportation",
-          "items": ["car"]
+          "items": [
+            "car"
+          ]
         },
         {
           "name": "Animals",
-          "items": ["dog"]
+          "items": [
+            "dog"
+          ]
         }
       ]
     },
     {
       "id": "s2",
-      "words": ["red", "happy", "blue", "sad"],
+      "words": [
+        "red",
+        "happy",
+        "blue",
+        "sad"
+      ],
       "categories": [
         {
           "name": "Colors",
-          "items": ["red", "blue"]
+          "items": [
+            "red",
+            "blue"
+          ]
         },
         {
           "name": "Emotions",
-          "items": ["happy", "sad"]
+          "items": [
+            "happy",
+            "sad"
+          ]
         }
       ]
     }

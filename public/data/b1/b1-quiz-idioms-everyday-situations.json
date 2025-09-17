@@ -1,6 +1,6 @@
 [
   {
-    "question": "What does 'break the ice' mean?",
+    "question": "What does <break the ice> mean?",
     "options": [
       "to make ice cubes",
       "to start a conversation",
@@ -11,7 +11,7 @@
     "explanation": "This idiom means to initiate conversation in a social situation."
   },
   {
-    "question": "If someone 'spills the beans', they:",
+    "question": "If someone <spills the beans>, they:",
     "options": [
       "cook badly",
       "reveal a secret",
@@ -22,7 +22,7 @@
     "explanation": "This idiom means to accidentally or intentionally reveal secret information."
   },
   {
-    "question": "What does 'hit the hay' mean?",
+    "question": "What does <hit the hay> mean?",
     "options": [
       "go to sleep",
       "work on a farm",
@@ -33,7 +33,7 @@
     "explanation": "This idiom means to go to bed or go to sleep."
   },
   {
-    "question": "If you 'bite the bullet', you:",
+    "question": "If you <bite the bullet>, you:",
     "options": [
       "eat metal",
       "face a difficult situation",
@@ -44,7 +44,7 @@
     "explanation": "This idiom means to courageously face a difficult or unpleasant situation."
   },
   {
-    "question": "What does 'piece of cake' mean?",
+    "question": "What does <piece of cake> mean?",
     "options": [
       "dessert",
       "very easy",
@@ -55,7 +55,7 @@
     "explanation": "This idiom means something that is very easy to do."
   },
   {
-    "question": "If someone 'lets the cat out of the bag', they:",
+    "question": "If someone <lets the cat out of the bag>, they:",
     "options": [
       "free an animal",
       "reveal a secret",
@@ -66,7 +66,7 @@
     "explanation": "This idiom means to accidentally reveal a secret or surprise."
   },
   {
-    "question": "What does 'cost an arm and a leg' mean?",
+    "question": "What does <cost an arm and a leg> mean?",
     "options": [
       "be dangerous",
       "be very expensive",
@@ -77,7 +77,7 @@
     "explanation": "This idiom means something is extremely expensive."
   },
   {
-    "question": "If you 'kill two birds with one stone', you:",
+    "question": "If you <kill two birds with one stone>, you:",
     "options": [
       "hunt animals",
       "accomplish two things at once",
@@ -88,7 +88,7 @@
     "explanation": "This idiom means to achieve two goals with a single action."
   },
   {
-    "question": "What does 'it's raining cats and dogs' mean?",
+    "question": "What does <it>s raining cats and dogs' mean?",
     "options": [
       "animals are falling",
       "it's raining very heavily",
@@ -99,7 +99,7 @@
     "explanation": "This idiom means it's raining very hard."
   },
   {
-    "question": "If someone 'burns the midnight oil', they:",
+    "question": "If someone <burns the midnight oil>, they:",
     "options": [
       "waste fuel",
       "work late into the night",
@@ -110,7 +110,7 @@
     "explanation": "This idiom means to work or study late into the night."
   },
   {
-    "question": "What does 'don't cry over spilled milk' mean?",
+    "question": "What does <don>t cry over spilled milk' mean?",
     "options": [
       "clean up messes",
       "don't waste food",
@@ -121,7 +121,7 @@
     "explanation": "This idiom means don't be upset about something that has already happened and cannot be changed."
   },
   {
-    "question": "If you 'jump on the bandwagon', you:",
+    "question": "If you <jump on the bandwagon>, you:",
     "options": [
       "play music",
       "join a popular trend",
@@ -132,7 +132,7 @@
     "explanation": "This idiom means to join others in doing something that has become popular."
   },
   {
-    "question": "What does 'the ball is in your court' mean?",
+    "question": "What does <the ball is in your court> mean?",
     "options": [
       "play tennis",
       "it's your turn to act",
@@ -143,7 +143,7 @@
     "explanation": "This idiom means it's your turn to make a decision or take action."
   },
   {
-    "question": "If someone 'pulls your leg', they:",
+    "question": "If someone <pulls your leg>, they:",
     "options": [
       "help you walk",
       "joke with you",
@@ -154,7 +154,7 @@
     "explanation": "This idiom means to tease someone or tell them something untrue as a joke."
   },
   {
-    "question": "What does 'when pigs fly' mean?",
+    "question": "What does <when pigs fly> mean?",
     "options": [
       "at the airport",
       "never",
@@ -165,7 +165,7 @@
     "explanation": "This idiom means something will never happen."
   },
   {
-    "question": "If you 'get cold feet', you:",
+    "question": "If you <get cold feet>, you:",
     "options": [
       "need socks",
       "become nervous",
@@ -176,7 +176,7 @@
     "explanation": "This idiom means to become nervous or afraid about doing something."
   },
   {
-    "question": "What does 'break a leg' mean?",
+    "question": "What does <break a leg> mean?",
     "options": [
       "get injured",
       "good luck",
@@ -187,7 +187,7 @@
     "explanation": "This idiom is used to wish someone good luck, especially before a performance."
   },
   {
-    "question": "If something is 'a blessing in disguise', it:",
+    "question": "If something is <a blessing in disguise>, it:",
     "options": [
       "looks religious",
       "seems bad but is actually good",
@@ -198,7 +198,7 @@
     "explanation": "This idiom means something that initially seems bad but turns out to be good."
   },
   {
-    "question": "What does 'cut to the chase' mean?",
+    "question": "What does <cut to the chase> mean?",
     "options": [
       "use scissors",
       "run after someone",
@@ -209,7 +209,7 @@
     "explanation": "This idiom means to skip the details and get straight to the important part."
   },
   {
-    "question": "If you 'go the extra mile', you:",
+    "question": "If you <go the extra mile>, you:",
     "options": [
       "travel far",
       "do more than expected",
@@ -220,7 +220,7 @@
     "explanation": "This idiom means to make a special effort to achieve something."
   },
   {
-    "question": "What does 'it's not rocket science' mean?",
+    "question": "What does <it>s not rocket science' mean?",
     "options": [
       "it's about space",
       "it's not complicated",
@@ -231,7 +231,7 @@
     "explanation": "This idiom means something is not difficult to understand or do."
   },
   {
-    "question": "If you 'keep your chin up', you:",
+    "question": "If you <keep your chin up>, you:",
     "options": [
       "exercise your neck",
       "stay positive",
@@ -242,7 +242,7 @@
     "explanation": "This idiom means to remain cheerful and optimistic during difficult times."
   },
   {
-    "question": "What does 'once in a blue moon' mean?",
+    "question": "What does <once in a blue moon> mean?",
     "options": [
       "every month",
       "very rarely",
@@ -253,7 +253,7 @@
     "explanation": "This idiom means something happens very infrequently."
   },
   {
-    "question": "If someone 'steals your thunder', they:",
+    "question": "If someone <steals your thunder>, they:",
     "options": [
       "take your weather",
       "take credit for your idea",
@@ -264,7 +264,7 @@
     "explanation": "This idiom means someone takes attention away from you or takes credit for your work."
   },
   {
-    "question": "What does 'the early bird catches the worm' mean?",
+    "question": "What does <the early bird catches the worm> mean?",
     "options": [
       "birds eat insects",
       "wake up early to succeed",
@@ -275,7 +275,7 @@
     "explanation": "This idiom means people who start early or arrive first have the best chance of success."
   },
   {
-    "question": "If you 'throw in the towel', you:",
+    "question": "If you <throw in the towel>, you:",
     "options": [
       "do laundry",
       "give up",
@@ -286,7 +286,7 @@
     "explanation": "This idiom means to quit or surrender."
   },
   {
-    "question": "What does 'under the weather' mean?",
+    "question": "What does <under the weather> mean?",
     "options": [
       "outside",
       "feeling sick",
@@ -297,7 +297,7 @@
     "explanation": "This idiom means to feel ill or unwell."
   },
   {
-    "question": "If something 'rings a bell', it:",
+    "question": "If something <rings a bell>, it:",
     "options": [
       "makes noise",
       "sounds familiar",
@@ -308,7 +308,7 @@
     "explanation": "This idiom means something sounds familiar or reminds you of something."
   },
   {
-    "question": "What does 'get your act together' mean?",
+    "question": "What does <get your act together> mean?",
     "options": [
       "perform on stage",
       "organize yourself",
@@ -319,7 +319,7 @@
     "explanation": "This idiom means to organize yourself and start behaving responsibly."
   },
   {
-    "question": "If you 'face the music', you:",
+    "question": "If you <face the music>, you:",
     "options": [
       "listen to songs",
       "accept consequences",
@@ -330,7 +330,7 @@
     "explanation": "This idiom means to accept responsibility for something you have done wrong."
   },
   {
-    "question": "What does 'hang in there' mean?",
+    "question": "What does <hang in there> mean?",
     "options": [
       "hold something",
       "don't give up",
@@ -341,7 +341,7 @@
     "explanation": "This idiom means to persevere and not give up during difficult times."
   },
   {
-    "question": "If you 'play it by ear', you:",
+    "question": "If you <play it by ear>, you:",
     "options": [
       "make music",
       "improvise",
@@ -352,7 +352,7 @@
     "explanation": "This idiom means to handle a situation without a plan, adapting as you go."
   },
   {
-    "question": "What does 'time flies' mean?",
+    "question": "What does <time flies> mean?",
     "options": [
       "clocks move",
       "insects fly",
@@ -363,7 +363,7 @@
     "explanation": "This idiom means time seems to pass very quickly."
   },
   {
-    "question": "If you 'bite off more than you can chew', you:",
+    "question": "If you <bite off more than you can chew>, you:",
     "options": [
       "eat too much",
       "take on too much",
@@ -374,7 +374,7 @@
     "explanation": "This idiom means to attempt to do more than you are capable of."
   },
   {
-    "question": "What does 'better late than never' mean?",
+    "question": "What does <better late than never> mean?",
     "options": [
       "punctuality matters",
       "it's good to arrive eventually",
@@ -385,7 +385,7 @@
     "explanation": "This idiom means it's better to do something late than not do it at all."
   },
   {
-    "question": "If something is 'a piece of work', it:",
+    "question": "If something is <a piece of work>, it:",
     "options": [
       "is art",
       "is difficult to deal with",
@@ -396,7 +396,7 @@
     "explanation": "This idiom describes someone who is difficult, annoying, or problematic."
   },
   {
-    "question": "What does 'call it a day' mean?",
+    "question": "What does <call it a day> mean?",
     "options": [
       "make a phone call",
       "stop working",
@@ -407,7 +407,7 @@
     "explanation": "This idiom means to stop working or end an activity for the day."
   },
   {
-    "question": "If you 'get the hang of it', you:",
+    "question": "If you <get the hang of it>, you:",
     "options": [
       "hold something",
       "learn how to do it",
@@ -418,7 +418,7 @@
     "explanation": "This idiom means to learn how to do something or understand how something works."
   },
   {
-    "question": "What does 'in the same boat' mean?",
+    "question": "What does <in the same boat> mean?",
     "options": [
       "traveling together",
       "in the same situation",
@@ -429,7 +429,7 @@
     "explanation": "This idiom means to be in the same difficult situation as someone else."
   },
   {
-    "question": "If you 'keep your eyes peeled', you:",
+    "question": "If you <keep your eyes peeled>, you:",
     "options": [
       "hurt your eyes",
       "watch carefully",

@@ -8,7 +8,7 @@
       "be"
     ],
     "correct": "were",
-    "explanation": "En el segundo condicional (situaciones hipotéticas), se usa 'were' para todos los pronombres, incluido 'I'."
+    "explanation": "En el segundo condicional (situaciones hipotéticas), se usa <were> para todos los pronombres, incluido <I>."
   },
   {
     "sentence": "Had I known about the traffic, I _ a different route.",
@@ -41,7 +41,7 @@
       "will leave"
     ],
     "correct": "leave",
-    "explanation": "'Unless' significa 'si no'. Después de 'unless', se usa el verbo en afirmativo. 'Unless you leave' = 'If you don't leave'."
+    "explanation": "<Unless> significa <si no>. Después de <unless>, se usa el verbo en afirmativo. <Unless you leave> = <If you don>t leave'."
   },
   {
     "sentence": "She would be a great musician if she _ more.",
@@ -118,7 +118,7 @@
       "are arriving"
     ],
     "correct": "arrive",
-    "explanation": "'Provided that' es similar a 'if' y se usa con el presente simple para una condición futura."
+    "explanation": "<Provided that> es similar a <if> y se usa con el presente simple para una condición futura."
   },
   {
     "sentence": "I wouldn't go there if I _ you.",
@@ -129,7 +129,7 @@
       "be"
     ],
     "correct": "were",
-    "explanation": "En el segundo condicional, se prefiere 'were' sobre 'was' para todos los sujetos al expresar una hipótesis."
+    "explanation": "En el segundo condicional, se prefiere <were> sobre <was> para todos los sujetos al expresar una hipótesis."
   },
   {
     "sentence": "If the weather _ better, we would have gone to the beach.",
@@ -151,7 +151,7 @@
       "will hurry"
     ],
     "correct": "hurries",
-    "explanation": "'Unless' (a menos que) va seguido del presente simple para indicar una condición."
+    "explanation": "<Unless> (a menos que) va seguido del presente simple para indicar una condición."
   },
   {
     "sentence": "If I had the money, I _ a new car.",
@@ -173,7 +173,7 @@
       "are needing"
     ],
     "correct": "need",
-    "explanation": "Esto es una forma invertida y más formal del primer condicional, omitiendo 'if'. 'Should you need' = 'If you should need'."
+    "explanation": "Esto es una forma invertida y más formal del primer condicional, omitiendo <if>. <Should you need> = <If you should need>."
   },
   {
     "sentence": "If he _ harder, he will succeed.",
@@ -217,7 +217,7 @@
       "are keeping"
     ],
     "correct": "keep",
-    "explanation": "'As long as' (siempre y cuando) se usa con el presente simple para establecer una condición."
+    "explanation": "<As long as> (siempre y cuando) se usa con el presente simple para establecer una condición."
   },
   {
     "sentence": "If I _ a millionaire, I would travel the world.",
@@ -228,7 +228,7 @@
       "be"
     ],
     "correct": "were",
-    "explanation": "Segundo condicional para una situación hipotética irreal en el presente. Se usa 'were' para todos los sujetos."
+    "explanation": "Segundo condicional para una situación hipotética irreal en el presente. Se usa <were> para todos los sujetos."
   },
   {
     "sentence": "Unless it _ tomorrow, we will go for a picnic.",
@@ -239,7 +239,7 @@
       "doesn't rain"
     ],
     "correct": "rains",
-    "explanation": "'Unless' significa 'si no'. Se usa con el presente simple para una condición futura."
+    "explanation": "<Unless> significa <si no>. Se usa con el presente simple para una condición futura."
   },
   {
     "sentence": "If she _ earlier, she wouldn't have missed the bus.",
@@ -294,7 +294,7 @@
       "be"
     ],
     "correct": "were",
-    "explanation": "Segundo condicional para dar un consejo. Se usa 'were' para todos los sujetos."
+    "explanation": "Segundo condicional para dar un consejo. Se usa <were> para todos los sujetos."
   },
   {
     "sentence": "She _ if she knew the answer.",
@@ -327,7 +327,7 @@
       "are finishing"
     ],
     "correct": "finish",
-    "explanation": "'Provided that' se usa con el presente simple para una condición futura."
+    "explanation": "<Provided that> se usa con el presente simple para una condición futura."
   },
   {
     "sentence": "If I _ more time, I would learn a new language.",
@@ -349,7 +349,7 @@
       "will have"
     ],
     "correct": "have",
-    "explanation": "'Unless' significa 'si no'. Se usa con el presente simple."
+    "explanation": "<Unless> significa <si no>. Se usa con el presente simple."
   },
   {
     "sentence": "If he _ the truth, she would have forgiven him.",
@@ -426,7 +426,7 @@
       "are doing"
     ],
     "correct": "do",
-    "explanation": "'As long as' se usa con el presente simple para establecer una condición."
+    "explanation": "<As long as> se usa con el presente simple para establecer una condición."
   },
   {
     "sentence": "If I _ a bird, I would fly.",

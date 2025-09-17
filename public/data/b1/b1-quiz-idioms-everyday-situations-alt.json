@@ -1,266 +1,486 @@
 [
   {
-    "question": "What does 'raining cats and dogs' mean?",
-    "options": ["raining heavily", "raining lightly", "raining animals", "raining intermittently"],
+    "question": "What does <raining cats and dogs> mean?",
+    "options": [
+      "raining heavily",
+      "raining lightly",
+      "raining animals",
+      "raining intermittently"
+    ],
     "correct": "raining heavily",
-    "explanation": "The idiom 'raining cats and dogs' means it's raining very heavily."
+    "explanation": "The idiom <raining cats and dogs> means it's raining very heavily."
   },
   {
-    "question": "What does 'under the weather' mean?",
-    "options": ["feeling sick", "feeling happy", "feeling cold", "feeling tired"],
+    "question": "What does <under the weather> mean?",
+    "options": [
+      "feeling sick",
+      "feeling happy",
+      "feeling cold",
+      "feeling tired"
+    ],
     "correct": "feeling sick",
-    "explanation": "The idiom 'under the weather' means feeling slightly unwell or ill."
+    "explanation": "The idiom <under the weather> means feeling slightly unwell or ill."
   },
   {
-    "question": "What does 'beat around the bush' mean?",
-    "options": ["avoid the main topic", "speak directly", "hit a bush", "talk loudly"],
+    "question": "What does <beat around the bush> mean?",
+    "options": [
+      "avoid the main topic",
+      "speak directly",
+      "hit a bush",
+      "talk loudly"
+    ],
     "correct": "avoid the main topic",
-    "explanation": "To 'beat around the bush' means to avoid coming to the point."
+    "explanation": "To <beat around the bush> means to avoid coming to the point."
   },
   {
-    "question": "What does 'piece of cake' mean?",
-    "options": ["very easy", "very difficult", "a type of dessert", "a small portion"],
+    "question": "What does <piece of cake> mean?",
+    "options": [
+      "very easy",
+      "very difficult",
+      "a type of dessert",
+      "a small portion"
+    ],
     "correct": "very easy",
-    "explanation": "If something is a 'piece of cake', it is very easy to do."
+    "explanation": "If something is a <piece of cake>, it is very easy to do."
   },
   {
-    "question": "What does 'call it a day' mean?",
-    "options": ["stop working for the day", "make a phone call", "start a new day", "go for a walk"],
+    "question": "What does <call it a day> mean?",
+    "options": [
+      "stop working for the day",
+      "make a phone call",
+      "start a new day",
+      "go for a walk"
+    ],
     "correct": "stop working for the day",
-    "explanation": "To 'call it a day' means to stop working on something for the rest of the day."
+    "explanation": "To <call it a day> means to stop working on something for the rest of the day."
   },
   {
-    "question": "What does 'spill the beans' mean?",
-    "options": ["reveal a secret", "drop some food", "clean up a mess", "cook a meal"],
+    "question": "What does <spill the beans> mean?",
+    "options": [
+      "reveal a secret",
+      "drop some food",
+      "clean up a mess",
+      "cook a meal"
+    ],
     "correct": "reveal a secret",
-    "explanation": "To 'spill the beans' means to reveal a secret or disclose confidential information."
+    "explanation": "To <spill the beans> means to reveal a secret or disclose confidential information."
   },
   {
-    "question": "What does 'not my cup of tea' mean?",
-    "options": ["not something I enjoy", "my favorite drink", "something I do often", "a type of tea"],
+    "question": "What does <not my cup of tea> mean?",
+    "options": [
+      "not something I enjoy",
+      "my favorite drink",
+      "something I do often",
+      "a type of tea"
+    ],
     "correct": "not something I enjoy",
-    "explanation": "If something is 'not your cup of tea', it is not something you like or are interested in."
+    "explanation": "If something is <not your cup of tea>, it is not something you like or are interested in."
   },
   {
-    "question": "What does 'barking up the wrong tree' mean?",
-    "options": ["pursuing a mistaken course of action", "climbing a tree", "making a loud noise", "looking in the right place"],
+    "question": "What does <barking up the wrong tree> mean?",
+    "options": [
+      "pursuing a mistaken course of action",
+      "climbing a tree",
+      "making a loud noise",
+      "looking in the right place"
+    ],
     "correct": "pursuing a mistaken course of action",
-    "explanation": "To be 'barking up the wrong tree' means to be pursuing a mistaken course of action or making a wrong assumption."
+    "explanation": "To be <barking up the wrong tree> means to be pursuing a mistaken course of action or making a wrong assumption."
   },
   {
-    "question": "What does 'cry over spilled milk' mean?",
-    "options": ["regret something that cannot be undone", "be upset about a minor accident", "clean up a mess", "express sadness"],
+    "question": "What does <cry over spilled milk> mean?",
+    "options": [
+      "regret something that cannot be undone",
+      "be upset about a minor accident",
+      "clean up a mess",
+      "express sadness"
+    ],
     "correct": "regret something that cannot be undone",
-    "explanation": "To 'cry over spilled milk' means to be upset about something that has already happened and cannot be changed."
+    "explanation": "To <cry over spilled milk> means to be upset about something that has already happened and cannot be changed."
   },
   {
-    "question": "What does 'bee in his bonnet' mean?",
-    "options": ["an obsession or fixation", "an insect in his hat", "a buzzing sound", "a new idea"],
+    "question": "What does <bee in his bonnet> mean?",
+    "options": [
+      "an obsession or fixation",
+      "an insect in his hat",
+      "a buzzing sound",
+      "a new idea"
+    ],
     "correct": "an obsession or fixation",
-    "explanation": "To have a 'bee in your bonnet' means to be preoccupied or obsessed with something."
+    "explanation": "To have a <bee in your bonnet> means to be preoccupied or obsessed with something."
   },
   {
-    "question": "What does 'pulling my leg' mean?",
-    "options": ["joking or teasing me", "helping me walk", "hurting my leg", "telling me a secret"],
+    "question": "What does <pulling my leg> mean?",
+    "options": [
+      "joking or teasing me",
+      "helping me walk",
+      "hurting my leg",
+      "telling me a secret"
+    ],
     "correct": "joking or teasing me",
-    "explanation": "To 'pull someone's leg' means to tease or joke with them, often by telling them something untrue."
+    "explanation": "To <pull someone>s leg' means to tease or joke with them, often by telling them something untrue."
   },
   {
-    "question": "What does 'the best of both worlds' mean?",
-    "options": ["all the advantages", "a difficult choice", "a confusing situation", "a new experience"],
+    "question": "What does <the best of both worlds> mean?",
+    "options": [
+      "all the advantages",
+      "a difficult choice",
+      "a confusing situation",
+      "a new experience"
+    ],
     "correct": "all the advantages",
-    "explanation": "To have 'the best of both worlds' means to enjoy the advantages of two different things at the same time."
+    "explanation": "To have <the best of both worlds> means to enjoy the advantages of two different things at the same time."
   },
   {
-    "question": "What does 'frog in his throat' mean?",
-    "options": ["difficulty speaking due to hoarseness", "a pet frog", "a sore throat", "a sudden cough"],
+    "question": "What does <frog in his throat> mean?",
+    "options": [
+      "difficulty speaking due to hoarseness",
+      "a pet frog",
+      "a sore throat",
+      "a sudden cough"
+    ],
     "correct": "difficulty speaking due to hoarseness",
-    "explanation": "To have a 'frog in your throat' means to have a hoarse voice or difficulty speaking clearly."
+    "explanation": "To have a <frog in your throat> means to have a hoarse voice or difficulty speaking clearly."
   },
   {
-    "question": "What does 'head in the clouds' mean?",
-    "options": ["daydreaming or unrealistic", "thinking clearly", "looking at the sky", "feeling dizzy"],
+    "question": "What does <head in the clouds> mean?",
+    "options": [
+      "daydreaming or unrealistic",
+      "thinking clearly",
+      "looking at the sky",
+      "feeling dizzy"
+    ],
     "correct": "daydreaming or unrealistic",
-    "explanation": "To have your 'head in the clouds' means to be daydreaming, unrealistic, or impractical."
+    "explanation": "To have your <head in the clouds> means to be daydreaming, unrealistic, or impractical."
   },
   {
-    "question": "What does 'blessing in disguise' mean?",
-    "options": ["a good thing that seemed bad at first", "a hidden problem", "a fortunate event", "a difficult situation"],
+    "question": "What does <blessing in disguise> mean?",
+    "options": [
+      "a good thing that seemed bad at first",
+      "a hidden problem",
+      "a fortunate event",
+      "a difficult situation"
+    ],
     "correct": "a good thing that seemed bad at first",
-    "explanation": "A 'blessing in disguise' is something that seems bad or unlucky at first but results in something good happening later."
+    "explanation": "A <blessing in disguise> is something that seems bad or unlucky at first but results in something good happening later."
   },
   {
-    "question": "What does 'screw loose' mean?",
-    "options": ["slightly crazy or eccentric", "a missing part", "a loose bolt", "a clever idea"],
+    "question": "What does <screw loose> mean?",
+    "options": [
+      "slightly crazy or eccentric",
+      "a missing part",
+      "a loose bolt",
+      "a clever idea"
+    ],
     "correct": "slightly crazy or eccentric",
-    "explanation": "To have a 'screw loose' means to be slightly crazy or eccentric."
+    "explanation": "To have a <screw loose> means to be slightly crazy or eccentric."
   },
   {
-    "question": "What does 'storm in a teacup' mean?",
-    "options": ["a lot of fuss about something unimportant", "a serious problem", "a sudden weather change", "a small drink"],
+    "question": "What does <storm in a teacup> mean?",
+    "options": [
+      "a lot of fuss about something unimportant",
+      "a serious problem",
+      "a sudden weather change",
+      "a small drink"
+    ],
     "correct": "a lot of fuss about something unimportant",
-    "explanation": "A 'storm in a teacup' refers to a lot of anger or worry about something unimportant."
+    "explanation": "A <storm in a teacup> refers to a lot of anger or worry about something unimportant."
   },
   {
-    "question": "What does 'two left feet' mean?",
-    "options": ["clumsy or awkward at dancing", "missing a foot", "wearing two left shoes", "a good dancer"],
+    "question": "What does <two left feet> mean?",
+    "options": [
+      "clumsy or awkward at dancing",
+      "missing a foot",
+      "wearing two left shoes",
+      "a good dancer"
+    ],
     "correct": "clumsy or awkward at dancing",
-    "explanation": "To have 'two left feet' means to be clumsy or awkward, especially when dancing."
+    "explanation": "To have <two left feet> means to be clumsy or awkward, especially when dancing."
   },
   {
-    "question": "What does 'get cold feet' mean?",
-    "options": ["become nervous or afraid", "feel cold in feet", "get sick", "run away"],
+    "question": "What does <get cold feet> mean?",
+    "options": [
+      "become nervous or afraid",
+      "feel cold in feet",
+      "get sick",
+      "run away"
+    ],
     "correct": "become nervous or afraid",
-    "explanation": "To 'get cold feet' means to become nervous or afraid to do something you had planned."
+    "explanation": "To <get cold feet> means to become nervous or afraid to do something you had planned."
   },
   {
-    "question": "What does 'eat a horse' mean?",
-    "options": ["be extremely hungry", "eat an animal", "feel sick", "go to sleep"],
+    "question": "What does <eat a horse> mean?",
+    "options": [
+      "be extremely hungry",
+      "eat an animal",
+      "feel sick",
+      "go to sleep"
+    ],
     "correct": "be extremely hungry",
-    "explanation": "To 'eat a horse' means to be extremely hungry."
+    "explanation": "To <eat a horse> means to be extremely hungry."
   },
   {
-    "question": "What does 'not rocket science' mean?",
-    "options": ["not difficult to understand", "very complicated", "a scientific experiment", "a space mission"],
+    "question": "What does <not rocket science> mean?",
+    "options": [
+      "not difficult to understand",
+      "very complicated",
+      "a scientific experiment",
+      "a space mission"
+    ],
     "correct": "not difficult to understand",
-    "explanation": "If something is 'not rocket science', it means it's not difficult to understand or do."
+    "explanation": "If something is <not rocket science>, it means it's not difficult to understand or do."
   },
   {
-    "question": "What does 'with flying colors' mean?",
-    "options": ["very easily and successfully", "with colorful flags", "with great difficulty", "with a lot of help"],
+    "question": "What does <with flying colors> mean?",
+    "options": [
+      "very easily and successfully",
+      "with colorful flags",
+      "with great difficulty",
+      "with a lot of help"
+    ],
     "correct": "very easily and successfully",
-    "explanation": "To pass 'with flying colors' means to pass very easily and successfully."
+    "explanation": "To pass <with flying colors> means to pass very easily and successfully."
   },
   {
-    "question": "What does 'burning the midnight oil' mean?",
-    "options": ["working late into the night", "wasting electricity", "setting things on fire", "sleeping soundly"],
+    "question": "What does <burning the midnight oil> mean?",
+    "options": [
+      "working late into the night",
+      "wasting electricity",
+      "setting things on fire",
+      "sleeping soundly"
+    ],
     "correct": "working late into the night",
-    "explanation": "To 'burn the midnight oil' means to work or study late into the night."
+    "explanation": "To <burn the midnight oil> means to work or study late into the night."
   },
   {
-    "question": "What does 'all ears' mean?",
-    "options": ["eager to listen", "having big ears", "ignoring you", "feeling tired"],
+    "question": "What does <all ears> mean?",
+    "options": [
+      "eager to listen",
+      "having big ears",
+      "ignoring you",
+      "feeling tired"
+    ],
     "correct": "eager to listen",
-    "explanation": "To be 'all ears' means to be eager to hear what someone has to say."
+    "explanation": "To be <all ears> means to be eager to hear what someone has to say."
   },
   {
-    "question": "What does 'on cloud nine' mean?",
-    "options": ["extremely happy", "flying in an airplane", "feeling sad", "confused"],
+    "question": "What does <on cloud nine> mean?",
+    "options": [
+      "extremely happy",
+      "flying in an airplane",
+      "feeling sad",
+      "confused"
+    ],
     "correct": "extremely happy",
-    "explanation": "To be 'on cloud nine' means to be extremely happy."
+    "explanation": "To be <on cloud nine> means to be extremely happy."
   },
   {
-    "question": "What does 'jump to conclusions' mean?",
-    "options": ["make a decision too quickly", "jump high", "think carefully", "avoid making decisions"],
+    "question": "What does <jump to conclusions> mean?",
+    "options": [
+      "make a decision too quickly",
+      "jump high",
+      "think carefully",
+      "avoid making decisions"
+    ],
     "correct": "make a decision too quickly",
-    "explanation": "To 'jump to conclusions' means to make a decision or judgment too quickly without having all the facts."
+    "explanation": "To <jump to conclusions> means to make a decision or judgment too quickly without having all the facts."
   },
   {
-    "question": "What does 'face the music' mean?",
-    "options": ["accept the consequences", "listen to music", "avoid a problem", "sing a song"],
+    "question": "What does <face the music> mean?",
+    "options": [
+      "accept the consequences",
+      "listen to music",
+      "avoid a problem",
+      "sing a song"
+    ],
     "correct": "accept the consequences",
-    "explanation": "To 'face the music' means to accept the unpleasant consequences of one's actions."
+    "explanation": "To <face the music> means to accept the unpleasant consequences of one's actions."
   },
   {
-    "question": "What does 'couch potato' mean?",
-    "options": ["a lazy person who watches a lot of TV", "a vegetable on the sofa", "an active person", "a good cook"],
+    "question": "What does <couch potato> mean?",
+    "options": [
+      "a lazy person who watches a lot of TV",
+      "a vegetable on the sofa",
+      "an active person",
+      "a good cook"
+    ],
     "correct": "a lazy person who watches a lot of TV",
-    "explanation": "A 'couch potato' is a person who spends a lot of time sitting or lying on a couch, watching television."
+    "explanation": "A <couch potato> is a person who spends a lot of time sitting or lying on a couch, watching television."
   },
   {
-    "question": "What does 'green thumb' mean?",
-    "options": ["a natural talent for gardening", "a green finger", "a bad habit", "a lucky charm"],
+    "question": "What does <green thumb> mean?",
+    "options": [
+      "a natural talent for gardening",
+      "a green finger",
+      "a bad habit",
+      "a lucky charm"
+    ],
     "correct": "a natural talent for gardening",
-    "explanation": "To have a 'green thumb' means to be good at gardening."
+    "explanation": "To have a <green thumb> means to be good at gardening."
   },
   {
-    "question": "What does 'in hot water' mean?",
-    "options": ["in trouble", "taking a bath", "feeling warm", "in a good situation"],
+    "question": "What does <in hot water> mean?",
+    "options": [
+      "in trouble",
+      "taking a bath",
+      "feeling warm",
+      "in a good situation"
+    ],
     "correct": "in trouble",
-    "explanation": "To be 'in hot water' means to be in trouble."
+    "explanation": "To be <in hot water> means to be in trouble."
   },
   {
-    "question": "What does 'drop in the ocean' mean?",
-    "options": ["a very small amount compared to what is needed", "a drop of water", "a large quantity", "a significant contribution"],
+    "question": "What does <drop in the ocean> mean?",
+    "options": [
+      "a very small amount compared to what is needed",
+      "a drop of water",
+      "a large quantity",
+      "a significant contribution"
+    ],
     "correct": "a very small amount compared to what is needed",
-    "explanation": "A 'drop in the ocean' means a very small amount compared with what is needed or expected."
+    "explanation": "A <drop in the ocean> means a very small amount compared with what is needed or expected."
   },
   {
-    "question": "What does 'hit the books' mean?",
-    "options": ["study hard", "hit actual books", "play a game", "read casually"],
+    "question": "What does <hit the books> mean?",
+    "options": [
+      "study hard",
+      "hit actual books",
+      "play a game",
+      "read casually"
+    ],
     "correct": "study hard",
-    "explanation": "To 'hit the books' means to study hard."
+    "explanation": "To <hit the books> means to study hard."
   },
   {
-    "question": "What does 'sweet tooth' mean?",
-    "options": ["a strong liking for sweet foods", "a sweet taste in mouth", "a healthy diet", "a dental problem"],
+    "question": "What does <sweet tooth> mean?",
+    "options": [
+      "a strong liking for sweet foods",
+      "a sweet taste in mouth",
+      "a healthy diet",
+      "a dental problem"
+    ],
     "correct": "a strong liking for sweet foods",
-    "explanation": "To have a 'sweet tooth' means to have a strong liking for sweet foods."
+    "explanation": "To have a <sweet tooth> means to have a strong liking for sweet foods."
   },
   {
-    "question": "What does 'on the ball' mean?",
-    "options": ["alert and competent", "playing soccer", "distracted", "making mistakes"],
+    "question": "What does <on the ball> mean?",
+    "options": [
+      "alert and competent",
+      "playing soccer",
+      "distracted",
+      "making mistakes"
+    ],
     "correct": "alert and competent",
-    "explanation": "To be 'on the ball' means to be alert, quick to understand, and competent."
+    "explanation": "To be <on the ball> means to be alert, quick to understand, and competent."
   },
   {
-    "question": "What does 'on the fence' mean?",
-    "options": ["undecided", "enthusiastic", "clumsy", "confident"],
+    "question": "What does <on the fence> mean?",
+    "options": [
+      "undecided",
+      "enthusiastic",
+      "clumsy",
+      "confident"
+    ],
     "correct": "undecided",
-    "explanation": "To be 'on the fence' means to be undecided or neutral about something."
+    "explanation": "To be <on the fence> means to be undecided or neutral about something."
   },
   {
-    "question": "What does 'take a rain check' mean?",
-    "options": ["postpone to a later date", "accept the invitation", "decline politely", "ask for more details"],
+    "question": "What does <take a rain check> mean?",
+    "options": [
+      "postpone to a later date",
+      "accept the invitation",
+      "decline politely",
+      "ask for more details"
+    ],
     "correct": "postpone to a later date",
-    "explanation": "To 'take a rain check' means to decline an offer or invitation but suggest that it could be accepted at a later time."
+    "explanation": "To <take a rain check> means to decline an offer or invitation but suggest that it could be accepted at a later time."
   },
   {
-    "question": "What does 'play devil's advocate' mean?",
-    "options": ["argue against an idea for the sake of argument", "support an idea", "agree with everyone", "avoid conflict"],
+    "question": "What does <play devil>s advocate' mean?",
+    "options": [
+      "argue against an idea for the sake of argument",
+      "support an idea",
+      "agree with everyone",
+      "avoid conflict"
+    ],
     "correct": "argue against an idea for the sake of argument",
-    "explanation": "To 'play devil's advocate' means to argue against an idea or plan that a lot of people support, in order to make people think about the issue in a different way."
+    "explanation": "To <play devil>s advocate' means to argue against an idea or plan that a lot of people support, in order to make people think about the issue in a different way."
   },
   {
-    "question": "What does 'on the tip of my tongue' mean?",
-    "options": ["about to be said or remembered", "easy to remember", "difficult to pronounce", "a secret"],
+    "question": "What does <on the tip of my tongue> mean?",
+    "options": [
+      "about to be said or remembered",
+      "easy to remember",
+      "difficult to pronounce",
+      "a secret"
+    ],
     "correct": "about to be said or remembered",
-    "explanation": "If something is 'on the tip of your tongue', you are sure that you know it but you cannot remember it."
+    "explanation": "If something is <on the tip of your tongue>, you are sure that you know it but you cannot remember it."
   },
   {
-    "question": "What does 'hot potato' mean?",
-    "options": ["a controversial or difficult issue", "an easy task", "a popular idea", "a delicious meal"],
+    "question": "What does <hot potato> mean?",
+    "options": [
+      "a controversial or difficult issue",
+      "an easy task",
+      "a popular idea",
+      "a delicious meal"
+    ],
     "correct": "a controversial or difficult issue",
-    "explanation": "A 'hot potato' is a controversial or difficult issue that is awkward to deal with."
+    "explanation": "A <hot potato> is a controversial or difficult issue that is awkward to deal with."
   },
   {
-    "question": "What does 'break the ice' mean?",
-    "options": ["start a conversation in a social situation", "break actual ice", "end a conversation", "make someone angry"],
+    "question": "What does <break the ice> mean?",
+    "options": [
+      "start a conversation in a social situation",
+      "break actual ice",
+      "end a conversation",
+      "make someone angry"
+    ],
     "correct": "start a conversation in a social situation",
-    "explanation": "To 'break the ice' means to make people feel more relaxed in a social situation, especially at the beginning of a meeting or party."
+    "explanation": "To <break the ice> means to make people feel more relaxed in a social situation, especially at the beginning of a meeting or party."
   },
   {
-    "question": "What does 'let the cat out of the bag' mean?",
-    "options": ["reveal a secret accidentally", "free a pet", "make a mess", "start a fight"],
+    "question": "What does <let the cat out of the bag> mean?",
+    "options": [
+      "reveal a secret accidentally",
+      "free a pet",
+      "make a mess",
+      "start a fight"
+    ],
     "correct": "reveal a secret accidentally",
-    "explanation": "To 'let the cat out of the bag' means to reveal a secret accidentally."
+    "explanation": "To <let the cat out of the bag> means to reveal a secret accidentally."
   },
   {
-    "question": "What does 'bite the bullet' mean?",
-    "options": ["face a difficult situation bravely", "eat something hard", "make a mistake", "avoid responsibility"],
+    "question": "What does <bite the bullet> mean?",
+    "options": [
+      "face a difficult situation bravely",
+      "eat something hard",
+      "make a mistake",
+      "avoid responsibility"
+    ],
     "correct": "face a difficult situation bravely",
-    "explanation": "To 'bite the bullet' means to face a difficult or unpleasant situation with courage."
+    "explanation": "To <bite the bullet> means to face a difficult or unpleasant situation with courage."
   },
   {
-    "question": "What does 'break a leg' mean?",
-    "options": ["good luck", "hurt yourself", "dance badly", "run fast"],
+    "question": "What does <break a leg> mean?",
+    "options": [
+      "good luck",
+      "hurt yourself",
+      "dance badly",
+      "run fast"
+    ],
     "correct": "good luck",
-    "explanation": "To 'break a leg' is a way to wish someone good luck, especially before a performance."
+    "explanation": "To <break a leg> is a way to wish someone good luck, especially before a performance."
   },
   {
-    "question": "What does 'cost an arm and a leg' mean?",
-    "options": ["be very expensive", "be very cheap", "be dangerous", "be easy"],
+    "question": "What does <cost an arm and a leg> mean?",
+    "options": [
+      "be very expensive",
+      "be very cheap",
+      "be dangerous",
+      "be easy"
+    ],
     "correct": "be very expensive",
-    "explanation": "If something 'costs an arm and a leg', it is very expensive."
+    "explanation": "If something <costs an arm and a leg>, it is very expensive."
   }
 ]

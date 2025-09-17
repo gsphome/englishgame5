@@ -2,14 +2,14 @@
   {
     "sentence": "I ______ visit my grandmother next weekend.",
     "correct": "will",
-    "explanation": "Use 'will' for spontaneous decisions or predictions",
+    "explanation": "Use <will> for spontaneous decisions or predictions",
     "tip": "Complete with the future auxiliary verb"
   },
   {
     "sentence": "She ______ going to study medicine at university.",
     "correct": "is",
-    "explanation": "Use 'be going to' for planned future actions",
-    "tip": "Complete with the correct form of 'be'"
+    "explanation": "Use <be going to> for planned future actions",
+    "tip": "Complete with the correct form of <be>"
   },
   {
     "sentence": "The train ______ at 9:30 tomorrow morning.",
@@ -32,14 +32,14 @@
   {
     "sentence": "I think it ______ rain later today.",
     "correct": "will",
-    "explanation": "Use 'will' for predictions based on opinion",
+    "explanation": "Use <will> for predictions based on opinion",
     "tip": "Complete with the future auxiliary for predictions"
   },
   {
     "sentence": "Look at those clouds! It ______ going to rain.",
     "correct": "is",
-    "explanation": "Use 'be going to' for predictions based on present evidence",
-    "tip": "Complete with the correct form of 'be'"
+    "explanation": "Use <be going to> for predictions based on present evidence",
+    "tip": "Complete with the correct form of <be>"
   },
   {
     "sentence": "The movie ______ at 8 PM tonight.",
@@ -62,14 +62,14 @@
   {
     "sentence": "I ______ help you with your homework after dinner.",
     "correct": "will",
-    "explanation": "Use 'will' for promises and offers",
+    "explanation": "Use <will> for promises and offers",
     "tip": "Complete with the future auxiliary for promises"
   },
   {
     "sentence": "They ______ going to move to a new house next month.",
     "correct": "are",
-    "explanation": "Use 'be going to' for definite plans",
-    "tip": "Complete with the correct plural form of 'be'"
+    "explanation": "Use <be going to> for definite plans",
+    "tip": "Complete with the correct plural form of <be>"
   },
   {
     "sentence": "The conference ______ on Monday and ends on Friday.",
@@ -92,14 +92,14 @@
   {
     "sentence": "I promise I ______ be late again.",
     "correct": "won't",
-    "explanation": "Use 'will not' for promises about future behavior",
+    "explanation": "Use <will not> for promises about future behavior",
     "tip": "Complete with the negative future auxiliary"
   },
   {
     "sentence": "We ______ going to have a party for her birthday.",
     "correct": "are",
-    "explanation": "Use 'be going to' for planned events",
-    "tip": "Complete with the correct plural form of 'be'"
+    "explanation": "Use <be going to> for planned events",
+    "tip": "Complete with the correct plural form of <be>"
   },
   {
     "sentence": "The bus ______ every 15 minutes during rush hour.",
@@ -122,14 +122,14 @@
   {
     "sentence": "I don't think she ______ come to the party.",
     "correct": "will",
-    "explanation": "Use 'will' for predictions in negative sentences",
+    "explanation": "Use <will> for predictions in negative sentences",
     "tip": "Complete with the future auxiliary for predictions"
   },
   {
     "sentence": "He ______ going to apply for that job tomorrow.",
     "correct": "is",
-    "explanation": "Use 'be going to' for intended actions",
-    "tip": "Complete with the correct singular form of 'be'"
+    "explanation": "Use <be going to> for intended actions",
+    "tip": "Complete with the correct singular form of <be>"
   },
   {
     "sentence": "The store ______ at 9 AM and closes at 6 PM.",
@@ -152,8 +152,8 @@
   {
     "sentence": "We ______ definitely going to win this game.",
     "correct": "are",
-    "explanation": "Use 'be going to' for strong predictions",
-    "tip": "Complete with the correct plural form of 'be'"
+    "explanation": "Use <be going to> for strong predictions",
+    "tip": "Complete with the correct plural form of <be>"
   },
   {
     "sentence": "The flight ______ at 6:45 AM sharp.",
@@ -176,20 +176,20 @@
   {
     "sentence": "I ______ call you as soon as I arrive.",
     "correct": "will",
-    "explanation": "Use 'will' for actions that will happen after another future action",
+    "explanation": "Use <will> for actions that will happen after another future action",
     "tip": "Complete with the future auxiliary"
   },
   {
     "sentence": "They ______ going to redecorate their living room.",
     "correct": "are",
-    "explanation": "Use 'be going to' for planned activities",
-    "tip": "Complete with the correct plural form of 'be'"
+    "explanation": "Use <be going to> for planned activities",
+    "tip": "Complete with the correct plural form of <be>"
   },
   {
     "sentence": "The museum ______ closed on Mondays.",
     "correct": "is",
     "explanation": "Use present simple for regular closures",
-    "tip": "Complete with the present simple form of 'be'"
+    "tip": "Complete with the present simple form of <be>"
   },
   {
     "sentence": "By 2030, scientists ______ discovered a cure for this disease.",
@@ -206,14 +206,14 @@
   {
     "sentence": "I'm sure he ______ understand if you explain it clearly.",
     "correct": "will",
-    "explanation": "Use 'will' for confident predictions",
+    "explanation": "Use <will> for confident predictions",
     "tip": "Complete with the future auxiliary for certainty"
   },
   {
     "sentence": "We ______ going to visit three countries during our vacation.",
     "correct": "are",
-    "explanation": "Use 'be going to' for travel plans",
-    "tip": "Complete with the correct plural form of 'be'"
+    "explanation": "Use <be going to> for travel plans",
+    "tip": "Complete with the correct plural form of <be>"
   },
   {
     "sentence": "The library ______ at 8 AM on weekdays.",
@@ -236,7 +236,7 @@
   {
     "sentence": "I ______ never forget this amazing experience.",
     "correct": "will",
-    "explanation": "Use 'will' for strong statements about the future",
+    "explanation": "Use <will> for strong statements about the future",
     "tip": "Complete with the future auxiliary for emphasis"
   }
 ]

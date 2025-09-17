@@ -8,7 +8,7 @@
       "writes"
     ],
     "correct": "written",
-    "explanation": "Se usa un participio pasado ('written') para crear una cláusula pasiva reducida que modifica al sustantivo 'report'."
+    "explanation": "Se usa un participio pasado (<written>) para crear una cláusula pasiva reducida que modifica al sustantivo <report>."
   },
   {
     "sentence": "Having _ the book, he knew the movie's ending.",
@@ -19,7 +19,7 @@
       "had read"
     ],
     "correct": "read",
-    "explanation": "Se usa un participio perfecto ('Having read') para indicar que una acción se completó antes que la otra."
+    "explanation": "Se usa un participio perfecto (<Having read>) para indicar que una acción se completó antes que la otra."
   },
   {
     "sentence": "All the tickets for the concert had already been _.",
@@ -30,7 +30,7 @@
       "selling"
     ],
     "correct": "sold",
-    "explanation": "Se necesita el participio pasado del verbo 'sell' (sold) para la voz pasiva en pluscuamperfecto ('had been sold')."
+    "explanation": "Se necesita el participio pasado del verbo <sell> (sold) para la voz pasiva en pluscuamperfecto (<had been sold>)."
   },
   {
     "sentence": "I was very _ in the story he told.",
@@ -41,7 +41,7 @@
       "interests"
     ],
     "correct": "interested",
-    "explanation": "Se usa el participio pasado (-ed) para describir un sentimiento o emoción. 'Interested' describe cómo me sentía."
+    "explanation": "Se usa el participio pasado (-ed) para describir un sentimiento o emoción. <Interested> describe cómo me sentía."
   },
   {
     "sentence": "The movie was so _, I fell asleep.",
@@ -107,7 +107,7 @@
       "was finishing"
     ],
     "correct": "finished",
-    "explanation": "El participio perfecto ('Having finished') muestra que la primera acción se completó antes de la segunda."
+    "explanation": "El participio perfecto (<Having finished>) muestra que la primera acción se completó antes de la segunda."
   },
   {
     "sentence": "The car, _ in Germany, is very reliable.",
@@ -140,7 +140,7 @@
       "were studying"
     ],
     "correct": "studying",
-    "explanation": "Cláusula de participio presente para modificar 'students' ('The students who were studying...')."
+    "explanation": "Cláusula de participio presente para modificar <students> ('The students who were studying...')."
   },
   {
     "sentence": "The letter _ yesterday contained good news.",
@@ -151,7 +151,7 @@
       "receive"
     ],
     "correct": "received",
-    "explanation": "Cláusula de participio pasado para modificar 'letter' ('The letter that was received...')."
+    "explanation": "Cláusula de participio pasado para modificar <letter> ('The letter that was received...')."
   },
   {
     "sentence": "He was _ by the film's special effects.",
@@ -206,7 +206,7 @@
       "frightens"
     ],
     "correct": "frightened",
-    "explanation": "El participio pasado 'frightened' funciona como un adjetivo para describir el estado del niño."
+    "explanation": "El participio pasado <frightened> funciona como un adjetivo para describir el estado del niño."
   },
   {
     "sentence": "This is a very _ book.",
@@ -217,7 +217,7 @@
       "entertainment"
     ],
     "correct": "entertaining",
-    "explanation": "El participio presente 'entertaining' funciona como un adjetivo para describir la cualidad del libro."
+    "explanation": "El participio presente <entertaining> funciona como un adjetivo para describir la cualidad del libro."
   },
   {
     "sentence": "The _ news left everyone shocked.",

@@ -16,6 +16,11 @@ const ALLOWED_TAGS = ['span', 'strong', 'em', 'b', 'i'];
 const ALLOWED_ATTRIBUTES = ['class'];
 
 /**
+ * Allowed CSS classes for quiz content
+ */
+const ALLOWED_CLASSES = ['quiz-quoted-text'];
+
+/**
  * Sanitize HTML content by removing dangerous elements and attributes
  * @param html - Raw HTML string to sanitize
  * @returns Sanitized HTML string
@@ -70,9 +75,16 @@ export const sanitizeHTML = (html: string): string => {
 
         // Additional validation for class attribute
         if (attrName.toLowerCase() === 'class') {
-          // Only allow safe CSS classes (alphanumeric, hyphens, spaces)
-          const safeValue = attrValue.replace(/[^a-zA-Z0-9\s\-_]/g, '');
-          return `${attrName}="${safeValue}"`;
+          // Only allow classes that are explicitly in our allowed list
+          const classes = attrValue.split(/\s+/);
+          const allowedClasses = classes.filter(cls =>
+            ALLOWED_CLASSES.includes(cls)
+          );
+
+          if (allowedClasses.length > 0) {
+            return `${attrName}="${allowedClasses.join(' ')}"`;
+          }
+          return '';
         }
 
         return `${attrName}="${attrValue}"`;
@@ -87,10 +99,12 @@ export const sanitizeHTML = (html: string): string => {
 
 /**
  * Create sanitized HTML object for React's dangerouslySetInnerHTML
+ * @deprecated Use ContentRenderer with structured content instead
  * @param html - Raw HTML string to sanitize
  * @returns Sanitized HTML object
  */
 export const createSanitizedHTML = (html: string): SanitizedHTML => {
+  console.warn('createSanitizedHTML is deprecated. Use ContentRenderer with structured content instead.');
   return {
     __html: sanitizeHTML(html),
   };

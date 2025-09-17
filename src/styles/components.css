@@ -1032,6 +1032,19 @@ textarea:focus-visible,
   @apply text-blue-100;
 }
 
+/* Legacy Quiz Question Quoted Text Styling - DEPRECATED */
+/* Use ContentRenderer with content-segment--term instead */
+.quiz-quoted-text {
+  color: #1d4ed8 !important; /* Much darker blue for better contrast in light mode */
+  font-weight: bold !important;
+}
+
+/* Dark mode support for quoted text */
+.dark .quiz-quoted-text {
+  color: #60a5fa !important; /* Lighter blue for dark mode */
+  font-weight: bold !important;
+}
+
 /* Loading Skeletons */
 .loading-skeleton {
   @apply animate-pulse bg-gray-200 dark:bg-gray-700 rounded;

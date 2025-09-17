@@ -8,7 +8,7 @@
       "was"
     ],
     "correct": "be",
-    "explanation": "Después de verbos de sugerencia o demanda como 'insist', 'suggest', 'recommend', se usa el subjuntivo (la forma base del verbo)."
+    "explanation": "Después de verbos de sugerencia o demanda como <insist>, <suggest>, <recommend>, se usa el subjuntivo (la forma base del verbo)."
   },
   {
     "sentence": "I wish I _ more time to travel.",
@@ -52,7 +52,7 @@
       "had known"
     ],
     "correct": "knew",
-    "explanation": "Después de 'as if' para describir una situación hipotética o irreal en el presente, se usa el pasado simple."
+    "explanation": "Después de <as if> para describir una situación hipotética o irreal en el presente, se usa el pasado simple."
   },
   {
     "sentence": "I demand that he _ immediately.",
@@ -63,7 +63,7 @@
       "to apologize"
     ],
     "correct": "apologize",
-    "explanation": "El subjuntivo (forma base del verbo) se usa después de verbos de demanda como 'demand'."
+    "explanation": "El subjuntivo (forma base del verbo) se usa después de verbos de demanda como <demand>."
   },
   {
     "sentence": "It's crucial that they _ on the project together.",
@@ -74,7 +74,7 @@
       "are working"
     ],
     "correct": "work",
-    "explanation": "Después de 'It's crucial that...', se usa el subjuntivo."
+    "explanation": "Después de <It>s crucial that...', se usa el subjuntivo."
   },
   {
     "sentence": "She wishes she _ taller.",
@@ -85,7 +85,7 @@
       "be"
     ],
     "correct": "were",
-    "explanation": "Para deseos en el presente, se usa 'wish + pasado simple'. Se prefiere 'were' para todos los sujetos."
+    "explanation": "Para deseos en el presente, se usa 'wish + pasado simple'. Se prefiere <were> para todos los sujetos."
   },
   {
     "sentence": "The doctor recommended that he _ more.",
@@ -96,7 +96,7 @@
       "to rest"
     ],
     "correct": "rest",
-    "explanation": "El subjuntivo se usa después de verbos de recomendación como 'recommend'."
+    "explanation": "El subjuntivo se usa después de verbos de recomendación como <recommend>."
   },
   {
     "sentence": "If only I _ the answer.",
@@ -107,7 +107,7 @@
       "known"
     ],
     "correct": "knew",
-    "explanation": "'If only' funciona como 'I wish' para expresar deseos. Se usa el pasado para un deseo presente."
+    "explanation": "<If only> funciona como <I wish> para expresar deseos. Se usa el pasado para un deseo presente."
   },
   {
     "sentence": "It is imperative that the rules _ followed.",
@@ -129,7 +129,7 @@
       "be"
     ],
     "correct": "were",
-    "explanation": "Se usa el pasado subjuntivo 'were' después de 'as though' para situaciones hipotéticas."
+    "explanation": "Se usa el pasado subjuntivo <were> después de <as though> para situaciones hipotéticas."
   },
   {
     "sentence": "I propose that the meeting _ postponed.",
@@ -140,7 +140,7 @@
       "to be"
     ],
     "correct": "be",
-    "explanation": "El subjuntivo se usa después de verbos como 'propose'."
+    "explanation": "El subjuntivo se usa después de verbos como <propose>."
   },
   {
     "sentence": "They requested that she _ the presentation.",
@@ -173,7 +173,7 @@
       "is understanding"
     ],
     "correct": "understand",
-    "explanation": "Después de 'It's important that...', se usa el subjuntivo."
+    "explanation": "Después de <It>s important that...', se usa el subjuntivo."
   },
   {
     "sentence": "If only we _ sooner.",
@@ -195,7 +195,7 @@
       "are having"
     ],
     "correct": "have",
-    "explanation": "El subjuntivo se usa después de verbos que indican un requisito, como 'require'."
+    "explanation": "El subjuntivo se usa después de verbos que indican un requisito, como <require>."
   },
   {
     "sentence": "I wish it _ Friday today.",
@@ -206,7 +206,7 @@
       "be"
     ],
     "correct": "were",
-    "explanation": "Se usa 'wish + pasado simple' para un deseo sobre el presente. 'Were' es la forma subjuntiva correcta."
+    "explanation": "Se usa 'wish + pasado simple' para un deseo sobre el presente. <Were> es la forma subjuntiva correcta."
   },
   {
     "sentence": "The teacher suggested that the student _ the chapter again.",
@@ -239,7 +239,7 @@
       "be"
     ],
     "correct": "were",
-    "explanation": "Para expresar un deseo sobre una situación presente que es irreal, se usa 'wish + pasado simple'. Se prefiere 'were' para todos los sujetos."
+    "explanation": "Para expresar un deseo sobre una situación presente que es irreal, se usa 'wish + pasado simple'. Se prefiere <were> para todos los sujetos."
   },
   {
     "sentence": "The committee recommended that the proposal _ approved.",
@@ -250,7 +250,7 @@
       "are"
     ],
     "correct": "be",
-    "explanation": "Después de verbos de recomendación como 'recommend', se usa el subjuntivo (la forma base del verbo)."
+    "explanation": "Después de verbos de recomendación como <recommend>, se usa el subjuntivo (la forma base del verbo)."
   },
   {
     "sentence": "If only I _ more patient.",
@@ -261,7 +261,7 @@
       "be"
     ],
     "correct": "were",
-    "explanation": "Para expresar un deseo sobre una situación presente que es irreal, se usa 'If only + pasado simple'. Se prefiere 'were' para todos los sujetos."
+    "explanation": "Para expresar un deseo sobre una situación presente que es irreal, se usa 'If only + pasado simple'. Se prefiere <were> para todos los sujetos."
   },
   {
     "sentence": "He behaves as if he _ the boss.",
@@ -272,7 +272,7 @@
       "be"
     ],
     "correct": "were",
-    "explanation": "Después de 'as if' para describir una situación hipotética o irreal en el presente, se usa el pasado simple. Se prefiere 'were' para todos los sujetos."
+    "explanation": "Después de <as if> para describir una situación hipotética o irreal en el presente, se usa el pasado simple. Se prefiere <were> para todos los sujetos."
   },
   {
     "sentence": "It is important that she _ her responsibilities.",
@@ -294,7 +294,7 @@
       "to tell"
     ],
     "correct": "tell",
-    "explanation": "Después de verbos de sugerencia o demanda como 'insist', se usa el subjuntivo (la forma base del verbo)."
+    "explanation": "Después de verbos de sugerencia o demanda como <insist>, se usa el subjuntivo (la forma base del verbo)."
   },
   {
     "sentence": "I wish it _ not raining.",
@@ -305,7 +305,7 @@
       "be"
     ],
     "correct": "were",
-    "explanation": "Para expresar un deseo sobre una situación presente que es irreal, se usa 'wish + pasado simple'. Se prefiere 'were' para todos los sujetos."
+    "explanation": "Para expresar un deseo sobre una situación presente que es irreal, se usa 'wish + pasado simple'. Se prefiere <were> para todos los sujetos."
   },
   {
     "sentence": "If only he _ here now.",
@@ -316,7 +316,7 @@
       "be"
     ],
     "correct": "were",
-    "explanation": "Para expresar un deseo sobre una situación presente que es irreal, se usa 'If only + pasado simple'. Se prefiere 'were' para todos los sujetos."
+    "explanation": "Para expresar un deseo sobre una situación presente que es irreal, se usa 'If only + pasado simple'. Se prefiere <were> para todos los sujetos."
   },
   {
     "sentence": "It is crucial that the information _ accurate.",
@@ -338,7 +338,7 @@
       "be"
     ],
     "correct": "were",
-    "explanation": "Después de 'as though' para describir una situación hipotética o irreal en el presente, se usa el pasado simple. Se prefiere 'were' para todos los sujetos."
+    "explanation": "Después de <as though> para describir una situación hipotética o irreal en el presente, se usa el pasado simple. Se prefiere <were> para todos los sujetos."
   },
   {
     "sentence": "I propose that we _ a break.",
@@ -349,7 +349,7 @@
       "to take"
     ],
     "correct": "take",
-    "explanation": "El subjuntivo (la forma base del verbo) se usa después de verbos como 'propose'."
+    "explanation": "El subjuntivo (la forma base del verbo) se usa después de verbos como <propose>."
   },
   {
     "sentence": "They requested that the documents _ sent immediately.",
@@ -382,7 +382,7 @@
       "to read"
     ],
     "correct": "read",
-    "explanation": "Después de 'It's essential that...', se usa el subjuntivo (la forma base del verbo)."
+    "explanation": "Después de <It>s essential that...', se usa el subjuntivo (la forma base del verbo)."
   },
   {
     "sentence": "If only I _ studied harder for the exam.",
@@ -404,7 +404,7 @@
       "are"
     ],
     "correct": "be",
-    "explanation": "El subjuntivo pasivo 'be + participio pasado' se usa después de verbos que indican un requisito, como 'require'."
+    "explanation": "El subjuntivo pasivo 'be + participio pasado' se usa después de verbos que indican un requisito, como <require>."
   },
   {
     "sentence": "I wish today _ my birthday.",
@@ -415,7 +415,7 @@
       "be"
     ],
     "correct": "were",
-    "explanation": "Se usa 'wish + pasado simple' para un deseo sobre el presente. 'Were' es la forma subjuntiva correcta."
+    "explanation": "Se usa 'wish + pasado simple' para un deseo sobre el presente. <Were> es la forma subjuntiva correcta."
   },
   {
     "sentence": "He requested that a doctor _ present during the procedure.",
@@ -426,8 +426,8 @@
       "were"
     ],
     "correct": "be",
-    "explanation": "The subjunctive mood is used after verbs like 'request' to express a wish, suggestion, or command.",
-    "tip": "Remember to use the base form of the verb after 'request that'."
+    "explanation": "The subjunctive mood is used after verbs like <request> to express a wish, suggestion, or command.",
+    "tip": "Remember to use the base form of the verb after <request that>."
   },
   {
     "sentence": "The manager suggested that she _ a different approach.",

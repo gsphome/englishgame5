@@ -1,6 +1,6 @@
 [
   {
-    "question": "What is the past tense of 'go'?",
+    "question": "What is the past tense of <go>?",
     "options": [
       "goed",
       "went",
@@ -8,10 +8,10 @@
       "going"
     ],
     "correct": "went",
-    "explanation": "'Went' is the irregular past tense form of 'go'."
+    "explanation": "<Went> is the irregular past tense form of <go>."
   },
   {
-    "question": "Which word means 'the mother of your father'?",
+    "question": "Which word means <the mother of your father>?",
     "options": [
       "aunt",
       "sister",
@@ -19,7 +19,7 @@
       "cousin"
     ],
     "correct": "grandmother",
-    "explanation": "Grandmother is your father's or mother's mother."
+    "explanation": "Grandmother is your father<s or mother>s mother."
   },
   {
     "question": "Where do you usually cook food?",
@@ -33,7 +33,7 @@
     "explanation": "The kitchen is the room where food is prepared and cooked."
   },
   {
-    "question": "What is the comparative form of 'big'?",
+    "question": "What is the comparative form of <big>?",
     "options": [
       "biger",
       "bigger",
@@ -44,7 +44,7 @@
     "explanation": "For one-syllable adjectives ending in consonant, double the consonant and add -er."
   },
   {
-    "question": "Which time expression means 'the day before today'?",
+    "question": "Which time expression means <the day before today>?",
     "options": [
       "tomorrow",
       "yesterday",
@@ -55,7 +55,7 @@
     "explanation": "Yesterday refers to the day that came before today."
   },
   {
-    "question": "What is the past tense of 'eat'?",
+    "question": "What is the past tense of <eat>?",
     "options": [
       "eated",
       "ate",
@@ -63,7 +63,7 @@
       "eating"
     ],
     "correct": "ate",
-    "explanation": "'Ate' is the irregular past tense form of 'eat'."
+    "explanation": "<Ate> is the irregular past tense form of <eat>."
   },
   {
     "question": "Which room do you sleep in?",
@@ -77,7 +77,7 @@
     "explanation": "The bedroom is the room where you sleep."
   },
   {
-    "question": "What is the superlative form of 'good'?",
+    "question": "What is the superlative form of <good>?",
     "options": [
       "gooder",
       "goodest",
@@ -85,10 +85,10 @@
       "best"
     ],
     "correct": "best",
-    "explanation": "'Best' is the irregular superlative form of 'good'."
+    "explanation": "<Best> is the irregular superlative form of <good>."
   },
   {
-    "question": "Which word means 'your father's brother'?",
+    "question": "Which word means <your father>s brother'?",
     "options": [
       "cousin",
       "uncle",
@@ -96,10 +96,10 @@
       "grandfather"
     ],
     "correct": "uncle",
-    "explanation": "Uncle is your father's or mother's brother."
+    "explanation": "Uncle is your father<s or mother>s brother."
   },
   {
-    "question": "What is the past tense of 'have'?",
+    "question": "What is the past tense of <have>?",
     "options": [
       "haved",
       "had",
@@ -107,7 +107,7 @@
       "has"
     ],
     "correct": "had",
-    "explanation": "'Had' is the irregular past tense form of 'have'."
+    "explanation": "<Had> is the irregular past tense form of <have>."
   },
   {
     "question": "Where do you wash your hands?",
@@ -121,7 +121,7 @@
     "explanation": "The bathroom is where you wash your hands and take care of personal hygiene."
   },
   {
-    "question": "What is the comparative form of 'easy'?",
+    "question": "What is the comparative form of <easy>?",
     "options": [
       "more easy",
       "easier",
@@ -129,10 +129,10 @@
       "easiest"
     ],
     "correct": "easier",
-    "explanation": "For adjectives ending in 'y', change 'y' to 'i' and add -er."
+    "explanation": "For adjectives ending in <y>, change <y> to <i> and add -er."
   },
   {
-    "question": "Which time expression means 'at this moment'?",
+    "question": "Which time expression means <at this moment>?",
     "options": [
       "yesterday",
       "tomorrow",
@@ -140,10 +140,10 @@
       "later"
     ],
     "correct": "now",
-    "explanation": "'Now' refers to the present moment."
+    "explanation": "<Now> refers to the present moment."
   },
   {
-    "question": "What is the past tense of 'make'?",
+    "question": "What is the past tense of <make>?",
     "options": [
       "maked",
       "made",
@@ -151,10 +151,10 @@
       "makes"
     ],
     "correct": "made",
-    "explanation": "'Made' is the irregular past tense form of 'make'."
+    "explanation": "<Made> is the irregular past tense form of <make>."
   },
   {
-    "question": "Which word means 'your brother's son'?",
+    "question": "Which word means <your brother>s son'?",
     "options": [
       "cousin",
       "nephew",
@@ -162,7 +162,7 @@
       "son"
     ],
     "correct": "nephew",
-    "explanation": "Nephew is your brother's or sister's son."
+    "explanation": "Nephew is your brother<s or sister>s son."
   },
   {
     "question": "Where do you usually watch TV?",
@@ -176,7 +176,7 @@
     "explanation": "The living room is where families typically watch TV and relax."
   },
   {
-    "question": "What is the superlative form of 'tall'?",
+    "question": "What is the superlative form of <tall>?",
     "options": [
       "taller",
       "tallest",
@@ -187,7 +187,7 @@
     "explanation": "For one-syllable adjectives, add -est to form the superlative."
   },
   {
-    "question": "What is the past tense of 'see'?",
+    "question": "What is the past tense of <see>?",
     "options": [
       "seed",
       "saw",
@@ -195,10 +195,10 @@
       "seeing"
     ],
     "correct": "saw",
-    "explanation": "'Saw' is the irregular past tense form of 'see'."
+    "explanation": "<Saw> is the irregular past tense form of <see>."
   },
   {
-    "question": "Which time expression means 'during the early part of the day'?",
+    "question": "Which time expression means <during the early part of the day>?",
     "options": [
       "at night",
       "in the morning",
@@ -206,7 +206,7 @@
       "at midnight"
     ],
     "correct": "in the morning",
-    "explanation": "'In the morning' refers to the early part of the day."
+    "explanation": "<In the morning> refers to the early part of the day."
   },
   {
     "question": "Where do you keep your car?",
@@ -220,7 +220,7 @@
     "explanation": "The garage is where cars are typically parked and stored."
   },
   {
-    "question": "What is the comparative form of 'bad'?",
+    "question": "What is the comparative form of <bad>?",
     "options": [
       "badder",
       "worse",
@@ -228,10 +228,10 @@
       "bader"
     ],
     "correct": "worse",
-    "explanation": "'Worse' is the irregular comparative form of 'bad'."
+    "explanation": "<Worse> is the irregular comparative form of <bad>."
   },
   {
-    "question": "What is the past tense of 'come'?",
+    "question": "What is the past tense of <come>?",
     "options": [
       "comed",
       "came",
@@ -239,10 +239,10 @@
       "comes"
     ],
     "correct": "came",
-    "explanation": "'Came' is the irregular past tense form of 'come'."
+    "explanation": "<Came> is the irregular past tense form of <come>."
   },
   {
-    "question": "Which word means 'your mother's sister'?",
+    "question": "Which word means <your mother>s sister'?",
     "options": [
       "cousin",
       "niece",
@@ -250,7 +250,7 @@
       "grandmother"
     ],
     "correct": "aunt",
-    "explanation": "Aunt is your father's or mother's sister."
+    "explanation": "Aunt is your father<s or mother>s sister."
   },
   {
     "question": "Where do you take a shower?",
@@ -264,7 +264,7 @@
     "explanation": "The bathroom is where you take showers and baths."
   },
   {
-    "question": "What is the superlative form of 'small'?",
+    "question": "What is the superlative form of <small>?",
     "options": [
       "smaller",
       "smallest",
@@ -275,7 +275,7 @@
     "explanation": "For one-syllable adjectives, add -est to form the superlative."
   },
   {
-    "question": "What is the past tense of 'take'?",
+    "question": "What is the past tense of <take>?",
     "options": [
       "taked",
       "took",
@@ -283,10 +283,10 @@
       "taking"
     ],
     "correct": "took",
-    "explanation": "'Took' is the irregular past tense form of 'take'."
+    "explanation": "<Took> is the irregular past tense form of <take>."
   },
   {
-    "question": "Which time expression means 'seven days from now'?",
+    "question": "Which time expression means <seven days from now>?",
     "options": [
       "yesterday",
       "last week",
@@ -294,7 +294,7 @@
       "this week"
     ],
     "correct": "next week",
-    "explanation": "'Next week' refers to the week that comes after this one."
+    "explanation": "<Next week> refers to the week that comes after this one."
   },
   {
     "question": "Where do you usually eat dinner?",
@@ -308,7 +308,7 @@
     "explanation": "The dining room is where families typically eat their meals."
   },
   {
-    "question": "What is the comparative form of 'hot'?",
+    "question": "What is the comparative form of <hot>?",
     "options": [
       "hoter",
       "hotter",
@@ -319,7 +319,7 @@
     "explanation": "For one-syllable adjectives ending in consonant, double the consonant and add -er."
   },
   {
-    "question": "What is the past tense of 'give'?",
+    "question": "What is the past tense of <give>?",
     "options": [
       "gived",
       "gave",
@@ -327,10 +327,10 @@
       "giving"
     ],
     "correct": "gave",
-    "explanation": "'Gave' is the irregular past tense form of 'give'."
+    "explanation": "<Gave> is the irregular past tense form of <give>."
   },
   {
-    "question": "Which word means 'your sister's daughter'?",
+    "question": "Which word means <your sister>s daughter'?",
     "options": [
       "cousin",
       "daughter",
@@ -338,7 +338,7 @@
       "aunt"
     ],
     "correct": "niece",
-    "explanation": "Niece is your brother's or sister's daughter."
+    "explanation": "Niece is your brother<s or sister>s daughter."
   },
   {
     "question": "Where do you grow flowers and plants?",
@@ -352,7 +352,7 @@
     "explanation": "The garden is where flowers, plants, and vegetables are grown."
   },
   {
-    "question": "What is the superlative form of 'fast'?",
+    "question": "What is the superlative form of <fast>?",
     "options": [
       "faster",
       "fastest",
@@ -363,7 +363,7 @@
     "explanation": "For one-syllable adjectives, add -est to form the superlative."
   },
   {
-    "question": "What is the past tense of 'buy'?",
+    "question": "What is the past tense of <buy>?",
     "options": [
       "buyed",
       "bought",
@@ -371,10 +371,10 @@
       "buys"
     ],
     "correct": "bought",
-    "explanation": "'Bought' is the irregular past tense form of 'buy'."
+    "explanation": "<Bought> is the irregular past tense form of <buy>."
   },
   {
-    "question": "Which time expression means 'at the present time'?",
+    "question": "Which time expression means <at the present time>?",
     "options": [
       "ago",
       "soon",
@@ -382,7 +382,7 @@
       "never"
     ],
     "correct": "now",
-    "explanation": "'Now' refers to the current moment in time."
+    "explanation": "<Now> refers to the current moment in time."
   },
   {
     "question": "Where do you store old things in a house?",
@@ -396,7 +396,7 @@
     "explanation": "The attic is the space under the roof where old things are often stored."
   },
   {
-    "question": "What is the comparative form of 'cold'?",
+    "question": "What is the comparative form of <cold>?",
     "options": [
       "colder",
       "coldest",
@@ -407,7 +407,7 @@
     "explanation": "For one-syllable adjectives, add -er to form the comparative."
   },
   {
-    "question": "What is the past tense of 'think'?",
+    "question": "What is the past tense of <think>?",
     "options": [
       "thinked",
       "thought",
@@ -415,10 +415,10 @@
       "thinks"
     ],
     "correct": "thought",
-    "explanation": "'Thought' is the irregular past tense form of 'think'."
+    "explanation": "<Thought> is the irregular past tense form of <think>."
   },
   {
-    "question": "Which word means 'all the people in your family'?",
+    "question": "Which word means <all the people in your family>?",
     "options": [
       "friends",
       "relatives",
@@ -429,7 +429,7 @@
     "explanation": "Relatives are all the people who are part of your extended family."
   },
   {
-    "question": "What is the superlative form of 'young'?",
+    "question": "What is the superlative form of <young>?",
     "options": [
       "younger",
       "youngest",

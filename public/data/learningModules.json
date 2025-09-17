@@ -367,7 +367,7 @@
     "prerequisites": [
       "quiz-intermediate-review-b1"
     ],
-    "description": "Advanced usage of 'used to', 'be used to', and 'get used to'",
+    "description": "Advanced usage of <used to>, <be used to>, and <get used to>",
     "estimatedTime": 8,
     "difficulty": 4
   },
@@ -384,7 +384,7 @@
     "prerequisites": [
       "completion-used-to-b2"
     ],
-    "description": "Advanced quiz on complex usage patterns of 'used to' structures",
+    "description": "Advanced quiz on complex usage patterns of <used to> structures",
     "estimatedTime": 10,
     "difficulty": 4
   },

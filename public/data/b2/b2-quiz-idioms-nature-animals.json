@@ -262,7 +262,7 @@
     "en": "Wolf in sheep's clothing",
     "es": "Lobo con piel de cordero",
     "ipa": "/wʊlf ɪn ʃiːps ˈkloʊðɪŋ/",
-    "example": "Be careful, he's a wolf in sheep's clothing.",
+    "example": "Be careful, he<s a wolf in sheep>s clothing.",
     "example_es": "Ten cuidado, es un lobo con piel de cordero."
   },
   {

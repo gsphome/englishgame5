@@ -329,15 +329,14 @@ interface EnhancedContentService {
 // Extensión DIRECTA de interfaces existentes - NO nuevas interfaces
 // Los campos opcionales se añaden directamente a las interfaces existentes:
 
-// FlashcardData (estructura real actual)
+// FlashcardData (estructura real actual - ACTUALIZADA)
 interface FlashcardData extends BaseLearningData {
   front: string;                 // Campo real en JSON
   back: string;                  // Campo real en JSON
-  en: string;
-  es: string;
-  ipa?: string;
-  example?: string;
-  example_es?: string;
+  ipa?: string;                  // Campo opcional en JSON
+  example?: string;              // Campo opcional en JSON
+  example_es?: string;           // Campo opcional en JSON
+  // NOTA: Se eliminaron campos 'en' y 'es' - ahora solo front/back
   // Campos mejorados opcionales a añadir:
   contextualTips?: string[];     
   memoryAids?: string[];         
@@ -835,7 +834,7 @@ public/data/
 
 #### Flashcard Mejorada
 ```json
-// a1-flashcard-basic-vocabulary.json (extendido)
+// a1-flashcard-basic-vocabulary.json (extendido - ESTRUCTURA ACTUALIZADA)
 [
   {
     "front": "Hello",
@@ -843,9 +842,8 @@ public/data/
     "ipa": "/həˈloʊ/",
     "example": "Hello, how are you?",
     "example_es": "Hola, ¿cómo estás?",
-    "en": "Hello",
-    "es": "Hola",
-    // Campos opcionales mejorados:
+    // NOTA: Se eliminaron campos 'en' y 'es' - estructura simplificada
+    // Campos opcionales mejorados a añadir:
     "contextualTips": ["Used in formal and informal situations"],
     "memoryAids": ["Think 'hola' sounds like 'hello'"],
     "culturalNotes": "Standard greeting in most English-speaking countries",
