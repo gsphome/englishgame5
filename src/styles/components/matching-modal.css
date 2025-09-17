@@ -1,0 +1,241 @@
+/* Matching Modal Component - BEM-like Classes with Enhanced Dark Mode */
+
+/* Modal Overlay */
+.matching-modal-overlay {
+  @apply fixed inset-0 flex items-center justify-center p-4 z-50;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+.dark .matching-modal-overlay {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Modal Container */
+.matching-modal-container {
+  @apply bg-white border border-gray-200 rounded-xl shadow-2xl max-w-4xl w-full max-h-[80vh] overflow-y-auto;
+}
+
+.dark .matching-modal-container {
+  @apply bg-gray-900 border-gray-700;
+}
+
+/* Modal Header */
+.matching-modal__header {
+  @apply flex justify-between items-start mb-4;
+}
+
+.matching-modal__title {
+  @apply text-lg font-semibold text-gray-900;
+}
+
+.dark .matching-modal__title {
+  @apply text-white;
+}
+
+.matching-modal__close-btn {
+  @apply text-gray-500 hover:text-gray-700 transition-colors p-1 rounded-md hover:bg-gray-100;
+}
+
+.dark .matching-modal__close-btn {
+  @apply text-gray-400 hover:text-gray-200 hover:bg-gray-800;
+}
+
+/* Modal Content */
+.matching-modal__content {
+  @apply p-6;
+}
+
+.matching-modal__summary {
+  @apply space-y-4;
+}
+
+.matching-modal__results-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-4;
+}
+
+/* Individual Explanation View */
+.matching-modal__individual {
+  @apply space-y-4;
+}
+
+.matching-modal__match-info {
+  /* Base styling for match information */
+}
+
+.matching-modal__explanation-info {
+  /* Base styling for explanation information */
+}
+
+/* Result Card - Enhanced for Better Dark Mode Contrast */
+.matching-result-card {
+  @apply p-4 rounded-lg border-2 transition-all duration-200 shadow-sm;
+}
+
+.matching-result-card--correct {
+  @apply border-green-400 bg-green-50 shadow-green-100;
+}
+
+.dark .matching-result-card--correct {
+  @apply border-green-500 bg-green-900/40 shadow-green-900/30;
+  /* Enhanced contrast for dark mode */
+}
+
+.matching-result-card--incorrect {
+  @apply border-red-400 bg-red-50 shadow-red-100;
+}
+
+.dark .matching-result-card--incorrect {
+  @apply border-red-500 bg-red-900/40 shadow-red-900/30;
+  /* Enhanced contrast for dark mode */
+}
+
+/* Result Card Header */
+.matching-result-card__header {
+  @apply flex items-start justify-between mb-3;
+}
+
+.matching-result-card__term {
+  @apply font-semibold text-gray-900 text-base;
+}
+
+.dark .matching-result-card__term {
+  @apply text-white;
+}
+
+.matching-result-card__status {
+  @apply text-lg font-bold;
+}
+
+.matching-result-card__status--correct {
+  @apply text-green-700;
+}
+
+.dark .matching-result-card__status--correct {
+  @apply text-green-300;
+  /* Better contrast in dark mode */
+}
+
+.matching-result-card__status--incorrect {
+  @apply text-red-700;
+}
+
+.dark .matching-result-card__status--incorrect {
+  @apply text-red-300;
+  /* Better contrast in dark mode */
+}
+
+/* Result Card Content */
+.matching-result-card__content {
+  @apply space-y-3;
+}
+
+.matching-result-card__field {
+  /* Base field styling */
+}
+
+.matching-result-card__label {
+  @apply text-sm font-medium text-gray-700 block mb-1;
+}
+
+.dark .matching-result-card__label {
+  @apply text-gray-200;
+  /* Better contrast than gray-300 */
+}
+
+.matching-result-card__value {
+  @apply text-sm font-medium px-3 py-2 rounded border;
+}
+
+.matching-result-card__value--correct {
+  @apply text-gray-900 bg-white border-gray-300;
+}
+
+.dark .matching-result-card__value--correct {
+  @apply text-gray-100 bg-gray-800 border-gray-600;
+  /* Enhanced contrast */
+}
+
+.matching-result-card__value--incorrect {
+  @apply text-red-800 bg-red-100 border-red-300;
+}
+
+.dark .matching-result-card__value--incorrect {
+  @apply text-red-200 bg-red-900/60 border-red-600;
+  /* Better contrast for error state */
+}
+
+.matching-result-card__explanation {
+  @apply text-sm text-gray-800 bg-gray-100 px-3 py-2 rounded border border-gray-300 leading-relaxed;
+}
+
+.dark .matching-result-card__explanation {
+  @apply text-gray-100 bg-gray-800/70 border-gray-600;
+  /* Enhanced readability in dark mode */
+}
+
+/* Individual Explanation Styles */
+.matching-individual__field {
+  /* Base field for individual explanations */
+}
+
+.matching-individual__label {
+  @apply text-sm font-medium text-gray-700 mb-1;
+}
+
+.dark .matching-individual__label {
+  @apply text-gray-200;
+}
+
+.matching-individual__value {
+  @apply text-gray-900;
+}
+
+.dark .matching-individual__value {
+  @apply text-white;
+}
+
+.matching-individual__explanation {
+  @apply text-gray-700 text-sm;
+}
+
+.dark .matching-individual__explanation {
+  @apply text-gray-200;
+}
+
+/* Modal Actions */
+.matching-modal__actions {
+  @apply w-full mt-6;
+}
+
+.matching-modal__close-button {
+  @apply w-full px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors font-medium shadow-sm hover:shadow-md;
+}
+
+.dark .matching-modal__close-button {
+  @apply bg-blue-600 hover:bg-blue-500;
+}
+
+/* Enhanced Focus States for Accessibility */
+.matching-modal__close-btn:focus,
+.matching-modal__close-button:focus {
+  @apply outline-none ring-2 ring-blue-500 ring-offset-2;
+}
+
+.dark .matching-modal__close-btn:focus,
+.dark .matching-modal__close-button:focus {
+  @apply ring-blue-400 ring-offset-gray-900;
+}
+
+/* Improved Hover States */
+.matching-result-card:hover {
+  @apply shadow-md;
+}
+
+.dark .matching-result-card--correct:hover {
+  @apply bg-green-900/50;
+}
+
+.dark .matching-result-card--incorrect:hover {
+  @apply bg-red-900/50;
+}

@@ -5,6 +5,7 @@ import { useUserStore } from '../../stores/userStore';
 import { useToast } from '../../hooks/useToast';
 import { useLearningCleanup } from '../../hooks/useLearningCleanup';
 import NavigationButton from '../ui/NavigationButton';
+import '../../styles/components/matching-modal.css';
 import type { LearningModule } from '../../types';
 
 interface MatchingComponentProps {
@@ -428,16 +429,16 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
 
       {/* Explanation/Summary Modal */}
       {showExplanation && selectedTerm && (
-        <div className="fixed inset-0 bg-black/50 dark:bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-          <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl shadow-2xl max-w-4xl w-full max-h-[80vh] overflow-y-auto">
-            <div className="p-6">
-              <div className="flex justify-between items-start mb-4">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+        <div className="matching-modal-overlay">
+          <div className="matching-modal-container">
+            <div className="matching-modal__content">
+              <div className="matching-modal__header">
+                <h3 className="matching-modal__title">
                   {selectedTerm.pairs ? 'Exercise Summary' : selectedTerm.left}
                 </h3>
                 <button
                   onClick={() => setShowExplanation(false)}
-                  className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors p-1 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800"
+                  className="matching-modal__close-btn"
                 >
                   <X className="h-5 w-5" />
                 </button>
@@ -445,104 +446,59 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
 
               {selectedTerm.pairs ? (
                 /* Summary View */
-                <div className="space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="matching-modal__summary">
+                  <div className="matching-modal__results-grid">
                     {selectedTerm.results.map((result: any, index: number) => (
                       <div
                         key={index}
-                        className={`p-4 rounded-lg border-2 ${
+                        className={`matching-result-card ${
                           result.isCorrect
-                            ? 'border-green-200 bg-green-50 dark:border-green-800 dark:bg-green-900/20'
-                            : 'border-red-200 bg-red-50 dark:border-red-800 dark:bg-red-900/20'
+                            ? 'matching-result-card--correct'
+                            : 'matching-result-card--incorrect'
                         }`}
                       >
-                        <div className="flex items-start justify-between mb-2">
-                          <h4
-                            className="font-medium text-gray-900"
-                            style={{
-                              color: document.documentElement.classList.contains('dark')
-                                ? '#ffffff'
-                                : undefined,
-                            }}
-                          >
+                        <div className="matching-result-card__header">
+                          <h4 className="matching-result-card__term">
                             {result.left}
                           </h4>
                           <span
-                            className={`text-sm ${result.isCorrect ? 'text-green-600' : 'text-red-600'}`}
+                            className={`matching-result-card__status ${
+                              result.isCorrect 
+                                ? 'matching-result-card__status--correct' 
+                                : 'matching-result-card__status--incorrect'
+                            }`}
                           >
                             {result.isCorrect ? '✓' : '✗'}
                           </span>
                         </div>
 
-                        <div className="space-y-2">
-                          <div>
-                            <span
-                              className="text-sm font-medium text-gray-700"
-                              style={{
-                                color: document.documentElement.classList.contains('dark')
-                                  ? '#e5e7eb'
-                                  : undefined,
-                              }}
-                            >
+                        <div className="matching-result-card__content">
+                          <div className="matching-result-card__field">
+                            <span className="matching-result-card__label">
                               Correct answer:
                             </span>
-                            <p
-                              className="text-sm text-gray-900"
-                              style={{
-                                color: document.documentElement.classList.contains('dark')
-                                  ? '#ffffff'
-                                  : undefined,
-                              }}
-                            >
+                            <p className="matching-result-card__value matching-result-card__value--correct">
                               {result.right}
                             </p>
                           </div>
 
                           {!result.isCorrect && (
-                            <div>
-                              <span
-                                className="text-sm font-medium text-gray-700"
-                                style={{
-                                  color: document.documentElement.classList.contains('dark')
-                                    ? '#e5e7eb'
-                                    : undefined,
-                                }}
-                              >
+                            <div className="matching-result-card__field">
+                              <span className="matching-result-card__label">
                                 Your answer:
                               </span>
-                              <p
-                                className="text-sm text-red-600"
-                                style={{
-                                  color: document.documentElement.classList.contains('dark')
-                                    ? '#fca5a5'
-                                    : undefined,
-                                }}
-                              >
+                              <p className="matching-result-card__value matching-result-card__value--incorrect">
                                 {result.userAnswer}
                               </p>
                             </div>
                           )}
 
                           {result.explanation && (
-                            <div>
-                              <span
-                                className="text-sm font-medium text-gray-700"
-                                style={{
-                                  color: document.documentElement.classList.contains('dark')
-                                    ? '#e5e7eb'
-                                    : undefined,
-                                }}
-                              >
+                            <div className="matching-result-card__field">
+                              <span className="matching-result-card__label">
                                 Explanation:
                               </span>
-                              <p
-                                className="text-sm text-gray-600"
-                                style={{
-                                  color: document.documentElement.classList.contains('dark')
-                                    ? '#d1d5db'
-                                    : undefined,
-                                }}
-                              >
+                              <p className="matching-result-card__explanation">
                                 {result.explanation}
                               </p>
                             </div>
@@ -554,50 +510,22 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
                 </div>
               ) : (
                 /* Individual Explanation View */
-                <div className="space-y-4">
-                  <div>
-                    <h4
-                      className="text-sm font-medium text-gray-700 mb-1"
-                      style={{
-                        color: document.documentElement.classList.contains('dark')
-                          ? '#e5e7eb'
-                          : undefined,
-                      }}
-                    >
+                <div className="matching-modal__individual">
+                  <div className="matching-individual__field">
+                    <h4 className="matching-individual__label">
                       Match:
                     </h4>
-                    <p
-                      className="text-gray-900"
-                      style={{
-                        color: document.documentElement.classList.contains('dark')
-                          ? '#ffffff'
-                          : undefined,
-                      }}
-                    >
+                    <p className="matching-individual__value">
                       {selectedTerm.right}
                     </p>
                   </div>
 
                   {selectedTerm.explanation && (
-                    <div>
-                      <h4
-                        className="text-sm font-medium text-gray-700 mb-1"
-                        style={{
-                          color: document.documentElement.classList.contains('dark')
-                            ? '#e5e7eb'
-                            : undefined,
-                        }}
-                      >
+                    <div className="matching-individual__field">
+                      <h4 className="matching-individual__label">
                         Explanation:
                       </h4>
-                      <p
-                        className="text-gray-600 text-sm"
-                        style={{
-                          color: document.documentElement.classList.contains('dark')
-                            ? '#ffffff'
-                            : undefined,
-                        }}
-                      >
+                      <p className="matching-individual__explanation">
                         {selectedTerm.explanation}
                       </p>
                     </div>
@@ -605,12 +533,14 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
                 </div>
               )}
 
-              <button
-                onClick={() => setShowExplanation(false)}
-                className="w-full mt-6 px-4 py-2 bg-blue-600 hover:bg-blue-700 dark:!bg-blue-600 dark:hover:!bg-blue-500 text-white rounded-lg transition-colors"
-              >
-                Close
-              </button>
+              <div className="matching-modal__actions">
+                <button
+                  onClick={() => setShowExplanation(false)}
+                  className="matching-modal__close-button"
+                >
+                  Close
+                </button>
+              </div>
             </div>
           </div>
         </div>
