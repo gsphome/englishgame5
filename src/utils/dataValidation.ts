@@ -137,12 +137,12 @@ export class DataValidator {
     const errors: string[] = [];
     const warnings: string[] = [];
 
-    if (!data.en || typeof data.en !== 'string') {
-      errors.push(`${itemId}: Flashcard must have valid 'en' field`);
+    if (!data.front || typeof data.front !== 'string') {
+      errors.push(`${itemId}: Flashcard must have valid 'front' field`);
     }
 
-    if (!data.es || typeof data.es !== 'string') {
-      errors.push(`${itemId}: Flashcard must have valid 'es' field`);
+    if (!data.back || typeof data.back !== 'string') {
+      errors.push(`${itemId}: Flashcard must have valid 'back' field`);
     }
 
     // Optional but recommended fields

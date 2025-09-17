@@ -38,8 +38,8 @@ export interface BaseLearningData {
 
 // Specific data types for different learning modes
 export interface FlashcardData extends BaseLearningData {
-  en: string;
-  es: string;
+  front: string;
+  back: string;
   ipa?: string;
   example?: string;
   example_es?: string;

@@ -169,7 +169,7 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
           {/* Front */}
           <div className="flashcard-front bg-white dark:bg-gray-700 shadow-lg border border-gray-200 dark:border-gray-600">
             <p className="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white text-center mb-2">
-              {currentCard?.en || 'Loading...'}
+              {currentCard?.front || 'Loading...'}
             </p>
             {currentCard?.ipa && (
               <p className="text-base sm:text-lg text-gray-500 dark:text-gray-300 text-center mb-3">
@@ -186,7 +186,7 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
           {/* Back */}
           <div className="flashcard-back bg-blue-50 dark:bg-blue-900 shadow-lg border border-blue-200 dark:border-blue-700">
             <p className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white text-center mb-1">
-              {currentCard?.en || 'Loading...'}
+              {currentCard?.front || 'Loading...'}
             </p>
             {currentCard?.ipa && (
               <p className="text-sm sm:text-base text-gray-500 dark:text-gray-300 text-center mb-2">
@@ -194,7 +194,7 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
               </p>
             )}
             <p className="text-xl sm:text-2xl font-bold text-blue-900 dark:text-blue-100 text-center mb-3">
-              {currentCard?.es || 'Loading...'}
+              {currentCard?.back || 'Loading...'}
             </p>
             {currentCard?.example && (
               <div className="text-center">
