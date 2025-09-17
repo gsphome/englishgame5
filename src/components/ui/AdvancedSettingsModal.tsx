@@ -23,11 +23,13 @@ export const AdvancedSettingsModal: React.FC<AdvancedSettingsModalProps> = ({
     theme,
     language,
     level,
+    developmentMode,
     categories,
     gameSettings,
     setTheme,
     setLanguage,
     setLevel,
+    setDevelopmentMode,
     setCategories,
     setGameSetting,
   } = useSettingsStore();
@@ -40,6 +42,7 @@ export const AdvancedSettingsModal: React.FC<AdvancedSettingsModalProps> = ({
   const [localTheme, setLocalTheme] = useState(theme);
   const [localLanguage, setLocalLanguage] = useState(language);
   const [localLevel, setLocalLevel] = useState(level);
+  const [localDevelopmentMode, setLocalDevelopmentMode] = useState(developmentMode);
   const [localCategories, setLocalCategories] = useState(categories);
   const [localGameSettings, setLocalGameSettings] = useState(gameSettings);
 
@@ -49,11 +52,12 @@ export const AdvancedSettingsModal: React.FC<AdvancedSettingsModalProps> = ({
       setLocalTheme(theme);
       setLocalLanguage(language);
       setLocalLevel(level);
+      setLocalDevelopmentMode(developmentMode);
       setLocalCategories(categories);
       setLocalGameSettings(gameSettings);
       setIsEditMode(false);
     }
-  }, [isOpen, theme, language, level, categories, gameSettings]);
+  }, [isOpen, theme, language, level, developmentMode, categories, gameSettings]);
 
   const handleEdit = () => {
     setIsEditMode(true);
@@ -67,6 +71,7 @@ export const AdvancedSettingsModal: React.FC<AdvancedSettingsModalProps> = ({
     setTheme(localTheme);
     setLanguage(localLanguage);
     setLevel(localLevel);
+    setDevelopmentMode(localDevelopmentMode);
     setCategories(localCategories);
 
     // Apply validated game settings
@@ -84,6 +89,7 @@ export const AdvancedSettingsModal: React.FC<AdvancedSettingsModalProps> = ({
     setLocalTheme(theme);
     setLocalLanguage(language);
     setLocalLevel(level);
+    setLocalDevelopmentMode(developmentMode);
     setLocalCategories(categories);
     setLocalGameSettings(gameSettings);
     setIsEditMode(false);
@@ -257,6 +263,32 @@ export const AdvancedSettingsModal: React.FC<AdvancedSettingsModalProps> = ({
                     <option value="c1">🟣 {t('settings.c1')}</option>
                     <option value="c2">⚫ {t('settings.c2')}</option>
                   </select>
+                </div>
+
+                <div className="advanced-settings-modal__field advanced-settings-modal__field--full">
+                  <label className="advanced-settings-modal__label">
+                    <span className="advanced-settings-modal__dev-label">
+                      🔧 {t('settings.developmentMode')}
+                    </span>
+                  </label>
+                  <div className="advanced-settings-modal__toggle-container">
+                    <input
+                      type="checkbox"
+                      id="developmentMode"
+                      className="advanced-settings-modal__toggle"
+                      checked={localDevelopmentMode}
+                      onChange={e => setLocalDevelopmentMode(e.target.checked)}
+                      disabled={!isEditMode}
+                    />
+                    <label htmlFor="developmentMode" className="advanced-settings-modal__toggle-label">
+                      <span className="advanced-settings-modal__toggle-text">
+                        {localDevelopmentMode ? t('settings.enabled') : t('settings.disabled')}
+                      </span>
+                    </label>
+                  </div>
+                  <p className="advanced-settings-modal__dev-description">
+                    {t('settings.developmentModeDescription')}
+                  </p>
                 </div>
               </div>
             </div>

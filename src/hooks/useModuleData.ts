@@ -4,7 +4,7 @@ import { apiService, fetchModules, fetchModuleData } from '../services/api';
 import type { LearningModule } from '../types';
 
 export const useModuleData = (moduleId: string) => {
-  const { categories, level, gameSettings } = useSettingsStore();
+  const { categories, level, gameSettings, developmentMode } = useSettingsStore();
 
   return useQuery({
     queryKey: ['module', moduleId],
@@ -46,7 +46,7 @@ export const useModuleData = (moduleId: string) => {
 
         const filteredData = apiService.filterModuleData(
           module.data,
-          { categories, level, limit },
+          { categories: developmentMode ? [] : categories, level: developmentMode ? 'all' : level, limit },
           moduleId
         );
 
@@ -67,7 +67,7 @@ export const useModuleData = (moduleId: string) => {
 };
 
 export const useAllModules = () => {
-  const { categories, level } = useSettingsStore();
+  const { categories, level, developmentMode } = useSettingsStore();
 
   return useQuery({
     queryKey: ['modules'],
@@ -79,6 +79,11 @@ export const useAllModules = () => {
       return response.data;
     },
     select: (modules: LearningModule[]) => {
+      // In development mode, show all modules without filtering
+      if (developmentMode) {
+        return modules;
+      }
+
       // Filter modules based on settings
       return modules.filter(module => {
         // Filter by categories

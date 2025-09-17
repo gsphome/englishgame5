@@ -59,6 +59,10 @@ export const translations = {
       edit: 'Edit',
       cancel: 'Cancel',
       save: 'Save',
+      developmentMode: 'Development Mode',
+      enabled: 'Enabled',
+      disabled: 'Disabled',
+      developmentModeDescription: 'Enable all learning modes for development and testing purposes',
     },
     about: {
       title: 'About FluentFlow',
@@ -252,6 +256,10 @@ export const translations = {
       edit: 'Editar',
       cancel: 'Cancelar',
       save: 'Guardar',
+      developmentMode: 'Modo Desarrollo',
+      enabled: 'Habilitado',
+      disabled: 'Deshabilitado',
+      developmentModeDescription: 'Habilita todos los modos de aprendizaje para desarrollo y pruebas',
     },
     about: {
       title: 'Acerca de FluentFlow',

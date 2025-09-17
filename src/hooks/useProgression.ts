@@ -2,6 +2,7 @@ import { useEffect, useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { progressionService } from '../services/progressionService';
 import { useProgressStore } from '../stores/progressStore';
+import { useSettingsStore } from '../stores/settingsStore';
 import { useAllModules } from './useModuleData';
 import type { LearningModule } from '../types';
 
@@ -11,6 +12,7 @@ import type { LearningModule } from '../types';
 export const useProgression = () => {
   const { data: allModules = [], isLoading: modulesLoading } = useAllModules();
   const { getCompletedModuleIds, isModuleCompleted } = useProgressStore();
+  const { developmentMode } = useSettingsStore();
 
   // Initialize progression service when modules are loaded
   useEffect(() => {
@@ -55,6 +57,10 @@ export const useProgression = () => {
   const helpers = useMemo(
     () => ({
       isModuleUnlocked: (moduleId: string): boolean => {
+        // In development mode, all modules are unlocked
+        if (developmentMode) {
+          return true;
+        }
         return progressionService.isModuleUnlocked(moduleId);
       },
 
@@ -79,6 +85,10 @@ export const useProgression = () => {
       },
 
       canAccessModule: (moduleId: string): boolean => {
+        // In development mode, all modules are accessible
+        if (developmentMode) {
+          return true;
+        }
         return progressionService.isModuleUnlocked(moduleId);
       },
 
@@ -86,7 +96,8 @@ export const useProgression = () => {
         if (isModuleCompleted(moduleId)) {
           return 'completed';
         }
-        if (progressionService.isModuleUnlocked(moduleId)) {
+        // In development mode, all modules are unlocked
+        if (developmentMode || progressionService.isModuleUnlocked(moduleId)) {
           return 'unlocked';
         }
         return 'locked';
@@ -94,6 +105,10 @@ export const useProgression = () => {
 
       getUnlockedModulesByUnit: (unit: number): LearningModule[] => {
         const unitModules = progressionService.getModulesByUnit(unit);
+        // In development mode, all modules are unlocked
+        if (developmentMode) {
+          return unitModules;
+        }
         return unitModules.filter(module => progressionService.isModuleUnlocked(module.id));
       },
 
@@ -117,7 +132,7 @@ export const useProgression = () => {
         return sorted[0];
       },
     }),
-    [isModuleCompleted]
+    [isModuleCompleted, developmentMode]
   );
 
   return {

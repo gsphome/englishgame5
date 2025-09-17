@@ -337,6 +337,106 @@
   cursor: not-allowed;
 }
 
+/* Development Mode Toggle Styles */
+.advanced-settings-modal__dev-label {
+  color: #dc2626;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.dark .advanced-settings-modal__dev-label {
+  color: #f87171;
+}
+
+.advanced-settings-modal__toggle-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border: 2px solid var(--settings-input-border);
+  border-radius: 0.5rem;
+  background-color: var(--settings-input-bg);
+  transition: all 0.2s ease-in-out;
+}
+
+.advanced-settings-modal__toggle-container:hover {
+  border-color: var(--settings-focus-ring);
+  background-color: rgba(139, 92, 246, 0.05);
+}
+
+.advanced-settings-modal__toggle {
+  position: relative;
+  width: 3rem;
+  height: 1.5rem;
+  background-color: #d1d5db;
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  appearance: none;
+  flex-shrink: 0;
+}
+
+.advanced-settings-modal__toggle:checked {
+  background-color: #dc2626;
+}
+
+.dark .advanced-settings-modal__toggle:checked {
+  background-color: #f87171;
+}
+
+.advanced-settings-modal__toggle::before {
+  content: '';
+  position: absolute;
+  top: 0.125rem;
+  left: 0.125rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  background-color: white;
+  border-radius: 50%;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.advanced-settings-modal__toggle:checked::before {
+  transform: translateX(1.5rem);
+}
+
+.advanced-settings-modal__toggle:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.advanced-settings-modal__toggle:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.2);
+}
+
+.dark .advanced-settings-modal__toggle:focus {
+  box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.2);
+}
+
+.advanced-settings-modal__toggle-label {
+  cursor: pointer;
+  flex: 1;
+}
+
+.advanced-settings-modal__toggle-text {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--settings-text-primary);
+}
+
+.advanced-settings-modal__dev-description {
+  font-size: 0.75rem;
+  color: var(--settings-text-secondary);
+  margin-top: 0.5rem;
+  line-height: 1.4;
+  font-style: italic;
+}
+
 /* Enhanced Categories Section - Consistent with other tabs */
 .advanced-settings-modal__section--categories {
   display: grid;

@@ -24,6 +24,9 @@ export interface SettingsState {
   language: 'en' | 'es';
   level: 'all' | 'a1' | 'a2' | 'b1' | 'b2' | 'c1' | 'c2';
 
+  // Development
+  developmentMode: boolean;
+
   // Categories
   categories: string[];
 
@@ -37,6 +40,7 @@ export interface SettingsState {
   setTheme: (theme: 'light' | 'dark') => void;
   setLanguage: (language: 'en' | 'es') => void;
   setLevel: (level: string) => void;
+  setDevelopmentMode: (enabled: boolean) => void;
   setCategories: (categories: string[]) => void;
   setGameSetting: (mode: keyof GameSettings, setting: string, value: number) => void;
   updateMaxLimits: (limits: MaxLimits) => void;
@@ -63,6 +67,7 @@ export const useSettingsStore = create<SettingsState>()(
       theme: 'light',
       language: 'en',
       level: 'all',
+      developmentMode: false,
       categories: DEFAULT_CATEGORIES,
       gameSettings: {
         flashcardMode: { wordCount: 10 },
@@ -95,6 +100,8 @@ export const useSettingsStore = create<SettingsState>()(
       setLanguage: language => set({ language }),
 
       setLevel: level => set({ level: level as any }),
+
+      setDevelopmentMode: enabled => set({ developmentMode: enabled }),
 
       setCategories: categories => set({ categories }),
 

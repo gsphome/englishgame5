@@ -21,7 +21,7 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = () => {
   const { setCurrentView, currentView } = useAppStore();
   const { user } = useUserStore();
-  const { theme } = useSettingsStore();
+  const { theme, developmentMode } = useSettingsStore();
   const [showProfileForm, setShowProfileForm] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [showAbout, setShowAbout] = useState(false);
@@ -83,6 +83,12 @@ export const Header: React.FC<HeaderProps> = () => {
         {/* Center Section: Score Display */}
         <div className="header-redesigned__center">
           <ScoreDisplay />
+          {developmentMode && (
+            <div className="header-redesigned__dev-indicator" title="Development Mode Active">
+              <span className="header-redesigned__dev-icon">🔧</span>
+              <span className="header-redesigned__dev-text">DEV</span>
+            </div>
+          )}
         </div>
 
         {/* Right Section: Primary Actions Only */}
