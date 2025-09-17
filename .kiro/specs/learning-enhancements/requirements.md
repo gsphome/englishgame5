@@ -111,13 +111,13 @@ Las mejoras están diseñadas para implementarse de forma incremental sin requer
 #### Criterios de Aceptación
 
 1. WHEN se implementen mejoras de contenido THEN TODOS los archivos JSON existentes SHALL ser actualizados con campos enriquecidos
-2. WHEN se actualicen flashcards existentes THEN el sistema SHALL añadir contextualTips, memoryAids, culturalNotes y commonMistakes
-3. WHEN se actualicen quizzes existentes THEN el sistema SHALL añadir detailedExplanation, whyWrong, contextualInfo y memoryTricks
+2. WHEN se actualicen flashcards existentes THEN el sistema SHALL añadir contextualTips, memoryAids, culturalNotes y commonMistakes (respetando estructura actual: front, back, en, es, ipa, example, example_es)
+3. WHEN se actualicen quizzes existentes THEN el sistema SHALL añadir detailedExplanation, whyWrong, contextualInfo y memoryTricks (respetando que correct es siempre string)
 4. WHEN se actualicen completion exercises existentes THEN el sistema SHALL añadir detailedExplanation, grammarRule, patternTips y relatedConcepts
-5. WHEN se actualicen sorting exercises existentes THEN el sistema SHALL añadir categoryExplanation, examples, relatedWords y usageNotes
+5. WHEN se actualicen sorting exercises existentes THEN el sistema SHALL añadir campos enriquecidos a la estructura real {categories: [], data: [{word, category, explanation}]}
 6. WHEN se actualicen matching exercises existentes THEN el sistema SHALL añadir connectionReason, alternativeMatches, contextExamples y memoryAids
 7. IF un módulo existente no tiene campos enriquecidos THEN el sistema SHALL priorizar su actualización antes de crear contenido nuevo
-8. WHEN se complete la actualización THEN todos los 46 módulos existentes (A1: 5, A2: 8, B1: 8, B2: 9, C1: 8, C2: 8) SHALL tener contenido enriquecido
+8. WHEN se complete la actualización THEN todos los 48 módulos existentes (A1: 5, A2: 8, B1: 8, B2: 11, C1: 8, C2: 8) SHALL tener contenido enriquecido
 
 ### Requerimiento 9: Nuevo Modo de Aprendizaje "Reading" para Contenido Base
 

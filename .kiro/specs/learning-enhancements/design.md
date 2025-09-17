@@ -329,14 +329,16 @@ interface EnhancedContentService {
 // Extensión DIRECTA de interfaces existentes - NO nuevas interfaces
 // Los campos opcionales se añaden directamente a las interfaces existentes:
 
-// FlashcardData (extendida)
+// FlashcardData (estructura real actual)
 interface FlashcardData extends BaseLearningData {
+  front: string;                 // Campo real en JSON
+  back: string;                  // Campo real en JSON
   en: string;
   es: string;
   ipa?: string;
   example?: string;
   example_es?: string;
-  // Campos mejorados opcionales desde JSON:
+  // Campos mejorados opcionales a añadir:
   contextualTips?: string[];     
   memoryAids?: string[];         
   culturalNotes?: string;        
@@ -359,15 +361,15 @@ interface CompletionData extends BaseLearningData {
   relatedConcepts?: string[];    
 }
 
-// QuizData (extendida)
+// QuizData (estructura real actual)
 interface QuizData extends BaseLearningData {
   question?: string;
   sentence?: string;
   idiom?: string;
   options: string[];
-  correct: number | string;
+  correct: string;               // CORRECCIÓN: Siempre es string en JSON real
   explanation?: string;
-  // Campos mejorados opcionales desde JSON:
+  // Campos mejorados opcionales a añadir:
   detailedExplanation?: string;
   whyWrong?: string[];           // Explicación de por qué otras opciones son incorrectas
   contextualInfo?: string;       // Información contextual adicional
@@ -376,17 +378,18 @@ interface QuizData extends BaseLearningData {
   memoryTricks?: string[];       // Trucos mnemotécnicos
 }
 
-// SortingData (extendida)
-interface SortingData extends BaseLearningData {
+// SortingData (estructura real actual - CORRECCIÓN IMPORTANTE)
+interface SortingItem {
   word: string;
-  category: Category;
-  subcategory?: string;
-  // Campos mejorados opcionales desde JSON:
-  categoryExplanation?: string;  // Por qué pertenece a esta categoría
-  examples?: string[];           // Ejemplos de uso en contexto
-  relatedWords?: string[];       // Palabras relacionadas en la misma categoría
-  commonConfusions?: string[];   // Categorías con las que se suele confundir
-  usageNotes?: string;           // Notas sobre el uso correcto
+  category: string;              // CORRECCIÓN: Es string, no Category enum
+  explanation?: string;          // Campo que ya existe en JSON real
+}
+
+interface SortingData extends BaseLearningData {
+  categories: string[];          // CORRECCIÓN: Estructura real es {categories: [], data: []}
+  data: SortingItem[];           // CORRECCIÓN: Array de items, no item individual
+  // Campos mejorados opcionales a añadir a SortingItem:
+  // - categoryExplanation, examples, relatedWords, usageNotes
 }
 
 // MatchingData (extendida)
