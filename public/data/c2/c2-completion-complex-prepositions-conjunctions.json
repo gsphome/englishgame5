@@ -126,36 +126,6 @@
     "tip": "Complete the complex preposition."
   },
   {
-    "sentence": "He acted ______ if he had never seen me before.",
-    "correct": "as",
-    "explanation": "'As if' means as though.",
-    "tip": "Complete the conjunction."
-  },
-  {
-    "sentence": "She was late, ______ to the heavy traffic.",
-    "correct": "due",
-    "explanation": "'Due to' means because of.",
-    "tip": "Complete the complex preposition."
-  },
-  {
-    "sentence": "______ of the fact that he was tired, he kept working.",
-    "correct": "In spite",
-    "explanation": "'In spite of the fact that' means despite the fact that.",
-    "tip": "Complete the conjunction."
-  },
-  {
-    "sentence": "He spoke ______ if he were an expert.",
-    "correct": "as",
-    "explanation": "'As if' means as though.",
-    "tip": "Complete the conjunction."
-  },
-  {
-    "sentence": "______ to the rules, you cannot use your phone here.",
-    "correct": "According",
-    "explanation": "'According to' means as stated by.",
-    "tip": "Complete the complex preposition."
-  },
-  {
     "sentence": "The decision was made ______ consultation with the stakeholders.",
     "correct": "in",
     "explanation": "'In consultation with' means discussing something with someone.",
@@ -168,36 +138,6 @@
     "tip": "Complete the complex preposition."
   },
   {
-    "sentence": "He was chosen ______ virtue of his leadership skills.",
-    "correct": "by",
-    "explanation": "'By virtue of' means because of or by means of.",
-    "tip": "Complete the complex preposition."
-  },
-  {
-    "sentence": "______ to the new law, smoking is prohibited in public places.",
-    "correct": "Pursuant",
-    "explanation": "'Pursuant to' means in accordance with (a law or a request).",
-    "tip": "Complete the complex preposition."
-  },
-  {
-    "sentence": "She managed to finish the project ______ of the tight deadline.",
-    "correct": "in spite",
-    "explanation": "'In spite of' means despite.",
-    "tip": "Complete the complex preposition."
-  },
-  {
-    "sentence": "______ the fact that he was ill, he still came to work.",
-    "correct": "Despite",
-    "explanation": "'Despite the fact that' means even though.",
-    "tip": "Complete the conjunction."
-  },
-  {
-    "sentence": "He talks ______ if he knows everything.",
-    "correct": "as",
-    "explanation": "'As if' means as though.",
-    "tip": "Complete the conjunction."
-  },
-  {
     "sentence": "She behaved ______ though she had no idea what was happening.",
     "correct": "as",
     "explanation": "'As though' means as if.",
@@ -207,30 +147,6 @@
     "sentence": "______ it may seem, he was telling the truth.",
     "correct": "Odd as",
     "explanation": "'Odd as it may seem' is an idiomatic expression meaning it may seem strange but it's true.",
-    "tip": "Complete the conjunction."
-  },
-  {
-    "sentence": "______ it was raining, we decided to go for a walk.",
-    "correct": "Even though",
-    "explanation": "'Even though' means despite the fact that.",
-    "tip": "Complete the conjunction."
-  },
-  {
-    "sentence": "He studied hard, ______ he could pass the exam.",
-    "correct": "so that",
-    "explanation": "'So that' means in order that.",
-    "tip": "Complete the conjunction."
-  },
-  {
-    "sentence": "She left early ______ she wouldn't miss her flight.",
-    "correct": "so that",
-    "explanation": "'So that' means in order that.",
-    "tip": "Complete the conjunction."
-  },
-  {
-    "sentence": "______ he is wealthy, he lives a simple life.",
-    "correct": "Although",
-    "explanation": "'Although' means despite the fact that.",
     "tip": "Complete the conjunction."
   },
   {

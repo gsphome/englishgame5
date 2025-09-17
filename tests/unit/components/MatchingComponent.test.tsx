@@ -70,4 +70,41 @@ describe('MatchingComponent', () => {
 
     expect(getByText('0/3 matched')).toBeInTheDocument();
   });
+
+  it('should apply proper BEM-like classes for styling', () => {
+    const { container } = renderWithProviders(
+      <MatchingComponent module={mockModule} />
+    );
+
+    // Check main component class
+    expect(container.querySelector('.matching-component')).toBeInTheDocument();
+
+    // Check grid structure
+    expect(container.querySelector('.matching-component__grid')).toBeInTheDocument();
+    expect(container.querySelector('.matching-component__columns')).toBeInTheDocument();
+
+    // Check column headers
+    expect(container.querySelector('.matching-component__column-header')).toBeInTheDocument();
+
+    // Check items have proper BEM classes
+    expect(container.querySelector('.matching-component__item')).toBeInTheDocument();
+    expect(container.querySelector('.matching-component__item--default')).toBeInTheDocument();
+  });
+
+  it('should have proper dark mode support through CSS classes', () => {
+    const { container } = renderWithProviders(
+      <MatchingComponent module={mockModule} />
+    );
+
+    // Verify that items use semantic BEM classes that support dark mode via CSS
+    const items = container.querySelectorAll('.matching-component__item');
+    expect(items.length).toBeGreaterThan(0);
+
+    // Check that items have proper state classes for dark mode support
+    items.forEach(item => {
+      expect(item.classList.contains('matching-component__item--default') ||
+        item.classList.contains('matching-component__item--selected') ||
+        item.classList.contains('matching-component__item--matched')).toBe(true);
+    });
+  });
 });

@@ -184,7 +184,23 @@
     "estimatedTime": 5,
     "difficulty": 2
   },
-
+  {
+    "id": "completion-present-perfect-a2",
+    "name": "Present Perfect",
+    "learningMode": "completion",
+    "dataPath": "data/a2/a2-completion-present-perfect.json",
+    "level": [
+      "a2"
+    ],
+    "category": "Grammar",
+    "unit": 2,
+    "prerequisites": [
+      "completion-comparatives-superlatives-a2"
+    ],
+    "description": "Present Perfect Simple for experiences and recent actions",
+    "estimatedTime": 6,
+    "difficulty": 2
+  },
   {
     "id": "quiz-elementary-review-a2",
     "name": "Elementary Review",
@@ -196,7 +212,7 @@
     "category": "Review",
     "unit": 2,
     "prerequisites": [
-      "completion-comparatives-superlatives-a2"
+      "completion-present-perfect-a2"
     ],
     "description": "Comprehensive review of A2 level concepts",
     "estimatedTime": 5,
@@ -238,7 +254,7 @@
   },
   {
     "id": "sorting-prepositions-b1",
-    "name": "Prepositions",
+    "name": "Basic Prepositions",
     "learningMode": "sorting",
     "dataPath": "data/b1/b1-sorting-prepositions.json",
     "level": [
@@ -306,7 +322,7 @@
   },
   {
     "id": "quiz-idioms-everyday-situations-alt-b1",
-    "name": "Everyday Idioms Alternative",
+    "name": "More Everyday Idioms",
     "learningMode": "quiz",
     "dataPath": "data/b1/b1-quiz-idioms-everyday-situations-alt.json",
     "level": [

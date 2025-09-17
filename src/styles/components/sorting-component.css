@@ -1,0 +1,321 @@
+/* Sorting Component - BEM-like Classes with Proper Dark Mode Support */
+
+/* Main Container */
+.sorting-component {
+    @apply max-w-6xl mx-auto p-3 sm:p-6;
+}
+
+/* Header Section */
+.sorting-component__header {
+    @apply mb-4;
+}
+
+.sorting-component__header-info {
+    @apply flex justify-between items-center mb-3;
+}
+
+.sorting-component__title {
+    @apply text-lg sm:text-xl font-bold text-gray-900;
+}
+
+.dark .sorting-component__title {
+    @apply text-white;
+}
+
+.sorting-component__progress-badge {
+    @apply text-sm font-medium text-gray-600 bg-gray-100 px-3 py-1 rounded-full;
+}
+
+.dark .sorting-component__progress-badge {
+    @apply text-gray-200 bg-gray-700;
+}
+
+.sorting-component__progress-bar {
+    @apply w-full bg-gray-200 rounded-full h-1.5;
+}
+
+.dark .sorting-component__progress-bar {
+    @apply bg-gray-700;
+}
+
+.sorting-component__progress-fill {
+    @apply bg-orange-600 h-1.5 rounded-full transition-all duration-300;
+}
+
+.sorting-component__instructions {
+    @apply text-center mb-6;
+}
+
+.sorting-component__instruction-text {
+    @apply text-gray-700 text-sm;
+}
+
+.dark .sorting-component__instruction-text {
+    @apply text-gray-200;
+}
+
+/* Available Words Section */
+.sorting-component__available-section {
+    @apply mb-4;
+}
+
+.sorting-component__section-header {
+    @apply text-gray-700 font-medium text-sm mb-2;
+}
+
+.dark .sorting-component__section-header {
+    @apply text-gray-100;
+}
+
+.sorting-component__available-area {
+    @apply min-h-16 p-3 border-2 border-dashed border-gray-300 rounded-lg bg-gray-50;
+}
+
+.dark .sorting-component__available-area {
+    @apply border-gray-600 bg-gray-800;
+}
+
+.sorting-component__words-container {
+    @apply flex flex-wrap gap-2;
+}
+
+.sorting-component__empty-message {
+    @apply text-center text-gray-600 text-sm;
+}
+
+.dark .sorting-component__empty-message {
+    @apply text-gray-300;
+}
+
+/* Word Chips */
+.sorting-component__word-chip {
+    @apply px-3 py-2 bg-white border border-gray-200 rounded-lg cursor-grab text-sm font-medium text-gray-900 transition-all duration-200;
+}
+
+.sorting-component__word-chip:hover {
+    @apply bg-blue-50 border-blue-300 shadow-md;
+    transform: scale(1.02);
+}
+
+.sorting-component__word-chip:active {
+    @apply cursor-grabbing;
+}
+
+.dark .sorting-component__word-chip {
+    @apply bg-gray-700 border-gray-600 text-white;
+}
+
+.dark .sorting-component__word-chip:hover {
+    @apply bg-blue-900 border-blue-400;
+}
+
+/* Categories Grid */
+.sorting-component__categories {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6 mb-6;
+}
+
+/* Drop Zone */
+.sorting-component__drop-zone {
+    @apply min-h-32 p-3 border-2 rounded-lg transition-all duration-200;
+}
+
+.sorting-component__drop-zone--interactive {
+    @apply border-gray-300 bg-gray-50;
+}
+
+.dark .sorting-component__drop-zone--interactive {
+    @apply border-gray-600 bg-gray-800;
+}
+
+.sorting-component__drop-zone--drag-over {
+    @apply border-blue-400 bg-blue-50;
+}
+
+.dark .sorting-component__drop-zone--drag-over {
+    @apply border-blue-400 bg-blue-900;
+}
+
+.sorting-component__drop-zone--correct {
+    @apply border-green-400 bg-green-50;
+}
+
+.dark .sorting-component__drop-zone--correct {
+    @apply border-green-400 bg-green-900;
+}
+
+.sorting-component__drop-zone--error {
+    @apply border-red-400 bg-red-50;
+}
+
+.dark .sorting-component__drop-zone--error {
+    @apply border-red-400 bg-red-900;
+}
+
+.sorting-component__drop-zone--neutral {
+    @apply border-gray-300 bg-gray-100;
+}
+
+.dark .sorting-component__drop-zone--neutral {
+    @apply border-gray-600 bg-gray-800;
+}
+
+/* Drop Zone Header */
+.sorting-component__category-header {
+    @apply text-gray-700 font-medium text-sm mb-3 text-center;
+}
+
+.dark .sorting-component__category-header {
+    @apply text-gray-100;
+}
+
+.sorting-component__category-status {
+    @apply ml-2;
+}
+
+.sorting-component__category-status--correct {
+    @apply text-green-600;
+}
+
+.dark .sorting-component__category-status--correct {
+    @apply text-green-400;
+}
+
+.sorting-component__category-status--incorrect {
+    @apply text-red-600;
+}
+
+.dark .sorting-component__category-status--incorrect {
+    @apply text-red-400;
+}
+
+/* Sorted Items */
+.sorting-component__sorted-items {
+    @apply space-y-2;
+}
+
+.sorting-component__sorted-item {
+    @apply px-2 py-2 sm:px-3 sm:py-2 rounded text-center cursor-pointer transition-colors text-xs sm:text-sm;
+}
+
+.sorting-component__sorted-item--default {
+    @apply bg-white border border-gray-200 text-gray-900;
+}
+
+.sorting-component__sorted-item--default:hover {
+    @apply bg-gray-100;
+}
+
+.dark .sorting-component__sorted-item--default {
+    @apply bg-gray-700 border-gray-600 text-white;
+}
+
+.dark .sorting-component__sorted-item--default:hover {
+    @apply bg-gray-600;
+}
+
+.sorting-component__sorted-item--correct {
+    @apply bg-green-200 text-green-800;
+}
+
+.dark .sorting-component__sorted-item--correct {
+    @apply bg-green-800 text-green-200;
+}
+
+.sorting-component__sorted-item--incorrect {
+    @apply bg-red-200 text-red-800;
+}
+
+.dark .sorting-component__sorted-item--incorrect {
+    @apply bg-red-800 text-red-200;
+}
+
+/* Feedback Section */
+.sorting-component__feedback {
+    @apply mt-3 p-2 border rounded text-xs;
+}
+
+.sorting-component__feedback--error {
+    @apply bg-yellow-50 border-yellow-200 text-yellow-800;
+}
+
+.dark .sorting-component__feedback--error {
+    @apply bg-yellow-900 border-yellow-700 text-yellow-200;
+}
+
+.sorting-component__feedback-label {
+    @apply font-medium;
+}
+
+.sorting-component__feedback-text {
+    @apply text-yellow-700;
+}
+
+.dark .sorting-component__feedback-text {
+    @apply text-yellow-200;
+}
+
+/* Action Buttons */
+.sorting-component__actions {
+    @apply flex justify-center items-center gap-3 flex-wrap mt-6;
+}
+
+.sorting-component__separator {
+    @apply w-px h-6 bg-gray-300;
+}
+
+.dark .sorting-component__separator {
+    @apply bg-gray-600;
+}
+
+.sorting-component__button {
+    @apply flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-200 text-sm;
+}
+
+.sorting-component__button--reset {
+    @apply px-2 bg-gray-600 text-white;
+}
+
+.sorting-component__button--reset:hover {
+    @apply bg-gray-700;
+}
+
+.sorting-component__button--primary {
+    @apply bg-orange-600 text-white;
+}
+
+.sorting-component__button--primary:hover {
+    @apply bg-orange-700;
+}
+
+.sorting-component__button--primary:disabled {
+    @apply bg-gray-400 cursor-not-allowed;
+}
+
+.sorting-component__button--secondary {
+    @apply bg-blue-600 text-white;
+}
+
+.sorting-component__button--secondary:hover {
+    @apply bg-blue-700;
+}
+
+.sorting-component__button--success {
+    @apply bg-green-600 text-white;
+}
+
+.sorting-component__button--success:hover {
+    @apply bg-green-700;
+}
+
+/* Loading State */
+.sorting-component__loading {
+    @apply text-center;
+}
+
+.sorting-component__loading-text {
+    @apply text-gray-600 mb-4;
+}
+
+.dark .sorting-component__loading-text {
+    @apply text-gray-300;
+}

@@ -8,6 +8,7 @@ import { useToast } from '../../hooks/useToast';
 import { useLearningCleanup } from '../../hooks/useLearningCleanup';
 import NavigationButton from '../ui/NavigationButton';
 import '../../styles/components/sorting-modal.css';
+import '../../styles/components/sorting-component.css';
 import type { LearningModule } from '../../types';
 
 // Get category display name from module data
@@ -80,33 +81,42 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
         const shuffledCategories = uniqueCategories.sort(() => Math.random() - 0.5);
         const { gameSettings } = useSettingsStore.getState();
         const totalWords = gameSettings.sortingMode.wordCount;
-        const categoryCount = gameSettings.sortingMode.categoryCount || 3;
-        const selectedCategories = shuffledCategories.slice(0, categoryCount);
-        const wordsPerCategory = Math.ceil(totalWords / categoryCount);
-        const wordsForCategories: string[] = [];
-
-        const categories = selectedCategories.map(categoryId => {
-          const categoryWords = (module.data || [])
-            .filter((item: any) => item.category === categoryId)
-            .map((item: any) => item.word)
-            .slice(0, wordsPerCategory);
-
-          wordsForCategories.push(...categoryWords);
-
-          return {
-            name: getCategoryDisplayName(categoryId, module),
-            items: categoryWords,
-          };
-        });
-
-        // Limit total words to settings value
-        const finalWords = wordsForCategories.slice(0, totalWords);
-
-        // Update categories to only include words that are actually available
-        const updatedCategories = categories.map(category => ({
-          ...category,
-          items: category.items.filter(word => finalWords.includes(word)),
+        
+        // Use all available categories (no artificial limit)
+        const selectedCategories = shuffledCategories;
+        const categoryCount = selectedCategories.length;
+        
+        // Collect all available words first
+        const allAvailableWords = (module.data || []).map((item: any) => ({
+          word: item.word,
+          category: item.category
         }));
+        
+        // Shuffle and take exactly the requested number of words
+        const shuffledWords = allAvailableWords.sort(() => Math.random() - 0.5);
+        const selectedWords = shuffledWords.slice(0, totalWords);
+        
+        // Group selected words by category
+        const wordsByCategory: Record<string, string[]> = {};
+        selectedWords.forEach(({ word, category }) => {
+          if (!wordsByCategory[category]) {
+            wordsByCategory[category] = [];
+          }
+          wordsByCategory[category].push(word);
+        });
+        
+        // Create categories array with actual selected words
+        const categories = selectedCategories
+          .filter(categoryId => wordsByCategory[categoryId]) // Only include categories that have words
+          .map(categoryId => ({
+            name: getCategoryDisplayName(categoryId, module),
+            items: wordsByCategory[categoryId],
+          }));
+
+        const finalWords = selectedWords.map(item => item.word);
+
+        // Categories already have the correct words, no need to filter again
+        const updatedCategories = categories;
 
         newExercise = {
           id: 'sorting-exercise',
@@ -272,57 +282,67 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
 
   const allWordsSorted = availableWords.length === 0;
 
+  if (!module?.data || exercise.words.length === 0) {
+    return (
+      <div className="sorting-component">
+        <div className="sorting-component__loading">
+          <p className="sorting-component__loading-text">Loading sorting exercise...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="max-w-6xl mx-auto p-3 sm:p-6">
+    <div className="sorting-component">
       {/* Compact header with progress */}
-      <div className="sorting-header">
-        <div className="sorting-header__top">
-          <h2 className="sorting-header__title">
-            {module.name}
-          </h2>
-          <span className="sorting-header__progress-badge">
+      <div className="sorting-component__header">
+        <div className="sorting-component__header-info">
+          <h2 className="sorting-component__title">{module.name}</h2>
+          <span className="sorting-component__progress-badge">
             {exercise.words.length - availableWords.length}/{exercise.words.length}
           </span>
         </div>
-        <div className="sorting-header__progress-bar">
+        <div className="sorting-component__progress-bar">
           <div
-            className="sorting-header__progress-fill"
+            className="sorting-component__progress-fill"
             style={{
               width: `${exercise.words.length > 0 ? ((exercise.words.length - availableWords.length) / exercise.words.length) * 100 : 0}%`,
             }}
           />
         </div>
-        <p className="instruction-text instruction-text--small instruction-text--center mt-2">
-          {allWordsSorted
-            ? 'All words sorted! Check your answers'
-            : 'Drag and drop words into categories'}
-        </p>
+        <div className="sorting-component__instructions">
+          <p className="sorting-component__instruction-text">
+            {allWordsSorted
+              ? 'All words sorted! Check your answers'
+              : 'Drag and drop words into categories'}
+          </p>
+        </div>
       </div>
 
       {/* Available Words */}
-      <div className="mb-4">
-        <h3 className="section-header instruction-text--medium mb-2">Available Words</h3>
-        <div className="available-words-area">
-          <div className="flex flex-wrap gap-2">
+      <div className="sorting-component__available-section">
+        <h3 className="sorting-component__section-header">Available Words</h3>
+        <div className="sorting-component__available-area">
+          <div className="sorting-component__words-container">
             {availableWords.map((word, index) => (
               <div
                 key={`available-${index}-${word}`}
                 draggable
                 onDragStart={e => handleDragStart(e, word)}
-                className="word-chip"
+                className="sorting-component__word-chip"
               >
                 {word}
               </div>
             ))}
           </div>
           {availableWords.length === 0 && (
-            <p className="instruction-text instruction-text--center">All words have been sorted!</p>
+            <p className="sorting-component__empty-message">All words have been sorted!</p>
           )}
         </div>
       </div>
 
       {/* Categories */}
-      <div className="grid grid-cols-3 gap-1 sm:gap-4 lg:gap-6 mb-4">
+      <div className="sorting-component__categories">
         {(exercise.categories || []).map(category => {
           const userItems = sortedItems[category.name] || [];
           const isCorrect =
@@ -333,20 +353,20 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
 
           const isDragOver = dragOverCategory === category.name;
 
-          let dropZoneClass = 'drop-zone';
+          let dropZoneClass = 'sorting-component__drop-zone ';
 
           if (showResult) {
             if (isCorrect) {
-              dropZoneClass += ' drop-zone--correct';
+              dropZoneClass += 'sorting-component__drop-zone--correct';
             } else if (hasErrors) {
-              dropZoneClass += ' drop-zone--error';
+              dropZoneClass += 'sorting-component__drop-zone--error';
             } else {
-              dropZoneClass += ' drop-zone--neutral';
+              dropZoneClass += 'sorting-component__drop-zone--neutral';
             }
           } else {
-            dropZoneClass += ' drop-zone--interactive';
+            dropZoneClass += 'sorting-component__drop-zone--interactive';
             if (isDragOver) {
-              dropZoneClass += ' drop-zone--drag-over';
+              dropZoneClass += ' sorting-component__drop-zone--drag-over';
             }
           }
 
@@ -358,38 +378,49 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
               onDrop={e => handleDrop(e, category.name)}
               className={dropZoneClass}
             >
-              <h4 className="drop-zone__header">
+              <h4 className="sorting-component__category-header">
                 {category.name}
                 {showResult && (
                   <span
-                    className={`ml-2 ${isCorrect ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}
+                    className={`sorting-component__category-status ${
+                      isCorrect 
+                        ? 'sorting-component__category-status--correct' 
+                        : 'sorting-component__category-status--incorrect'
+                    }`}
                   >
                     {isCorrect ? '✓' : '✗'}
                   </span>
                 )}
               </h4>
 
-              <div className="space-y-2">
-                {userItems.map((word, index) => (
-                  <div
-                    key={`${category.name}-${index}-${word}`}
-                    onClick={() => handleRemoveFromCategory(word, category.name)}
-                    className={`px-1 py-1 sm:px-3 sm:py-2 rounded text-center cursor-pointer transition-colors text-xs sm:text-sm ${showResult
-                        ? category.items.includes(word)
-                          ? 'bg-green-200 dark:bg-green-800 text-green-800 dark:text-green-200'
-                          : 'bg-red-200 dark:bg-red-800 text-red-800 dark:text-red-200'
-                        : 'bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-600 text-gray-900 dark:text-white'
-                      }`}
-                  >
-                    {word}
-                  </div>
-                ))}
+              <div className="sorting-component__sorted-items">
+                {userItems.map((word, index) => {
+                  let itemClass = 'sorting-component__sorted-item ';
+                  
+                  if (showResult) {
+                    itemClass += category.items.includes(word)
+                      ? 'sorting-component__sorted-item--correct'
+                      : 'sorting-component__sorted-item--incorrect';
+                  } else {
+                    itemClass += 'sorting-component__sorted-item--default';
+                  }
+
+                  return (
+                    <div
+                      key={`${category.name}-${index}-${word}`}
+                      onClick={() => handleRemoveFromCategory(word, category.name)}
+                      className={itemClass}
+                    >
+                      {word}
+                    </div>
+                  );
+                })}
               </div>
 
               {showResult && hasErrors && (
-                <div className="mt-3 p-2 bg-yellow-50 dark:bg-yellow-900 border border-yellow-200 dark:border-yellow-700 rounded text-xs">
-                  <strong className="help-text--strong">Correct items:</strong>{' '}
-                  <span className="help-text">{category.items.join(', ')}</span>
+                <div className="sorting-component__feedback sorting-component__feedback--error">
+                  <span className="sorting-component__feedback-label">Correct items:</span>{' '}
+                  <span className="sorting-component__feedback-text">{category.items.join(', ')}</span>
                 </div>
               )}
             </div>
@@ -398,20 +429,20 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
       </div>
 
       {/* Unified Control Bar */}
-      <div className="sorting-controls">
+      <div className="sorting-component__actions">
         {/* Navigation */}
         <NavigationButton onClick={() => setCurrentView('menu')} title="Return to main menu">
           Back to Menu
         </NavigationButton>
 
         {/* Separator */}
-        <div className="sorting-controls__separator"></div>
+        <div className="sorting-component__separator"></div>
 
         {!showResult ? (
           <>
             <button
               onClick={resetExercise}
-              className="sorting-controls__button sorting-controls__button--reset"
+              className="sorting-component__button sorting-component__button--reset"
               title="Reset Exercise"
             >
               <RotateCcw className="h-4 w-4" />
@@ -420,7 +451,7 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
             <button
               onClick={checkAnswers}
               disabled={!allWordsSorted}
-              className="sorting-controls__button sorting-controls__button--check"
+              className="sorting-component__button sorting-component__button--primary"
             >
               <Check className="h-4 w-4" />
               <span>Check Answers</span>
@@ -430,14 +461,14 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
           <>
             <button
               onClick={showSummaryModal}
-              className="sorting-controls__button sorting-controls__button--summary"
+              className="sorting-component__button sorting-component__button--secondary"
             >
               <Info className="h-4 w-4" />
               <span>View Summary</span>
             </button>
             <button
               onClick={finishExercise}
-              className="sorting-controls__button sorting-controls__button--finish"
+              className="sorting-component__button sorting-component__button--success"
             >
               <span>Finish Exercise</span>
             </button>

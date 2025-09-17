@@ -6,6 +6,7 @@ import { useToast } from '../../hooks/useToast';
 import { useLearningCleanup } from '../../hooks/useLearningCleanup';
 import NavigationButton from '../ui/NavigationButton';
 import '../../styles/components/matching-modal.css';
+import '../../styles/components/matching-component.css';
 import type { LearningModule } from '../../types';
 
 interface MatchingComponentProps {
@@ -79,8 +80,10 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
 
   if (!module?.data || leftItems.length === 0) {
     return (
-      <div className="max-w-6xl mx-auto p-6 text-center">
-        <p className="text-gray-600 mb-4">Loading matching exercise...</p>
+      <div className="matching-component">
+        <div className="matching-component__loading">
+          <p className="matching-component__loading-text">Loading matching exercise...</p>
+        </div>
       </div>
     );
   }
@@ -229,22 +232,22 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto p-3 sm:p-6">
+    <div className="matching-component">
       {/* Compact header */}
-      <div className="mb-4">
-        <div className="flex justify-between items-center mb-3">
-          <h2 className="text-lg sm:text-xl font-bold text-gray-900">{module.name}</h2>
-          <span className="text-sm font-medium text-gray-600 bg-gray-100 px-3 py-1 rounded-full">
+      <div className="matching-component__header">
+        <div className="matching-component__header-info">
+          <h2 className="matching-component__title">{module.name}</h2>
+          <span className="matching-component__progress-badge">
             {Object.keys(matches).length}/{pairs.length} matched
           </span>
         </div>
-        <div className="w-full bg-gray-200 rounded-full h-1.5">
+        <div className="matching-component__progress-bar">
           <div
-            className="bg-pink-600 h-1.5 rounded-full transition-all duration-300"
+            className="matching-component__progress-fill"
             style={{ width: `${(Object.keys(matches).length / pairs.length) * 100}%` }}
           />
         </div>
-        <p className="instruction-text instruction-text--small instruction-text--center mt-2">
+        <p className="matching-component__instruction-text">
           {allMatched
             ? 'All matched! Check your answers'
             : 'Click items from both columns to match them'}
@@ -252,33 +255,28 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
       </div>
 
       {/* Compact Matching Grid */}
-      <div className="max-w-4xl mx-auto">
-        <div className="grid grid-cols-2 gap-4 mb-6">
+      <div className="matching-component__grid">
+        <div className="matching-component__columns">
           {/* Terms Column */}
-          <div className="space-y-2">
-            <h3 className="section-header instruction-text--medium mb-3 text-center">Terms</h3>
+          <div className="matching-component__column">
+            <h3 className="matching-component__column-header">Terms</h3>
             {leftItems.map((item, index) => {
               const isMatched = matches[item];
               const isSelected = selectedLeft === item;
               const status = getItemStatus(item, true);
 
-              let className =
-                'w-full p-3 text-sm text-left border-2 rounded-xl transition-all duration-200 font-medium ';
+              let className = 'matching-component__item ';
 
               if (showResult) {
-                className +=
-                  status === 'correct'
-                    ? 'border-green-400 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200'
-                    : 'border-red-400 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200';
+                className += status === 'correct'
+                  ? 'matching-component__item--correct'
+                  : 'matching-component__item--incorrect';
               } else if (isMatched) {
-                className +=
-                  'border-pink-400 bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-200 cursor-pointer';
+                className += 'matching-component__item--matched';
               } else if (isSelected) {
-                className +=
-                  'border-pink-500 bg-pink-200 dark:bg-pink-800 text-pink-900 dark:text-pink-100 shadow-md scale-105';
+                className += 'matching-component__item--selected';
               } else {
-                className +=
-                  'border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white hover:border-pink-300 hover:bg-pink-50 dark:hover:bg-pink-900 cursor-pointer hover:shadow-md hover:scale-102';
+                className += 'matching-component__item--default';
               }
 
               return (
@@ -287,12 +285,12 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
                   onClick={() => (isMatched ? removeMatch(item) : handleLeftClick(item))}
                   className={className}
                 >
-                  <div className="flex items-start space-x-2">
-                    <span className="flex-shrink-0 w-6 h-6 bg-blue-500 text-white text-xs font-bold rounded-full flex items-center justify-center">
+                  <div className="matching-component__item-content">
+                    <span className="matching-component__item-letter">
                       {String.fromCharCode(65 + index)}
                     </span>
-                    <span className="truncate flex-1">{item}</span>
-                    <div className="flex items-center space-x-1">
+                    <span className="matching-component__item-text">{item}</span>
+                    <div className="matching-component__item-actions">
                       {showResult && (
                         <div
                           onClick={e => {
@@ -303,14 +301,14 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
                             setSelectedTerm(termData);
                             setShowExplanation(true);
                           }}
-                          className="flex-shrink-0 w-5 h-5 bg-blue-600 hover:bg-blue-700 text-white rounded-full flex items-center justify-center transition-colors cursor-pointer"
+                          className="matching-component__info-button"
                           title="Show explanation"
                         >
                           <Info className="h-3 w-3" />
                         </div>
                       )}
                       {isMatched && (
-                        <span className="flex-shrink-0 w-6 h-6 bg-pink-500 text-white text-xs font-bold rounded-full flex items-center justify-center">
+                        <span className="matching-component__match-number">
                           {rightItems.findIndex(def => matches[item] === def) + 1}
                         </span>
                       )}
@@ -322,8 +320,8 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
           </div>
 
           {/* Definitions Column */}
-          <div className="space-y-2">
-            <h3 className="section-header instruction-text--medium mb-3 text-center">
+          <div className="matching-component__column">
+            <h3 className="matching-component__column-header">
               Definitions
             </h3>
             {rightItems.map((item, index) => {
@@ -331,25 +329,20 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
               const isSelected = selectedRight === item;
               const status = getItemStatus(item, false);
 
-              let className =
-                'w-full p-3 text-sm text-left border-2 rounded-xl transition-all duration-200 ';
+              let className = 'matching-component__item ';
 
               if (showResult) {
-                className +=
-                  status === 'correct'
-                    ? 'border-green-400 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200'
-                    : status === 'incorrect'
-                      ? 'border-red-400 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200'
-                      : 'border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200';
+                className += status === 'correct'
+                  ? 'matching-component__item--correct'
+                  : status === 'incorrect'
+                    ? 'matching-component__item--incorrect'
+                    : 'matching-component__item--unmatched';
               } else if (isMatched) {
-                className +=
-                  'border-pink-400 bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-200 opacity-60';
+                className += 'matching-component__item--matched-inactive';
               } else if (isSelected) {
-                className +=
-                  'border-pink-500 bg-pink-200 dark:bg-pink-800 text-pink-900 dark:text-pink-100 shadow-md scale-105';
+                className += 'matching-component__item--selected';
               } else {
-                className +=
-                  'border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white hover:border-pink-300 hover:bg-pink-50 dark:hover:bg-pink-900 cursor-pointer hover:shadow-md hover:scale-102';
+                className += 'matching-component__item--default';
               }
 
               return (
@@ -359,13 +352,13 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
                   disabled={isMatched}
                   className={className}
                 >
-                  <div className="flex items-start space-x-2">
-                    <span className="flex-shrink-0 w-6 h-6 bg-orange-500 text-white text-xs font-bold rounded-full flex items-center justify-center">
+                  <div className="matching-component__item-content">
+                    <span className="matching-component__item-letter" style={{ backgroundColor: '#f97316' }}>
                       {index + 1}
                     </span>
-                    <span className="truncate flex-1">{item}</span>
+                    <span className="matching-component__item-text">{item}</span>
                     {isMatched && (
-                      <span className="flex-shrink-0 w-6 h-6 bg-blue-500 text-white text-xs font-bold rounded-full flex items-center justify-center">
+                      <span className="matching-component__item-letter">
                         {String.fromCharCode(
                           65 + leftItems.findIndex(term => matches[term] === item)
                         )}
@@ -380,20 +373,20 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
       </div>
 
       {/* Unified Control Bar */}
-      <div className="flex justify-center items-center gap-3 flex-wrap mt-6">
+      <div className="matching-component__actions">
         {/* Navigation */}
         <NavigationButton onClick={() => setCurrentView('menu')} title="Return to main menu">
           Back to Menu
         </NavigationButton>
 
         {/* Separator */}
-        <div className="w-px h-6 bg-gray-300 mx-1"></div>
+        <div className="matching-component__separator"></div>
 
         {!showResult ? (
           <>
             <button
               onClick={resetExercise}
-              className="p-2.5 bg-gray-500 hover:bg-gray-600 text-white rounded-lg transition-colors shadow-sm"
+              className="matching-component__button matching-component__button--secondary"
               title="Reset Exercise"
             >
               <RotateCcw className="h-4 w-4" />
@@ -402,7 +395,7 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
             <button
               onClick={checkAnswers}
               disabled={!allMatched}
-              className="flex items-center gap-2 px-6 py-2.5 bg-pink-600 hover:bg-pink-700 disabled:bg-gray-400 text-white rounded-lg transition-colors text-sm font-medium shadow-sm"
+              className="matching-component__button matching-component__button--primary flex items-center gap-2"
             >
               <Check className="h-4 w-4" />
               <span>Check Matches</span>
@@ -412,14 +405,14 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
           <>
             <button
               onClick={showSummaryModal}
-              className="flex items-center gap-2 px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors text-sm font-medium shadow-sm"
+              className="matching-component__button matching-component__button--primary flex items-center gap-2"
             >
               <Info className="h-4 w-4" />
               <span>View Summary</span>
             </button>
             <button
               onClick={finishExercise}
-              className="flex items-center gap-2 px-6 py-2.5 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors text-sm font-medium shadow-sm"
+              className="matching-component__button matching-component__button--success flex items-center gap-2"
             >
               <span>Finish Exercise</span>
             </button>
@@ -451,22 +444,20 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
                     {selectedTerm.results.map((result: any, index: number) => (
                       <div
                         key={index}
-                        className={`matching-result-card ${
-                          result.isCorrect
-                            ? 'matching-result-card--correct'
-                            : 'matching-result-card--incorrect'
-                        }`}
+                        className={`matching-result-card ${result.isCorrect
+                          ? 'matching-result-card--correct'
+                          : 'matching-result-card--incorrect'
+                          }`}
                       >
                         <div className="matching-result-card__header">
                           <h4 className="matching-result-card__term">
                             {result.left}
                           </h4>
                           <span
-                            className={`matching-result-card__status ${
-                              result.isCorrect 
-                                ? 'matching-result-card__status--correct' 
-                                : 'matching-result-card__status--incorrect'
-                            }`}
+                            className={`matching-result-card__status ${result.isCorrect
+                              ? 'matching-result-card__status--correct'
+                              : 'matching-result-card__status--incorrect'
+                              }`}
                           >
                             {result.isCorrect ? '✓' : '✗'}
                           </span>
@@ -512,22 +503,14 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
                 /* Individual Explanation View */
                 <div className="matching-modal__individual">
                   <div className="matching-individual__field">
-                    <h4 className="matching-individual__label">
-                      Match:
-                    </h4>
-                    <p className="matching-individual__value">
-                      {selectedTerm.right}
-                    </p>
+                    <h4 className="matching-individual__label">Match:</h4>
+                    <p className="matching-individual__value">{selectedTerm.right}</p>
                   </div>
 
                   {selectedTerm.explanation && (
                     <div className="matching-individual__field">
-                      <h4 className="matching-individual__label">
-                        Explanation:
-                      </h4>
-                      <p className="matching-individual__explanation">
-                        {selectedTerm.explanation}
-                      </p>
+                      <h4 className="matching-individual__label">Explanation:</h4>
+                      <p className="matching-individual__explanation">{selectedTerm.explanation}</p>
                     </div>
                   )}
                 </div>

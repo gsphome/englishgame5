@@ -1,0 +1,276 @@
+/* Matching Component - BEM-like Classes with Proper Dark Mode Support */
+
+/* Main Container */
+.matching-component {
+  @apply max-w-6xl mx-auto p-3 sm:p-6;
+}
+
+/* Header Section */
+.matching-component__header {
+  @apply mb-4;
+}
+
+.matching-component__header-info {
+  @apply flex justify-between items-center mb-3;
+}
+
+.matching-component__title {
+  @apply text-lg sm:text-xl font-bold text-gray-900;
+}
+
+.dark .matching-component__title {
+  @apply text-white;
+}
+
+.matching-component__progress-badge {
+  @apply text-sm font-medium text-gray-600 bg-gray-100 px-3 py-1 rounded-full;
+}
+
+.dark .matching-component__progress-badge {
+  @apply text-gray-200 bg-gray-700;
+}
+
+.matching-component__progress-bar {
+  @apply w-full bg-gray-200 rounded-full h-1.5;
+}
+
+.dark .matching-component__progress-bar {
+  @apply bg-gray-700;
+}
+
+.matching-component__progress-fill {
+  @apply bg-pink-600 h-1.5 rounded-full transition-all duration-300;
+}
+
+.matching-component__separator {
+  @apply w-px h-6 bg-gray-300 mx-1;
+}
+
+.dark .matching-component__separator {
+  @apply bg-gray-600;
+}
+
+.matching-component__loading {
+  @apply text-center;
+}
+
+.matching-component__loading-text {
+  @apply text-gray-600 mb-4;
+}
+
+.dark .matching-component__loading-text {
+  @apply text-gray-300;
+}
+
+/* Instructions */
+.matching-component__instructions {
+  @apply text-center mb-6;
+}
+
+.matching-component__instruction-text {
+  @apply text-gray-700 text-sm;
+}
+
+.dark .matching-component__instruction-text {
+  @apply text-gray-200;
+}
+
+/* Grid Layout */
+.matching-component__grid {
+  @apply max-w-4xl mx-auto;
+}
+
+.matching-component__columns {
+  @apply grid grid-cols-2 gap-4 mb-6;
+}
+
+/* Column Headers */
+.matching-component__column {
+  @apply space-y-2;
+}
+
+.matching-component__column-header {
+  @apply text-gray-700 font-medium text-sm mb-3 text-center;
+}
+
+.dark .matching-component__column-header {
+  @apply text-gray-100;
+}
+
+/* Matching Items */
+.matching-component__item {
+  @apply w-full p-3 text-sm text-left border-2 rounded-xl transition-all duration-200 font-medium cursor-pointer;
+}
+
+/* Item States - Default */
+.matching-component__item--default {
+  @apply border-gray-200 bg-white text-gray-900;
+}
+
+.dark .matching-component__item--default {
+  @apply border-gray-600 bg-gray-700 text-white;
+}
+
+.matching-component__item--default:hover {
+  @apply border-pink-300 bg-pink-50 shadow-md;
+  transform: scale(1.02);
+}
+
+.dark .matching-component__item--default:hover {
+  @apply border-pink-400 bg-pink-900;
+}
+
+/* Item States - Selected */
+.matching-component__item--selected {
+  @apply border-pink-500 bg-pink-200 text-pink-900 shadow-md;
+  transform: scale(1.05);
+}
+
+.dark .matching-component__item--selected {
+  @apply border-pink-400 bg-gray-600 text-white shadow-lg;
+  border-left: 4px solid #ec4899;
+}
+
+/* Item States - Matched */
+.matching-component__item--matched {
+  @apply border-pink-400 bg-pink-100 text-pink-800 cursor-pointer;
+}
+
+.dark .matching-component__item--matched {
+  @apply border-gray-500 bg-gray-700 text-white;
+  border-left: 3px solid #ec4899;
+}
+
+/* Item States - Matched but Inactive (right column) */
+.matching-component__item--matched-inactive {
+  @apply border-pink-400 bg-pink-100 text-pink-800 opacity-60;
+}
+
+.dark .matching-component__item--matched-inactive {
+  @apply border-gray-600 bg-gray-800 text-gray-300 opacity-70;
+  border-left: 3px solid #ec4899;
+}
+
+/* Item States - Correct (Results) */
+.matching-component__item--correct {
+  @apply border-green-400 bg-green-100 text-green-800;
+}
+
+.dark .matching-component__item--correct {
+  @apply border-green-400 bg-gray-700 text-white;
+  border-left: 4px solid #22c55e;
+}
+
+/* Item States - Incorrect (Results) */
+.matching-component__item--incorrect {
+  @apply border-red-400 bg-red-100 text-red-800;
+}
+
+.dark .matching-component__item--incorrect {
+  @apply border-red-400 bg-gray-700 text-white;
+  border-left: 4px solid #ef4444;
+}
+
+/* Item States - Unmatched (Results) */
+.matching-component__item--unmatched {
+  @apply border-gray-300 bg-gray-100 text-gray-700;
+}
+
+.dark .matching-component__item--unmatched {
+  @apply border-gray-600 bg-gray-800 text-gray-300;
+}
+
+/* Item Content */
+.matching-component__item-content {
+  @apply flex items-start space-x-2;
+}
+
+.matching-component__item-letter {
+  @apply flex-shrink-0 w-6 h-6 bg-blue-500 text-white text-xs font-bold rounded-full flex items-center justify-center;
+}
+
+.matching-component__item-text {
+  @apply truncate flex-1;
+}
+
+.matching-component__item-actions {
+  @apply flex items-center space-x-1;
+}
+
+.matching-component__info-button {
+  @apply flex-shrink-0 w-5 h-5 bg-blue-600 hover:bg-blue-700 text-white rounded-full flex items-center justify-center transition-colors cursor-pointer;
+}
+
+.matching-component__match-number {
+  @apply flex-shrink-0 w-6 h-6 bg-pink-500 text-white text-xs font-bold rounded-full flex items-center justify-center;
+}
+
+/* Action Buttons */
+.matching-component__actions {
+  @apply flex justify-center space-x-4 mt-6;
+}
+
+.matching-component__button {
+  @apply px-6 py-2 rounded-lg font-medium transition-all duration-200;
+}
+
+.matching-component__button--primary {
+  @apply bg-blue-600 text-white hover:bg-blue-700 shadow-md hover:shadow-lg;
+}
+
+.matching-component__button--secondary {
+  @apply bg-gray-200 text-gray-800 hover:bg-gray-300;
+}
+
+.dark .matching-component__button--secondary {
+  @apply bg-gray-700 text-gray-200 hover:bg-gray-600;
+}
+
+.matching-component__button--success {
+  @apply bg-green-600 text-white hover:bg-green-700 shadow-md hover:shadow-lg;
+}
+
+.matching-component__button:disabled {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+/* Results Summary */
+.matching-component__results {
+  @apply text-center mb-6;
+}
+
+.matching-component__score {
+  @apply text-2xl font-bold mb-2;
+}
+
+.matching-component__score--excellent {
+  @apply text-green-600;
+}
+
+.dark .matching-component__score--excellent {
+  @apply text-green-400;
+}
+
+.matching-component__score--good {
+  @apply text-blue-600;
+}
+
+.dark .matching-component__score--good {
+  @apply text-blue-400;
+}
+
+.matching-component__score--needs-improvement {
+  @apply text-orange-600;
+}
+
+.dark .matching-component__score--needs-improvement {
+  @apply text-orange-400;
+}
+
+.matching-component__feedback {
+  @apply text-gray-600;
+}
+
+.dark .matching-component__feedback {
+  @apply text-gray-300;
+}
