@@ -156,42 +156,62 @@ jobs:
           echo "🎉 Deployment successful!"
           echo "📍 URL: ${{ steps.deployment.outputs.page_url }}"
 
-  deployment-status:
-    name: Deployment Status Report
+  deployment-gate:
+    name: Deployment Gate
     runs-on: ubuntu-latest
     needs: [check-pipelines, deploy]
     if: always()
     steps:
-      - name: Report deployment status
+      - name: Validate deployment outcome
         run: |
-          echo "📊 Deployment Status Report"
-          echo "=========================="
+          echo "📊 Deployment Gate - Final Validation"
+          echo "====================================="
           
+          # Check if pipeline check failed
           if [ "${{ needs.check-pipelines.result }}" != "success" ]; then
-            echo "❌ Pipeline check failed"
+            echo "❌ Pipeline check job failed"
+            echo "🔍 Check the 'Check All Pipelines' job for details"
             exit 1
           fi
           
-          if [ "${{ needs.check-pipelines.outputs.should-deploy }}" == "true" ]; then
-            if [ "${{ needs.deploy.result }}" == "success" ]; then
-              echo "✅ Deployment completed successfully"
-              echo "🌐 Application is live"
-            elif [ "${{ needs.deploy.result }}" == "failure" ]; then
-              echo "❌ Deployment failed during execution"
+          # Get deployment decision
+          SHOULD_DEPLOY="${{ needs.check-pipelines.outputs.should-deploy }}"
+          DEPLOY_RESULT="${{ needs.deploy.result }}"
+          
+          echo "🎯 Deployment Decision: $SHOULD_DEPLOY"
+          echo "📋 Deploy Job Result: $DEPLOY_RESULT"
+          
+          if [ "$SHOULD_DEPLOY" == "true" ]; then
+            # Deployment should have happened
+            if [ "$DEPLOY_RESULT" == "success" ]; then
+              echo "✅ SUCCESS: Deployment completed successfully"
+              echo "🌐 Application is live and accessible"
+            elif [ "$DEPLOY_RESULT" == "failure" ]; then
+              echo "❌ FAILURE: Deployment job failed during execution"
+              echo "� Cheick the 'Deploy to Production' job for error details"
               exit 1
-            elif [ "${{ needs.deploy.result }}" == "skipped" ]; then
-              echo "⚠️ Deployment was skipped unexpectedly"
+            elif [ "$DEPLOY_RESULT" == "skipped" ]; then
+              echo "❌ FAILURE: Deployment was unexpectedly skipped"
+              echo "🐛 This indicates a workflow logic error"
               exit 1
             else
-              echo "❓ Deployment status unknown: ${{ needs.deploy.result }}"
+              echo "❌ FAILURE: Deployment job in unknown state: $DEPLOY_RESULT"
               exit 1
             fi
           else
-            echo "ℹ️ Deployment was not executed (pipeline requirements not met)"
-            echo "📋 This is expected behavior when:"
-            echo "   - CI Quality pipeline hasn't completed successfully"
-            echo "   - CI Security pipeline hasn't completed successfully"
-            echo "   - CI Build pipeline hasn't completed successfully"
-            echo ""
-            echo "✅ Workflow completed successfully (no deployment needed)"
+            # Deployment should not have happened
+            if [ "$DEPLOY_RESULT" == "skipped" ]; then
+              echo "❌ FAILURE: Deployment blocked due to pipeline requirements"
+              echo "📋 Required pipelines must all succeed:"
+              echo "   - CI Quality: must be 'success'"
+              echo "   - CI Security: must be 'success'" 
+              echo "   - CI Build: must be 'success'"
+              echo ""
+              echo "🔍 Check the 'Check All Pipelines' job for specific failures"
+              exit 1
+            else
+              echo "❌ FAILURE: Unexpected deployment state when should_deploy=false"
+              echo "🐛 Deploy result: $DEPLOY_RESULT (expected: skipped)"
+              exit 1
+            fi
           fi
