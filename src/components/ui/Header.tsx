@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { User, Settings, Menu, BarChart3, BookOpen } from 'lucide-react';
 import '../../styles/components/header.css';
 import { useAppStore } from '../../stores/appStore';
@@ -21,7 +21,7 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = () => {
   const { setCurrentView, currentView } = useAppStore();
   const { user } = useUserStore();
-  const { theme, developmentMode } = useSettingsStore();
+  const { developmentMode } = useSettingsStore();
   const [showProfileForm, setShowProfileForm] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [showAbout, setShowAbout] = useState(false);
@@ -33,14 +33,8 @@ export const Header: React.FC<HeaderProps> = () => {
   const isInGame = currentView !== 'menu';
   const headerMode = isInGame ? 'learning' : 'menu';
 
-  // Apply theme on mount
-  useEffect(() => {
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [theme]);
+  // Theme is now handled by themeInitializer and settingsStore
+  // This effect is kept for consistency but theme should already be applied
 
   const handleMenuToggle = () => {
     setShowSideMenu(!showSideMenu);

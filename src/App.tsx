@@ -5,6 +5,7 @@ import { AppRouter } from './components/layout/AppRouter';
 import { MemoizedHeader, MemoizedToastContainer } from './components/ui/MemoizedComponents';
 import { useAppStore } from './stores/appStore';
 import { useMaxLimits } from './hooks/useMaxLimits';
+import { useSystemTheme } from './hooks/useSystemTheme';
 import { toast } from './stores/toastStore';
 
 // Optimized QueryClient configuration
@@ -33,6 +34,9 @@ const AppContent: React.FC = () => {
 
   // Calculate max limits based on available data
   useMaxLimits();
+
+  // Set up system theme listener
+  useSystemTheme();
 
   // Handle view changes and cleanup
   useEffect(() => {

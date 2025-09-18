@@ -6,9 +6,13 @@
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%238b5cf6'/%3E%3Cpath d='M10 8 L10 24 M10 8 L22 8 M10 15 L18 15' stroke='white' stroke-width='2.5' stroke-linecap='round' fill='none'/%3E%3C/svg%3E" type="image/svg+xml" />
     <link rel="shortcut icon" href="./favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="description" content="FluentFlow - Advanced English Learning Platform" />
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="theme-color" content="#ffffff" id="theme-color-meta" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="mobile-web-app-capable" content="yes" />
     <link rel="manifest" href="./manifest.json" />
 
     <!-- Note: Security headers are configured in vite.config.ts for development and in public/_headers for production -->
@@ -19,7 +23,84 @@
 <body>
     <div id="root"></div>
     
-
+    <!-- Theme initialization script - runs immediately to prevent FOUC -->
+    <script>
+        (function() {
+            // Mobile detection
+            function isMobile() {
+                return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+            }
+            
+            // Mobile-specific theme application
+            function applyMobileTheme(theme) {
+                if (!isMobile()) return;
+                
+                // Force style recalculation
+                document.body.style.display = 'none';
+                document.body.offsetHeight; // Force reflow
+                document.body.style.display = '';
+                
+                // Set mobile-specific properties
+                document.documentElement.style.setProperty('--mobile-theme-update', Date.now().toString());
+            }
+            
+            try {
+                // Check for stored theme preference
+                var storedSettings = localStorage.getItem('settings-storage');
+                var theme = 'light'; // default
+                
+                if (storedSettings) {
+                    var parsed = JSON.parse(storedSettings);
+                    if (parsed.state && parsed.state.theme) {
+                        theme = parsed.state.theme;
+                    }
+                } else {
+                    // No stored preference, check system preference
+                    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                        theme = 'dark';
+                    }
+                }
+                
+                // Apply theme immediately
+                if (theme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                    document.documentElement.classList.remove('light');
+                    // Update meta theme-color for mobile
+                    var metaThemeColor = document.querySelector('meta[name="theme-color"]');
+                    if (metaThemeColor) {
+                        metaThemeColor.setAttribute('content', '#1f2937');
+                    }
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    document.documentElement.classList.add('light');
+                    var metaThemeColor = document.querySelector('meta[name="theme-color"]');
+                    if (metaThemeColor) {
+                        metaThemeColor.setAttribute('content', '#ffffff');
+                    }
+                }
+                
+                // Apply mobile-specific fixes
+                applyMobileTheme(theme);
+                
+            } catch (error) {
+                console.warn('Failed to initialize theme:', error);
+                // Fallback to system preference
+                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.classList.add('dark');
+                    document.documentElement.classList.remove('light');
+                    var metaThemeColor = document.querySelector('meta[name="theme-color"]');
+                    if (metaThemeColor) {
+                        metaThemeColor.setAttribute('content', '#1f2937');
+                    }
+                    applyMobileTheme('dark');
+                } else {
+                    document.documentElement.classList.add('light');
+                    document.documentElement.classList.remove('dark');
+                    applyMobileTheme('light');
+                }
+            }
+        })();
+    </script>
     
     <script type="module" src="./src/main.tsx"></script>
 </body>

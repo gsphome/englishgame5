@@ -2,8 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import './index.css';
+import { initializeTheme } from './utils/themeInitializer';
 
 try {
+  // Initialize theme before React renders to prevent FOUC
+  initializeTheme();
+
   const rootElement = document.getElementById('root');
   if (!rootElement) {
     throw new Error('Root element not found');

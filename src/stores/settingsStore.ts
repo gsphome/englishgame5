@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import { applyThemeToDOM } from '../utils/themeInitializer';
 
 export interface GameSettings {
   flashcardMode: { wordCount: number };
@@ -63,7 +64,7 @@ const DEFAULT_CATEGORIES = [
 export const useSettingsStore = create<SettingsState>()(
   persist(
     (set, get) => ({
-      // Default values
+      // Default values - will be overridden by theme initializer
       theme: 'light',
       language: 'en',
       level: 'all',
@@ -89,12 +90,8 @@ export const useSettingsStore = create<SettingsState>()(
       // Actions
       setTheme: theme => {
         set({ theme });
-        // Apply theme to DOM
-        if (theme === 'dark') {
-          document.documentElement.classList.add('dark');
-        } else {
-          document.documentElement.classList.remove('dark');
-        }
+        // Apply theme to DOM and update meta theme-color
+        applyThemeToDOM(theme);
       },
 
       setLanguage: language => set({ language }),
@@ -132,6 +129,12 @@ export const useSettingsStore = create<SettingsState>()(
           };
         }
         return persistedState;
+      },
+      onRehydrateStorage: () => state => {
+        // Ensure theme is applied after rehydration
+        if (state?.theme) {
+          applyThemeToDOM(state.theme);
+        }
       },
     }
   )

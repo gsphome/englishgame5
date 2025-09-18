@@ -491,8 +491,9 @@ async function main() {
     }
 
     // Check current state after staging
+    let updatedStatusLines = getGitStatus(); // Refresh status after staging
     let diffLines = getGitDiff();
-    const hasWorkingChanges = statusLines.length > 0 && statusLines[0] !== '';
+    const hasWorkingChanges = updatedStatusLines.length > 0 && updatedStatusLines[0] !== '';
     const hasStagedChanges = diffLines.length > 0 && diffLines[0] !== '';
 
     // Determine what to do based on current state
@@ -547,7 +548,7 @@ async function main() {
     logInfo('Analyzing changes...');
 
     // Analyze changes
-    const analysis = analyzeChanges(statusLines, diffLines);
+    const analysis = analyzeChanges(updatedStatusLines, diffLines);
     const diffContent = getGitDiffContent();
     const diffStats = getGitDiffStats();
 
