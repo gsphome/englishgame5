@@ -70,6 +70,9 @@ jobs:
           else
             echo "should_deploy=false" >> $GITHUB_OUTPUT
             echo "❌ Deployment blocked - not all pipelines succeeded"
+            echo "📋 This will cause the workflow to be skipped (expected behavior)"
+            # Exit with failure to make the job fail, which will skip subsequent jobs
+            exit 1
           fi
         env:
           GH_TOKEN: ${{ github.token }}
@@ -131,3 +134,16 @@ jobs:
         run: |
           echo "🎉 Deployment successful!"
           echo "📍 URL: ${{ steps.deployment.outputs.page_url }}"
+
+  deployment-complete:
+    name: Deployment Complete
+    runs-on: ubuntu-latest
+    needs: [check-pipelines, deploy]
+    if: needs.check-pipelines.outputs.should-deploy == 'true' && needs.deploy.result == 'success'
+    steps:
+      - name: Success notification
+        run: |
+          echo "🎉 CD Deploy Workflow Completed Successfully!"
+          echo "✅ All pipelines passed"
+          echo "✅ Deployment executed successfully"
+          echo "🌐 Application is live and accessible"
