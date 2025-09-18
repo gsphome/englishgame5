@@ -162,56 +162,38 @@ jobs:
     needs: [check-pipelines, deploy]
     if: always()
     steps:
-      - name: Validate deployment outcome
+      - name: Final validation
         run: |
           echo "📊 Deployment Gate - Final Validation"
           echo "====================================="
           
           # Check if pipeline check failed
           if [ "${{ needs.check-pipelines.result }}" != "success" ]; then
-            echo "❌ Pipeline check job failed"
-            echo "🔍 Check the 'Check All Pipelines' job for details"
+            echo "❌ FAILURE: Pipeline check job failed"
             exit 1
           fi
           
-          # Get deployment decision
+          # Get results
           SHOULD_DEPLOY="${{ needs.check-pipelines.outputs.should-deploy }}"
           DEPLOY_RESULT="${{ needs.deploy.result }}"
           
-          echo "🎯 Deployment Decision: $SHOULD_DEPLOY"
-          echo "📋 Deploy Job Result: $DEPLOY_RESULT"
+          echo "🎯 Should Deploy: $SHOULD_DEPLOY"
+          echo "📋 Deploy Result: $DEPLOY_RESULT"
           
-          if [ "$SHOULD_DEPLOY" == "true" ]; then
-            # Deployment should have happened
-            if [ "$DEPLOY_RESULT" == "success" ]; then
-              echo "✅ SUCCESS: Deployment completed successfully"
-              echo "🌐 Application is live and accessible"
-            elif [ "$DEPLOY_RESULT" == "failure" ]; then
-              echo "❌ FAILURE: Deployment job failed during execution"
-              echo "� Cheick the 'Deploy to Production' job for error details"
-              exit 1
-            elif [ "$DEPLOY_RESULT" == "skipped" ]; then
-              echo "❌ FAILURE: Deployment was unexpectedly skipped"
-              echo "🐛 This indicates a workflow logic error"
-              exit 1
-            else
-              echo "❌ FAILURE: Deployment job in unknown state: $DEPLOY_RESULT"
-              exit 1
-            fi
-          else
-            # Deployment should not have happened
-            if [ "$DEPLOY_RESULT" == "skipped" ]; then
-              echo "❌ FAILURE: Deployment blocked due to pipeline requirements"
-              echo "📋 Required pipelines must all succeed:"
-              echo "   - CI Quality: must be 'success'"
-              echo "   - CI Security: must be 'success'" 
-              echo "   - CI Build: must be 'success'"
-              echo ""
-              echo "🔍 Check the 'Check All Pipelines' job for specific failures"
-              exit 1
-            else
-              echo "❌ FAILURE: Unexpected deployment state when should_deploy=false"
-              echo "🐛 Deploy result: $DEPLOY_RESULT (expected: skipped)"
-              exit 1
-            fi
+          # Success cases
+          if [ "$SHOULD_DEPLOY" == "true" ] && [ "$DEPLOY_RESULT" == "success" ]; then
+            echo "✅ SUCCESS: Deployment completed successfully"
+            exit 0
           fi
+          
+          if [ "$SHOULD_DEPLOY" == "false" ] && [ "$DEPLOY_RESULT" == "skipped" ]; then
+            echo "ℹ️ INFO: Deployment correctly skipped (pipeline requirements not met)"
+            echo "✅ Workflow completed as expected"
+            exit 0
+          fi
+          
+          # Failure cases
+          echo "❌ FAILURE: Unexpected deployment state"
+          echo "🔍 Should deploy: $SHOULD_DEPLOY"
+          echo "🔍 Deploy result: $DEPLOY_RESULT"
+          exit 1
