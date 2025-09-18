@@ -64,36 +64,12 @@ jobs:
           echo "- Security: ${SECURITY_STATUS:-❓ not found}"
           echo "- Build: ${BUILD_STATUS:-❓ not found}"
           
-          # Check if all pipelines exist and succeeded
-          MISSING_PIPELINES=""
-          FAILED_PIPELINES=""
-          
-          if [ -z "$QUALITY_STATUS" ]; then
-            MISSING_PIPELINES="$MISSING_PIPELINES CI-Quality"
-          elif [ "$QUALITY_STATUS" != "success" ]; then
-            FAILED_PIPELINES="$FAILED_PIPELINES CI-Quality($QUALITY_STATUS)"
-          fi
-          
-          if [ -z "$SECURITY_STATUS" ]; then
-            MISSING_PIPELINES="$MISSING_PIPELINES CI-Security"
-          elif [ "$SECURITY_STATUS" != "success" ]; then
-            FAILED_PIPELINES="$FAILED_PIPELINES CI-Security($SECURITY_STATUS)"
-          fi
-          
-          if [ -z "$BUILD_STATUS" ]; then
-            MISSING_PIPELINES="$MISSING_PIPELINES CI-Build"
-          elif [ "$BUILD_STATUS" != "success" ]; then
-            FAILED_PIPELINES="$FAILED_PIPELINES CI-Build($BUILD_STATUS)"
-          fi
-          
           if [[ "$QUALITY_STATUS" == "success" && "$SECURITY_STATUS" == "success" && "$BUILD_STATUS" == "success" ]]; then
             echo "should_deploy=true" >> $GITHUB_OUTPUT
             echo "✅ All pipelines succeeded - deployment approved"
           else
             echo "should_deploy=false" >> $GITHUB_OUTPUT
-            echo "❌ Deployment blocked:"
-            [ -n "$MISSING_PIPELINES" ] && echo "  Missing:$MISSING_PIPELINES"
-            [ -n "$FAILED_PIPELINES" ] && echo "  Failed:$FAILED_PIPELINES"
+            echo "❌ Deployment blocked - not all pipelines succeeded"
           fi
         env:
           GH_TOKEN: ${{ github.token }}
@@ -155,45 +131,3 @@ jobs:
         run: |
           echo "🎉 Deployment successful!"
           echo "📍 URL: ${{ steps.deployment.outputs.page_url }}"
-
-  deployment-gate:
-    name: Deployment Gate
-    runs-on: ubuntu-latest
-    needs: [check-pipelines, deploy]
-    if: always()
-    steps:
-      - name: Final validation
-        run: |
-          echo "📊 Deployment Gate - Final Validation"
-          echo "====================================="
-          
-          # Check if pipeline check failed
-          if [ "${{ needs.check-pipelines.result }}" != "success" ]; then
-            echo "❌ FAILURE: Pipeline check job failed"
-            exit 1
-          fi
-          
-          # Get results
-          SHOULD_DEPLOY="${{ needs.check-pipelines.outputs.should-deploy }}"
-          DEPLOY_RESULT="${{ needs.deploy.result }}"
-          
-          echo "🎯 Should Deploy: $SHOULD_DEPLOY"
-          echo "📋 Deploy Result: $DEPLOY_RESULT"
-          
-          # Success cases
-          if [ "$SHOULD_DEPLOY" == "true" ] && [ "$DEPLOY_RESULT" == "success" ]; then
-            echo "✅ SUCCESS: Deployment completed successfully"
-            exit 0
-          fi
-          
-          if [ "$SHOULD_DEPLOY" == "false" ] && [ "$DEPLOY_RESULT" == "skipped" ]; then
-            echo "ℹ️ INFO: Deployment correctly skipped (pipeline requirements not met)"
-            echo "✅ Workflow completed as expected"
-            exit 0
-          fi
-          
-          # Failure cases
-          echo "❌ FAILURE: Unexpected deployment state"
-          echo "🔍 Should deploy: $SHOULD_DEPLOY"
-          echo "🔍 Deploy result: $DEPLOY_RESULT"
-          exit 1
