@@ -156,25 +156,42 @@ jobs:
           echo "🎉 Deployment successful!"
           echo "📍 URL: ${{ steps.deployment.outputs.page_url }}"
 
-  deployment-gate:
-    name: Deployment Gate
+  deployment-status:
+    name: Deployment Status Report
     runs-on: ubuntu-latest
-    needs: check-pipelines
+    needs: [check-pipelines, deploy]
     if: always()
     steps:
-      - name: Check deployment status
+      - name: Report deployment status
         run: |
-          if [ "${{ needs.check-pipelines.outputs.should-deploy }}" != "true" ]; then
-            echo "❌ Deployment was not executed"
-            echo "📊 Pipeline check result: ${{ needs.check-pipelines.outputs.should-deploy }}"
-            echo ""
-            echo "Possible reasons:"
-            echo "- CI Quality pipeline failed or didn't run"
-            echo "- CI Security pipeline failed or didn't run" 
-            echo "- CI Build pipeline failed or didn't run"
-            echo ""
-            echo "All three pipelines must succeed for deployment to proceed."
+          echo "📊 Deployment Status Report"
+          echo "=========================="
+          
+          if [ "${{ needs.check-pipelines.result }}" != "success" ]; then
+            echo "❌ Pipeline check failed"
             exit 1
+          fi
+          
+          if [ "${{ needs.check-pipelines.outputs.should-deploy }}" == "true" ]; then
+            if [ "${{ needs.deploy.result }}" == "success" ]; then
+              echo "✅ Deployment completed successfully"
+              echo "🌐 Application is live"
+            elif [ "${{ needs.deploy.result }}" == "failure" ]; then
+              echo "❌ Deployment failed during execution"
+              exit 1
+            elif [ "${{ needs.deploy.result }}" == "skipped" ]; then
+              echo "⚠️ Deployment was skipped unexpectedly"
+              exit 1
+            else
+              echo "❓ Deployment status unknown: ${{ needs.deploy.result }}"
+              exit 1
+            fi
           else
-            echo "✅ Deployment check passed"
+            echo "ℹ️ Deployment was not executed (pipeline requirements not met)"
+            echo "📋 This is expected behavior when:"
+            echo "   - CI Quality pipeline hasn't completed successfully"
+            echo "   - CI Security pipeline hasn't completed successfully"
+            echo "   - CI Build pipeline hasn't completed successfully"
+            echo ""
+            echo "✅ Workflow completed successfully (no deployment needed)"
           fi
