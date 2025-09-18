@@ -135,7 +135,7 @@ const workflows = {
   },
   full: {
     name: '🚀 Complete Development Flow',
-    description: 'All pipelines + AI commit + push + GitHub Actions monitoring',
+    description: 'All pipelines + dual commits + push + GitHub Actions monitoring',
     steps: [
       { type: 'command', cmd: 'node scripts/git/smart-commit.js --stage-all --push --auto --allow-empty', desc: 'AI commit & push (pre-build)' },
       { type: 'pipeline', target: 'quality' },
