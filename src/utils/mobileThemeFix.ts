@@ -184,8 +184,6 @@ export function isSafariMobile(): boolean {
 export function forceSafariLightMode(): void {
   if (!isSafariMobile()) return;
 
-  const htmlElement = document.documentElement;
-
   // Nuclear approach for light mode
   let safariLightOverride = document.getElementById('safari-light-override');
   if (!safariLightOverride) {
