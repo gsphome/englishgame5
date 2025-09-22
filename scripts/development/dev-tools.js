@@ -143,7 +143,8 @@ const workflows = {
       { type: 'pipeline', target: 'build' },
       { type: 'command', cmd: 'node scripts/git/smart-commit.js --stage-all --push --auto --allow-empty', desc: 'Post-build commit & push (with formatting fixes)' },
       { type: 'command', cmd: 'node scripts/git/gh-status.js watch', desc: 'Monitor GitHub Actions' },
-      { type: 'command', cmd: 'node scripts/git/gh-status.js current', desc: 'Final GitHub Actions status' }
+      { type: 'command', cmd: 'node scripts/git/gh-status.js current', desc: 'Final GitHub Actions status' },
+      { type: 'command', cmd: 'node scripts/deployment/validate-pages-deployment.js', desc: 'Validate deployment status' }
     ]
   },
   fix: {
