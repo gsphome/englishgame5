@@ -137,11 +137,11 @@ const workflows = {
     name: '🚀 Complete Development Flow',
     description: 'All pipelines + dual commits + push + GitHub Actions monitoring',
     steps: [
-      { type: 'command', cmd: 'node scripts/git/smart-commit.js --stage-all --push --auto --allow-empty', desc: 'AI commit & push (pre-build)' },
+      { type: 'command', cmd: 'node scripts/git/smart-commit.js --stage-all --auto --allow-empty', desc: 'Pre-build commit (clean working directory)' },
       { type: 'pipeline', target: 'quality' },
       { type: 'pipeline', target: 'security' },
       { type: 'pipeline', target: 'build' },
-      { type: 'command', cmd: 'node scripts/git/smart-commit.js --stage-all --push --auto --allow-empty', desc: 'AI commit & push (post-build)' },
+      { type: 'command', cmd: 'node scripts/git/smart-commit.js --stage-all --push --auto --allow-empty', desc: 'Post-build commit & push (with formatting fixes)' },
       { type: 'command', cmd: 'node scripts/git/gh-status.js watch', desc: 'Monitor GitHub Actions' },
       { type: 'command', cmd: 'node scripts/git/gh-status.js current', desc: 'Final GitHub Actions status' }
     ]
