@@ -4,8 +4,14 @@
 @import './components/sorting-modal.css';
 @import './components/matching-modal.css';
 
-/* Safari Mobile Fix - Clean implementation using design tokens */
-@import './safari-mobile-fix.css';
+/* Design System Foundation */
+@import './design-system/breakpoints.css';
+
+/* Theme Contexts - 4 Differentiated Approaches */
+@import './themes/web-light.css'; /* Desktop/Tablet Light Mode */
+@import './themes/web-dark.css'; /* Desktop/Tablet Dark Mode */
+@import './themes/mobile-light.css'; /* Mobile Light + Safari Fixes */
+@import './themes/mobile-dark.css'; /* Mobile Dark + Safari Fixes */
 
 /* ========================================
    GLOBAL SVG ICON RULES - ENHANCED CONTRAST SYSTEM

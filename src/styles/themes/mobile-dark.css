@@ -1,0 +1,282 @@
+/**
+ * Mobile Dark Theme - Mobile Dark Mode + Safari Fixes
+ * 
+ * Optimized styles for mobile devices in dark mode
+ * Includes Safari Mobile specific fixes while maintaining design system consistency
+ */
+
+/* === MOBILE DARK CONTEXT === */
+@media (max-width: 768px) {
+  html.dark {
+    /* === BASE MOBILE OPTIMIZATIONS === */
+    /* Improved touch targets and spacing for dark mode */
+
+    /* === HEADER COMPONENT === */
+    .header-redesigned {
+      background-color: var(--gray-800);
+      color: var(--header-text-primary);
+      border-color: var(--header-border);
+      /* Mobile-specific: Larger touch targets */
+      min-height: 56px;
+      padding: 0.75rem 1rem;
+    }
+
+    .header-redesigned__title,
+    .header-redesigned__username {
+      color: var(--header-text-primary);
+      /* Mobile-specific: Better readability */
+      font-size: 1.1rem;
+    }
+
+    .header-redesigned svg,
+    .header-redesigned [data-lucide] {
+      color: var(--header-icon-color);
+      stroke: var(--header-icon-color);
+      /* Mobile-specific: Larger icons */
+      width: 24px;
+      height: 24px;
+    }
+
+    .header-redesigned__button {
+      /* Mobile-specific: Better touch targets */
+      min-width: 44px;
+      min-height: 44px;
+      padding: 0.5rem;
+    }
+
+    .header-redesigned__button:hover {
+      background-color: var(--header-button-hover-bg);
+    }
+
+    /* === MODULE CARDS === */
+    .module-card {
+      background-color: var(--gray-800);
+      color: var(--header-text-primary);
+      border-color: var(--header-border);
+      /* Mobile-specific: Card optimizations */
+      margin-bottom: 1rem;
+      padding: 1.25rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .module-card__title {
+      color: var(--header-text-primary);
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .module-card__description {
+      color: var(--header-text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .module-card svg {
+      color: var(--header-icon-color);
+      stroke: var(--header-icon-color);
+      width: 20px;
+      height: 20px;
+    }
+
+    /* === NAVIGATION === */
+    .nav-btn {
+      background-color: transparent;
+      color: var(--header-text-primary);
+      border-color: var(--header-border);
+      /* Mobile-specific: Touch optimization */
+      min-width: 44px;
+      min-height: 44px;
+      padding: 0.75rem;
+    }
+
+    .nav-btn:active {
+      background-color: var(--header-button-active-bg);
+      transform: scale(0.98);
+    }
+
+    /* === COMPACT SETTINGS === */
+    .compact-settings__container {
+      background-color: var(--settings-bg);
+      border-color: var(--settings-border);
+      /* Mobile-specific: Full width, better spacing */
+      margin: 0.5rem;
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    .compact-settings__header {
+      background-color: var(--settings-bg);
+      color: var(--settings-text-primary);
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--settings-border);
+    }
+
+    .compact-settings__content {
+      background-color: var(--settings-bg);
+      color: var(--settings-text-primary);
+      padding: 1rem 0;
+    }
+
+    .compact-settings__footer {
+      background-color: var(--settings-bg);
+      color: var(--settings-text-primary);
+      padding-top: 1rem;
+      border-top: 1px solid var(--settings-border);
+    }
+
+    .compact-settings__title {
+      color: var(--settings-text-primary);
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+
+    .compact-settings__label {
+      color: var(--settings-text-primary);
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .compact-settings__input,
+    .compact-settings__select {
+      background-color: var(--settings-input-bg);
+      color: var(--settings-text-primary);
+      border-color: var(--settings-input-border);
+      /* Mobile-specific: Better touch targets */
+      min-height: 44px;
+      padding: 0.75rem 1rem;
+      font-size: 16px; /* Prevents zoom on iOS */
+      border-radius: 8px;
+    }
+
+    .compact-settings__input:focus,
+    .compact-settings__select:focus {
+      border-color: var(--settings-focus-ring);
+      box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.25);
+      outline: none;
+    }
+
+    /* === LEARNING COMPONENTS === */
+    .flashcard-component,
+    .quiz-component,
+    .sorting-component,
+    .matching-component {
+      background-color: var(--gray-800);
+      color: var(--header-text-primary);
+      border-color: var(--header-border);
+      /* Mobile-specific: Better spacing and touch */
+      margin: 0.75rem;
+      padding: 1.5rem;
+      border-radius: 16px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    /* === MAIN MENU === */
+    .main-menu {
+      background-color: var(--gray-800);
+      border-color: var(--header-border);
+      /* Mobile-specific: Full screen overlay */
+      border-radius: 0;
+    }
+
+    .main-menu__item {
+      color: var(--header-text-primary);
+      /* Mobile-specific: Larger touch targets */
+      padding: 1rem 1.5rem;
+      font-size: 1.1rem;
+    }
+
+    .main-menu__item:active {
+      background-color: var(--header-button-active-bg);
+      transform: scale(0.98);
+    }
+  }
+}
+
+/* === SAFARI MOBILE SPECIFIC FIXES === */
+@supports (-webkit-touch-callout: none) {
+  @media (max-width: 768px) {
+    /* Force dark mode when system is light but app is dark */
+    @media (prefers-color-scheme: light) {
+      html.dark {
+        color-scheme: dark !important;
+        -webkit-color-scheme: dark !important;
+        background-color: var(--gray-800, #1f2937) !important;
+        color: var(--gray-50, #ffffff) !important;
+      }
+
+      /* Component-specific Safari fixes */
+      html.dark .header-redesigned,
+      html.dark .module-card,
+      html.dark .compact-settings__container {
+        background-color: var(--gray-800, #1f2937) !important;
+        color: var(--gray-50, #ffffff) !important;
+        border-color: var(--gray-600, #4b5563) !important;
+      }
+
+      html.dark .compact-settings__header,
+      html.dark .compact-settings__content,
+      html.dark .compact-settings__footer {
+        background-color: var(--settings-bg, #1f2937) !important;
+        color: var(--settings-text-primary, #ffffff) !important;
+      }
+
+      html.dark .compact-settings__input,
+      html.dark .compact-settings__select {
+        background-color: var(--settings-input-bg, #374151) !important;
+        color: var(--settings-text-primary, #ffffff) !important;
+        border-color: var(--settings-input-border, #4b5563) !important;
+      }
+
+      /* SVG icons Safari fix */
+      html.dark svg,
+      html.dark [data-lucide] {
+        color: var(--header-icon-color, #e5e7eb) !important;
+        stroke: var(--header-icon-color, #e5e7eb) !important;
+      }
+    }
+
+    /* Additional Safari webkit fixes */
+    html.dark {
+      -webkit-appearance: none !important;
+      -webkit-color-scheme: dark !important;
+    }
+  }
+}
+
+/* === MOBILE DARK ACCESSIBILITY === */
+@media (max-width: 768px) and (prefers-contrast: high) {
+  html.dark {
+    .header-redesigned,
+    .module-card,
+    .compact-settings__container {
+      border-width: 2px;
+      border-style: solid;
+      border-color: var(--gray-400);
+    }
+
+    .compact-settings__input,
+    .compact-settings__select {
+      border-width: 2px;
+      border-color: var(--gray-400);
+    }
+
+    .header-redesigned__title,
+    .module-card__title,
+    .compact-settings__title {
+      color: #ffffff;
+      font-weight: 600;
+    }
+  }
+}
+
+/* === MOBILE DARK REDUCED MOTION === */
+@media (max-width: 768px) and (prefers-reduced-motion: reduce) {
+  html.dark {
+    .nav-btn:active,
+    .main-menu__item:active {
+      transform: none !important;
+    }
+  }
+}

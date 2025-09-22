@@ -78,6 +78,29 @@ export function clearMobileCachedStyles(): void {
 }
 
 /**
+ * Applies appropriate theme context class based on device and theme
+ */
+export function applyThemeContext(theme: ThemeMode): void {
+  const htmlElement = document.documentElement;
+  const isMobile = isMobileDevice();
+
+  // Remove all existing theme context classes
+  htmlElement.classList.remove(
+    'theme-context--web-light',
+    'theme-context--web-dark',
+    'theme-context--mobile-light',
+    'theme-context--mobile-dark'
+  );
+
+  // Apply appropriate context class
+  if (isMobile) {
+    htmlElement.classList.add(`theme-context--mobile-${theme}`);
+  } else {
+    htmlElement.classList.add(`theme-context--web-${theme}`);
+  }
+}
+
+/**
  * Applies theme with mobile-specific optimizations and Safari override
  */
 export function applyMobileTheme(theme: ThemeMode): void {

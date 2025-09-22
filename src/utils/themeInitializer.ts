@@ -17,6 +17,7 @@ import {
   initializeMobileTheme,
   emergencyLightModeFix,
   isSafariMobile,
+  applyThemeContext,
 } from './mobileThemeFix';
 
 export interface ThemeState {
@@ -93,7 +94,10 @@ export function applyThemeToDOM(theme: ThemeMode): void {
     htmlElement.classList.add(THEME_CLASSES.light);
   }
 
-  // Apply mobile-specific theme fixes if on mobile
+  // Apply theme context class for CSS targeting
+  applyThemeContext(theme);
+
+  // Apply device-specific theme handling
   if (isMobileDevice()) {
     // Special handling for Safari Mobile light mode
     if (isSafariMobile() && theme === 'light') {

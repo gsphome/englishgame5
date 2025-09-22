@@ -1,0 +1,167 @@
+/**
+ * Web Dark Theme - Desktop/Tablet Dark Mode
+ * 
+ * Clean, semantic styles for web environments in dark mode
+ * Uses design system tokens and BEM-like naming conventions
+ */
+
+/* === WEB DARK CONTEXT === */
+@media (min-width: 769px) {
+  html.dark {
+    /* === HEADER COMPONENT === */
+    .header-redesigned {
+      background-color: var(--gray-800);
+      color: var(--header-text-primary);
+      border-color: var(--header-border);
+      transition: var(--theme-transition-duration, 0.2s) ease;
+    }
+
+    .header-redesigned__title,
+    .header-redesigned__username {
+      color: var(--header-text-primary);
+    }
+
+    .header-redesigned svg,
+    .header-redesigned [data-lucide] {
+      color: var(--header-icon-color);
+      stroke: var(--header-icon-color);
+    }
+
+    .header-redesigned__button:hover {
+      background-color: var(--header-button-hover-bg);
+    }
+
+    /* === MODULE CARDS === */
+    .module-card {
+      background-color: var(--gray-800);
+      color: var(--header-text-primary);
+      border-color: var(--header-border);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+      transition: var(--theme-transition-duration, 0.2s) ease;
+    }
+
+    .module-card:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    .module-card__title,
+    .module-card__description {
+      color: var(--header-text-primary);
+    }
+
+    .module-card svg {
+      color: var(--header-icon-color);
+      stroke: var(--header-icon-color);
+    }
+
+    /* === NAVIGATION === */
+    .nav-btn {
+      background-color: transparent;
+      color: var(--header-text-primary);
+      border-color: var(--header-border);
+    }
+
+    .nav-btn:hover {
+      background-color: var(--header-button-hover-bg);
+    }
+
+    .nav-btn:active {
+      background-color: var(--header-button-active-bg);
+    }
+
+    /* === SETTINGS COMPONENTS === */
+    .compact-settings__container {
+      background-color: var(--settings-bg);
+      border-color: var(--settings-border);
+    }
+
+    .compact-settings__header,
+    .compact-settings__content,
+    .compact-settings__footer {
+      background-color: var(--settings-bg);
+      color: var(--settings-text-primary);
+    }
+
+    .compact-settings__title,
+    .compact-settings__label {
+      color: var(--settings-text-primary);
+    }
+
+    .compact-settings__input,
+    .compact-settings__select {
+      background-color: var(--settings-input-bg);
+      color: var(--settings-text-primary);
+      border-color: var(--settings-input-border);
+    }
+
+    .compact-settings__input:focus,
+    .compact-settings__select:focus {
+      border-color: var(--settings-focus-ring);
+      box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.2);
+    }
+
+    /* === LEARNING COMPONENTS === */
+    .flashcard-component,
+    .quiz-component,
+    .sorting-component,
+    .matching-component {
+      background-color: var(--gray-800);
+      color: var(--header-text-primary);
+      border-color: var(--header-border);
+    }
+
+    /* === MAIN MENU === */
+    .main-menu {
+      background-color: var(--gray-800);
+      border-color: var(--header-border);
+    }
+
+    .main-menu__item {
+      color: var(--header-text-primary);
+    }
+
+    .main-menu__item:hover {
+      background-color: var(--header-button-hover-bg);
+    }
+
+    /* === TOAST NOTIFICATIONS === */
+    .toast-card {
+      background-color: var(--gray-800);
+      color: var(--header-text-primary);
+      border-color: var(--header-border);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+  }
+}
+
+/* === WEB DARK ACCESSIBILITY === */
+@media (min-width: 769px) and (prefers-contrast: high) {
+  html.dark {
+    .header-redesigned,
+    .module-card,
+    .compact-settings__container {
+      border-width: 2px;
+      border-style: solid;
+      border-color: var(--gray-400);
+    }
+
+    .header-redesigned__title,
+    .module-card__title,
+    .compact-settings__title {
+      font-weight: 600;
+      color: #ffffff;
+    }
+  }
+}
+
+/* === WEB DARK REDUCED MOTION === */
+@media (min-width: 769px) and (prefers-reduced-motion: reduce) {
+  html.dark {
+    .header-redesigned,
+    .module-card,
+    .nav-btn,
+    .compact-settings__input {
+      transition: none !important;
+    }
+  }
+}

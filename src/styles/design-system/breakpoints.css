@@ -1,0 +1,100 @@
+/**
+ * Breakpoints and Device Detection - Design System
+ * 
+ * Centralized media queries and device detection for consistent
+ * responsive behavior across all theme contexts
+ */
+
+/* === BREAKPOINT DEFINITIONS === */
+:root {
+  --breakpoint-mobile: 768px;
+  --breakpoint-tablet: 1024px;
+  --breakpoint-desktop: 1200px;
+}
+
+/* === DEVICE DETECTION MIXINS === */
+
+/* Mobile Detection - Comprehensive approach */
+@custom-media --mobile-device (max-width: 768px);
+@custom-media --mobile-portrait (max-width: 768px) and (orientation: portrait);
+@custom-media --mobile-landscape (max-width: 768px) and (orientation: landscape);
+
+/* Safari Mobile Specific Detection */
+@custom-media --safari-mobile (max-width: 768px) and (-webkit-touch-callout: none);
+
+/* Desktop/Web Detection */
+@custom-media --web-device (min-width: 769px);
+@custom-media --desktop-device (min-width: 1024px);
+
+/* === CONTEXT DETECTION CLASSES === */
+
+/* Base context classes for theme targeting */
+.theme-context--web-light {
+  /* Applied to html when: desktop + light mode */
+}
+
+.theme-context--web-dark {
+  /* Applied to html when: desktop + dark mode */
+}
+
+.theme-context--mobile-light {
+  /* Applied to html when: mobile + light mode */
+}
+
+.theme-context--mobile-dark {
+  /* Applied to html when: mobile + dark mode */
+}
+
+/* === UTILITY CLASSES === */
+
+/* Hide on specific contexts */
+.hide-on-mobile {
+  @media (max-width: 768px) {
+    display: none !important;
+  }
+}
+
+.hide-on-web {
+  @media (min-width: 769px) {
+    display: none !important;
+  }
+}
+
+.show-mobile-only {
+  display: none;
+  @media (max-width: 768px) {
+    display: block;
+  }
+}
+
+.show-web-only {
+  display: none;
+  @media (min-width: 769px) {
+    display: block;
+  }
+}
+
+/* === ACCESSIBILITY BREAKPOINTS === */
+
+/* High contrast mode detection */
+@media (prefers-contrast: high) {
+  .theme-context--web-light,
+  .theme-context--mobile-light {
+    --contrast-mode: high-light;
+  }
+
+  .theme-context--web-dark,
+  .theme-context--mobile-dark {
+    --contrast-mode: high-dark;
+  }
+}
+
+/* Reduced motion detection */
+@media (prefers-reduced-motion: reduce) {
+  .theme-context--web-light,
+  .theme-context--web-dark,
+  .theme-context--mobile-light,
+  .theme-context--mobile-dark {
+    --motion-mode: reduced;
+  }
+}
