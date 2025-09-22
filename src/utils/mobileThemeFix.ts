@@ -102,10 +102,10 @@ export function applyMobileTheme(theme: ThemeMode): void {
     // Force Safari to respect our theme choice with multiple methods
     htmlElement.style.setProperty('color-scheme', theme, 'important');
     htmlElement.style.setProperty('-webkit-color-scheme', theme, 'important');
-    
+
     // Apply the override immediately and again after a delay
     forceSafariThemeOverride();
-    
+
     setTimeout(() => {
       forceSafariThemeOverride();
     }, 100);
@@ -281,16 +281,16 @@ export function forceSafariThemeOverride(): void {
 
   // Step 3: Force immediate style recalculation with multiple methods
   htmlElement.style.setProperty('--safari-theme-override', Date.now().toString());
-  
+
   // Step 4: Additional Safari-specific fixes
   setTimeout(() => {
     // Force repaint by temporarily changing a property
     const originalTransform = htmlElement.style.transform;
     htmlElement.style.transform = 'translateZ(0)';
-    
+
     requestAnimationFrame(() => {
       htmlElement.style.transform = originalTransform;
-      
+
       // Force color-scheme meta tag update
       updateSafariColorSchemeMeta(currentTheme);
     });
@@ -304,17 +304,17 @@ function updateSafariColorSchemeMeta(theme: ThemeMode): void {
   // Remove existing color-scheme meta tags
   const existingMetas = document.querySelectorAll('meta[name="color-scheme"]');
   existingMetas.forEach(meta => meta.remove());
-  
+
   // Add new color-scheme meta tag
   const metaColorScheme = document.createElement('meta');
   metaColorScheme.setAttribute('name', 'color-scheme');
   metaColorScheme.setAttribute('content', theme);
   document.head.appendChild(metaColorScheme);
-  
+
   // Also add webkit-specific meta
   const existingWebkitMetas = document.querySelectorAll('meta[name="-webkit-color-scheme"]');
   existingWebkitMetas.forEach(meta => meta.remove());
-  
+
   const metaWebkitColorScheme = document.createElement('meta');
   metaWebkitColorScheme.setAttribute('name', '-webkit-color-scheme');
   metaWebkitColorScheme.setAttribute('content', theme);
@@ -402,13 +402,13 @@ export function setupMobileThemeHandlers(): void {
   // Safari-specific: Listen for system theme changes
   if (isSafariMobile() && window.matchMedia) {
     const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    
+
     const handleSystemThemeChange = () => {
       console.log('System theme changed, enforcing app theme...');
       const currentTheme = document.documentElement.classList.contains(THEME_CLASSES.dark)
         ? 'dark'
         : 'light';
-      
+
       // Immediately reapply our theme to override system change
       setTimeout(() => {
         applyMobileTheme(currentTheme as ThemeMode);
@@ -481,17 +481,17 @@ export function detectAndFixSafariThemeConflict(): void {
 
   if (conflictDetected) {
     console.warn('Safari theme conflict detected, applying aggressive fix...');
-    
+
     // Nuclear option: completely reset and reapply theme
     htmlElement.classList.remove('light', 'dark');
-    
+
     // Force a reflow
     htmlElement.offsetHeight;
-    
+
     // Reapply theme with aggressive override
     htmlElement.classList.add(currentTheme);
     forceSafariThemeOverride();
-    
+
     // Apply theme again after a short delay
     setTimeout(() => {
       applyMobileTheme(currentTheme as ThemeMode);
