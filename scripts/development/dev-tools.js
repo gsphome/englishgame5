@@ -34,9 +34,13 @@ function log(message, color = colors.reset) {
 }
 
 function logHeader(message) {
-  console.log('\n' + '='.repeat(60));
+  console.log('\n' + '='.repeat(50));
   log(message, colors.bright + colors.cyan);
-  console.log('='.repeat(60));
+  console.log('='.repeat(50));
+}
+
+function logCompactHeader(message) {
+  log(`\n🔄 ${message}`, colors.bright + colors.cyan);
 }
 
 function logSuccess(message) {
@@ -58,7 +62,7 @@ function logInfo(message) {
 function executeCommand(command, description, options = {}) {
   const startTime = Date.now();
   try {
-    log(`\n🔄 ${description}...`, colors.cyan);
+    log(`🔄 ${description}...`, colors.cyan);
 
     execSync(command, {
       stdio: options.silent ? 'pipe' : 'inherit',
@@ -79,7 +83,7 @@ function executeCommand(command, description, options = {}) {
 // Pipeline definitions
 const pipelines = {
   quality: {
-    name: '🎯 Quality Pipeline',
+    name: '🎯 Quality',
     description: 'ESLint, TypeScript, Tests, Formatting',
     commands: [
       { cmd: 'npm run lint', desc: 'ESLint check' },
@@ -91,7 +95,7 @@ const pipelines = {
     color: colors.blue
   },
   security: {
-    name: '🛡️ Security Pipeline',
+    name: '🛡️ Security',
     description: 'Vulnerabilities, Secrets, Licenses',
     commands: [
       { cmd: 'npm run security:audit', desc: 'Dependency audit' },
@@ -102,7 +106,7 @@ const pipelines = {
     color: colors.red
   },
   build: {
-    name: '📦 Build Pipeline',
+    name: '📦 Build',
     description: 'Build, Verify, Bundle Analysis',
     commands: [
       { cmd: 'npm run build', desc: 'Build application' },
@@ -134,8 +138,8 @@ const workflows = {
     ]
   },
   full: {
-    name: '🚀 Complete Development Flow',
-    description: 'All pipelines + dual commits + push + GitHub Actions monitoring',
+    name: '🚀 Full Pipeline',
+    description: 'Quality + Security + Build + Deploy',
     steps: [
       { type: 'command', cmd: 'node scripts/git/smart-commit.js --stage-all --auto --allow-empty', desc: 'Pre-build commit (clean working directory)' },
       { type: 'pipeline', target: 'quality' },
@@ -202,8 +206,7 @@ async function runPipeline(pipelineKey) {
     return false;
   }
 
-  logHeader(`${pipeline.name} - Execution`);
-  logInfo(`Description: ${pipeline.description}`);
+  logCompactHeader(`${pipeline.name}`);
 
   const startTime = Date.now();
   let allSuccess = true;
@@ -294,9 +297,9 @@ async function runWorkflow(workflowKey) {
 
     // Special message for full workflow completion with GitHub Actions status
     if (workflowKey === 'full') {
-      console.log('\n' + '='.repeat(60));
-      log('🎉 DEVELOPMENT FLOW COMPLETED!', colors.bright + colors.green);
-      console.log('='.repeat(60));
+      console.log('\n' + '='.repeat(50));
+      log('🎉 Pipeline Complete!', colors.bright + colors.green);
+      console.log('='.repeat(50));
       log('✅ All local pipelines passed', colors.green);
       log('✅ Code committed and pushed to GitHub', colors.green);
       log('✅ GitHub Actions monitoring completed', colors.green);
@@ -306,21 +309,15 @@ async function runWorkflow(workflowKey) {
         console.log('');
         switch (githubActionsStatus) {
           case 'SUCCESS':
-            log('🎯 FINAL STATUS: ALL SYSTEMS GREEN ✅', colors.bright + colors.green);
-            log('✅ Local pipelines: PASSED', colors.green);
-            log('✅ GitHub Actions: PASSED', colors.green);
+            log('🎯 Status: Local ✅ | Remote ✅', colors.bright + colors.green);
             break;
           case 'FAILED':
-            log('🎯 FINAL STATUS: GITHUB ACTIONS FAILED ❌', colors.bright + colors.red);
-            log('✅ Local pipelines: PASSED', colors.green);
-            log('❌ GitHub Actions: FAILED', colors.red);
-            log('🔍 Check GitHub Actions logs for details', colors.yellow);
+            log('🎯 Status: Local ✅ | Remote ❌', colors.bright + colors.red);
+            log('🔍 Check: GitHub Actions logs', colors.yellow);
             break;
           case 'IN_PROGRESS':
-            log('🎯 FINAL STATUS: GITHUB ACTIONS STILL RUNNING ⏳', colors.bright + colors.yellow);
-            log('✅ Local pipelines: PASSED', colors.green);
-            log('⏳ GitHub Actions: IN PROGRESS', colors.yellow);
-            log('💡 Use "npm run gh:watch" to continue monitoring', colors.cyan);
+            log('🎯 Status: Local ✅ | Remote ⏳', colors.bright + colors.yellow);
+            log('💡 Monitor: npm run gh:watch', colors.cyan);
             break;
           default:
             log('🎯 FINAL STATUS: GITHUB ACTIONS STATUS UNKNOWN ⚠️', colors.bright + colors.yellow);
@@ -332,10 +329,9 @@ async function runWorkflow(workflowKey) {
       }
 
       console.log('');
-      log('🎉 APPLICATION DEPLOYED SUCCESSFULLY!', colors.bright + colors.green);
-      log('   🌐 Your app is live at: https://gsphome.github.io/englishgame5/', colors.cyan);
-      log('   📊 Monitor status: npm run gh:current', colors.cyan);
-      console.log('='.repeat(60));
+      log('🌐 Live: https://gsphome.github.io/englishgame5/', colors.cyan);
+      log('📊 Status: npm run gh:current', colors.cyan);
+      console.log('='.repeat(50));
     }
   } else {
     logError(`${workflow.name} failed after ${totalDuration}s`);

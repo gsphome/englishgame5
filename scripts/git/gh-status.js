@@ -411,7 +411,7 @@ function hasActiveWorkflows() {
  * Watch workflow status (polling) - stops automatically when all workflows complete
  */
 function watchStatus(interval = 30) {
-  logHeader(`👀 Watching GitHub Actions Status (${interval}s intervals)`);
+  logInfo(`👀 Watching GitHub Actions (${interval}s intervals)`);
   logInfo('Press Ctrl+C to stop watching manually\n');
   
   let iteration = 0;
