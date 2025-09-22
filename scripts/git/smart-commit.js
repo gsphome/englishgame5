@@ -14,7 +14,7 @@ import { dirname } from 'path';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-const rootDir = dirname(__dirname);
+const rootDir = dirname(dirname(__dirname)); // scripts/git -> scripts -> project root
 
 // Colors for console output
 const colors = {
