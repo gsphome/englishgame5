@@ -159,6 +159,30 @@ async function fetchLatestDeployment() {
 }
 
 /**
+ * Check if there are active GitHub Actions workflows
+ */
+async function checkActiveWorkflows() {
+  try {
+    const apiUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/actions/runs?status=in_progress&per_page=5`;
+    const curlCommand = `curl -s -H "Accept: application/vnd.github.v3+json" "${apiUrl}"`;
+    
+    const response = execSync(curlCommand, { encoding: 'utf8' });
+    const data = JSON.parse(response);
+    
+    if (data.workflow_runs && Array.isArray(data.workflow_runs)) {
+      return data.workflow_runs.filter(run => 
+        run.status === 'in_progress' || run.status === 'queued'
+      );
+    }
+    
+    return [];
+  } catch (error) {
+    logWarning(`Could not check GitHub Actions status: ${error.message}`);
+    return [];
+  }
+}
+
+/**
  * Test if the deployed site is accessible
  */
 async function testSiteAccessibility() {
@@ -274,13 +298,58 @@ async function validateDeployment() {
       if (isCurrentDeployed) {
         logSuccess('Current commit is deployed');
       } else {
-        logWarning('Current commit differs from deployed commit');
-        logInfo(`Local:    ${currentCommit.substring(0, 8)}`);
-        logInfo(`Deployed: ${deployment.sha.substring(0, 8)}`);
+        // Check if deployment is recent (within last 10 minutes)
+        const deploymentTime = new Date(deployment.created_at);
+        const now = new Date();
+        const diffMinutes = (now - deploymentTime) / (1000 * 60);
+        
+        if (diffMinutes < 10 && status?.state === 'pending') {
+          logInfo('🚀 Deployment in progress - commit difference is expected');
+          logInfo(`Local:    ${currentCommit.substring(0, 8)} (pending deployment)`);
+          logInfo(`Deployed: ${deployment.sha.substring(0, 8)} (current live version)`);
+          logInfo('💡 This is normal during active deployment process');
+        } else if (diffMinutes < 10 && status?.state === 'success') {
+          logWarning('⏳ Recent deployment completed - may need a few minutes to propagate');
+          logInfo(`Local:    ${currentCommit.substring(0, 8)} (should be deploying)`);
+          logInfo(`Deployed: ${deployment.sha.substring(0, 8)} (current live version)`);
+          logInfo('💡 Check GitHub Actions for deployment status');
+        } else {
+          logWarning('Current commit differs from deployed commit');
+          logInfo(`Local:    ${currentCommit.substring(0, 8)}`);
+          logInfo(`Deployed: ${deployment.sha.substring(0, 8)}`);
+          
+          // Provide helpful suggestions
+          if (status?.state === 'failure') {
+            logWarning('💡 Last deployment failed - check GitHub Actions logs');
+          } else {
+            logInfo('💡 Push your changes or check if GitHub Actions is running');
+          }
+        }
       }
     }
   }
   
+  // Check for active workflows
+  const activeWorkflows = await checkActiveWorkflows();
+  if (activeWorkflows.length > 0) {
+    console.log('\n⚡ Active GitHub Actions:');
+    activeWorkflows.forEach(workflow => {
+      const workflowName = workflow.name || 'Unknown Workflow';
+      const status = workflow.status;
+      const statusIcon = status === 'in_progress' ? '🔄' : status === 'queued' ? '⏳' : '🔍';
+      
+      logInfo(`${statusIcon} ${workflowName} (${status})`);
+      if (workflow.html_url) {
+        logInfo(`   URL: ${workflow.html_url}`);
+      }
+    });
+    
+    if (currentCommit && deploymentInfo?.deployment?.sha && 
+        !currentCommit.startsWith(deploymentInfo.deployment.sha)) {
+      logInfo('💡 Active workflows may be deploying your latest changes');
+    }
+  }
+
   // Test site accessibility
   const accessibility = await testSiteAccessibility();
   
@@ -302,9 +371,16 @@ async function validateDeployment() {
   // Determine status based on available information
   if (accessibility.accessible) {
     if (deploymentInfo?.status?.state === 'success') {
-      overallStatus = 'HEALTHY';
-      statusColor = colors.green;
-    } else if (deploymentInfo?.status?.state === 'pending') {
+      // Check if there are newer commits being deployed
+      if (activeWorkflows.length > 0 && currentCommit && deploymentInfo?.deployment?.sha &&
+          !currentCommit.startsWith(deploymentInfo.deployment.sha)) {
+        overallStatus = 'UPDATING';
+        statusColor = colors.yellow;
+      } else {
+        overallStatus = 'HEALTHY';
+        statusColor = colors.green;
+      }
+    } else if (deploymentInfo?.status?.state === 'pending' || activeWorkflows.length > 0) {
       overallStatus = 'DEPLOYING';
       statusColor = colors.yellow;
     } else if (deploymentInfo?.status?.state === 'failure') {
@@ -316,14 +392,21 @@ async function validateDeployment() {
       statusColor = colors.green;
     }
   } else {
-    overallStatus = 'INACCESSIBLE';
-    statusColor = colors.red;
+    if (activeWorkflows.length > 0) {
+      overallStatus = 'DEPLOYING';
+      statusColor = colors.yellow;
+    } else {
+      overallStatus = 'INACCESSIBLE';
+      statusColor = colors.red;
+    }
   }
   
   log(`Overall Status: ${overallStatus}`, colors.bright + statusColor);
   
   if (overallStatus === 'HEALTHY' || overallStatus === 'ACCESSIBLE') {
     logSuccess('✨ Deployment is healthy and accessible!');
+  } else if (overallStatus === 'UPDATING') {
+    logSuccess('🔄 Site is live and updating with latest changes!');
   } else if (overallStatus === 'DEPLOYING') {
     logWarning('⏳ Deployment is in progress...');
   } else {
@@ -344,7 +427,7 @@ async function validateDeployment() {
   
   console.log('='.repeat(60));
   
-  return overallStatus === 'HEALTHY' || overallStatus === 'ACCESSIBLE';
+  return overallStatus === 'HEALTHY' || overallStatus === 'ACCESSIBLE' || overallStatus === 'UPDATING';
 }
 
 // Handle command line execution
