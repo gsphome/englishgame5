@@ -11,7 +11,13 @@ import {
   THEME_SELECTORS,
   type ThemeMode,
 } from './themeConstants';
-import { isMobileDevice, applyMobileTheme, initializeMobileTheme } from './mobileThemeFix';
+import {
+  isMobileDevice,
+  applyMobileTheme,
+  initializeMobileTheme,
+  emergencyLightModeFix,
+  isSafariMobile,
+} from './mobileThemeFix';
 
 export interface ThemeState {
   theme: ThemeMode;
@@ -89,7 +95,13 @@ export function applyThemeToDOM(theme: ThemeMode): void {
 
   // Apply mobile-specific theme fixes if on mobile
   if (isMobileDevice()) {
-    applyMobileTheme(theme);
+    // Special handling for Safari Mobile light mode
+    if (isSafariMobile() && theme === 'light') {
+      // Use emergency fix for light mode in Safari Mobile
+      emergencyLightModeFix();
+    } else {
+      applyMobileTheme(theme);
+    }
   } else {
     // Force re-render of problematic elements for desktop
     forceThemeRerender(theme);

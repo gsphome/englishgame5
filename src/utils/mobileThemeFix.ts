@@ -103,12 +103,37 @@ export function applyMobileTheme(theme: ThemeMode): void {
     htmlElement.style.setProperty('color-scheme', theme, 'important');
     htmlElement.style.setProperty('-webkit-color-scheme', theme, 'important');
 
-    // Apply the override immediately and again after a delay
-    forceSafariThemeOverride();
+    // Special handling for light mode (the problematic one)
+    if (theme === 'light') {
+      // Remove any dark mode artifacts
+      htmlElement.classList.remove('dark');
+      htmlElement.classList.add('light');
 
-    setTimeout(() => {
+      // Force light mode immediately
+      forceSafariLightMode();
+
+      // Apply multiple times to ensure it sticks
+      setTimeout(() => {
+        forceSafariLightMode();
+        // Force all elements to recalculate styles
+        const allElements = document.querySelectorAll('*');
+        allElements.forEach(el => {
+          const htmlEl = el as HTMLElement;
+          htmlEl.style.colorScheme = 'light';
+        });
+      }, 50);
+
+      setTimeout(() => {
+        forceSafariLightMode();
+      }, 200);
+    } else {
+      // Apply normal override for dark mode
       forceSafariThemeOverride();
-    }, 100);
+
+      setTimeout(() => {
+        forceSafariThemeOverride();
+      }, 100);
+    }
   }
 
   // Step 6: Force another recalculation
@@ -154,6 +179,131 @@ export function isSafariMobile(): boolean {
 }
 
 /**
+ * Specifically forces Safari to display light mode correctly
+ */
+export function forceSafariLightMode(): void {
+  if (!isSafariMobile()) return;
+
+  const htmlElement = document.documentElement;
+
+  // Nuclear approach for light mode
+  let safariLightOverride = document.getElementById('safari-light-override');
+  if (!safariLightOverride) {
+    safariLightOverride = document.createElement('style');
+    safariLightOverride.id = 'safari-light-override';
+    document.head.appendChild(safariLightOverride);
+  }
+
+  const lightOverrideCSS = `
+    /* SAFARI LIGHT MODE NUCLEAR OVERRIDE */
+    
+    /* Force light mode regardless of system preference */
+    html:not(.dark),
+    html.light {
+      background: #ffffff !important;
+      color: #111827 !important;
+      color-scheme: light !important;
+      -webkit-color-scheme: light !important;
+    }
+    
+    /* Override ALL elements to light mode */
+    html:not(.dark) *,
+    html.light * {
+      background-color: transparent !important;
+      color: #111827 !important;
+      border-color: #e5e7eb !important;
+      color-scheme: light !important;
+      -webkit-color-scheme: light !important;
+    }
+    
+    /* Specific component overrides for light mode */
+    html:not(.dark) .header-redesigned,
+    html:not(.dark) .main-menu,
+    html:not(.dark) .module-card,
+    html:not(.dark) .compact-settings__container,
+    html:not(.dark) .compact-settings__header,
+    html:not(.dark) .compact-settings__content,
+    html:not(.dark) .compact-settings__footer,
+    html:not(.dark) .flashcard-component,
+    html:not(.dark) .quiz-component,
+    html:not(.dark) .sorting-component,
+    html:not(.dark) .matching-component,
+    html.light .header-redesigned,
+    html.light .main-menu,
+    html.light .module-card,
+    html.light .compact-settings__container,
+    html.light .compact-settings__header,
+    html.light .compact-settings__content,
+    html.light .compact-settings__footer,
+    html.light .flashcard-component,
+    html.light .quiz-component,
+    html.light .sorting-component,
+    html.light .matching-component {
+      background-color: #ffffff !important;
+      background: #ffffff !important;
+      color: #111827 !important;
+      border-color: #e5e7eb !important;
+    }
+    
+    /* Force light mode on text elements */
+    html:not(.dark) h1, html:not(.dark) h2, html:not(.dark) h3, html:not(.dark) h4, html:not(.dark) h5, html:not(.dark) h6,
+    html:not(.dark) p, html:not(.dark) span, html:not(.dark) div, html:not(.dark) button, html:not(.dark) input, html:not(.dark) select,
+    html.light h1, html.light h2, html.light h3, html.light h4, html.light h5, html.light h6,
+    html.light p, html.light span, html.light div, html.light button, html.light input, html.light select {
+      color: #111827 !important;
+    }
+    
+    /* Force light mode on SVG icons */
+    html:not(.dark) svg,
+    html:not(.dark) [data-lucide],
+    html:not(.dark) .lucide,
+    html.light svg,
+    html.light [data-lucide],
+    html.light .lucide {
+      color: #111827 !important;
+      stroke: #111827 !important;
+      fill: none !important;
+    }
+    
+    /* Override system dark mode media query */
+    @media (prefers-color-scheme: dark) {
+      html:not(.dark),
+      html.light {
+        background: #ffffff !important;
+        color: #111827 !important;
+        color-scheme: light !important;
+        -webkit-color-scheme: light !important;
+      }
+      
+      html:not(.dark) *,
+      html.light * {
+        color: #111827 !important;
+        color-scheme: light !important;
+        -webkit-color-scheme: light !important;
+      }
+    }
+    
+    /* Safari-specific webkit overrides for light mode */
+    @supports (-webkit-touch-callout: none) {
+      html:not(.dark),
+      html.light {
+        -webkit-appearance: none !important;
+        -webkit-color-scheme: light !important;
+        -webkit-text-fill-color: #111827 !important;
+      }
+      
+      html:not(.dark) *,
+      html.light * {
+        -webkit-text-fill-color: #111827 !important;
+        -webkit-color-scheme: light !important;
+      }
+    }
+  `;
+
+  safariLightOverride.textContent = lightOverrideCSS;
+}
+
+/**
  * Forces Safari to respect app theme over system preference
  */
 export function forceSafariThemeOverride(): void {
@@ -161,6 +311,11 @@ export function forceSafariThemeOverride(): void {
 
   const htmlElement = document.documentElement;
   const currentTheme = htmlElement.classList.contains('dark') ? 'dark' : 'light';
+
+  // If we're in light mode, apply the nuclear light mode fix
+  if (currentTheme === 'light') {
+    forceSafariLightMode();
+  }
 
   // Step 1: Add aggressive CSS override
   let safariOverrideStyle = document.getElementById('safari-theme-override');
@@ -480,7 +635,13 @@ export function detectAndFixSafariThemeConflict(): void {
   }
 
   if (conflictDetected) {
-    console.warn('Safari theme conflict detected, applying aggressive fix...');
+    console.warn(
+      `Safari theme conflict detected in ${currentTheme} mode, applying aggressive fix...`
+    );
+    console.warn(
+      `Expected: bg=${currentTheme === 'light' ? expectedLight.bg : expectedDark.bg}, color=${currentTheme === 'light' ? expectedLight.color : expectedDark.color}`
+    );
+    console.warn(`Actual: bg=${computedBg}, color=${computedColor}`);
 
     // Nuclear option: completely reset and reapply theme
     htmlElement.classList.remove('light', 'dark');
@@ -490,13 +651,77 @@ export function detectAndFixSafariThemeConflict(): void {
 
     // Reapply theme with aggressive override
     htmlElement.classList.add(currentTheme);
-    forceSafariThemeOverride();
+
+    if (currentTheme === 'light') {
+      // Special nuclear option for light mode
+      forceSafariLightMode();
+
+      // Force every element to light mode
+      setTimeout(() => {
+        const allElements = document.querySelectorAll('*');
+        allElements.forEach(el => {
+          const htmlEl = el as HTMLElement;
+          htmlEl.style.colorScheme = 'light';
+          htmlEl.style.setProperty('-webkit-color-scheme', 'light', 'important');
+        });
+        forceSafariLightMode();
+      }, 100);
+    } else {
+      forceSafariThemeOverride();
+    }
 
     // Apply theme again after a short delay
     setTimeout(() => {
       applyMobileTheme(currentTheme as ThemeMode);
     }, 200);
   }
+}
+
+/**
+ * Emergency light mode fix for Safari Mobile
+ */
+export function emergencyLightModeFix(): void {
+  if (!isSafariMobile()) return;
+
+  console.log('Applying emergency light mode fix for Safari Mobile...');
+
+  const htmlElement = document.documentElement;
+
+  // Remove all theme classes and start fresh
+  htmlElement.classList.remove('dark', 'light');
+
+  // Force light mode class
+  htmlElement.classList.add('light');
+
+  // Apply nuclear light mode CSS
+  forceSafariLightMode();
+
+  // Force all elements to light mode
+  const allElements = document.querySelectorAll('*');
+  allElements.forEach(el => {
+    const htmlEl = el as HTMLElement;
+    htmlEl.style.colorScheme = 'light';
+    htmlEl.style.setProperty('-webkit-color-scheme', 'light', 'important');
+    htmlEl.style.setProperty('color', '#111827', 'important');
+  });
+
+  // Force meta tags
+  updateSafariColorSchemeMeta('light');
+
+  // Force body background
+  document.body.style.setProperty('background-color', '#ffffff', 'important');
+  document.body.style.setProperty('color', '#111827', 'important');
+
+  // Apply multiple times to ensure it sticks
+  setTimeout(() => {
+    forceSafariLightMode();
+    htmlElement.style.setProperty('background-color', '#ffffff', 'important');
+    htmlElement.style.setProperty('color', '#111827', 'important');
+  }, 100);
+
+  setTimeout(() => {
+    forceSafariLightMode();
+  }, 500);
 }
 
 /**
