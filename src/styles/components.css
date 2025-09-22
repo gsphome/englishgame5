@@ -4,6 +4,9 @@
 @import './components/sorting-modal.css';
 @import './components/matching-modal.css';
 
+/* Safari Mobile Fix - Clean implementation using design tokens */
+@import './safari-mobile-fix.css';
+
 /* ========================================
    GLOBAL SVG ICON RULES - ENHANCED CONTRAST SYSTEM
    ======================================== */

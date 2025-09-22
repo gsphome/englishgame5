@@ -103,29 +103,24 @@ export function applyMobileTheme(theme: ThemeMode): void {
     htmlElement.style.setProperty('color-scheme', theme, 'important');
     htmlElement.style.setProperty('-webkit-color-scheme', theme, 'important');
 
-    // Special handling for light mode (the problematic one)
+    // Clean theme application using design system
     if (theme === 'light') {
-      // Remove any dark mode artifacts
-      htmlElement.classList.remove('dark');
-      htmlElement.classList.add('light');
+      // Ensure proper class management
+      htmlElement.classList.remove(THEME_CLASSES.dark);
+      htmlElement.classList.add(THEME_CLASSES.light);
 
-      // Force light mode immediately
+      // Apply CSS-based fix (now using design tokens)
       forceSafariLightMode();
 
-      // Apply multiple times to ensure it sticks
-      setTimeout(() => {
-        forceSafariLightMode();
-        // Force all elements to recalculate styles
-        const allElements = document.querySelectorAll('*');
-        allElements.forEach(el => {
-          const htmlEl = el as HTMLElement;
-          htmlEl.style.colorScheme = 'light';
-        });
-      }, 50);
+      // Set CSS custom properties for consistency
+      const lightTokens = THEME_COLORS.light;
+      htmlElement.style.setProperty(THEME_CSS_VARS.themeBgSecondary, lightTokens.bgSecondary);
+      htmlElement.style.setProperty(THEME_CSS_VARS.themeTextPrimary, lightTokens.textPrimary);
 
+      // Single delayed application for stability
       setTimeout(() => {
         forceSafariLightMode();
-      }, 200);
+      }, 100);
     } else {
       // Apply normal override for dark mode
       forceSafariThemeOverride();
@@ -179,12 +174,14 @@ export function isSafariMobile(): boolean {
 }
 
 /**
- * Specifically forces Safari to display light mode correctly
+ * Applies Safari Mobile light mode fix using design system tokens
  */
 export function forceSafariLightMode(): void {
   if (!isSafariMobile()) return;
 
-  // Nuclear approach for light mode
+  // Use design system tokens instead of hardcoded values
+  const lightTokens = THEME_COLORS.light;
+
   let safariLightOverride = document.getElementById('safari-light-override');
   if (!safariLightOverride) {
     safariLightOverride = document.createElement('style');
@@ -193,106 +190,57 @@ export function forceSafariLightMode(): void {
   }
 
   const lightOverrideCSS = `
-    /* SAFARI LIGHT MODE NUCLEAR OVERRIDE */
+    /* Safari Mobile Light Mode Fix - Using Design System Tokens */
     
-    /* Force light mode regardless of system preference */
+    /* Force light mode color-scheme */
     html:not(.dark),
     html.light {
-      background: #ffffff !important;
-      color: #111827 !important;
       color-scheme: light !important;
       -webkit-color-scheme: light !important;
     }
     
-    /* Override ALL elements to light mode */
-    html:not(.dark) *,
-    html.light * {
-      background-color: transparent !important;
-      color: #111827 !important;
-      border-color: #e5e7eb !important;
-      color-scheme: light !important;
-      -webkit-color-scheme: light !important;
-    }
-    
-    /* Specific component overrides for light mode */
-    html:not(.dark) .header-redesigned,
-    html:not(.dark) .main-menu,
-    html:not(.dark) .module-card,
-    html:not(.dark) .compact-settings__container,
-    html:not(.dark) .compact-settings__header,
-    html:not(.dark) .compact-settings__content,
-    html:not(.dark) .compact-settings__footer,
-    html:not(.dark) .flashcard-component,
-    html:not(.dark) .quiz-component,
-    html:not(.dark) .sorting-component,
-    html:not(.dark) .matching-component,
-    html.light .header-redesigned,
-    html.light .main-menu,
-    html.light .module-card,
-    html.light .compact-settings__container,
-    html.light .compact-settings__header,
-    html.light .compact-settings__content,
-    html.light .compact-settings__footer,
-    html.light .flashcard-component,
-    html.light .quiz-component,
-    html.light .sorting-component,
-    html.light .matching-component {
-      background-color: #ffffff !important;
-      background: #ffffff !important;
-      color: #111827 !important;
-      border-color: #e5e7eb !important;
-    }
-    
-    /* Force light mode on text elements */
-    html:not(.dark) h1, html:not(.dark) h2, html:not(.dark) h3, html:not(.dark) h4, html:not(.dark) h5, html:not(.dark) h6,
-    html:not(.dark) p, html:not(.dark) span, html:not(.dark) div, html:not(.dark) button, html:not(.dark) input, html:not(.dark) select,
-    html.light h1, html.light h2, html.light h3, html.light h4, html.light h5, html.light h6,
-    html.light p, html.light span, html.light div, html.light button, html.light input, html.light select {
-      color: #111827 !important;
-    }
-    
-    /* Force light mode on SVG icons */
-    html:not(.dark) svg,
-    html:not(.dark) [data-lucide],
-    html:not(.dark) .lucide,
-    html.light svg,
-    html.light [data-lucide],
-    html.light .lucide {
-      color: #111827 !important;
-      stroke: #111827 !important;
-      fill: none !important;
-    }
-    
-    /* Override system dark mode media query */
+    /* Override system dark mode when app is in light mode */
     @media (prefers-color-scheme: dark) {
       html:not(.dark),
       html.light {
-        background: #ffffff !important;
-        color: #111827 !important;
+        background-color: ${lightTokens.bgSecondary} !important;
+        color: ${lightTokens.textPrimary} !important;
         color-scheme: light !important;
         -webkit-color-scheme: light !important;
       }
       
-      html:not(.dark) *,
-      html.light * {
-        color: #111827 !important;
-        color-scheme: light !important;
-        -webkit-color-scheme: light !important;
+      /* Use BEM-like selectors from theme constants */
+      html:not(.dark) .${THEME_CLASSES.headerRedesigned},
+      html:not(.dark) .${THEME_CLASSES.moduleCard},
+      html:not(.dark) .compact-settings__container,
+      html:not(.dark) .compact-settings__header,
+      html:not(.dark) .compact-settings__content,
+      html:not(.dark) .compact-settings__footer,
+      html.light .${THEME_CLASSES.headerRedesigned},
+      html.light .${THEME_CLASSES.moduleCard},
+      html.light .compact-settings__container,
+      html.light .compact-settings__header,
+      html.light .compact-settings__content,
+      html.light .compact-settings__footer {
+        background-color: ${lightTokens.bgSecondary} !important;
+        color: ${lightTokens.textPrimary} !important;
+        border-color: ${lightTokens.borderPrimary} !important;
+      }
+      
+      /* SVG icons using theme selectors */
+      html:not(.dark) svg,
+      html:not(.dark) [data-lucide],
+      html.light svg,
+      html.light [data-lucide] {
+        color: ${lightTokens.textPrimary} !important;
+        stroke: ${lightTokens.textPrimary} !important;
       }
     }
     
-    /* Safari-specific webkit overrides for light mode */
+    /* Safari-specific webkit overrides */
     @supports (-webkit-touch-callout: none) {
       html:not(.dark),
       html.light {
-        -webkit-appearance: none !important;
-        -webkit-color-scheme: light !important;
-        -webkit-text-fill-color: #111827 !important;
-      }
-      
-      html:not(.dark) *,
-      html.light * {
-        -webkit-text-fill-color: #111827 !important;
         -webkit-color-scheme: light !important;
       }
     }
@@ -684,37 +632,44 @@ export function emergencyLightModeFix(): void {
   console.log('Applying emergency light mode fix for Safari Mobile...');
 
   const htmlElement = document.documentElement;
+  const lightTokens = THEME_COLORS.light;
 
   // Remove all theme classes and start fresh
-  htmlElement.classList.remove('dark', 'light');
+  htmlElement.classList.remove(THEME_CLASSES.dark, THEME_CLASSES.light);
 
-  // Force light mode class
-  htmlElement.classList.add('light');
+  // Force light mode class using theme constants
+  htmlElement.classList.add(THEME_CLASSES.light);
 
-  // Apply nuclear light mode CSS
+  // Apply CSS-based fix first
   forceSafariLightMode();
 
-  // Force all elements to light mode
-  const allElements = document.querySelectorAll('*');
-  allElements.forEach(el => {
+  // Set CSS custom properties using design system tokens
+  htmlElement.style.setProperty(THEME_CSS_VARS.themeBgPrimary, lightTokens.bgPrimary);
+  htmlElement.style.setProperty(THEME_CSS_VARS.themeBgSecondary, lightTokens.bgSecondary);
+  htmlElement.style.setProperty(THEME_CSS_VARS.themeTextPrimary, lightTokens.textPrimary);
+  htmlElement.style.setProperty(THEME_CSS_VARS.themeTextSecondary, lightTokens.textSecondary);
+  htmlElement.style.setProperty(THEME_CSS_VARS.themeBorderPrimary, lightTokens.borderPrimary);
+
+  // Force color-scheme on specific theme-aware components
+  const themeComponents = document.querySelectorAll(THEME_SELECTORS.themeComponents);
+  themeComponents.forEach(el => {
     const htmlEl = el as HTMLElement;
     htmlEl.style.colorScheme = 'light';
     htmlEl.style.setProperty('-webkit-color-scheme', 'light', 'important');
-    htmlEl.style.setProperty('color', '#111827', 'important');
   });
 
-  // Force meta tags
+  // Update meta tags using theme tokens
   updateSafariColorSchemeMeta('light');
 
-  // Force body background
-  document.body.style.setProperty('background-color', '#ffffff', 'important');
-  document.body.style.setProperty('color', '#111827', 'important');
+  // Force body using design system colors
+  document.body.style.setProperty('background-color', lightTokens.bgSecondary, 'important');
+  document.body.style.setProperty('color', lightTokens.textPrimary, 'important');
 
-  // Apply multiple times to ensure it sticks
+  // Apply multiple times with design system consistency
   setTimeout(() => {
     forceSafariLightMode();
-    htmlElement.style.setProperty('background-color', '#ffffff', 'important');
-    htmlElement.style.setProperty('color', '#111827', 'important');
+    htmlElement.style.setProperty('background-color', lightTokens.bgSecondary, 'important');
+    htmlElement.style.setProperty('color', lightTokens.textPrimary, 'important');
   }, 100);
 
   setTimeout(() => {
