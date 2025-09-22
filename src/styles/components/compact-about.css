@@ -72,6 +72,10 @@
   @apply text-sm font-semibold text-gray-900 dark:text-white;
 }
 
+.compact-about__info-time {
+  @apply block text-xs text-gray-400 dark:text-gray-500 mt-0.5 font-mono;
+}
+
 /* Features */
 .compact-about__features {
   @apply space-y-2;

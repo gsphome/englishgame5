@@ -1,5 +1,6 @@
 import React from 'react';
-import { X, Github, Heart, Info } from 'lucide-react';
+import { X, Heart, Info } from 'lucide-react';
+import { Github } from 'lucide-react';
 import { useSettingsStore } from '../../stores/settingsStore';
 import { useTranslation } from '../../utils/i18n';
 import { FluentFlowLogo } from './FluentFlowLogo';
@@ -56,11 +57,20 @@ export const CompactAbout: React.FC<CompactAboutProps> = ({ isOpen, onClose }) =
                 <span className="compact-about__info-label">{t('about.build', 'Build')}</span>
                 <span className="compact-about__info-value">
                   {(() => {
-                    const buildTime = window.__BUILD_TIME__ || new Date().toISOString();
+                    const buildTime = (window as any).__BUILD_TIME__ || new Date().toISOString();
                     const buildDate = new Date(buildTime);
                     const month = String(buildDate.getMonth() + 1).padStart(2, '0');
                     const day = String(buildDate.getDate()).padStart(2, '0');
                     return `${month}/${day}`;
+                  })()}
+                </span>
+                <span className="compact-about__info-time">
+                  {(() => {
+                    const buildTime = (window as any).__BUILD_TIME__ || new Date().toISOString();
+                    const buildDate = new Date(buildTime);
+                    const hours = String(buildDate.getHours()).padStart(2, '0');
+                    const minutes = String(buildDate.getMinutes()).padStart(2, '0');
+                    return `${hours}:${minutes}`;
                   })()}
                 </span>
               </div>
