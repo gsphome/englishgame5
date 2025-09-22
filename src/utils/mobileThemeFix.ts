@@ -71,7 +71,7 @@ export function clearMobileCachedStyles(): void {
 }
 
 /**
- * Applies theme with mobile-specific optimizations
+ * Applies theme with mobile-specific optimizations and Safari override
  */
 export function applyMobileTheme(theme: ThemeMode): void {
   if (!isMobileDevice()) return;
@@ -87,23 +87,152 @@ export function applyMobileTheme(theme: ThemeMode): void {
   // Step 3: Clear cached styles
   clearMobileCachedStyles();
 
-  // Step 4: Apply new theme class
-  htmlElement.classList.add(theme === 'dark' ? THEME_CLASSES.dark : THEME_CLASSES.light);
+  // Step 4: Apply new theme class with explicit light class for Safari
+  if (theme === 'dark') {
+    htmlElement.classList.add(THEME_CLASSES.dark);
+    htmlElement.classList.remove('light');
+  } else {
+    htmlElement.classList.add(THEME_CLASSES.light, 'light');
+    htmlElement.classList.remove(THEME_CLASSES.dark);
+  }
 
-  // Step 5: Force another recalculation
+  // Step 5: Safari-specific aggressive override
+  if (isSafariMobile()) {
+    // Force Safari to respect our theme choice
+    htmlElement.style.setProperty('color-scheme', theme, 'important');
+    forceSafariThemeOverride();
+  }
+
+  // Step 6: Force another recalculation
   requestAnimationFrame(() => {
     forceMobileStyleRecalculation();
 
-    // Step 6: Update viewport meta tag for mobile browsers
+    // Step 7: Update viewport meta tag for mobile browsers
     updateMobileViewportMeta(theme);
 
-    // Step 7: Trigger CSS custom property change
+    // Step 8: Trigger CSS custom property change
     htmlElement.style.setProperty('--mobile-theme-update', Date.now().toString());
+
+    // Step 9: Additional Safari fix - force repaint of problematic elements
+    if (isSafariMobile()) {
+      const problematicElements = document.querySelectorAll(
+        '.header-redesigned, .compact-settings__container, .flashcard-component, .quiz-component'
+      );
+      problematicElements.forEach(element => {
+        const htmlElement = element as HTMLElement;
+        htmlElement.style.transform = 'translateZ(0)';
+        requestAnimationFrame(() => {
+          htmlElement.style.transform = '';
+        });
+      });
+    }
   });
 }
 
 /**
- * Updates mobile-specific meta tags
+ * Detects if we're on Safari mobile specifically
+ */
+export function isSafariMobile(): boolean {
+  if (typeof navigator === 'undefined') return false;
+
+  const userAgent = navigator.userAgent;
+  return (
+    /Safari/.test(userAgent) &&
+    /Mobile/.test(userAgent) &&
+    !/Chrome/.test(userAgent) &&
+    !/CriOS/.test(userAgent) &&
+    !/FxiOS/.test(userAgent)
+  );
+}
+
+/**
+ * Forces Safari to respect app theme over system preference
+ */
+export function forceSafariThemeOverride(): void {
+  if (!isSafariMobile()) return;
+
+  const htmlElement = document.documentElement;
+
+  // Step 1: Add aggressive CSS override
+  let safariOverrideStyle = document.getElementById('safari-theme-override');
+  if (!safariOverrideStyle) {
+    safariOverrideStyle = document.createElement('style');
+    safariOverrideStyle.id = 'safari-theme-override';
+    document.head.appendChild(safariOverrideStyle);
+  }
+
+  // Step 2: Create CSS that overrides Safari's automatic dark mode based on current theme
+  const lightBg = '#ffffff';
+  const lightText = '#111827';
+  const darkBg = '#111827';
+  const darkText = '#ffffff';
+
+  const overrideCSS = `
+    /* Safari Mobile Theme Override - Force app theme over system preference */
+    @media (prefers-color-scheme: dark) {
+      html:not(.dark) {
+        color-scheme: light !important;
+        background-color: ${lightBg} !important;
+        color: ${lightText} !important;
+      }
+      
+      html:not(.dark) * {
+        color-scheme: light !important;
+      }
+      
+      html:not(.dark) .header-redesigned,
+      html:not(.dark) .compact-settings__container,
+      html:not(.dark) .compact-settings__header,
+      html:not(.dark) .compact-settings__content,
+      html:not(.dark) .compact-settings__footer {
+        background-color: ${lightBg} !important;
+        color: ${lightText} !important;
+      }
+    }
+    
+    @media (prefers-color-scheme: light) {
+      html.dark {
+        color-scheme: dark !important;
+        background-color: ${darkBg} !important;
+        color: ${darkText} !important;
+      }
+      
+      html.dark * {
+        color-scheme: dark !important;
+      }
+      
+      html.dark .header-redesigned,
+      html.dark .compact-settings__container,
+      html.dark .compact-settings__header,
+      html.dark .compact-settings__content,
+      html.dark .compact-settings__footer {
+        background-color: ${darkBg} !important;
+        color: ${darkText} !important;
+      }
+    }
+    
+    /* Force theme consistency regardless of system preference */
+    html.light {
+      color-scheme: light !important;
+      background-color: ${lightBg} !important;
+      color: ${lightText} !important;
+    }
+    
+    html.dark {
+      color-scheme: dark !important;
+      background-color: ${darkBg} !important;
+      color: ${darkText} !important;
+    }
+  `;
+
+  safariOverrideStyle.textContent = overrideCSS;
+
+  // Step 3: Force immediate style recalculation
+  htmlElement.style.setProperty('--safari-theme-override', Date.now().toString());
+}
+
+/**
+ * Updates mobile-specific meta tags with Safari override
  */
 export function updateMobileViewportMeta(theme: ThemeMode): void {
   if (typeof document === 'undefined') return;
@@ -129,7 +258,7 @@ export function updateMobileViewportMeta(theme: ThemeMode): void {
 
   metaStatusBar.setAttribute('content', theme === 'dark' ? 'black-translucent' : 'default');
 
-  // Update color scheme meta tag
+  // CRITICAL: Override color-scheme to force Safari compliance
   let metaColorScheme = document.querySelector('meta[name="color-scheme"]');
   if (!metaColorScheme) {
     metaColorScheme = document.createElement('meta');
@@ -137,7 +266,13 @@ export function updateMobileViewportMeta(theme: ThemeMode): void {
     document.head.appendChild(metaColorScheme);
   }
 
-  metaColorScheme.setAttribute('content', theme === 'dark' ? 'dark' : 'light');
+  // Force the app theme regardless of system preference
+  metaColorScheme.setAttribute('content', theme);
+
+  // Apply Safari-specific override
+  if (isSafariMobile()) {
+    forceSafariThemeOverride();
+  }
 }
 
 /**

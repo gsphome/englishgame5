@@ -178,24 +178,127 @@
     fill: none !important;
   }
 
-  /* Prevent system theme interference */
+  /* CRITICAL: Safari Mobile Override - Prevent system theme interference */
   @media (prefers-color-scheme: dark) {
     html.light {
       color-scheme: light !important;
+      background-color: #ffffff !important;
+      color: #1f2937 !important;
     }
 
-    html.light * {
+    html.light *,
+    html.light *::before,
+    html.light *::after {
       color-scheme: light !important;
+    }
+
+    /* Force light theme on specific components when app is in light mode */
+    html.light .header-redesigned,
+    html.light .compact-settings__container,
+    html.light .compact-settings__header,
+    html.light .compact-settings__content,
+    html.light .compact-settings__footer,
+    html.light .flashcard-component,
+    html.light .quiz-component {
+      background-color: #ffffff !important;
+      color: #1f2937 !important;
+      border-color: #e5e7eb !important;
+    }
+
+    /* Force light theme on text elements */
+    html.light .compact-settings__title,
+    html.light .compact-settings__label,
+    html.light .compact-settings__tab,
+    html.light .header-redesigned__title {
+      color: #1f2937 !important;
+    }
+
+    /* Force light theme on form elements */
+    html.light .compact-settings__select,
+    html.light .compact-settings__input {
+      background-color: #ffffff !important;
+      color: #1f2937 !important;
+      border-color: #d1d5db !important;
     }
   }
 
   @media (prefers-color-scheme: light) {
     html.dark {
       color-scheme: dark !important;
+      background-color: #111827 !important;
+      color: #ffffff !important;
     }
 
-    html.dark * {
+    html.dark *,
+    html.dark *::before,
+    html.dark *::after {
       color-scheme: dark !important;
+    }
+
+    /* Force dark theme on specific components when app is in dark mode */
+    html.dark .header-redesigned,
+    html.dark .compact-settings__container,
+    html.dark .compact-settings__header,
+    html.dark .compact-settings__content,
+    html.dark .compact-settings__footer,
+    html.dark .flashcard-component,
+    html.dark .quiz-component {
+      background-color: #111827 !important;
+      color: #ffffff !important;
+      border-color: #4b5563 !important;
+    }
+
+    /* Force dark theme on text elements */
+    html.dark .compact-settings__title,
+    html.dark .compact-settings__label,
+    html.dark .compact-settings__tab,
+    html.dark .header-redesigned__title {
+      color: #ffffff !important;
+    }
+
+    /* Force dark theme on form elements */
+    html.dark .compact-settings__select,
+    html.dark .compact-settings__input {
+      background-color: #1f2937 !important;
+      color: #ffffff !important;
+      border-color: #4b5563 !important;
+    }
+  }
+
+  /* Safari-specific aggressive override */
+  @supports (-webkit-touch-callout: none) and (max-width: 768px) {
+    /* Safari Mobile detected - apply nuclear option */
+    html.light {
+      background: #ffffff !important;
+      color: #1f2937 !important;
+      -webkit-color-scheme: light !important;
+      color-scheme: light !important;
+    }
+
+    html.dark {
+      background: #111827 !important;
+      color: #ffffff !important;
+      -webkit-color-scheme: dark !important;
+      color-scheme: dark !important;
+    }
+
+    /* Force Safari to respect our theme regardless of system preference */
+    @media (prefers-color-scheme: dark) {
+      html:not(.dark) {
+        background: #ffffff !important;
+        color: #1f2937 !important;
+        -webkit-color-scheme: light !important;
+        color-scheme: light !important;
+      }
+    }
+
+    @media (prefers-color-scheme: light) {
+      html.dark {
+        background: #111827 !important;
+        color: #ffffff !important;
+        -webkit-color-scheme: dark !important;
+        color-scheme: dark !important;
+      }
     }
   }
 }

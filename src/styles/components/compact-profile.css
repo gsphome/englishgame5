@@ -1,0 +1,240 @@
+/* Compact Profile Modal Styles */
+
+.compact-profile {
+  @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50;
+  animation: modalFadeIn 0.2s ease-out;
+}
+
+.compact-profile__container {
+  @apply bg-white dark:bg-gray-900 rounded-lg shadow-2xl max-w-sm w-full border border-gray-200 dark:border-gray-700;
+  animation: modalSlideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  max-height: 85vh;
+  overflow: hidden;
+}
+
+.compact-profile__header {
+  @apply flex items-center justify-between p-3 border-b border-gray-200 dark:border-gray-700;
+}
+
+.compact-profile__title-section {
+  @apply flex items-center space-x-2;
+}
+
+.compact-profile__icon {
+  @apply h-4 w-4 text-blue-600 dark:text-blue-400;
+}
+
+.compact-profile__title {
+  @apply text-base font-bold text-gray-900 dark:text-white;
+}
+
+.compact-profile__close-btn {
+  @apply p-1.5 text-gray-400 hover:text-gray-600 dark:text-gray-200 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md transition-all duration-200;
+}
+
+.compact-profile__form {
+  @apply flex flex-col h-full;
+}
+
+.compact-profile__content {
+  @apply p-3 space-y-3 flex-1;
+  overflow-y: auto;
+  max-height: calc(85vh - 120px);
+}
+
+/* Sections */
+.compact-profile__section {
+  @apply space-y-2;
+}
+
+.compact-profile__section-title {
+  @apply text-xs font-semibold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-700 pb-1;
+}
+
+/* Fields */
+.compact-profile__field {
+  @apply space-y-1;
+}
+
+.compact-profile__field-row {
+  @apply flex space-x-3;
+}
+
+.compact-profile__field--half {
+  @apply flex-1;
+}
+
+.compact-profile__label {
+  @apply block text-sm font-medium text-gray-700 dark:text-gray-300;
+}
+
+.compact-profile__input {
+  @apply w-full px-3 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg text-sm text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200;
+}
+
+.compact-profile__input--error {
+  @apply border-red-500 focus:ring-red-500;
+}
+
+.compact-profile__input--number {
+  @apply pr-12;
+}
+
+.compact-profile__input-group {
+  @apply relative;
+}
+
+.compact-profile__input-addon {
+  @apply absolute right-3 top-1/2 transform -translate-y-1/2 text-sm text-gray-500 dark:text-gray-400;
+}
+
+.compact-profile__select {
+  @apply w-full px-3 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg text-sm text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200;
+}
+
+.compact-profile__select--error {
+  @apply border-red-500 focus:ring-red-500;
+}
+
+.compact-profile__range {
+  @apply w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer;
+}
+
+.compact-profile__range::-webkit-slider-thumb {
+  @apply appearance-none w-4 h-4 bg-blue-500 rounded-full cursor-pointer;
+}
+
+.compact-profile__range::-moz-range-thumb {
+  @apply w-4 h-4 bg-blue-500 rounded-full cursor-pointer border-0;
+}
+
+.compact-profile__error {
+  @apply text-xs text-red-500 dark:text-red-400;
+}
+
+/* Categories */
+.compact-profile__categories {
+  @apply grid grid-cols-2 gap-2;
+}
+
+.compact-profile__category {
+  @apply flex items-center space-x-2 p-2 bg-gray-50 dark:bg-gray-800 rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200;
+}
+
+.compact-profile__checkbox {
+  @apply w-4 h-4 text-blue-600 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded focus:ring-blue-500 focus:ring-2;
+}
+
+.compact-profile__category-label {
+  @apply text-sm text-gray-700 dark:text-gray-300 flex-1;
+}
+
+/* Notifications */
+.compact-profile__notification {
+  @apply flex items-start space-x-3 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg cursor-pointer hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors duration-200;
+}
+
+.compact-profile__notification-content {
+  @apply flex-1;
+}
+
+.compact-profile__notification-title {
+  @apply text-sm font-medium text-gray-900 dark:text-white;
+}
+
+.compact-profile__notification-description {
+  @apply text-xs text-gray-600 dark:text-gray-400 mt-1;
+}
+
+/* Actions */
+.compact-profile__actions {
+  @apply flex items-center justify-end space-x-2 p-4 border-t border-gray-200 dark:border-gray-700;
+}
+
+.compact-profile__btn {
+  @apply px-3 py-2 rounded-lg font-medium text-sm transition-all duration-200 flex items-center space-x-1;
+}
+
+.compact-profile__btn-icon {
+  @apply h-4 w-4;
+}
+
+.compact-profile__btn--cancel {
+  @apply bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-600;
+}
+
+.compact-profile__btn--save {
+  @apply bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white shadow-lg hover:shadow-xl transform hover:scale-105;
+}
+
+/* Animations */
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+  }
+  to {
+    opacity: 1;
+    backdrop-filter: blur(4px);
+  }
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 640px) {
+  .compact-profile__container {
+    @apply max-w-sm;
+  }
+
+  .compact-profile__field-row {
+    @apply flex-col space-x-0 space-y-3;
+  }
+
+  .compact-profile__categories {
+    @apply grid-cols-1;
+  }
+
+  .compact-profile__actions {
+    @apply flex-col space-x-0 space-y-2;
+  }
+
+  .compact-profile__btn {
+    @apply w-full justify-center;
+  }
+}
+
+/* Custom scrollbar */
+.compact-profile__content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.compact-profile__content::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-gray-800 rounded-full;
+}
+
+.compact-profile__content::-webkit-scrollbar-thumb {
+  @apply bg-blue-300 dark:bg-blue-600 rounded-full;
+}
+
+.compact-profile__content::-webkit-scrollbar-thumb:hover {
+  @apply bg-blue-400 dark:bg-blue-500;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .compact-profile,
+  .compact-profile__container {
+    animation: none;
+    transition: none;
+  }
+}

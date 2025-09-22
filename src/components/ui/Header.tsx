@@ -6,13 +6,14 @@ import { useUserStore } from '../../stores/userStore';
 import { useSettingsStore } from '../../stores/settingsStore';
 // import { toast } from '../../stores/toastStore';
 
-import { UserProfileForm } from './UserProfileForm';
-import { AdvancedSettingsModal } from './AdvancedSettingsModal';
-import { AboutModal } from './AboutModal';
+// Compact modals - optimized versions
+import { CompactProfile } from './CompactProfile';
+import { CompactAdvancedSettings } from './CompactAdvancedSettings';
+import { CompactAbout } from './CompactAbout';
+import { CompactProgressDashboard } from './CompactProgressDashboard';
+import { CompactLearningPath } from './CompactLearningPath';
 import { ScoreDisplay } from './ScoreDisplay';
 import { FluentFlowLogo } from './FluentFlowLogo';
-import { LazyProgressDashboard } from './LazyProgressDashboard';
-import { LazyModuleProgressionView } from './LazyModuleProgressionView';
 
 interface HeaderProps {
   onMenuToggle?: () => void;
@@ -122,18 +123,21 @@ export const Header: React.FC<HeaderProps> = () => {
         </div>
       </div>
 
-      {showProfileForm && <UserProfileForm onClose={() => setShowProfileForm(false)} />}
+      {/* Compact Modals - Optimized versions */}
+      {showProfileForm && (
+        <CompactProfile isOpen={showProfileForm} onClose={() => setShowProfileForm(false)} />
+      )}
 
-      <AdvancedSettingsModal isOpen={showSettings} onClose={() => setShowSettings(false)} />
+      <CompactAdvancedSettings isOpen={showSettings} onClose={() => setShowSettings(false)} />
 
-      <AboutModal isOpen={showAbout} onClose={() => setShowAbout(false)} />
+      <CompactAbout isOpen={showAbout} onClose={() => setShowAbout(false)} />
 
-      <LazyProgressDashboard
+      <CompactProgressDashboard
         isOpen={showProgressDashboard}
         onClose={() => setShowProgressDashboard(false)}
       />
 
-      <LazyModuleProgressionView
+      <CompactLearningPath
         isOpen={showModuleProgression}
         onClose={() => setShowModuleProgression(false)}
       />
