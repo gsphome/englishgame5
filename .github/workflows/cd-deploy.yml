@@ -2,7 +2,7 @@ name: CD Deploy
 
 on:
   workflow_run:
-    workflows: ["CI Build"]
+    workflows: ["CI Build", "CI Quality", "CI Security"]
     types:
       - completed
     branches: [main]
@@ -54,13 +54,15 @@ jobs:
             exit 0
           fi
           
-          echo "🔍 Checking pipelines for commit: $COMMIT_SHA"
-          echo "⏳ Waiting for all CI workflows to complete..."
-          sleep 10
+          echo "🔍 Checking all CI pipelines for commit: $COMMIT_SHA"
+          echo "🎯 Triggered by: ${{ github.event.workflow_run.name }}"
           
-          # Get workflow runs for this commit with extended retry logic
-          for i in {1..6}; do
-            echo "📡 API call attempt $i/6..."
+          # Wait a moment for API consistency
+          sleep 5
+          
+          # Get workflow runs for this commit with retry logic
+          for i in {1..5}; do
+            echo "📡 API call attempt $i/5..."
             
             QUALITY_STATUS=$(gh api repos/${{ github.repository }}/actions/runs --jq ".workflow_runs[] | select(.head_sha == \"$COMMIT_SHA\" and .name == \"CI Quality\") | .conclusion" | head -1)
             SECURITY_STATUS=$(gh api repos/${{ github.repository }}/actions/runs --jq ".workflow_runs[] | select(.head_sha == \"$COMMIT_SHA\" and .name == \"CI Security\") | .conclusion" | head -1)
@@ -71,37 +73,38 @@ jobs:
             echo "- Security: ${SECURITY_STATUS:-❓ not found}"
             echo "- Build: ${BUILD_STATUS:-❓ not found}"
             
-            # Check if all pipelines are found and completed (not just found)
-            if [[ -n "$QUALITY_STATUS" && -n "$SECURITY_STATUS" && -n "$BUILD_STATUS" ]]; then
-              if [[ "$QUALITY_STATUS" != "in_progress" && "$SECURITY_STATUS" != "in_progress" && "$BUILD_STATUS" != "in_progress" ]]; then
-                echo "✅ All pipelines found and completed"
-                break
-              else
-                echo "⏳ Some pipelines still in progress..."
-              fi
+            # Check if all pipelines are found and successfully completed
+            if [[ "$QUALITY_STATUS" == "success" && "$SECURITY_STATUS" == "success" && "$BUILD_STATUS" == "success" ]]; then
+              echo "✅ All pipelines found and succeeded"
+              break
             fi
             
-            if [ $i -lt 6 ]; then
-              echo "⏳ Waiting 30s before retry (attempt $i/6)..."
-              sleep 30
+            # If any pipeline failed, exit immediately
+            if [[ "$QUALITY_STATUS" == "failure" || "$SECURITY_STATUS" == "failure" || "$BUILD_STATUS" == "failure" ]]; then
+              echo "❌ At least one pipeline failed - stopping deployment"
+              echo "should_deploy=false" >> $GITHUB_OUTPUT
+              exit 1
+            fi
+            
+            if [ $i -lt 5 ]; then
+              echo "⏳ Waiting 15s before retry..."
+              sleep 15
             fi
           done
           
           # Final status check
-          echo "🔍 Final pipeline status check:"
+          echo "🔍 Final pipeline status:"
           echo "- Quality: $QUALITY_STATUS"
           echo "- Security: $SECURITY_STATUS" 
           echo "- Build: $BUILD_STATUS"
           
           if [[ "$QUALITY_STATUS" == "success" && "$SECURITY_STATUS" == "success" && "$BUILD_STATUS" == "success" ]]; then
             echo "should_deploy=true" >> $GITHUB_OUTPUT
-            echo "✅ All pipelines succeeded - deployment approved"
+            echo "✅ All CI pipelines succeeded - deployment approved"
           else
             echo "should_deploy=false" >> $GITHUB_OUTPUT
-            echo "❌ Deployment blocked - pipeline status check failed"
-            echo "📋 Quality: $QUALITY_STATUS | Security: $SECURITY_STATUS | Build: $BUILD_STATUS"
+            echo "❌ Deployment blocked - not all pipelines succeeded"
             echo "📋 This will cause the workflow to be skipped (expected behavior)"
-            # Exit with failure to make the job fail, which will skip subsequent jobs
             exit 1
           fi
         env:
