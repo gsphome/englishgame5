@@ -4,7 +4,7 @@
  * Updated for testing build:full workflow with deployment validation
  */
 
-import { THEME_CLASSES, THEME_COLORS, type ThemeMode } from './themeConstants';
+import { THEME_CLASSES, THEME_COLORS, THEME_CSS_VARS, THEME_SELECTORS, type ThemeMode } from './themeConstants';
 
 /**
  * Detects if the user is on a mobile device
