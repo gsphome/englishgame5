@@ -1,3 +1,20 @@
+# Útil: Para verificación básica
+# 💡 Recomendaciones por Situación
+#########################################
+# 🎯 Uso Diario Normal:
+npm run build:full
+
+# 🔍 Status:
+npm run gh:watch
+npm run deploy:status
+
+# 🚨 Algo Está Mal:
+npm run gh:current
+npm run deploy:status  
+npm run gh:logs
+
+#########################################
+
 🎯 Secuencias de Comandos - Guía Completa
 🚀 Secuencia Principal: Desarrollo Completo
 
@@ -100,21 +117,5 @@ npm run deploy:check
 Qué hace: Test básico HTTP del sitio
 Muestra: Código HTTP, tiempo respuesta, URL
 Rápido: ~1 segundo
-Útil: Para verificación básica
-💡 Recomendaciones por Situación
-🎯 Uso Diario Normal:
 
-npm run build:full  # Solo esto
-🔍 Cuando Quieres Ver Todo:
-
-npm run build:full
-npm run gh:watch
-⚡ Check Rápido:
-
-npm run deploy:status
-🚨 Algo Está Mal:
-
-npm run gh:current
-npm run deploy:status  
-npm run gh:logs
 Esta guía te da control total sobre el proceso de desarrollo y deployment! 🚀
