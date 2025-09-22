@@ -300,8 +300,6 @@ function showCurrentStatus() {
     return true;
   }
   
-  logInfo(`\n🔄 Pipeline Status (${currentRuns.length} workflows):`);
-  
   // Group runs by workflow name and show the latest run for each
   const runsByWorkflow = {};
   currentRuns.forEach(run => {
@@ -310,6 +308,9 @@ function showCurrentStatus() {
       runsByWorkflow[run.workflowName] = run;
     }
   });
+
+  const uniqueWorkflowCount = Object.keys(runsByWorkflow).length;
+  logInfo(`\n🔄 Pipeline Status (${uniqueWorkflowCount} workflows):`);
   
   // Show status for each workflow (compact format)
   Object.entries(runsByWorkflow).forEach(([workflowName, run]) => {
