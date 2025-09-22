@@ -1,2 +1,120 @@
+🎯 Secuencias de Comandos - Guía Completa
+🚀 Secuencia Principal: Desarrollo Completo
+
+npm run build:full
+# ↓ Incluye automáticamente:
+# - Pre-build commit
+# - Quality + Security + Build pipelines  
+# - Post-build commit & push
+# - GitHub Actions monitoring
+# - Deployment validation
+✅ Resultado: Todo automatizado en un solo comando
+
+🔍 Secuencia Manual: Control Total
+# 1. Build completo
+npm run build:full
+
+# 2. Monitorear GitHub Actions en tiempo real
+npm run gh:watch
+
+# 3. Validar estado final del deployment
+npm run deploy:status
+📋 Cuándo usar: Cuando quieres supervisar cada paso manualmente
+
+⚡ Secuencia Rápida: Solo Validación
+# 1. Verificar estado actual de GitHub Actions
+npm run gh:current
+
+# 2. Validar deployment actual
+npm run deploy:status
+
+# 3. (Opcional) Test rápido de accesibilidad
+npm run deploy:check
+📋 Cuándo usar: Para verificar el estado sin hacer cambios
+
+🔄 Secuencia Post-Push: Después de Commit Manual
+# Si ya hiciste git push manualmente:
+
+# 1. Monitorear workflows que se dispararon
+npm run gh:watch
+
+# 2. Ver estado final
+npm run gh:current  
+
+# 3. Validar que el deployment se completó
+npm run deploy:status
+📋 Cuándo usar: Cuando haces commits manuales y quieres monitorear
+
+🚨 Secuencia de Troubleshooting: Cuando Algo Falla
+# 1. Ver estado actual completo
+npm run gh:current
+
+# 2. Validar deployment
+npm run deploy:status
+
+# 3. Si hay problemas, ver logs detallados
+npm run gh:logs
+
+# 4. Test básico de conectividad
+npm run deploy:check
+📋 Cuándo usar: Para diagnosticar problemas
+
+🎯 Secuencias por Escenario
+📝 Desarrollo Normal (Recomendado)
+npm run build:full
+# ✅ Todo incluido, sin comandos adicionales necesarios
+🔍 Supervisión Detallada
+npm run build:full
+npm run gh:watch     # Monitoreo en tiempo real
+npm run deploy:status # Validación final extra
+⚡ Check Rápido
+npm run gh:current   # Estado GitHub Actions
+npm run deploy:status # Estado deployment
+🚨 Debug de Problemas
+npm run gh:current   # ¿Qué workflows corrieron?
+npm run gh:logs      # ¿Qué falló?
+npm run deploy:status # ¿El deployment funcionó?
+npm run deploy:check  # ¿El sitio responde?
+📊 Explicación de Cada Comando
+npm run build:full
+Qué hace: Workflow completo automatizado
+Incluye: Commits, pipelines, push, monitoreo, validación
+Duración: ~2-3 minutos
+Resultado: Código desplegado y validado
+npm run gh:watch
+Qué hace: Monitorea GitHub Actions en tiempo real
+Actualiza: Cada 30 segundos
+Para: Ctrl+C o cuando todos los workflows terminan
+Útil: Para ver progreso en vivo
+npm run gh:current
+Qué hace: Estado actual de workflows del último commit
+Muestra: Estado, duración, URLs de workflows
+Rápido: ~2-3 segundos
+Útil: Para check rápido
+npm run deploy:status
+Qué hace: Valida estado completo del deployment
+Verifica: Commit desplegado, accesibilidad, API GitHub
+Compara: Commit local vs desplegado
+Resultado: Estado HEALTHY/ISSUES
+npm run deploy:check
+Qué hace: Test básico HTTP del sitio
+Muestra: Código HTTP, tiempo respuesta, URL
+Rápido: ~1 segundo
+Útil: Para verificación básica
+💡 Recomendaciones por Situación
+🎯 Uso Diario Normal:
+
+npm run build:full  # Solo esto
+🔍 Cuando Quieres Ver Todo:
+
 npm run build:full
 npm run gh:watch
+⚡ Check Rápido:
+
+npm run deploy:status
+🚨 Algo Está Mal:
+
+npm run gh:current
+npm run deploy:status  
+npm run gh:logs
+Esta guía te da control total sobre el proceso de desarrollo y deployment! 🚀

@@ -113,28 +113,44 @@ async function fetchLatestDeployment() {
   try {
     logInfo('Fetching latest deployment information...');
     
-    const apiUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/deployments?environment=github-pages&per_page=1`;
-    const curlCommand = `curl -s -H "Accept: application/vnd.github.v3+json" "${apiUrl}"`;
+    // Try both production and github-pages environments
+    const environments = ['production', 'github-pages'];
+    let latestDeployment = null;
+    let deploymentStatus = null;
     
-    const response = execSync(curlCommand, { encoding: 'utf8' });
-    const deployments = JSON.parse(response);
+    for (const env of environments) {
+      const apiUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/deployments?environment=${env}&per_page=1`;
+      const curlCommand = `curl -s -H "Accept: application/vnd.github.v3+json" "${apiUrl}"`;
+      
+      const response = execSync(curlCommand, { encoding: 'utf8' });
+      const deployments = JSON.parse(response);
+      
+      if (Array.isArray(deployments) && deployments.length > 0) {
+        const deployment = deployments[0];
+        
+        // Use the most recent deployment across all environments
+        if (!latestDeployment || new Date(deployment.created_at) > new Date(latestDeployment.created_at)) {
+          latestDeployment = deployment;
+          
+          // Fetch deployment status
+          const statusUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/deployments/${deployment.id}/statuses`;
+          const statusCommand = `curl -s -H "Accept: application/vnd.github.v3+json" "${statusUrl}"`;
+          
+          const statusResponse = execSync(statusCommand, { encoding: 'utf8' });
+          const statuses = JSON.parse(statusResponse);
+          
+          deploymentStatus = Array.isArray(statuses) && statuses.length > 0 ? statuses[0] : null;
+        }
+      }
+    }
     
-    if (!Array.isArray(deployments) || deployments.length === 0) {
+    if (!latestDeployment) {
       return null;
     }
     
-    const latestDeployment = deployments[0];
-    
-    // Fetch deployment status
-    const statusUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/deployments/${latestDeployment.id}/statuses`;
-    const statusCommand = `curl -s -H "Accept: application/vnd.github.v3+json" "${statusUrl}"`;
-    
-    const statusResponse = execSync(statusCommand, { encoding: 'utf8' });
-    const statuses = JSON.parse(statusResponse);
-    
     return {
       deployment: latestDeployment,
-      status: Array.isArray(statuses) && statuses.length > 0 ? statuses[0] : null
+      status: deploymentStatus
     };
   } catch (error) {
     logError(`Failed to fetch deployment: ${error.message}`);
@@ -315,10 +331,15 @@ async function validateDeployment() {
   }
   
   // Additional information about deployment method
-  if (deploymentInfo?.deployment?.ref === 'gh-pages') {
+  if (deploymentInfo?.deployment) {
     console.log('\n💡 Deployment Info:');
-    logInfo('Site is deployed from gh-pages branch (GitHub Actions workflow)');
-    logInfo('New commits to main branch require GitHub Actions to update gh-pages');
+    if (deploymentInfo.deployment.environment === 'production') {
+      logInfo('Site is deployed directly from main branch via GitHub Actions');
+      logInfo('New commits to main branch automatically trigger deployment');
+    } else if (deploymentInfo.deployment.ref === 'gh-pages') {
+      logInfo('Site is deployed from gh-pages branch (GitHub Actions workflow)');
+      logInfo('New commits to main branch require GitHub Actions to update gh-pages');
+    }
   }
   
   console.log('='.repeat(60));

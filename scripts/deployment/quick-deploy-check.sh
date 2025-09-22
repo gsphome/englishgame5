@@ -79,15 +79,23 @@ echo ""
 
 # 3. Check latest deployment
 echo -e "${BLUE}📦 Checking latest deployment...${NC}"
-DEPLOYMENT_INFO=$(curl -s -H "Accept: application/vnd.github.v3+json" "${API_BASE}/deployments?environment=github-pages&per_page=1")
+# Try production environment first, then github-pages as fallback
+DEPLOYMENT_INFO=$(curl -s -H "Accept: application/vnd.github.v3+json" "${API_BASE}/deployments?environment=production&per_page=1")
+if ! echo "$DEPLOYMENT_INFO" | grep -q '"id"'; then
+    DEPLOYMENT_INFO=$(curl -s -H "Accept: application/vnd.github.v3+json" "${API_BASE}/deployments?environment=github-pages&per_page=1")
+fi
 
-if echo "$DEPLOYMENT_INFO" | grep -q '"id"'; then
-    DEPLOYMENT_ID=$(echo "$DEPLOYMENT_INFO" | grep -o '"id":[0-9]*' | head -1 | cut -d: -f2)
-    DEPLOYMENT_SHA=$(echo "$DEPLOYMENT_INFO" | grep -o '"sha":"[^"]*"' | head -1 | cut -d'"' -f4 | cut -c1-8)
-    CREATED_AT=$(echo "$DEPLOYMENT_INFO" | grep -o '"created_at":"[^"]*"' | head -1 | cut -d'"' -f4)
+# Parse JSON array - get first deployment
+if echo "$DEPLOYMENT_INFO" | grep -q '\[.*\]' && echo "$DEPLOYMENT_INFO" | grep -q '"id"'; then
+    # Extract values from the JSON array
+    DEPLOYMENT_ID=$(echo "$DEPLOYMENT_INFO" | sed -n 's/.*"id": *\([0-9]*\).*/\1/p' | head -1)
+    DEPLOYMENT_SHA=$(echo "$DEPLOYMENT_INFO" | sed -n 's/.*"sha": *"\([^"]*\)".*/\1/p' | head -1 | cut -c1-8)
+    CREATED_AT=$(echo "$DEPLOYMENT_INFO" | sed -n 's/.*"created_at": *"\([^"]*\)".*/\1/p' | head -1)
+    ENVIRONMENT=$(echo "$DEPLOYMENT_INFO" | sed -n 's/.*"environment": *"\([^"]*\)".*/\1/p' | head -1)
     
     echo -e "${BLUE}ℹ️ Deployment ID: $DEPLOYMENT_ID${NC}"
     echo -e "${BLUE}ℹ️ Deployed SHA: $DEPLOYMENT_SHA${NC}"
+    echo -e "${BLUE}ℹ️ Environment: $ENVIRONMENT${NC}"
     echo -e "${BLUE}ℹ️ Created: $CREATED_AT${NC}"
     
     # Compare with current commit
