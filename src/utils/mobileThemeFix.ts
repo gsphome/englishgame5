@@ -547,10 +547,11 @@ export function setupMobileThemeHandlers(): void {
     };
 
     // Listen for system theme changes
-    if (darkModeQuery.addEventListener) {
+    try {
       darkModeQuery.addEventListener('change', handleSystemThemeChange);
-    } else {
-      // Fallback for older browsers
+    } catch (error) {
+      // Fallback for older browsers that don't support addEventListener
+      console.warn('Using deprecated addListener for MediaQueryList:', error);
       darkModeQuery.addListener(handleSystemThemeChange);
     }
 

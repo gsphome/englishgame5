@@ -13,16 +13,31 @@ export const getAssetPath = (assetPath: string): string => {
   // Remove leading slash or dot-slash if present
   const cleanPath = assetPath.replace(/^\.?\//, '');
 
-  // In development with base path, prepend the base path
+  // Get base path from environment
   const basePath = import.meta.env.BASE_URL || '/';
 
-  // If the path already starts with data/, use it as is
+  // Construct the full path
+  let fullPath: string;
   if (cleanPath.startsWith('data/')) {
-    return `${basePath}${cleanPath}`;
+    // Path already includes data/ prefix, use as is
+    fullPath = `${basePath}${cleanPath}`;
+  } else {
+    // Path doesn't include data/ prefix, add it
+    fullPath = `${basePath}data/${cleanPath}`;
   }
 
-  // Otherwise, assume it's a filename and prepend the data directory
-  return `${basePath}data/${cleanPath}`;
+  // Ensure we use the correct protocol for localhost
+  if (typeof window !== 'undefined') {
+    const currentOrigin = window.location.origin;
+    const isLocalhost = currentOrigin.includes('localhost') || currentOrigin.includes('127.0.0.1');
+
+    // If we're on localhost and the path is relative, make it absolute with current origin
+    if (isLocalhost && fullPath.startsWith('/')) {
+      return `${currentOrigin}${fullPath}`;
+    }
+  }
+
+  return fullPath;
 };
 
 /**

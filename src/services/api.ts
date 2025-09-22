@@ -106,7 +106,11 @@ class ApiService {
       let moduleData: LearningModule = { ...moduleInfo };
 
       if (moduleInfo.dataPath) {
-        const dataUrl = validateUrl(getAssetPath(moduleInfo.dataPath));
+        // Handle dataPath that may already include 'data/' prefix
+        const cleanDataPath = moduleInfo.dataPath.startsWith('data/')
+          ? moduleInfo.dataPath.substring(5) // Remove 'data/' prefix
+          : moduleInfo.dataPath;
+        const dataUrl = validateUrl(getAssetPath(cleanDataPath));
         const data = await secureJsonFetch(dataUrl);
 
         moduleData = {

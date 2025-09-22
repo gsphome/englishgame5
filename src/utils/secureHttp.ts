@@ -26,11 +26,15 @@ export const secureFetch = async (
     ...fetchOptions.headers,
   };
 
-  // Validate URL protocol in production
+  // Validate URL protocol in production (but allow localhost HTTP)
   if (process.env.NODE_ENV === 'production' && url.startsWith('http://')) {
-    console.warn('⚠️ Insecure HTTP detected in production. Use HTTPS instead.');
-    // In production, force HTTPS
-    url = url.replace('http://', 'https://');
+    const isLocalhost = url.includes('localhost') || url.includes('127.0.0.1');
+
+    if (!isLocalhost) {
+      console.warn('⚠️ Insecure HTTP detected in production. Use HTTPS instead.');
+      // In production, force HTTPS for non-localhost URLs
+      url = url.replace('http://', 'https://');
+    }
   }
 
   // Create AbortController for timeout

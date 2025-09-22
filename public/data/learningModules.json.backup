@@ -442,7 +442,7 @@
   {
     "id": "quiz-idioms-emotions-feelings",
     "name": "Emotions & Feelings",
-    "learningMode": "flashcard",
+    "learningMode": "quiz",
     "dataPath": "data/b2/b2-quiz-idioms-emotions-feelings.json",
     "level": [
       "b2"
@@ -459,7 +459,7 @@
   {
     "id": "quiz-idioms-success-failure",
     "name": "Success & Failure",
-    "learningMode": "flashcard",
+    "learningMode": "quiz",
     "dataPath": "data/b2/b2-quiz-idioms-success-failure.json",
     "level": [
       "b2"
@@ -476,7 +476,7 @@
   {
     "id": "quiz-idioms-time",
     "name": "Time Idioms",
-    "learningMode": "flashcard",
+    "learningMode": "quiz",
     "dataPath": "data/b2/b2-quiz-idioms-time.json",
     "level": [
       "b2"
@@ -493,7 +493,7 @@
   {
     "id": "quiz-idioms-nature-animals",
     "name": "Nature & Animals",
-    "learningMode": "flashcard",
+    "learningMode": "quiz",
     "dataPath": "data/b2/b2-quiz-idioms-nature-animals.json",
     "level": [
       "b2"
@@ -595,7 +595,7 @@
   {
     "id": "quiz-advanced-grammar-conditionals",
     "name": "Conditionals",
-    "learningMode": "completion",
+    "learningMode": "quiz",
     "dataPath": "data/c1/c1-quiz-advanced-grammar-conditionals.json",
     "level": [
       "c1"
@@ -612,7 +612,7 @@
   {
     "id": "quiz-advanced-grammar-inversions",
     "name": "Grammar Inversions",
-    "learningMode": "completion",
+    "learningMode": "quiz",
     "dataPath": "data/c1/c1-quiz-advanced-grammar-inversions.json",
     "level": [
       "c1"
@@ -629,7 +629,7 @@
   {
     "id": "quiz-advanced-grammar-participles",
     "name": "Participles",
-    "learningMode": "completion",
+    "learningMode": "quiz",
     "dataPath": "data/c1/c1-quiz-advanced-grammar-participles.json",
     "level": [
       "c1"
@@ -646,7 +646,7 @@
   {
     "id": "quiz-advanced-grammar-subjunctive",
     "name": "Subjunctive",
-    "learningMode": "completion",
+    "learningMode": "quiz",
     "dataPath": "data/c1/c1-quiz-advanced-grammar-subjunctive.json",
     "level": [
       "c1"
@@ -697,7 +697,7 @@
   {
     "id": "quiz-advanced-collocations-idioms-c2",
     "name": "Advanced Collocations",
-    "learningMode": "completion",
+    "learningMode": "quiz",
     "dataPath": "data/c2/c2-quiz-advanced-collocations-idioms.json",
     "level": [
       "c2"
@@ -714,7 +714,7 @@
   {
     "id": "quiz-advanced-grammatical-structures-c2",
     "name": "Advanced Structures",
-    "learningMode": "completion",
+    "learningMode": "quiz",
     "dataPath": "data/c2/c2-quiz-advanced-grammatical-structures.json",
     "level": [
       "c2"
@@ -731,7 +731,7 @@
   {
     "id": "quiz-formal-vocabulary-nuance-c2",
     "name": "Formal & Nuance",
-    "learningMode": "completion",
+    "learningMode": "quiz",
     "dataPath": "data/c2/c2-quiz-formal-vocabulary-nuance.json",
     "level": [
       "c2"
