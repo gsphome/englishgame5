@@ -50,15 +50,16 @@
       transform: translateY(-1px);
     }
 
-    .module-card__title {
+    /* Only apply soft colors to non-colored module cards */
+    .module-card:not(.module-card--flashcard):not(.module-card--quiz):not(.module-card--completion):not(.module-card--sorting):not(.module-card--matching) .module-card__title {
       color: var(--text-primary-soft);
     }
 
-    .module-card__description {
+    .module-card:not(.module-card--flashcard):not(.module-card--quiz):not(.module-card--completion):not(.module-card--sorting):not(.module-card--matching) .module-card__description {
       color: var(--text-secondary-soft);
     }
 
-    .module-card svg {
+    .module-card:not(.module-card--flashcard):not(.module-card--quiz):not(.module-card--completion):not(.module-card--sorting):not(.module-card--matching) svg {
       color: var(--text-secondary-soft);
       stroke: var(--text-secondary-soft);
     }
@@ -145,21 +146,18 @@
     }
 
     /* === BUTTON OVERRIDES === */
-    .bg-blue-600,
-    .bg-purple-600,
-    .bg-green-600,
-    .bg-red-600,
-    .btn--primary {
+    /* Only target buttons inside learning components and modals, not main menu */
+    .flashcard-component button.bg-blue-600,
+    .quiz-component button.bg-blue-600,
+    .completion-component button.bg-blue-600,
+    .matching-component button.bg-blue-600,
+    .sorting-component button.bg-blue-600 {
       color: #ffffff !important;
     }
 
-    button.bg-blue-600,
-    button.bg-purple-600,
-    button.bg-green-600 {
-      color: #ffffff !important;
-    }
-
-    .px-4.py-2.bg-blue-600 {
+    /* Modal overlay buttons */
+    .fixed button.bg-blue-600,
+    .fixed .bg-blue-600 {
       color: #ffffff !important;
     }
 
