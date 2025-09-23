@@ -1,10 +1,11 @@
-@import './styles/components.css';
-@import './styles/theme-fix.css';
-@import './styles/mobile-theme-fix.css';
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Import our styles AFTER Tailwind to ensure higher specificity */
+@import './styles/components.css';
+@import './styles/theme-fix.css';
+@import './styles/mobile-theme-fix.css';
 
 @layer base {
   body {
