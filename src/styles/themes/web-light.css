@@ -150,6 +150,29 @@
       background-color: var(--bg-soft);         /* Softer progress bg */
     }
 
+    /* === BUTTON OVERRIDES === */
+    /* Ensure buttons with colored backgrounds have white text */
+    .bg-blue-600,
+    .bg-purple-600,
+    .bg-green-600,
+    .bg-red-600,
+    .btn--primary {
+      color: #ffffff !important;
+    }
+
+    /* Learning component buttons */
+    button.bg-blue-600,
+    button.bg-purple-600,
+    button.bg-green-600 {
+      color: #ffffff !important;
+    }
+
+    /* Specific button classes that might override */
+    .px-4.py-2.bg-blue-600,
+    .px-6.py-2\\.5.bg-blue-600 {
+      color: #ffffff !important;
+    }
+
     /* === MAIN MENU === */
     .main-menu {
       background-color: var(--menu-bg);
