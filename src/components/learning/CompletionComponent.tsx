@@ -166,7 +166,7 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
       // Add text part with structured content rendering
       if (part) {
         elements.push(
-          <span key={`text-${index}`} className="text-gray-900 dark:text-white">
+          <span key={`text-${index}`} className="completion-component__text">
             <ContentRenderer content={ContentAdapter.ensureStructured(part, 'quiz')} />
           </span>
         );
@@ -214,7 +214,7 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
       {/* Compact header with progress */}
       <div className="mb-4">
         <div className="flex justify-between items-center mb-3">
-          <h2 className="text-lg sm:text-xl font-bold text-gray-900">{module.name}</h2>
+          <h2 className="completion-component__title">{module.name}</h2>
           <span className="counter-badge">
             {randomizedExercises.length > 0
               ? `${currentIndex + 1}/${randomizedExercises.length}`
@@ -234,7 +234,7 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
 
       {/* Exercise */}
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 sm:p-6 mb-4">
-        <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-4">
+        <h3 className="completion-component__instruction">
           Complete the sentence:
         </h3>
 
@@ -247,7 +247,7 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
         )}
 
         <div className="text-lg leading-relaxed mb-4 p-6 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-800 rounded-xl border border-gray-200 dark:border-gray-600 shadow-inner">
-          <div className="text-gray-900 dark:text-white font-medium">{renderSentence()}</div>
+          <div className="completion-component__sentence">{renderSentence()}</div>
         </div>
 
         {/* Result and Explanation - Compact unified section */}
@@ -264,7 +264,7 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
               ) : (
                 <X className="h-3.5 w-3.5 text-red-600" />
               )}
-              <span className="font-medium text-xs text-gray-900 dark:text-white">
+              <span className="completion-component__feedback">
                 {answer.toLowerCase().trim() === currentExercise?.correct?.toLowerCase().trim()
                   ? 'Correct!'
                   : 'Incorrect'}

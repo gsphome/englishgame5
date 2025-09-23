@@ -157,7 +157,7 @@
     }
 
     .main-menu__item {
-      color: var(--header-text-primary);
+      color: var(--text-primary-soft);          /* Updated to soft text */
     }
 
     .main-menu__item:hover {
@@ -166,10 +166,10 @@
 
     /* === TOAST NOTIFICATIONS === */
     .toast-card {
-      background-color: var(--header-bg);
-      color: var(--header-text-primary);
-      border-color: var(--header-border);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      background-color: var(--bg-elevated);
+      color: var(--text-primary-soft);          /* Updated to soft text */
+      border-color: var(--border-soft);         /* Updated to soft border */
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Softer shadow */
     }
   }
 }

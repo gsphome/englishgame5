@@ -10,6 +10,7 @@ import { shuffleArray } from '../../utils/randomUtils';
 import { ContentAdapter } from '../../utils/contentAdapter';
 import ContentRenderer from '../ui/ContentRenderer';
 import NavigationButton from '../ui/NavigationButton';
+import '../../styles/components/flashcard-component.css';
 import type { FlashcardData, LearningModule } from '../../types';
 
 interface FlashcardComponentProps {
@@ -140,7 +141,7 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
       {/* Compact header with progress */}
       <div className="mb-4">
         <div className="flex justify-between items-center mb-3">
-          <h2 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">
+          <h2 className="flashcard-component__title">
             {module.name}
           </h2>
           <span className="text-sm font-medium text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full">
@@ -170,7 +171,7 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
         <div className="flashcard-inner">
           {/* Front */}
           <div className="flashcard-front bg-white dark:bg-gray-700 shadow-lg border border-gray-200 dark:border-gray-600">
-            <div className="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white text-center mb-2">
+            <div className="flashcard-component__front-text">
               <ContentRenderer
                 content={ContentAdapter.ensureStructured(
                   currentCard?.front || 'Loading...',
@@ -196,7 +197,7 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
 
           {/* Back */}
           <div className="flashcard-back bg-blue-50 dark:bg-blue-900 shadow-lg border border-blue-200 dark:border-blue-700">
-            <div className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white text-center mb-1">
+            <div className="flashcard-component__back-text">
               <ContentRenderer
                 content={ContentAdapter.ensureStructured(
                   currentCard?.front || 'Loading...',

@@ -1,0 +1,94 @@
+/**
+ * Flashcard Component - BEM Implementation
+ * 
+ * Clean semantic styles for flashcard learning mode
+ * Uses design system tokens and eliminates inline styles
+ */
+
+/* === FLASHCARD COMPONENT BLOCK === */
+.flashcard-component {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 0.75rem;
+  color: var(--text-primary-soft);
+}
+
+@media (min-width: 640px) {
+  .flashcard-component {
+    padding: 1.5rem;
+  }
+}
+
+/* === FLASHCARD TITLES === */
+.flashcard-component__title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text-primary-soft);
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 640px) {
+  .flashcard-component__title {
+    font-size: 1.25rem;
+  }
+}
+
+/* === FLASHCARD TEXT === */
+.flashcard-component__front-text {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary-soft);
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .flashcard-component__front-text {
+    font-size: 1.5rem;
+  }
+}
+
+.flashcard-component__back-text {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary-soft);
+  text-align: center;
+  margin-bottom: 0.25rem;
+}
+
+@media (min-width: 640px) {
+  .flashcard-component__back-text {
+    font-size: 1.25rem;
+  }
+}
+
+/* === DARK MODE === */
+.dark .flashcard-component__title,
+.dark .flashcard-component__front-text,
+.dark .flashcard-component__back-text {
+  color: var(--white);
+}
+
+/* === MOBILE OPTIMIZATIONS === */
+@media (max-width: 768px) {
+  .flashcard-component {
+    padding: 0.5rem;
+  }
+  
+  .flashcard-component__front-text {
+    font-size: 1.125rem;
+  }
+  
+  .flashcard-component__back-text {
+    font-size: 1rem;
+  }
+}
+
+/* === ACCESSIBILITY === */
+@media (prefers-contrast: high) {
+  .flashcard-component__title,
+  .flashcard-component__front-text,
+  .flashcard-component__back-text {
+    font-weight: 600;
+  }
+}

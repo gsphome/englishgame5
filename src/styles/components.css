@@ -2,6 +2,7 @@
 /* Import component styles from organized structure */
 @import './components/index.css';
 @import './components/completion-component.css';
+@import './components/flashcard-component.css';
 @import './components/matching-component.css';
 @import './components/matching-modal.css';
 @import './components/quiz-component.css';

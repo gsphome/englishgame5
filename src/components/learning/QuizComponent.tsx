@@ -160,7 +160,7 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
       {/* Compact header with progress */}
       <div className="mb-4">
         <div className="flex justify-between items-center mb-3">
-          <h2 className="text-lg sm:text-xl font-bold text-gray-900">{module.name}</h2>
+          <h2 className="quiz-component__title">{module.name}</h2>
           <span className="counter-badge">
             {randomizedQuestions.length > 0
               ? `${currentIndex + 1}/${randomizedQuestions.length}`
@@ -200,7 +200,7 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
 
             if (!showResult) {
               buttonClass +=
-                'border-gray-200 dark:border-gray-600 hover:border-blue-300 dark:hover:border-blue-400 hover:bg-blue-50 dark:hover:bg-gray-700 text-gray-900 dark:!text-white';
+                'quiz-component__option';
             } else {
               if (currentQuestion?.options[index] === currentQuestion?.correct) {
                 buttonClass +=

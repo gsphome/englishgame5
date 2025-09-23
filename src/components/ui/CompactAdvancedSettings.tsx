@@ -153,7 +153,7 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
         <div className="compact-settings__header bg-gray-50 dark:bg-gray-800">
           <div className="compact-settings__title-section">
             <Settings className="compact-settings__icon" />
-            <h2 className="compact-settings__title text-gray-900 dark:text-white">
+            <h2 className="compact-settings__title">
               {t('settings.advancedSettings', 'Configuración Avanzada')}
             </h2>
           </div>
@@ -203,7 +203,7 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
                     {t('settings.theme', 'Tema')}
                   </label>
                   <select
-                    className="compact-settings__select bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-gray-300 dark:border-gray-600"
+                    className="compact-settings__select"
                     value={localTheme}
                     onChange={e => setLocalTheme(e.target.value as 'light' | 'dark')}
                   >
@@ -217,7 +217,7 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
                     {t('settings.language', 'Idioma')}
                   </label>
                   <select
-                    className="compact-settings__select bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-gray-300 dark:border-gray-600"
+                    className="compact-settings__select"
                     value={localLanguage}
                     onChange={e => setLocalLanguage(e.target.value as 'en' | 'es')}
                   >
@@ -231,7 +231,7 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
                     {t('settings.level', 'Nivel')}
                   </label>
                   <select
-                    className="compact-settings__select bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-gray-300 dark:border-gray-600"
+                    className="compact-settings__select"
                     value={localLevel}
                     onChange={e => setLocalLevel(e.target.value as any)}
                   >
