@@ -9,33 +9,39 @@
 
 :root {
   /* === HEADER SYSTEM COLORS === */
-  /* Light Mode */
+  /* Light Mode - Improved UX with softer contrasts */
   --header-bg: #ffffff;
-  --header-border: #e5e7eb;
-  --header-text-primary: #111827;
+  --header-border: #f3f4f6;              /* Much softer border */
+  --header-text-primary: #374151;        /* Softer than black */
   --header-text-secondary: #6b7280;
-  --header-icon-color: #374151;
-  --header-icon-hover: #111827;
-  --header-button-hover-bg: #f3f4f6;
-  --header-button-active-bg: #e5e7eb;
+  --header-icon-color: #6b7280;          /* Softer icon color */
+  --header-icon-hover: #374151;          /* Subtle hover */
+  --header-button-hover-bg: #f9fafb;     /* Very subtle hover */
+  --header-button-active-bg: #f3f4f6;    /* Soft active state */
   --header-focus-ring: #3b82f6;
 
-  /* Side Menu */
+  /* Contextual colors for colored backgrounds */
+  --text-on-colored: #ffffff;
+  --border-on-colored: rgba(255, 255, 255, 0.2);
+  --icon-on-colored: #ffffff;
+
+  /* Side Menu - Softer appearance */
   --menu-bg: #ffffff;
-  --menu-border: #e5e7eb;
-  --menu-header-bg: #f9fafb;
-  --menu-item-hover: #f3f4f6;
-  --menu-item-active: #e5e7eb;
+  --menu-border: #f9fafb;               /* Very subtle border */
+  --menu-header-bg: #fafafa;            /* Barely visible background */
+  --menu-item-hover: #f9fafb;           /* Very soft hover */
+  --menu-item-active: #f3f4f6;          /* Soft active state */
 
   /* === SETTINGS SYSTEM COLORS === */
+  /* Improved UX with softer contrasts */
   --settings-bg: #ffffff;
-  --settings-border: #e5e7eb;
-  --settings-text-primary: #111827;
+  --settings-border: #f3f4f6;           /* Much softer border */
+  --settings-text-primary: #374151;     /* Softer than black */
   --settings-text-secondary: #6b7280;
   --settings-section-bg: #faf5ff;
-  --settings-section-border: #d8b4fe;
+  --settings-section-border: rgba(216, 180, 254, 0.5);  /* Softer purple border */
   --settings-input-bg: #ffffff;
-  --settings-input-border: #d1d5db;
+  --settings-input-border: #f3f4f6;     /* Very subtle input border */
   --settings-focus-ring: #8b5cf6;
 
   /* === PRIMARY SYSTEM COLORS === */
@@ -83,6 +89,22 @@
   --gray-700: #374151;
   --gray-800: #1f2937;
   --gray-900: #111827;
+
+  /* === UX IMPROVED SYSTEM === */
+  /* Soft text hierarchy for better UX */
+  --text-primary-soft: #374151;         /* Main text - softer than black */
+  --text-secondary-soft: #6b7280;       /* Secondary text */
+  --text-tertiary-soft: #9ca3af;        /* Tertiary text */
+  
+  /* Subtle border system */
+  --border-subtle: #f9fafb;             /* Almost invisible */
+  --border-soft: #f3f4f6;               /* Very subtle */
+  --border-medium: #e5e7eb;             /* Medium (use sparingly) */
+  
+  /* Elevated backgrounds */
+  --bg-elevated: #ffffff;               /* Cards, modals */
+  --bg-subtle: #fafafa;                 /* Subtle backgrounds */
+  --bg-soft: #f9fafb;                   /* Soft backgrounds */
 }
 
 /* === DARK MODE COLORS === */

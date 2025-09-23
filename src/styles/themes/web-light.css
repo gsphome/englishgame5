@@ -10,16 +10,18 @@
   html.light,
   html:not(.dark) {
     /* === HEADER COMPONENT === */
+    /* Improved UX with softer contrasts and contextual colors */
     .header-redesigned {
       background-color: var(--header-bg);
-      color: var(--header-text-primary);
-      border-color: var(--header-border);
+      color: var(--text-primary-soft);           /* Softer text */
+      border-color: var(--border-subtle);       /* Almost invisible border */
       transition: var(--theme-transition-duration, 0.2s) ease;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03); /* Very subtle shadow */
     }
 
     .header-redesigned__title,
     .header-redesigned__username {
-      color: var(--header-text-primary);
+      color: var(--text-primary-soft);          /* Consistent soft text */
     }
 
     .header-redesigned svg,
@@ -33,41 +35,55 @@
     }
 
     /* === MODULE CARDS === */
+    /* Improved UX with softer appearance and better hierarchy */
     .module-card {
-      background-color: var(--header-bg);
-      color: var(--header-text-primary);
-      border-color: var(--header-border);
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      background-color: var(--bg-elevated);
+      color: var(--text-primary-soft);          /* Softer text */
+      border-color: var(--border-subtle);       /* Almost invisible border */
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04); /* Much softer shadow */
       transition: var(--theme-transition-duration, 0.2s) ease;
     }
 
     .module-card:hover {
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      border-color: var(--border-soft);         /* Slightly more visible on hover */
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06); /* Soft hover shadow */
+      transform: translateY(-1px);              /* Subtle lift effect */
     }
 
-    .module-card__title,
+    .module-card__title {
+      color: var(--text-primary-soft);          /* Soft title */
+    }
+    
     .module-card__description {
-      color: var(--header-text-primary);
+      color: var(--text-secondary-soft);        /* Even softer description */
     }
 
     .module-card svg {
-      color: var(--header-icon-color);
-      stroke: var(--header-icon-color);
+      color: var(--text-secondary-soft);        /* Softer icons */
+      stroke: var(--text-secondary-soft);
     }
 
     /* === NAVIGATION === */
+    /* Improved UX with softer button states */
     .nav-btn {
       background-color: transparent;
-      color: var(--header-text-primary);
-      border-color: var(--header-border);
+      color: var(--text-primary-soft);          /* Softer text */
+      border-color: var(--border-soft);         /* Subtle border */
     }
 
     .nav-btn:hover {
-      background-color: var(--header-button-hover-bg);
+      background-color: var(--bg-subtle);       /* Very soft hover */
+      border-color: var(--border-medium);       /* Slightly more visible */
     }
 
     .nav-btn:active {
-      background-color: var(--header-button-active-bg);
+      background-color: var(--bg-soft);         /* Soft active state */
+    }
+
+    /* Contextual navigation on colored backgrounds */
+    .nav-btn--on-colored {
+      color: var(--text-on-colored);
+      border-color: var(--border-on-colored);
     }
 
     /* === SETTINGS COMPONENTS === */
@@ -102,13 +118,36 @@
     }
 
     /* === LEARNING COMPONENTS === */
+    /* Improved UX with softer appearance and contextual colors */
     .flashcard-component,
     .quiz-component,
     .sorting-component,
     .matching-component {
-      background-color: var(--header-bg);
-      color: var(--header-text-primary);
-      border-color: var(--header-border);
+      background-color: var(--bg-elevated);
+      color: var(--text-primary-soft);          /* Softer text */
+      border-color: var(--border-subtle);       /* Almost invisible border */
+    }
+
+    /* Learning component cards */
+    .quiz-component__question-card,
+    .flashcard-component__card,
+    .matching-component__item,
+    .sorting-component__item {
+      background-color: var(--bg-elevated);
+      border-color: var(--border-soft);         /* Subtle borders */
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04); /* Very soft shadows */
+    }
+
+    /* Selected/Active states with contextual colors */
+    .quiz-component__option--selected,
+    .matching-component__item--selected {
+      color: var(--text-on-colored);            /* White text on colored bg */
+      border-color: transparent;                /* No competing border */
+    }
+
+    /* Progress bars with softer appearance */
+    .progress-bar {
+      background-color: var(--bg-soft);         /* Softer progress bg */
     }
 
     /* === MAIN MENU === */
