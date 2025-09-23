@@ -7,27 +7,20 @@
 
 /* === WEB LIGHT CONTEXT === */
 @media (min-width: 769px) {
-
   html.light,
   html:not(.dark) {
-
     /* === HEADER COMPONENT === */
-    /* Improved UX with softer contrasts and contextual colors */
     .header-redesigned {
       background-color: var(--header-bg);
       color: var(--text-primary-soft);
-      /* Softer text */
       border-color: var(--border-subtle);
-      /* Almost invisible border */
       transition: var(--theme-transition-duration, 0.2s) ease;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
-      /* Very subtle shadow */
     }
 
     .header-redesigned__title,
     .header-redesigned__username {
       color: var(--text-primary-soft);
-      /* Consistent soft text */
     }
 
     .header-redesigned svg,
@@ -41,66 +34,49 @@
     }
 
     /* === MODULE CARDS === */
-    /* Improved UX with softer appearance and better hierarchy */
     .module-card {
       background-color: var(--bg-elevated);
       color: var(--text-primary-soft);
-      /* Softer text */
       border-color: var(--border-subtle);
-      /* Almost invisible border */
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-      /* Much softer shadow */
       transition: var(--theme-transition-duration, 0.2s) ease;
     }
 
     .module-card:hover {
       border-color: var(--border-soft);
-      /* Slightly more visible on hover */
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-      /* Soft hover shadow */
       transform: translateY(-1px);
-      /* Subtle lift effect */
     }
 
     .module-card__title {
       color: var(--text-primary-soft);
-      /* Soft title */
     }
-
+    
     .module-card__description {
       color: var(--text-secondary-soft);
-      /* Even softer description */
     }
 
     .module-card svg {
       color: var(--text-secondary-soft);
-      /* Softer icons */
       stroke: var(--text-secondary-soft);
     }
 
     /* === NAVIGATION === */
-    /* Improved UX with softer button states */
     .nav-btn {
       background-color: transparent;
       color: var(--text-primary-soft);
-      /* Softer text */
       border-color: var(--border-soft);
-      /* Subtle border */
     }
 
     .nav-btn:hover {
       background-color: var(--bg-subtle);
-      /* Very soft hover */
       border-color: var(--border-medium);
-      /* Slightly more visible */
     }
 
     .nav-btn:active {
       background-color: var(--bg-soft);
-      /* Soft active state */
     }
 
-    /* Contextual navigation on colored backgrounds */
     .nav-btn--on-colored {
       color: var(--text-on-colored);
       border-color: var(--border-on-colored);
@@ -138,47 +114,35 @@
     }
 
     /* === LEARNING COMPONENTS === */
-    /* Improved UX with softer appearance and contextual colors */
     .flashcard-component,
     .quiz-component,
     .sorting-component,
     .matching-component {
       background-color: var(--bg-elevated);
       color: var(--text-primary-soft);
-      /* Softer text */
       border-color: var(--border-subtle);
-      /* Almost invisible border */
     }
 
-    /* Learning component cards */
     .quiz-component__question-card,
     .flashcard-component__card,
     .matching-component__item,
     .sorting-component__item {
       background-color: var(--bg-elevated);
       border-color: var(--border-soft);
-      /* Subtle borders */
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-      /* Very soft shadows */
     }
 
-    /* Selected/Active states with contextual colors */
     .quiz-component__option--selected,
     .matching-component__item--selected {
       color: var(--text-on-colored);
-      /* White text on colored bg */
       border-color: transparent;
-      /* No competing border */
     }
 
-    /* Progress bars with softer appearance */
     .progress-bar {
       background-color: var(--bg-soft);
-      /* Softer progress bg */
     }
 
     /* === BUTTON OVERRIDES === */
-    /* Ensure buttons with colored backgrounds have white text */
     .bg-blue-600,
     .bg-purple-600,
     .bg-green-600,
@@ -187,45 +151,36 @@
       color: #ffffff !important;
     }
 
-    /* Learning component buttons */
     button.bg-blue-600,
     button.bg-purple-600,
     button.bg-green-600 {
       color: #ffffff !important;
     }
 
-    /* Specific button classes that might override */
     .px-4.py-2.bg-blue-600,
     .px-6.py-2\\.5.bg-blue-600 {
       color: #ffffff !important;
     }
 
     /* === MODAL BUTTON OVERRIDES === */
-    /* Maximum specificity for modal buttons */
-    html.light .compact-settings__btn--primary,
-    html:not(.dark) .compact-settings__btn--primary,
-    html.light .compact-profile__btn--save,
-    html:not(.dark) .compact-profile__btn--save {
+    .compact-settings__btn--primary,
+    .compact-profile__btn--save {
       color: #ffffff !important;
     }
 
-    /* Any button with gradient background */
     .bg-gradient-to-r {
       color: #ffffff !important;
     }
 
-    /* Buttons with blue gradients specifically */
     .from-blue-600,
     .to-blue-700 {
       color: #ffffff !important;
     }
 
-    /* Toast action buttons */
     .toast-card button {
       color: #ffffff !important;
     }
 
-    /* Any button inside modals or overlays */
     .fixed button.bg-blue-600,
     .fixed button[class*="bg-blue"],
     .fixed button[class*="gradient"] {
@@ -240,7 +195,6 @@
 
     .main-menu__item {
       color: var(--text-primary-soft);
-      /* Updated to soft text */
     }
 
     .main-menu__item:hover {
@@ -251,21 +205,16 @@
     .toast-card {
       background-color: var(--bg-elevated);
       color: var(--text-primary-soft);
-      /* Updated to soft text */
       border-color: var(--border-soft);
-      /* Updated to soft border */
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      /* Softer shadow */
     }
   }
 }
 
 /* === WEB LIGHT ACCESSIBILITY === */
 @media (min-width: 769px) and (prefers-contrast: high) {
-
   html.light,
   html:not(.dark) {
-
     .header-redesigned,
     .module-card,
     .compact-settings__container {
@@ -283,10 +232,8 @@
 
 /* === WEB LIGHT REDUCED MOTION === */
 @media (min-width: 769px) and (prefers-reduced-motion: reduce) {
-
   html.light,
   html:not(.dark) {
-
     .header-redesigned,
     .module-card,
     .nav-btn,
