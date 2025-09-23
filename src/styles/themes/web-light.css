@@ -404,5 +404,22 @@
     html:not(.dark) .compact-learning-path__btn--primary {
       color: #ffffff !important;
     }
+
+    /* === ABOUT MODAL OVERRIDES === */
+    /* Ensure about modal text is visible in web-light mode */
+    html.light .compact-about__section-title,
+    html:not(.dark) .compact-about__section-title {
+      color: var(--text-primary-soft) !important;
+    }
+
+    html.light .compact-about__info-value,
+    html:not(.dark) .compact-about__info-value {
+      color: var(--text-primary-soft) !important;
+    }
+
+    html.light .compact-about__developer-name,
+    html:not(.dark) .compact-about__developer-name {
+      color: var(--text-primary-soft) !important;
+    }
   }
 }
