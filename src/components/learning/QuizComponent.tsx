@@ -161,19 +161,16 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
       <div className="mb-4">
         <div className="flex justify-between items-center mb-3">
           <h2 className="text-lg sm:text-xl font-bold text-gray-900">{module.name}</h2>
-          <span
-            className="text-sm font-medium text-gray-600 bg-gray-100 px-3 py-1 rounded-full"
-            style={{ minWidth: '60px', textAlign: 'center' }}
-          >
+          <span className="counter-badge">
             {randomizedQuestions.length > 0
               ? `${currentIndex + 1}/${randomizedQuestions.length}`
               : '...'}
           </span>
         </div>
-        <div className="w-full bg-gray-200 rounded-full h-1.5">
+        <div className="progress-bar progress-bar--green">
           <div
-            className="bg-green-600 h-1.5 rounded-full transition-all duration-300"
-            style={{ width: `${((currentIndex + 1) / randomizedQuestions.length) * 100}%` }}
+            className="progress-bar__fill"
+            style={{ '--progress-width': `${((currentIndex + 1) / randomizedQuestions.length) * 100}%` } as React.CSSProperties}
           />
         </div>
         <p className="text-xs text-gray-500 mt-2 text-center">
@@ -183,7 +180,10 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
 
       {/* Question */}
       <div className="quiz-question bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 sm:p-6 mb-4">
-        <h3 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6" style={{ color: textColor }}>
+        <h3 
+          className="quiz-component__question-title dynamic-text-color"
+          style={{ '--dynamic-text-color': textColor } as React.CSSProperties}
+        >
           <ContentRenderer
             content={ContentAdapter.ensureStructured(
               currentQuestion?.question || currentQuestion?.sentence || 'Loading question...',
@@ -229,7 +229,10 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
                     <span className="w-6 h-6 bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full flex items-center justify-center text-xs font-medium mr-3">
                       {index + 1}
                     </span>
-                    <span className="text-sm" style={{ color: textColor }}>
+                    <span 
+                      className="quiz-component__option-text dynamic-text-color"
+                      style={{ '--dynamic-text-color': textColor } as React.CSSProperties}
+                    >
                       {option}
                     </span>
                   </div>
@@ -260,10 +263,16 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
           }`}
         >
           <div className="quiz-explanation p-4 bg-blue-50 dark:bg-blue-900 border border-blue-200 dark:border-blue-700 rounded-lg">
-            <h4 className="font-medium mb-2" style={{ color: textColor }}>
+            <h4 
+              className="quiz-component__explanation-title dynamic-text-color"
+              style={{ '--dynamic-text-color': textColor } as React.CSSProperties}
+            >
               Explanation:
             </h4>
-            <div style={{ color: textColor }}>
+            <div 
+              className="quiz-component__explanation-content dynamic-text-color"
+              style={{ '--dynamic-text-color': textColor } as React.CSSProperties}
+            >
               <ContentRenderer
                 content={ContentAdapter.ensureStructured(
                   currentQuestion?.explanation || '',

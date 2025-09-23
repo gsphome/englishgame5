@@ -306,9 +306,7 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
         <div className="sorting-component__progress-bar">
           <div
             className="sorting-component__progress-fill"
-            style={{
-              width: `${exercise.words.length > 0 ? ((exercise.words.length - availableWords.length) / exercise.words.length) * 100 : 0}%`,
-            }}
+            style={{ '--progress-width': `${exercise.words.length > 0 ? ((exercise.words.length - availableWords.length) / exercise.words.length) * 100 : 0}%` } as React.CSSProperties}
           />
         </div>
         <div className="sorting-component__instructions">

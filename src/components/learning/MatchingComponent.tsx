@@ -9,6 +9,7 @@ import ContentRenderer from '../ui/ContentRenderer';
 import NavigationButton from '../ui/NavigationButton';
 import '../../styles/components/matching-modal.css';
 import '../../styles/components/matching-component.css';
+import '../../styles/components/matching-component.css';
 import type { LearningModule } from '../../types';
 
 interface MatchingComponentProps {
@@ -246,7 +247,7 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
         <div className="matching-component__progress-bar">
           <div
             className="matching-component__progress-fill"
-            style={{ width: `${(Object.keys(matches).length / pairs.length) * 100}%` }}
+            style={{ '--progress-width': `${(Object.keys(matches).length / pairs.length) * 100}%` } as React.CSSProperties}
           />
         </div>
         <p className="matching-component__instruction-text">
@@ -357,10 +358,7 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
                   className={className}
                 >
                   <div className="matching-component__item-content">
-                    <span
-                      className="matching-component__item-letter"
-                      style={{ backgroundColor: '#f97316' }}
-                    >
+                    <span className="matching-component__item-letter matching-component__item-letter--orange">
                       {index + 1}
                     </span>
                     <span className="matching-component__item-text">

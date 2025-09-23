@@ -120,8 +120,8 @@ export const CompactProgressDashboard: React.FC<CompactProgressDashboardProps> =
                       <div key={index} className="compact-dashboard__progress-day">
                         <div className="compact-dashboard__progress-bar">
                           <div
-                            className="compact-dashboard__progress-fill"
-                            style={{ height: `${Math.max(day.averageScore || 0, 5)}%` }}
+                            className="compact-dashboard__progress-fill dynamic-height"
+                            style={{ '--dynamic-height': `${Math.max(day.averageScore || 0, 5)}%` } as React.CSSProperties}
                           />
                         </div>
                         <span className="compact-dashboard__progress-day-label">{dayName}</span>

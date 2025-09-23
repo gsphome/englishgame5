@@ -187,7 +187,7 @@ export const CompactLearningPath: React.FC<CompactLearningPathProps> = ({ isOpen
                       <div className="compact-learning-path__unit-progress-bar">
                         <div
                           className="compact-learning-path__unit-progress-fill"
-                          style={{ width: `${unitStat.percentage}%` }}
+                          style={{ '--progress-width': `${unitStat.percentage}%` } as React.CSSProperties}
                         />
                       </div>
                       <span className="compact-learning-path__unit-progress-text">

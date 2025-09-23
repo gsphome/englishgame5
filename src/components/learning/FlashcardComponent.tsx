@@ -149,8 +149,8 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
         </div>
         <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5">
           <div
-            className="bg-blue-600 h-1.5 rounded-full transition-all duration-300"
-            style={{ width: `${((currentIndex + 1) / randomizedFlashcards.length) * 100}%` }}
+            className="progress-bar__fill progress-bar__fill--blue"
+            style={{ '--progress-width': `${((currentIndex + 1) / randomizedFlashcards.length) * 100}%` } as React.CSSProperties}
           />
         </div>
         <p className="text-xs text-gray-500 dark:text-gray-400 mt-2 text-center">

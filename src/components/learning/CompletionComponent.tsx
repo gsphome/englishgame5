@@ -8,6 +8,7 @@ import { useTranslation } from '../../utils/i18n';
 import { useToast } from '../../hooks/useToast';
 import { useLearningCleanup } from '../../hooks/useLearningCleanup';
 import { shuffleArray } from '../../utils/randomUtils';
+import '../../styles/components/completion-component.css';
 import { ContentAdapter } from '../../utils/contentAdapter';
 import ContentRenderer from '../ui/ContentRenderer';
 import NavigationButton from '../ui/NavigationButton';
@@ -196,9 +197,8 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
                     : 'border-gray-300 bg-gray-50 text-gray-600 dark:bg-gray-700 dark:text-gray-300'
                 : 'border-blue-300 bg-blue-50 focus:border-blue-500 focus:bg-white text-gray-900 dark:bg-gray-700 dark:border-gray-500 dark:text-white dark:focus:bg-gray-600'
             }`}
-            style={{
-              width: `${Math.max(120, (answer?.length || 3) * 12 + 60)}px`,
-            }}
+            className="completion-component__input dynamic-width"
+            style={{ '--dynamic-width': `${Math.max(120, (answer?.length || 3) * 12 + 60)}px` } as React.CSSProperties}
           />
         );
       }
@@ -215,10 +215,7 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
       <div className="mb-4">
         <div className="flex justify-between items-center mb-3">
           <h2 className="text-lg sm:text-xl font-bold text-gray-900">{module.name}</h2>
-          <span
-            className="text-sm font-medium text-gray-600 bg-gray-100 px-3 py-1 rounded-full"
-            style={{ minWidth: '60px', textAlign: 'center' }}
-          >
+          <span className="counter-badge">
             {randomizedExercises.length > 0
               ? `${currentIndex + 1}/${randomizedExercises.length}`
               : '...'}
@@ -226,8 +223,8 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
         </div>
         <div className="w-full bg-gray-200 rounded-full h-1.5">
           <div
-            className="bg-purple-600 h-1.5 rounded-full transition-all duration-300"
-            style={{ width: `${((currentIndex + 1) / randomizedExercises.length) * 100}%` }}
+            className="progress-bar__fill progress-bar__fill--purple"
+            style={{ '--progress-width': `${((currentIndex + 1) / randomizedExercises.length) * 100}%` } as React.CSSProperties}
           />
         </div>
         <p className="text-xs text-gray-500 mt-2 text-center">

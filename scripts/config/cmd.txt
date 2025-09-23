@@ -1,5 +1,3 @@
-# Útil: Para verificación básica
-# 💡 Recomendaciones por Situación
 #########################################
 # 🎯 Uso Diario Normal:
 npm run build:full

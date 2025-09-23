@@ -1,8 +1,12 @@
 /* Component-specific styles - Clean separation */
 /* Import component styles from organized structure */
 @import './components/index.css';
-@import './components/sorting-modal.css';
+@import './components/completion-component.css';
+@import './components/matching-component.css';
 @import './components/matching-modal.css';
+@import './components/quiz-component.css';
+@import './components/score-display.css';
+@import './components/sorting-modal.css';
 
 /* Design System Foundation */
 @import './design-system/breakpoints.css';

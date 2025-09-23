@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAppStore } from '../../stores/appStore';
 import { useUserStore } from '../../stores/userStore';
+import '../../styles/components/score-display.css';
 
 export const ScoreDisplay: React.FC = () => {
   const { sessionScore, globalScore, currentView } = useAppStore();
@@ -27,10 +28,8 @@ export const ScoreDisplay: React.FC = () => {
     >
       {/* Adaptive container based on context */}
       <div
-        className="score-display-compact__container"
+        className={`score-display-compact__container ${isInGame ? 'score-display-compact__container--in-game' : 'score-display-compact__container--full'}`}
         style={{
-          minWidth: isInGame ? '160px' : '200px',
-          height: '36px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -59,9 +58,7 @@ export const ScoreDisplay: React.FC = () => {
                 {sessionScore.incorrect}
               </span>
             </div>
-            <div
-              className="score-display-compact__accuracy"
-              style={{ minWidth: '40px' }}
+            <div className="score-display-compact__accuracy min-width-sm"
               aria-label={`${sessionScore.accuracy.toFixed(0)} percent accuracy`}
             >
               {sessionScore.total > 0 ? `${sessionScore.accuracy.toFixed(0)}%` : '0%'}
@@ -91,9 +88,7 @@ export const ScoreDisplay: React.FC = () => {
                   {globalScore.incorrect}
                 </span>
               </div>
-              <div
-                className="score-display-compact__accuracy"
-                style={{ minWidth: '40px' }}
+              <div className="score-display-compact__accuracy min-width-sm"
                 aria-label={`${globalScore.accuracy.toFixed(0)} percent overall accuracy`}
               >
                 {globalScore.total > 0 ? `${globalScore.accuracy.toFixed(0)}%` : '0%'}
@@ -123,7 +118,7 @@ export const ScoreDisplay: React.FC = () => {
               >
                 <div
                   className="score-display-compact__progress-fill"
-                  style={{ width: `${levelProgress * 100}%` }}
+                  style={{ '--progress-width': `${levelProgress * 100}%` } as React.CSSProperties}
                 />
               </div>
             </div>
