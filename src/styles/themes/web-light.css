@@ -173,6 +173,40 @@
       color: #ffffff !important;
     }
 
+    /* === MODAL BUTTON OVERRIDES === */
+    /* Compact settings modal buttons */
+    .compact-settings__btn--primary {
+      color: #ffffff !important;
+    }
+
+    /* Compact profile modal buttons */
+    .compact-profile__btn--save {
+      color: #ffffff !important;
+    }
+
+    /* Any button with gradient background */
+    .bg-gradient-to-r {
+      color: #ffffff !important;
+    }
+
+    /* Buttons with blue gradients specifically */
+    .from-blue-600,
+    .to-blue-700 {
+      color: #ffffff !important;
+    }
+
+    /* Toast action buttons */
+    .toast-card button {
+      color: #ffffff !important;
+    }
+
+    /* Any button inside modals or overlays */
+    .fixed button.bg-blue-600,
+    .fixed button[class*="bg-blue"],
+    .fixed button[class*="gradient"] {
+      color: #ffffff !important;
+    }
+
     /* === MAIN MENU === */
     .main-menu {
       background-color: var(--menu-bg);
