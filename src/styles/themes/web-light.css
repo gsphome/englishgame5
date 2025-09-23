@@ -7,8 +7,10 @@
 
 /* === WEB LIGHT CONTEXT === */
 @media (min-width: 769px) {
+
   html.light,
   html:not(.dark) {
+
     /* === HEADER COMPONENT === */
     .header-redesigned {
       background-color: var(--header-bg);
@@ -51,7 +53,7 @@
     .module-card__title {
       color: var(--text-primary-soft);
     }
-    
+
     .module-card__description {
       color: var(--text-secondary-soft);
     }
@@ -162,9 +164,37 @@
     }
 
     /* === MODAL BUTTON OVERRIDES === */
-    .compact-settings__btn--primary,
-    .compact-profile__btn--save {
+    /* Maximum specificity for modal buttons */
+    html.light .compact-settings__btn.compact-settings__btn--primary,
+    html:not(.dark) .compact-settings__btn.compact-settings__btn--primary,
+    html.light .compact-profile__btn.compact-profile__btn--save,
+    html:not(.dark) .compact-profile__btn.compact-profile__btn--save,
+    html.light button.compact-settings__btn--primary,
+    html:not(.dark) button.compact-settings__btn--primary,
+    html.light button.compact-profile__btn--save,
+    html:not(.dark) button.compact-profile__btn--save {
       color: #ffffff !important;
+    }
+
+    /* Force white text on any button with gradient background */
+    html.light button[class*="gradient"],
+    html:not(.dark) button[class*="gradient"],
+    html.light .bg-gradient-to-r,
+    html:not(.dark) .bg-gradient-to-r {
+      color: #ffffff !important;
+    }
+
+    /* Force white text and icons inside modal buttons */
+    html.light .compact-settings__btn--primary *,
+    html:not(.dark) .compact-settings__btn--primary *,
+    html.light .compact-profile__btn--save *,
+    html:not(.dark) .compact-profile__btn--save *,
+    html.light .compact-settings__btn--primary svg,
+    html:not(.dark) .compact-settings__btn--primary svg,
+    html.light .compact-profile__btn--save svg,
+    html:not(.dark) .compact-profile__btn--save svg {
+      color: #ffffff !important;
+      stroke: #ffffff !important;
     }
 
     .bg-gradient-to-r {
@@ -210,8 +240,10 @@
 
 /* === WEB LIGHT ACCESSIBILITY === */
 @media (min-width: 769px) and (prefers-contrast: high) {
+
   html.light,
   html:not(.dark) {
+
     .header-redesigned,
     .module-card,
     .compact-settings__container {
@@ -229,8 +261,10 @@
 
 /* === WEB LIGHT REDUCED MOTION === */
 @media (min-width: 769px) and (prefers-reduced-motion: reduce) {
+
   html.light,
   html:not(.dark) {
+
     .header-redesigned,
     .module-card,
     .nav-btn,
