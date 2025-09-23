@@ -233,6 +233,35 @@
       border-color: var(--border-soft);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     }
+
+    /* === PROGRESS DASHBOARD === */
+    /* Apply soft colors to dashboard text elements */
+    .compact-dashboard__title {
+      color: var(--text-primary-soft) !important;
+    }
+
+    .compact-dashboard__stat-value {
+      color: var(--text-primary-soft) !important;
+    }
+
+    .compact-dashboard__section-title {
+      color: var(--text-primary-soft) !important;
+    }
+
+    .compact-dashboard__progress-day-value {
+      color: var(--text-primary-soft) !important;
+    }
+
+    /* Dashboard container and background */
+    .compact-dashboard__container {
+      background-color: var(--bg-elevated);
+      border-color: var(--border-soft);
+    }
+
+    .compact-dashboard__stat {
+      background-color: var(--bg-elevated);
+      border-color: var(--border-soft);
+    }
   }
 }
 
@@ -271,11 +300,13 @@
     }
   }
 }
+
 /* 
 === TAILWIND UTILITIES LAYER OVERRIDES === */
 /* Use Tailwind's utilities layer for maximum specificity */
 @layer utilities {
   @media (min-width: 769px) {
+
     html.light .compact-settings__btn--primary,
     html:not(.dark) .compact-settings__btn--primary,
     html.light .compact-profile__btn--save,
@@ -289,6 +320,49 @@
     html:not(.dark) .compact-profile__btn--save svg {
       color: #ffffff !important;
       stroke: #ffffff !important;
+    }
+
+    /* === PROGRESS DASHBOARD OVERRIDES === */
+    /* Ensure dashboard text is visible in web-light mode */
+    html.light .compact-dashboard__title,
+    html:not(.dark) .compact-dashboard__title {
+      color: var(--text-primary-soft) !important;
+    }
+
+    html.light .compact-dashboard__stat-value,
+    html:not(.dark) .compact-dashboard__stat-value {
+      color: var(--text-primary-soft) !important;
+    }
+
+    html.light .compact-dashboard__stat-label,
+    html:not(.dark) .compact-dashboard__stat-label {
+      color: var(--text-secondary-soft) !important;
+    }
+
+    html.light .compact-dashboard__section-title,
+    html:not(.dark) .compact-dashboard__section-title {
+      color: var(--text-primary-soft) !important;
+    }
+
+    html.light .compact-dashboard__progress-day-value,
+    html:not(.dark) .compact-dashboard__progress-day-value {
+      color: var(--text-primary-soft) !important;
+    }
+
+    html.light .compact-dashboard__progress-day-label,
+    html:not(.dark) .compact-dashboard__progress-day-label {
+      color: var(--text-secondary-soft) !important;
+    }
+
+    html.light .compact-dashboard__no-data-text,
+    html:not(.dark) .compact-dashboard__no-data-text {
+      color: var(--text-secondary-soft) !important;
+    }
+
+    /* Dashboard button */
+    html.light .compact-dashboard__btn--primary,
+    html:not(.dark) .compact-dashboard__btn--primary {
+      color: #ffffff !important;
     }
   }
 }
