@@ -262,6 +262,38 @@
       background-color: var(--bg-elevated);
       border-color: var(--border-soft);
     }
+
+    /* === LEARNING PATH === */
+    /* Apply soft colors to learning path text elements */
+    .compact-learning-path__title {
+      color: var(--text-primary-soft) !important;
+    }
+
+    .compact-learning-path__progress-value {
+      color: var(--text-primary-soft) !important;
+    }
+
+    .compact-learning-path__stat-value {
+      color: var(--text-primary-soft) !important;
+    }
+
+    .compact-learning-path__section-title {
+      color: var(--text-primary-soft) !important;
+    }
+
+    .compact-learning-path__module-name {
+      color: var(--text-primary-soft) !important;
+    }
+
+    .compact-learning-path__unit-name {
+      color: var(--text-primary-soft) !important;
+    }
+
+    /* Learning path container and background */
+    .compact-learning-path__container {
+      background-color: var(--bg-elevated);
+      border-color: var(--border-soft);
+    }
   }
 }
 
