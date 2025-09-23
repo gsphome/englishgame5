@@ -7,21 +7,27 @@
 
 /* === WEB LIGHT CONTEXT === */
 @media (min-width: 769px) {
+
   html.light,
   html:not(.dark) {
+
     /* === HEADER COMPONENT === */
     /* Improved UX with softer contrasts and contextual colors */
     .header-redesigned {
       background-color: var(--header-bg);
-      color: var(--text-primary-soft);           /* Softer text */
-      border-color: var(--border-subtle);       /* Almost invisible border */
+      color: var(--text-primary-soft);
+      /* Softer text */
+      border-color: var(--border-subtle);
+      /* Almost invisible border */
       transition: var(--theme-transition-duration, 0.2s) ease;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03); /* Very subtle shadow */
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+      /* Very subtle shadow */
     }
 
     .header-redesigned__title,
     .header-redesigned__username {
-      color: var(--text-primary-soft);          /* Consistent soft text */
+      color: var(--text-primary-soft);
+      /* Consistent soft text */
     }
 
     .header-redesigned svg,
@@ -38,28 +44,37 @@
     /* Improved UX with softer appearance and better hierarchy */
     .module-card {
       background-color: var(--bg-elevated);
-      color: var(--text-primary-soft);          /* Softer text */
-      border-color: var(--border-subtle);       /* Almost invisible border */
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04); /* Much softer shadow */
+      color: var(--text-primary-soft);
+      /* Softer text */
+      border-color: var(--border-subtle);
+      /* Almost invisible border */
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+      /* Much softer shadow */
       transition: var(--theme-transition-duration, 0.2s) ease;
     }
 
     .module-card:hover {
-      border-color: var(--border-soft);         /* Slightly more visible on hover */
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06); /* Soft hover shadow */
-      transform: translateY(-1px);              /* Subtle lift effect */
+      border-color: var(--border-soft);
+      /* Slightly more visible on hover */
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      /* Soft hover shadow */
+      transform: translateY(-1px);
+      /* Subtle lift effect */
     }
 
     .module-card__title {
-      color: var(--text-primary-soft);          /* Soft title */
+      color: var(--text-primary-soft);
+      /* Soft title */
     }
-    
+
     .module-card__description {
-      color: var(--text-secondary-soft);        /* Even softer description */
+      color: var(--text-secondary-soft);
+      /* Even softer description */
     }
 
     .module-card svg {
-      color: var(--text-secondary-soft);        /* Softer icons */
+      color: var(--text-secondary-soft);
+      /* Softer icons */
       stroke: var(--text-secondary-soft);
     }
 
@@ -67,17 +82,22 @@
     /* Improved UX with softer button states */
     .nav-btn {
       background-color: transparent;
-      color: var(--text-primary-soft);          /* Softer text */
-      border-color: var(--border-soft);         /* Subtle border */
+      color: var(--text-primary-soft);
+      /* Softer text */
+      border-color: var(--border-soft);
+      /* Subtle border */
     }
 
     .nav-btn:hover {
-      background-color: var(--bg-subtle);       /* Very soft hover */
-      border-color: var(--border-medium);       /* Slightly more visible */
+      background-color: var(--bg-subtle);
+      /* Very soft hover */
+      border-color: var(--border-medium);
+      /* Slightly more visible */
     }
 
     .nav-btn:active {
-      background-color: var(--bg-soft);         /* Soft active state */
+      background-color: var(--bg-soft);
+      /* Soft active state */
     }
 
     /* Contextual navigation on colored backgrounds */
@@ -124,8 +144,10 @@
     .sorting-component,
     .matching-component {
       background-color: var(--bg-elevated);
-      color: var(--text-primary-soft);          /* Softer text */
-      border-color: var(--border-subtle);       /* Almost invisible border */
+      color: var(--text-primary-soft);
+      /* Softer text */
+      border-color: var(--border-subtle);
+      /* Almost invisible border */
     }
 
     /* Learning component cards */
@@ -134,20 +156,25 @@
     .matching-component__item,
     .sorting-component__item {
       background-color: var(--bg-elevated);
-      border-color: var(--border-soft);         /* Subtle borders */
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04); /* Very soft shadows */
+      border-color: var(--border-soft);
+      /* Subtle borders */
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+      /* Very soft shadows */
     }
 
     /* Selected/Active states with contextual colors */
     .quiz-component__option--selected,
     .matching-component__item--selected {
-      color: var(--text-on-colored);            /* White text on colored bg */
-      border-color: transparent;                /* No competing border */
+      color: var(--text-on-colored);
+      /* White text on colored bg */
+      border-color: transparent;
+      /* No competing border */
     }
 
     /* Progress bars with softer appearance */
     .progress-bar {
-      background-color: var(--bg-soft);         /* Softer progress bg */
+      background-color: var(--bg-soft);
+      /* Softer progress bg */
     }
 
     /* === BUTTON OVERRIDES === */
@@ -174,13 +201,11 @@
     }
 
     /* === MODAL BUTTON OVERRIDES === */
-    /* Compact settings modal buttons */
-    .compact-settings__btn--primary {
-      color: #ffffff !important;
-    }
-
-    /* Compact profile modal buttons */
-    .compact-profile__btn--save {
+    /* Maximum specificity for modal buttons */
+    html.light .compact-settings__btn--primary,
+    html:not(.dark) .compact-settings__btn--primary,
+    html.light .compact-profile__btn--save,
+    html:not(.dark) .compact-profile__btn--save {
       color: #ffffff !important;
     }
 
@@ -214,7 +239,8 @@
     }
 
     .main-menu__item {
-      color: var(--text-primary-soft);          /* Updated to soft text */
+      color: var(--text-primary-soft);
+      /* Updated to soft text */
     }
 
     .main-menu__item:hover {
@@ -224,17 +250,22 @@
     /* === TOAST NOTIFICATIONS === */
     .toast-card {
       background-color: var(--bg-elevated);
-      color: var(--text-primary-soft);          /* Updated to soft text */
-      border-color: var(--border-soft);         /* Updated to soft border */
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Softer shadow */
+      color: var(--text-primary-soft);
+      /* Updated to soft text */
+      border-color: var(--border-soft);
+      /* Updated to soft border */
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      /* Softer shadow */
     }
   }
 }
 
 /* === WEB LIGHT ACCESSIBILITY === */
 @media (min-width: 769px) and (prefers-contrast: high) {
+
   html.light,
   html:not(.dark) {
+
     .header-redesigned,
     .module-card,
     .compact-settings__container {
@@ -252,8 +283,10 @@
 
 /* === WEB LIGHT REDUCED MOTION === */
 @media (min-width: 769px) and (prefers-reduced-motion: reduce) {
+
   html.light,
   html:not(.dark) {
+
     .header-redesigned,
     .module-card,
     .nav-btn,
