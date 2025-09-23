@@ -271,3 +271,24 @@
     }
   }
 }
+/* 
+=== TAILWIND UTILITIES LAYER OVERRIDES === */
+/* Use Tailwind's utilities layer for maximum specificity */
+@layer utilities {
+  @media (min-width: 769px) {
+    html.light .compact-settings__btn--primary,
+    html:not(.dark) .compact-settings__btn--primary,
+    html.light .compact-profile__btn--save,
+    html:not(.dark) .compact-profile__btn--save {
+      color: #ffffff !important;
+    }
+
+    html.light .compact-settings__btn--primary svg,
+    html:not(.dark) .compact-settings__btn--primary svg,
+    html.light .compact-profile__btn--save svg,
+    html:not(.dark) .compact-profile__btn--save svg {
+      color: #ffffff !important;
+      stroke: #ffffff !important;
+    }
+  }
+}
