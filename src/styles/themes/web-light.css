@@ -398,5 +398,11 @@
     html:not(.dark) .compact-learning-path__unit-name {
       color: var(--text-primary-soft) !important;
     }
+
+    /* Learning path button */
+    html.light .compact-learning-path__btn--primary,
+    html:not(.dark) .compact-learning-path__btn--primary {
+      color: #ffffff !important;
+    }
   }
 }
