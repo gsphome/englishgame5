@@ -12,7 +12,7 @@
   /* Light Mode - Improved UX with softer contrasts */
   --header-bg: #ffffff;
   --header-border: #f3f4f6;              /* Much softer border */
-  --header-text-primary: #ff0000;        /* TEST: Red color to verify changes */
+  --header-text-primary: #374151;        /* Softer than black */
   --header-text-secondary: #6b7280;
   --header-icon-color: #6b7280;          /* Softer icon color */
   --header-icon-hover: #374151;          /* Subtle hover */
