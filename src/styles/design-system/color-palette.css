@@ -96,6 +96,10 @@
   --text-secondary-soft: #6b7280;       /* Secondary text */
   --text-tertiary-soft: #9ca3af;        /* Tertiary text */
   
+  /* Text on colored backgrounds - high contrast */
+  --text-on-colored-primary: #ffffff;   /* Pure white for colored backgrounds */
+  --text-on-colored-secondary: #f8fafc; /* Almost white for subtle variation */
+  
   /* Subtle border system */
   --border-subtle: #f9fafb;             /* Almost invisible */
   --border-soft: #f3f4f6;               /* Very subtle */
