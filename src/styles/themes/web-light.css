@@ -157,8 +157,7 @@
       color: #ffffff !important;
     }
 
-    .px-4.py-2.bg-blue-600,
-    .px-6.py-2\\.5.bg-blue-600 {
+    .px-4.py-2.bg-blue-600 {
       color: #ffffff !important;
     }
 
@@ -181,9 +180,7 @@
       color: #ffffff !important;
     }
 
-    .fixed button.bg-blue-600,
-    .fixed button[class*="bg-blue"],
-    .fixed button[class*="gradient"] {
+    .fixed button {
       color: #ffffff !important;
     }
 
