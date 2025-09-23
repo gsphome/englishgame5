@@ -10,6 +10,7 @@
 @import './components/sorting-modal.css';
 
 /* Design System Foundation */
+@import './design-system/color-palette.css';
 @import './design-system/breakpoints.css';
 
 /* Theme Contexts - 4 Differentiated Approaches */
