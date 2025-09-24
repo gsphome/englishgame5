@@ -1,12 +1,20 @@
 /* Component-specific styles - Clean separation */
 /* Import component styles from organized structure */
 @import './components/index.css';
+@import './components/header.css';
+@import './components/main-menu.css';
+@import './components/search-bar.css';
+@import './components/module-card.css';
+@import './components/app-router.css';
+@import './components/loading-skeleton.css';
+@import './components/toast.css';
 @import './components/completion-component.css';
 @import './components/flashcard-component.css';
 @import './components/matching-component.css';
 @import './components/matching-modal.css';
 @import './components/quiz-component.css';
 @import './components/score-display.css';
+@import './components/sorting-component.css';
 @import './components/sorting-modal.css';
 
 /* Design System Foundation */
@@ -399,7 +407,8 @@ a svg,
 
 /* Header styles moved to components/header.css */
 
-/* Main Menu - Legacy classes for compatibility */
+/* Main Menu - Legacy classes DISABLED - using BEM system in main-menu.css */
+/* 
 .menu {
   @apply max-w-6xl mx-auto my-2 bg-white pt-4 pb-6 px-3 sm:px-6 rounded-lg shadow-sm;
 }
@@ -415,23 +424,27 @@ a svg,
 .menu__grid {
   @apply bg-gray-50 rounded-xl p-2 border-2 border-gray-200 max-w-5xl mx-auto;
 }
+*/
 
-/* Optimización para modo web - contenedor más compacto */
+/* Legacy grid styles DISABLED - using BEM system in main-menu.css */
+/*
 @media (min-width: 640px) {
   .menu__grid {
-    @apply max-w-2xl; /* Reducido de 3xl (768px) a 2xl (672px) */
+    @apply max-w-2xl;
   }
 
   .menu__grid-container {
-    @apply gap-2; /* Reducido de gap-3 (12px) a gap-2 (8px) */
+    @apply gap-2;
   }
 }
 
 .menu__grid-container {
   @apply grid gap-3 place-items-center;
 }
+*/
 
-/* Custom breakpoints - All responsive grid columns */
+/* Legacy responsive breakpoints DISABLED - using BEM system in main-menu.css */
+/*
 @media (max-width: 259px) {
   .menu__grid-container {
     @apply grid-cols-1;
@@ -472,7 +485,10 @@ a svg,
     overflow: hidden;
   }
 }
+*/
 
+/* Legacy menu results styles DISABLED - using BEM system in main-menu.css */
+/*
 .menu__no-results {
   @apply text-center py-8;
 }
@@ -484,6 +500,7 @@ a svg,
 .menu__results-count {
   @apply mt-4 text-center text-sm text-gray-700 dark:text-gray-300;
 }
+*/
 
 /* Search styles moved to components/search-bar.css */
 
@@ -941,6 +958,8 @@ textarea:focus-visible,
 }
 
 /* Responsive */
+/* Legacy responsive menu styles DISABLED - using BEM system in main-menu.css */
+/*
 @media (max-width: 640px) {
   .menu {
     @apply mx-1 my-1 pt-3 pb-4 px-3;
@@ -952,18 +971,19 @@ textarea:focus-visible,
 
   .menu__grid {
     @apply max-w-sm overflow-y-auto;
-    /* max-height removed - using BEM system in main-menu.css */
-  }
-
-  .header__content {
-    @apply px-4 py-3;
   }
 }
 
 @media (min-width: 641px) {
   .menu__grid {
     @apply overflow-y-auto;
-    /* max-height removed - using BEM system in main-menu.css */
+  }
+}
+*/
+
+@media (max-width: 640px) {
+  .header__content {
+    @apply px-4 py-3;
   }
 }
 
@@ -1007,6 +1027,8 @@ textarea:focus-visible,
 
 /* Dark mode header styles moved to components/header.css */
 
+/* Legacy dark mode menu styles DISABLED - using BEM system in main-menu.css */
+/*
 .dark .menu {
   @apply bg-gray-800;
 }
@@ -1018,6 +1040,7 @@ textarea:focus-visible,
 .dark .menu__grid {
   @apply bg-gray-700 border-gray-600;
 }
+*/
 
 /* Dark mode search styles moved to components/search-bar.css */
 
