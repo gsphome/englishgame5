@@ -339,7 +339,7 @@ a svg,
   padding: 0.25rem 0.5rem;
   max-width: 100vw;
   overflow-x: hidden;
-  min-height: calc(100vh - 64px); /* Account for header height */
+  min-height: calc(100vh - 56px); /* Account for compact header height */
   
   /* ENHANCED: Subtle background pattern for better contrast */
   background: 

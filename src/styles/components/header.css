@@ -42,16 +42,15 @@
   transform: scale(1.1);
 }
 
-/* Header Container - Using Design Tokens */
-/* AI_VALIDATION: BEM_BLOCK - Main component block with design tokens */
-/* AI_CONTEXT: Example of proper BEM block styling with theme variables */
+/* Header Container - Compact Design */
 .header-redesigned {
   background-color: var(--theme-bg-elevated);
   border-bottom: 1px solid var(--theme-border-soft);
   box-shadow:
     0 1px 3px 0 rgba(0, 0, 0, 0.1),
     0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  min-height: 64px;
+  /* Reduced height for compactness */
+  min-height: 56px;
   transition: all 0.3s ease-in-out;
 }
 
@@ -68,52 +67,55 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.75rem;
+  /* Reduced padding for compactness */
+  padding: 0.5rem;
   max-width: 72rem;
   margin-left: auto;
   margin-right: auto;
-  min-height: 64px;
-  /* Ensure consistent height */
+  /* Reduced height to match header */
+  min-height: 56px;
 }
 
 @media (min-width: 640px) {
   .header-redesigned__container {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }
 
-/* Learning mode maintains same height but optimized spacing */
+/* Learning mode - compact spacing */
 .header-redesigned__container--learning {
-  padding: 0.75rem;
-  /* Consistent padding with layout-main */
+  padding: 0.5rem;
 }
 
 @media (min-width: 640px) {
   .header-redesigned__container--learning {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }
 
-/* Left Section - Enhanced Consistency */
+/* Left Section - Compact Design */
 .header-redesigned__left {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  min-height: 40px;
-  /* Consistent inner height */
+  /* Reduced gap for compactness */
+  gap: 0.5rem;
+  /* Reduced height */
+  min-height: 36px;
 }
 
 /* AI_VALIDATION: BEM_ELEMENT - Button element with accessibility features */
 /* AI_CONTEXT: Example of accessible button styling with design tokens */
 .header-redesigned__menu-btn {
-  padding: 8px;
+  /* Reduced padding for compactness */
+  padding: 6px;
   border-radius: 6px;
   color: var(--theme-text-secondary);
   background-color: transparent;
-  min-width: 40px;
-  min-height: 40px;
+  /* Smaller button size */
+  min-width: 36px;
+  min-height: 36px;
   transition: all 0.2s ease-in-out;
   border: none;
   cursor: pointer;
@@ -142,26 +144,30 @@
 .header-redesigned__brand {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  min-height: 40px;
-  /* Consistent brand height */
+  /* Reduced gap for compactness */
+  gap: 0.375rem;
+  /* Reduced height */
+  min-height: 36px;
 }
 
 .header-redesigned__logo {
-  font-size: 1.75rem;
+  /* Smaller logo for compact header */
+  font-size: 1.5rem;
   line-height: 1;
-  padding: 6px;
+  padding: 4px;
   border-radius: 50%;
   transition: all 0.2s ease-in-out;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  /* Smaller logo size */
+  width: 32px;
+  height: 32px;
 }
 
 .header-redesigned__title {
-  font-size: 1.25rem;
+  /* Smaller title for compact header */
+  font-size: 1.125rem;
   font-weight: 700;
   color: var(--theme-text-primary);
   line-height: 1.2;
@@ -169,16 +175,16 @@
   transition: color 0.2s ease-in-out;
 }
 
-/* Center Section - Consistent Alignment */
+/* Center Section - Compact Alignment */
 .header-redesigned__center {
   flex: 1;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  /* Reduced gap */
+  gap: 0.5rem;
   justify-content: center;
-  align-items: center;
-  min-height: 40px;
-  /* Consistent center height */
+  /* Reduced height */
+  min-height: 36px;
 }
 
 /* Development Mode Indicator */
@@ -228,13 +234,14 @@
   }
 }
 
-/* Right Section - Enhanced Consistency */
+/* Right Section - Compact Design */
 .header-redesigned__right {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  min-height: 40px;
-  /* Consistent right section height */
+  /* Reduced gap */
+  gap: 0.375rem;
+  /* Reduced height */
+  min-height: 36px;
 }
 
 .header-redesigned__user-section {
