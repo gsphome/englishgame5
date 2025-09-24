@@ -20,11 +20,12 @@
     /* AI_CONTEXT: Touch targets optimized to 44px minimum for accessibility */
 
     /* === HEADER COMPONENT === */
+    /* DISABLED: These rules conflict with header.css variables */
+    /*
     .header-redesigned {
       background-color: var(--theme-bg-elevated);
       color: var(--theme-text-primary);
       border-color: var(--theme-border-soft);
-      /* Mobile-specific: Larger touch targets */
       min-height: 56px;
       padding: 0.75rem 1rem;
     }
@@ -32,7 +33,6 @@
     .header-redesigned__title,
     .header-redesigned__username {
       color: var(--theme-text-primary);
-      /* Mobile-specific: Better readability */
       font-size: 1.1rem;
     }
 
@@ -40,13 +40,11 @@
     .header-redesigned [data-lucide] {
       color: var(--theme-text-secondary);
       stroke: var(--theme-text-secondary);
-      /* Mobile-specific: Larger icons for better touch */
       width: 24px;
       height: 24px;
     }
 
     .header-redesigned__button {
-      /* Mobile-specific: 44px minimum touch targets */
       min-width: 44px;
       min-height: 44px;
       padding: 0.5rem;
@@ -55,6 +53,7 @@
     .header-redesigned__button:hover {
       background-color: var(--theme-bg-subtle);
     }
+    */
 
     /* === MODULE CARDS === */
     .module-card {

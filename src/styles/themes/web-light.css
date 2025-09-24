@@ -20,7 +20,8 @@
 
     /* === HEADER COMPONENT === */
     /* AI_VALIDATION: HEADER_WEB_LIGHT - Header styling for desktop light mode */
-    /* AI_CONTEXT: Uses theme tokens for automatic light mode adaptation */
+    /* DISABLED: These rules conflict with header.css variables */
+    /*
     .header-redesigned {
       background-color: var(--theme-bg-elevated);
       color: var(--theme-text-primary);
@@ -43,6 +44,7 @@
     .header-redesigned__button:hover {
       background-color: var(--theme-bg-subtle);
     }
+    */
 
     /* === MODULE CARDS === */
     .module-card {

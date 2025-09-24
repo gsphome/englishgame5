@@ -32,35 +32,44 @@
    ======================================== */
 
 /* 
- * Base SVG Rules - Light Mode
- * Ensures all SVG icons inherit currentColor for proper theming
- * Uses !important to override inline styles from icon libraries like Lucide React
+ * DISABLED: Global SVG rules conflict with component-specific styling
+ * These rules were preventing header.css variables from working
  */
+/*
 svg {
   color: currentColor !important;
   stroke: currentColor !important;
   fill: none !important;
-  /* Ensure minimum contrast ratio of 3:1 for icons */
   min-width: 16px;
   min-height: 16px;
 }
 
-/* 
- * Dark Mode Override - Force White Icons
- * Uses .dark prefix to ensure maximum contrast (white on dark backgrounds)
- * Overrides any component-specific color rules for consistency
- */
 .dark svg {
-  color: #ffffff !important; /* Pure white for maximum contrast */
+  color: #ffffff !important;
   stroke: #ffffff !important;
   fill: none !important;
 }
+*/
+
+/* Fallback SVG rules without !important */
+svg {
+  color: currentColor;
+  stroke: currentColor;
+  fill: none;
+  min-width: 16px;
+  min-height: 16px;
+}
+
+.dark svg {
+  color: #ffffff;
+  stroke: #ffffff;
+  fill: none;
+}
 
 /* 
- * Lucide React Specific Rules
- * Ensures Lucide React icons properly inherit colors in both modes
- * Addresses any inline styles that might be applied by the library
+ * DISABLED: These rules conflict with component-specific styling
  */
+/*
 [data-lucide] {
   color: inherit !important;
   stroke: currentColor !important;
@@ -72,10 +81,6 @@ svg {
   stroke: #ffffff !important;
 }
 
-/* 
- * Interactive Element Icons
- * Ensures icons in buttons, links, and interactive elements maintain proper contrast
- */
 button svg,
 a svg,
 [role='button'] svg,
@@ -90,6 +95,35 @@ a svg,
 .dark [tabindex] svg {
   color: #ffffff !important;
   stroke: #ffffff !important;
+}
+*/
+
+/* Fallback rules without !important */
+[data-lucide] {
+  color: inherit;
+  stroke: currentColor;
+  fill: none;
+}
+
+.dark [data-lucide] {
+  color: #ffffff;
+  stroke: #ffffff;
+}
+
+button svg,
+a svg,
+[role='button'] svg,
+[tabindex] svg {
+  color: inherit;
+  stroke: currentColor;
+}
+
+.dark button svg,
+.dark a svg,
+.dark [role='button'] svg,
+.dark [tabindex] svg {
+  color: #ffffff;
+  stroke: #ffffff;
 }
 
 /* 
@@ -107,7 +141,8 @@ a svg,
   fill: none !important;
 }
 
-/* Force white icons in header dark mode - Maximum specificity */
+/* DISABLED: These rules conflict with header.css variables - using proper CSS cascade instead */
+/*
 .dark .header-redesigned svg,
 .dark .header-redesigned__menu-btn svg,
 .dark .header-redesigned__user-btn svg,
@@ -121,10 +156,6 @@ a svg,
   fill: none !important;
 }
 
-/* 
- * CRITICAL: Specific Icons Fix for Dark Mode Header
- * Ultra-high specificity for problematic icons: hamburger menu, stats, settings
- */
 .dark .header-redesigned .header-redesigned__menu-btn svg,
 .dark .header-redesigned .header-redesigned__control-btn svg,
 .dark .header-redesigned .header-redesigned__control-panel svg,
@@ -142,8 +173,10 @@ a svg,
   fill: none !important;
   opacity: 1 !important;
 }
+*/
 
-/* Additional header icon specificity for all states */
+/* DISABLED: These rules conflict with header.css variables */
+/*
 .header-redesigned button svg,
 .header-redesigned a svg,
 .header-side-menu button svg,
@@ -160,10 +193,6 @@ a svg,
   stroke: #ffffff !important;
 }
 
-/* 
- * EMERGENCY FIX: Lucide React Icon Names for Header Dark Mode
- * Targeting specific icon components by their data attributes and classes
- */
 .dark .header-redesigned [data-lucide='menu'] svg,
 .dark .header-redesigned [data-lucide='settings'] svg,
 .dark .header-redesigned [data-lucide='bar-chart'] svg,
@@ -179,6 +208,7 @@ a svg,
   fill: none !important;
   opacity: 1 !important;
 }
+*/
 
 /* 
  * High Contrast Mode Support
@@ -230,27 +260,28 @@ a svg,
  * Icons adapt to their background color for optimal visibility
  */
 
-/* CASE 1: Header with WHITE background (light mode or special cases) */
+/* DISABLED: These rules conflict with header.css variables */
+/*
 .header-redesigned svg,
 .header-redesigned__menu-btn svg,
 .header-redesigned__control-btn svg {
-  color: #374151 !important; /* Dark gray on white background */
+  color: #374151 !important;
   stroke: #374151 !important;
   fill: none !important;
   opacity: 1 !important;
   visibility: visible !important;
 }
 
-/* CASE 2: Header with DARK background (normal dark mode) */
 .dark .header-redesigned svg,
 .dark .header-redesigned__menu-btn svg,
 .dark .header-redesigned__control-btn svg {
-  color: #ffffff !important; /* White on dark background */
+  color: #ffffff !important;
   stroke: #ffffff !important;
   fill: none !important;
   opacity: 1 !important;
   visibility: visible !important;
 }
+*/
 
 /* CASE 3: Side menu - ALWAYS dark icons on white background */
 .header-side-menu svg,

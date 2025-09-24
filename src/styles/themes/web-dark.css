@@ -16,6 +16,8 @@
 @media (min-width: 769px) {
   html.dark {
     /* === HEADER COMPONENT === */
+    /* DISABLED: These rules conflict with header.css variables */
+    /*
     .header-redesigned {
       background-color: var(--theme-bg-elevated);
       color: var(--theme-text-primary);
@@ -37,6 +39,7 @@
     .header-redesigned__button:hover {
       background-color: var(--theme-bg-soft);
     }
+    */
 
     /* === MODULE CARDS === */
     .module-card {
