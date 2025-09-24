@@ -180,25 +180,30 @@
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* === GRID CONTAINER INNER - DYNAMIC SPACING === */
+/* === GRID CONTAINER INNER - HARMONIOUS ALIGNMENT === */
 .main-menu__grid-container {
-  /* Perfect Grid System */
+  /* Perfect Grid System with enhanced centering */
   display: grid;
   place-items: center;
+  place-content: center;
 
   /* Dynamic spacing using CSS variables */
   gap: var(--grid-gap-mobile);
 
-  /* Responsive Grid Columns - Compact */
+  /* Responsive Grid Columns - Optimized for card dimensions */
   grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
 
-  /* Perfect Containment */
+  /* Perfect Containment with visual balance */
   width: 100%;
   max-width: 100%;
 
-  /* Ensure proper alignment */
+  /* Enhanced alignment for visual harmony */
   margin: 0;
   padding: 0;
+  
+  /* Ensure consistent baseline alignment */
+  align-content: center;
+  justify-content: center;
 }
 
 /* === COMPACT APPLE RESPONSIVE BREAKPOINTS === */
