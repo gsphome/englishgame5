@@ -106,7 +106,7 @@ export const ModuleCard: React.FC<ModuleCardProps> = ({
       case 'locked':
         return {
           className: 'module-card--locked',
-          statusIcon: <Lock size={16} className="module-card__status-icon" />,
+          statusIcon: <Lock size={12} className="text-white" />,
           statusText: `Requires ${progression.missingPrerequisites.length} prerequisite${progression.missingPrerequisites.length !== 1 ? 's' : ''}`,
           disabled: true,
         };
@@ -143,7 +143,7 @@ export const ModuleCard: React.FC<ModuleCardProps> = ({
       <div className="module-card__content">
         <div className="module-card__header">
           <div className="module-card__icon" aria-hidden="true">
-            {statusInfo.disabled ? statusInfo.statusIcon : getIcon(module.learningMode)}
+            {getIcon(module.learningMode)}
           </div>
         </div>
         <h3 className="module-card__title">{module.name}</h3>
@@ -154,8 +154,8 @@ export const ModuleCard: React.FC<ModuleCardProps> = ({
           {difficultyLevel}
         </div>
 
-        {/* Status indicators - Only for unlocked/completed states */}
-        {statusInfo.statusIcon && !statusInfo.disabled && (
+        {/* Status indicators - Consistent positioning for all states */}
+        {statusInfo.statusIcon && (
           <div
             className={`module-card__status-indicator module-card__status-indicator--${progression.status}`}
             aria-hidden="true"
