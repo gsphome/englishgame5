@@ -7,6 +7,7 @@ import { useProgression } from '../../hooks/useProgression';
 import { useSearch } from '../../hooks/useSearch';
 import { useAppStore } from '../../stores/appStore';
 import { toast } from '../../stores/toastStore';
+import '../../styles/components/main-menu.css';
 
 export const MainMenu: React.FC = () => {
   const { data: modules = [], isLoading, error } = useAllModules();
@@ -119,7 +120,7 @@ export const MainMenu: React.FC = () => {
           <p className="main-menu__no-results-text">
             No modules found for "<strong>{query}</strong>"
           </p>
-          <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
+          <p className="main-menu__no-results-hint">
             Try adjusting your search terms or browse all available modules.
           </p>
         </div>

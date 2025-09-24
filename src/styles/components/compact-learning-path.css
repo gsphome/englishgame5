@@ -308,3 +308,8 @@
     transition: none;
   }
 }
+/* === COMPACT LEARNING PATH ICONS === */
+.compact-learning-path__close-icon {
+  width: 0.75rem;
+  height: 0.75rem;
+}

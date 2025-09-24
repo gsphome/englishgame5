@@ -451,7 +451,7 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
               className="sorting-component__button sorting-component__button--reset"
               title="Reset Exercise"
             >
-              <RotateCcw className="h-4 w-4" />
+              <RotateCcw className="sorting-component__button-icon" />
             </button>
 
             <button
@@ -459,7 +459,7 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
               disabled={!allWordsSorted}
               className="sorting-component__button sorting-component__button--primary"
             >
-              <Check className="h-4 w-4" />
+              <Check className="sorting-component__button-icon" />
               <span>Check Answers</span>
             </button>
           </>
@@ -469,7 +469,7 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
               onClick={showSummaryModal}
               className="sorting-component__button sorting-component__button--secondary"
             >
-              <Info className="h-4 w-4" />
+              <Info className="sorting-component__button-icon" />
               <span>View Summary</span>
             </button>
             <button
@@ -493,7 +493,7 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
                   onClick={() => setShowExplanation(false)}
                   className="sorting-modal__close-btn"
                 >
-                  <X className="h-5 w-5" />
+                  <X className="sorting-modal__close-icon" />
                 </button>
               </div>
 

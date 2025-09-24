@@ -124,11 +124,11 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
   // Early return if no data
   if (!randomizedFlashcards.length) {
     return (
-      <div className="max-w-6xl mx-auto p-3 sm:p-6 text-center">
-        <p className="text-gray-600 mb-4">{t('noDataAvailable') || 'No flashcards available'}</p>
+      <div className="flashcard-component__no-data">
+        <p className="flashcard-component__no-data-text">{t('noDataAvailable') || 'No flashcards available'}</p>
         <button
           onClick={() => setCurrentView('menu')}
-          className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+          className="flashcard-component__no-data-btn"
         >
           {t('navigation.mainMenu')}
         </button>
@@ -137,24 +137,24 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
   }
 
   return (
-    <div className="max-w-6xl mx-auto p-3 sm:p-6">
+    <div className="flashcard-component__container">
       {/* Compact header with progress */}
-      <div className="mb-4">
-        <div className="flex justify-between items-center mb-3">
+      <div className="flashcard-component__header">
+        <div className="flashcard-component__header-top">
           <h2 className="flashcard-component__title">
             {module.name}
           </h2>
-          <span className="text-sm font-medium text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full">
+          <span className="flashcard-component__counter">
             {currentIndex + 1}/{randomizedFlashcards.length}
           </span>
         </div>
-        <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5">
+        <div className="flashcard-component__progress-container">
           <div
             className="progress-bar__fill progress-bar__fill--blue"
             style={{ '--progress-width': `${((currentIndex + 1) / randomizedFlashcards.length) * 100}%` } as React.CSSProperties}
           />
         </div>
-        <p className="text-xs text-gray-500 dark:text-gray-400 mt-2 text-center">
+        <p className="flashcard-component__help-text">
           {isFlipped
             ? 'Press Enter/Space for next card'
             : 'Click card or press Enter/Space to flip'}
@@ -170,7 +170,7 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
       >
         <div className="flashcard-inner">
           {/* Front */}
-          <div className="flashcard-front bg-white dark:bg-gray-700 shadow-lg border border-gray-200 dark:border-gray-600">
+          <div className="flashcard-front">
             <div className="flashcard-component__front-text">
               <ContentRenderer
                 content={ContentAdapter.ensureStructured(
@@ -180,12 +180,12 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
               />
             </div>
             {currentCard?.ipa && (
-              <p className="text-base sm:text-lg text-gray-500 dark:text-gray-300 text-center mb-3">
+              <p className="flashcard-component__ipa">
                 {currentCard.ipa}
               </p>
             )}
             {currentCard?.example && (
-              <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 italic text-center px-2">
+              <div className="flashcard-component__example">
                 "
                 <ContentRenderer
                   content={ContentAdapter.ensureStructured(currentCard.example, 'flashcard')}
@@ -196,7 +196,7 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
           </div>
 
           {/* Back */}
-          <div className="flashcard-back bg-blue-50 dark:bg-blue-900 shadow-lg border border-blue-200 dark:border-blue-700">
+          <div className="flashcard-back">
             <div className="flashcard-component__back-text">
               <ContentRenderer
                 content={ContentAdapter.ensureStructured(
@@ -206,11 +206,11 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
               />
             </div>
             {currentCard?.ipa && (
-              <p className="text-sm sm:text-base text-gray-500 dark:text-gray-300 text-center mb-2">
+              <p className="flashcard-component__ipa flashcard-component__ipa--back">
                 {currentCard.ipa}
               </p>
             )}
-            <div className="text-xl sm:text-2xl font-bold text-blue-900 dark:text-blue-100 text-center mb-3">
+            <div className="flashcard-component__back-answer">
               <ContentRenderer
                 content={ContentAdapter.ensureStructured(
                   currentCard?.back || 'Loading...',
@@ -219,8 +219,8 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
               />
             </div>
             {currentCard?.example && (
-              <div className="text-center">
-                <div className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 italic mb-1 px-2">
+              <div className="flashcard-component__back-examples">
+                <div className="flashcard-component__back-example">
                   "
                   <ContentRenderer
                     content={ContentAdapter.ensureStructured(currentCard.example, 'flashcard')}
@@ -228,7 +228,7 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
                   "
                 </div>
                 {currentCard.example_es && (
-                  <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 italic px-2">
+                  <div className="flashcard-component__back-example flashcard-component__back-example--spanish">
                     "
                     <ContentRenderer
                       content={ContentAdapter.ensureStructured(currentCard.example_es, 'flashcard')}
@@ -243,40 +243,40 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
       </div>
 
       {/* Unified Control Bar */}
-      <div className="flex justify-center items-center gap-3 flex-wrap mt-6">
+      <div className="flashcard-component__controls">
         {/* Navigation */}
         <NavigationButton onClick={() => setCurrentView('menu')} title="Return to main menu">
           Back to Menu
         </NavigationButton>
 
         {/* Separator */}
-        <div className="w-px h-6 bg-gray-300 dark:bg-gray-600 mx-1"></div>
+        <div className="flashcard-component__separator"></div>
 
         <button
           onClick={handlePrev}
           disabled={currentIndex === 0}
-          className="flashcard-nav-btn flashcard-nav-btn--prev p-2.5 rounded-lg transition-colors shadow-sm"
+          className="flashcard-nav-btn flashcard-nav-btn--prev"
           title="Previous Card (←)"
         >
-          <ChevronLeft className="h-4 w-4" />
+          <ChevronLeft className="flashcard-nav-btn__icon" />
         </button>
 
         <button
           onClick={handleFlip}
-          className="flex items-center gap-2 px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors text-sm font-medium shadow-sm w-[140px] justify-center"
+          className="flashcard-component__flip-btn"
         >
-          <RotateCcw className="h-4 w-4" />
+          <RotateCcw className="flashcard-component__flip-btn-icon" />
           <span>{isFlipped ? 'Flip Back' : 'Flip'}</span>
         </button>
 
         <button
           onClick={handleNext}
-          className="flashcard-nav-btn flashcard-nav-btn--next p-2.5 rounded-lg transition-colors shadow-sm"
+          className="flashcard-nav-btn flashcard-nav-btn--next"
           title={
             currentIndex === randomizedFlashcards.length - 1 ? 'Finish Flashcards' : 'Next Card (→)'
           }
         >
-          <ChevronRight className="h-4 w-4" />
+          <ChevronRight className="flashcard-nav-btn__icon" />
         </button>
       </div>
     </div>

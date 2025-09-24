@@ -1,21 +1,28 @@
 /**
  * Mobile Dark Theme - Mobile Dark Mode + Safari Fixes
  * 
+ * AI_CONTEXT: Theme context for mobile devices in dark mode
+ * AI_VALIDATION: MOBILE_DARK_THEME - Touch optimizations with dark colors
+ * AI_USAGE: 44px minimum touch targets, Safari fixes, enhanced contrast for mobile dark mode
+ * 
  * Optimized styles for mobile devices in dark mode
- * Includes Safari Mobile specific fixes while maintaining design system consistency
+ * Includes Safari Mobile specific fixes and touch target optimizations (44px minimum)
+ * Integrated content from mobile-theme-fix.css and safari-mobile-fix.css
  */
 
 /* === MOBILE DARK CONTEXT === */
+/* AI_VALIDATION: MOBILE_DARK_MEDIA_QUERY - Mobile dark theme context */
+/* AI_CONTEXT: Applies to screens ≤768px in dark mode */
 @media (max-width: 768px) {
   html.dark {
     /* === BASE MOBILE OPTIMIZATIONS === */
-    /* Improved touch targets and spacing for dark mode */
+    /* AI_CONTEXT: Touch targets optimized to 44px minimum for accessibility */
 
     /* === HEADER COMPONENT === */
     .header-redesigned {
-      background-color: var(--gray-800);
-      color: var(--header-text-primary);
-      border-color: var(--header-border);
+      background-color: var(--theme-bg-elevated);
+      color: var(--theme-text-primary);
+      border-color: var(--theme-border-soft);
       /* Mobile-specific: Larger touch targets */
       min-height: 56px;
       padding: 0.75rem 1rem;
@@ -23,58 +30,61 @@
 
     .header-redesigned__title,
     .header-redesigned__username {
-      color: var(--header-text-primary);
+      color: var(--theme-text-primary);
       /* Mobile-specific: Better readability */
       font-size: 1.1rem;
     }
 
     .header-redesigned svg,
     .header-redesigned [data-lucide] {
-      color: var(--header-icon-color);
-      stroke: var(--header-icon-color);
-      /* Mobile-specific: Larger icons */
+      color: var(--theme-text-secondary);
+      stroke: var(--theme-text-secondary);
+      /* Mobile-specific: Larger icons for better touch */
       width: 24px;
       height: 24px;
     }
 
     .header-redesigned__button {
-      /* Mobile-specific: Better touch targets */
+      /* Mobile-specific: 44px minimum touch targets */
       min-width: 44px;
       min-height: 44px;
       padding: 0.5rem;
     }
 
     .header-redesigned__button:hover {
-      background-color: var(--header-button-hover-bg);
+      background-color: var(--theme-bg-soft);
     }
 
     /* === MODULE CARDS === */
     .module-card {
-      background-color: var(--gray-800);
-      color: var(--header-text-primary);
-      border-color: var(--header-border);
-      /* Mobile-specific: Card optimizations */
+      background-color: var(--theme-bg-elevated);
+      color: var(--theme-text-primary);
+      border-color: var(--theme-border-soft);
+      /* Mobile-specific: Card optimizations with touch-friendly spacing */
       margin-bottom: 1rem;
       padding: 1.25rem;
       border-radius: 12px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      /* Touch target optimization */
+      min-height: 44px;
     }
 
     .module-card__title {
-      color: var(--header-text-primary);
+      color: var(--theme-text-primary);
       font-size: 1.2rem;
       margin-bottom: 0.5rem;
     }
 
     .module-card__description {
-      color: var(--header-text-secondary);
+      color: var(--theme-text-secondary);
       font-size: 0.95rem;
       line-height: 1.5;
     }
 
     .module-card svg {
-      color: var(--header-icon-color);
-      stroke: var(--header-icon-color);
+      color: var(--theme-text-secondary);
+      stroke: var(--theme-text-secondary);
+      /* Mobile-specific: Appropriately sized icons */
       width: 20px;
       height: 20px;
     }
@@ -82,23 +92,28 @@
     /* === NAVIGATION === */
     .nav-btn {
       background-color: transparent;
-      color: var(--header-text-primary);
-      border-color: var(--header-border);
-      /* Mobile-specific: Touch optimization */
+      color: var(--theme-text-primary);
+      border-color: var(--theme-border-soft);
+      /* Mobile-specific: 44px minimum touch targets */
       min-width: 44px;
       min-height: 44px;
       padding: 0.75rem;
     }
 
     .nav-btn:active {
-      background-color: var(--header-button-active-bg);
+      background-color: var(--theme-border-medium);
       transform: scale(0.98);
+    }
+
+    .nav-btn--on-colored {
+      color: var(--theme-text-on-colored);
+      border-color: var(--theme-border-on-colored);
     }
 
     /* === COMPACT SETTINGS === */
     .compact-settings__container {
-      background-color: var(--settings-bg);
-      border-color: var(--settings-border);
+      background-color: var(--theme-bg-elevated);
+      border-color: var(--theme-border-subtle);
       /* Mobile-specific: Full width, better spacing */
       margin: 0.5rem;
       border-radius: 16px;
@@ -107,53 +122,53 @@
     }
 
     .compact-settings__header {
-      background-color: var(--settings-bg);
-      color: var(--settings-text-primary);
+      background-color: var(--theme-bg-elevated);
+      color: var(--theme-text-primary);
       padding-bottom: 1rem;
-      border-bottom: 1px solid var(--settings-border);
+      border-bottom: 1px solid var(--theme-border-soft);
     }
 
     .compact-settings__content {
-      background-color: var(--settings-bg);
-      color: var(--settings-text-primary);
+      background-color: var(--theme-bg-elevated);
+      color: var(--theme-text-primary);
       padding: 1rem 0;
     }
 
     .compact-settings__footer {
-      background-color: var(--settings-bg);
-      color: var(--settings-text-primary);
+      background-color: var(--theme-bg-elevated);
+      color: var(--theme-text-primary);
       padding-top: 1rem;
-      border-top: 1px solid var(--settings-border);
+      border-top: 1px solid var(--theme-border-soft);
     }
 
     .compact-settings__title {
-      color: var(--settings-text-primary);
+      color: var(--theme-text-primary);
       font-size: 1.3rem;
       font-weight: 600;
     }
 
     .compact-settings__label {
-      color: var(--settings-text-primary);
+      color: var(--theme-text-primary);
       font-size: 1rem;
       margin-bottom: 0.5rem;
     }
 
     .compact-settings__input,
     .compact-settings__select {
-      background-color: var(--settings-input-bg);
-      color: var(--settings-text-primary);
-      border-color: var(--settings-input-border);
-      /* Mobile-specific: Better touch targets */
+      background-color: var(--theme-bg-subtle);
+      color: var(--theme-text-primary);
+      border-color: var(--theme-border-soft);
+      /* Mobile-specific: 44px minimum touch targets */
       min-height: 44px;
       padding: 0.75rem 1rem;
-      font-size: 16px; /* Prevents zoom on iOS */
+      font-size: 16px; /* Prevents zoom on iOS Safari */
       border-radius: 8px;
     }
 
     .compact-settings__input:focus,
     .compact-settings__select:focus {
-      border-color: var(--settings-focus-ring);
-      box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.25);
+      border-color: var(--theme-primary-purple);
+      box-shadow: 0 0 0 3px var(--theme-primary-purple-light);
       outline: none;
     }
 
@@ -162,9 +177,9 @@
     .quiz-component,
     .sorting-component,
     .matching-component {
-      background-color: var(--gray-800);
-      color: var(--header-text-primary);
-      border-color: var(--header-border);
+      background-color: var(--theme-bg-elevated);
+      color: var(--theme-text-primary);
+      border-color: var(--theme-border-soft);
       /* Mobile-specific: Better spacing and touch */
       margin: 0.75rem;
       padding: 1.5rem;
@@ -172,29 +187,52 @@
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     }
 
+    .quiz-component__question-card,
+    .flashcard-component__card,
+    .matching-component__item,
+    .sorting-component__item {
+      background-color: var(--theme-bg-elevated);
+      border-color: var(--theme-border-soft);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+      /* Touch target optimization */
+      min-height: 44px;
+    }
+
+    .quiz-component__option--selected,
+    .matching-component__item--selected {
+      color: var(--theme-text-on-colored);
+      border-color: transparent;
+    }
+
+    .progress-bar {
+      background-color: var(--theme-bg-soft);
+    }
+
     /* === MAIN MENU === */
     .main-menu {
-      background-color: var(--gray-800);
-      border-color: var(--header-border);
+      background-color: var(--theme-bg-elevated);
+      border-color: var(--theme-border-soft);
       /* Mobile-specific: Full screen overlay */
       border-radius: 0;
     }
 
     .main-menu__item {
-      color: var(--header-text-primary);
-      /* Mobile-specific: Larger touch targets */
+      color: var(--theme-text-primary);
+      /* Mobile-specific: 44px minimum touch targets */
       padding: 1rem 1.5rem;
       font-size: 1.1rem;
+      min-height: 44px;
     }
 
     .main-menu__item:active {
-      background-color: var(--header-button-active-bg);
+      background-color: var(--theme-border-medium);
       transform: scale(0.98);
     }
   }
 }
 
 /* === SAFARI MOBILE SPECIFIC FIXES === */
+/* Integrated from safari-mobile-fix.css for complete consolidation */
 @supports (-webkit-touch-callout: none) {
   @media (max-width: 768px) {
     /* Force dark mode when system is light but app is dark */
@@ -202,38 +240,40 @@
       html.dark {
         color-scheme: dark !important;
         -webkit-color-scheme: dark !important;
-        background-color: var(--gray-800, #1f2937) !important;
-        color: var(--gray-50, #ffffff) !important;
+        background-color: var(--theme-bg-primary, #1f2937) !important;
+        color: var(--theme-text-primary, #ffffff) !important;
       }
 
-      /* Component-specific Safari fixes */
+      /* Component-specific Safari fixes with theme tokens */
       html.dark .header-redesigned,
       html.dark .module-card,
       html.dark .compact-settings__container {
-        background-color: var(--gray-800, #1f2937) !important;
-        color: var(--gray-50, #ffffff) !important;
-        border-color: var(--gray-600, #4b5563) !important;
+        background-color: var(--theme-bg-elevated, #1f2937) !important;
+        color: var(--theme-text-primary, #ffffff) !important;
+        border-color: var(--theme-border-soft, #4b5563) !important;
       }
 
       html.dark .compact-settings__header,
       html.dark .compact-settings__content,
       html.dark .compact-settings__footer {
-        background-color: var(--settings-bg, #1f2937) !important;
-        color: var(--settings-text-primary, #ffffff) !important;
+        background-color: var(--theme-bg-elevated, #1f2937) !important;
+        color: var(--theme-text-primary, #ffffff) !important;
       }
 
       html.dark .compact-settings__input,
       html.dark .compact-settings__select {
-        background-color: var(--settings-input-bg, #374151) !important;
-        color: var(--settings-text-primary, #ffffff) !important;
-        border-color: var(--settings-input-border, #4b5563) !important;
+        background-color: var(--theme-bg-subtle, #374151) !important;
+        color: var(--theme-text-primary, #ffffff) !important;
+        border-color: var(--theme-border-soft, #4b5563) !important;
+        /* Safari-specific: Prevent zoom on focus */
+        font-size: 16px !important;
       }
 
-      /* SVG icons Safari fix */
+      /* SVG icons Safari fix with theme tokens */
       html.dark svg,
       html.dark [data-lucide] {
-        color: var(--header-icon-color, #e5e7eb) !important;
-        stroke: var(--header-icon-color, #e5e7eb) !important;
+        color: var(--theme-text-secondary, #e5e7eb) !important;
+        stroke: var(--theme-text-secondary, #e5e7eb) !important;
       }
     }
 
@@ -241,6 +281,14 @@
     html.dark {
       -webkit-appearance: none !important;
       -webkit-color-scheme: dark !important;
+    }
+
+    /* Safari touch target optimization */
+    html.dark button,
+    html.dark input,
+    html.dark select {
+      -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
+      -webkit-touch-callout: none;
     }
   }
 }
@@ -253,19 +301,19 @@
     .compact-settings__container {
       border-width: 2px;
       border-style: solid;
-      border-color: var(--gray-400);
+      border-color: var(--theme-text-primary);
     }
 
     .compact-settings__input,
     .compact-settings__select {
       border-width: 2px;
-      border-color: var(--gray-400);
+      border-color: var(--theme-text-primary);
     }
 
     .header-redesigned__title,
     .module-card__title,
     .compact-settings__title {
-      color: #ffffff;
+      color: var(--theme-text-primary);
       font-weight: 600;
     }
   }
@@ -277,6 +325,13 @@
     .nav-btn:active,
     .main-menu__item:active {
       transform: none !important;
+    }
+
+    .header-redesigned,
+    .module-card,
+    .nav-btn,
+    .compact-settings__input {
+      transition: none !important;
     }
   }
 }

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header Theme Context Test</title>
+    <style>
+        /* Import the design tokens */
+        @import url('../../src/styles/design-system/color-palette.css');
+        @import url('../../src/styles/components/header.css');
+        
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--theme-bg-primary);
+            color: var(--theme-text-primary);
+            transition: all 0.3s ease;
+        }
+        
+        .test-controls {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            z-index: 100;
+            background: var(--theme-bg-elevated);
+            border: 1px solid var(--theme-border-soft);
+            border-radius: 8px;
+            padding: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .test-controls h3 {
+            margin: 0 0 12px 0;
+            font-size: 14px;
+            color: var(--theme-text-primary);
+        }
+        
+        .test-controls button {
+            display: block;
+            width: 100%;
+            margin: 4px 0;
+            padding: 8px 12px;
+            border: 1px solid var(--theme-border-soft);
+            border-radius: 4px;
+            background: var(--theme-bg-subtle);
+            color: var(--theme-text-primary);
+            cursor: pointer;
+            font-size: 12px;
+        }
+        
+        .test-controls button:hover {
+            background: var(--theme-bg-soft);
+        }
+        
+        .test-info {
+            margin: 20px;
+            padding: 16px;
+            background: var(--theme-bg-elevated);
+            border: 1px solid var(--theme-border-soft);
+            border-radius: 8px;
+        }
+        
+        .test-info h2 {
+            margin: 0 0 12px 0;
+            color: var(--theme-text-primary);
+        }
+        
+        .test-info p {
+            margin: 8px 0;
+            color: var(--theme-text-secondary);
+            font-size: 14px;
+        }
+        
+        /* Mock header structure for testing */
+        .header-redesigned {
+            /* CSS is imported from header.css */
+        }
+        
+        .viewport-indicator {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            padding: 8px 12px;
+            background: var(--theme-bg-elevated);
+            border: 1px solid var(--theme-border-soft);
+            border-radius: 4px;
+            font-size: 12px;
+            color: var(--theme-text-secondary);
+        }
+    </style>
+</head>
+<body class="light">
+    <!-- Test Controls -->
+    <div class="test-controls">
+        <h3>Theme Tests</h3>
+        <button onclick="setTheme('light')">Light Theme</button>
+        <button onclick="setTheme('dark')">Dark Theme</button>
+        <h3>Viewport Tests</h3>
+        <button onclick="setViewport('desktop')">Desktop (1200px)</button>
+        <button onclick="setViewport('tablet')">Tablet (768px)</button>
+        <button onclick="setViewport('mobile')">Mobile (375px)</button>
+    </div>
+
+    <!-- Mock Header Structure -->
+    <header class="header-redesigned header-redesigned--menu">
+        <div class="header-redesigned__container header-redesigned__container--menu">
+            <!-- Left Section -->
+            <div class="header-redesigned__left">
+                <button class="header-redesigned__menu-btn header-redesigned__menu-btn--primary"
+                        title="Abrir menú de navegación y configuración"
+                        aria-label="Abrir menú de navegación y configuración"
+                        onclick="toggleMenu()">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                    <span class="sr-only">Abrir menú</span>
+                </button>
+                <div class="header-redesigned__brand">
+                    <div class="header-redesigned__logo">🌊</div>
+                    <h1 class="header-redesigned__title">FluentFlow</h1>
+                </div>
+            </div>
+
+            <!-- Center Section -->
+            <div class="header-redesigned__center">
+                <div class="score-display">Score: 1,250</div>
+            </div>
+
+            <!-- Right Section -->
+            <div class="header-redesigned__right">
+                <div class="header-redesigned__user-section">
+                    <button class="header-redesigned__user-btn header-redesigned__user-btn--primary"
+                            title="Test User - Profile"
+                            aria-label="User profile: Test User. Click to open profile">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                        </svg>
+                        <div class="header-redesigned__user-info">
+                            <span class="header-redesigned__username">Test User</span>
+                        </div>
+                    </button>
+                </div>
+                <div class="header-redesigned__quick-actions"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Side Menu (initially hidden) -->
+    <div class="header-side-menu-overlay" id="menuOverlay" style="display: none;" onclick="toggleMenu()">
+        <nav class="header-side-menu" onclick="event.stopPropagation()">
+            <div class="header-side-menu__header">
+                <h2 class="header-side-menu__title">FluentFlow</h2>
+                <p class="header-side-menu__subtitle">Navegación y Configuración</p>
+            </div>
+            <div class="header-side-menu__content">
+                <div class="header-side-menu__section">
+                    <h3 class="header-side-menu__section-title">📱 Navegación Principal</h3>
+                    <button class="header-side-menu__item">
+                        <svg class="header-side-menu__icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                        <span class="header-side-menu__text">Menú Principal</span>
+                    </button>
+                    <button class="header-side-menu__item">
+                        <svg class="header-side-menu__icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                        </svg>
+                        <span class="header-side-menu__text">Dashboard de Progreso</span>
+                    </button>
+                </div>
+                <div class="header-side-menu__section">
+                    <h3 class="header-side-menu__section-title">⚙️ Configuración</h3>
+                    <button class="header-side-menu__item">
+                        <svg class="header-side-menu__icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                        <span class="header-side-menu__text">Configuración Avanzada</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Test Information -->
+    <div class="test-info">
+        <h2>Header Theme Context Test</h2>
+        <p><strong>Current Theme:</strong> <span id="currentTheme">Light</span></p>
+        <p><strong>Current Viewport:</strong> <span id="currentViewport">Desktop</span></p>
+        <p><strong>Instructions:</strong></p>
+        <ul>
+            <li>Use the controls on the right to switch between light and dark themes</li>
+            <li>Test different viewport sizes to verify responsive behavior</li>
+            <li>Click the menu button to test the side menu functionality</li>
+            <li>Verify that all design tokens are working correctly</li>
+            <li>Check that hover states work properly in both themes</li>
+        </ul>
+        <p><strong>Expected Behavior:</strong></p>
+        <ul>
+            <li>Header should use var(--theme-text-primary) for menu button color</li>
+            <li>All colors should transition smoothly between themes</li>
+            <li>Mobile viewport should hide some elements for better UX</li>
+            <li>Touch targets should be adequate on mobile (44px minimum)</li>
+        </ul>
+    </div>
+
+    <!-- Viewport Indicator -->
+    <div class="viewport-indicator" id="viewportIndicator">
+        Desktop: 1200px
+    </div>
+
+    <script>
+        function setTheme(theme) {
+            const body = document.body;
+            const html = document.documentElement;
+            
+            // Remove existing theme classes
+            body.classList.remove('light', 'dark');
+            html.classList.remove('light', 'dark');
+            
+            // Add new theme class
+            body.classList.add(theme);
+            html.classList.add(theme);
+            
+            // Update indicator
+            document.getElementById('currentTheme').textContent = 
+                theme.charAt(0).toUpperCase() + theme.slice(1);
+        }
+
+        function setViewport(size) {
+            const body = document.body;
+            let width;
+            
+            switch(size) {
+                case 'desktop':
+                    width = '1200px';
+                    break;
+                case 'tablet':
+                    width = '768px';
+                    break;
+                case 'mobile':
+                    width = '375px';
+                    break;
+                default:
+                    width = '1200px';
+            }
+            
+            // Set viewport width
+            body.style.width = width;
+            body.style.margin = '0 auto';
+            body.style.border = size !== 'desktop' ? '1px solid var(--theme-border-soft)' : 'none';
+            
+            // Update indicators
+            document.getElementById('currentViewport').textContent = 
+                size.charAt(0).toUpperCase() + size.slice(1);
+            document.getElementById('viewportIndicator').textContent = 
+                `${size.charAt(0).toUpperCase() + size.slice(1)}: ${width}`;
+        }
+
+        function toggleMenu() {
+            const overlay = document.getElementById('menuOverlay');
+            const isVisible = overlay.style.display !== 'none';
+            overlay.style.display = isVisible ? 'none' : 'block';
+        }
+
+        // Initialize
+        setTheme('light');
+        setViewport('desktop');
+    </script>
+</body>
+</html>

@@ -5,6 +5,7 @@ import { vi, beforeEach, afterEach, expect } from 'vitest';
 import { ErrorBoundary } from '../../src/components/common/ErrorBoundary';
 import type { LearningModule, User } from '../../src/types';
 import type { ToastData } from '../../src/stores/toastStore';
+import { cssTestingUtils } from './css-testing-utils';
 
 // Create a test query client
 const createTestQueryClient = () => new QueryClient({
@@ -24,6 +25,7 @@ const createTestQueryClient = () => new QueryClient({
 interface CustomRenderOptions extends Omit<RenderOptions, 'wrapper'> {
   queryClient?: QueryClient;
   withErrorBoundary?: boolean;
+  theme?: 'light' | 'dark';
 }
 
 export const renderWithProviders = (
@@ -31,9 +33,13 @@ export const renderWithProviders = (
   {
     queryClient = createTestQueryClient(),
     withErrorBoundary = true,
+    theme = 'light',
     ...renderOptions
   }: CustomRenderOptions = {}
 ) => {
+  // Apply theme context before rendering
+  cssTestingUtils.theme.applyTheme(theme);
+
   const Wrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const content = (
       <QueryClientProvider client={queryClient}>
@@ -136,6 +142,53 @@ export const testUtils = {
     return waitFor(() => {
       expect(screen.queryByText(text)).not.toBeInTheDocument();
     }, { timeout });
+  },
+
+  // CSS testing utilities
+  css: cssTestingUtils,
+
+  // Render component in all theme contexts
+  renderInAllThemes: async (
+    component: ReactElement,
+    testFn: (container: HTMLElement, theme: 'light' | 'dark') => void | Promise<void>
+  ) => {
+    const themes: ('light' | 'dark')[] = ['light', 'dark'];
+    
+    for (const theme of themes) {
+      const { container } = renderWithProviders(component, { theme });
+      await testFn(container, theme);
+    }
+  },
+
+  // Validate BEM structure in rendered component
+  validateBEMStructure: (container: HTMLElement, componentName: string) => {
+    const validation = cssTestingUtils.bem.validateContainerBEM(container);
+    expect(validation.valid).toBe(true);
+    
+    if (!validation.valid) {
+      console.error('BEM violations found:', validation.violations);
+    }
+    
+    return validation;
+  },
+
+  // Check for Tailwind classes (should not exist)
+  checkForTailwindClasses: (container: HTMLElement) => {
+    const tailwindClasses = cssTestingUtils.bem.detectTailwindClasses(container);
+    expect(tailwindClasses).toHaveLength(0);
+    
+    if (tailwindClasses.length > 0) {
+      console.error('Tailwind classes found:', tailwindClasses);
+    }
+    
+    return tailwindClasses;
+  },
+
+  // Test theme switching performance
+  testThemeSwitchingPerformance: async (targetTime: number = 100) => {
+    const duration = await cssTestingUtils.performance.measureThemeSwitch('light', 'dark');
+    expect(duration).toBeLessThan(targetTime);
+    return duration;
   },
 };
 

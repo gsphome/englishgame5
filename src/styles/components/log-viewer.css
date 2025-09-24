@@ -1,0 +1,237 @@
+/* LogViewer Component - Development Only */
+.log-viewer {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.log-viewer__container {
+  background-color: var(--theme-bg-primary);
+  border-radius: 0.5rem;
+  width: 91.666667%; /* w-11/12 */
+  height: 83.333333%; /* h-5/6 */
+  max-width: 72rem; /* max-w-6xl */
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.log-viewer__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid var(--theme-border-primary);
+}
+
+.log-viewer__title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--theme-text-primary);
+}
+
+.log-viewer__header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.log-viewer__action-btn {
+  padding: 0.5rem;
+  color: var(--theme-text-secondary);
+  background-color: transparent;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.log-viewer__action-btn:hover {
+  color: var(--theme-text-primary);
+  background-color: var(--bg-subtle);
+}
+
+.log-viewer__action-btn:focus {
+  outline: 2px solid var(--primary-blue);
+  outline-offset: 2px;
+}
+
+.log-viewer__icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.log-viewer__filters {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-bottom: 1px solid var(--theme-border-primary);
+  background-color: var(--bg-subtle);
+}
+
+.log-viewer__filter-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.log-viewer__filter-icon {
+  width: 1rem;
+  height: 1rem;
+  color: var(--theme-text-tertiary);
+}
+
+.log-viewer__select {
+  border: 1px solid var(--theme-border-medium);
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  background-color: var(--theme-bg-primary);
+  color: var(--theme-text-primary);
+}
+
+.log-viewer__search {
+  border: 1px solid var(--theme-border-medium);
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.875rem;
+  flex: 1;
+  max-width: 20rem;
+  background-color: var(--theme-bg-primary);
+  color: var(--theme-text-primary);
+}
+
+.log-viewer__search::placeholder {
+  color: var(--theme-text-tertiary);
+}
+
+.log-viewer__count {
+  font-size: 0.875rem;
+  color: var(--theme-text-tertiary);
+}
+
+.log-viewer__content {
+  flex: 1;
+  overflow: auto;
+  padding: 1rem;
+}
+
+.log-viewer__empty {
+  text-align: center;
+  color: var(--theme-text-tertiary);
+  padding: 2rem 0;
+}
+
+.log-viewer__logs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.log-viewer__log {
+  padding: 0.75rem;
+  border-radius: 0.25rem;
+  border-left: 4px solid currentColor;
+}
+
+.log-viewer__log--error {
+  color: #dc2626;
+  background-color: #fef2f2;
+}
+
+.log-viewer__log--warn {
+  color: #d97706;
+  background-color: #fffbeb;
+}
+
+.log-viewer__log--info {
+  color: #2563eb;
+  background-color: #eff6ff;
+}
+
+.log-viewer__log--debug {
+  color: var(--theme-text-secondary);
+  background-color: var(--bg-subtle);
+}
+
+.log-viewer__log-header {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.log-viewer__log-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.log-viewer__log-icon {
+  font-size: 0.875rem;
+}
+
+.log-viewer__log-level {
+  font-weight: 500;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+}
+
+.log-viewer__log-component {
+  font-size: 0.75rem;
+  background-color: var(--bg-soft);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.log-viewer__log-time {
+  font-size: 0.75rem;
+  color: var(--theme-text-tertiary);
+}
+
+.log-viewer__log-message {
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.log-viewer__log-data {
+  margin-top: 0.5rem;
+}
+
+.log-viewer__log-data summary {
+  font-size: 0.75rem;
+  color: var(--theme-text-secondary);
+  cursor: pointer;
+}
+
+.log-viewer__log-data summary:hover {
+  color: var(--theme-text-primary);
+}
+
+.log-viewer__log-data pre {
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  background-color: var(--bg-subtle);
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  overflow: auto;
+  max-height: 8rem;
+}
+
+.log-viewer__footer {
+  padding: 1rem;
+  border-top: 1px solid var(--theme-border-primary);
+  background-color: var(--bg-subtle);
+  font-size: 0.75rem;
+  color: var(--theme-text-secondary);
+}
+
+.log-viewer__footer strong {
+  font-weight: 600;
+}

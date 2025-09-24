@@ -66,7 +66,7 @@ export const Header: React.FC<HeaderProps> = () => {
             aria-expanded={showSideMenu}
             aria-controls="navigation-menu"
           >
-            <Menu className="w-5 h-5" />
+            <Menu className="header-redesigned__menu-icon" />
             <span className="sr-only">{showSideMenu ? 'Cerrar menú' : 'Abrir menú'}</span>
           </button>
           <div className="header-redesigned__brand">
@@ -97,7 +97,7 @@ export const Header: React.FC<HeaderProps> = () => {
                 title={`${user.name} - Profile`}
                 aria-label={`User profile: ${user.name}. Click to open profile`}
               >
-                <User className="w-4 h-4" />
+                <User className="header-redesigned__user-icon" />
                 <div className="header-redesigned__user-info">
                   <span className="header-redesigned__username">{user.name}</span>
                 </div>
@@ -110,8 +110,8 @@ export const Header: React.FC<HeaderProps> = () => {
                 className="header-redesigned__login-btn header-redesigned__login-btn--primary"
                 aria-label="Login to your account"
               >
-                <User className="w-4 h-4" />
-                <span className="hidden sm:inline ml-1">Login</span>
+                <User className="header-redesigned__user-icon" />
+                <span className="header-redesigned__login-text">Login</span>
               </button>
             </div>
           )}

@@ -1,0 +1,483 @@
+{
+  "timestamp": "2025-09-24T02:28:28.369Z",
+  "summary": {
+    "totalBundles": 6,
+    "totalSize": 343.09999999999997,
+    "compliance": {
+      "allUnderTarget": true,
+      "overTargetCount": 0,
+      "largestBundle": {
+        "name": "index-Bx9-TdQB.css",
+        "size": 307.64,
+        "path": "/Users/gsuarez/Documents/Code/English5/dist/assets/index-Bx9-TdQB.css",
+        "content": {
+          "totalLines": 2,
+          "totalChars": 315020,
+          "rules": {
+            "tailwindDirectives": 0,
+            "applyDirectives": 0,
+            "layerBlocks": 0,
+            "importStatements": 0,
+            "cssRules": 2260,
+            "mediaQueries": 382,
+            "customProperties": 1561,
+            "darkModeRules": 519
+          },
+          "optimization": {
+            "hasHybridArchitecture": false,
+            "hasUnusedRules": false,
+            "hasRedundantImports": false,
+            "canTreeShake": true
+          }
+        },
+        "category": "main",
+        "compliance": {
+          "underTarget": true,
+          "target": 500,
+          "percentage": 62
+        }
+      }
+    },
+    "issues": 0,
+    "opportunities": 1
+  },
+  "bundles": [
+    {
+      "name": "index-Bx9-TdQB.css",
+      "size": 307.64,
+      "path": "/Users/gsuarez/Documents/Code/English5/dist/assets/index-Bx9-TdQB.css",
+      "content": {
+        "totalLines": 2,
+        "totalChars": 315020,
+        "rules": {
+          "tailwindDirectives": 0,
+          "applyDirectives": 0,
+          "layerBlocks": 0,
+          "importStatements": 0,
+          "cssRules": 2260,
+          "mediaQueries": 382,
+          "customProperties": 1561,
+          "darkModeRules": 519
+        },
+        "optimization": {
+          "hasHybridArchitecture": false,
+          "hasUnusedRules": false,
+          "hasRedundantImports": false,
+          "canTreeShake": true
+        }
+      },
+      "category": "main",
+      "compliance": {
+        "underTarget": true,
+        "target": 500,
+        "percentage": 62
+      }
+    },
+    {
+      "name": "SortingComponent-C5yelS9r.css",
+      "size": 19.76,
+      "path": "/Users/gsuarez/Documents/Code/English5/dist/assets/SortingComponent-C5yelS9r.css",
+      "content": {
+        "totalLines": 2,
+        "totalChars": 20233,
+        "rules": {
+          "tailwindDirectives": 0,
+          "applyDirectives": 0,
+          "layerBlocks": 0,
+          "importStatements": 0,
+          "cssRules": 149,
+          "mediaQueries": 7,
+          "customProperties": 111,
+          "darkModeRules": 45
+        },
+        "optimization": {
+          "hasHybridArchitecture": false,
+          "hasUnusedRules": false,
+          "hasRedundantImports": false,
+          "canTreeShake": true
+        }
+      },
+      "category": "component",
+      "compliance": {
+        "underTarget": true,
+        "target": 500,
+        "percentage": 4
+      }
+    },
+    {
+      "name": "MatchingComponent-CKwLe1Is.css",
+      "size": 10.94,
+      "path": "/Users/gsuarez/Documents/Code/English5/dist/assets/MatchingComponent-CKwLe1Is.css",
+      "content": {
+        "totalLines": 2,
+        "totalChars": 11204,
+        "rules": {
+          "tailwindDirectives": 0,
+          "applyDirectives": 0,
+          "layerBlocks": 0,
+          "importStatements": 0,
+          "cssRules": 100,
+          "mediaQueries": 7,
+          "customProperties": 1,
+          "darkModeRules": 28
+        },
+        "optimization": {
+          "hasHybridArchitecture": false,
+          "hasUnusedRules": false,
+          "hasRedundantImports": false,
+          "canTreeShake": false
+        }
+      },
+      "category": "component",
+      "compliance": {
+        "underTarget": true,
+        "target": 500,
+        "percentage": 2
+      }
+    },
+    {
+      "name": "CompletionComponent-CDqcpD_4.css",
+      "size": 2,
+      "path": "/Users/gsuarez/Documents/Code/English5/dist/assets/CompletionComponent-CDqcpD_4.css",
+      "content": {
+        "totalLines": 2,
+        "totalChars": 2046,
+        "rules": {
+          "tailwindDirectives": 0,
+          "applyDirectives": 0,
+          "layerBlocks": 0,
+          "importStatements": 0,
+          "cssRules": 20,
+          "mediaQueries": 6,
+          "customProperties": 3,
+          "darkModeRules": 2
+        },
+        "optimization": {
+          "hasHybridArchitecture": false,
+          "hasUnusedRules": false,
+          "hasRedundantImports": false,
+          "canTreeShake": false
+        }
+      },
+      "category": "component",
+      "compliance": {
+        "underTarget": true,
+        "target": 500,
+        "percentage": 0
+      }
+    },
+    {
+      "name": "NavigationButton-BJv2r2d1.css",
+      "size": 1.58,
+      "path": "/Users/gsuarez/Documents/Code/English5/dist/assets/NavigationButton-BJv2r2d1.css",
+      "content": {
+        "totalLines": 2,
+        "totalChars": 1618,
+        "rules": {
+          "tailwindDirectives": 0,
+          "applyDirectives": 0,
+          "layerBlocks": 0,
+          "importStatements": 0,
+          "cssRules": 20,
+          "mediaQueries": 0,
+          "customProperties": 2,
+          "darkModeRules": 8
+        },
+        "optimization": {
+          "hasHybridArchitecture": false,
+          "hasUnusedRules": false,
+          "hasRedundantImports": false,
+          "canTreeShake": false
+        }
+      },
+      "category": "other",
+      "compliance": {
+        "underTarget": true,
+        "target": 500,
+        "percentage": 0
+      }
+    },
+    {
+      "name": "FlashcardComponent-BYVDJG33.css",
+      "size": 1.18,
+      "path": "/Users/gsuarez/Documents/Code/English5/dist/assets/FlashcardComponent-BYVDJG33.css",
+      "content": {
+        "totalLines": 2,
+        "totalChars": 1207,
+        "rules": {
+          "tailwindDirectives": 0,
+          "applyDirectives": 0,
+          "layerBlocks": 0,
+          "importStatements": 0,
+          "cssRules": 13,
+          "mediaQueries": 6,
+          "customProperties": 0,
+          "darkModeRules": 3
+        },
+        "optimization": {
+          "hasHybridArchitecture": false,
+          "hasUnusedRules": false,
+          "hasRedundantImports": false,
+          "canTreeShake": false
+        }
+      },
+      "category": "component",
+      "compliance": {
+        "underTarget": true,
+        "target": 500,
+        "percentage": 0
+      }
+    }
+  ],
+  "analysis": {
+    "categories": {
+      "main": [
+        {
+          "name": "index-Bx9-TdQB.css",
+          "size": 307.64,
+          "path": "/Users/gsuarez/Documents/Code/English5/dist/assets/index-Bx9-TdQB.css",
+          "content": {
+            "totalLines": 2,
+            "totalChars": 315020,
+            "rules": {
+              "tailwindDirectives": 0,
+              "applyDirectives": 0,
+              "layerBlocks": 0,
+              "importStatements": 0,
+              "cssRules": 2260,
+              "mediaQueries": 382,
+              "customProperties": 1561,
+              "darkModeRules": 519
+            },
+            "optimization": {
+              "hasHybridArchitecture": false,
+              "hasUnusedRules": false,
+              "hasRedundantImports": false,
+              "canTreeShake": true
+            }
+          },
+          "category": "main",
+          "compliance": {
+            "underTarget": true,
+            "target": 500,
+            "percentage": 62
+          }
+        }
+      ],
+      "component": [
+        {
+          "name": "SortingComponent-C5yelS9r.css",
+          "size": 19.76,
+          "path": "/Users/gsuarez/Documents/Code/English5/dist/assets/SortingComponent-C5yelS9r.css",
+          "content": {
+            "totalLines": 2,
+            "totalChars": 20233,
+            "rules": {
+              "tailwindDirectives": 0,
+              "applyDirectives": 0,
+              "layerBlocks": 0,
+              "importStatements": 0,
+              "cssRules": 149,
+              "mediaQueries": 7,
+              "customProperties": 111,
+              "darkModeRules": 45
+            },
+            "optimization": {
+              "hasHybridArchitecture": false,
+              "hasUnusedRules": false,
+              "hasRedundantImports": false,
+              "canTreeShake": true
+            }
+          },
+          "category": "component",
+          "compliance": {
+            "underTarget": true,
+            "target": 500,
+            "percentage": 4
+          }
+        },
+        {
+          "name": "MatchingComponent-CKwLe1Is.css",
+          "size": 10.94,
+          "path": "/Users/gsuarez/Documents/Code/English5/dist/assets/MatchingComponent-CKwLe1Is.css",
+          "content": {
+            "totalLines": 2,
+            "totalChars": 11204,
+            "rules": {
+              "tailwindDirectives": 0,
+              "applyDirectives": 0,
+              "layerBlocks": 0,
+              "importStatements": 0,
+              "cssRules": 100,
+              "mediaQueries": 7,
+              "customProperties": 1,
+              "darkModeRules": 28
+            },
+            "optimization": {
+              "hasHybridArchitecture": false,
+              "hasUnusedRules": false,
+              "hasRedundantImports": false,
+              "canTreeShake": false
+            }
+          },
+          "category": "component",
+          "compliance": {
+            "underTarget": true,
+            "target": 500,
+            "percentage": 2
+          }
+        },
+        {
+          "name": "CompletionComponent-CDqcpD_4.css",
+          "size": 2,
+          "path": "/Users/gsuarez/Documents/Code/English5/dist/assets/CompletionComponent-CDqcpD_4.css",
+          "content": {
+            "totalLines": 2,
+            "totalChars": 2046,
+            "rules": {
+              "tailwindDirectives": 0,
+              "applyDirectives": 0,
+              "layerBlocks": 0,
+              "importStatements": 0,
+              "cssRules": 20,
+              "mediaQueries": 6,
+              "customProperties": 3,
+              "darkModeRules": 2
+            },
+            "optimization": {
+              "hasHybridArchitecture": false,
+              "hasUnusedRules": false,
+              "hasRedundantImports": false,
+              "canTreeShake": false
+            }
+          },
+          "category": "component",
+          "compliance": {
+            "underTarget": true,
+            "target": 500,
+            "percentage": 0
+          }
+        },
+        {
+          "name": "FlashcardComponent-BYVDJG33.css",
+          "size": 1.18,
+          "path": "/Users/gsuarez/Documents/Code/English5/dist/assets/FlashcardComponent-BYVDJG33.css",
+          "content": {
+            "totalLines": 2,
+            "totalChars": 1207,
+            "rules": {
+              "tailwindDirectives": 0,
+              "applyDirectives": 0,
+              "layerBlocks": 0,
+              "importStatements": 0,
+              "cssRules": 13,
+              "mediaQueries": 6,
+              "customProperties": 0,
+              "darkModeRules": 3
+            },
+            "optimization": {
+              "hasHybridArchitecture": false,
+              "hasUnusedRules": false,
+              "hasRedundantImports": false,
+              "canTreeShake": false
+            }
+          },
+          "category": "component",
+          "compliance": {
+            "underTarget": true,
+            "target": 500,
+            "percentage": 0
+          }
+        }
+      ],
+      "theme": [],
+      "design-system": [],
+      "other": [
+        {
+          "name": "NavigationButton-BJv2r2d1.css",
+          "size": 1.58,
+          "path": "/Users/gsuarez/Documents/Code/English5/dist/assets/NavigationButton-BJv2r2d1.css",
+          "content": {
+            "totalLines": 2,
+            "totalChars": 1618,
+            "rules": {
+              "tailwindDirectives": 0,
+              "applyDirectives": 0,
+              "layerBlocks": 0,
+              "importStatements": 0,
+              "cssRules": 20,
+              "mediaQueries": 0,
+              "customProperties": 2,
+              "darkModeRules": 8
+            },
+            "optimization": {
+              "hasHybridArchitecture": false,
+              "hasUnusedRules": false,
+              "hasRedundantImports": false,
+              "canTreeShake": false
+            }
+          },
+          "category": "other",
+          "compliance": {
+            "underTarget": true,
+            "target": 500,
+            "percentage": 0
+          }
+        }
+      ]
+    },
+    "issues": [],
+    "opportunities": [
+      "Main bundle could be split into smaller chunks"
+    ],
+    "compliance": {
+      "allUnderTarget": true,
+      "overTargetCount": 0,
+      "largestBundle": {
+        "name": "index-Bx9-TdQB.css",
+        "size": 307.64,
+        "path": "/Users/gsuarez/Documents/Code/English5/dist/assets/index-Bx9-TdQB.css",
+        "content": {
+          "totalLines": 2,
+          "totalChars": 315020,
+          "rules": {
+            "tailwindDirectives": 0,
+            "applyDirectives": 0,
+            "layerBlocks": 0,
+            "importStatements": 0,
+            "cssRules": 2260,
+            "mediaQueries": 382,
+            "customProperties": 1561,
+            "darkModeRules": 519
+          },
+          "optimization": {
+            "hasHybridArchitecture": false,
+            "hasUnusedRules": false,
+            "hasRedundantImports": false,
+            "canTreeShake": true
+          }
+        },
+        "category": "main",
+        "compliance": {
+          "underTarget": true,
+          "target": 500,
+          "percentage": 62
+        }
+      }
+    }
+  },
+  "recommendations": [
+    {
+      "type": "optimization",
+      "priority": "medium",
+      "bundle": "index-Bx9-TdQB.css",
+      "issue": "2260 CSS rules may contain unused styles",
+      "solution": "Implement CSS tree-shaking or purging unused styles"
+    }
+  ],
+  "metadata": {
+    "nodeVersion": "v20.19.4",
+    "platform": "darwin",
+    "generatedBy": "css-bundle-analyzer.js"
+  }
+}

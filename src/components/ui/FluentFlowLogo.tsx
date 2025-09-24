@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../styles/components/fluent-flow-logo.css';
 
 interface FluentFlowLogoProps {
   size?: 'sm' | 'md' | 'lg';
@@ -6,34 +7,30 @@ interface FluentFlowLogoProps {
 }
 
 export const FluentFlowLogo: React.FC<FluentFlowLogoProps> = ({ size = 'md', className = '' }) => {
-  const sizeClasses = {
-    sm: 'w-6 h-6',
-    md: 'w-8 h-8',
-    lg: 'w-12 h-12',
-  };
-
   const textSizes = {
     sm: '12',
     md: '16',
     lg: '24',
   };
 
+  const logoClass = `fluent-flow-logo fluent-flow-logo--${size} ${className}`;
+
   return (
     <svg
-      className={`${sizeClasses[size]} ${className}`}
+      className={logoClass}
       viewBox="0 0 32 32"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
       <defs>
         <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" className="text-purple-500" style={{ stopColor: 'currentColor' }} />
-          <stop offset="100%" className="text-blue-500" style={{ stopColor: 'currentColor' }} />
+          <stop offset="0%" className="fluent-flow-logo__gradient-start" style={{ stopColor: 'currentColor' }} />
+          <stop offset="100%" className="fluent-flow-logo__gradient-end" style={{ stopColor: 'currentColor' }} />
         </linearGradient>
       </defs>
 
       {/* Background circle */}
-      <circle cx="16" cy="16" r="14" fill="url(#logoGradient)" className="drop-shadow-sm" />
+      <circle cx="16" cy="16" r="14" fill="url(#logoGradient)" className="fluent-flow-logo__background" />
 
       {/* Flow lines */}
       <path
@@ -70,7 +67,7 @@ export const FluentFlowLogo: React.FC<FluentFlowLogoProps> = ({ size = 'md', cla
         fontWeight="700"
         textAnchor="middle"
         fill="white"
-        className="select-none"
+        className="fluent-flow-logo__text"
       >
         F
       </text>

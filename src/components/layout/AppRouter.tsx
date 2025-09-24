@@ -4,6 +4,7 @@ import { useModuleData } from '../../hooks/useModuleData';
 import { LoadingSkeleton } from '../ui/LoadingSkeleton';
 import { MainMenu } from '../ui/MainMenu';
 import type { LearningModule } from '../../types';
+import '../../styles/components/app-router.css';
 
 // Lazy load learning components with better error handling
 const FlashcardComponent = lazy(() =>
@@ -12,7 +13,7 @@ const FlashcardComponent = lazy(() =>
       default: module.default,
     }))
     .catch(() => ({
-      default: () => <div className="error">Failed to load Flashcard component</div>,
+      default: () => <div className="app-router__error-fallback">Failed to load Flashcard component</div>,
     }))
 );
 
@@ -22,7 +23,7 @@ const QuizComponent = lazy(() =>
       default: module.default,
     }))
     .catch(() => ({
-      default: () => <div className="error">Failed to load Quiz component</div>,
+      default: () => <div className="app-router__error-fallback">Failed to load Quiz component</div>,
     }))
 );
 
@@ -32,7 +33,7 @@ const CompletionComponent = lazy(() =>
       default: module.default,
     }))
     .catch(() => ({
-      default: () => <div className="error">Failed to load Completion component</div>,
+      default: () => <div className="app-router__error-fallback">Failed to load Completion component</div>,
     }))
 );
 
@@ -42,7 +43,7 @@ const SortingComponent = lazy(() =>
       default: module.default,
     }))
     .catch(() => ({
-      default: () => <div className="error">Failed to load Sorting component</div>,
+      default: () => <div className="app-router__error-fallback">Failed to load Sorting component</div>,
     }))
 );
 
@@ -52,13 +53,13 @@ const MatchingComponent = lazy(() =>
       default: module.default,
     }))
     .catch(() => ({
-      default: () => <div className="error">Failed to load Matching component</div>,
+      default: () => <div className="app-router__error-fallback">Failed to load Matching component</div>,
     }))
 );
 
 // Enhanced loading component
 const ComponentLoader: React.FC = () => (
-  <div className="min-h-screen flex items-center justify-center">
+  <div className="app-router__loader">
     <LoadingSkeleton />
   </div>
 );
@@ -69,21 +70,21 @@ const ModuleError: React.FC<{ error: Error; moduleId: string; onRetry: () => voi
   moduleId,
   onRetry,
 }) => (
-  <div className="max-w-2xl mx-auto p-6 text-center">
-    <div className="bg-red-50 border border-red-200 rounded-lg p-6">
-      <div className="text-red-500 text-4xl mb-4">⚠️</div>
-      <h3 className="text-lg font-semibold text-red-800 mb-2">Failed to load module: {moduleId}</h3>
-      <p className="text-red-600 mb-4">{error.message}</p>
-      <div className="space-x-4">
+  <div className="app-router__error">
+    <div className="app-router__error-container">
+      <div className="app-router__error-icon">⚠️</div>
+      <h3 className="app-router__error-title">Failed to load module: {moduleId}</h3>
+      <p className="app-router__error-message">{error.message}</p>
+      <div className="app-router__error-actions">
         <button
           onClick={onRetry}
-          className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+          className="app-router__error-btn app-router__error-btn--primary"
         >
           Retry
         </button>
         <button
           onClick={() => window.location.reload()}
-          className="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-colors"
+          className="app-router__error-btn app-router__error-btn--secondary"
         >
           Reload Page
         </button>
@@ -114,8 +115,8 @@ const LearningComponentWrapper: React.FC<LearningComponentWrapperProps> = ({
 
   if (!moduleData) {
     return (
-      <div className="max-w-2xl mx-auto p-6 text-center">
-        <p className="text-gray-600">No module data available</p>
+      <div className="app-router__no-module">
+        <p className="app-router__no-module-text">No module data available</p>
       </div>
     );
   }
@@ -135,11 +136,11 @@ export const AppRouter: React.FC = () => {
   const moduleId = currentModule?.id;
   if (!moduleId) {
     return (
-      <div className="max-w-2xl mx-auto p-6 text-center">
-        <p className="text-gray-600 mb-4">No module selected</p>
+      <div className="app-router__no-module">
+        <p className="app-router__no-module-text">No module selected</p>
         <button
           onClick={() => window.location.reload()}
-          className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+          className="app-router__no-module-btn"
         >
           Return to Menu
         </button>
@@ -164,8 +165,8 @@ export const AppRouter: React.FC = () => {
               return <MatchingComponent module={module} />;
             default:
               return (
-                <div className="max-w-2xl mx-auto p-6 text-center">
-                  <p className="text-gray-600">Unknown view: {currentView}</p>
+                <div className="app-router__unknown-view">
+                  <p className="app-router__unknown-view-text">Unknown view: {currentView}</p>
                 </div>
               );
           }

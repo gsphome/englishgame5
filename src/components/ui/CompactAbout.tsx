@@ -35,7 +35,7 @@ export const CompactAbout: React.FC<CompactAboutProps> = ({ isOpen, onClose }) =
             className="compact-about__close-btn"
             aria-label={t('common.close')}
           >
-            <X className="h-3 w-3" />
+            <X className="compact-about__close-icon" />
           </button>
         </div>
 

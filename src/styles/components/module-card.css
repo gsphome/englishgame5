@@ -575,3 +575,7 @@
     width: 100%;
   }
 }
+/* === MODULE CARD ICONS === */
+.module-card__status-icon {
+  color: var(--theme-text-tertiary);
+}

@@ -238,3 +238,8 @@
     transition: none;
   }
 }
+/* === COMPACT PROFILE ICONS === */
+.compact-profile__close-icon {
+  width: 0.75rem;
+  height: 0.75rem;
+}

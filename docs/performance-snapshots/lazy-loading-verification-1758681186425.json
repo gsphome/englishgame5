@@ -1,0 +1,181 @@
+{
+  "timestamp": "2025-09-24T02:33:06.423Z",
+  "patterns": {
+    "reactLazy": [
+      {
+        "component": "FlashcardComponent",
+        "importPath": "../learning/FlashcardComponent",
+        "fullMatch": "const FlashcardComponent = lazy(() =>\n  import('../learning/FlashcardComponent')"
+      },
+      {
+        "component": "QuizComponent",
+        "importPath": "../learning/QuizComponent",
+        "fullMatch": "const QuizComponent = lazy(() =>\n  import('../learning/QuizComponent')"
+      },
+      {
+        "component": "CompletionComponent",
+        "importPath": "../learning/CompletionComponent",
+        "fullMatch": "const CompletionComponent = lazy(() =>\n  import('../learning/CompletionComponent')"
+      },
+      {
+        "component": "SortingComponent",
+        "importPath": "../learning/SortingComponent",
+        "fullMatch": "const SortingComponent = lazy(() =>\n  import('../learning/SortingComponent')"
+      },
+      {
+        "component": "MatchingComponent",
+        "importPath": "../learning/MatchingComponent",
+        "fullMatch": "const MatchingComponent = lazy(() =>\n  import('../learning/MatchingComponent')"
+      }
+    ],
+    "dynamicImports": [],
+    "suspenseUsage": [
+      {
+        "file": "AppRouter.tsx",
+        "hasErrorBoundary": true,
+        "hasLoadingComponent": true
+      }
+    ],
+    "cssImports": [
+      {
+        "component": "CompletionComponent.tsx",
+        "imports": [
+          "import '../../styles/components/completion-component.css'"
+        ]
+      },
+      {
+        "component": "FlashcardComponent.tsx",
+        "imports": [
+          "import '../../styles/components/flashcard-component.css'"
+        ]
+      },
+      {
+        "component": "MatchingComponent.tsx",
+        "imports": [
+          "import '../../styles/components/matching-modal.css'",
+          "import '../../styles/components/matching-component.css'",
+          "import '../../styles/components/matching-component.css'"
+        ]
+      },
+      {
+        "component": "SortingComponent.tsx",
+        "imports": [
+          "import '../../styles/components/sorting-modal.css'",
+          "import '../../styles/components/sorting-component.css'"
+        ]
+      }
+    ]
+  },
+  "chunks": {
+    "css": [
+      "components-Co6uHSGY.css",
+      "main-Bx9-TdQB.css"
+    ],
+    "js": [
+      "components-RiZZ9OU5.js",
+      "index-DYkX8s-c.js"
+    ],
+    "componentChunks": [
+      {
+        "component": "FlashcardComponent",
+        "hasCSSChunk": false,
+        "hasJSChunk": false,
+        "cssFile": null,
+        "jsFile": null
+      },
+      {
+        "component": "QuizComponent",
+        "hasCSSChunk": false,
+        "hasJSChunk": false,
+        "cssFile": null,
+        "jsFile": null
+      },
+      {
+        "component": "CompletionComponent",
+        "hasCSSChunk": false,
+        "hasJSChunk": false,
+        "cssFile": null,
+        "jsFile": null
+      },
+      {
+        "component": "SortingComponent",
+        "hasCSSChunk": false,
+        "hasJSChunk": false,
+        "cssFile": null,
+        "jsFile": null
+      },
+      {
+        "component": "MatchingComponent",
+        "hasCSSChunk": false,
+        "hasJSChunk": false,
+        "cssFile": null,
+        "jsFile": null
+      }
+    ]
+  },
+  "themes": {
+    "available": [
+      "mobile-dark.css",
+      "mobile-light.css",
+      "web-dark.css",
+      "web-light.css"
+    ],
+    "contexts": [
+      {
+        "file": "mobile-dark.css",
+        "hasMediaQueries": true,
+        "hasDarkModeRules": true,
+        "hasCustomProperties": true,
+        "size": 9.24
+      },
+      {
+        "file": "mobile-light.css",
+        "hasMediaQueries": true,
+        "hasDarkModeRules": true,
+        "hasCustomProperties": true,
+        "size": 9.72
+      },
+      {
+        "file": "web-dark.css",
+        "hasMediaQueries": true,
+        "hasDarkModeRules": true,
+        "hasCustomProperties": true,
+        "size": 7.01
+      },
+      {
+        "file": "web-light.css",
+        "hasMediaQueries": true,
+        "hasDarkModeRules": true,
+        "hasCustomProperties": true,
+        "size": 11.38
+      }
+    ],
+    "loadingStrategy": "static"
+  },
+  "validation": {
+    "reactLazy": {
+      "status": "PASS",
+      "issues": [],
+      "components": 5
+    },
+    "cssChunks": {
+      "status": "FAIL",
+      "issues": [
+        "Components without CSS chunks: FlashcardComponent, QuizComponent, CompletionComponent, SortingComponent, MatchingComponent",
+        "Components without JS chunks: FlashcardComponent, QuizComponent, CompletionComponent, SortingComponent, MatchingComponent"
+      ],
+      "chunks": 5
+    },
+    "themeLoading": {
+      "status": "PASS",
+      "issues": [],
+      "themes": 4
+    },
+    "overall": "FAIL"
+  },
+  "metadata": {
+    "nodeVersion": "v20.19.4",
+    "platform": "darwin",
+    "generatedBy": "verify-lazy-loading.js"
+  }
+}

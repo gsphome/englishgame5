@@ -141,13 +141,13 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
   // Early return if no data
   if (!randomizedExercises.length) {
     return (
-      <div className="max-w-6xl mx-auto p-3 sm:p-6 text-center">
-        <p className="text-gray-600 mb-4">
+      <div className="completion-component__no-data">
+        <p className="completion-component__no-data-text">
           {t('noDataAvailable') || 'No completion exercises available'}
         </p>
         <button
           onClick={() => setCurrentView('menu')}
-          className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+          className="completion-component__no-data-btn"
         >
           {t('navigation.mainMenu')}
         </button>
@@ -179,6 +179,19 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
           answer.toLowerCase().trim() === currentExercise.correct?.toLowerCase().trim();
         const isIncorrect = showResult && answer && !isCorrect;
 
+        let inputClass = 'completion-component__input';
+        if (showResult) {
+          if (isCorrect) {
+            inputClass += ' completion-component__input--correct';
+          } else if (isIncorrect) {
+            inputClass += ' completion-component__input--incorrect';
+          } else {
+            inputClass += ' completion-component__input--disabled';
+          }
+        } else {
+          inputClass += ' completion-component__input--neutral';
+        }
+
         elements.push(
           <input
             key={`input-${index}`}
@@ -188,16 +201,7 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
             disabled={showResult}
             placeholder="..."
             autoComplete="off"
-            className={`inline-block mx-2 px-3 py-1.5 min-w-[120px] text-center rounded-lg border-2 focus:outline-none transition-all duration-200 font-medium ${
-              showResult
-                ? isCorrect
-                  ? 'border-green-500 bg-green-50 text-green-700 dark:bg-green-900 dark:text-green-200'
-                  : isIncorrect
-                    ? 'border-red-500 bg-red-50 text-red-700 dark:bg-red-900 dark:text-red-200'
-                    : 'border-gray-300 bg-gray-50 text-gray-600 dark:bg-gray-700 dark:text-gray-300'
-                : 'border-blue-300 bg-blue-50 focus:border-blue-500 focus:bg-white text-gray-900 dark:bg-gray-700 dark:border-gray-500 dark:text-white dark:focus:bg-gray-600'
-            }`}
-            className="completion-component__input dynamic-width"
+            className={inputClass}
             style={{ '--dynamic-width': `${Math.max(120, (answer?.length || 3) * 12 + 60)}px` } as React.CSSProperties}
           />
         );
@@ -210,10 +214,10 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
   const hasAnswer = answer.trim().length > 0;
 
   return (
-    <div className="max-w-6xl mx-auto p-3 sm:p-6">
+    <div className="completion-component__container">
       {/* Compact header with progress */}
-      <div className="mb-4">
-        <div className="flex justify-between items-center mb-3">
+      <div className="completion-component__header">
+        <div className="completion-component__header-top">
           <h2 className="completion-component__title">{module.name}</h2>
           <span className="counter-badge">
             {randomizedExercises.length > 0
@@ -221,48 +225,48 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
               : '...'}
           </span>
         </div>
-        <div className="w-full bg-gray-200 rounded-full h-1.5">
+        <div className="completion-component__progress-container">
           <div
             className="progress-bar__fill progress-bar__fill--purple"
             style={{ '--progress-width': `${((currentIndex + 1) / randomizedExercises.length) * 100}%` } as React.CSSProperties}
           />
         </div>
-        <p className="text-xs text-gray-500 mt-2 text-center">
+        <p className="completion-component__help-text">
           {showResult ? 'Press Enter for next exercise' : 'Fill the blank and press Enter'}
         </p>
       </div>
 
       {/* Exercise */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 sm:p-6 mb-4">
+      <div className="completion-component__exercise-card">
         <h3 className="completion-component__instruction">
           Complete the sentence:
         </h3>
 
         {currentExercise?.tip && (
-          <div className="mb-4 p-3 bg-blue-50 dark:bg-blue-900 border-l-4 border-blue-400 rounded-r-lg">
-            <p className="text-sm text-blue-800 dark:text-blue-200">
+          <div className="completion-component__tip">
+            <p className="completion-component__tip-text">
               💡 <strong>Tip:</strong> {currentExercise.tip}
             </p>
           </div>
         )}
 
-        <div className="text-lg leading-relaxed mb-4 p-6 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-800 rounded-xl border border-gray-200 dark:border-gray-600 shadow-inner">
+        <div className="completion-component__sentence-container">
           <div className="completion-component__sentence">{renderSentence()}</div>
         </div>
 
         {/* Result and Explanation - Compact unified section */}
         <div
-          className={`mt-3 overflow-hidden transition-all duration-300 ease-in-out ${
-            showResult ? 'max-h-32 opacity-100' : 'max-h-0 opacity-0'
+          className={`completion-component__result-container ${
+            showResult ? 'completion-component__result-container--visible' : 'completion-component__result-container--hidden'
           }`}
         >
-          <div className="px-3 py-2 bg-blue-50 dark:bg-blue-900 border border-blue-200 dark:border-blue-700 rounded-lg">
+          <div className="completion-component__result">
             {/* Ultra-compact result feedback */}
-            <div className="flex items-center space-x-1.5 flex-wrap">
+            <div className="completion-component__feedback-row">
               {answer.toLowerCase().trim() === currentExercise?.correct?.toLowerCase().trim() ? (
-                <Check className="h-3.5 w-3.5 text-green-600" />
+                <Check className="completion-component__feedback-icon completion-component__feedback-icon--correct" />
               ) : (
-                <X className="h-3.5 w-3.5 text-red-600" />
+                <X className="completion-component__feedback-icon completion-component__feedback-icon--incorrect" />
               )}
               <span className="completion-component__feedback">
                 {answer.toLowerCase().trim() === currentExercise?.correct?.toLowerCase().trim()
@@ -272,7 +276,7 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
 
               {/* Correct answer flows naturally after incorrect */}
               {answer.toLowerCase().trim() !== currentExercise?.correct?.toLowerCase().trim() && (
-                <span className="text-xs text-gray-700 dark:text-gray-300">
+                <span className="completion-component__correct-answer">
                   - Answer: <strong>{currentExercise?.correct}</strong>
                 </span>
               )}
@@ -280,9 +284,9 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
 
             {/* Compact explanation */}
             {currentExercise?.explanation && (
-              <div className="border-t border-blue-200 dark:border-blue-700 pt-2 mt-2">
-                <div className="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
-                  <span className="font-medium">Explanation:</span>{' '}
+              <div className="completion-component__explanation">
+                <div className="completion-component__explanation-text">
+                  <span className="completion-component__explanation-label">Explanation:</span>{' '}
                   <ContentRenderer
                     content={ContentAdapter.ensureStructured(
                       currentExercise.explanation,
@@ -297,35 +301,35 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
       </div>
 
       {/* Unified Control Bar */}
-      <div className="flex justify-center items-center gap-3 flex-wrap mt-6">
+      <div className="completion-component__controls">
         {/* Navigation */}
         <NavigationButton onClick={() => setCurrentView('menu')} title="Return to main menu">
           Back to Menu
         </NavigationButton>
 
         {/* Separator */}
-        <div className="w-px h-6 bg-gray-300 mx-1"></div>
+        <div className="completion-component__separator"></div>
 
         {!showResult ? (
           <button
             onClick={checkAnswer}
             disabled={!hasAnswer}
-            className="flex items-center gap-2 px-6 py-2.5 bg-purple-600 hover:bg-purple-700 disabled:bg-gray-400 text-white rounded-lg transition-colors text-sm font-medium shadow-sm"
+            className="completion-component__check-btn"
           >
-            <Check className="h-4 w-4" />
+            <Check className="completion-component__btn-icon" />
             <span>Check Answer</span>
           </button>
         ) : (
           <button
             onClick={handleNext}
-            className="flex items-center gap-2 px-6 py-2.5 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors text-sm font-medium shadow-sm"
+            className="completion-component__next-btn"
           >
             <span>
               {currentIndex === randomizedExercises.length - 1
                 ? 'Finish Exercise'
                 : 'Next Exercise'}
             </span>
-            <ArrowRight className="h-4 w-4" />
+            <ArrowRight className="completion-component__btn-icon" />
           </button>
         )}
       </div>

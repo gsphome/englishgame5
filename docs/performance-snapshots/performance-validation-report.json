@@ -1,0 +1,79 @@
+{
+  "timestamp": "2025-09-24T02:56:15.556Z",
+  "themeSwitching": {
+    "average": 0.059273599999998795,
+    "max": 0.44096199999999897,
+    "target": 100,
+    "passed": true
+  },
+  "cssBundle": {
+    "chunks": [
+      {
+        "file": "assets/components-Co6uHSGY.css",
+        "size": 36304,
+        "sizeKB": 35,
+        "withinLimit": true
+      },
+      {
+        "file": "assets/main-Bx9-TdQB.css",
+        "size": 315022,
+        "sizeKB": 308,
+        "withinLimit": true
+      }
+    ],
+    "totalSize": 351326,
+    "totalSizeKB": 343,
+    "target": 500,
+    "passed": true
+  },
+  "renderPerformance": {
+    "Header": {
+      "average": 0.04414699999999812,
+      "max": 0.10516199999999287,
+      "target": 50,
+      "passed": true
+    },
+    "CompactAdvancedSettings": {
+      "average": 0.00861380000000338,
+      "max": 0.023994999999999322,
+      "target": 50,
+      "passed": true
+    },
+    "Combined": {
+      "average": 0.006534999999999513,
+      "max": 0.022714999999990937,
+      "target": 50,
+      "passed": true
+    }
+  },
+  "accessibility": {
+    "checks": {
+      "colorContrast": {
+        "description": "WCAG AA color contrast ratios (4.5:1 minimum)",
+        "passed": true,
+        "details": "All text elements meet WCAG AA standards"
+      },
+      "keyboardNavigation": {
+        "description": "Full keyboard navigation support",
+        "passed": true,
+        "details": "All interactive elements are keyboard accessible"
+      },
+      "touchTargets": {
+        "description": "Minimum 44px touch targets on mobile",
+        "passed": true,
+        "details": "All buttons meet minimum touch target size"
+      },
+      "reducedMotion": {
+        "description": "Respects prefers-reduced-motion setting",
+        "passed": true,
+        "details": "Animations disabled when reduced motion is preferred"
+      },
+      "ariaLabels": {
+        "description": "Proper ARIA labels and semantic HTML",
+        "passed": true,
+        "details": "All interactive elements have proper ARIA labels"
+      }
+    },
+    "passed": true
+  }
+}

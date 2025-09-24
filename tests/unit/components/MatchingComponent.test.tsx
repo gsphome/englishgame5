@@ -71,40 +71,151 @@ describe('MatchingComponent', () => {
     expect(getByText('0/3 matched')).toBeInTheDocument();
   });
 
-  it('should apply proper BEM-like classes for styling', () => {
+  it('should apply proper BEM classes for pure CSS architecture', () => {
     const { container } = renderWithProviders(
       <MatchingComponent module={mockModule} />
     );
 
-    // Check main component class
+    // Check main component class (BEM block)
     expect(container.querySelector('.matching-component')).toBeInTheDocument();
 
-    // Check grid structure
+    // Check header structure (BEM elements)
+    expect(container.querySelector('.matching-component__header')).toBeInTheDocument();
+    expect(container.querySelector('.matching-component__title')).toBeInTheDocument();
+    expect(container.querySelector('.matching-component__progress-badge')).toBeInTheDocument();
+
+    // Check grid structure (BEM elements)
     expect(container.querySelector('.matching-component__grid')).toBeInTheDocument();
     expect(container.querySelector('.matching-component__columns')).toBeInTheDocument();
 
-    // Check column headers
+    // Check column headers (BEM elements)
     expect(container.querySelector('.matching-component__column-header')).toBeInTheDocument();
 
-    // Check items have proper BEM classes
+    // Check items have proper BEM classes (elements and modifiers)
     expect(container.querySelector('.matching-component__item')).toBeInTheDocument();
     expect(container.querySelector('.matching-component__item--default')).toBeInTheDocument();
+    
+    // Check item content structure (nested BEM elements)
+    expect(container.querySelector('.matching-component__item-content')).toBeInTheDocument();
+    expect(container.querySelector('.matching-component__item-text')).toBeInTheDocument();
+    expect(container.querySelector('.matching-component__item-letter')).toBeInTheDocument();
+
+    // Check actions section (BEM elements)
+    expect(container.querySelector('.matching-component__actions')).toBeInTheDocument();
+    expect(container.querySelector('.matching-component__button')).toBeInTheDocument();
   });
 
-  it('should have proper dark mode support through CSS classes', () => {
+  it('should use design tokens for theme context support', () => {
     const { container } = renderWithProviders(
       <MatchingComponent module={mockModule} />
     );
 
-    // Verify that items use semantic BEM classes that support dark mode via CSS
+    // Verify that component uses semantic BEM classes that support theme contexts via design tokens
+    const component = container.querySelector('.matching-component');
+    expect(component).toBeInTheDocument();
+
+    // Check that items use proper BEM modifiers for different states
     const items = container.querySelectorAll('.matching-component__item');
     expect(items.length).toBeGreaterThan(0);
 
-    // Check that items have proper state classes for dark mode support
+    // Verify BEM modifier classes for different item states
     items.forEach(item => {
-      expect(item.classList.contains('matching-component__item--default') ||
+      const hasValidModifier = 
+        item.classList.contains('matching-component__item--default') ||
         item.classList.contains('matching-component__item--selected') ||
-        item.classList.contains('matching-component__item--matched')).toBe(true);
+        item.classList.contains('matching-component__item--matched') ||
+        item.classList.contains('matching-component__item--matched-inactive') ||
+        item.classList.contains('matching-component__item--correct') ||
+        item.classList.contains('matching-component__item--incorrect') ||
+        item.classList.contains('matching-component__item--unmatched');
+      
+      expect(hasValidModifier).toBe(true);
     });
+
+    // Verify button elements use proper BEM modifiers
+    const buttons = container.querySelectorAll('.matching-component__button');
+    buttons.forEach(button => {
+      const hasValidModifier = 
+        button.classList.contains('matching-component__button--primary') ||
+        button.classList.contains('matching-component__button--secondary') ||
+        button.classList.contains('matching-component__button--success');
+      
+      expect(hasValidModifier).toBe(true);
+    });
+  });
+
+  it('should not contain any Tailwind classes', () => {
+    const { container } = renderWithProviders(
+      <MatchingComponent module={mockModule} />
+    );
+
+    // Get all elements with class attributes
+    const elementsWithClasses = container.querySelectorAll('[class]');
+    
+    elementsWithClasses.forEach(element => {
+      const classList = Array.from(element.classList);
+      
+      // Check for common Tailwind patterns that should not exist
+      const tailwindPatterns = [
+        /^(bg|text|border|p|m|w|h|flex|grid|rounded|shadow)-/,
+        /^(hover|focus|active|dark):/,
+        /^(sm|md|lg|xl):/,
+        /^space-/,
+        /^gap-/
+      ];
+      
+      classList.forEach(className => {
+        const hasTailwindPattern = tailwindPatterns.some(pattern => pattern.test(className));
+        expect(hasTailwindPattern).toBe(false);
+      });
+    });
+  });
+
+  it('should follow strict BEM naming conventions', () => {
+    const { container } = renderWithProviders(
+      <MatchingComponent module={mockModule} />
+    );
+
+    // Get all elements with class attributes
+    const elementsWithClasses = container.querySelectorAll('[class]');
+    
+    elementsWithClasses.forEach(element => {
+      const classList = Array.from(element.classList);
+      
+      classList.forEach(className => {
+        // Skip utility classes and non-BEM classes
+        if (className.startsWith('sr-') || className === 'lucide' || className.includes('icon')) {
+          return;
+        }
+        
+        // BEM pattern: block__element--modifier or just block or block--modifier
+        const bemPattern = /^[a-z-]+(__[a-z-]+)?(--[a-z-]+)?$/;
+        expect(className).toMatch(bemPattern);
+      });
+    });
+  });
+
+  it('should support theme context switching through CSS architecture', () => {
+    const { container, rerender } = renderWithProviders(
+      <MatchingComponent module={mockModule} />
+    );
+
+    // Verify component renders with theme-aware classes
+    const component = container.querySelector('.matching-component');
+    expect(component).toBeInTheDocument();
+
+    // Simulate theme context change by adding dark class to document
+    document.documentElement.classList.add('dark');
+    
+    // Re-render component
+    rerender(<MatchingComponent module={mockModule} />);
+    
+    // Component should still render correctly with same BEM classes
+    // (theme switching is handled by CSS design tokens, not class changes)
+    expect(container.querySelector('.matching-component')).toBeInTheDocument();
+    expect(container.querySelector('.matching-component__item')).toBeInTheDocument();
+    
+    // Clean up
+    document.documentElement.classList.remove('dark');
   });
 });

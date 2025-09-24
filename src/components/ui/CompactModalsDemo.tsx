@@ -5,6 +5,7 @@ import { CompactLearningPath } from './CompactLearningPath';
 import { CompactAdvancedSettings } from './CompactAdvancedSettings';
 import { CompactAbout } from './CompactAbout';
 import { CompactProfile } from './CompactProfile';
+import '../../styles/components/compact-modals-demo.css';
 
 /**
  * Demo component to showcase the new compact modals
@@ -77,7 +78,7 @@ export const CompactModalsDemo: React.FC = () => {
                 className="compact-modals-demo__card"
               >
                 <div className="compact-modals-demo__card-icon">
-                  <IconComponent className="h-6 w-6" />
+                  <IconComponent className="compact-modals-demo__card-icon-svg" />
                 </div>
                 <div className="compact-modals-demo__card-content">
                   <h3 className="compact-modals-demo__card-title">{modal.title}</h3>

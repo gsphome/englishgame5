@@ -24,6 +24,10 @@
   @apply p-1.5 text-gray-400 hover:text-gray-600 dark:text-gray-200 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md transition-all duration-200;
 }
 
+.compact-dashboard__close-icon {
+  @apply h-3 w-3;
+}
+
 .compact-dashboard__content {
   @apply p-3 space-y-3;
   overflow-y: auto;

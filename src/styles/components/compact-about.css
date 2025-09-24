@@ -207,3 +207,8 @@
     transition: none;
   }
 }
+/* === COMPACT ABOUT ICONS === */
+.compact-about__close-icon {
+  width: 0.75rem;
+  height: 0.75rem;
+}

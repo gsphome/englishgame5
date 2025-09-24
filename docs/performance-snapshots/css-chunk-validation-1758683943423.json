@@ -1,0 +1,33 @@
+{
+  "timestamp": "2025-09-24T03:19:03.421Z",
+  "target": 500,
+  "warningThreshold": 400,
+  "results": {
+    "chunks": [
+      {
+        "name": "main-Bx9-TdQB.css",
+        "size": 307.64,
+        "status": "PASS",
+        "message": "307.64KB < 500KB target"
+      },
+      {
+        "name": "components-Co6uHSGY.css",
+        "size": 35.45,
+        "status": "PASS",
+        "message": "35.45KB < 500KB target"
+      }
+    ],
+    "totalSize": 343.09,
+    "compliance": {
+      "passed": 2,
+      "warnings": 0,
+      "failed": 0
+    },
+    "status": "PASS"
+  },
+  "metadata": {
+    "nodeVersion": "v20.19.4",
+    "platform": "darwin",
+    "generatedBy": "check-css-chunks.js"
+  }
+}

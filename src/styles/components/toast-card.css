@@ -166,6 +166,11 @@
   outline-offset: 2px;
 }
 
+.toast-card__close-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
 /* Type Modifiers */
 .toast-card--success {
   border-left: 4px solid #10b981;

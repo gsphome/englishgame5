@@ -1,0 +1,103 @@
+{
+  "timestamp": "2025-09-24T02:27:12.499Z",
+  "bundles": {
+    "css": [
+      {
+        "name": "index-Bx9-TdQB.css",
+        "size": 307.64
+      },
+      {
+        "name": "SortingComponent-C5yelS9r.css",
+        "size": 19.76
+      },
+      {
+        "name": "MatchingComponent-CKwLe1Is.css",
+        "size": 10.94
+      },
+      {
+        "name": "CompletionComponent-CDqcpD_4.css",
+        "size": 2
+      },
+      {
+        "name": "NavigationButton-BJv2r2d1.css",
+        "size": 1.58
+      },
+      {
+        "name": "FlashcardComponent-BYVDJG33.css",
+        "size": 1.18
+      }
+    ],
+    "js": [
+      {
+        "name": "index-CJuyqMQw.js",
+        "size": 387.39
+      },
+      {
+        "name": "SortingComponent-CF4g9sFZ.js",
+        "size": 9.34
+      },
+      {
+        "name": "MatchingComponent-D5s6ywcv.js",
+        "size": 9.26
+      },
+      {
+        "name": "CompletionComponent-BwhHs4nP.js",
+        "size": 6.48
+      },
+      {
+        "name": "FlashcardComponent-DSmnGViV.js",
+        "size": 5.48
+      },
+      {
+        "name": "QuizComponent-VtBP2Jk6.js",
+        "size": 5.35
+      },
+      {
+        "name": "NavigationButton-CVnrVpcw.js",
+        "size": 4.37
+      },
+      {
+        "name": "useToast-Dq_I4pC2.js",
+        "size": 2.05
+      },
+      {
+        "name": "check-DPgrTTjW.js",
+        "size": 0.29
+      },
+      {
+        "name": "randomUtils-DP179wgg.js",
+        "size": 0.14
+      }
+    ],
+    "total": {
+      "css": 343.09999999999997,
+      "js": 430.15
+    }
+  },
+  "analysis": {
+    "css": {
+      "withinTarget": true,
+      "issues": [],
+      "largest": {
+        "name": "index-Bx9-TdQB.css",
+        "size": 307.64
+      }
+    },
+    "js": {
+      "withinTarget": true,
+      "issues": [],
+      "largest": {
+        "name": "index-CJuyqMQw.js",
+        "size": 387.39
+      }
+    },
+    "overall": {
+      "status": "PASS",
+      "warnings": []
+    }
+  },
+  "metadata": {
+    "nodeVersion": "v20.19.4",
+    "platform": "darwin"
+  }
+}

@@ -48,7 +48,7 @@ export const CompactProgressDashboard: React.FC<CompactProgressDashboardProps> =
             className="compact-dashboard__close-btn"
             aria-label={t('common.close')}
           >
-            <X className="h-3 w-3" />
+            <X className="compact-dashboard__close-icon" />
           </button>
         </div>
 

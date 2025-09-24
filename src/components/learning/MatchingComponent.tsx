@@ -310,7 +310,7 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
                           className="matching-component__info-button"
                           title="Show explanation"
                         >
-                          <Info className="h-3 w-3" />
+                          <Info className="matching-component__info-icon" />
                         </div>
                       )}
                       {isMatched && (
@@ -396,15 +396,15 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
               className="matching-component__button matching-component__button--secondary"
               title="Reset Exercise"
             >
-              <RotateCcw className="h-4 w-4" />
+              <RotateCcw className="matching-component__button-icon" />
             </button>
 
             <button
               onClick={checkAnswers}
               disabled={!allMatched}
-              className="matching-component__button matching-component__button--primary flex items-center gap-2"
+              className="matching-component__button matching-component__button--primary"
             >
-              <Check className="h-4 w-4" />
+              <Check className="matching-component__button-icon" />
               <span>Check Matches</span>
             </button>
           </>
@@ -412,14 +412,14 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
           <>
             <button
               onClick={showSummaryModal}
-              className="matching-component__button matching-component__button--primary flex items-center gap-2"
+              className="matching-component__button matching-component__button--primary"
             >
-              <Info className="h-4 w-4" />
+              <Info className="matching-component__button-icon" />
               <span>View Summary</span>
             </button>
             <button
               onClick={finishExercise}
-              className="matching-component__button matching-component__button--success flex items-center gap-2"
+              className="matching-component__button matching-component__button--success"
             >
               <span>Finish Exercise</span>
             </button>
@@ -440,7 +440,7 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
                   onClick={() => setShowExplanation(false)}
                   className="matching-modal__close-btn"
                 >
-                  <X className="h-5 w-5" />
+                  <X className="matching-modal__close-icon" />
                 </button>
               </div>
 

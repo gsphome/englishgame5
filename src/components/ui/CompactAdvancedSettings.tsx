@@ -149,8 +149,8 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
 
   return (
     <div className="compact-settings">
-      <div className="compact-settings__container bg-white dark:bg-gray-900">
-        <div className="compact-settings__header bg-gray-50 dark:bg-gray-800">
+      <div className="compact-settings__container">
+        <div className="compact-settings__header">
           <div className="compact-settings__title-section">
             <Settings className="compact-settings__icon" />
             <h2 className="compact-settings__title">
@@ -159,32 +159,32 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
           </div>
           <button
             onClick={onClose}
-            className="compact-settings__close-btn text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white"
+            className="compact-settings__close-btn"
             aria-label={t('common.close')}
           >
-            <X className="h-3 w-3" />
+            <X className="compact-settings__close-icon" />
           </button>
         </div>
 
         {/* Tab Navigation */}
-        <div className="compact-settings__tabs bg-white dark:bg-gray-900">
+        <div className="compact-settings__tabs">
           <button
             onClick={() => setActiveTab('general')}
-            className={`compact-settings__tab text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 ${activeTab === 'general' ? 'compact-settings__tab--active text-blue-600 dark:text-blue-400' : ''}`}
+            className={`compact-settings__tab ${activeTab === 'general' ? 'compact-settings__tab--active' : ''}`}
           >
             <Palette className="compact-settings__tab-icon" />
             <span className="compact-settings__tab-title">{t('settings.general', 'General')}</span>
           </button>
           <button
             onClick={() => setActiveTab('games')}
-            className={`compact-settings__tab text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 ${activeTab === 'games' ? 'compact-settings__tab--active text-blue-600 dark:text-blue-400' : ''}`}
+            className={`compact-settings__tab ${activeTab === 'games' ? 'compact-settings__tab--active' : ''}`}
           >
             <Gamepad2 className="compact-settings__tab-icon" />
             <span className="compact-settings__tab-title">{t('settings.games', 'Juegos')}</span>
           </button>
           <button
             onClick={() => setActiveTab('categories')}
-            className={`compact-settings__tab text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 ${activeTab === 'categories' ? 'compact-settings__tab--active text-blue-600 dark:text-blue-400' : ''}`}
+            className={`compact-settings__tab ${activeTab === 'categories' ? 'compact-settings__tab--active' : ''}`}
           >
             <Wrench className="compact-settings__tab-icon" />
             <span className="compact-settings__tab-title">
@@ -193,13 +193,13 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
           </button>
         </div>
 
-        <div className="compact-settings__content bg-white dark:bg-gray-900">
+        <div className="compact-settings__content">
           {/* General Settings Tab */}
           {activeTab === 'general' && (
             <div className="compact-settings__section">
               <div className="compact-settings__fields">
                 <div className="compact-settings__field">
-                  <label className="compact-settings__label text-gray-700 dark:text-gray-300">
+                  <label className="compact-settings__label">
                     {t('settings.theme', 'Tema')}
                   </label>
                   <select
@@ -213,7 +213,7 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
                 </div>
 
                 <div className="compact-settings__field">
-                  <label className="compact-settings__label text-gray-700 dark:text-gray-300">
+                  <label className="compact-settings__label">
                     {t('settings.language', 'Idioma')}
                   </label>
                   <select
@@ -227,7 +227,7 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
                 </div>
 
                 <div className="compact-settings__field">
-                  <label className="compact-settings__label text-gray-700 dark:text-gray-300">
+                  <label className="compact-settings__label">
                     {t('settings.level', 'Nivel')}
                   </label>
                   <select
@@ -245,8 +245,8 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
                   </select>
                 </div>
 
-                <div className="compact-settings__field compact-settings__field--dev bg-yellow-50 dark:bg-yellow-900/20 border-yellow-200 dark:border-yellow-800">
-                  <label className="compact-settings__label compact-settings__label--dev text-yellow-800 dark:text-yellow-300">
+                <div className="compact-settings__field compact-settings__field--dev">
+                  <label className="compact-settings__label compact-settings__label--dev">
                     🔧 {t('settings.developmentMode', 'Modo Desarrollo')}
                   </label>
                   <div className="compact-settings__toggle-container">
@@ -258,14 +258,14 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
                       onChange={e => setLocalDevelopmentMode(e.target.checked)}
                     />
                     <label htmlFor="developmentMode" className="compact-settings__toggle-label">
-                      <span className="compact-settings__toggle-text text-gray-700 dark:text-gray-300">
+                      <span className="compact-settings__toggle-text">
                         {localDevelopmentMode
                           ? t('settings.enabled', 'Habilitado')
                           : t('settings.disabled', 'Deshabilitado')}
                       </span>
                     </label>
                   </div>
-                  <p className="compact-settings__description compact-settings__description--dev text-yellow-700 dark:text-yellow-400">
+                  <p className="compact-settings__description compact-settings__description--dev">
                     {t('settings.developmentModeDescription', 'Info adicional para desarrollo')}
                   </p>
                 </div>
@@ -436,7 +436,7 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
         </div>
 
         {/* Footer Actions - Fixed outside scroll area */}
-        <div className="compact-settings__footer bg-gray-50 dark:bg-gray-800">
+        <div className="compact-settings__footer">
           {hasChanges && (
             <button
               onClick={handleReset}

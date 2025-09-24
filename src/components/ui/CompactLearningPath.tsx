@@ -48,7 +48,7 @@ export const CompactLearningPath: React.FC<CompactLearningPathProps> = ({ isOpen
             className="compact-learning-path__close-btn"
             aria-label={t('common.close')}
           >
-            <X className="h-3 w-3" />
+            <X className="compact-learning-path__close-icon" />
           </button>
         </div>
 

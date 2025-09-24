@@ -106,14 +106,14 @@ export const ModuleCard: React.FC<ModuleCardProps> = ({
       case 'locked':
         return {
           className: 'module-card--locked',
-          statusIcon: <Lock size={16} className="text-gray-400" />,
+          statusIcon: <Lock size={16} className="module-card__status-icon" />,
           statusText: `Requires ${progression.missingPrerequisites.length} prerequisite${progression.missingPrerequisites.length !== 1 ? 's' : ''}`,
           disabled: true,
         };
       default:
         return {
           className: 'module-card--locked',
-          statusIcon: <Lock size={16} className="text-gray-400" />,
+          statusIcon: <Lock size={16} className="module-card__status-icon" />,
           statusText: 'Locked',
           disabled: true,
         };

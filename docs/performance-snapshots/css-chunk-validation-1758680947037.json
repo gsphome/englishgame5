@@ -1,0 +1,57 @@
+{
+  "timestamp": "2025-09-24T02:29:07.021Z",
+  "target": 500,
+  "warningThreshold": 400,
+  "results": {
+    "chunks": [
+      {
+        "name": "index-Bx9-TdQB.css",
+        "size": 307.64,
+        "status": "PASS",
+        "message": "307.64KB < 500KB target"
+      },
+      {
+        "name": "SortingComponent-C5yelS9r.css",
+        "size": 19.76,
+        "status": "PASS",
+        "message": "19.76KB < 500KB target"
+      },
+      {
+        "name": "MatchingComponent-CKwLe1Is.css",
+        "size": 10.94,
+        "status": "PASS",
+        "message": "10.94KB < 500KB target"
+      },
+      {
+        "name": "CompletionComponent-CDqcpD_4.css",
+        "size": 2,
+        "status": "PASS",
+        "message": "2KB < 500KB target"
+      },
+      {
+        "name": "NavigationButton-BJv2r2d1.css",
+        "size": 1.58,
+        "status": "PASS",
+        "message": "1.58KB < 500KB target"
+      },
+      {
+        "name": "FlashcardComponent-BYVDJG33.css",
+        "size": 1.18,
+        "status": "PASS",
+        "message": "1.18KB < 500KB target"
+      }
+    ],
+    "totalSize": 343.09999999999997,
+    "compliance": {
+      "passed": 6,
+      "warnings": 0,
+      "failed": 0
+    },
+    "status": "PASS"
+  },
+  "metadata": {
+    "nodeVersion": "v20.19.4",
+    "platform": "darwin",
+    "generatedBy": "check-css-chunks.js"
+  }
+}

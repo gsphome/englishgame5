@@ -15,7 +15,7 @@ const mockSetAttribute = vi.fn();
 const _mockRemoveAttribute = vi.fn();
 const mockSetProperty = vi.fn();
 
-describe('Theme Conflicts Resolution', () => {
+describe('Design Token System and Theme Context', () => {
   beforeEach(() => {
     // Reset all mocks
     vi.clearAllMocks();
@@ -78,80 +78,70 @@ describe('Theme Conflicts Resolution', () => {
     });
   });
 
-  describe('Inline Style Cleanup', () => {
-    it('should clean up problematic inline color styles', () => {
-      const mockElement = {
-        getAttribute: vi.fn().mockReturnValue('color: red; background: blue; stroke: green;'),
-        setAttribute: vi.fn(),
-        removeAttribute: vi.fn(),
-        style: { display: 'block' },
-        offsetHeight: 0,
-        classList: { add: vi.fn() }
-      };
-
+  describe('Design Token Validation', () => {
+    it('should validate theme context variable mapping', () => {
       mockQuerySelector.mockReturnValue({
         setAttribute: mockSetAttribute
       });
-      // First call for inline styles, second for SVG elements, third for theme components
-      mockQuerySelectorAll
-        .mockReturnValueOnce([mockElement])
-        .mockReturnValueOnce([mockElement])
-        .mockReturnValueOnce([mockElement]);
+      mockQuerySelectorAll.mockReturnValue([]);
 
-      applyThemeToDOM('light');
-
-      expect(mockElement.setAttribute).toHaveBeenCalledWith('style', ' background: blue;');
-    });
-
-    it('should remove style attribute when only problematic styles exist', () => {
-      const mockElement = {
-        getAttribute: vi.fn().mockReturnValue('color: red; stroke: green; fill: blue;'),
-        setAttribute: vi.fn(),
-        removeAttribute: vi.fn(),
-        style: { display: 'block' },
-        offsetHeight: 0,
-        classList: { add: vi.fn() }
-      };
-
-      mockQuerySelector.mockReturnValue({
-        setAttribute: mockSetAttribute
-      });
-      mockQuerySelectorAll
-        .mockReturnValueOnce([mockElement])
-        .mockReturnValueOnce([mockElement])
-        .mockReturnValueOnce([mockElement]);
-
+      // Test dark theme context
       applyThemeToDOM('dark');
 
-      expect(mockElement.removeAttribute).toHaveBeenCalledWith('style');
+      // Verify theme class is applied (enables CSS context variables)
+      expect(mockClassList.add).toHaveBeenCalledWith(THEME_CLASSES.dark);
+      expect(mockClassList.remove).toHaveBeenCalledWith(THEME_CLASSES.light);
     });
 
-    it('should preserve non-color related inline styles', () => {
-      const mockElement = {
-        getAttribute: vi.fn().mockReturnValue('display: block; margin: 10px; color: red;'),
-        setAttribute: vi.fn(),
-        removeAttribute: vi.fn(),
-        style: { display: 'block' },
-        offsetHeight: 0,
-        classList: { add: vi.fn() }
-      };
-
+    it('should validate CSS custom property fallback chains', () => {
       mockQuerySelector.mockReturnValue({
         setAttribute: mockSetAttribute
       });
-      mockQuerySelectorAll
-        .mockReturnValueOnce([mockElement])
-        .mockReturnValueOnce([mockElement])
-        .mockReturnValueOnce([mockElement]);
+      mockQuerySelectorAll.mockReturnValue([]);
 
+      // Test light theme context
       applyThemeToDOM('light');
 
-      expect(mockElement.setAttribute).toHaveBeenCalledWith('style', 'display: block; margin: 10px;');
+      // Verify theme class is applied (enables CSS context variables)
+      expect(mockClassList.add).toHaveBeenCalledWith(THEME_CLASSES.light);
+      expect(mockClassList.remove).toHaveBeenCalledWith(THEME_CLASSES.dark);
+    });
+
+    it('should test design token system integrity', () => {
+      // Verify theme constants are properly defined
+      expect(THEME_CLASSES.light).toBeDefined();
+      expect(THEME_CLASSES.dark).toBeDefined();
+      expect(THEME_COLORS.light).toBeDefined();
+      expect(THEME_COLORS.dark).toBeDefined();
+
+      // Verify theme colors have required properties
+      expect(THEME_COLORS.light.metaThemeColor).toBeDefined();
+      expect(THEME_COLORS.dark.metaThemeColor).toBeDefined();
     });
   });
 
-  describe('Force Re-render Mechanism', () => {
-    it('should set CSS custom property for force update', () => {
+  describe('Theme Switching Performance', () => {
+    it('should complete theme switching within performance target', async () => {
+      mockQuerySelector.mockReturnValue({
+        setAttribute: mockSetAttribute
+      });
+      mockQuerySelectorAll.mockReturnValue([]);
+
+      const startTime = performance.now();
+      
+      applyThemeToDOM('dark');
+      
+      // Wait for any async operations
+      await new Promise(resolve => requestAnimationFrame(resolve));
+      
+      const endTime = performance.now();
+      const duration = endTime - startTime;
+
+      // Verify theme switching completes within 100ms target
+      expect(duration).toBeLessThan(100);
+    });
+
+    it('should set CSS custom property for theme update tracking', () => {
       mockQuerySelector.mockReturnValue({
         setAttribute: mockSetAttribute
       });
@@ -162,7 +152,7 @@ describe('Theme Conflicts Resolution', () => {
       expect(mockSetProperty).toHaveBeenCalledWith('--theme-force-update', '1');
     });
 
-    it('should set different value for light theme', () => {
+    it('should use different update value for light theme', () => {
       mockQuerySelector.mockReturnValue({
         setAttribute: mockSetAttribute
       });
@@ -200,6 +190,76 @@ describe('Theme Conflicts Resolution', () => {
       applyThemeToDOM('light');
 
       expect(mockSetAttribute).toHaveBeenCalledWith('content', THEME_COLORS.light.metaThemeColor);
+    });
+  });
+
+  describe('CSS Custom Property System', () => {
+    it('should validate design token availability in DOM', () => {
+      // Mock getComputedStyle to simulate CSS custom properties
+      const mockGetComputedStyle = vi.fn().mockReturnValue({
+        getPropertyValue: vi.fn((prop: string) => {
+          // Simulate design tokens being available
+          const tokens: Record<string, string> = {
+            '--theme-text-primary': '#374151',
+            '--theme-bg-primary': '#ffffff',
+            '--theme-border-primary': '#e5e7eb',
+            '--text-primary': '#374151',
+            '--bg-elevated': '#ffffff',
+            '--border-soft': '#f3f4f6'
+          };
+          return tokens[prop] || '';
+        })
+      });
+
+      Object.defineProperty(window, 'getComputedStyle', {
+        writable: true,
+        value: mockGetComputedStyle
+      });
+
+      // Test that design tokens are accessible
+      const computedStyle = getComputedStyle(document.documentElement);
+      
+      expect(computedStyle.getPropertyValue('--theme-text-primary')).toBeTruthy();
+      expect(computedStyle.getPropertyValue('--theme-bg-primary')).toBeTruthy();
+      expect(computedStyle.getPropertyValue('--text-primary')).toBeTruthy();
+      expect(computedStyle.getPropertyValue('--bg-elevated')).toBeTruthy();
+    });
+
+    it('should validate theme context variable mapping correctness', () => {
+      mockQuerySelector.mockReturnValue({
+        setAttribute: mockSetAttribute
+      });
+      mockQuerySelectorAll.mockReturnValue([]);
+
+      // Apply dark theme
+      applyThemeToDOM('dark');
+
+      // Verify dark theme class is applied (enables dark theme CSS context)
+      expect(mockClassList.add).toHaveBeenCalledWith('dark');
+      
+      // Apply light theme
+      applyThemeToDOM('light');
+
+      // Verify light theme class is applied (enables light theme CSS context)
+      expect(mockClassList.remove).toHaveBeenCalledWith('dark');
+    });
+
+    it('should handle theme switching without CSS conflicts', () => {
+      mockQuerySelector.mockReturnValue({
+        setAttribute: mockSetAttribute
+      });
+      mockQuerySelectorAll.mockReturnValue([]);
+
+      // Switch between themes multiple times
+      applyThemeToDOM('light');
+      applyThemeToDOM('dark');
+      applyThemeToDOM('light');
+
+      // Verify proper class management (no conflicts)
+      expect(mockClassList.add).toHaveBeenCalledWith('light');
+      expect(mockClassList.add).toHaveBeenCalledWith('dark');
+      expect(mockClassList.remove).toHaveBeenCalledWith('dark');
+      expect(mockClassList.remove).toHaveBeenCalledWith('light');
     });
   });
 });

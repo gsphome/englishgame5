@@ -1,103 +1,116 @@
 /**
  * Web Dark Theme - Desktop/Tablet Dark Mode
  * 
- * Clean, semantic styles for web environments in dark mode
- * Uses design system tokens and BEM-like naming conventions
+ * AI_CONTEXT: Theme context for desktop/tablet devices in dark mode
+ * AI_VALIDATION: WEB_DARK_THEME - Desktop optimizations with dark colors
+ * AI_USAGE: Enhanced shadows, high contrast, desktop interactions in dark mode
+ * 
+ * Optimized styles for web environments in dark mode
+ * Uses design system tokens with consolidated rules and proper media query scoping
+ * Integrated content from theme-fix.css for complete consolidation
  */
 
 /* === WEB DARK CONTEXT === */
+/* AI_VALIDATION: WEB_DARK_MEDIA_QUERY - Desktop/tablet dark theme context */
+/* AI_CONTEXT: Applies to screens 769px+ in dark mode */
 @media (min-width: 769px) {
   html.dark {
     /* === HEADER COMPONENT === */
     .header-redesigned {
-      background-color: var(--gray-800);
-      color: var(--header-text-primary);
-      border-color: var(--header-border);
-      transition: var(--theme-transition-duration, 0.2s) ease;
+      background-color: var(--theme-bg-elevated);
+      color: var(--theme-text-primary);
+      border-color: var(--theme-border-soft);
+      transition: all 0.2s ease;
     }
 
     .header-redesigned__title,
     .header-redesigned__username {
-      color: var(--header-text-primary);
+      color: var(--theme-text-primary);
     }
 
     .header-redesigned svg,
     .header-redesigned [data-lucide] {
-      color: var(--header-icon-color);
-      stroke: var(--header-icon-color);
+      color: var(--theme-text-secondary);
+      stroke: var(--theme-text-secondary);
     }
 
     .header-redesigned__button:hover {
-      background-color: var(--header-button-hover-bg);
+      background-color: var(--theme-bg-soft);
     }
 
     /* === MODULE CARDS === */
     .module-card {
-      background-color: var(--gray-800);
-      color: var(--header-text-primary);
-      border-color: var(--header-border);
+      background-color: var(--theme-bg-elevated);
+      color: var(--theme-text-primary);
+      border-color: var(--theme-border-soft);
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-      transition: var(--theme-transition-duration, 0.2s) ease;
+      transition: all 0.2s ease;
     }
 
     .module-card:hover {
+      border-color: var(--theme-border-medium);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
     }
 
     .module-card__title,
     .module-card__description {
-      color: var(--header-text-primary);
+      color: var(--theme-text-primary);
     }
 
     .module-card svg {
-      color: var(--header-icon-color);
-      stroke: var(--header-icon-color);
+      color: var(--theme-text-secondary);
+      stroke: var(--theme-text-secondary);
     }
 
     /* === NAVIGATION === */
     .nav-btn {
       background-color: transparent;
-      color: var(--header-text-primary);
-      border-color: var(--header-border);
+      color: var(--theme-text-primary);
+      border-color: var(--theme-border-soft);
     }
 
     .nav-btn:hover {
-      background-color: var(--header-button-hover-bg);
+      background-color: var(--theme-bg-soft);
     }
 
     .nav-btn:active {
-      background-color: var(--header-button-active-bg);
+      background-color: var(--theme-border-medium);
+    }
+
+    .nav-btn--on-colored {
+      color: var(--theme-text-on-colored);
+      border-color: var(--theme-border-on-colored);
     }
 
     /* === SETTINGS COMPONENTS === */
     .compact-settings__container {
-      background-color: var(--settings-bg);
-      border-color: var(--settings-border);
+      background-color: var(--theme-bg-elevated);
+      border-color: var(--theme-border-subtle);
     }
 
     .compact-settings__header,
     .compact-settings__content,
     .compact-settings__footer {
-      background-color: var(--settings-bg);
-      color: var(--settings-text-primary);
+      background-color: var(--theme-bg-elevated);
+      color: var(--theme-text-primary);
     }
 
     .compact-settings__title,
     .compact-settings__label {
-      color: var(--settings-text-primary);
+      color: var(--theme-text-primary);
     }
 
     .compact-settings__input,
     .compact-settings__select {
-      background-color: var(--settings-input-bg);
-      color: var(--settings-text-primary);
-      border-color: var(--settings-input-border);
+      background-color: var(--theme-bg-subtle);
+      color: var(--theme-text-primary);
+      border-color: var(--theme-border-soft);
     }
 
     .compact-settings__input:focus,
     .compact-settings__select:focus {
-      border-color: var(--settings-focus-ring);
-      box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.2);
+      border-color: var(--theme-primary-purple);
+      box-shadow: 0 0 0 3px var(--theme-primary-purple-light);
     }
 
     /* === LEARNING COMPONENTS === */
@@ -105,31 +118,64 @@
     .quiz-component,
     .sorting-component,
     .matching-component {
-      background-color: var(--gray-800);
-      color: var(--header-text-primary);
-      border-color: var(--header-border);
+      background-color: var(--theme-bg-elevated);
+      color: var(--theme-text-primary);
+      border-color: var(--theme-border-soft);
+    }
+
+    .quiz-component__question-card,
+    .flashcard-component__card,
+    .matching-component__item,
+    .sorting-component__item {
+      background-color: var(--theme-bg-elevated);
+      border-color: var(--theme-border-soft);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    .quiz-component__option--selected,
+    .matching-component__item--selected {
+      color: var(--theme-text-on-colored);
+      border-color: transparent;
+    }
+
+    .progress-bar {
+      background-color: var(--theme-bg-soft);
     }
 
     /* === MAIN MENU === */
     .main-menu {
-      background-color: var(--gray-800);
-      border-color: var(--header-border);
+      background-color: var(--theme-bg-elevated);
+      border-color: var(--theme-border-soft);
     }
 
     .main-menu__item {
-      color: var(--header-text-primary);
+      color: var(--theme-text-primary);
     }
 
     .main-menu__item:hover {
-      background-color: var(--header-button-hover-bg);
+      background-color: var(--theme-bg-soft);
     }
 
     /* === TOAST NOTIFICATIONS === */
     .toast-card {
-      background-color: var(--gray-800);
-      color: var(--header-text-primary);
-      border-color: var(--header-border);
+      background-color: var(--theme-bg-elevated);
+      color: var(--theme-text-primary);
+      border-color: var(--theme-border-soft);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    /* === PROGRESS DASHBOARD === */
+    .compact-dashboard__title,
+    .compact-dashboard__stat-value,
+    .compact-dashboard__section-title,
+    .compact-dashboard__progress-day-value {
+      color: var(--theme-text-primary) !important;
+    }
+
+    .compact-dashboard__container,
+    .compact-dashboard__stat {
+      background-color: var(--theme-bg-elevated);
+      border-color: var(--theme-border-soft);
     }
   }
 }
@@ -142,14 +188,14 @@
     .compact-settings__container {
       border-width: 2px;
       border-style: solid;
-      border-color: var(--gray-400);
+      border-color: var(--theme-text-primary);
     }
 
     .header-redesigned__title,
     .module-card__title,
     .compact-settings__title {
       font-weight: 600;
-      color: #ffffff;
+      color: var(--theme-text-primary);
     }
   }
 }
@@ -162,6 +208,57 @@
     .nav-btn,
     .compact-settings__input {
       transition: none !important;
+    }
+  }
+}
+
+/* === HIGH SPECIFICITY OVERRIDES === */
+/* Use utilities layer for maximum specificity when needed */
+@layer utilities {
+  @media (min-width: 769px) {
+    /* === BUTTON OVERRIDES === */
+    html.dark .compact-settings__btn--primary,
+    html.dark .compact-profile__btn--save,
+    html.dark .compact-dashboard__btn--primary,
+    html.dark .compact-learning-path__btn--primary {
+      color: var(--theme-text-on-colored) !important;
+    }
+
+    html.dark .compact-settings__btn--primary svg,
+    html.dark .compact-profile__btn--save svg {
+      color: var(--theme-text-on-colored) !important;
+      stroke: var(--theme-text-on-colored) !important;
+    }
+
+    /* === DASHBOARD COMPONENT OVERRIDES === */
+    html.dark .compact-dashboard__title,
+    html.dark .compact-dashboard__stat-value,
+    html.dark .compact-dashboard__section-title,
+    html.dark .compact-dashboard__progress-day-value {
+      color: var(--theme-text-primary) !important;
+    }
+
+    html.dark .compact-dashboard__stat-label,
+    html.dark .compact-dashboard__progress-day-label,
+    html.dark .compact-dashboard__no-data-text {
+      color: var(--theme-text-secondary) !important;
+    }
+
+    /* === LEARNING PATH COMPONENT OVERRIDES === */
+    html.dark .compact-learning-path__title,
+    html.dark .compact-learning-path__progress-value,
+    html.dark .compact-learning-path__stat-value,
+    html.dark .compact-learning-path__section-title,
+    html.dark .compact-learning-path__module-name,
+    html.dark .compact-learning-path__unit-name {
+      color: var(--theme-text-primary) !important;
+    }
+
+    /* === ABOUT MODAL COMPONENT OVERRIDES === */
+    html.dark .compact-about__section-title,
+    html.dark .compact-about__info-value,
+    html.dark .compact-about__developer-name {
+      color: var(--theme-text-primary) !important;
     }
   }
 }

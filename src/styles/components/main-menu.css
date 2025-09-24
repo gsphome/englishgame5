@@ -14,21 +14,41 @@
 
 /* Menu Container */
 .main-menu {
-  @apply max-w-6xl mx-auto my-2 bg-white pt-4 pb-6 px-3 sm:px-6 rounded-lg shadow-sm;
+  max-width: 72rem;
+  margin: 0.5rem auto;
+  background-color: var(--theme-bg-primary);
+  padding: 1rem 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+@media (min-width: 640px) {
+  .main-menu {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
 }
 
 .main-menu__title {
-  @apply text-3xl font-bold text-center mb-8 text-gray-900;
+  font-size: 1.875rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--theme-text-primary);
 }
 
 /* Search Section */
 .main-menu__search {
-  @apply max-w-sm mx-auto mb-4;
+  max-width: 24rem;
+  margin: 0 auto 1rem;
 }
 
 /* Grid Container - UX-First Approach: No Horizontal Scroll */
 .main-menu__grid {
-  @apply bg-gray-50 rounded-xl border-2 border-gray-200 mx-auto;
+  background-color: var(--bg-subtle);
+  border-radius: 0.75rem;
+  border: 2px solid var(--theme-border-primary);
+  margin: 0 auto;
   padding: 0.875rem;
   width: 100%;
   max-width: 100%;
@@ -107,47 +127,83 @@
 
 /* No Results */
 .main-menu__no-results {
-  @apply text-center py-8;
+  text-align: center;
+  padding: 2rem 0;
 }
 
 .main-menu__no-results-text {
-  @apply text-gray-700 dark:text-gray-300;
+  color: var(--theme-text-primary);
+}
+
+.main-menu__no-results-hint {
+  font-size: 0.875rem;
+  color: var(--theme-text-secondary);
+  margin-top: 0.5rem;
 }
 
 .main-menu__results-count {
-  @apply mt-4 text-center text-sm text-gray-700 dark:text-gray-300;
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--theme-text-primary);
 }
 
 /* Loading State */
 .main-menu__loading {
-  @apply flex items-center justify-center py-8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0;
 }
 
 .main-menu__loading-spinner {
-  @apply animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600;
+  animation: spin 1s linear infinite;
+  border-radius: 50%;
+  height: 2rem;
+  width: 2rem;
+  border-bottom: 2px solid var(--primary-blue);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Error State */
 .main-menu__error {
-  @apply text-center py-8;
+  text-align: center;
+  padding: 2rem 0;
 }
 
 .main-menu__error-text {
-  @apply text-red-600 dark:text-red-400 mb-4;
+  color: var(--error);
+  margin-bottom: 1rem;
 }
 
 .main-menu__error-btn {
-  @apply bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors duration-200;
+  background-color: var(--primary-blue);
+  color: var(--text-on-colored);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.main-menu__error-btn:hover {
+  background-color: var(--primary-blue-dark, #2563eb);
 }
 
 /* Mobile-First Responsive Design */
 @media (max-width: 719px) {
   .main-menu {
-    @apply mx-2 my-2 pt-3 pb-4 px-3;
+    margin: 0.5rem;
+    padding: 0.75rem 0.75rem 1rem;
   }
 
   .main-menu__search {
-    @apply mb-4;
+    margin-bottom: 1rem;
   }
 
   .main-menu__grid {
@@ -163,24 +219,15 @@
 
 @media (min-width: 720px) and (max-width: 899px) {
   .main-menu {
-    @apply px-6;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 
   .main-menu__grid {
-    @apply overflow-y-auto;
+    overflow-y: auto;
     max-height: 365px;
   }
 }
 
-/* Dark Mode */
-.dark .main-menu {
-  @apply bg-gray-800;
-}
-
-.dark .main-menu__title {
-  @apply text-white;
-}
-
-.dark .main-menu__grid {
-  @apply bg-gray-700 border-gray-600;
-}
+/* Dark Mode - Handled by theme context variables */
+/* No explicit dark mode rules needed - design tokens handle theme switching */

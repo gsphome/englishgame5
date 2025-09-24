@@ -1,7 +1,11 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { render } from '@testing-library/react';
 import { apiService } from '../../../src/services/api';
 import * as secureHttp from '../../../src/utils/secureHttp';
 import * as pathUtils from '../../../src/utils/pathUtils';
+import { renderWithProviders } from '../../helpers/test-utils';
+import MatchingComponent from '../../../src/components/learning/MatchingComponent';
+import type { LearningModule } from '../../../src/types';
 
 // Mock dependencies
 vi.mock('../../../src/utils/secureHttp');
@@ -278,6 +282,184 @@ describe('API Service Integration Tests', () => {
       const stats = apiService.getCacheStats();
       expect(stats.size).toBeGreaterThan(0);
       expect(stats.keys.length).toBeGreaterThan(0);
+    });
+  });
+
+  describe('CSS Architecture Integration', () => {
+    it('should verify component rendering works with new CSS architecture', async () => {
+      // Mock API data for component rendering
+      const mockModule: LearningModule = {
+        id: 'css-test-module',
+        name: 'CSS Test Module',
+        learningMode: 'matching',
+        level: ['a1'],
+        category: 'Vocabulary',
+        unit: 1,
+        prerequisites: [],
+        data: [
+          { id: '1', left: 'Hello', right: 'Hola', explanation: 'Basic greeting' },
+          { id: '2', left: 'Goodbye', right: 'Adiós', explanation: 'Farewell' }
+        ]
+      };
+
+      vi.mocked(secureHttp.secureJsonFetch).mockResolvedValue([mockModule]);
+      vi.mocked(secureHttp.validateUrl).mockImplementation((url: string) => url);
+
+      // Fetch module data through API
+      const apiResult = await apiService.fetchModuleData('css-test-module');
+      expect(apiResult.success).toBe(true);
+
+      // Render component with API data
+      const { container } = renderWithProviders(
+        <MatchingComponent module={apiResult.data} />
+      );
+
+      // Verify component renders with proper BEM classes
+      expect(container.querySelector('.matching-component')).toBeInTheDocument();
+      expect(container.querySelector('.matching-component__item')).toBeInTheDocument();
+      
+      // Verify no Tailwind classes are present
+      const elementsWithClasses = container.querySelectorAll('[class]');
+      elementsWithClasses.forEach(element => {
+        const classList = Array.from(element.classList);
+        classList.forEach(className => {
+          // Skip utility classes and non-BEM classes
+          if (className.startsWith('sr-') || className === 'lucide' || className.includes('icon')) {
+            return;
+          }
+          
+          // Should not contain Tailwind patterns
+          const tailwindPatterns = [
+            /^(bg|text|border|p|m|w|h|flex|grid|rounded|shadow)-/,
+            /^(hover|focus|active|dark):/,
+            /^(sm|md|lg|xl):/
+          ];
+          
+          const hasTailwindPattern = tailwindPatterns.some(pattern => pattern.test(className));
+          expect(hasTailwindPattern).toBe(false);
+        });
+      });
+    });
+
+    it('should test theme context affects component appearance in integration', async () => {
+      const mockModule: LearningModule = {
+        id: 'theme-test-module',
+        name: 'Theme Test Module',
+        learningMode: 'matching',
+        level: ['a1'],
+        category: 'Vocabulary',
+        unit: 1,
+        prerequisites: [],
+        data: [
+          { id: '1', left: 'Test', right: 'Prueba', explanation: 'Test word' }
+        ]
+      };
+
+      vi.mocked(secureHttp.secureJsonFetch).mockResolvedValue([mockModule]);
+      vi.mocked(secureHttp.validateUrl).mockImplementation((url: string) => url);
+
+      const apiResult = await apiService.fetchModuleData('theme-test-module');
+      expect(apiResult.success).toBe(true);
+
+      // Test light theme
+      document.documentElement.classList.remove('dark');
+      const { container: lightContainer } = renderWithProviders(
+        <MatchingComponent module={apiResult.data} />
+      );
+
+      // Test dark theme
+      document.documentElement.classList.add('dark');
+      const { container: darkContainer } = renderWithProviders(
+        <MatchingComponent module={apiResult.data} />
+      );
+
+      // Both should render with same BEM structure
+      expect(lightContainer.querySelector('.matching-component')).toBeInTheDocument();
+      expect(darkContainer.querySelector('.matching-component')).toBeInTheDocument();
+      
+      // Clean up
+      document.documentElement.classList.remove('dark');
+    });
+
+    it('should ensure API data loading does not conflict with CSS changes', async () => {
+      const mockModules = [
+        {
+          id: 'load-test-1',
+          name: 'Load Test 1',
+          learningMode: 'flashcard',
+          level: ['a1'],
+          category: 'Vocabulary',
+          unit: 1,
+          prerequisites: [],
+        },
+        {
+          id: 'load-test-2',
+          name: 'Load Test 2',
+          learningMode: 'quiz',
+          level: ['a2'],
+          category: 'Grammar',
+          unit: 2,
+          prerequisites: [],
+        }
+      ];
+
+      vi.mocked(secureHttp.secureJsonFetch).mockResolvedValue(mockModules);
+      vi.mocked(secureHttp.validateUrl).mockImplementation((url: string) => url);
+
+      // Measure API performance
+      const startTime = performance.now();
+      const result = await apiService.fetchModules();
+      const endTime = performance.now();
+      const apiLoadTime = endTime - startTime;
+
+      // API should load quickly regardless of CSS architecture
+      expect(result.success).toBe(true);
+      expect(apiLoadTime).toBeLessThan(100); // Should be fast
+
+      // Verify data structure is not affected by CSS changes
+      expect(result.data).toHaveLength(2);
+      expect(result.data[0].id).toBe('load-test-1');
+      expect(result.data[1].id).toBe('load-test-2');
+    });
+
+    it('should validate BEM class structure in API-driven components', async () => {
+      const mockModule: LearningModule = {
+        id: 'bem-validation-module',
+        name: 'BEM Validation Module',
+        learningMode: 'matching',
+        level: ['b1'],
+        category: 'Grammar',
+        unit: 3,
+        prerequisites: [],
+        data: [
+          { id: '1', left: 'Complex', right: 'Complejo', explanation: 'Advanced word' },
+          { id: '2', left: 'Simple', right: 'Simple', explanation: 'Basic word' }
+        ]
+      };
+
+      vi.mocked(secureHttp.secureJsonFetch).mockResolvedValue([mockModule]);
+      vi.mocked(secureHttp.validateUrl).mockImplementation((url: string) => url);
+
+      const apiResult = await apiService.fetchModuleData('bem-validation-module');
+      const { container } = renderWithProviders(
+        <MatchingComponent module={apiResult.data} />
+      );
+
+      // Validate strict BEM naming in API-driven component
+      const elementsWithClasses = container.querySelectorAll('[class]');
+      elementsWithClasses.forEach(element => {
+        const classList = Array.from(element.classList);
+        classList.forEach(className => {
+          // Skip utility classes
+          if (className.startsWith('sr-') || className === 'lucide' || className.includes('icon')) {
+            return;
+          }
+          
+          // Should follow BEM pattern: block__element--modifier
+          const bemPattern = /^[a-z-]+(__[a-z-]+)?(--[a-z-]+)?$/;
+          expect(className).toMatch(bemPattern);
+        });
+      });
     });
   });
 });

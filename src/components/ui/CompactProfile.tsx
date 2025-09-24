@@ -124,7 +124,7 @@ export const CompactProfile: React.FC<CompactProfileProps> = ({ isOpen, onClose 
             className="compact-profile__close-btn"
             aria-label={t('common.close')}
           >
-            <X className="h-3 w-3" />
+            <X className="compact-profile__close-icon" />
           </button>
         </div>
 

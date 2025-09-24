@@ -103,7 +103,7 @@ const Toast: React.FC<ToastProps> = ({ toast, onClose }) => {
             className={`${baseClass}__close`}
             aria-label="Close notification"
           >
-            <X className="h-4 w-4" />
+            <X className={`${baseClass}__close-icon`} />
           </button>
         </div>
       </div>

@@ -1,0 +1,117 @@
+/* AppRouter Component */
+.app-router {
+  min-height: 100vh;
+}
+
+.app-router__loader {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-router__error {
+  max-width: 32rem;
+  margin: 0 auto;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.app-router__error-container {
+  background-color: var(--bg-error-subtle, #fef2f2);
+  border: 1px solid var(--border-error, #fecaca);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+}
+
+.app-router__error-icon {
+  color: var(--error);
+  font-size: 2.25rem;
+  margin-bottom: 1rem;
+}
+
+.app-router__error-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--error-dark, #991b1b);
+  margin-bottom: 0.5rem;
+}
+
+.app-router__error-message {
+  color: var(--error);
+  margin-bottom: 1rem;
+}
+
+.app-router__error-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.app-router__error-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.app-router__error-btn--primary {
+  background-color: var(--error);
+  color: var(--text-on-colored);
+}
+
+.app-router__error-btn--primary:hover {
+  background-color: var(--error-dark, #b91c1c);
+}
+
+.app-router__error-btn--secondary {
+  background-color: var(--bg-subtle);
+  color: var(--theme-text-primary);
+}
+
+.app-router__error-btn--secondary:hover {
+  background-color: var(--bg-soft);
+}
+
+.app-router__no-module {
+  max-width: 32rem;
+  margin: 0 auto;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.app-router__no-module-text {
+  color: var(--theme-text-secondary);
+  margin-bottom: 1rem;
+}
+
+.app-router__no-module-btn {
+  padding: 0.5rem 1rem;
+  background-color: var(--primary-blue);
+  color: white;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.app-router__no-module-btn:hover {
+  background-color: var(--primary-blue-dark, #2563eb);
+}
+
+.app-router__unknown-view {
+  max-width: 32rem;
+  margin: 0 auto;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.app-router__unknown-view-text {
+  color: var(--theme-text-secondary);
+}
+
+.app-router__error-fallback {
+  color: var(--error);
+}

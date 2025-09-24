@@ -1,6 +1,12 @@
 /**
  * FluentFlow Design System - Color Palette
  * 
+ * AI_CONTEXT: This file contains the complete design token system for FluentFlow.
+ * AI developers should ALWAYS use these tokens instead of hardcoded colors.
+ * 
+ * AI_USAGE_PATTERN: Use var(--theme-text-primary) for theme-aware styling
+ * AI_VALIDATION: All components must use design tokens from this system
+ * 
  * Extracted from existing system components to maintain visual consistency
  * for new learning enhancement features.
  * 
@@ -8,41 +14,76 @@
  */
 
 :root {
+  /* === SEMANTIC COLOR TOKENS === */
+  /* AI_VALIDATION: SEMANTIC_TOKENS - Base semantic color definitions */
+  /* AI_USAGE: Use these as fallbacks in theme context variables */
+  
+  /* Primary text hierarchy */
+  --text-primary: #374151;              /* AI_CONTEXT: Main text - softer than black for better UX */
+  --text-secondary: #6b7280;            /* AI_CONTEXT: Secondary text - labels, descriptions */
+  --text-tertiary: #9ca3af;             /* AI_CONTEXT: Tertiary text - hints, placeholders */
+  --text-on-colored: #ffffff;           /* AI_CONTEXT: Text on colored backgrounds - high contrast */
+
+  /* === CONTEXTUAL TOKENS === */
+  /* AI_VALIDATION: CONTEXTUAL_TOKENS - Background system hierarchy */
+  /* AI_USAGE: Use for different surface levels and depth */
+  
+  /* Background system */
+  --bg-elevated: #ffffff;               /* AI_CONTEXT: Cards, modals, elevated surfaces - highest level */
+  --bg-subtle: #fafafa;                 /* AI_CONTEXT: Subtle backgrounds - sections, containers */
+  --bg-soft: #f9fafb;                   /* AI_CONTEXT: Soft backgrounds - hover states, gentle emphasis */
+  --bg-primary: #f9fafb;                /* AI_CONTEXT: Primary background - main app background */
+
+  /* === BORDER SYSTEM TOKENS === */
+  /* AI_VALIDATION: BORDER_SYSTEM - Progressive border hierarchy */
+  /* AI_USAGE: Use --border-soft for most cases, --border-medium sparingly */
+  
+  --border-subtle: #f9fafb;             /* AI_CONTEXT: Almost invisible borders - minimal separation */
+  --border-soft: #f3f4f6;               /* AI_CONTEXT: Very subtle borders - most common use case */
+  --border-medium: #e5e7eb;             /* AI_CONTEXT: Medium borders - use sparingly for emphasis */
+  --border-on-colored: rgba(255, 255, 255, 0.2); /* AI_CONTEXT: Borders on colored backgrounds */
+
+  /* === INTERACTIVE TOKENS === */
+  /* AI_VALIDATION: INTERACTIVE_TOKENS - Action and interaction colors */
+  /* AI_USAGE: Use for buttons, links, and interactive elements */
+  
+  --primary-blue: #3b82f6;              /* AI_CONTEXT: Primary blue for main actions - CTA buttons */
+  --primary-blue-hover: #2563eb;        /* AI_CONTEXT: Primary blue hover state - darker on hover */
+  --primary-blue-active: #1d4ed8;       /* AI_CONTEXT: Primary blue active state - darkest when pressed */
+  --primary-purple: #8b5cf6;            /* AI_CONTEXT: Primary purple for accents - secondary actions */
+  --primary-purple-hover: #7c3aed;      /* AI_CONTEXT: Primary purple hover state */
+  --primary-purple-light: #d8b4fe;      /* AI_CONTEXT: Light purple for backgrounds - subtle emphasis */
+
   /* === HEADER SYSTEM COLORS === */
   /* Light Mode - Improved UX with softer contrasts */
-  --header-bg: #ffffff;
-  --header-border: #f3f4f6;              /* Much softer border */
-  --header-text-primary: #374151;        /* Softer than black */
-  --header-text-secondary: #6b7280;
-  --header-icon-color: #6b7280;          /* Softer icon color */
-  --header-icon-hover: #374151;          /* Subtle hover */
-  --header-button-hover-bg: #f9fafb;     /* Very subtle hover */
-  --header-button-active-bg: #f3f4f6;    /* Soft active state */
-  --header-focus-ring: #3b82f6;
-
-  /* Contextual colors for colored backgrounds */
-  --text-on-colored: #ffffff;
-  --border-on-colored: rgba(255, 255, 255, 0.2);
-  --icon-on-colored: #ffffff;
+  --header-bg: var(--bg-elevated);
+  --header-border: var(--border-soft);
+  --header-text-primary: var(--text-primary);
+  --header-text-secondary: var(--text-secondary);
+  --header-icon-color: var(--text-secondary);
+  --header-icon-hover: var(--text-primary);
+  --header-button-hover-bg: var(--bg-subtle);
+  --header-button-active-bg: var(--bg-soft);
+  --header-focus-ring: var(--primary-blue);
 
   /* Side Menu - Softer appearance */
-  --menu-bg: #ffffff;
-  --menu-border: #f9fafb;               /* Very subtle border */
-  --menu-header-bg: #fafafa;            /* Barely visible background */
-  --menu-item-hover: #f9fafb;           /* Very soft hover */
-  --menu-item-active: #f3f4f6;          /* Soft active state */
+  --menu-bg: var(--bg-elevated);
+  --menu-border: var(--border-subtle);
+  --menu-header-bg: var(--bg-subtle);
+  --menu-item-hover: var(--bg-subtle);
+  --menu-item-active: var(--bg-soft);
 
   /* === SETTINGS SYSTEM COLORS === */
   /* Improved UX with softer contrasts */
-  --settings-bg: #ffffff;
-  --settings-border: #f3f4f6;           /* Much softer border */
-  --settings-text-primary: #374151;     /* Softer than black */
-  --settings-text-secondary: #6b7280;
+  --settings-bg: var(--bg-elevated);
+  --settings-border: var(--border-soft);
+  --settings-text-primary: var(--text-primary);
+  --settings-text-secondary: var(--text-secondary);
   --settings-section-bg: #faf5ff;
-  --settings-section-border: rgba(216, 180, 254, 0.5);  /* Softer purple border */
-  --settings-input-bg: #ffffff;
-  --settings-input-border: #f3f4f6;     /* Very subtle input border */
-  --settings-focus-ring: #8b5cf6;
+  --settings-section-border: rgba(216, 180, 254, 0.5);
+  --settings-input-bg: var(--bg-elevated);
+  --settings-input-border: var(--border-soft);
+  --settings-focus-ring: var(--primary-purple);
 
   /* === PRIMARY SYSTEM COLORS === */
   --primary-blue: #3b82f6;
@@ -112,27 +153,60 @@
 }
 
 /* === DARK MODE COLORS === */
+/* AI_VALIDATION: DARK_MODE_TOKENS - Dark theme color overrides */
+/* AI_CONTEXT: These tokens override light mode values when .dark class is present */
 .dark {
-  /* Header Dark Mode */
-  --header-bg: #1f2937;
-  --header-border: #4b5563;
-  --header-text-primary: #ffffff;
-  --header-text-secondary: #e5e7eb;
-  --header-icon-color: #e5e7eb;
-  --header-icon-hover: #ffffff;
-  --header-button-hover-bg: #4b5563;
-  --header-button-active-bg: #6b7280;
+  /* === SEMANTIC COLOR TOKENS - DARK MODE === */
+  /* AI_USAGE: Same token names, different values for dark theme */
+  
+  --text-primary: #ffffff;              /* AI_CONTEXT: Main text in dark mode - pure white for contrast */
+  --text-secondary: #e5e7eb;            /* AI_CONTEXT: Secondary text in dark mode - light gray */
+  --text-tertiary: #d1d5db;             /* AI_CONTEXT: Tertiary text in dark mode - medium gray */
+  --text-on-colored: #ffffff;           /* AI_CONTEXT: Text on colored backgrounds - consistent white */
 
-  /* Settings Dark Mode */
-  --settings-bg: #1f2937;
-  --settings-border: #374151;
-  --settings-text-primary: #ffffff;
-  --settings-text-secondary: #d1d5db;
-  --settings-section-bg: rgba(139, 92, 246, 0.15);
-  --settings-section-border: #7c3aed;
-  --settings-input-bg: #374151;
-  --settings-input-border: #4b5563;
-  --settings-focus-ring: #a78bfa;
+  /* === CONTEXTUAL TOKENS - DARK MODE === */
+  /* AI_VALIDATION: DARK_CONTEXTUAL_TOKENS - Dark mode background hierarchy */
+  /* AI_USAGE: Maintains same hierarchy as light mode with appropriate dark values */
+  
+  --bg-elevated: #1f2937;               /* AI_CONTEXT: Cards, modals in dark mode - lighter than primary */
+  --bg-subtle: #374151;                 /* AI_CONTEXT: Subtle backgrounds in dark mode - medium gray */
+  --bg-soft: #4b5563;                   /* AI_CONTEXT: Soft backgrounds in dark mode - lighter gray */
+  --bg-primary: #111827;                /* AI_CONTEXT: Primary background in dark mode - darkest */
+
+  /* === BORDER SYSTEM TOKENS - DARK MODE === */
+  --border-subtle: #374151;             /* Subtle borders in dark mode */
+  --border-soft: #4b5563;               /* Soft borders in dark mode */
+  --border-medium: #6b7280;             /* Medium borders in dark mode */
+  --border-on-colored: rgba(255, 255, 255, 0.2); /* Borders on colored backgrounds */
+
+  /* === INTERACTIVE TOKENS - DARK MODE === */
+  --primary-blue: #60a5fa;              /* Primary blue adjusted for dark mode */
+  --primary-blue-hover: #3b82f6;        /* Primary blue hover in dark mode */
+  --primary-blue-active: #2563eb;       /* Primary blue active in dark mode */
+  --primary-purple: #a78bfa;            /* Primary purple adjusted for dark mode */
+  --primary-purple-hover: #8b5cf6;      /* Primary purple hover in dark mode */
+  --primary-purple-light: rgba(139, 92, 246, 0.15); /* Light purple for dark backgrounds */
+
+  /* Header Dark Mode - Now using semantic tokens */
+  --header-bg: var(--bg-elevated);
+  --header-border: var(--border-soft);
+  --header-text-primary: var(--text-primary);
+  --header-text-secondary: var(--text-secondary);
+  --header-icon-color: var(--text-secondary);
+  --header-icon-hover: var(--text-primary);
+  --header-button-hover-bg: var(--bg-soft);
+  --header-button-active-bg: var(--border-medium);
+
+  /* Settings Dark Mode - Now using semantic tokens */
+  --settings-bg: var(--bg-elevated);
+  --settings-border: var(--border-subtle);
+  --settings-text-primary: var(--text-primary);
+  --settings-text-secondary: var(--text-secondary);
+  --settings-section-bg: var(--primary-purple-light);
+  --settings-section-border: var(--primary-purple-hover);
+  --settings-input-bg: var(--bg-subtle);
+  --settings-input-border: var(--border-soft);
+  --settings-focus-ring: var(--primary-purple);
 
   /* Enhancement Colors Dark Mode Adjustments */
   --points-color: #fbbf24;
@@ -161,19 +235,153 @@
 /* High contrast mode support */
 @media (prefers-contrast: high) {
   :root {
-    --header-text-primary: #000000;
-    --header-text-secondary: #333333;
-    --settings-text-primary: #000000;
-    --settings-text-secondary: #333333;
+    --text-primary: #000000;             /* Pure black for high contrast */
+    --text-secondary: #333333;           /* Dark gray for high contrast */
+    --text-tertiary: #666666;            /* Medium gray for high contrast */
+    --border-soft: #000000;              /* Visible borders in high contrast */
+    --border-medium: #333333;            /* Strong borders in high contrast */
   }
 
   .dark {
-    --header-text-primary: #ffffff;
-    --header-text-secondary: #e5e5e5;
-    --settings-text-primary: #ffffff;
-    --settings-text-secondary: #e5e5e5;
+    --text-primary: #ffffff;             /* Pure white for dark high contrast */
+    --text-secondary: #e5e5e5;           /* Light gray for dark high contrast */
+    --text-tertiary: #cccccc;            /* Medium light gray for dark high contrast */
+    --border-soft: #ffffff;              /* Visible borders in dark high contrast */
+    --border-medium: #e5e5e5;            /* Strong borders in dark high contrast */
   }
 }
+
+/* === THEME CONTEXT VARIABLE MAPPING SYSTEM === */
+/* 
+ * AI_VALIDATION: THEME_CONTEXT_SYSTEM - Core theme-aware variable system
+ * AI_CONTEXT: These variables automatically adapt to light/dark context
+ * AI_USAGE: ALWAYS use --theme-* variables in components, never direct tokens
+ * 
+ * Theme-aware variables that automatically adapt to light/dark context
+ * These provide a consistent API for components regardless of theme
+ */
+
+/* Light Theme Context Variables */
+/* AI_VALIDATION: LIGHT_THEME_MAPPING - Maps semantic tokens to theme variables */
+html.light {
+  --theme-text-primary: var(--text-primary);
+  --theme-text-secondary: var(--text-secondary);
+  --theme-text-tertiary: var(--text-tertiary);
+  --theme-text-on-colored: var(--text-on-colored);
+  
+  --theme-bg-primary: var(--bg-primary);
+  --theme-bg-elevated: var(--bg-elevated);
+  --theme-bg-subtle: var(--bg-subtle);
+  --theme-bg-soft: var(--bg-soft);
+  
+  --theme-border-subtle: var(--border-subtle);
+  --theme-border-soft: var(--border-soft);
+  --theme-border-medium: var(--border-medium);
+  --theme-border-on-colored: var(--border-on-colored);
+  
+  --theme-primary-blue: var(--primary-blue);
+  --theme-primary-blue-hover: var(--primary-blue-hover);
+  --theme-primary-blue-active: var(--primary-blue-active);
+  --theme-primary-purple: var(--primary-purple);
+  --theme-primary-purple-hover: var(--primary-purple-hover);
+  --theme-primary-purple-light: var(--primary-purple-light);
+}
+
+/* Dark Theme Context Variables */
+/* AI_VALIDATION: DARK_THEME_MAPPING - Maps dark mode tokens to theme variables */
+html.dark {
+  --theme-text-primary: var(--text-primary);
+  --theme-text-secondary: var(--text-secondary);
+  --theme-text-tertiary: var(--text-tertiary);
+  --theme-text-on-colored: var(--text-on-colored);
+  
+  --theme-bg-primary: var(--bg-primary);
+  --theme-bg-elevated: var(--bg-elevated);
+  --theme-bg-subtle: var(--bg-subtle);
+  --theme-bg-soft: var(--bg-soft);
+  
+  --theme-border-subtle: var(--border-subtle);
+  --theme-border-soft: var(--border-soft);
+  --theme-border-medium: var(--border-medium);
+  --theme-border-on-colored: var(--border-on-colored);
+  
+  --theme-primary-blue: var(--primary-blue);
+  --theme-primary-blue-hover: var(--primary-blue-hover);
+  --theme-primary-blue-active: var(--primary-blue-active);
+  --theme-primary-purple: var(--primary-purple);
+  --theme-primary-purple-hover: var(--primary-purple-hover);
+  --theme-primary-purple-light: var(--primary-purple-light);
+}
+
+/* === FALLBACK CHAIN FOR DESIGN TOKENS === */
+/*
+ * AI_VALIDATION: FALLBACK_SYSTEM - Graceful degradation pattern
+ * AI_CONTEXT: Ensures components work even if tokens are missing
+ * AI_USAGE: Pattern: var(--theme-token, var(--semantic-token, fallback-value))
+ * 
+ * Fallback chain ensures graceful degradation if tokens are not defined
+ * Pattern: var(--theme-token, var(--semantic-token, fallback-value))
+ */
+
+/* Example fallback implementations for critical tokens */
+:root {
+  --theme-text-primary-fallback: var(--theme-text-primary, var(--text-primary, #374151));
+  --theme-text-secondary-fallback: var(--theme-text-secondary, var(--text-secondary, #6b7280));
+  --theme-bg-elevated-fallback: var(--theme-bg-elevated, var(--bg-elevated, #ffffff));
+  --theme-border-soft-fallback: var(--theme-border-soft, var(--border-soft, #f3f4f6));
+}
+
+.dark {
+  --theme-text-primary-fallback: var(--theme-text-primary, var(--text-primary, #ffffff));
+  --theme-text-secondary-fallback: var(--theme-text-secondary, var(--text-secondary, #e5e7eb));
+  --theme-bg-elevated-fallback: var(--theme-bg-elevated, var(--bg-elevated, #1f2937));
+  --theme-border-soft-fallback: var(--theme-border-soft, var(--border-soft, #4b5563));
+}
+
+/* === CSS SPECIFICITY HIERARCHY DOCUMENTATION === */
+/*
+ * AI_VALIDATION: SPECIFICITY_HIERARCHY - Controlled CSS specificity system
+ * AI_CONTEXT: Follow this hierarchy to avoid specificity conflicts
+ * AI_USAGE: Use BEM modifiers before resorting to higher specificity
+ * 
+ * CSS Specificity Hierarchy (from lowest to highest priority):
+ * 
+ * 1. Design Tokens (0,0,0,1)
+ *    :root { --token: value; }
+ *    AI_CONTEXT: Base token definitions
+ *    
+ * 2. BEM Base (0,0,1,0)
+ *    .block__element { }
+ *    AI_CONTEXT: Standard component styling
+ *    
+ * 3. BEM Modifiers (0,0,2,0)
+ *    .block__element--modifier { }
+ *    AI_CONTEXT: Component variations and states
+ *    
+ * 4. Theme Context (0,0,1,1)
+ *    html.light .block__element { }
+ *    html.dark .block__element { }
+ *    AI_CONTEXT: Theme-specific overrides
+ *    
+ * 5. Utilities (0,0,1,0)
+ *    .utility-class { }
+ *    AI_CONTEXT: Minimal utility classes
+ *    
+ * 6. State Overrides (0,0,2,0 or higher)
+ *    .block__element:hover { }
+ *    .block__element--active { }
+ *    AI_CONTEXT: Interactive states
+ *    
+ * 7. Important Declarations (!important)
+ *    Use sparingly and document when necessary
+ *    AI_CONTEXT: Last resort - always document usage
+ *    
+ * AI Guidelines:
+ * - Prefer theme context over !important
+ * - Use BEM modifiers for component variations
+ * - Keep utility classes minimal and specific
+ * - Document any !important usage with comments
+ */
 
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {

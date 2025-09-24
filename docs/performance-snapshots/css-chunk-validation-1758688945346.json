@@ -1,0 +1,33 @@
+{
+  "timestamp": "2025-09-24T04:42:25.343Z",
+  "target": 500,
+  "warningThreshold": 400,
+  "results": {
+    "chunks": [
+      {
+        "name": "main-yx13-Bva.css",
+        "size": 169.74,
+        "status": "PASS",
+        "message": "169.74KB < 500KB target"
+      },
+      {
+        "name": "components-D9kkeu_S.css",
+        "size": 91.19,
+        "status": "PASS",
+        "message": "91.19KB < 500KB target"
+      }
+    ],
+    "totalSize": 260.93,
+    "compliance": {
+      "passed": 2,
+      "warnings": 0,
+      "failed": 0
+    },
+    "status": "PASS"
+  },
+  "metadata": {
+    "nodeVersion": "v20.19.4",
+    "platform": "darwin",
+    "generatedBy": "check-css-chunks.js"
+  }
+}

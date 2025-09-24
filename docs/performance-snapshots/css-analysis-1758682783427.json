@@ -1,0 +1,231 @@
+{
+  "timestamp": "2025-09-24T02:59:43.426Z",
+  "summary": {
+    "totalBundles": 2,
+    "totalSize": 343.09,
+    "compliance": {
+      "allUnderTarget": true,
+      "overTargetCount": 0,
+      "largestBundle": {
+        "name": "main-Bx9-TdQB.css",
+        "size": 307.64,
+        "path": "/Users/gsuarez/Documents/Code/English5/dist/assets/main-Bx9-TdQB.css",
+        "content": {
+          "totalLines": 2,
+          "totalChars": 315020,
+          "rules": {
+            "tailwindDirectives": 0,
+            "applyDirectives": 0,
+            "layerBlocks": 0,
+            "importStatements": 0,
+            "cssRules": 2260,
+            "mediaQueries": 382,
+            "customProperties": 1561,
+            "darkModeRules": 519
+          },
+          "optimization": {
+            "hasHybridArchitecture": false,
+            "hasUnusedRules": false,
+            "hasRedundantImports": false,
+            "canTreeShake": true
+          }
+        },
+        "category": "other",
+        "compliance": {
+          "underTarget": true,
+          "target": 500,
+          "percentage": 62
+        }
+      }
+    },
+    "issues": 0,
+    "opportunities": 0
+  },
+  "bundles": [
+    {
+      "name": "main-Bx9-TdQB.css",
+      "size": 307.64,
+      "path": "/Users/gsuarez/Documents/Code/English5/dist/assets/main-Bx9-TdQB.css",
+      "content": {
+        "totalLines": 2,
+        "totalChars": 315020,
+        "rules": {
+          "tailwindDirectives": 0,
+          "applyDirectives": 0,
+          "layerBlocks": 0,
+          "importStatements": 0,
+          "cssRules": 2260,
+          "mediaQueries": 382,
+          "customProperties": 1561,
+          "darkModeRules": 519
+        },
+        "optimization": {
+          "hasHybridArchitecture": false,
+          "hasUnusedRules": false,
+          "hasRedundantImports": false,
+          "canTreeShake": true
+        }
+      },
+      "category": "other",
+      "compliance": {
+        "underTarget": true,
+        "target": 500,
+        "percentage": 62
+      }
+    },
+    {
+      "name": "components-Co6uHSGY.css",
+      "size": 35.45,
+      "path": "/Users/gsuarez/Documents/Code/English5/dist/assets/components-Co6uHSGY.css",
+      "content": {
+        "totalLines": 2,
+        "totalChars": 36304,
+        "rules": {
+          "tailwindDirectives": 0,
+          "applyDirectives": 0,
+          "layerBlocks": 0,
+          "importStatements": 0,
+          "cssRules": 302,
+          "mediaQueries": 26,
+          "customProperties": 117,
+          "darkModeRules": 86
+        },
+        "optimization": {
+          "hasHybridArchitecture": false,
+          "hasUnusedRules": false,
+          "hasRedundantImports": false,
+          "canTreeShake": true
+        }
+      },
+      "category": "other",
+      "compliance": {
+        "underTarget": true,
+        "target": 500,
+        "percentage": 7
+      }
+    }
+  ],
+  "analysis": {
+    "categories": {
+      "main": [],
+      "component": [],
+      "theme": [],
+      "design-system": [],
+      "other": [
+        {
+          "name": "main-Bx9-TdQB.css",
+          "size": 307.64,
+          "path": "/Users/gsuarez/Documents/Code/English5/dist/assets/main-Bx9-TdQB.css",
+          "content": {
+            "totalLines": 2,
+            "totalChars": 315020,
+            "rules": {
+              "tailwindDirectives": 0,
+              "applyDirectives": 0,
+              "layerBlocks": 0,
+              "importStatements": 0,
+              "cssRules": 2260,
+              "mediaQueries": 382,
+              "customProperties": 1561,
+              "darkModeRules": 519
+            },
+            "optimization": {
+              "hasHybridArchitecture": false,
+              "hasUnusedRules": false,
+              "hasRedundantImports": false,
+              "canTreeShake": true
+            }
+          },
+          "category": "other",
+          "compliance": {
+            "underTarget": true,
+            "target": 500,
+            "percentage": 62
+          }
+        },
+        {
+          "name": "components-Co6uHSGY.css",
+          "size": 35.45,
+          "path": "/Users/gsuarez/Documents/Code/English5/dist/assets/components-Co6uHSGY.css",
+          "content": {
+            "totalLines": 2,
+            "totalChars": 36304,
+            "rules": {
+              "tailwindDirectives": 0,
+              "applyDirectives": 0,
+              "layerBlocks": 0,
+              "importStatements": 0,
+              "cssRules": 302,
+              "mediaQueries": 26,
+              "customProperties": 117,
+              "darkModeRules": 86
+            },
+            "optimization": {
+              "hasHybridArchitecture": false,
+              "hasUnusedRules": false,
+              "hasRedundantImports": false,
+              "canTreeShake": true
+            }
+          },
+          "category": "other",
+          "compliance": {
+            "underTarget": true,
+            "target": 500,
+            "percentage": 7
+          }
+        }
+      ]
+    },
+    "issues": [],
+    "opportunities": [],
+    "compliance": {
+      "allUnderTarget": true,
+      "overTargetCount": 0,
+      "largestBundle": {
+        "name": "main-Bx9-TdQB.css",
+        "size": 307.64,
+        "path": "/Users/gsuarez/Documents/Code/English5/dist/assets/main-Bx9-TdQB.css",
+        "content": {
+          "totalLines": 2,
+          "totalChars": 315020,
+          "rules": {
+            "tailwindDirectives": 0,
+            "applyDirectives": 0,
+            "layerBlocks": 0,
+            "importStatements": 0,
+            "cssRules": 2260,
+            "mediaQueries": 382,
+            "customProperties": 1561,
+            "darkModeRules": 519
+          },
+          "optimization": {
+            "hasHybridArchitecture": false,
+            "hasUnusedRules": false,
+            "hasRedundantImports": false,
+            "canTreeShake": true
+          }
+        },
+        "category": "other",
+        "compliance": {
+          "underTarget": true,
+          "target": 500,
+          "percentage": 62
+        }
+      }
+    }
+  },
+  "recommendations": [
+    {
+      "type": "optimization",
+      "priority": "medium",
+      "bundle": "main-Bx9-TdQB.css",
+      "issue": "2260 CSS rules may contain unused styles",
+      "solution": "Implement CSS tree-shaking or purging unused styles"
+    }
+  ],
+  "metadata": {
+    "nodeVersion": "v20.19.4",
+    "platform": "darwin",
+    "generatedBy": "css-bundle-analyzer.js"
+  }
+}

@@ -6,6 +6,7 @@
 import React, { useState, useEffect } from 'react';
 import { X, Download, Trash2, Filter } from 'lucide-react';
 import { logger } from '../../utils/logger';
+import '../../styles/components/log-viewer.css';
 
 interface LogViewerProps {
   isOpen: boolean;
@@ -59,20 +60,7 @@ export const LogViewer: React.FC<LogViewerProps> = ({ isOpen, onClose }) => {
     setLogs([]);
   };
 
-  const getLevelColor = (level: string) => {
-    switch (level) {
-      case 'error':
-        return 'text-red-600 bg-red-50';
-      case 'warn':
-        return 'text-yellow-600 bg-yellow-50';
-      case 'info':
-        return 'text-blue-600 bg-blue-50';
-      case 'debug':
-        return 'text-gray-600 bg-gray-50';
-      default:
-        return 'text-gray-600 bg-gray-50';
-    }
-  };
+
 
   const getLevelIcon = (level: string) => {
     switch (level) {
@@ -90,43 +78,43 @@ export const LogViewer: React.FC<LogViewerProps> = ({ isOpen, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white rounded-lg w-11/12 h-5/6 max-w-6xl flex flex-col">
+    <div className="log-viewer">
+      <div className="log-viewer__container">
         {/* Header */}
-        <div className="flex justify-between items-center p-4 border-b">
-          <h2 className="text-xl font-semibold">Application Logs (Development)</h2>
-          <div className="flex items-center space-x-2">
+        <div className="log-viewer__header">
+          <h2 className="log-viewer__title">Application Logs (Development)</h2>
+          <div className="log-viewer__header-actions">
             <button
               onClick={handleDownload}
-              className="p-2 text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded"
+              className="log-viewer__action-btn"
               title="Download logs"
             >
-              <Download className="h-5 w-5" />
+              <Download className="log-viewer__icon" />
             </button>
             <button
               onClick={handleClear}
-              className="p-2 text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded"
+              className="log-viewer__action-btn"
               title="Clear logs"
             >
-              <Trash2 className="h-5 w-5" />
+              <Trash2 className="log-viewer__icon" />
             </button>
             <button
               onClick={onClose}
-              className="p-2 text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded"
+              className="log-viewer__action-btn"
             >
-              <X className="h-5 w-5" />
+              <X className="log-viewer__icon" />
             </button>
           </div>
         </div>
 
         {/* Filters */}
-        <div className="flex items-center space-x-4 p-4 border-b bg-gray-50">
-          <div className="flex items-center space-x-2">
-            <Filter className="h-4 w-4 text-gray-500" />
+        <div className="log-viewer__filters">
+          <div className="log-viewer__filter-group">
+            <Filter className="log-viewer__filter-icon" />
             <select
               value={filter}
               onChange={e => setFilter(e.target.value)}
-              className="border border-gray-300 rounded px-2 py-1 text-sm"
+              className="log-viewer__select"
             >
               <option value="all">All Levels</option>
               <option value="error">Errors</option>
@@ -141,50 +129,50 @@ export const LogViewer: React.FC<LogViewerProps> = ({ isOpen, onClose }) => {
             placeholder="Search logs..."
             value={searchTerm}
             onChange={e => setSearchTerm(e.target.value)}
-            className="border border-gray-300 rounded px-3 py-1 text-sm flex-1 max-w-xs"
+            className="log-viewer__search"
           />
 
-          <div className="text-sm text-gray-500">
+          <div className="log-viewer__count">
             {filteredLogs.length} of {logs.length} logs
           </div>
         </div>
 
         {/* Logs */}
-        <div className="flex-1 overflow-auto p-4">
+        <div className="log-viewer__content">
           {filteredLogs.length === 0 ? (
-            <div className="text-center text-gray-500 py-8">
+            <div className="log-viewer__empty">
               No logs found matching the current filters.
             </div>
           ) : (
-            <div className="space-y-2">
+            <div className="log-viewer__logs">
               {filteredLogs.map((log, index) => (
                 <div
                   key={index}
-                  className={`p-3 rounded border-l-4 ${getLevelColor(log.level)} border-l-current`}
+                  className={`log-viewer__log log-viewer__log--${log.level}`}
                 >
-                  <div className="flex items-start justify-between">
-                    <div className="flex items-center space-x-2 mb-1">
-                      <span className="text-sm">{getLevelIcon(log.level)}</span>
-                      <span className="font-medium text-sm uppercase">{log.level}</span>
+                  <div className="log-viewer__log-header">
+                    <div className="log-viewer__log-meta">
+                      <span className="log-viewer__log-icon">{getLevelIcon(log.level)}</span>
+                      <span className="log-viewer__log-level">{log.level}</span>
                       {log.component && (
-                        <span className="text-xs bg-gray-200 px-2 py-1 rounded">
+                        <span className="log-viewer__log-component">
                           {log.component}
                         </span>
                       )}
-                      <span className="text-xs text-gray-500">
+                      <span className="log-viewer__log-time">
                         {new Date(log.timestamp).toLocaleTimeString()}
                       </span>
                     </div>
                   </div>
 
-                  <div className="text-sm font-medium mb-1">{log.message}</div>
+                  <div className="log-viewer__log-message">{log.message}</div>
 
                   {log.data && (
-                    <details className="mt-2">
-                      <summary className="text-xs text-gray-600 cursor-pointer hover:text-gray-800">
+                    <details className="log-viewer__log-data">
+                      <summary>
                         Show data
                       </summary>
-                      <pre className="mt-1 text-xs bg-gray-100 p-2 rounded overflow-auto max-h-32">
+                      <pre>
                         {JSON.stringify(log.data, null, 2)}
                       </pre>
                     </details>
@@ -196,7 +184,7 @@ export const LogViewer: React.FC<LogViewerProps> = ({ isOpen, onClose }) => {
         </div>
 
         {/* Footer */}
-        <div className="p-4 border-t bg-gray-50 text-xs text-gray-600">
+        <div className="log-viewer__footer">
           <p>
             <strong>Note:</strong> This log viewer is only available in development mode. Logs are
             stored in sessionStorage and cleared when the browser session ends.

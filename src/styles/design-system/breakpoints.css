@@ -1,66 +1,88 @@
 /**
  * Breakpoints and Device Detection - Design System
  * 
+ * AI_CONTEXT: Centralized responsive system for 4 theme contexts
+ * AI_VALIDATION: RESPONSIVE_SYSTEM - Use these breakpoints consistently
+ * AI_USAGE: Use --mobile-device and --web-device for theme context detection
+ * 
  * Centralized media queries and device detection for consistent
  * responsive behavior across all theme contexts
  */
 
 /* === BREAKPOINT DEFINITIONS === */
+/* AI_VALIDATION: BREAKPOINT_TOKENS - Standard breakpoint values */
+/* AI_CONTEXT: 768px is the critical mobile/web boundary */
 :root {
-  --breakpoint-mobile: 768px;
-  --breakpoint-tablet: 1024px;
-  --breakpoint-desktop: 1200px;
+  --breakpoint-mobile: 768px;          /* AI_CONTEXT: Mobile/web boundary - critical for theme contexts */
+  --breakpoint-tablet: 1024px;         /* AI_CONTEXT: Tablet breakpoint - optional optimization */
+  --breakpoint-desktop: 1200px;        /* AI_CONTEXT: Desktop breakpoint - large screen optimization */
 }
 
 /* === DEVICE DETECTION MIXINS === */
+/* AI_VALIDATION: DEVICE_DETECTION - Media query patterns for theme contexts */
+/* AI_USAGE: Use these patterns for responsive component styling */
 
 /* Mobile Detection - Comprehensive approach */
+/* AI_CONTEXT: Mobile theme context - touch optimizations needed */
 @custom-media --mobile-device (max-width: 768px);
 @custom-media --mobile-portrait (max-width: 768px) and (orientation: portrait);
 @custom-media --mobile-landscape (max-width: 768px) and (orientation: landscape);
 
 /* Safari Mobile Specific Detection */
+/* AI_CONTEXT: Safari mobile fixes - webkit-specific optimizations */
 @custom-media --safari-mobile (max-width: 768px) and (-webkit-touch-callout: none);
 
 /* Desktop/Web Detection */
+/* AI_CONTEXT: Web theme context - hover states and desktop optimizations */
 @custom-media --web-device (min-width: 769px);
 @custom-media --desktop-device (min-width: 1024px);
 
 /* === CONTEXT DETECTION CLASSES === */
+/* AI_VALIDATION: THEME_CONTEXT_CLASSES - 4 theme context system */
+/* AI_CONTEXT: These classes represent the 4 distinct theme contexts */
 
 /* Base context classes for theme targeting */
 .theme-context--web-light {
-  /* Applied to html when: desktop + light mode */
+  /* AI_CONTEXT: Applied to html when: desktop + light mode */
+  /* AI_USAGE: Desktop optimizations with light theme colors */
 }
 
 .theme-context--web-dark {
-  /* Applied to html when: desktop + dark mode */
+  /* AI_CONTEXT: Applied to html when: desktop + dark mode */
+  /* AI_USAGE: Desktop optimizations with dark theme colors */
 }
 
 .theme-context--mobile-light {
-  /* Applied to html when: mobile + light mode */
+  /* AI_CONTEXT: Applied to html when: mobile + light mode */
+  /* AI_USAGE: Touch optimizations with light theme colors */
 }
 
 .theme-context--mobile-dark {
-  /* Applied to html when: mobile + dark mode */
+  /* AI_CONTEXT: Applied to html when: mobile + dark mode */
+  /* AI_USAGE: Touch optimizations with dark theme colors */
 }
 
 /* === UTILITY CLASSES === */
+/* AI_VALIDATION: RESPONSIVE_UTILITIES - Context-aware visibility utilities */
+/* AI_USAGE: Use sparingly - prefer responsive component design */
 
 /* Hide on specific contexts */
 .hide-on-mobile {
+  /* AI_CONTEXT: Hide element on mobile devices */
   @media (max-width: 768px) {
     display: none !important;
   }
 }
 
 .hide-on-web {
+  /* AI_CONTEXT: Hide element on desktop/web devices */
   @media (min-width: 769px) {
     display: none !important;
   }
 }
 
 .show-mobile-only {
+  /* AI_CONTEXT: Show element only on mobile devices */
   display: none;
   @media (max-width: 768px) {
     display: block;
@@ -68,6 +90,7 @@
 }
 
 .show-web-only {
+  /* AI_CONTEXT: Show element only on desktop/web devices */
   display: none;
   @media (min-width: 769px) {
     display: block;
@@ -75,26 +98,30 @@
 }
 
 /* === ACCESSIBILITY BREAKPOINTS === */
+/* AI_VALIDATION: ACCESSIBILITY_DETECTION - User preference detection */
+/* AI_CONTEXT: Automatically adapt to user accessibility preferences */
 
 /* High contrast mode detection */
+/* AI_USAGE: Components should respect high contrast preferences */
 @media (prefers-contrast: high) {
   .theme-context--web-light,
   .theme-context--mobile-light {
-    --contrast-mode: high-light;
+    --contrast-mode: high-light;    /* AI_CONTEXT: High contrast light mode */
   }
 
   .theme-context--web-dark,
   .theme-context--mobile-dark {
-    --contrast-mode: high-dark;
+    --contrast-mode: high-dark;     /* AI_CONTEXT: High contrast dark mode */
   }
 }
 
 /* Reduced motion detection */
+/* AI_USAGE: Disable animations when user prefers reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .theme-context--web-light,
   .theme-context--web-dark,
   .theme-context--mobile-light,
   .theme-context--mobile-dark {
-    --motion-mode: reduced;
+    --motion-mode: reduced;         /* AI_CONTEXT: Reduced motion preference detected */
   }
 }

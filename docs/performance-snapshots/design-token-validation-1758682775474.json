@@ -1,0 +1,4442 @@
+{
+  "timestamp": "2025-09-24T02:59:35.472Z",
+  "summary": {
+    "totalTokens": 142,
+    "expectedTokens": 20,
+    "completeness": 85,
+    "themeMappingComplete": false,
+    "issues": 5,
+    "warnings": 372
+  },
+  "scanResults": {
+    "files": [
+      "components/compact-about.css",
+      "components/compact-advanced-settings.css",
+      "components/compact-learning-path.css",
+      "components/compact-profile.css",
+      "components/compact-progress-dashboard.css",
+      "components/completion-component.css",
+      "components/content-renderer.css",
+      "components/error-fallback.css",
+      "components/flashcard-component.css",
+      "components/header.css",
+      "components/index.css",
+      "components/loading-skeleton.css",
+      "components/main-menu.css",
+      "components/matching-cards.css",
+      "components/matching-component.css",
+      "components/matching-modal.css",
+      "components/module-card.css",
+      "components/quiz-component.css",
+      "components/score-display.css",
+      "components/search-bar.css",
+      "components/sorting-component.css",
+      "components/sorting-modal.css",
+      "components/toast-card.css",
+      "components/toast.css",
+      "components.css",
+      "design-system/breakpoints.css",
+      "design-system/color-palette.css",
+      "themes/mobile-dark.css",
+      "themes/mobile-light.css",
+      "themes/web-dark.css",
+      "themes/web-light.css",
+      "utilities/dynamic-values.css"
+    ],
+    "allTokens": [
+      "--reset",
+      "--primary",
+      "--dynamic-width",
+      "--neutral",
+      "--term",
+      "--secondary",
+      "--tertiary",
+      "--normal",
+      "--progress-width",
+      "--card-border-radius",
+      "--card-shadow",
+      "--card-shadow-hover",
+      "--card-transition",
+      "--card-width-mobile",
+      "--card-height-mobile",
+      "--card-width-tablet",
+      "--card-height-tablet",
+      "--card-width-desktop",
+      "--card-height-desktop",
+      "--flashcard",
+      "--quiz",
+      "--completion",
+      "--sorting",
+      "--matching",
+      "--locked",
+      "--default",
+      "--success",
+      "--check",
+      "--summary",
+      "--finish",
+      "--breakpoint-mobile",
+      "--breakpoint-tablet",
+      "--breakpoint-desktop",
+      "--contrast-mode",
+      "--motion-mode",
+      "--text-primary",
+      "--text-secondary",
+      "--text-tertiary",
+      "--text-on-colored",
+      "--bg-elevated",
+      "--bg-subtle",
+      "--bg-soft",
+      "--bg-primary",
+      "--border-subtle",
+      "--border-soft",
+      "--border-medium",
+      "--border-on-colored",
+      "--primary-blue",
+      "--primary-blue-hover",
+      "--primary-blue-active",
+      "--primary-purple",
+      "--primary-purple-hover",
+      "--primary-purple-light",
+      "--header-bg",
+      "--header-border",
+      "--header-text-primary",
+      "--header-text-secondary",
+      "--header-icon-color",
+      "--header-icon-hover",
+      "--header-button-hover-bg",
+      "--header-button-active-bg",
+      "--header-focus-ring",
+      "--menu-bg",
+      "--menu-border",
+      "--menu-header-bg",
+      "--menu-item-hover",
+      "--menu-item-active",
+      "--settings-bg",
+      "--settings-border",
+      "--settings-text-primary",
+      "--settings-text-secondary",
+      "--settings-section-bg",
+      "--settings-section-border",
+      "--settings-input-bg",
+      "--settings-input-border",
+      "--settings-focus-ring",
+      "--points-color",
+      "--streak-color",
+      "--badge-gold",
+      "--badge-silver",
+      "--badge-bronze",
+      "--progress-complete",
+      "--progress-partial",
+      "--progress-locked",
+      "--progress-available",
+      "--challenge-available",
+      "--challenge-completed",
+      "--challenge-missed",
+      "--challenge-streak",
+      "--warning",
+      "--error",
+      "--info",
+      "--gray-50",
+      "--gray-100",
+      "--gray-200",
+      "--gray-300",
+      "--gray-400",
+      "--gray-500",
+      "--gray-600",
+      "--gray-700",
+      "--gray-800",
+      "--gray-900",
+      "--text-primary-soft",
+      "--text-secondary-soft",
+      "--text-tertiary-soft",
+      "--text-on-colored-primary",
+      "--text-on-colored-secondary",
+      "--theme-text-primary",
+      "--theme-text-secondary",
+      "--theme-text-tertiary",
+      "--theme-text-on-colored",
+      "--theme-bg-primary",
+      "--theme-bg-elevated",
+      "--theme-bg-subtle",
+      "--theme-bg-soft",
+      "--theme-border-subtle",
+      "--theme-border-soft",
+      "--theme-border-medium",
+      "--theme-border-on-colored",
+      "--theme-primary-blue",
+      "--theme-primary-blue-hover",
+      "--theme-primary-blue-active",
+      "--theme-primary-purple",
+      "--theme-primary-purple-hover",
+      "--theme-primary-purple-light",
+      "--theme-text-primary-fallback",
+      "--theme-text-secondary-fallback",
+      "--theme-bg-elevated-fallback",
+      "--theme-border-soft-fallback",
+      "--token",
+      "--progress-height",
+      "--progress-bg",
+      "--progress-fill",
+      "--dynamic-height",
+      "--dynamic-min-width",
+      "--dynamic-text-color",
+      "--dynamic-bg-color",
+      "--dynamic-border-color",
+      "--counter-min-width",
+      "--fade-duration",
+      "--slide-duration",
+      "--slide-distance"
+    ],
+    "themeContexts": {
+      ":root": [
+        "--card-border-radius",
+        "--card-shadow",
+        "--card-shadow-hover",
+        "--card-transition",
+        "--card-width-mobile",
+        "--card-height-mobile",
+        "--card-width-tablet",
+        "--card-height-tablet",
+        "--card-width-desktop",
+        "--card-height-desktop",
+        "--breakpoint-mobile",
+        "--breakpoint-tablet",
+        "--breakpoint-desktop",
+        "--text-primary",
+        "--text-secondary",
+        "--text-tertiary",
+        "--text-on-colored",
+        "--bg-elevated",
+        "--bg-subtle",
+        "--bg-soft",
+        "--bg-primary",
+        "--border-subtle",
+        "--border-soft",
+        "--border-medium",
+        "--border-on-colored",
+        "--primary-blue",
+        "--primary-blue-hover",
+        "--primary-blue-active",
+        "--primary-purple",
+        "--primary-purple-hover",
+        "--primary-purple-light",
+        "--header-bg",
+        "--header-border",
+        "--header-text-primary",
+        "--header-text-secondary",
+        "--header-icon-color",
+        "--header-icon-hover",
+        "--header-button-hover-bg",
+        "--header-button-active-bg",
+        "--header-focus-ring",
+        "--menu-bg",
+        "--menu-border",
+        "--menu-header-bg",
+        "--menu-item-hover",
+        "--menu-item-active",
+        "--settings-bg",
+        "--settings-border",
+        "--settings-text-primary",
+        "--settings-text-secondary",
+        "--settings-section-bg",
+        "--settings-section-border",
+        "--settings-input-bg",
+        "--settings-input-border",
+        "--settings-focus-ring",
+        "--primary-blue",
+        "--primary-blue-hover",
+        "--primary-blue-active",
+        "--primary-purple",
+        "--primary-purple-hover",
+        "--primary-purple-light",
+        "--points-color",
+        "--streak-color",
+        "--badge-gold",
+        "--badge-silver",
+        "--badge-bronze",
+        "--progress-complete",
+        "--progress-partial",
+        "--progress-locked",
+        "--progress-available",
+        "--challenge-available",
+        "--challenge-completed",
+        "--challenge-missed",
+        "--challenge-streak",
+        "--success",
+        "--warning",
+        "--error",
+        "--info",
+        "--gray-50",
+        "--gray-100",
+        "--gray-200",
+        "--gray-300",
+        "--gray-400",
+        "--gray-500",
+        "--gray-600",
+        "--gray-700",
+        "--gray-800",
+        "--gray-900",
+        "--text-primary-soft",
+        "--text-secondary-soft",
+        "--text-tertiary-soft",
+        "--text-on-colored-primary",
+        "--text-on-colored-secondary",
+        "--border-subtle",
+        "--border-soft",
+        "--border-medium",
+        "--bg-elevated",
+        "--bg-subtle",
+        "--bg-soft",
+        "--text-primary",
+        "--text-secondary",
+        "--text-tertiary",
+        "--border-soft",
+        "--border-medium",
+        "--theme-text-primary-fallback",
+        "--theme-text-secondary-fallback",
+        "--theme-bg-elevated-fallback",
+        "--theme-border-soft-fallback",
+        "--token"
+      ],
+      "html.light": [
+        "--theme-text-primary",
+        "--theme-text-secondary",
+        "--theme-text-tertiary",
+        "--theme-text-on-colored",
+        "--theme-bg-primary",
+        "--theme-bg-elevated",
+        "--theme-bg-subtle",
+        "--theme-bg-soft",
+        "--theme-border-subtle",
+        "--theme-border-soft",
+        "--theme-border-medium",
+        "--theme-border-on-colored",
+        "--theme-primary-blue",
+        "--theme-primary-blue-hover",
+        "--theme-primary-blue-active",
+        "--theme-primary-purple",
+        "--theme-primary-purple-hover",
+        "--theme-primary-purple-light"
+      ],
+      "html.dark": [
+        "--theme-text-primary",
+        "--theme-text-secondary",
+        "--theme-text-tertiary",
+        "--theme-text-on-colored",
+        "--theme-bg-primary",
+        "--theme-bg-elevated",
+        "--theme-bg-subtle",
+        "--theme-bg-soft",
+        "--theme-border-subtle",
+        "--theme-border-soft",
+        "--theme-border-medium",
+        "--theme-border-on-colored",
+        "--theme-primary-blue",
+        "--theme-primary-blue-hover",
+        "--theme-primary-blue-active",
+        "--theme-primary-purple",
+        "--theme-primary-purple-hover",
+        "--theme-primary-purple-light"
+      ]
+    }
+  },
+  "validation": {
+    "completeness": {
+      "missing": [
+        "--theme-bg-secondary",
+        "--theme-border-primary",
+        "--theme-border-secondary"
+      ],
+      "defined": [
+        "--text-primary",
+        "--text-secondary",
+        "--text-tertiary",
+        "--text-on-colored",
+        "--bg-elevated",
+        "--bg-subtle",
+        "--bg-soft",
+        "--border-subtle",
+        "--border-soft",
+        "--border-medium",
+        "--primary-blue",
+        "--primary-purple",
+        "--progress-complete",
+        "--error",
+        "--theme-text-primary",
+        "--theme-text-secondary",
+        "--theme-bg-primary"
+      ],
+      "extra": [
+        "--reset",
+        "--primary",
+        "--dynamic-width",
+        "--neutral",
+        "--term",
+        "--secondary",
+        "--tertiary",
+        "--normal",
+        "--progress-width",
+        "--card-border-radius",
+        "--card-shadow",
+        "--card-shadow-hover",
+        "--card-transition",
+        "--card-width-mobile",
+        "--card-height-mobile",
+        "--card-width-tablet",
+        "--card-height-tablet",
+        "--card-width-desktop",
+        "--card-height-desktop",
+        "--flashcard",
+        "--quiz",
+        "--completion",
+        "--sorting",
+        "--matching",
+        "--locked",
+        "--default",
+        "--success",
+        "--check",
+        "--summary",
+        "--finish",
+        "--breakpoint-mobile",
+        "--breakpoint-tablet",
+        "--breakpoint-desktop",
+        "--contrast-mode",
+        "--motion-mode",
+        "--bg-primary",
+        "--border-on-colored",
+        "--primary-blue-hover",
+        "--primary-blue-active",
+        "--primary-purple-hover",
+        "--primary-purple-light",
+        "--header-bg",
+        "--header-border",
+        "--header-text-primary",
+        "--header-text-secondary",
+        "--header-icon-color",
+        "--header-icon-hover",
+        "--header-button-hover-bg",
+        "--header-button-active-bg",
+        "--header-focus-ring",
+        "--menu-bg",
+        "--menu-border",
+        "--menu-header-bg",
+        "--menu-item-hover",
+        "--menu-item-active",
+        "--settings-bg",
+        "--settings-border",
+        "--settings-text-primary",
+        "--settings-text-secondary",
+        "--settings-section-bg",
+        "--settings-section-border",
+        "--settings-input-bg",
+        "--settings-input-border",
+        "--settings-focus-ring",
+        "--points-color",
+        "--streak-color",
+        "--badge-gold",
+        "--badge-silver",
+        "--badge-bronze",
+        "--progress-partial",
+        "--progress-locked",
+        "--progress-available",
+        "--challenge-available",
+        "--challenge-completed",
+        "--challenge-missed",
+        "--challenge-streak",
+        "--warning",
+        "--info",
+        "--gray-50",
+        "--gray-100",
+        "--gray-200",
+        "--gray-300",
+        "--gray-400",
+        "--gray-500",
+        "--gray-600",
+        "--gray-700",
+        "--gray-800",
+        "--gray-900",
+        "--text-primary-soft",
+        "--text-secondary-soft",
+        "--text-tertiary-soft",
+        "--text-on-colored-primary",
+        "--text-on-colored-secondary",
+        "--theme-text-tertiary",
+        "--theme-text-on-colored",
+        "--theme-bg-elevated",
+        "--theme-bg-subtle",
+        "--theme-bg-soft",
+        "--theme-border-subtle",
+        "--theme-border-soft",
+        "--theme-border-medium",
+        "--theme-border-on-colored",
+        "--theme-primary-blue",
+        "--theme-primary-blue-hover",
+        "--theme-primary-blue-active",
+        "--theme-primary-purple",
+        "--theme-primary-purple-hover",
+        "--theme-primary-purple-light",
+        "--theme-text-primary-fallback",
+        "--theme-text-secondary-fallback",
+        "--theme-bg-elevated-fallback",
+        "--theme-border-soft-fallback",
+        "--token",
+        "--progress-height",
+        "--progress-bg",
+        "--progress-fill",
+        "--dynamic-height",
+        "--dynamic-min-width",
+        "--dynamic-text-color",
+        "--dynamic-bg-color",
+        "--dynamic-border-color",
+        "--counter-min-width",
+        "--fade-duration",
+        "--slide-duration",
+        "--slide-distance"
+      ],
+      "themeMapping": {
+        "complete": false,
+        "missing": [
+          "html.light: --theme-border-primary",
+          "html.dark: --theme-border-primary"
+        ]
+      }
+    },
+    "usage": {
+      "issues": [
+        {
+          "file": "components/completion-component.css",
+          "line": 112,
+          "issue": "Undefined design token: --white",
+          "type": "undefined-token"
+        },
+        {
+          "file": "components/flashcard-component.css",
+          "line": 69,
+          "issue": "Undefined design token: --white",
+          "type": "undefined-token"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 288,
+          "issue": "Undefined design token: --theme-token",
+          "type": "undefined-token"
+        },
+        {
+          "file": "utilities/dynamic-values.css",
+          "line": 74,
+          "issue": "Undefined design token: --theme-bg-secondary",
+          "type": "undefined-token"
+        },
+        {
+          "file": "utilities/dynamic-values.css",
+          "line": 79,
+          "issue": "Undefined design token: --theme-border-primary",
+          "type": "undefined-token"
+        }
+      ],
+      "warnings": [
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 19,
+          "warning": "Theme token without fallback: --theme-bg-elevated",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 23,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 42,
+          "warning": "Theme token without fallback: --theme-border-medium",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 43,
+          "warning": "Theme token without fallback: --theme-bg-subtle",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 59,
+          "warning": "Theme token without fallback: --theme-primary-blue",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 66,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 74,
+          "warning": "Theme token without fallback: --theme-text-secondary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 85,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 86,
+          "warning": "Theme token without fallback: --theme-bg-subtle",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 97,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 98,
+          "warning": "Theme token without fallback: --theme-bg-elevated",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 116,
+          "warning": "Theme token without fallback: --theme-text-secondary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 127,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 128,
+          "warning": "Theme token without fallback: --theme-border-medium",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 132,
+          "warning": "Theme token without fallback: --theme-primary-blue",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 133,
+          "warning": "Theme token without fallback: --theme-primary-blue",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 153,
+          "warning": "Theme token without fallback: --theme-bg-elevated",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 174,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 175,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 209,
+          "warning": "Theme token without fallback: --theme-text-secondary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 228,
+          "warning": "Theme token without fallback: --theme-bg-elevated",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 229,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 233,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 238,
+          "warning": "Theme token without fallback: --theme-primary-blue",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 251,
+          "warning": "Theme token without fallback: --theme-bg-subtle",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 264,
+          "warning": "Theme token without fallback: --theme-text-secondary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 280,
+          "warning": "Theme token without fallback: --theme-border-medium",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 291,
+          "warning": "Theme token without fallback: --theme-primary-blue",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 299,
+          "warning": "Theme token without fallback: --theme-primary-blue",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 309,
+          "warning": "Theme token without fallback: --theme-primary-blue",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 310,
+          "warning": "Theme token without fallback: --theme-primary-blue-hover",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 337,
+          "warning": "Theme token without fallback: --theme-primary-blue",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 338,
+          "warning": "Theme token without fallback: --theme-bg-subtle",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 339,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 344,
+          "warning": "Theme token without fallback: --theme-primary-blue",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 356,
+          "warning": "Theme token without fallback: --theme-text-secondary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 385,
+          "warning": "Theme token without fallback: --theme-bg-subtle",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 393,
+          "warning": "Theme token without fallback: --theme-bg-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 399,
+          "warning": "Theme token without fallback: --theme-primary-blue",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 400,
+          "warning": "Theme token without fallback: --theme-bg-subtle",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 401,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 406,
+          "warning": "Theme token without fallback: --theme-primary-blue",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 412,
+          "warning": "Theme token without fallback: --theme-text-secondary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 427,
+          "warning": "Theme token without fallback: --theme-border-medium",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 428,
+          "warning": "Theme token without fallback: --theme-bg-subtle",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 457,
+          "warning": "Theme token without fallback: --theme-bg-subtle",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 458,
+          "warning": "Theme token without fallback: --theme-text-secondary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 459,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 463,
+          "warning": "Theme token without fallback: --theme-bg-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 467,
+          "warning": "Theme token without fallback: --theme-primary-blue",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 467,
+          "warning": "Theme token without fallback: --theme-primary-blue-hover",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 468,
+          "warning": "Theme token without fallback: --theme-text-on-colored",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 475,
+          "warning": "Theme token without fallback: --theme-primary-blue-hover",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 475,
+          "warning": "Theme token without fallback: --theme-primary-blue-active",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 540,
+          "warning": "Theme token without fallback: --theme-bg-subtle",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 545,
+          "warning": "Theme token without fallback: --theme-primary-blue",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 551,
+          "warning": "Theme token without fallback: --theme-primary-blue-hover",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 8,
+          "warning": "Theme token without fallback: --theme-text-secondary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 9,
+          "warning": "Theme token without fallback: --theme-text-secondary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 20,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 21,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 27,
+          "warning": "Theme token without fallback: --theme-text-secondary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 28,
+          "warning": "Theme token without fallback: --theme-text-secondary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 34,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 35,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 41,
+          "warning": "Theme token without fallback: --theme-bg-elevated",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 42,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 55,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 56,
+          "warning": "Theme token without fallback: --theme-bg-elevated",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 56,
+          "warning": "Theme token without fallback: --theme-bg-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 103,
+          "warning": "Theme token without fallback: --theme-text-secondary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 116,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 117,
+          "warning": "Theme token without fallback: --theme-bg-subtle",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 121,
+          "warning": "Theme token without fallback: --theme-bg-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 127,
+          "warning": "Theme token without fallback: --theme-primary-blue",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 154,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 192,
+          "warning": "Theme token without fallback: --theme-bg-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 239,
+          "warning": "Theme token without fallback: --theme-text-secondary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 248,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 249,
+          "warning": "Theme token without fallback: --theme-bg-subtle",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 255,
+          "warning": "Theme token without fallback: --theme-primary-blue",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 264,
+          "warning": "Theme token without fallback: --theme-text-secondary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 273,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 274,
+          "warning": "Theme token without fallback: --theme-bg-subtle",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 280,
+          "warning": "Theme token without fallback: --theme-primary-blue",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 298,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 314,
+          "warning": "Theme token without fallback: --theme-bg-subtle",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 315,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 323,
+          "warning": "Theme token without fallback: --theme-bg-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 324,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 333,
+          "warning": "Theme token without fallback: --theme-text-secondary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 346,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 347,
+          "warning": "Theme token without fallback: --theme-bg-subtle",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 352,
+          "warning": "Theme token without fallback: --theme-bg-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 358,
+          "warning": "Theme token without fallback: --theme-primary-blue",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 380,
+          "warning": "Theme token without fallback: --theme-bg-elevated",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 381,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 395,
+          "warning": "Theme token without fallback: --theme-bg-subtle",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 396,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 404,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 412,
+          "warning": "Theme token without fallback: --theme-text-secondary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 434,
+          "warning": "Theme token without fallback: --theme-text-secondary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 452,
+          "warning": "Theme token without fallback: --theme-text-secondary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 460,
+          "warning": "Theme token without fallback: --theme-bg-subtle",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 461,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 467,
+          "warning": "Theme token without fallback: --theme-bg-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 473,
+          "warning": "Theme token without fallback: --theme-primary-blue",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 596,
+          "warning": "Theme token without fallback: --theme-primary-blue",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 647,
+          "warning": "Theme token without fallback: --theme-bg-subtle",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 647,
+          "warning": "Theme token without fallback: --theme-bg-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 656,
+          "warning": "Theme token without fallback: --theme-bg-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 656,
+          "warning": "Theme token without fallback: --theme-border-medium",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 698,
+          "warning": "Theme token without fallback: --theme-primary-blue",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 704,
+          "warning": "Theme token without fallback: --theme-bg-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 705,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 710,
+          "warning": "Theme token without fallback: --theme-bg-subtle",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 711,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 738,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 739,
+          "warning": "Theme token without fallback: --theme-bg-subtle",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 749,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 757,
+          "warning": "Theme token without fallback: --theme-bg-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 758,
+          "warning": "Theme token without fallback: --theme-border-medium",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 766,
+          "warning": "Theme token without fallback: --theme-bg-elevated",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 766,
+          "warning": "Theme token without fallback: --theme-bg-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 767,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 774,
+          "warning": "Theme token without fallback: --theme-bg-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 774,
+          "warning": "Theme token without fallback: --theme-bg-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 775,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 795,
+          "warning": "Theme token without fallback: --theme-text-tertiary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 801,
+          "warning": "Theme token without fallback: --theme-primary-blue",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 824,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 829,
+          "warning": "Theme token without fallback: --theme-text-secondary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 860,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 871,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 872,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 881,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 903,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 908,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 916,
+          "warning": "Theme token without fallback: --theme-border-medium",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 921,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 930,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 938,
+          "warning": "Theme token without fallback: --theme-bg-subtle",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 938,
+          "warning": "Theme token without fallback: --theme-bg-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 939,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 941,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 948,
+          "warning": "Theme token without fallback: --theme-bg-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 948,
+          "warning": "Theme token without fallback: --theme-border-medium",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 949,
+          "warning": "Theme token without fallback: --theme-text-tertiary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 952,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "components/header.css",
+          "line": 961,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 17,
+          "warning": "Theme token without fallback: --theme-bg-elevated",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 18,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 19,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 27,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 34,
+          "warning": "Theme token without fallback: --theme-text-secondary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 35,
+          "warning": "Theme token without fallback: --theme-text-secondary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 49,
+          "warning": "Theme token without fallback: --theme-bg-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 54,
+          "warning": "Theme token without fallback: --theme-bg-elevated",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 55,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 56,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 67,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 73,
+          "warning": "Theme token without fallback: --theme-text-secondary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 79,
+          "warning": "Theme token without fallback: --theme-text-secondary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 80,
+          "warning": "Theme token without fallback: --theme-text-secondary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 89,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 90,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 98,
+          "warning": "Theme token without fallback: --theme-border-medium",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 103,
+          "warning": "Theme token without fallback: --theme-text-on-colored",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 104,
+          "warning": "Theme token without fallback: --theme-border-on-colored",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 109,
+          "warning": "Theme token without fallback: --theme-bg-elevated",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 110,
+          "warning": "Theme token without fallback: --theme-border-subtle",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 119,
+          "warning": "Theme token without fallback: --theme-bg-elevated",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 120,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 122,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 126,
+          "warning": "Theme token without fallback: --theme-bg-elevated",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 127,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 132,
+          "warning": "Theme token without fallback: --theme-bg-elevated",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 133,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 135,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 139,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 145,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 152,
+          "warning": "Theme token without fallback: --theme-bg-subtle",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 153,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 154,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 164,
+          "warning": "Theme token without fallback: --theme-primary-purple",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 165,
+          "warning": "Theme token without fallback: --theme-primary-purple-light",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 174,
+          "warning": "Theme token without fallback: --theme-bg-elevated",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 175,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 176,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 188,
+          "warning": "Theme token without fallback: --theme-bg-elevated",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 189,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 197,
+          "warning": "Theme token without fallback: --theme-text-on-colored",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 202,
+          "warning": "Theme token without fallback: --theme-bg-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 207,
+          "warning": "Theme token without fallback: --theme-bg-elevated",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 208,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 214,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 222,
+          "warning": "Theme token without fallback: --theme-border-medium",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 298,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 304,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 310,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 18,
+          "warning": "Theme token without fallback: --theme-bg-elevated",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 19,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 20,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 28,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 35,
+          "warning": "Theme token without fallback: --theme-text-secondary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 36,
+          "warning": "Theme token without fallback: --theme-text-secondary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 50,
+          "warning": "Theme token without fallback: --theme-bg-subtle",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 55,
+          "warning": "Theme token without fallback: --theme-bg-elevated",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 56,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 57,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 67,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 73,
+          "warning": "Theme token without fallback: --theme-text-secondary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 79,
+          "warning": "Theme token without fallback: --theme-text-secondary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 80,
+          "warning": "Theme token without fallback: --theme-text-secondary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 89,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 90,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 98,
+          "warning": "Theme token without fallback: --theme-bg-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 103,
+          "warning": "Theme token without fallback: --theme-text-on-colored",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 104,
+          "warning": "Theme token without fallback: --theme-border-on-colored",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 109,
+          "warning": "Theme token without fallback: --theme-bg-elevated",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 110,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 118,
+          "warning": "Theme token without fallback: --theme-bg-elevated",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 119,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 121,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 125,
+          "warning": "Theme token without fallback: --theme-bg-elevated",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 126,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 131,
+          "warning": "Theme token without fallback: --theme-bg-elevated",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 132,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 134,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 138,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 144,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 151,
+          "warning": "Theme token without fallback: --theme-bg-elevated",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 152,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 153,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 163,
+          "warning": "Theme token without fallback: --theme-primary-purple",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 164,
+          "warning": "Theme token without fallback: --theme-primary-purple-light",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 173,
+          "warning": "Theme token without fallback: --theme-bg-elevated",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 174,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 175,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 186,
+          "warning": "Theme token without fallback: --theme-bg-elevated",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 187,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 195,
+          "warning": "Theme token without fallback: --theme-text-on-colored",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 200,
+          "warning": "Theme token without fallback: --theme-bg-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 205,
+          "warning": "Theme token without fallback: --theme-bg-elevated",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 206,
+          "warning": "Theme token without fallback: --theme-border-subtle",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 212,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 220,
+          "warning": "Theme token without fallback: --theme-bg-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 312,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 318,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 325,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 14,
+          "warning": "Theme token without fallback: --theme-bg-elevated",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 15,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 16,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 22,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 27,
+          "warning": "Theme token without fallback: --theme-text-secondary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 28,
+          "warning": "Theme token without fallback: --theme-text-secondary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 32,
+          "warning": "Theme token without fallback: --theme-bg-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 37,
+          "warning": "Theme token without fallback: --theme-bg-elevated",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 38,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 39,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 45,
+          "warning": "Theme token without fallback: --theme-border-medium",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 51,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 55,
+          "warning": "Theme token without fallback: --theme-text-secondary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 56,
+          "warning": "Theme token without fallback: --theme-text-secondary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 62,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 63,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 67,
+          "warning": "Theme token without fallback: --theme-bg-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 71,
+          "warning": "Theme token without fallback: --theme-border-medium",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 75,
+          "warning": "Theme token without fallback: --theme-text-on-colored",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 76,
+          "warning": "Theme token without fallback: --theme-border-on-colored",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 81,
+          "warning": "Theme token without fallback: --theme-bg-elevated",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 82,
+          "warning": "Theme token without fallback: --theme-border-subtle",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 88,
+          "warning": "Theme token without fallback: --theme-bg-elevated",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 89,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 94,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 99,
+          "warning": "Theme token without fallback: --theme-bg-subtle",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 100,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 101,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 106,
+          "warning": "Theme token without fallback: --theme-primary-purple",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 107,
+          "warning": "Theme token without fallback: --theme-primary-purple-light",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 115,
+          "warning": "Theme token without fallback: --theme-bg-elevated",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 116,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 117,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 124,
+          "warning": "Theme token without fallback: --theme-bg-elevated",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 125,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 131,
+          "warning": "Theme token without fallback: --theme-text-on-colored",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 136,
+          "warning": "Theme token without fallback: --theme-bg-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 141,
+          "warning": "Theme token without fallback: --theme-bg-elevated",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 142,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 146,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 150,
+          "warning": "Theme token without fallback: --theme-bg-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 155,
+          "warning": "Theme token without fallback: --theme-bg-elevated",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 156,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 157,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 166,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 171,
+          "warning": "Theme token without fallback: --theme-bg-elevated",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 172,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 185,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 192,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 218,
+          "warning": "Theme token without fallback: --theme-text-on-colored",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 223,
+          "warning": "Theme token without fallback: --theme-text-on-colored",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 224,
+          "warning": "Theme token without fallback: --theme-text-on-colored",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 232,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 238,
+          "warning": "Theme token without fallback: --theme-text-secondary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 248,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 255,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 17,
+          "warning": "Theme token without fallback: --theme-bg-elevated",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 18,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 19,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 26,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 31,
+          "warning": "Theme token without fallback: --theme-text-secondary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 32,
+          "warning": "Theme token without fallback: --theme-text-secondary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 36,
+          "warning": "Theme token without fallback: --theme-bg-subtle",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 41,
+          "warning": "Theme token without fallback: --theme-bg-elevated",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 42,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 43,
+          "warning": "Theme token without fallback: --theme-border-subtle",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 49,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 56,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 60,
+          "warning": "Theme token without fallback: --theme-text-secondary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 64,
+          "warning": "Theme token without fallback: --theme-text-secondary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 65,
+          "warning": "Theme token without fallback: --theme-text-secondary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 71,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 72,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 76,
+          "warning": "Theme token without fallback: --theme-bg-subtle",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 77,
+          "warning": "Theme token without fallback: --theme-border-medium",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 81,
+          "warning": "Theme token without fallback: --theme-bg-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 85,
+          "warning": "Theme token without fallback: --theme-text-on-colored",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 86,
+          "warning": "Theme token without fallback: --theme-border-on-colored",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 91,
+          "warning": "Theme token without fallback: --theme-bg-elevated",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 92,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 98,
+          "warning": "Theme token without fallback: --theme-bg-elevated",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 99,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 104,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 109,
+          "warning": "Theme token without fallback: --theme-bg-elevated",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 110,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 111,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 116,
+          "warning": "Theme token without fallback: --theme-primary-purple",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 117,
+          "warning": "Theme token without fallback: --theme-primary-purple-light",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 125,
+          "warning": "Theme token without fallback: --theme-bg-elevated",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 126,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 127,
+          "warning": "Theme token without fallback: --theme-border-subtle",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 134,
+          "warning": "Theme token without fallback: --theme-bg-elevated",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 135,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 141,
+          "warning": "Theme token without fallback: --theme-text-on-colored",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 146,
+          "warning": "Theme token without fallback: --theme-bg-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 218,
+          "warning": "Theme token without fallback: --theme-bg-elevated",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 219,
+          "warning": "Theme token without fallback: --theme-border-subtle",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 223,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 227,
+          "warning": "Theme token without fallback: --theme-bg-subtle",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 232,
+          "warning": "Theme token without fallback: --theme-bg-elevated",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 233,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 234,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 240,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 244,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 248,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 252,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 256,
+          "warning": "Theme token without fallback: --theme-bg-elevated",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 257,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 261,
+          "warning": "Theme token without fallback: --theme-bg-elevated",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 262,
+          "warning": "Theme token without fallback: --theme-border-soft",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 278,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 285,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 316,
+          "warning": "Theme token without fallback: --theme-text-on-colored",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 323,
+          "warning": "Theme token without fallback: --theme-text-on-colored",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 324,
+          "warning": "Theme token without fallback: --theme-text-on-colored",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 336,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 345,
+          "warning": "Theme token without fallback: --theme-text-secondary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 361,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 371,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "utilities/dynamic-values.css",
+          "line": 69,
+          "warning": "Theme token without fallback: --theme-text-primary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "utilities/dynamic-values.css",
+          "line": 74,
+          "warning": "Theme token without fallback: --theme-bg-secondary",
+          "type": "missing-fallback"
+        },
+        {
+          "file": "utilities/dynamic-values.css",
+          "line": 79,
+          "warning": "Theme token without fallback: --theme-border-primary",
+          "type": "missing-fallback"
+        }
+      ],
+      "goodPractices": [
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 66,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 74,
+          "practice": "Using design token: --theme-text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 85,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 116,
+          "practice": "Using design token: --theme-text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 127,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 174,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 209,
+          "practice": "Using design token: --theme-text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 233,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 264,
+          "practice": "Using design token: --theme-text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 356,
+          "practice": "Using design token: --theme-text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 412,
+          "practice": "Using design token: --theme-text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/compact-advanced-settings.css",
+          "line": 458,
+          "practice": "Using design token: --theme-text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/completion-component.css",
+          "line": 86,
+          "practice": "Using design token: --progress-complete",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/completion-component.css",
+          "line": 88,
+          "practice": "Using design token: --progress-complete",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/completion-component.css",
+          "line": 92,
+          "practice": "Using design token: --error",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/completion-component.css",
+          "line": 94,
+          "practice": "Using design token: --error",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/error-fallback.css",
+          "line": 30,
+          "practice": "Using design token: --error",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/error-fallback.css",
+          "line": 92,
+          "practice": "Using design token: --primary-blue",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/header.css",
+          "line": 8,
+          "practice": "Using design token: --theme-text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/header.css",
+          "line": 9,
+          "practice": "Using design token: --theme-text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/header.css",
+          "line": 20,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/header.css",
+          "line": 21,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/header.css",
+          "line": 27,
+          "practice": "Using design token: --theme-text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/header.css",
+          "line": 28,
+          "practice": "Using design token: --theme-text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/header.css",
+          "line": 34,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/header.css",
+          "line": 35,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/header.css",
+          "line": 56,
+          "practice": "Using design token: --theme-bg-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/header.css",
+          "line": 103,
+          "practice": "Using design token: --theme-text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/header.css",
+          "line": 116,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/header.css",
+          "line": 154,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/header.css",
+          "line": 191,
+          "practice": "Using design token: --error",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/header.css",
+          "line": 192,
+          "practice": "Using design token: --theme-bg-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/header.css",
+          "line": 239,
+          "practice": "Using design token: --theme-text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/header.css",
+          "line": 248,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/header.css",
+          "line": 264,
+          "practice": "Using design token: --theme-text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/header.css",
+          "line": 273,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/header.css",
+          "line": 298,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/header.css",
+          "line": 324,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/header.css",
+          "line": 333,
+          "practice": "Using design token: --theme-text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/header.css",
+          "line": 346,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/header.css",
+          "line": 404,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/header.css",
+          "line": 412,
+          "practice": "Using design token: --theme-text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/header.css",
+          "line": 434,
+          "practice": "Using design token: --theme-text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/header.css",
+          "line": 452,
+          "practice": "Using design token: --theme-text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/header.css",
+          "line": 461,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/header.css",
+          "line": 704,
+          "practice": "Using design token: --theme-bg-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/header.css",
+          "line": 705,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/header.css",
+          "line": 711,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/header.css",
+          "line": 766,
+          "practice": "Using design token: --theme-bg-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/header.css",
+          "line": 774,
+          "practice": "Using design token: --theme-bg-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/header.css",
+          "line": 774,
+          "practice": "Using design token: --theme-bg-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/header.css",
+          "line": 824,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/header.css",
+          "line": 829,
+          "practice": "Using design token: --theme-text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/header.css",
+          "line": 860,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/header.css",
+          "line": 871,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/header.css",
+          "line": 872,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/header.css",
+          "line": 881,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/header.css",
+          "line": 908,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/header.css",
+          "line": 921,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/header.css",
+          "line": 930,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/header.css",
+          "line": 941,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/header.css",
+          "line": 952,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/header.css",
+          "line": 961,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/matching-component.css",
+          "line": 54,
+          "practice": "Using design token: --bg-soft",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/matching-component.css",
+          "line": 56,
+          "practice": "Using design token: --border-subtle",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/matching-component.css",
+          "line": 63,
+          "practice": "Using design token: --bg-soft",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/matching-component.css",
+          "line": 73,
+          "practice": "Using design token: --primary-purple",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/matching-component.css",
+          "line": 115,
+          "practice": "Using design token: --bg-subtle",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/matching-component.css",
+          "line": 116,
+          "practice": "Using design token: --border-subtle",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/matching-component.css",
+          "line": 125,
+          "practice": "Using design token: --bg-elevated",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/matching-component.css",
+          "line": 126,
+          "practice": "Using design token: --border-soft",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/matching-component.css",
+          "line": 135,
+          "practice": "Using design token: --bg-subtle",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/matching-component.css",
+          "line": 136,
+          "practice": "Using design token: --primary-blue",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/matching-component.css",
+          "line": 142,
+          "practice": "Using design token: --primary-blue",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/matching-component.css",
+          "line": 143,
+          "practice": "Using design token: --primary-blue",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/matching-component.css",
+          "line": 150,
+          "practice": "Using design token: --progress-complete",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/matching-component.css",
+          "line": 151,
+          "practice": "Using design token: --progress-complete",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/matching-component.css",
+          "line": 157,
+          "practice": "Using design token: --progress-complete",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/matching-component.css",
+          "line": 158,
+          "practice": "Using design token: --progress-complete",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/matching-component.css",
+          "line": 163,
+          "practice": "Using design token: --error",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/matching-component.css",
+          "line": 164,
+          "practice": "Using design token: --error",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/matching-component.css",
+          "line": 230,
+          "practice": "Using design token: --primary-blue",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/quiz-component.css",
+          "line": 63,
+          "practice": "Using design token: --bg-soft",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/quiz-component.css",
+          "line": 66,
+          "practice": "Using design token: --border-subtle",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/quiz-component.css",
+          "line": 72,
+          "practice": "Using design token: --bg-soft",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/quiz-component.css",
+          "line": 81,
+          "practice": "Using design token: --progress-complete",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/quiz-component.css",
+          "line": 95,
+          "practice": "Using design token: --bg-elevated",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/quiz-component.css",
+          "line": 96,
+          "practice": "Using design token: --border-subtle",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/quiz-component.css",
+          "line": 134,
+          "practice": "Using design token: --bg-elevated",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/quiz-component.css",
+          "line": 135,
+          "practice": "Using design token: --border-soft",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/quiz-component.css",
+          "line": 144,
+          "practice": "Using design token: --bg-subtle",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/quiz-component.css",
+          "line": 145,
+          "practice": "Using design token: --primary-blue",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/quiz-component.css",
+          "line": 151,
+          "practice": "Using design token: --primary-blue",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/quiz-component.css",
+          "line": 153,
+          "practice": "Using design token: --text-on-colored",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/quiz-component.css",
+          "line": 159,
+          "practice": "Using design token: --progress-complete",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/quiz-component.css",
+          "line": 161,
+          "practice": "Using design token: --text-on-colored",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/quiz-component.css",
+          "line": 166,
+          "practice": "Using design token: --error",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/quiz-component.css",
+          "line": 168,
+          "practice": "Using design token: --text-on-colored",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/quiz-component.css",
+          "line": 178,
+          "practice": "Using design token: --bg-soft",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/quiz-component.css",
+          "line": 208,
+          "practice": "Using design token: --primary-blue",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/quiz-component.css",
+          "line": 210,
+          "practice": "Using design token: --primary-blue",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/quiz-component.css",
+          "line": 236,
+          "practice": "Using design token: --primary-blue",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "components/score-display.css",
+          "line": 79,
+          "practice": "Using design token: --primary-blue",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 41,
+          "practice": "Using design token: --bg-elevated",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 42,
+          "practice": "Using design token: --border-soft",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 43,
+          "practice": "Using design token: --text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 44,
+          "practice": "Using design token: --text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 45,
+          "practice": "Using design token: --text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 46,
+          "practice": "Using design token: --text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 47,
+          "practice": "Using design token: --bg-subtle",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 48,
+          "practice": "Using design token: --bg-soft",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 49,
+          "practice": "Using design token: --primary-blue",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 52,
+          "practice": "Using design token: --bg-elevated",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 53,
+          "practice": "Using design token: --border-subtle",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 54,
+          "practice": "Using design token: --bg-subtle",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 55,
+          "practice": "Using design token: --bg-subtle",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 56,
+          "practice": "Using design token: --bg-soft",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 60,
+          "practice": "Using design token: --bg-elevated",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 61,
+          "practice": "Using design token: --border-soft",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 62,
+          "practice": "Using design token: --text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 63,
+          "practice": "Using design token: --text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 66,
+          "practice": "Using design token: --bg-elevated",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 67,
+          "practice": "Using design token: --border-soft",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 68,
+          "practice": "Using design token: --primary-purple",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 166,
+          "practice": "Using design token: --bg-elevated",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 167,
+          "practice": "Using design token: --border-soft",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 168,
+          "practice": "Using design token: --text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 169,
+          "practice": "Using design token: --text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 170,
+          "practice": "Using design token: --text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 171,
+          "practice": "Using design token: --text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 172,
+          "practice": "Using design token: --bg-soft",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 173,
+          "practice": "Using design token: --border-medium",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 176,
+          "practice": "Using design token: --bg-elevated",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 177,
+          "practice": "Using design token: --border-subtle",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 178,
+          "practice": "Using design token: --text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 179,
+          "practice": "Using design token: --text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 182,
+          "practice": "Using design token: --bg-subtle",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 183,
+          "practice": "Using design token: --border-soft",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 184,
+          "practice": "Using design token: --primary-purple",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 237,
+          "practice": "Using design token: --text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 238,
+          "practice": "Using design token: --text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 239,
+          "practice": "Using design token: --text-tertiary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 240,
+          "practice": "Using design token: --text-on-colored",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 243,
+          "practice": "Using design token: --bg-elevated",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 244,
+          "practice": "Using design token: --bg-subtle",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 245,
+          "practice": "Using design token: --bg-soft",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 247,
+          "practice": "Using design token: --border-subtle",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 248,
+          "practice": "Using design token: --border-soft",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 249,
+          "practice": "Using design token: --border-medium",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 252,
+          "practice": "Using design token: --primary-blue",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 255,
+          "practice": "Using design token: --primary-purple",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 262,
+          "practice": "Using design token: --text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 263,
+          "practice": "Using design token: --text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 264,
+          "practice": "Using design token: --text-tertiary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 265,
+          "practice": "Using design token: --text-on-colored",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 268,
+          "practice": "Using design token: --bg-elevated",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 269,
+          "practice": "Using design token: --bg-subtle",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 270,
+          "practice": "Using design token: --bg-soft",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 272,
+          "practice": "Using design token: --border-subtle",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 273,
+          "practice": "Using design token: --border-soft",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 274,
+          "practice": "Using design token: --border-medium",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 277,
+          "practice": "Using design token: --primary-blue",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 280,
+          "practice": "Using design token: --primary-purple",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 293,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 294,
+          "practice": "Using design token: --theme-text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 300,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "design-system/color-palette.css",
+          "line": 301,
+          "practice": "Using design token: --theme-text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 18,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 27,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 34,
+          "practice": "Using design token: --theme-text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 35,
+          "practice": "Using design token: --theme-text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 55,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 67,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 73,
+          "practice": "Using design token: --theme-text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 79,
+          "practice": "Using design token: --theme-text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 80,
+          "practice": "Using design token: --theme-text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 89,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 120,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 127,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 133,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 139,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 145,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 153,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 175,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 214,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 237,
+          "practice": "Using design token: --theme-bg-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 238,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 246,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 254,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 260,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 269,
+          "practice": "Using design token: --theme-text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 270,
+          "practice": "Using design token: --theme-text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 298,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 304,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-dark.css",
+          "line": 310,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 19,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 28,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 35,
+          "practice": "Using design token: --theme-text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 36,
+          "practice": "Using design token: --theme-text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 56,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 67,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 73,
+          "practice": "Using design token: --theme-text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 79,
+          "practice": "Using design token: --theme-text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 80,
+          "practice": "Using design token: --theme-text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 89,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 119,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 126,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 132,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 138,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 144,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 152,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 174,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 212,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 237,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 248,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 259,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 267,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 278,
+          "practice": "Using design token: --theme-text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 279,
+          "practice": "Using design token: --theme-text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 312,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 318,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/mobile-light.css",
+          "line": 325,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 15,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 22,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 27,
+          "practice": "Using design token: --theme-text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 28,
+          "practice": "Using design token: --theme-text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 38,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 51,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 55,
+          "practice": "Using design token: --theme-text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 56,
+          "practice": "Using design token: --theme-text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 62,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 89,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 94,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 100,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 116,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 146,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 156,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 166,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 185,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 192,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 232,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 238,
+          "practice": "Using design token: --theme-text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 248,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-dark.css",
+          "line": 255,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 18,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 26,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 31,
+          "practice": "Using design token: --theme-text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 32,
+          "practice": "Using design token: --theme-text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 42,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 56,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 60,
+          "practice": "Using design token: --theme-text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 64,
+          "practice": "Using design token: --theme-text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 65,
+          "practice": "Using design token: --theme-text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 71,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 99,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 104,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 110,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 126,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 223,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 233,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 240,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 244,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 248,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 252,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 278,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 285,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 336,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 345,
+          "practice": "Using design token: --theme-text-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 361,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "themes/web-light.css",
+          "line": 371,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "utilities/dynamic-values.css",
+          "line": 13,
+          "practice": "Using design token: --primary-blue",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "utilities/dynamic-values.css",
+          "line": 40,
+          "practice": "Using design token: --primary-blue",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "utilities/dynamic-values.css",
+          "line": 44,
+          "practice": "Using design token: --progress-complete",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "utilities/dynamic-values.css",
+          "line": 48,
+          "practice": "Using design token: --primary-purple",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "utilities/dynamic-values.css",
+          "line": 69,
+          "practice": "Using design token: --theme-text-primary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "utilities/dynamic-values.css",
+          "line": 74,
+          "practice": "Using design token: --theme-bg-secondary",
+          "type": "design-token-usage"
+        },
+        {
+          "file": "utilities/dynamic-values.css",
+          "line": 79,
+          "practice": "Using design token: --theme-border-primary",
+          "type": "design-token-usage"
+        }
+      ]
+    }
+  },
+  "metadata": {
+    "nodeVersion": "v20.19.4",
+    "platform": "darwin",
+    "generatedBy": "validate-design-tokens.js"
+  }
+}

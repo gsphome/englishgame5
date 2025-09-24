@@ -1,119 +1,128 @@
 /**
  * Web Light Theme - Desktop/Tablet Light Mode
  * 
- * Clean, semantic styles for web environments in light mode
- * Uses design system tokens and BEM-like naming conventions
+ * AI_CONTEXT: Theme context for desktop/tablet devices in light mode
+ * AI_VALIDATION: WEB_LIGHT_THEME - Desktop optimizations with light colors
+ * AI_USAGE: Hover states, focus rings, and desktop-specific interactions
+ * 
+ * Optimized styles for web environments in light mode
+ * Uses design system tokens with consolidated rules and proper media query scoping
+ * Integrated content from theme-fix.css for complete consolidation
  */
 
 /* === WEB LIGHT CONTEXT === */
+/* AI_VALIDATION: WEB_LIGHT_MEDIA_QUERY - Desktop/tablet light theme context */
+/* AI_CONTEXT: Applies to screens 769px+ in light mode */
 @media (min-width: 769px) {
 
   html.light,
   html:not(.dark) {
 
     /* === HEADER COMPONENT === */
+    /* AI_VALIDATION: HEADER_WEB_LIGHT - Header styling for desktop light mode */
+    /* AI_CONTEXT: Uses theme tokens for automatic light mode adaptation */
     .header-redesigned {
-      background-color: var(--header-bg);
-      color: var(--text-primary-soft);
-      border-color: var(--border-subtle);
-      transition: var(--theme-transition-duration, 0.2s) ease;
+      background-color: var(--theme-bg-elevated);
+      color: var(--theme-text-primary);
+      border-color: var(--theme-border-soft);
+      transition: all 0.2s ease;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
     }
 
     .header-redesigned__title,
     .header-redesigned__username {
-      color: var(--text-primary-soft);
+      color: var(--theme-text-primary);
     }
 
     .header-redesigned svg,
     .header-redesigned [data-lucide] {
-      color: var(--header-icon-color);
-      stroke: var(--header-icon-color);
+      color: var(--theme-text-secondary);
+      stroke: var(--theme-text-secondary);
     }
 
     .header-redesigned__button:hover {
-      background-color: var(--header-button-hover-bg);
+      background-color: var(--theme-bg-subtle);
     }
 
     /* === MODULE CARDS === */
     .module-card {
-      background-color: var(--bg-elevated);
-      color: var(--text-primary-soft);
-      border-color: var(--border-subtle);
+      background-color: var(--theme-bg-elevated);
+      color: var(--theme-text-primary);
+      border-color: var(--theme-border-subtle);
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-      transition: var(--theme-transition-duration, 0.2s) ease;
+      transition: all 0.2s ease;
     }
 
     .module-card:hover {
-      border-color: var(--border-soft);
+      border-color: var(--theme-border-soft);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
       transform: translateY(-1px);
     }
 
-    /* Only apply soft colors to non-colored module cards */
+    /* Apply theme colors to non-colored module cards */
     .module-card:not(.module-card--flashcard):not(.module-card--quiz):not(.module-card--completion):not(.module-card--sorting):not(.module-card--matching) .module-card__title {
-      color: var(--text-primary-soft);
+      color: var(--theme-text-primary);
     }
 
     .module-card:not(.module-card--flashcard):not(.module-card--quiz):not(.module-card--completion):not(.module-card--sorting):not(.module-card--matching) .module-card__description {
-      color: var(--text-secondary-soft);
+      color: var(--theme-text-secondary);
     }
 
     .module-card:not(.module-card--flashcard):not(.module-card--quiz):not(.module-card--completion):not(.module-card--sorting):not(.module-card--matching) svg {
-      color: var(--text-secondary-soft);
-      stroke: var(--text-secondary-soft);
+      color: var(--theme-text-secondary);
+      stroke: var(--theme-text-secondary);
     }
 
     /* === NAVIGATION === */
     .nav-btn {
       background-color: transparent;
-      color: var(--text-primary-soft);
-      border-color: var(--border-soft);
+      color: var(--theme-text-primary);
+      border-color: var(--theme-border-soft);
     }
 
     .nav-btn:hover {
-      background-color: var(--bg-subtle);
-      border-color: var(--border-medium);
+      background-color: var(--theme-bg-subtle);
+      border-color: var(--theme-border-medium);
     }
 
     .nav-btn:active {
-      background-color: var(--bg-soft);
+      background-color: var(--theme-bg-soft);
     }
 
     .nav-btn--on-colored {
-      color: var(--text-on-colored);
-      border-color: var(--border-on-colored);
+      color: var(--theme-text-on-colored);
+      border-color: var(--theme-border-on-colored);
     }
 
     /* === SETTINGS COMPONENTS === */
     .compact-settings__container {
-      background-color: var(--settings-bg);
-      border-color: var(--settings-border);
+      background-color: var(--theme-bg-elevated);
+      border-color: var(--theme-border-soft);
     }
 
     .compact-settings__header,
     .compact-settings__content,
     .compact-settings__footer {
-      background-color: var(--settings-bg);
-      color: var(--settings-text-primary);
+      background-color: var(--theme-bg-elevated);
+      color: var(--theme-text-primary);
     }
 
     .compact-settings__title,
     .compact-settings__label {
-      color: var(--settings-text-primary);
+      color: var(--theme-text-primary);
     }
 
     .compact-settings__input,
     .compact-settings__select {
-      background-color: var(--settings-input-bg);
-      color: var(--settings-text-primary);
-      border-color: var(--settings-input-border);
+      background-color: var(--theme-bg-elevated);
+      color: var(--theme-text-primary);
+      border-color: var(--theme-border-soft);
     }
 
     .compact-settings__input:focus,
     .compact-settings__select:focus {
-      border-color: var(--settings-focus-ring);
-      box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+      border-color: var(--theme-primary-purple);
+      box-shadow: 0 0 0 3px var(--theme-primary-purple-light);
     }
 
     /* === LEARNING COMPONENTS === */
@@ -121,28 +130,28 @@
     .quiz-component,
     .sorting-component,
     .matching-component {
-      background-color: var(--bg-elevated);
-      color: var(--text-primary-soft);
-      border-color: var(--border-subtle);
+      background-color: var(--theme-bg-elevated);
+      color: var(--theme-text-primary);
+      border-color: var(--theme-border-subtle);
     }
 
     .quiz-component__question-card,
     .flashcard-component__card,
     .matching-component__item,
     .sorting-component__item {
-      background-color: var(--bg-elevated);
-      border-color: var(--border-soft);
+      background-color: var(--theme-bg-elevated);
+      border-color: var(--theme-border-soft);
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
     }
 
     .quiz-component__option--selected,
     .matching-component__item--selected {
-      color: var(--text-on-colored);
+      color: var(--theme-text-on-colored);
       border-color: transparent;
     }
 
     .progress-bar {
-      background-color: var(--bg-soft);
+      background-color: var(--theme-bg-soft);
     }
 
     /* === BUTTON OVERRIDES === */
@@ -214,53 +223,51 @@
 
     /* === MAIN MENU === */
     .main-menu {
-      background-color: var(--menu-bg);
-      border-color: var(--menu-border);
+      background-color: var(--theme-bg-elevated);
+      border-color: var(--theme-border-subtle);
     }
 
     .main-menu__item {
-      color: var(--text-primary-soft);
+      color: var(--theme-text-primary);
     }
 
     .main-menu__item:hover {
-      background-color: var(--menu-item-hover);
+      background-color: var(--theme-bg-subtle);
     }
 
     /* === TOAST NOTIFICATIONS === */
     .toast-card {
-      background-color: var(--bg-elevated);
-      color: var(--text-primary-soft);
-      border-color: var(--border-soft);
+      background-color: var(--theme-bg-elevated);
+      color: var(--theme-text-primary);
+      border-color: var(--theme-border-soft);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     }
 
     /* === PROGRESS DASHBOARD === */
-    /* Apply soft colors to dashboard text elements */
     .compact-dashboard__title {
-      color: var(--text-primary-soft) !important;
+      color: var(--theme-text-primary) !important;
     }
 
     .compact-dashboard__stat-value {
-      color: var(--text-primary-soft) !important;
+      color: var(--theme-text-primary) !important;
     }
 
     .compact-dashboard__section-title {
-      color: var(--text-primary-soft) !important;
+      color: var(--theme-text-primary) !important;
     }
 
     .compact-dashboard__progress-day-value {
-      color: var(--text-primary-soft) !important;
+      color: var(--theme-text-primary) !important;
     }
 
-    /* Dashboard container and background */
     .compact-dashboard__container {
-      background-color: var(--bg-elevated);
-      border-color: var(--border-soft);
+      background-color: var(--theme-bg-elevated);
+      border-color: var(--theme-border-soft);
     }
 
     .compact-dashboard__stat {
-      background-color: var(--bg-elevated);
-      border-color: var(--border-soft);
+      background-color: var(--theme-bg-elevated);
+      border-color: var(--theme-border-soft);
     }
 
 
@@ -269,31 +276,29 @@
 
 /* === WEB LIGHT ACCESSIBILITY === */
 @media (min-width: 769px) and (prefers-contrast: high) {
-
   html.light,
   html:not(.dark) {
-
     .header-redesigned,
     .module-card,
     .compact-settings__container {
       border-width: 2px;
       border-style: solid;
+      border-color: var(--theme-text-primary);
     }
 
     .header-redesigned__title,
     .module-card__title,
     .compact-settings__title {
       font-weight: 600;
+      color: var(--theme-text-primary);
     }
   }
 }
 
 /* === WEB LIGHT REDUCED MOTION === */
 @media (min-width: 769px) and (prefers-reduced-motion: reduce) {
-
   html.light,
   html:not(.dark) {
-
     .header-redesigned,
     .module-card,
     .nav-btn,
@@ -303,123 +308,75 @@
   }
 }
 
-/* 
-=== TAILWIND UTILITIES LAYER OVERRIDES === */
-/* Use Tailwind's utilities layer for maximum specificity */
+/* === HIGH SPECIFICITY OVERRIDES === */
+/* Use utilities layer for maximum specificity when needed */
 @layer utilities {
   @media (min-width: 769px) {
-
+    /* === BUTTON OVERRIDES === */
     html.light .compact-settings__btn--primary,
     html:not(.dark) .compact-settings__btn--primary,
     html.light .compact-profile__btn--save,
-    html:not(.dark) .compact-profile__btn--save {
-      color: #ffffff !important;
+    html:not(.dark) .compact-profile__btn--save,
+    html.light .compact-dashboard__btn--primary,
+    html:not(.dark) .compact-dashboard__btn--primary,
+    html.light .compact-learning-path__btn--primary,
+    html:not(.dark) .compact-learning-path__btn--primary {
+      color: var(--theme-text-on-colored) !important;
     }
 
     html.light .compact-settings__btn--primary svg,
     html:not(.dark) .compact-settings__btn--primary svg,
     html.light .compact-profile__btn--save svg,
     html:not(.dark) .compact-profile__btn--save svg {
-      color: #ffffff !important;
-      stroke: #ffffff !important;
+      color: var(--theme-text-on-colored) !important;
+      stroke: var(--theme-text-on-colored) !important;
     }
 
-    /* === PROGRESS DASHBOARD OVERRIDES === */
-    /* Ensure dashboard text is visible in web-light mode */
+    /* === DASHBOARD COMPONENT OVERRIDES === */
     html.light .compact-dashboard__title,
-    html:not(.dark) .compact-dashboard__title {
-      color: var(--text-primary-soft) !important;
-    }
-
+    html:not(.dark) .compact-dashboard__title,
     html.light .compact-dashboard__stat-value,
-    html:not(.dark) .compact-dashboard__stat-value {
-      color: var(--text-primary-soft) !important;
+    html:not(.dark) .compact-dashboard__stat-value,
+    html.light .compact-dashboard__section-title,
+    html:not(.dark) .compact-dashboard__section-title,
+    html.light .compact-dashboard__progress-day-value,
+    html:not(.dark) .compact-dashboard__progress-day-value {
+      color: var(--theme-text-primary) !important;
     }
 
     html.light .compact-dashboard__stat-label,
-    html:not(.dark) .compact-dashboard__stat-label {
-      color: var(--text-secondary-soft) !important;
-    }
-
-    html.light .compact-dashboard__section-title,
-    html:not(.dark) .compact-dashboard__section-title {
-      color: var(--text-primary-soft) !important;
-    }
-
-    html.light .compact-dashboard__progress-day-value,
-    html:not(.dark) .compact-dashboard__progress-day-value {
-      color: var(--text-primary-soft) !important;
-    }
-
+    html:not(.dark) .compact-dashboard__stat-label,
     html.light .compact-dashboard__progress-day-label,
-    html:not(.dark) .compact-dashboard__progress-day-label {
-      color: var(--text-secondary-soft) !important;
-    }
-
+    html:not(.dark) .compact-dashboard__progress-day-label,
     html.light .compact-dashboard__no-data-text,
     html:not(.dark) .compact-dashboard__no-data-text {
-      color: var(--text-secondary-soft) !important;
+      color: var(--theme-text-secondary) !important;
     }
 
-    /* Dashboard button */
-    html.light .compact-dashboard__btn--primary,
-    html:not(.dark) .compact-dashboard__btn--primary {
-      color: #ffffff !important;
-    }
-
-    /* === LEARNING PATH OVERRIDES === */
-    /* Ensure learning path text is visible in web-light mode */
+    /* === LEARNING PATH COMPONENT OVERRIDES === */
     html.light .compact-learning-path__title,
-    html:not(.dark) .compact-learning-path__title {
-      color: var(--text-primary-soft) !important;
-    }
-
+    html:not(.dark) .compact-learning-path__title,
     html.light .compact-learning-path__progress-value,
-    html:not(.dark) .compact-learning-path__progress-value {
-      color: var(--text-primary-soft) !important;
-    }
-
+    html:not(.dark) .compact-learning-path__progress-value,
     html.light .compact-learning-path__stat-value,
-    html:not(.dark) .compact-learning-path__stat-value {
-      color: var(--text-primary-soft) !important;
-    }
-
+    html:not(.dark) .compact-learning-path__stat-value,
     html.light .compact-learning-path__section-title,
-    html:not(.dark) .compact-learning-path__section-title {
-      color: var(--text-primary-soft) !important;
-    }
-
+    html:not(.dark) .compact-learning-path__section-title,
     html.light .compact-learning-path__module-name,
-    html:not(.dark) .compact-learning-path__module-name {
-      color: var(--text-primary-soft) !important;
-    }
-
+    html:not(.dark) .compact-learning-path__module-name,
     html.light .compact-learning-path__unit-name,
     html:not(.dark) .compact-learning-path__unit-name {
-      color: var(--text-primary-soft) !important;
+      color: var(--theme-text-primary) !important;
     }
 
-    /* Learning path button */
-    html.light .compact-learning-path__btn--primary,
-    html:not(.dark) .compact-learning-path__btn--primary {
-      color: #ffffff !important;
-    }
-
-    /* === ABOUT MODAL OVERRIDES === */
-    /* Ensure about modal text is visible in web-light mode */
+    /* === ABOUT MODAL COMPONENT OVERRIDES === */
     html.light .compact-about__section-title,
-    html:not(.dark) .compact-about__section-title {
-      color: var(--text-primary-soft) !important;
-    }
-
+    html:not(.dark) .compact-about__section-title,
     html.light .compact-about__info-value,
-    html:not(.dark) .compact-about__info-value {
-      color: var(--text-primary-soft) !important;
-    }
-
+    html:not(.dark) .compact-about__info-value,
     html.light .compact-about__developer-name,
     html:not(.dark) .compact-about__developer-name {
-      color: var(--text-primary-soft) !important;
+      color: var(--theme-text-primary) !important;
     }
   }
 }
