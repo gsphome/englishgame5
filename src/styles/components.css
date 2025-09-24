@@ -709,18 +709,19 @@ a svg,
   justify-content: center;
 }
 
-/* Score Display en modo Learning - Más compacto y centrado */
+/* DISABLED: These rules use @apply which conflicts with pure CSS architecture */
+/*
 .header-redesigned--learning .score-display-compact {
   @apply bg-gradient-to-r from-green-50 to-blue-50 dark:from-gray-700 dark:to-gray-600;
   @apply border-green-200 dark:border-gray-500;
-  max-width: 220px; /* Más compacto en modo learning */
-  @apply shadow-md; /* Sombra más prominente para destacar la sesión */
+  max-width: 220px;
+  @apply shadow-md;
 }
 
-/* Score Display en modo Menu - Layout completo */
 .header-redesigned--menu .score-display-compact {
-  max-width: 280px; /* Espacio completo en menú principal */
+  max-width: 280px;
 }
+*/
 
 .score-display-compact__session {
   @apply flex items-center gap-2;

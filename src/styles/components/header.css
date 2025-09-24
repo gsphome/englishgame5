@@ -1,45 +1,6 @@
 /* Header Component Styles */
 
-/* CSS Variables for Consistent Color System */
-:root {
-  /* Light Mode Colors */
-  --header-bg: #ffffff;
-  --header-border: #e5e7eb;
-  --header-text-primary: #111827;
-  --header-text-secondary: #6b7280;
-  --header-icon-color: #374151;
-  --header-icon-hover: #111827;
-  --header-button-hover-bg: #f3f4f6;
-  --header-button-active-bg: #e5e7eb;
-  --header-focus-ring: #3b82f6;
-
-  /* Side Menu Colors */
-  --menu-bg: #ffffff;
-  --menu-border: #e5e7eb;
-  --menu-header-bg: #f9fafb;
-  --menu-item-hover: #f3f4f6;
-  --menu-item-active: #e5e7eb;
-}
-
-/* Dark Mode Color Variables - Enhanced Contrast */
-.dark {
-  --header-bg: #1f2937;
-  --header-border: #4b5563;
-  --header-text-primary: #ffffff;
-  --header-text-secondary: #e5e7eb;
-  --header-icon-color: #e5e7eb;
-  --header-icon-hover: #ffffff;
-  --header-button-hover-bg: #374151;
-  --header-button-active-bg: #4b5563;
-  --header-focus-ring: #60a5fa;
-
-  /* Side Menu Dark Colors */
-  --menu-bg: #1f2937;
-  --menu-border: #4b5563;
-  --menu-header-bg: #111827;
-  --menu-item-hover: #374151;
-  --menu-item-active: #4b5563;
-}
+/* Header-specific CSS Variables with High Priority */
 
 /* Enhanced SVG Icon System */
 .header-redesigned svg {
@@ -1041,4 +1002,47 @@ ologated Button Sections - Equal Visual Weight */
   .header-redesigned__login-text {
     display: inline;
   }
+}
+/* 
+=== HIGH PRIORITY HEADER VARIABLES === */
+/* These variables override any conflicting theme variables */
+
+:root {
+  /* Light Mode Header Colors - High Priority */
+  --header-bg: #ffffff !important;
+  --header-border: #e5e7eb !important;
+  --header-text-primary: #111827 !important;
+  --header-text-secondary: #6b7280 !important;
+  --header-icon-color: #374151 !important;
+  --header-icon-hover: #111827 !important;
+  --header-button-hover-bg: #f3f4f6 !important;
+  --header-button-active-bg: #e5e7eb !important;
+  --header-focus-ring: #3b82f6 !important;
+
+  /* Side Menu Colors - High Priority */
+  --menu-bg: #ffffff !important;
+  --menu-border: #e5e7eb !important;
+  --menu-header-bg: #f9fafb !important;
+  --menu-item-hover: #f3f4f6 !important;
+  --menu-item-active: #e5e7eb !important;
+}
+
+/* Dark Mode Header Variables - High Priority */
+.dark {
+  --header-bg: #1f2937 !important;
+  --header-border: #4b5563 !important;
+  --header-text-primary: #ffffff !important;
+  --header-text-secondary: #e5e7eb !important;
+  --header-icon-color: #e5e7eb !important;
+  --header-icon-hover: #ffffff !important;
+  --header-button-hover-bg: #374151 !important;
+  --header-button-active-bg: #4b5563 !important;
+  --header-focus-ring: #60a5fa !important;
+
+  /* Side Menu Dark Colors - High Priority */
+  --menu-bg: #1f2937 !important;
+  --menu-border: #4b5563 !important;
+  --menu-header-bg: #111827 !important;
+  --menu-item-hover: #374151 !important;
+  --menu-item-active: #4b5563 !important;
 }
