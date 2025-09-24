@@ -54,17 +54,7 @@
   --primary-purple-hover: #7c3aed;      /* AI_CONTEXT: Primary purple hover state */
   --primary-purple-light: #d8b4fe;      /* AI_CONTEXT: Light purple for backgrounds - subtle emphasis */
 
-  /* === HEADER SYSTEM COLORS === */
-  /* Light Mode - Improved UX with softer contrasts */
-  --header-bg: var(--bg-elevated);
-  --header-border: var(--border-soft);
-  --header-text-primary: var(--text-primary);
-  --header-text-secondary: var(--text-secondary);
-  --header-icon-color: var(--text-secondary);
-  --header-icon-hover: var(--text-primary);
-  --header-button-hover-bg: var(--bg-subtle);
-  --header-button-active-bg: var(--bg-soft);
-  --header-focus-ring: var(--primary-blue);
+  /* HEADER VARIABLES MOVED TO header.css for single source of truth */
 
   /* Side Menu - Softer appearance */
   --menu-bg: var(--bg-elevated);
@@ -187,15 +177,7 @@
   --primary-purple-hover: #8b5cf6;      /* Primary purple hover in dark mode */
   --primary-purple-light: rgba(139, 92, 246, 0.15); /* Light purple for dark backgrounds */
 
-  /* Header Dark Mode - Now using semantic tokens */
-  --header-bg: var(--bg-elevated);
-  --header-border: var(--border-soft);
-  --header-text-primary: var(--text-primary);
-  --header-text-secondary: var(--text-secondary);
-  --header-icon-color: var(--text-secondary);
-  --header-icon-hover: var(--text-primary);
-  --header-button-hover-bg: var(--bg-soft);
-  --header-button-active-bg: var(--border-medium);
+  /* HEADER VARIABLES MOVED TO header.css for single source of truth */
 
   /* Settings Dark Mode - Now using semantic tokens */
   --settings-bg: var(--bg-elevated);

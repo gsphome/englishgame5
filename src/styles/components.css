@@ -396,45 +396,7 @@ a svg,
   }
 }
 
-/* Header - Legacy (mantener para compatibilidad) */
-.header {
-  @apply bg-white border-b border-gray-200 shadow-sm;
-}
-
-.header__content {
-  @apply max-w-4xl mx-auto px-8 py-4 flex justify-between items-center;
-  min-width: 0;
-}
-
-.header__left {
-  @apply flex items-center space-x-4;
-}
-
-.header__title {
-  @apply text-xl font-bold text-gray-900 whitespace-nowrap;
-  flex-shrink: 1;
-  min-width: 0;
-}
-
-.header__score {
-  @apply flex items-center space-x-2 text-sm;
-}
-
-.header__right {
-  @apply flex items-center space-x-2;
-}
-
-.header__button {
-  @apply p-2 text-gray-600 hover:text-gray-800 transition-colors;
-}
-
-.header__user-button {
-  @apply flex items-center space-x-2 text-sm text-gray-700 hover:text-gray-900;
-}
-
-.header__user-points {
-  @apply text-xs text-gray-500;
-}
+/* LEGACY HEADER STYLES REMOVED - Use header.css instead */
 
 /* Header styles moved to components/header.css */
 
@@ -535,107 +497,7 @@ a svg,
 
 /* Search styles moved to components/search-bar.css */
 
-/* Buttons */
-.btn {
-  @apply px-3 py-1.5 rounded-md text-sm font-medium transition-colors;
-  @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
-}
-
-.btn--primary {
-  @apply bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500;
-}
-
-.btn--icon {
-  @apply inline mr-1;
-}
-
-/* Loading States */
-.loading {
-  @apply min-h-screen bg-gray-50 flex items-center justify-center;
-}
-
-.loading > div {
-  @apply text-center;
-}
-
-.loading__spinner {
-  @apply animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4;
-}
-
-.loading__text {
-  @apply text-gray-700 dark:text-gray-300;
-}
-
-/* Error States */
-.error {
-  @apply min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center;
-}
-
-.error > div {
-  @apply text-center;
-}
-
-.error__message {
-  @apply text-red-700 dark:text-red-400 mb-4 font-semibold;
-}
-
-.error__details {
-  @apply text-sm text-gray-700 dark:text-gray-300 mb-4;
-}
-
-/* Score Display */
-.header__score {
-  @apply flex items-center space-x-4 bg-gray-50 dark:bg-gray-800 px-3 py-2 rounded-lg border;
-}
-
-.score__session {
-  @apply flex items-center space-x-1 text-sm;
-}
-
-.score__global {
-  @apply flex items-center space-x-1 text-sm border-l border-gray-300 dark:border-gray-600 pl-4;
-}
-
-.score__label {
-  @apply text-gray-500 dark:text-gray-400 font-medium;
-}
-
-.score__correct {
-  @apply text-green-600 dark:text-green-400 font-bold;
-}
-
-.score__separator {
-  @apply text-gray-400 dark:text-gray-500;
-}
-
-.score__incorrect {
-  @apply text-red-500 dark:text-red-400 font-bold;
-}
-
-.score__total {
-  @apply text-gray-600 dark:text-gray-300;
-}
-
-.score__accuracy {
-  @apply text-blue-600 dark:text-blue-400 font-medium ml-1;
-}
-
-.score__total-points {
-  @apply text-purple-600 dark:text-purple-400 font-bold text-lg;
-}
-
-.score__points-label {
-  @apply text-purple-500 dark:text-purple-400 text-xs font-medium;
-}
-
-/* Advanced Score Display */
-.score-display {
-  @apply flex items-center space-x-4 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 px-4 py-2 rounded-xl border border-blue-200 dark:border-gray-600 shadow-sm;
-}
-
-.score-display__session,
-.score-display__global {
-  @apply flex flex-col items-center space-y-1;
+/* ALL LEGACY @APPLY STYLES REMOVED - Use dedicated component CSS files instead */
 }
 
 .score-display__global {
