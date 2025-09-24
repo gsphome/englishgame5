@@ -154,7 +154,7 @@ export const ModuleCard: React.FC<ModuleCardProps> = ({
           {difficultyLevel}
         </div>
 
-        {/* Status indicators - Same level for consistent positioning */}
+        {/* Status indicators - Only for unlocked/completed states */}
         {statusInfo.statusIcon && !statusInfo.disabled && (
           <div
             className={`module-card__status-indicator module-card__status-indicator--${progression.status}`}
@@ -163,14 +163,7 @@ export const ModuleCard: React.FC<ModuleCardProps> = ({
             {statusInfo.statusIcon}
           </div>
         )}
-        {statusInfo.disabled && (
-          <div
-            className="module-card__status-indicator module-card__status-indicator--locked"
-            aria-label={statusInfo.statusText}
-          >
-            <Lock size={12} />
-          </div>
-        )}
+        {/* Locked state already shows lock icon in main icon area - no duplicate needed */}
       </div>
     </button>
   );
