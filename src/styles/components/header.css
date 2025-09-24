@@ -1,18 +1,50 @@
 /* Header Component Styles */
 
-/* AI_VALIDATION: HEADER_COMPONENT - Pure BEM component with design tokens */
-/* AI_CONTEXT: Example of properly refactored component using theme-aware variables */
-/* AI_USAGE: Use this as a pattern for other component CSS files */
+/* CSS Variables for Consistent Color System */
+:root {
+  /* Light Mode Colors */
+  --header-bg: #ffffff;
+  --header-border: #e5e7eb;
+  --header-text-primary: #111827;
+  --header-text-secondary: #6b7280;
+  --header-icon-color: #374151;
+  --header-icon-hover: #111827;
+  --header-button-hover-bg: #f3f4f6;
+  --header-button-active-bg: #e5e7eb;
+  --header-focus-ring: #3b82f6;
 
-/* Header Component now uses centralized design tokens from color-palette.css */
-/* All color definitions moved to design-system/color-palette.css for consistency */
+  /* Side Menu Colors */
+  --menu-bg: #ffffff;
+  --menu-border: #e5e7eb;
+  --menu-header-bg: #f9fafb;
+  --menu-item-hover: #f3f4f6;
+  --menu-item-active: #e5e7eb;
+}
 
-/* Enhanced SVG Icon System with Design Tokens */
-/* AI_VALIDATION: BEM_ELEMENT_STYLING - SVG styling with design tokens */
-/* AI_CONTEXT: Example of theme-aware icon styling */
+/* Dark Mode Color Variables - Enhanced Contrast */
+.dark {
+  --header-bg: #1f2937;
+  --header-border: #4b5563;
+  --header-text-primary: #ffffff;
+  --header-text-secondary: #e5e7eb;
+  --header-icon-color: #e5e7eb;
+  --header-icon-hover: #ffffff;
+  --header-button-hover-bg: #374151;
+  --header-button-active-bg: #4b5563;
+  --header-focus-ring: #60a5fa;
+
+  /* Side Menu Dark Colors */
+  --menu-bg: #1f2937;
+  --menu-border: #4b5563;
+  --menu-header-bg: #111827;
+  --menu-item-hover: #374151;
+  --menu-item-active: #4b5563;
+}
+
+/* Enhanced SVG Icon System */
 .header-redesigned svg {
-  color: var(--theme-text-secondary);
-  stroke: var(--theme-text-secondary);
+  color: var(--header-icon-color);
+  stroke: var(--header-icon-color);
   fill: none;
   stroke-width: 1.5;
   transition: all 0.2s ease-in-out;
@@ -23,33 +55,33 @@
 .header-redesigned__user-btn:hover svg,
 .header-redesigned__login-btn:hover svg,
 .header-redesigned__control-btn:hover svg {
-  color: var(--theme-text-primary);
-  stroke: var(--theme-text-primary);
+  color: var(--header-icon-hover);
+  stroke: var(--header-icon-hover);
   transform: scale(1.05);
 }
 
-/* Side Menu Icons with Design Tokens */
+/* Side Menu Icons */
 .header-side-menu__icon {
-  color: var(--theme-text-secondary);
-  stroke: var(--theme-text-secondary);
+  color: var(--header-icon-color);
+  stroke: var(--header-icon-color);
   stroke-width: 1.5;
   transition: all 0.2s ease-in-out;
 }
 
 .header-side-menu__item:hover .header-side-menu__icon {
-  color: var(--theme-text-primary);
-  stroke: var(--theme-text-primary);
+  color: var(--header-icon-hover);
+  stroke: var(--header-icon-hover);
   transform: scale(1.1);
 }
 
-/* Header Container - Compact Design */
+/* Header Container - Compact Design with Proper Variables */
 .header-redesigned {
-  background-color: var(--theme-bg-elevated);
-  border-bottom: 1px solid var(--theme-border-soft);
+  background-color: var(--header-bg);
+  border-bottom: 1px solid var(--header-border);
   box-shadow:
     0 1px 3px 0 rgba(0, 0, 0, 0.1),
     0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  /* Reduced height for compactness */
+  /* Compact height */
   min-height: 56px;
   transition: all 0.3s ease-in-out;
 }
@@ -59,8 +91,8 @@
   box-shadow:
     0 1px 3px 0 rgba(0, 0, 0, 0.3),
     0 1px 2px 0 rgba(0, 0, 0, 0.2);
-  border-bottom: 1px solid var(--theme-border-soft);
-  background: linear-gradient(180deg, var(--theme-bg-elevated) 0%, var(--theme-bg-primary) 100%);
+  border-bottom: 1px solid var(--header-border);
+  background: linear-gradient(180deg, #1f2937 0%, #1a202c 100%);
 }
 
 .header-redesigned__container {
@@ -108,12 +140,12 @@
 /* AI_VALIDATION: BEM_ELEMENT - Button element with accessibility features */
 /* AI_CONTEXT: Example of accessible button styling with design tokens */
 .header-redesigned__menu-btn {
-  /* Reduced padding for compactness */
+  /* Compact but usable */
   padding: 6px;
   border-radius: 6px;
-  color: var(--theme-text-secondary);
+  color: var(--header-icon-color);
   background-color: transparent;
-  /* Smaller button size */
+  /* Compact size */
   min-width: 36px;
   min-height: 36px;
   transition: all 0.2s ease-in-out;
@@ -122,6 +154,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.header-redesigned__menu-btn:hover {
+  color: var(--header-icon-hover);
+  background-color: var(--header-button-hover-bg);
+}
+
+.header-redesigned__menu-btn:active {
+  background-color: var(--header-button-active-bg);
+  transform: translateY(0);
 }
 
 /* AI_VALIDATION: BEM_ELEMENT_STATES - Interactive states with design tokens */
@@ -166,10 +208,10 @@
 }
 
 .header-redesigned__title {
-  /* Smaller title for compact header */
+  /* Compact but readable */
   font-size: 1.125rem;
   font-weight: 700;
-  color: var(--theme-text-primary);
+  color: var(--header-text-primary);
   line-height: 1.2;
   letter-spacing: -0.025em;
   transition: color 0.2s ease-in-out;
