@@ -1,5 +1,6 @@
 import React, { useId } from 'react';
 import { Search, X } from 'lucide-react';
+import '../../styles/components/search-bar.css';
 
 interface SearchBarProps {
   query: string;

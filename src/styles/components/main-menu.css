@@ -1,5 +1,22 @@
 /* Main Menu Styles */
 
+/* CSS Variables for Dynamic Height Calculations */
+:root {
+  --grid-gap-mobile: 0.5rem;
+  --grid-gap-tablet: 0.75rem;
+  --grid-gap-desktop: 0.875rem;
+  --grid-padding-mobile: 0.5rem;
+  --grid-padding-tablet: 0.75rem;
+  --grid-padding-desktop: 0.875rem;
+  --grid-padding-large-desktop: 1rem;
+
+  /* Conservative heights for exactly 3 rows - no 4th row visible */
+  --grid-height-mobile: calc(85px * 3 + 0.5rem * 2 + 0.5rem * 2);
+  --grid-height-tablet: calc(105px * 3 + 0.75rem * 2 + 0.75rem * 2);
+  --grid-height-desktop: calc(125px * 3 + 0.875rem * 2 + 0.875rem * 2);
+  --grid-height-large-desktop: calc(125px * 3 + 0.875rem * 2 + 1rem * 2);
+}
+
 /* SVG Icon Inheritance Fix - Force white in dark mode */
 .main-menu svg {
   color: currentColor !important;
@@ -12,21 +29,63 @@
   stroke: white !important;
 }
 
-/* Menu Container */
+/* === MAIN MENU CONTAINER - COMPACT DESIGN === */
 .main-menu {
-  max-width: 72rem;
-  margin: 0.5rem auto;
-  background-color: var(--theme-bg-primary);
-  padding: 1rem 0.75rem 1.5rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  /* Container Sizing - Ultra Compact proportions */
+  max-width: 68rem;
+  margin: 0.25rem auto;
+
+  /* ENHANCED: Strong background differentiation */
+  background: linear-gradient(135deg,
+      var(--theme-bg-elevated) 0%,
+      var(--theme-bg-primary) 50%,
+      var(--theme-bg-elevated) 100%);
+
+  /* Subtle texture overlay for depth */
+  background-image:
+    radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(0, 0, 0, 0.02) 0%, transparent 50%);
+
+  /* Ultra Compact Padding System */
+  padding: 0.75rem;
+
+  /* Apple-style Border Radius */
+  border-radius: 1rem;
+
+  /* ENHANCED: More visible border */
+  border: 1.5px solid var(--theme-border-medium);
+
+  /* Apple-inspired Shadow System */
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    0 4px 12px rgba(0, 0, 0, 0.02);
+
+  /* Smooth Transitions */
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  /* Ensure proper stacking */
+  position: relative;
+  z-index: 1;
+  flex-direction: column;
+  align-items: center;
 }
 
-@media (min-width: 640px) {
-  .main-menu {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
+/* === CONTENT WRAPPER FOR PERFECT ALIGNMENT === */
+.main-menu>* {
+  /* Ensure all direct children have consistent width */
+  width: 100%;
+  max-width: 100%;
+}
+
+.main-menu:hover {
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.06),
+    0 8px 24px rgba(0, 0, 0, 0.04);
+
+  transform: translateY(-2px);
+
+  /* Subtle border enhancement on hover */
+  border-color: var(--theme-border-soft);
 }
 
 .main-menu__title {
@@ -37,108 +96,268 @@
   color: var(--theme-text-primary);
 }
 
-/* Search Section */
+/* === SEARCH SECTION - ULTRA COMPACT DESIGN === */
 .main-menu__search {
-  max-width: 24rem;
-  margin: 0 auto 1rem;
-}
-
-/* Grid Container - UX-First Approach: No Horizontal Scroll */
-.main-menu__grid {
-  background-color: var(--bg-subtle);
-  border-radius: 0.75rem;
-  border: 2px solid var(--theme-border-primary);
-  margin: 0 auto;
-  padding: 0.875rem;
+  /* Ultra-compact spacing */
   width: 100%;
   max-width: 100%;
+  margin: 0 0 0.5rem 0;
+  /* Maximum compactness */
+
+  /* Container Properties */
+  position: relative;
+
+  /* Apple-style Focus Enhancement - Compact */
+  padding: 0.125rem;
+  border-radius: 0.875rem;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  /* Perfect alignment with grid */
+  display: flex;
+  justify-content: center;
 }
 
+.main-menu__search:focus-within {
+  /* Subtle Apple-style focus enhancement */
+  background: linear-gradient(135deg,
+      rgba(59, 130, 246, 0.08) 0%,
+      rgba(147, 197, 253, 0.05) 50%,
+      rgba(219, 234, 254, 0.03) 100%);
+  padding: 0.125rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.2);
+}
+
+/* === GRID CONTAINER - ULTRA COMPACT DESIGN WITH VISUAL HIERARCHY === */
+.main-menu__grid {
+  /* Perfect alignment with search container */
+  margin: 0 auto;
+  width: 100%;
+
+  /* ENHANCED: Strong background differentiation */
+  background: linear-gradient(145deg,
+      var(--theme-bg-subtle) 0%,
+      var(--theme-bg-soft) 50%,
+      var(--theme-bg-elevated) 100%);
+
+  /* Apple-style Border Radius */
+  border-radius: 0.875rem;
+
+  /* ENHANCED: More visible border for clear separation */
+  border: 2px solid var(--theme-border-soft);
+
+  /* Dynamic Padding System */
+  padding: var(--grid-padding-mobile);
+
+  /* Apple-inspired Shadow System */
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.02);
+
+  /* Smooth Transitions */
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  /* Ensure no overflow */
+  overflow: hidden;
+
+  /* Perfect containment */
+  box-sizing: border-box;
+}
+
+.main-menu__grid:hover {
+  /* Apple-style subtle hover enhancement */
+  background: linear-gradient(145deg,
+      var(--theme-bg-elevated) 0%,
+      var(--theme-bg-primary) 50%,
+      var(--theme-bg-subtle) 100%);
+
+  /* Subtle gradient border effect - Apple-inspired */
+  border: 1px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 2px 6px rgba(0, 0, 0, 0.04);
+
+  transform: translateY(-1px);
+}
+
+.main-menu__grid:hover::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  background: linear-gradient(135deg,
+      rgba(59, 130, 246, 0.3) 0%,
+      rgba(147, 197, 253, 0.2) 25%,
+      rgba(219, 234, 254, 0.1) 50%,
+      rgba(147, 197, 253, 0.2) 75%,
+      rgba(59, 130, 246, 0.3) 100%);
+  border-radius: 0.875rem;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.main-menu__grid:hover::before {
+  opacity: 1;
+}
+
+/* === GRID CONTAINER INNER - DYNAMIC SPACING === */
 .main-menu__grid-container {
-  display: grid !important;
-  place-items: center !important;
-  gap: 0.625rem !important;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)) !important;
-  max-width: 100% !important;
-  width: 100% !important;
+  /* Perfect Grid System */
+  display: grid;
+  place-items: center;
+
+  /* Dynamic spacing using CSS variables */
+  gap: var(--grid-gap-mobile);
+
+  /* Responsive Grid Columns - Compact */
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+
+  /* Perfect Containment */
+  width: 100%;
+  max-width: 100%;
+
+  /* Ensure proper alignment */
+  margin: 0;
+  padding: 0;
 }
 
-/* UX-First Breakpoints: Based on Available Container Space */
-/* Mobile: 12px main padding + 14px grid padding = 52px total overhead */
-@media (max-width: 299px) {
-  .main-menu .main-menu__grid .main-menu__grid-container {
-    grid-template-columns: repeat(1, minmax(100px, 1fr)) !important;
-  }
-}
+/* === COMPACT APPLE RESPONSIVE BREAKPOINTS === */
 
-/* 2 cols: Conservative breakpoint to prevent cutting */
-@media (min-width: 300px) and (max-width: 409px) {
-  .main-menu .main-menu__grid .main-menu__grid-container {
-    grid-template-columns: repeat(2, minmax(100px, 1fr)) !important;
-  }
-}
-
-/* 3 cols: Conservative range to prevent cutting */
-@media (min-width: 410px) and (max-width: 719px) {
-  .main-menu .main-menu__grid .main-menu__grid-container {
-    grid-template-columns: repeat(3, minmax(100px, 1fr)) !important;
-  }
-}
-
-/* 4 cols: Conservative breakpoint to prevent horizontal scroll */
-/* Real calculation: 4×130px + 3×16px + 88px overhead = 656px + safety margin = 720px */
-@media (min-width: 720px) and (max-width: 899px) {
-  .main-menu .main-menu__grid .main-menu__grid-container {
-    grid-template-columns: repeat(4, minmax(130px, 1fr)) !important;
-  }
-}
-
-/* Desktop: 5 cols: 5×145px + 4×20px gap = 805px minimum */
-@media (min-width: 900px) {
-  .main-menu .main-menu__grid .main-menu__grid-container {
-    grid-template-columns: repeat(5, minmax(145px, 1fr)) !important;
-  }
-}
-
-/* Progressive Enhancement: Larger Screens Get More Space */
-@media (min-width: 720px) and (max-width: 899px) {
-  .main-menu__grid {
-    padding: 1.25rem;
-  }
-
+/* Mobile Portrait: Single column - Ultra Compact */
+@media (max-width: 374px) {
   .main-menu__grid-container {
-    gap: 1rem;
+    grid-template-columns: repeat(1, minmax(120px, 1fr));
+    gap: var(--grid-gap-mobile);
   }
 }
 
+/* Mobile Landscape: Two columns - Ultra Compact */
+@media (min-width: 375px) and (max-width: 639px) {
+  .main-menu__grid-container {
+    grid-template-columns: repeat(2, minmax(120px, 1fr));
+    gap: var(--grid-gap-mobile);
+  }
+}
+
+/* Tablet Portrait: Three columns - Dynamic Spacing */
+@media (min-width: 640px) and (max-width: 899px) {
+  .main-menu__grid-container {
+    grid-template-columns: repeat(3, minmax(130px, 1fr));
+    gap: var(--grid-gap-tablet);
+  }
+}
+
+/* Desktop Grid Spacing */
 @media (min-width: 900px) {
+  .main-menu__grid-container {
+    gap: var(--grid-gap-desktop);
+  }
+}
+
+/* Tablet Landscape & Small Desktop: Four columns - Ultra Compact */
+@media (min-width: 900px) and (max-width: 1199px) {
+  .main-menu__grid-container {
+    grid-template-columns: repeat(4, minmax(140px, 1fr));
+    gap: var(--grid-gap-desktop);
+  }
+}
+
+/* Large Desktop: Five columns - Ultra Compact */
+@media (min-width: 1200px) {
+  .main-menu__grid-container {
+    grid-template-columns: repeat(5, minmax(150px, 1fr));
+    gap: var(--grid-gap-desktop);
+  }
+}
+
+/* === COMPACT PROGRESSIVE ENHANCEMENT === */
+
+/* Tablet Enhancement - Dynamic Sizing */
+@media (min-width: 640px) and (max-width: 719px) {
   .main-menu__grid {
-    padding: 1.5rem;
-    max-width: 833px;
-    max-height: 425px;
-    margin: 0 auto;
+    padding: var(--grid-padding-tablet);
+    max-height: var(--grid-height-mobile);
     overflow-y: auto;
-  }
-
-  .main-menu__grid-container {
-    gap: 1.25rem;
+    border-radius: 0.875rem;
   }
 }
 
-/* No Results */
+@media (min-width: 720px) and (max-width: 899px) {
+  .main-menu__grid {
+    padding: var(--grid-padding-tablet);
+    max-height: var(--grid-height-tablet);
+    overflow-y: auto;
+    border-radius: 0.875rem;
+  }
+}
+
+/* Desktop Enhancement - Dynamic Sizing */
+@media (min-width: 900px) {
+  .main-menu__grid {
+    padding: var(--grid-padding-desktop);
+    max-height: var(--grid-height-desktop);
+    overflow-y: auto;
+    border-radius: 0.875rem;
+
+    /* Apple-style scrollbar - Compact */
+    scrollbar-width: thin;
+    scrollbar-color: var(--theme-border-medium) transparent;
+  }
+
+  .main-menu__grid::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .main-menu__grid::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .main-menu__grid::-webkit-scrollbar-thumb {
+    background-color: var(--theme-border-medium);
+    border-radius: 2px;
+  }
+
+  .main-menu__grid::-webkit-scrollbar-thumb:hover {
+    background-color: var(--theme-border-soft);
+  }
+}
+
+/* Large Desktop Enhancement - Dynamic Sizing */
+@media (min-width: 1200px) {
+  .main-menu__grid {
+    max-height: var(--grid-height-large-desktop);
+    padding: var(--grid-padding-large-desktop);
+  }
+}
+
+/* No Results - UX Enhanced */
 .main-menu__no-results {
   text-align: center;
-  padding: 2rem 0;
+  padding: 3rem 2rem;
+  background-color: var(--theme-bg-subtle);
+  border: 2px dashed var(--theme-border-medium);
+  border-radius: 0.75rem;
+  margin: 1rem 0;
 }
 
 .main-menu__no-results-text {
   color: var(--theme-text-primary);
+  font-size: 1.125rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
 }
 
 .main-menu__no-results-hint {
   font-size: 0.875rem;
   color: var(--theme-text-secondary);
   margin-top: 0.5rem;
+  line-height: 1.5;
 }
 
 .main-menu__results-count {
@@ -170,64 +389,367 @@
   }
 }
 
-/* Error State */
+/* Error State - UX Enhanced */
 .main-menu__error {
   text-align: center;
-  padding: 2rem 0;
+  padding: 3rem 2rem;
+  background-color: var(--bg-error-subtle);
+  border: 2px solid var(--border-error);
+  border-radius: 0.75rem;
+  margin: 1rem 0;
 }
 
 .main-menu__error-text {
   color: var(--error);
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.125rem;
+  font-weight: 500;
 }
 
 .main-menu__error-btn {
-  background-color: var(--primary-blue);
+  background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
   color: var(--text-on-colored);
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1.5rem;
   border-radius: 0.5rem;
   border: none;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .main-menu__error-btn:hover {
-  background-color: var(--primary-blue-dark, #2563eb);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* Mobile-First Responsive Design */
-@media (max-width: 719px) {
+.main-menu__error-btn:active {
+  transform: translateY(0);
+}
+
+/* === COMPACT MOBILE-FIRST RESPONSIVE === */
+
+/* Mobile Optimization - Ultra Compact */
+@media (max-width: 639px) {
   .main-menu {
-    margin: 0.5rem;
-    padding: 0.75rem 0.75rem 1rem;
+    margin: 0.25rem;
+    padding: 0.5rem;
+    border-radius: 0.75rem;
   }
 
   .main-menu__search {
-    margin-bottom: 1rem;
+    margin-bottom: 0.375rem;
+    /* Maximum compact spacing */
+    max-width: 100%;
   }
 
   .main-menu__grid {
+    padding: var(--grid-padding-mobile);
+    max-height: var(--grid-height-mobile);
     overflow-y: auto;
-    max-height: 295px;
-    padding: 0.875rem;
+    border-radius: 0.625rem;
+
+    /* Mobile scrollbar styling - Compact */
+    scrollbar-width: thin;
+    scrollbar-color: var(--theme-border-medium) transparent;
   }
 
-  .main-menu__grid-container {
-    gap: 0.625rem;
+  /* Enhanced touch targets for accessibility */
+  .main-menu__grid-container>* {
+    min-height: 44px;
+    min-width: 44px;
   }
 }
 
-@media (min-width: 720px) and (max-width: 899px) {
+/* Small Mobile Optimization - Dynamic Sizing */
+@media (max-width: 374px) {
   .main-menu {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    margin: 0.125rem;
+    padding: 0.375rem;
+  }
+
+  .main-menu__search {
+    margin-bottom: 0.25rem;
+    /* Maximum compactness */
   }
 
   .main-menu__grid {
-    overflow-y: auto;
-    max-height: 365px;
+    padding: 0.375rem;
+    max-height: var(--grid-height-mobile);
   }
 }
 
 /* Dark Mode - Handled by theme context variables */
 /* No explicit dark mode rules needed - design tokens handle theme switching */
+
+/* === UX ENHANCEMENTS: ACCESSIBILITY & VISUAL HIERARCHY === */
+
+/* Focus Management - Enhanced keyboard navigation */
+.main-menu__grid-container>*:focus-visible {
+  outline: 3px solid var(--theme-primary-blue);
+  outline-offset: 2px;
+  border-radius: 0.5rem;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .main-menu {
+    border: 2px solid var(--theme-text-primary);
+  }
+
+  .main-menu__grid {
+    border: 3px solid var(--theme-border-medium);
+  }
+
+  .main-menu__no-results,
+  .main-menu__error {
+    border: 3px solid var(--theme-text-primary);
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+
+  .main-menu,
+  .main-menu__grid,
+  .main-menu__search::before,
+  .main-menu__error-btn {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .app-router__loader::before {
+    animation: none !important;
+  }
+}
+
+/* Enhanced Visual Feedback */
+.main-menu__results-count {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--theme-text-primary);
+  padding: 0.5rem 1rem;
+  background-color: var(--theme-bg-subtle);
+  border-radius: 0.5rem;
+  border: 1px solid var(--theme-border-soft);
+  display: inline-block;
+}
+
+/* Loading State Enhancement */
+.main-menu__loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  background-color: var(--theme-bg-subtle);
+  border-radius: 0.75rem;
+  margin: 1rem 0;
+}
+
+.main-menu__loading-spinner {
+  animation: spin 1s linear infinite;
+  border-radius: 50%;
+  height: 2.5rem;
+  width: 2.5rem;
+  border: 3px solid var(--theme-border-soft);
+  border-top: 3px solid var(--primary-blue);
+}
+
+/* === DARK MODE - APPLE DESIGN ENHANCEMENT === */
+html.dark .main-menu {
+  /* ENHANCED: Stronger dark mode shadows for better separation */
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.6),
+    0 12px 48px rgba(0, 0, 0, 0.4),
+    0 24px 96px rgba(0, 0, 0, 0.2);
+
+  /* Enhanced dark mode border */
+  border-color: var(--theme-border-soft);
+
+  /* Enhanced dark mode background */
+  background: linear-gradient(135deg,
+      var(--theme-bg-elevated) 0%,
+      var(--theme-bg-primary) 30%,
+      var(--theme-bg-subtle) 70%,
+      var(--theme-bg-elevated) 100%);
+}
+
+html.dark .main-menu:hover {
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.5),
+    0 12px 48px rgba(0, 0, 0, 0.3);
+
+  transform: translateY(-3px);
+
+  /* Enhanced border on hover */
+  border-color: var(--theme-primary-blue-light);
+}
+
+html.dark .main-menu__grid {
+  /* ENHANCED: Strong dark mode grid differentiation */
+  background: linear-gradient(145deg,
+      var(--theme-bg-soft) 0%,
+      var(--theme-bg-elevated) 50%,
+      var(--theme-bg-subtle) 100%);
+
+  /* Enhanced dark mode border */
+  border-color: var(--theme-border-medium);
+
+  /* Stronger dark mode shadows */
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.08),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2),
+    0 4px 16px rgba(0, 0, 0, 0.4),
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 16px 64px rgba(0, 0, 0, 0.2);
+
+  border-color: var(--theme-border-medium);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+html.dark .main-menu__grid:hover {
+  /* Apple-style subtle dark mode hover */
+  background: linear-gradient(145deg,
+      var(--theme-bg-elevated) 0%,
+      var(--theme-bg-primary) 50%,
+      var(--theme-bg-soft) 100%);
+
+  /* Subtle gradient border for dark mode */
+  border: 1px solid transparent;
+  background-clip: padding-box;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 2px 6px rgba(0, 0, 0, 0.4);
+
+  transform: translateY(-1px);
+}
+
+html.dark .main-menu__grid:hover::before {
+  background: linear-gradient(135deg,
+      rgba(59, 130, 246, 0.4) 0%,
+      rgba(147, 197, 253, 0.3) 25%,
+      rgba(219, 234, 254, 0.15) 50%,
+      rgba(147, 197, 253, 0.3) 75%,
+      rgba(59, 130, 246, 0.4) 100%);
+}
+
+/* Dark mode scrollbar enhancement */
+html.dark .main-menu__grid::-webkit-scrollbar-thumb {
+  background-color: var(--theme-border-soft);
+}
+
+html.dark .main-menu__grid::-webkit-scrollbar-thumb:hover {
+  background-color: var(--theme-border-medium);
+}
+
+/* Print Styles */
+@media print {
+
+  .main-menu__search,
+  .main-menu__error-btn {
+    display: none;
+  }
+
+  .main-menu {
+    box-shadow: none;
+    border: 1px solid #000;
+  }
+}
+
+/*
+ === APPLE DESIGN: PERFECT CONTAINER ALIGNMENT SYSTEM === */
+
+/* Ensure all main-menu children are perfectly aligned */
+.main-menu__search,
+.main-menu__grid,
+.main-menu__no-results,
+.main-menu__error,
+.main-menu__results-count {
+  /* Perfect alignment system */
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+/* Search and Grid perfect width matching */
+.main-menu__search {
+  /* Match the visual width of the grid container */
+  max-width: 100%;
+}
+
+.main-menu__grid {
+  /* Ensure grid never exceeds container */
+  max-width: 100%;
+}
+
+/* Results count alignment */
+.main-menu__results-count {
+  /* Center align with other elements */
+  width: auto;
+  max-width: 32rem;
+}
+
+/* No results and error state alignment */
+.main-menu__no-results,
+.main-menu__error {
+  /* Match search container width for consistency */
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* === RESPONSIVE ALIGNMENT FIXES === */
+
+/* Mobile: Ensure perfect alignment */
+@media (max-width: 639px) {
+
+  .main-menu__search,
+  .main-menu__grid {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
+
+  .main-menu__search .search {
+    max-width: 100%;
+  }
+}
+
+/* Tablet: Maintain alignment */
+@media (min-width: 640px) and (max-width: 899px) {
+  .main-menu__search .search {
+    max-width: 28rem;
+  }
+}
+
+/* Desktop: Perfect alignment */
+@media (min-width: 900px) {
+  .main-menu__search .search {
+    max-width: 32rem;
+  }
+}
+
+/* === VISUAL DEBUGGING (Remove in production) === */
+/* Uncomment these rules to visualize container alignment */
+/*
+.main-menu {
+  outline: 2px solid red;
+}
+
+.main-menu__search {
+  outline: 2px solid blue;
+}
+
+.main-menu__grid {
+  outline: 2px solid green;
+}
+
+.search {
+  outline: 2px solid orange;
+}
+*/

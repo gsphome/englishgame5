@@ -306,12 +306,55 @@ a svg,
 }
 
 /* Layout */
+/* === LAYOUT CONTAINER - UX OPTIMIZED === */
 .layout-container {
-  @apply min-h-screen;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--theme-bg-primary);
+  position: relative;
 }
 
+/* Smooth theme transitions */
+.layout-container {
+  transition: background-color 0.2s ease;
+}
+
+/* Ensure proper stacking context */
+.layout-container > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* === LAYOUT MAIN - ULTRA COMPACT DESIGN === */
 .layout-main {
-  @apply px-3 sm:px-6;
+  padding: 0.25rem 0.5rem;
+  max-width: 100vw;
+  overflow-x: hidden;
+  min-height: calc(100vh - 64px); /* Account for header height */
+  
+  /* ENHANCED: Subtle background pattern for better contrast */
+  background: 
+    radial-gradient(circle at 20% 20%, var(--theme-bg-subtle) 0%, transparent 40%),
+    radial-gradient(circle at 80% 80%, var(--theme-bg-subtle) 0%, transparent 40%),
+    var(--theme-bg-primary);
+  
+  /* Subtle texture for depth */
+  background-attachment: fixed;
+}
+
+@media (min-width: 640px) {
+  .layout-main {
+    padding: 0.5rem 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .layout-main {
+    padding: 0.75rem 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
 }
 
 /* Header - Legacy (mantener para compatibilidad) */
@@ -909,7 +952,7 @@ textarea:focus-visible,
 
   .menu__grid {
     @apply max-w-sm overflow-y-auto;
-    max-height: 330px; /* Reducido 10px */
+    /* max-height removed - using BEM system in main-menu.css */
   }
 
   .header__content {
@@ -920,16 +963,11 @@ textarea:focus-visible,
 @media (min-width: 641px) {
   .menu__grid {
     @apply overflow-y-auto;
-    max-height: 440px; /* Agregado 10px más para modo web */
+    /* max-height removed - using BEM system in main-menu.css */
   }
 }
 
-/* Ajuste específico para 2-3 columnas que se ven cortadas */
-@media (min-width: 260px) and (max-width: 639px) {
-  .menu__grid {
-    max-height: 330px; /* Aumentado 2px más para 3er botón completo */
-  }
-}
+/* Legacy grid styles - max-height removed to prevent conflicts with BEM system */
 
 /* Dark Mode Styles */
 .dark .header {
@@ -1328,4 +1366,15 @@ textarea:focus-visible,
 
 .flashcard-nav-btn--next {
   /* Next button specific styles if needed */
+}
+/* === LAYOUT MAIN DARK MODE ENHANCEMENT === */
+html.dark .layout-main {
+  /* Enhanced dark mode background with better contrast */
+  background: 
+    radial-gradient(circle at 25% 25%, var(--theme-bg-subtle) 0%, transparent 35%),
+    radial-gradient(circle at 75% 75%, var(--theme-bg-elevated) 0%, transparent 35%),
+    linear-gradient(135deg, var(--theme-bg-primary) 0%, var(--theme-bg-subtle) 100%);
+  
+  /* Enhanced texture for dark mode */
+  background-attachment: fixed;
 }
