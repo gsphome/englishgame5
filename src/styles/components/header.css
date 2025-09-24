@@ -1,397 +1,133 @@
-/* Header Component Styles */
+/* Header Component Styles - SIMPLIFIED ARCHITECTURE */
 
-/* Header-specific CSS Variables with High Priority */
-
-/* Enhanced SVG Icon System */
-.header-redesigned svg {
-  color: var(--header-icon-color);
-  stroke: var(--header-icon-color);
-  fill: none;
-  stroke-width: 1.5;
-  transition: all 0.2s ease-in-out;
+/* === HEADER VARIABLES === */
+:root {
+  --header-bg: #ffffff;
+  --header-border: #e5e7eb;
+  --header-text-primary: #111827;
+  --header-text-secondary: #6b7280;
+  --header-icon-color: #374151;
+  --header-icon-hover: #111827;
+  --header-button-hover-bg: #f3f4f6;
+  --header-button-active-bg: #e5e7eb;
 }
 
-/* Icon Hover States for Better UX */
-.header-redesigned__menu-btn:hover svg,
-.header-redesigned__user-btn:hover svg,
-.header-redesigned__login-btn:hover svg,
-.header-redesigned__control-btn:hover svg {
-  color: var(--header-icon-hover);
-  stroke: var(--header-icon-hover);
-  transform: scale(1.05);
+.dark {
+  --header-bg: #1f2937;
+  --header-border: #4b5563;
+  --header-text-primary: #ffffff;
+  --header-text-secondary: #e5e7eb;
+  --header-icon-color: #e5e7eb;
+  --header-icon-hover: #ffffff;
+  --header-button-hover-bg: #374151;
+  --header-button-active-bg: #4b5563;
 }
 
-/* Side Menu Icons */
-.header-side-menu__icon {
-  color: var(--header-icon-color);
-  stroke: var(--header-icon-color);
-  stroke-width: 1.5;
-  transition: all 0.2s ease-in-out;
-}
-
-.header-side-menu__item:hover .header-side-menu__icon {
-  color: var(--header-icon-hover);
-  stroke: var(--header-icon-hover);
-  transform: scale(1.1);
-}
-
-/* Header Container - Compact Design with Proper Variables */
+/* === HEADER CONTAINER === */
 .header-redesigned {
   background-color: var(--header-bg);
   border-bottom: 1px solid var(--header-border);
-  box-shadow:
-    0 1px 3px 0 rgba(0, 0, 0, 0.1),
-    0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  /* Compact height */
   min-height: 56px;
-  transition: all 0.3s ease-in-out;
-}
-
-/* Enhanced shadow and border for dark mode */
-.dark .header-redesigned {
-  box-shadow:
-    0 1px 3px 0 rgba(0, 0, 0, 0.3),
-    0 1px 2px 0 rgba(0, 0, 0, 0.2);
-  border-bottom: 1px solid var(--header-border);
-  background: linear-gradient(180deg, #1f2937 0%, #1a202c 100%);
 }
 
 .header-redesigned__container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* Reduced padding for compactness */
   padding: 0.5rem;
   max-width: 72rem;
-  margin-left: auto;
-  margin-right: auto;
-  /* Reduced height to match header */
+  margin: 0 auto;
   min-height: 56px;
 }
 
-@media (min-width: 640px) {
-  .header-redesigned__container {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-}
-
-/* Learning mode - compact spacing */
-.header-redesigned__container--learning {
-  padding: 0.5rem;
-}
-
-@media (min-width: 640px) {
-  .header-redesigned__container--learning {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-}
-
-/* Left Section - Compact Design */
+/* === HEADER SECTIONS === */
 .header-redesigned__left {
   display: flex;
   align-items: center;
-  /* Reduced gap for compactness */
   gap: 0.5rem;
-  /* Reduced height */
-  min-height: 36px;
 }
 
-/* AI_VALIDATION: BEM_ELEMENT - Button element with accessibility features */
-/* AI_CONTEXT: Example of accessible button styling with design tokens */
-.header-redesigned__menu-btn {
-  /* Compact but usable */
-  padding: 6px;
-  border-radius: 6px;
-  color: var(--header-icon-color);
-  background-color: transparent;
-  /* Compact size */
-  min-width: 36px;
-  min-height: 36px;
-  transition: all 0.2s ease-in-out;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.header-redesigned__menu-btn:hover {
-  color: var(--header-icon-hover);
-  background-color: var(--header-button-hover-bg);
-}
-
-.header-redesigned__menu-btn:active {
-  background-color: var(--header-button-active-bg);
-  transform: translateY(0);
-}
-
-/* AI_VALIDATION: BEM_ELEMENT_STATES - Interactive states with design tokens */
-/* AI_CONTEXT: Example of proper hover, active, and focus state styling */
-.header-redesigned__menu-btn:hover {
-  color: var(--theme-text-primary);
-  background-color: var(--theme-bg-subtle);
-}
-
-.header-redesigned__menu-btn:active {
-  background-color: var(--theme-bg-soft);
-  transform: translateY(0);
-}
-
-.header-redesigned__menu-btn:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px var(--theme-primary-blue);
-}
-
-.header-redesigned__brand {
-  display: flex;
-  align-items: center;
-  /* Reduced gap for compactness */
-  gap: 0.375rem;
-  /* Reduced height */
-  min-height: 36px;
-}
-
-.header-redesigned__logo {
-  /* Smaller logo for compact header */
-  font-size: 1.5rem;
-  line-height: 1;
-  padding: 4px;
-  border-radius: 50%;
-  transition: all 0.2s ease-in-out;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* Smaller logo size */
-  width: 32px;
-  height: 32px;
-}
-
-.header-redesigned__title {
-  /* Compact but readable */
-  font-size: 1.125rem;
-  font-weight: 700;
-  color: var(--header-text-primary);
-  line-height: 1.2;
-  letter-spacing: -0.025em;
-  transition: color 0.2s ease-in-out;
-}
-
-/* Center Section - Compact Alignment */
 .header-redesigned__center {
   flex: 1;
   display: flex;
   align-items: center;
-  /* Reduced gap */
-  gap: 0.5rem;
   justify-content: center;
-  /* Reduced height */
-  min-height: 36px;
 }
 
-/* Development Mode Indicator */
-.header-redesigned__dev-indicator {
-  display: flex;
-  align-items: center;
-  gap: 0.375rem;
-  padding: 0.25rem 0.5rem;
-  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
-  color: white;
-  border-radius: 0.375rem;
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  box-shadow: 0 2px 4px rgba(220, 38, 38, 0.3);
-  animation: devPulse 2s infinite;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.dark .header-redesigned__dev-indicator {
-  background: linear-gradient(135deg, var(--error) 0%, #ef4444 100%);
-  color: var(--theme-bg-primary);
-  box-shadow: 0 2px 4px rgba(248, 113, 113, 0.4);
-}
-
-.header-redesigned__dev-icon {
-  font-size: 0.875rem;
-  line-height: 1;
-}
-
-.header-redesigned__dev-text {
-  font-size: 0.6875rem;
-  font-weight: 800;
-  line-height: 1;
-}
-
-@keyframes devPulse {
-  0%,
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.8;
-    transform: scale(1.02);
-  }
-}
-
-/* Right Section - Compact Design */
 .header-redesigned__right {
   display: flex;
   align-items: center;
-  /* Reduced gap */
   gap: 0.375rem;
-  /* Reduced height */
-  min-height: 36px;
 }
 
-.header-redesigned__user-section {
-  display: flex;
-  align-items: center;
-}
-
-.header-redesigned__user-btn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px;
-  border-radius: 6px;
-  color: var(--theme-text-secondary);
-  background-color: transparent;
-  min-height: 40px;
-  transition: all 0.2s ease-in-out;
-  border: none;
-  cursor: pointer;
-}
-
-.header-redesigned__user-btn:hover {
-  color: var(--theme-text-primary);
-  background-color: var(--theme-bg-subtle);
-  transform: translateY(-1px);
-}
-
-.header-redesigned__user-btn:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px var(--theme-primary-blue);
-}
-
-.header-redesigned__login-btn {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  padding: 8px;
-  border-radius: 6px;
-  color: var(--theme-text-secondary);
-  background-color: transparent;
-  min-height: 40px;
-  transition: all 0.2s ease-in-out;
-  border: none;
-  cursor: pointer;
-}
-
-.header-redesigned__login-btn:hover {
-  color: var(--theme-text-primary);
-  background-color: var(--theme-bg-subtle);
-  transform: translateY(-1px);
-}
-
-.header-redesigned__login-btn:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px var(--theme-primary-blue);
-}
-
-/* Avatar styles removed - now using consistent icon-only approach */
-
-.header-redesigned__user-info {
-  display: none;
-}
-
-@media (min-width: 640px) {
-  .header-redesigned__user-info {
-    display: block;
-  }
-}
-
-.header-redesigned__username {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--theme-text-primary);
-  transition: color 0.2s ease-in-out;
-}
-
-/* Quick Actions - Simplified Control Panel */
-.header-redesigned__quick-actions {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-}
-
-/* Button Hierarchy System - Using Design Tokens */
-.header-redesigned__menu-btn--primary,
-.header-redesigned__user-btn--primary,
-.header-redesigned__login-btn--primary,
-.header-redesigned__control-btn--primary {
-  background-color: var(--theme-bg-subtle);
-  border: 1px solid var(--theme-border-soft);
-  border-radius: 8px;
-}
-
-.header-redesigned__menu-btn--primary:hover,
-.header-redesigned__user-btn--primary:hover,
-.header-redesigned__login-btn--primary:hover,
-.header-redesigned__control-btn--primary:hover {
-  background-color: var(--theme-bg-soft);
-  border-color: var(--theme-text-primary);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Deprecated - using --primary for consistency */
-
+/* === BUTTONS === */
+.header-redesigned__menu-btn,
+.header-redesigned__user-btn,
+.header-redesigned__login-btn,
 .header-redesigned__control-btn {
   padding: 8px;
   border-radius: 6px;
-  color: var(--theme-text-secondary);
+  color: var(--header-icon-color);
   background-color: transparent;
-  min-width: 40px;
-  min-height: 40px;
-  transition: all 0.2s ease-in-out;
   border: none;
   cursor: pointer;
+  min-width: 40px;
+  min-height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.2s ease;
 }
 
+.header-redesigned__menu-btn:hover,
+.header-redesigned__user-btn:hover,
+.header-redesigned__login-btn:hover,
 .header-redesigned__control-btn:hover {
-  color: var(--theme-text-primary);
-  background-color: var(--theme-bg-subtle);
-  transform: translateY(-1px);
+  color: var(--header-icon-hover);
+  background-color: var(--header-button-hover-bg);
 }
 
-.header-redesigned__control-btn:active {
-  background-color: var(--theme-bg-soft);
-  transform: translateY(0);
+/* === ICONS === */
+.header-redesigned svg {
+  color: currentColor;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.5;
+  width: 20px;
+  height: 20px;
 }
 
-.header-redesigned__control-btn:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px var(--theme-primary-blue);
+/* === BRAND === */
+.header-redesigned__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
 }
 
-/* Side Menu Styles */
+.header-redesigned__logo {
+  font-size: 1.5rem;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.header-redesigned__title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--header-text-primary);
+}
+
+/* === SIDE MENU === */
 .header-side-menu-overlay {
   position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  inset: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 40;
 }
 
-/* Enhanced Hamburger Menu with Design Tokens */
 .header-side-menu {
   position: fixed;
   left: 0;
@@ -399,68 +135,28 @@
   height: 100vh;
   width: 280px;
   z-index: 50;
-  background-color: var(--theme-bg-elevated);
-  border-right: 1px solid var(--theme-border-soft);
+  background-color: var(--header-bg);
+  border-right: 1px solid var(--header-border);
   box-shadow: 4px 0 25px rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  backdrop-filter: blur(8px);
 }
 
-/* Enhanced shadow for dark mode */
-.dark .header-side-menu {
-  box-shadow: 4px 0 25px rgba(0, 0, 0, 0.5);
-}
-
-/* Enhanced Menu Header */
 .header-side-menu__header {
   padding: 20px;
-  background-color: var(--theme-bg-subtle);
-  border-bottom: 1px solid var(--theme-border-soft);
-  backdrop-filter: blur(8px);
+  background-color: var(--header-bg);
+  border-bottom: 1px solid var(--header-border);
 }
 
-/* Enhanced Menu Title Typography */
 .header-side-menu__title {
   font-size: 1.25rem;
   font-weight: 700;
-  color: var(--theme-text-primary);
-  letter-spacing: -0.025em;
-  margin: 0 0 4px 0;
-}
-
-.header-side-menu__subtitle {
-  font-size: 0.875rem;
-  font-weight: 400;
-  color: var(--theme-text-secondary);
+  color: var(--header-text-primary);
   margin: 0;
-  opacity: 0.8;
 }
 
-/* Menu Content */
 .header-side-menu__content {
   padding: 1rem;
 }
 
-.header-side-menu__content > * + * {
-  margin-top: 1.5rem;
-}
-
-/* Menu Sections */
-.header-side-menu__section > * + * {
-  margin-top: 0.5rem;
-}
-
-.header-side-menu__section-title {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--theme-text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin: 0 0 8px 16px;
-  opacity: 0.7;
-}
-
-/* Enhanced Menu Items with Better UX */
 .header-side-menu__item {
   width: 100%;
   text-align: left;
@@ -470,579 +166,43 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  color: var(--theme-text-secondary);
+  color: var(--header-text-secondary);
   background-color: transparent;
   border: none;
   cursor: pointer;
-  font-weight: 500;
+  transition: all 0.2s ease;
 }
 
 .header-side-menu__item:hover {
-  background-color: var(--theme-bg-subtle);
-  color: var(--theme-text-primary);
-  transform: translateX(4px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: var(--header-button-hover-bg);
+  color: var(--header-text-primary);
 }
 
-.header-side-menu__item:active {
-  background-color: var(--theme-bg-soft);
-  transform: translateX(2px);
+.header-side-menu__icon {
+  color: currentColor;
+  stroke: currentColor;
+  width: 20px;
+  height: 20px;
 }
 
-.header-side-menu__item:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px var(--theme-primary-blue);
-}
-
-/* Enhanced shadow for dark mode menu items */
-.dark .header-side-menu__item:hover {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-}
-
-/* Enhanced Menu Icons and Text */
-.header-side-menu__text {
-  font-weight: 500;
-  font-size: 0.875rem;
-  color: inherit;
-  transition: color 0.2s ease-in-out;
-}
-
-/* Enhanced Responsive Design */
-@media (max-width: 719px) {
+/* === RESPONSIVE === */
+@media (max-width: 640px) {
   .header-redesigned__container {
     padding: 0.5rem 0.75rem;
-    min-height: 56px;
   }
-
-  .header-redesigned__container--learning {
-    padding: 0.5rem 0.75rem;
-  }
-
-  .header-redesigned__left {
-    gap: 0.5rem;
-    min-height: 36px;
-  }
-
-  /* Progressive disclosure on mobile */
+  
   .header-redesigned__title {
     display: none;
   }
-
-  .header-redesigned__username {
-    display: none;
-  }
-
-  /* Simplified quick actions on mobile */
-  .header-redesigned__quick-actions span {
-    display: none;
-  }
-
-  .header-redesigned__center,
-  .header-redesigned__right {
-    min-height: 36px;
-  }
-
-  .header-redesigned__menu-btn,
-  .header-redesigned__user-btn,
-  .header-redesigned__login-btn,
-  .header-redesigned__control-btn {
-    min-width: 36px;
-    min-height: 36px;
-    padding: 6px;
-  }
-
-  /* Enhanced side menu on mobile */
+  
   .header-side-menu {
     width: 100%;
     max-width: 320px;
   }
 }
 
-/* Extra small screens - make score display smaller but balanced */
 @media (max-width: 480px) {
-  .header-redesigned__center {
-    flex: 1;
-    max-width: 160px;
-    min-width: 140px;
-  }
-
-  .header-redesigned__container {
-    min-height: 52px;
-    padding: 0.5rem;
-  }
-
-  .header-redesigned__left,
-  .header-redesigned__right {
-    flex-shrink: 0;
-  }
-
-  .header-redesigned__left {
-    gap: 0.25rem;
-  }
-
-  .header-redesigned__right {
-    gap: 0.25rem;
-  }
-}
-
-/* Ultra small screens - hide app logo */
-@media (max-width: 400px) {
   .header-redesigned__logo {
     display: none;
   }
-
-  .header-redesigned__left {
-    gap: 0.25rem;
-  }
-}
-
-/* Extremely small screens - minimal score display */
-@media (max-width: 300px) {
-  .header-redesigned__center {
-    max-width: 100px;
-    min-width: 80px;
-  }
-
-  .header-redesigned__container {
-    padding: 0.25rem;
-    min-height: 44px;
-  }
-}
-
-/* Enhanced Accessibility and High Contrast Support */
-/* High contrast support is now handled by design tokens in color-palette.css */
-
-/* Enhanced Focus Indicators for Better Accessibility */
-.header-redesigned button:focus-visible {
-  outline: 2px solid var(--theme-primary-blue);
-  outline-offset: 2px;
-  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
-}
-
-/* Screen Reader Only Text */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
-/* Button Hierarchy Styles */
-.header-redesigned__menu-btn--tertiary {
-  opacity: 0.7;
-  transition: all 0.2s ease-in-out;
-}
-
-.header-redesigned__menu-btn--tertiary:hover {
-  opacity: 1;
-}
-
-/* Improved Animation Performance */
-.header-redesigned *,
-.header-side-menu * {
-  will-change: auto;
-}
-
-.header-redesigned button:hover,
-.header-side-menu__item:hover {
-  will-change: transform, background-color;
-}
-
-/* Reduced Motion Support */
-@media (prefers-reduced-motion: reduce) {
-  .header-redesigned *,
-  .header-side-menu * {
-    transition: none !important;
-    transform: none !important;
-    animation: none !important;
-  }
-}
-
-/* Enhanced Logo with Better Dark Mode Contrast */
-.dark .header-redesigned__logo {
-  background: linear-gradient(135deg, var(--theme-bg-subtle) 0%, var(--theme-bg-soft) 100%);
-  box-shadow:
-    0 2px 8px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* Hover effect for logo in dark mode */
-.dark .header-redesigned__brand:hover .header-redesigned__logo {
-  background: linear-gradient(135deg, var(--theme-bg-soft) 0%, var(--theme-border-medium) 100%);
-  transform: scale(1.05);
-  box-shadow:
-    0 4px 12px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
-}
-
-/* Light mode - keep it clean */
-.header-redesigned__logo {
-  background: transparent;
-}
-
-.header-redesigned__brand:hover .header-redesigned__logo {
-  transform: scale(1.05);
-}
-
-/* Better Overlay for Side Menu */
-.header-side-menu-overlay {
-  position: fixed;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 40;
-  backdrop-filter: blur(4px);
-  transition: opacity 0.3s ease-in-out;
-}
-
-.dark .header-side-menu-overlay {
-  background-color: rgba(0, 0, 0, 0.7);
-}
-
-/*
- Logo Animation and Accessibility Enhancements */
-.header-redesigned__brand {
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-}
-
-.header-redesigned__brand:focus {
-  outline: none;
-}
-
-.header-redesigned__brand:focus .header-redesigned__logo {
-  box-shadow: 0 0 0 2px var(--theme-primary-blue);
-}
-
-/* Alternative high contrast version for accessibility */
-@media (prefers-contrast: high) {
-  .dark .header-redesigned__logo {
-    background: var(--theme-bg-primary);
-    border: 2px solid var(--theme-text-primary);
-    box-shadow: none;
-  }
-
-  .dark .header-redesigned__brand:hover .header-redesigned__logo {
-    background: var(--theme-bg-subtle);
-    border: 2px solid var(--theme-text-primary);
-  }
-}
-
-/* Reduced motion support for logo */
-@media (prefers-reduced-motion: reduce) {
-  .header-redesigned__logo,
-  .header-redesigned__brand:hover .header-redesigned__logo {
-    transform: none !important;
-    transition: none !important;
-  }
-}
-
-/* Enh
-anced Button Definitions for Dark Mode */
-.dark .header-redesigned__menu-btn,
-.dark .header-redesigned__user-btn,
-.dark .header-redesigned__login-btn,
-.dark .header-redesigned__control-btn {
-  border: 1px solid transparent;
-  transition: all 0.2s ease-in-out;
-}
-
-.dark .header-redesigned__menu-btn:hover,
-.dark .header-redesigned__user-btn:hover,
-.dark .header-redesigned__login-btn:hover,
-.dark .header-redesigned__control-btn:hover {
-  border-color: var(--theme-border-soft);
-  background-color: var(--theme-bg-subtle);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* Enhanced Primary Buttons in Dark Mode - Homologated */
-.dark .header-redesigned__menu-btn--primary,
-.dark .header-redesigned__user-btn--primary,
-.dark .header-redesigned__login-btn--primary,
-.dark .header-redesigned__control-btn--primary {
-  background-color: rgba(75, 85, 99, 0.5);
-  border: 1px solid var(--theme-border-soft);
-  backdrop-filter: blur(8px);
-}
-
-.dark .header-redesigned__menu-btn--primary:hover,
-.dark .header-redesigned__user-btn--primary:hover,
-.dark .header-redesigned__login-btn--primary:hover,
-.dark .header-redesigned__control-btn--primary:hover {
-  background-color: var(--theme-bg-soft);
-  border-color: var(--theme-border-medium);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-/* Avatar styles removed - now using consistent icon-only approach for all buttons */
-
-/* Enhanced Side Menu for Dark Mode */
-.dark .header-side-menu {
-  background: linear-gradient(180deg, var(--theme-bg-elevated) 0%, var(--theme-bg-primary) 100%);
-  border-right: 1px solid var(--theme-border-soft);
-  box-shadow:
-    4px 0 25px rgba(0, 0, 0, 0.5),
-    inset -1px 0 0 rgba(255, 255, 255, 0.05);
-}
-
-.dark .header-side-menu__header {
-  background: linear-gradient(180deg, var(--theme-bg-primary) 0%, var(--theme-bg-primary) 100%);
-  border-bottom: 1px solid var(--theme-border-soft);
-  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.05);
-}
-
-/* Enhanced Menu Items for Dark Mode */
-.dark .header-side-menu__item {
-  border: 1px solid transparent;
-  margin: 2px 8px;
-}
-
-.dark .header-side-menu__item:hover {
-  background: linear-gradient(90deg, rgba(75, 85, 99, 0.5) 0%, rgba(107, 114, 128, 0.3) 100%);
-  border-color: rgba(255, 255, 255, 0.1);
-  box-shadow:
-    0 2px 8px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
-
-/* Enhanced Section Titles for Dark Mode */
-.dark .header-side-menu__section-title {
-  color: var(--theme-text-tertiary);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-}
-
-/* Enhanced Focus States for Dark Mode */
-.dark .header-redesigned button:focus-visible {
-  outline: 2px solid var(--theme-primary-blue);
-  outline-offset: 2px;
-  box-shadow:
-    0 0 0 4px rgba(96, 165, 250, 0.2),
-    0 2px 8px rgba(0, 0, 0, 0.3);
-}
-
-/* Enhanced Overlay for Dark Mode */
-.dark .header-side-menu-overlay {
-  background: linear-gradient(
-    45deg,
-    rgba(0, 0, 0, 0.7) 0%,
-    rgba(0, 0, 0, 0.5) 50%,
-    rgba(0, 0, 0, 0.7) 100%
-  );
-  backdrop-filter: blur(8px);
-}
-
-/* Duplicate logo section removed - consolidated above */
-
-/* Enhanced Typography Contrast for Dark Mode */
-.dark .header-redesigned__title {
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-  color: var(--theme-text-primary);
-}
-
-.dark .header-redesigned__username {
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  color: var(--theme-text-secondary);
-}
-
-/* Enhanced Quick Actions for Dark Mode - Now using --primary for consistency */
-/* Hom
-ologated Button Sections - Equal Visual Weight */
-.header-redesigned__user-section,
-.header-redesigned__quick-actions {
-  display: flex;
-  align-items: center;
-}
-
-/* Ensure consistent spacing between primary action buttons */
-.header-redesigned__right > * + * {
-  margin-left: 8px;
-}
-
-/* Homologated Primary Button Styles - All buttons get same treatment */
-.header-redesigned__menu-btn--primary,
-.header-redesigned__user-btn--primary,
-.header-redesigned__login-btn--primary,
-.header-redesigned__control-btn--primary {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 8px 12px;
-  min-height: 40px;
-  min-width: 40px;
-  font-weight: 500;
-  font-size: 0.875rem;
-  color: var(--theme-text-primary);
-}
-
-/* Ensure icons have consistent visual weight and better contrast */
-.header-redesigned__menu-btn--primary svg,
-.header-redesigned__user-btn--primary svg,
-.header-redesigned__login-btn--primary svg,
-.header-redesigned__control-btn--primary svg {
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
-  color: var(--theme-text-primary);
-  stroke: var(--theme-text-primary);
-}
-
-/* Ensure all text within primary buttons uses consistent color */
-.header-redesigned__menu-btn--primary span,
-.header-redesigned__user-btn--primary span,
-.header-redesigned__login-btn--primary span,
-.header-redesigned__control-btn--primary span,
-.header-redesigned__username {
-  color: var(--theme-text-primary);
-  font-weight: 500;
-}
-
-/* Ensure Stats button has same visual weight as User button */
-.header-redesigned__control-btn--primary {
-  min-width: 40px;
-}
-
-/* Ensure consistent button alignment in right section */
-.header-redesigned__user-section,
-.header-redesigned__quick-actions {
-  align-items: center;
-  height: 40px;
-}
-
-/* Dark mode - ensure all primary buttons have identical treatment */
-.dark .header-redesigned__menu-btn--primary,
-.dark .header-redesigned__user-btn--primary,
-.dark .header-redesigned__login-btn--primary,
-.dark .header-redesigned__control-btn--primary {
-  background: linear-gradient(135deg, rgba(75, 85, 99, 0.6) 0%, rgba(55, 65, 81, 0.4) 100%);
-  border: 1px solid var(--theme-border-soft);
-  backdrop-filter: blur(8px);
-  box-shadow:
-    0 1px 3px rgba(0, 0, 0, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  color: var(--theme-text-primary);
-}
-
-.dark .header-redesigned__menu-btn--primary:hover,
-.dark .header-redesigned__user-btn--primary:hover,
-.dark .header-redesigned__login-btn--primary:hover,
-.dark .header-redesigned__control-btn--primary:hover {
-  background: linear-gradient(135deg, rgba(107, 114, 128, 0.7) 0%, rgba(75, 85, 99, 0.5) 100%);
-  border-color: var(--theme-border-medium);
-  box-shadow:
-    0 4px 12px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
-  transform: translateY(-1px);
-  color: var(--theme-text-primary);
-}
-
-/* Ensure dark mode hover state maintains consistent text color */
-.dark .header-redesigned__menu-btn--primary:hover span,
-.dark .header-redesigned__user-btn--primary:hover span,
-.dark .header-redesigned__login-btn--primary:hover span,
-.dark .header-redesigned__control-btn--primary:hover span,
-.dark .header-redesigned__user-btn--primary:hover .header-redesigned__username {
-  color: var(--theme-text-primary);
-}
-
-/* Light mode - ensure consistency */
-.header-redesigned__menu-btn--primary,
-.header-redesigned__user-btn--primary,
-.header-redesigned__login-btn--primary,
-.header-redesigned__control-btn--primary {
-  background: linear-gradient(135deg, var(--theme-bg-subtle) 0%, var(--theme-bg-soft) 100%);
-  border: 1px solid var(--theme-border-soft);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  color: var(--theme-text-primary);
-}
-
-.header-redesigned__menu-btn--primary:hover,
-.header-redesigned__user-btn--primary:hover,
-.header-redesigned__login-btn--primary:hover,
-.header-redesigned__control-btn--primary:hover {
-  background: linear-gradient(135deg, var(--theme-bg-soft) 0%, var(--theme-border-medium) 100%);
-  border-color: var(--theme-text-tertiary);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  transform: translateY(-1px);
-  color: var(--theme-text-primary);
-}
-
-/* Ensure hover state maintains consistent text color for all elements */
-.header-redesigned__menu-btn--primary:hover span,
-.header-redesigned__user-btn--primary:hover span,
-.header-redesigned__login-btn--primary:hover span,
-.header-redesigned__control-btn--primary:hover span,
-.header-redesigned__user-btn--primary:hover .header-redesigned__username {
-  color: var(--theme-text-primary);
-}
-/* === HEADER ICONS === */
-.header-redesigned__menu-icon {
-  width: 1.25rem;
-  height: 1.25rem;
-}
-
-.header-redesigned__user-icon {
-  width: 1rem;
-  height: 1rem;
-}
-
-.header-redesigned__login-text {
-  display: none;
-  margin-left: 0.25rem;
-}
-
-@media (min-width: 640px) {
-  .header-redesigned__login-text {
-    display: inline;
-  }
-}
-/* 
-=== HIGH PRIORITY HEADER VARIABLES === */
-/* These variables override any conflicting theme variables */
-
-:root {
-  /* Light Mode Header Colors - High Priority */
-  --header-bg: #ffffff !important;
-  --header-border: #e5e7eb !important;
-  --header-text-primary: #111827 !important;
-  --header-text-secondary: #6b7280 !important;
-  --header-icon-color: #374151 !important;
-  --header-icon-hover: #111827 !important;
-  --header-button-hover-bg: #f3f4f6 !important;
-  --header-button-active-bg: #e5e7eb !important;
-  --header-focus-ring: #3b82f6 !important;
-
-  /* Side Menu Colors - High Priority */
-  --menu-bg: #ffffff !important;
-  --menu-border: #e5e7eb !important;
-  --menu-header-bg: #f9fafb !important;
-  --menu-item-hover: #f3f4f6 !important;
-  --menu-item-active: #e5e7eb !important;
-}
-
-/* Dark Mode Header Variables - High Priority */
-.dark {
-  --header-bg: #1f2937 !important;
-  --header-border: #4b5563 !important;
-  --header-text-primary: #ffffff !important;
-  --header-text-secondary: #e5e7eb !important;
-  --header-icon-color: #e5e7eb !important;
-  --header-icon-hover: #ffffff !important;
-  --header-button-hover-bg: #374151 !important;
-  --header-button-active-bg: #4b5563 !important;
-  --header-focus-ring: #60a5fa !important;
-
-  /* Side Menu Dark Colors - High Priority */
-  --menu-bg: #1f2937 !important;
-  --menu-border: #4b5563 !important;
-  --menu-header-bg: #111827 !important;
-  --menu-item-hover: #374151 !important;
-  --menu-item-active: #4b5563 !important;
 }
