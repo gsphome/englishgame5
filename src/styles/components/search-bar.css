@@ -14,9 +14,9 @@
 .search-bar {
   position: relative;
   
-  /* CRITICAL: Controlled width for perfect alignment */
+  /* CRITICAL: Inherit width from parent container */
   width: 100%;
-  max-width: 32rem;
+  max-width: 100%;
   margin: 0 auto;
   
   /* Enhanced Apple Background with subtle differentiation */
@@ -210,7 +210,7 @@
 
 @media (min-width: 768px) {
   .search-bar {
-    max-width: 32rem;
+    max-width: 100%;
   }
 
   .search-bar__input {
@@ -364,9 +364,9 @@ html.dark .search-bar:focus-within {
   /* CRITICAL: Perfect alignment within parent */
   margin: 0 auto;
   
-  /* Controlled width for perfect alignment */
+  /* Controlled width - inherit from parent for harmonious proportions */
   width: 100%;
-  max-width: 32rem;
+  max-width: 100%;
   
   /* Enhanced integration styling with better visibility */
   background: linear-gradient(145deg, 
@@ -440,13 +440,11 @@ html.dark .main-menu__search:focus-within .search-bar {
 @media (min-width: 640px) and (max-width: 899px) {
   .main-menu__search .search-bar {
     border-radius: 0.875rem;
-    max-width: 28rem;
   }
 }
 
 @media (min-width: 900px) {
   .main-menu__search .search-bar {
     border-radius: 1rem;
-    max-width: 32rem;
   }
 }
