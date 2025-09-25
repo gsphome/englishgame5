@@ -5,31 +5,22 @@
 
 /* === MAIN CONTAINER === */
 .flashcard-component {
-  max-width: 48rem;
+  max-width: 42rem;
   margin: 0 auto;
   padding: 1rem;
-  display: flex;
-  flex-direction: column;
-}
-
-@media (min-width: 640px) {
-  .flashcard-component {
-    padding: 1.5rem;
-  }
 }
 
 .flashcard-component__container {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  max-height: calc(100vh - 2rem);
+  gap: 1rem;
 }
 
 /* === HEADER SECTION === */
 .flashcard-component__header {
   background-color: var(--theme-bg-elevated);
-  border-radius: 0.75rem;
-  padding: 1rem;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
   border: 1px solid var(--theme-border-soft);
 }
 
@@ -76,9 +67,9 @@
 /* === FLASHCARD AREA === */
 .flashcard {
   position: relative;
-  height: 24rem;
+  height: 16rem;
   width: 100%;
-  max-width: 600px;
+  max-width: 500px;
   margin: 0 auto;
   cursor: pointer;
   perspective: 1000px;
@@ -107,11 +98,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
-  border-radius: 0.75rem;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   background-color: var(--theme-bg-elevated);
-  border: 2px solid var(--theme-border-soft);
+  border: 1px solid var(--theme-border-soft);
 }
 
 .flashcard-back {
@@ -120,20 +111,20 @@
 
 /* === FLASHCARD TEXT CONTENT === */
 .flashcard-component__front-text {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--theme-text-primary);
-  text-align: center;
-  margin-bottom: 1rem;
-  line-height: 1.3;
-}
-
-.flashcard-component__back-text {
   font-size: 1.25rem;
   font-weight: 600;
   color: var(--theme-text-primary);
   text-align: center;
   margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.flashcard-component__back-text {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--theme-text-primary);
+  text-align: center;
+  margin-bottom: 0.5rem;
   line-height: 1.3;
 }
 
@@ -178,17 +169,13 @@
 /* === CONTROLS SECTION === */
 .flashcard-component__controls {
   background-color: var(--theme-bg-elevated);
-  border-radius: 0.75rem;
-  padding: 1rem;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
   border: 1px solid var(--theme-border-soft);
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-  flex-shrink: 0;
-  position: sticky;
-  bottom: 1rem;
-  z-index: 10;
 }
 
 .flashcard-component__flip-btn {
@@ -259,58 +246,45 @@
   cursor: pointer;
 }
 
-/* === LAYOUT FIXES === */
-@media (min-width: 769px) {
-  .flashcard-component__container {
-    min-height: calc(100vh - 4rem);
-    justify-content: space-between;
-  }
-  
-  .flashcard {
-    height: 20rem;
-  }
-}
-
-/* Ensure proper spacing on larger screens */
-@media (min-width: 1024px) {
-  .flashcard {
-    height: 22rem;
-  }
-}
-
 /* === MOBILE OPTIMIZATIONS === */
 @media (max-width: 768px) {
   .flashcard-component {
     padding: 0.75rem;
   }
   
-  .flashcard-component__container {
-    max-height: calc(100vh - 1.5rem);
-  }
-  
   .flashcard {
-    height: 18rem;
+    height: 14rem;
   }
   
   .flashcard-front,
   .flashcard-back {
-    padding: 1.5rem;
+    padding: 1rem;
   }
   
   .flashcard-component__front-text {
-    font-size: 1.25rem;
+    font-size: 1.125rem;
   }
   
   .flashcard-component__back-text {
-    font-size: 1.125rem;
+    font-size: 1rem;
   }
 
   .flashcard-component__controls {
-    flex-direction: row;
-    gap: 0.75rem;
-    padding: 0.75rem;
-    position: fixed;
-    bottom: 0;
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  .flashcard-component__flip-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+  
+  .flashcard-component__nav-btn {
+    padding: 0.5rem;
+    min-width: 40px;
+    min-height: 40px;
+  }
+}
     left: 0;
     right: 0;
     margin: 0;
@@ -335,11 +309,12 @@ html.dark .flashcard-component__back-text {
 
 /* === ACCESSIBILITY === */
 @media (prefers-contrast: high) {
+
   .flashcard-front,
   .flashcard-back {
     border-width: 3px;
   }
-  
+
   .flashcard-component__title,
   .flashcard-component__front-text,
   .flashcard-component__back-text {
@@ -351,7 +326,7 @@ html.dark .flashcard-component__back-text {
   .flashcard-inner {
     transition: none;
   }
-  
+
   .flashcard-component__flip-btn,
   .flashcard-component__nav-btn {
     transition: none;
