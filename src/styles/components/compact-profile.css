@@ -118,6 +118,17 @@
   flex: 1;
 }
 
+/* === ERROR STATES === */
+.compact-profile__input--error {
+  border-color: var(--error, #ef4444);
+  background-color: var(--bg-error-subtle, #fef2f2);
+}
+
+.compact-profile__select--error {
+  border-color: var(--error, #ef4444);
+  background-color: var(--bg-error-subtle, #fef2f2);
+}
+
 .compact-profile__label {
   display: block;
   font-size: 0.875rem;

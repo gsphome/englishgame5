@@ -1,6 +1,71 @@
-/* Compact Modals Demo Component */
+/* Compact Modals Demo - BEM Implementation */
 
-.compact-modals-demo__card-icon-svg {
-  width: 1.5rem;
-  height: 1.5rem;
+.compact-modals-demo {
+  padding: 2rem;
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+.compact-modals-demo__container {
+  background-color: var(--theme-bg-elevated);
+  border-radius: 0.5rem;
+  padding: 2rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.compact-modals-demo__title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: var(--theme-text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.compact-modals-demo__subtitle {
+  color: var(--theme-text-secondary);
+  margin-bottom: 2rem;
+}
+
+.compact-modals-demo__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.compact-modals-demo__card {
+  background-color: var(--theme-bg-subtle);
+  border: 1px solid var(--theme-border-soft);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.compact-modals-demo__card:hover {
+  background-color: var(--theme-bg-soft);
+  border-color: var(--theme-border-medium);
+  transform: translateY(-2px);
+}
+
+.compact-modals-demo__card-icon {
+  width: 2rem;
+  height: 2rem;
+  color: var(--theme-primary-blue);
+  margin-bottom: 1rem;
+}
+
+.compact-modals-demo__card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.compact-modals-demo__card-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--theme-text-primary);
+}
+
+.compact-modals-demo__card-description {
+  color: var(--theme-text-secondary);
+  font-size: 0.875rem;
 }
