@@ -255,10 +255,10 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
         <button
           onClick={handlePrev}
           disabled={currentIndex === 0}
-          className="flashcard-nav-btn flashcard-nav-btn--prev"
+          className="flashcard-component__nav-btn flashcard-component__nav-btn--prev"
           title="Previous Card (←)"
         >
-          <ChevronLeft className="flashcard-nav-btn__icon" />
+          <ChevronLeft className="flashcard-component__nav-btn__icon" />
         </button>
 
         <button
@@ -271,12 +271,12 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
 
         <button
           onClick={handleNext}
-          className="flashcard-nav-btn flashcard-nav-btn--next"
+          className="flashcard-component__nav-btn flashcard-component__nav-btn--next"
           title={
             currentIndex === randomizedFlashcards.length - 1 ? 'Finish Flashcards' : 'Next Card (→)'
           }
         >
-          <ChevronRight className="flashcard-nav-btn__icon" />
+          <ChevronRight className="flashcard-component__nav-btn__icon" />
         </button>
       </div>
     </div>

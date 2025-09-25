@@ -19,12 +19,12 @@ export const SearchBar: React.FC<SearchBarProps> = ({
   const clearButtonId = useId();
 
   return (
-    <div className="search" role="search">
+    <div className="search-bar" role="search">
       <label htmlFor={searchId} className="sr-only">
         Search learning modules
       </label>
-      <div className="search__icon" aria-hidden="true">
-        <Search className="search__icon-svg" />
+      <div className="search-bar__icon" aria-hidden="true">
+        <Search className="search-bar__icon-svg" />
       </div>
       <input
         id={searchId}
@@ -41,7 +41,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
         <button
           id={clearButtonId}
           onClick={() => onQueryChange('')}
-          className="search__clear"
+          className="search-bar__clear"
           aria-label={`Clear search query: ${query}`}
           type="button"
         >

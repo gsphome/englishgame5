@@ -503,46 +503,46 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
                   {selectedTerm.results.map((result: any, index: number) => (
                     <div
                       key={index}
-                      className={`sorting-result-card ${
+                      className={`sorting-modal__result-card ${
                         result.isCorrect
-                          ? 'sorting-result-card--correct'
-                          : 'sorting-result-card--incorrect'
+                          ? 'sorting-modal__result-card--correct'
+                          : 'sorting-modal__result-card--incorrect'
                       }`}
                     >
-                      <div className="sorting-result-card__header">
-                        <h4 className="sorting-result-card__word">{result.word}</h4>
+                      <div className="sorting-modal__result-card__header">
+                        <h4 className="sorting-modal__result-card__word">{result.word}</h4>
                         <span
-                          className={`sorting-result-card__status ${
+                          className={`sorting-modal__result-card__status ${
                             result.isCorrect
-                              ? 'sorting-result-card__status--correct'
-                              : 'sorting-result-card__status--incorrect'
+                              ? 'sorting-modal__result-card__status--correct'
+                              : 'sorting-modal__result-card__status--incorrect'
                           }`}
                         >
                           {result.isCorrect ? '✓' : '✗'}
                         </span>
                       </div>
 
-                      <div className="sorting-result-card__content">
-                        <div className="sorting-result-card__field">
-                          <span className="sorting-result-card__label">Correct category:</span>
-                          <p className="sorting-result-card__value sorting-result-card__value--correct">
+                      <div className="sorting-modal__result-card__content">
+                        <div className="sorting-modal__result-card__field">
+                          <span className="sorting-modal__result-card__label">Correct category:</span>
+                          <p className="sorting-modal__result-card__value sorting-modal__result-card__value--correct">
                             {result.correctCategory}
                           </p>
                         </div>
 
                         {!result.isCorrect && (
-                          <div className="sorting-result-card__field">
-                            <span className="sorting-result-card__label">Your answer:</span>
-                            <p className="sorting-result-card__value sorting-result-card__value--incorrect">
+                          <div className="sorting-modal__result-card__field">
+                            <span className="sorting-modal__result-card__label">Your answer:</span>
+                            <p className="sorting-modal__result-card__value sorting-modal__result-card__value--incorrect">
                               {result.userCategory}
                             </p>
                           </div>
                         )}
 
                         {result.explanation && (
-                          <div className="sorting-result-card__field">
-                            <span className="sorting-result-card__label">Explanation:</span>
-                            <p className="sorting-result-card__explanation">{result.explanation}</p>
+                          <div className="sorting-modal__result-card__field">
+                            <span className="sorting-modal__result-card__label">Explanation:</span>
+                            <p className="sorting-modal__result-card__explanation">{result.explanation}</p>
                           </div>
                         )}
                       </div>

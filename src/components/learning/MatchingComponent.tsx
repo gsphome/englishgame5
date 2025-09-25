@@ -451,46 +451,46 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
                     {selectedTerm.results.map((result: any, index: number) => (
                       <div
                         key={index}
-                        className={`matching-result-card ${
+                        className={`matching-modal__result-card ${
                           result.isCorrect
-                            ? 'matching-result-card--correct'
-                            : 'matching-result-card--incorrect'
+                            ? 'matching-modal__result-card--correct'
+                            : 'matching-modal__result-card--incorrect'
                         }`}
                       >
-                        <div className="matching-result-card__header">
-                          <h4 className="matching-result-card__term">{result.left}</h4>
+                        <div className="matching-modal__result-card__header">
+                          <h4 className="matching-modal__result-card__term">{result.left}</h4>
                           <span
-                            className={`matching-result-card__status ${
+                            className={`matching-modal__result-card__status ${
                               result.isCorrect
-                                ? 'matching-result-card__status--correct'
-                                : 'matching-result-card__status--incorrect'
+                                ? 'matching-modal__result-card__status--correct'
+                                : 'matching-modal__result-card__status--incorrect'
                             }`}
                           >
                             {result.isCorrect ? '✓' : '✗'}
                           </span>
                         </div>
 
-                        <div className="matching-result-card__content">
-                          <div className="matching-result-card__field">
-                            <span className="matching-result-card__label">Correct answer:</span>
-                            <p className="matching-result-card__value matching-result-card__value--correct">
+                        <div className="matching-modal__result-card__content">
+                          <div className="matching-modal__result-card__field">
+                            <span className="matching-modal__result-card__label">Correct answer:</span>
+                            <p className="matching-modal__result-card__value matching-modal__result-card__value--correct">
                               {result.right}
                             </p>
                           </div>
 
                           {!result.isCorrect && (
-                            <div className="matching-result-card__field">
-                              <span className="matching-result-card__label">Your answer:</span>
-                              <p className="matching-result-card__value matching-result-card__value--incorrect">
+                            <div className="matching-modal__result-card__field">
+                              <span className="matching-modal__result-card__label">Your answer:</span>
+                              <p className="matching-modal__result-card__value matching-modal__result-card__value--incorrect">
                                 {result.userAnswer}
                               </p>
                             </div>
                           )}
 
                           {result.explanation && (
-                            <div className="matching-result-card__field">
-                              <span className="matching-result-card__label">Explanation:</span>
-                              <p className="matching-result-card__explanation">
+                            <div className="matching-modal__result-card__field">
+                              <span className="matching-modal__result-card__label">Explanation:</span>
+                              <p className="matching-modal__result-card__explanation">
                                 {result.explanation}
                               </p>
                             </div>

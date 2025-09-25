@@ -24,7 +24,7 @@ const ContentSegmentComponent: React.FC<ContentSegmentProps> = ({ segment, forma
     case 'term':
       return (
         <span
-          className={`content-segment content-segment--term ${format ? `content-segment--${format}` : ''}`}
+          className={`content-renderer__segment content-renderer__segment--term ${format ? `content-renderer__segment--${format}` : ''}`}
           title={metadata?.definition}
         >
           {content}
@@ -34,7 +34,7 @@ const ContentSegmentComponent: React.FC<ContentSegmentProps> = ({ segment, forma
     case 'emphasis':
       return (
         <strong
-          className={`content-segment content-segment--emphasis ${format ? `content-segment--${format}` : ''}`}
+          className={`content-renderer__segment content-renderer__segment--emphasis ${format ? `content-renderer__segment--${format}` : ''}`}
         >
           {content}
         </strong>
@@ -43,7 +43,7 @@ const ContentSegmentComponent: React.FC<ContentSegmentProps> = ({ segment, forma
     case 'code':
       return (
         <code
-          className={`content-segment content-segment--code ${format ? `content-segment--${format}` : ''}`}
+          className={`content-renderer__segment content-renderer__segment--code ${format ? `content-renderer__segment--${format}` : ''}`}
         >
           {content}
         </code>
@@ -52,7 +52,7 @@ const ContentSegmentComponent: React.FC<ContentSegmentProps> = ({ segment, forma
     case 'variable':
       return (
         <span
-          className={`content-segment content-segment--variable ${format ? `content-segment--${format}` : ''}`}
+          className={`content-renderer__segment content-renderer__segment--variable ${format ? `content-renderer__segment--${format}` : ''}`}
         >
           {content}
         </span>
@@ -61,7 +61,7 @@ const ContentSegmentComponent: React.FC<ContentSegmentProps> = ({ segment, forma
     case 'link':
       return (
         <span
-          className={`content-segment content-segment--link ${format ? `content-segment--${format}` : ''}`}
+          className={`content-renderer__segment content-renderer__segment--link ${format ? `content-renderer__segment--${format}` : ''}`}
         >
           {content}
         </span>
@@ -69,7 +69,7 @@ const ContentSegmentComponent: React.FC<ContentSegmentProps> = ({ segment, forma
 
     case 'text':
     default:
-      return <span className="content-segment content-segment--text">{content}</span>;
+      return <span className="content-renderer__segment content-renderer__segment--text">{content}</span>;
   }
 };
 
