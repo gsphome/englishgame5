@@ -183,29 +183,108 @@
 /* === MODAL === */
 .sorting-modal-overlay {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
   z-index: 50;
+  animation: modalFadeIn 0.2s ease-out;
+  backdrop-filter: blur(4px);
+  /* Ensure proper viewport centering */
+  min-height: 100vh;
+  min-height: 100dvh; /* Dynamic viewport height for mobile */
 }
 
 .sorting-modal-container {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   background-color: var(--theme-bg-elevated);
-  border-radius: 0.5rem;
+  border: 1px solid var(--theme-border-soft);
+  border-radius: 0.75rem;
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
   padding: 1.5rem;
   max-width: 32rem;
-  width: 90%;
-  max-height: 80vh;
+  width: 100%;
+  max-height: 85vh;
   overflow-y: auto;
+  animation: modalSlideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* === RESPONSIVE MODAL === */
+@media (max-width: 640px) {
+  .sorting-modal-overlay {
+    padding: 0.5rem;
+    align-items: flex-end;
+  }
+  
+  .sorting-modal-container {
+    max-height: 90vh;
+    border-radius: 0.75rem 0.75rem 0 0;
+    animation: modalSlideUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+}
+
+/* === ACCESSIBILITY === */
+@media (prefers-reduced-motion: reduce) {
+  .sorting-modal-overlay,
+  .sorting-modal-container {
+    animation: none !important;
+  }
+}
+
+/* === DARK MODE ENHANCEMENTS === */
+.dark .sorting-modal-overlay {
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+}
+
+.dark .sorting-modal-container {
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
 .sorting-modal__content {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+/* === MODAL ANIMATIONS === */
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes modalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .sorting-modal__header {

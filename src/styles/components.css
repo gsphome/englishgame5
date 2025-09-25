@@ -8,6 +8,7 @@
 @import './components/compact-modals-demo.css';
 @import './components/compact-profile.css';
 @import './components/compact-progress-dashboard.css';
+@import './components/modal-fixes.css';
 @import './components/completion-component.css';
 @import './components/content-renderer.css';
 @import './components/error-fallback.css';

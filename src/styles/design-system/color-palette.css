@@ -267,6 +267,12 @@ html.light {
   --theme-primary-purple: var(--primary-purple);
   --theme-primary-purple-hover: var(--primary-purple-hover);
   --theme-primary-purple-light: var(--primary-purple-light);
+  
+  --theme-success: var(--success);
+  --theme-error: var(--error);
+  --theme-warning: var(--warning);
+  --theme-info: var(--info);
+  --theme-text-disabled: var(--text-tertiary);
 }
 
 /* Dark Theme Context Variables */
@@ -293,6 +299,12 @@ html.dark {
   --theme-primary-purple: var(--primary-purple);
   --theme-primary-purple-hover: var(--primary-purple-hover);
   --theme-primary-purple-light: var(--primary-purple-light);
+  
+  --theme-success: var(--success);
+  --theme-error: var(--error);
+  --theme-warning: var(--warning);
+  --theme-info: var(--info);
+  --theme-text-disabled: var(--text-tertiary);
 }
 
 /* === FALLBACK CHAIN FOR DESIGN TOKENS === */
@@ -305,12 +317,45 @@ html.dark {
  * Pattern: var(--theme-token, var(--semantic-token, fallback-value))
  */
 
-/* Example fallback implementations for critical tokens */
+/* === CRITICAL FALLBACK SYSTEM === */
+/* Ensure modals and components work even if theme system fails */
 :root {
+  /* Critical fallbacks for modal system */
   --theme-text-primary-fallback: var(--theme-text-primary, var(--text-primary, #374151));
   --theme-text-secondary-fallback: var(--theme-text-secondary, var(--text-secondary, #6b7280));
+  --theme-text-tertiary-fallback: var(--theme-text-tertiary, var(--text-tertiary, #9ca3af));
   --theme-bg-elevated-fallback: var(--theme-bg-elevated, var(--bg-elevated, #ffffff));
+  --theme-bg-subtle-fallback: var(--theme-bg-subtle, var(--bg-subtle, #fafafa));
+  --theme-bg-soft-fallback: var(--theme-bg-soft, var(--bg-soft, #f9fafb));
   --theme-border-soft-fallback: var(--theme-border-soft, var(--border-soft, #f3f4f6));
+  --theme-primary-blue-fallback: var(--theme-primary-blue, var(--primary-blue, #3b82f6));
+  --theme-primary-purple-fallback: var(--theme-primary-purple, var(--primary-purple, #8b5cf6));
+  --theme-error-fallback: var(--theme-error, var(--error, #ef4444));
+}
+
+/* Ensure theme classes are applied by default */
+html:not(.dark):not(.light) {
+  /* Default to light theme if no class is applied */
+  --theme-text-primary: #374151;
+  --theme-text-secondary: #6b7280;
+  --theme-text-tertiary: #9ca3af;
+  --theme-text-on-colored: #ffffff;
+  --theme-bg-primary: #f9fafb;
+  --theme-bg-elevated: #ffffff;
+  --theme-bg-subtle: #fafafa;
+  --theme-bg-soft: #f9fafb;
+  --theme-border-subtle: #f9fafb;
+  --theme-border-soft: #f3f4f6;
+  --theme-border-medium: #e5e7eb;
+  --theme-primary-blue: #3b82f6;
+  --theme-primary-blue-hover: #2563eb;
+  --theme-primary-purple: #8b5cf6;
+  --theme-primary-purple-hover: #7c3aed;
+  --theme-primary-purple-light: #d8b4fe;
+  --theme-success: #10b981;
+  --theme-error: #ef4444;
+  --theme-warning: #f59e0b;
+  --theme-info: #3b82f6;
 }
 
 .dark {

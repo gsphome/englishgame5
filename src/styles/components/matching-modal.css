@@ -3,7 +3,10 @@
 /* Modal Overlay */
 .matching-modal-overlay {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11,6 +14,9 @@
   z-index: 50;
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(4px);
+  /* Ensure proper viewport centering */
+  min-height: 100vh;
+  min-height: 100dvh; /* Dynamic viewport height for mobile */
 }
 
 .dark .matching-modal-overlay {
