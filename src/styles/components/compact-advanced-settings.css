@@ -1,6 +1,6 @@
 /* Compact Advanced Settings Styles */
 
-.compact-settings {
+.compact-advanced-settings {
   position: fixed;
   top: 0;
   right: 0;
@@ -15,7 +15,7 @@
   animation: modalFadeIn 0.2s ease-out;
 }
 
-.compact-settings__container {
+.compact-advanced-settings__container {
   background-color: var(--theme-bg-elevated);
   border-radius: 0.5rem;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
@@ -31,7 +31,7 @@
   overflow: hidden;
 }
 
-.compact-settings__header {
+.compact-advanced-settings__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -46,20 +46,20 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra sutil para separación */
 }
 
-.compact-settings__title-section {
+.compact-advanced-settings__title-section {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   flex: 1;
 }
 
-.compact-settings__icon {
+.compact-advanced-settings__icon {
   height: 1rem;
   width: 1rem;
   color: var(--theme-primary-blue);
 }
 
-.compact-settings__title {
+.compact-advanced-settings__title {
   font-size: 1rem;
   line-height: 1.5rem;
   font-weight: 700;
@@ -69,7 +69,7 @@
   white-space: nowrap;
 }
 
-.compact-settings__close-btn {
+.compact-advanced-settings__close-btn {
   padding: 0.5rem;
   color: var(--theme-text-secondary);
   background-color: transparent;
@@ -81,18 +81,18 @@
   z-index: 10; /* Asegurar que esté por encima */
 }
 
-.compact-settings__close-btn:hover {
+.compact-advanced-settings__close-btn:hover {
   color: var(--theme-text-primary);
   background-color: var(--theme-bg-subtle);
 }
 
-.compact-settings__close-icon {
+.compact-advanced-settings__close-icon {
   height: 0.75rem;
   width: 0.75rem;
 }
 
 /* Tabs */
-.compact-settings__tabs {
+.compact-advanced-settings__tabs {
   display: flex;
   border-bottom: 1px solid var(--theme-border-soft);
   background-color: var(--theme-bg-elevated);
@@ -100,7 +100,7 @@
   flex-shrink: 0; /* No se comprime */
 }
 
-.compact-settings__tab {
+.compact-advanced-settings__tab {
   flex: 1;
   display: flex;
   align-items: center;
@@ -123,32 +123,32 @@
   cursor: pointer;
 }
 
-.compact-settings__tab:hover {
+.compact-advanced-settings__tab:hover {
   color: var(--theme-text-primary);
   border-bottom-color: var(--theme-border-medium);
 }
 
-.compact-settings__tab--active {
+.compact-advanced-settings__tab--active {
   color: var(--theme-primary-blue);
   border-bottom-color: var(--theme-primary-blue);
 }
 
-.compact-settings__tab-icon {
+.compact-advanced-settings__tab-icon {
   height: 0.75rem;
   width: 0.75rem;
 }
 
-.compact-settings__tab-title {
+.compact-advanced-settings__tab-title {
   display: none;
 }
 
 @media (min-width: 640px) {
-  .compact-settings__tab-title {
+  .compact-advanced-settings__tab-title {
     display: inline;
   }
 }
 
-.compact-settings__content {
+.compact-advanced-settings__content {
   padding: 0.5rem;
   background-color: var(--theme-bg-elevated);
   overflow-y: auto;
@@ -160,14 +160,14 @@
 }
 
 /* Sections */
-.compact-settings__section {
+.compact-advanced-settings__section {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
   background-color: transparent;
 }
 
-.compact-settings__section-title {
+.compact-advanced-settings__section-title {
   font-size: 0.75rem;
   line-height: 1rem;
   font-weight: 600;
@@ -177,31 +177,31 @@
 }
 
 /* General Settings Fields - BEM Structure */
-.compact-settings__fields {
+.compact-advanced-settings__fields {
   display: flex;
   flex-direction: column;
   gap: 0.375rem;
 }
 
-.compact-settings__field {
+.compact-advanced-settings__field {
   display: flex;
   flex-direction: column;
   gap: 0.125rem;
 }
 
-.compact-settings__field--dev {
+.compact-advanced-settings__field--dev {
   background-color: #fefce8;
   border: 1px solid #fde047;
   border-radius: 0.375rem;
   padding: 0.375rem;
 }
 
-.dark .compact-settings__field--dev {
+.dark .compact-advanced-settings__field--dev {
   background-color: rgba(133, 77, 14, 0.2);
   border-color: #a16207;
 }
 
-.compact-settings__label {
+.compact-advanced-settings__label {
   display: block;
   font-size: 0.75rem;
   line-height: 1rem;
@@ -209,17 +209,17 @@
   color: var(--theme-text-secondary);
 }
 
-.compact-settings__label--dev {
+.compact-advanced-settings__label--dev {
   color: #92400e;
   font-size: 0.75rem;
   line-height: 1rem;
 }
 
-.dark .compact-settings__label--dev {
+.dark .compact-advanced-settings__label--dev {
   color: #fcd34d;
 }
 
-.compact-settings__select {
+.compact-advanced-settings__select {
   width: 100%;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -234,20 +234,20 @@
   transition: all 0.2s ease;
 }
 
-.compact-settings__select:focus {
+.compact-advanced-settings__select:focus {
   outline: 2px solid var(--theme-primary-blue);
   outline-offset: 2px;
   border-color: transparent;
 }
 
 /* Game Settings - BEM Structure */
-.compact-settings__games {
+.compact-advanced-settings__games {
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr));
   gap: 0.5rem;
 }
 
-.compact-settings__game {
+.compact-advanced-settings__game {
   background-color: var(--theme-bg-subtle);
   border-radius: 0.375rem;
   padding: 0.5rem;
@@ -257,7 +257,7 @@
   min-height: 40px;
 }
 
-.compact-settings__game-label {
+.compact-advanced-settings__game-label {
   font-size: 0.75rem;
   line-height: 1rem;
   font-weight: 500;
@@ -266,7 +266,7 @@
   min-width: 80px;
 }
 
-.compact-settings__game-controls {
+.compact-advanced-settings__game-controls {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -274,7 +274,7 @@
   margin-left: 0.5rem;
 }
 
-.compact-settings__range {
+.compact-advanced-settings__range {
   flex: 1;
   height: 0.375rem;
   background-color: var(--theme-border-medium);
@@ -284,7 +284,7 @@
   min-width: 80px;
 }
 
-.compact-settings__range::-webkit-slider-thumb {
+.compact-advanced-settings__range::-webkit-slider-thumb {
   appearance: none;
   width: 0.75rem;
   height: 0.75rem;
@@ -293,7 +293,7 @@
   cursor: pointer;
 }
 
-.compact-settings__range::-moz-range-thumb {
+.compact-advanced-settings__range::-moz-range-thumb {
   width: 0.75rem;
   height: 0.75rem;
   background-color: var(--theme-primary-blue);
@@ -302,7 +302,7 @@
   border: 0;
 }
 
-.compact-settings__range-value {
+.compact-advanced-settings__range-value {
   font-size: 0.75rem;
   line-height: 1rem;
   font-weight: 700;
@@ -319,19 +319,19 @@
   flex-shrink: 0;
 }
 
-.dark .compact-settings__range-value {
+.dark .compact-advanced-settings__range-value {
   background-color: rgba(59, 130, 246, 0.3);
 }
 
 /* Development Mode Elements - BEM Structure */
-.compact-settings__toggle-container {
+.compact-advanced-settings__toggle-container {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   margin-top: 0.25rem;
 }
 
-.compact-settings__toggle {
+.compact-advanced-settings__toggle {
   width: 0.75rem;
   height: 0.75rem;
   color: var(--theme-primary-blue);
@@ -340,44 +340,44 @@
   border-radius: 0.25rem;
 }
 
-.compact-settings__toggle:focus {
+.compact-advanced-settings__toggle:focus {
   outline: 1px solid var(--theme-primary-blue);
 }
 
-.compact-settings__toggle-label {
+.compact-advanced-settings__toggle-label {
   display: flex;
   align-items: center;
   cursor: pointer;
 }
 
-.compact-settings__toggle-text {
+.compact-advanced-settings__toggle-text {
   font-size: 0.75rem;
   line-height: 1rem;
   color: var(--theme-text-secondary);
 }
 
-.compact-settings__description {
+.compact-advanced-settings__description {
   font-size: 0.65rem;
   line-height: 1.25;
   margin-top: 0.125rem;
 }
 
-.compact-settings__description--dev {
+.compact-advanced-settings__description--dev {
   color: #b45309;
 }
 
-.dark .compact-settings__description--dev {
+.dark .compact-advanced-settings__description--dev {
   color: #fbbf24;
 }
 
 /* Categories - BEM Structure */
-.compact-settings__categories {
+.compact-advanced-settings__categories {
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr));
   gap: 0.375rem;
 }
 
-.compact-settings__category {
+.compact-advanced-settings__category {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -389,11 +389,11 @@
   min-height: 36px;
 }
 
-.compact-settings__category:hover {
+.compact-advanced-settings__category:hover {
   background-color: var(--theme-bg-soft);
 }
 
-.compact-settings__category-checkbox {
+.compact-advanced-settings__category-checkbox {
   width: 0.75rem;
   height: 0.75rem;
   color: var(--theme-primary-blue);
@@ -402,11 +402,11 @@
   border-radius: 0.25rem;
 }
 
-.compact-settings__category-checkbox:focus {
+.compact-advanced-settings__category-checkbox:focus {
   outline: 1px solid var(--theme-primary-blue);
 }
 
-.compact-settings__category-label {
+.compact-advanced-settings__category-label {
   font-size: 0.75rem;
   line-height: 1rem;
   color: var(--theme-text-secondary);
@@ -415,7 +415,7 @@
 }
 
 /* Footer Actions - Fixed at bottom */
-.compact-settings__footer {
+.compact-advanced-settings__footer {
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -431,7 +431,7 @@
   box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1); /* Sombra hacia arriba para separación */
 }
 
-.compact-settings__btn {
+.compact-advanced-settings__btn {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   padding-top: 0.5rem;
@@ -448,22 +448,22 @@
   cursor: pointer;
 }
 
-.compact-settings__btn-icon {
+.compact-advanced-settings__btn-icon {
   height: 1rem;
   width: 1rem;
 }
 
-.compact-settings__btn--reset {
+.compact-advanced-settings__btn--reset {
   background-color: var(--theme-bg-subtle);
   color: var(--theme-text-secondary);
   border: 1px solid var(--theme-border-soft);
 }
 
-.compact-settings__btn--reset:hover {
+.compact-advanced-settings__btn--reset:hover {
   background-color: var(--theme-bg-soft);
 }
 
-.compact-settings__btn--primary {
+.compact-advanced-settings__btn--primary {
   background: linear-gradient(to right, var(--theme-primary-blue), var(--theme-primary-blue-hover));
   color: var(--theme-text-on-colored);
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
@@ -471,7 +471,7 @@
   transition: all 0.2s ease;
 }
 
-.compact-settings__btn--primary:hover {
+.compact-advanced-settings__btn--primary:hover {
   background: linear-gradient(to right, var(--theme-primary-blue-hover), var(--theme-primary-blue-active));
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   transform: scale(1.05);
@@ -502,60 +502,60 @@
 
 /* Mobile Responsive */
 @media (max-width: 640px) {
-  .compact-settings__container {
+  .compact-advanced-settings__container {
     max-width: 24rem;
   }
 
-  .compact-settings__title {
+  .compact-advanced-settings__title {
     font-size: 0.875rem;
     line-height: 1.25rem;
   }
 
-  .compact-settings__tab {
+  .compact-advanced-settings__tab {
     padding-left: 0.25rem;
     padding-right: 0.25rem;
   }
 
-  .compact-settings__tab-title {
+  .compact-advanced-settings__tab-title {
     display: none;
   }
 
-  .compact-settings__actions {
+  .compact-advanced-settings__actions {
     flex-direction: column;
     gap: 0.5rem;
   }
 
-  .compact-settings__btn {
+  .compact-advanced-settings__btn {
     width: 100%;
     justify-content: center;
   }
 }
 
 /* Custom scrollbar */
-.compact-settings__content::-webkit-scrollbar {
+.compact-advanced-settings__content::-webkit-scrollbar {
   width: 4px;
 }
 
-.compact-settings__content::-webkit-scrollbar-track {
+.compact-advanced-settings__content::-webkit-scrollbar-track {
   background-color: var(--theme-bg-subtle);
   border-radius: 9999px;
 }
 
-.compact-settings__content::-webkit-scrollbar-thumb {
+.compact-advanced-settings__content::-webkit-scrollbar-thumb {
   background-color: var(--theme-primary-blue);
   border-radius: 9999px;
   opacity: 0.6;
 }
 
-.compact-settings__content::-webkit-scrollbar-thumb:hover {
+.compact-advanced-settings__content::-webkit-scrollbar-thumb:hover {
   background-color: var(--theme-primary-blue-hover);
   opacity: 0.8;
 }
 
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
-  .compact-settings,
-  .compact-settings__container {
+  .compact-advanced-settings,
+  .compact-advanced-settings__container {
     animation: none;
     transition: none;
   }

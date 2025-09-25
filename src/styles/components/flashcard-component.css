@@ -106,7 +106,7 @@
 }
 
 /* === FLASHCARD CARD === */
-.flashcard {
+.flashcard-component {
   position: relative;
   height: 14rem;
   width: 100%;
@@ -114,7 +114,7 @@
 }
 
 @media (min-width: 640px) {
-  .flashcard {
+  .flashcard-component {
     height: 16rem;
   }
 }
@@ -128,7 +128,7 @@
   transform-style: preserve-3d;
 }
 
-.flashcard.flipped .flashcard-inner {
+.flashcard-component.flipped .flashcard-inner {
   transform: rotateY(180deg);
 }
 

@@ -690,21 +690,21 @@ html.dark .main-menu__grid::-webkit-scrollbar-thumb:hover {
     width: 100%;
   }
 
-  .main-menu__search .search {
+  .main-menu__search .main-menu__search {
     max-width: 100%;
   }
 }
 
 /* Tablet: Maintain alignment */
 @media (min-width: 640px) and (max-width: 899px) {
-  .main-menu__search .search {
+  .main-menu__search .main-menu__search {
     max-width: 28rem;
   }
 }
 
 /* Desktop: Perfect alignment */
 @media (min-width: 900px) {
-  .main-menu__search .search {
+  .main-menu__search .main-menu__search {
     max-width: 32rem;
   }
 }
@@ -724,7 +724,7 @@ html.dark .main-menu__grid::-webkit-scrollbar-thumb:hover {
   outline: 2px solid green;
 }
 
-.search {
+.main-menu__search {
   outline: 2px solid orange;
 }
 */
