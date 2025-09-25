@@ -138,7 +138,7 @@ export const CompactProfile: React.FC<CompactProfileProps> = ({ isOpen, onClose 
               </h3>
               
               <div className="compact-profile__field">
-                <label className="compact-profile__label">{t('profile.name', 'Nombre')}</label>
+                <label className="compact-profile__label compact-profile__label--required">{t('profile.name', 'Nombre')}</label>
                 <input
                   {...register('name')}
                   className={`compact-profile__input ${errors.name ? 'compact-profile__input--error' : ''}`}
@@ -150,7 +150,7 @@ export const CompactProfile: React.FC<CompactProfileProps> = ({ isOpen, onClose 
               </div>
 
               <div className="compact-profile__field">
-                <label className="compact-profile__label">
+                <label className="compact-profile__label compact-profile__label--required">
                   {t('profile.englishLevel', 'Nivel de Inglés')}
                 </label>
                 <select
@@ -217,7 +217,7 @@ export const CompactProfile: React.FC<CompactProfileProps> = ({ isOpen, onClose 
             {/* Categories */}
             <div className="compact-profile__section">
               <h3 className="compact-profile__section-title">
-                🎯 {t('profile.interestedCategories', 'Áreas de Enfoque')}
+                🎯 {t('profile.interestedCategories', 'Áreas de Enfoque')} <span style={{color: 'var(--theme-error, #ef4444)', marginLeft: '0.25rem'}}>*</span>
               </h3>
               <div className="compact-profile__categories">
                 {categories.map(category => (
