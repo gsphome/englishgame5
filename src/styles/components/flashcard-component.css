@@ -251,20 +251,20 @@
   .flashcard-component {
     padding: 0.75rem;
   }
-  
+
   .flashcard {
     height: 14rem;
   }
-  
+
   .flashcard-front,
   .flashcard-back {
     padding: 1rem;
   }
-  
+
   .flashcard-component__front-text {
     font-size: 1.125rem;
   }
-  
+
   .flashcard-component__back-text {
     font-size: 1rem;
   }
@@ -278,25 +278,11 @@
     padding: 0.5rem 1rem;
     font-size: 0.8rem;
   }
-  
+
   .flashcard-component__nav-btn {
     padding: 0.5rem;
     min-width: 40px;
     min-height: 40px;
-  }
-}
-    left: 0;
-    right: 0;
-    margin: 0;
-    border-radius: 0;
-    border-left: none;
-    border-right: none;
-    border-bottom: none;
-  }
-
-  .flashcard-component__flip-btn {
-    flex: 1;
-    justify-content: center;
   }
 }
 
