@@ -10,12 +10,24 @@
  */
 
 /* === QUIZ COMPONENT CONTAINER === */
-/* AI_VALIDATION: BEM_ELEMENT - Responsive container for quiz interface */
-/* AI_CONTEXT: Standard container pattern for learning components */
 .quiz-component__container {
-  max-width: 72rem; /* max-w-6xl */
+  max-width: 72rem;
   margin: 0 auto;
   padding: 0.75rem;
+}
+
+/* === EXPLANATION CONTAINER === */
+.quiz-component__explanation-container--visible {
+  opacity: 1;
+  max-height: 200px;
+  transition: all 0.3s ease;
+}
+
+.quiz-component__explanation-container--hidden {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
 }
 
 @media (min-width: 640px) {

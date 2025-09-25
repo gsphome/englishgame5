@@ -7,9 +7,23 @@
 
 /* === COMPLETION COMPONENT CONTAINER === */
 .completion-component__container {
-  max-width: 72rem; /* max-w-6xl */
+  max-width: 72rem;
   margin: 0 auto;
   padding: 0.75rem;
+}
+
+/* === RESULT CONTAINER === */
+.completion-component__result-container--visible {
+  opacity: 1;
+  max-height: 200px;
+  transition: all 0.3s ease;
+}
+
+.completion-component__result-container--hidden {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
 }
 
 @media (min-width: 640px) {

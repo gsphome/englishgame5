@@ -194,6 +194,11 @@
   }
 }
 
+/* === UTILITY CLASSES === */
+.min-width-sm {
+  min-width: 2.5rem;
+}
+
 /* === ACCESSIBILITY === */
 @media (prefers-reduced-motion: reduce) {
   .score-display-compact__progress-fill {

@@ -9,9 +9,9 @@
  * Usage: node scripts/audit-css-classes.js
  */
 
-const fs = require('fs');
-const path = require('path');
-const glob = require('glob');
+import fs from 'fs';
+import path from 'path';
+import { glob } from 'glob';
 
 // Configuration
 const COMPONENTS_DIR = 'src/components';
@@ -114,11 +114,11 @@ function auditComponent(componentPath) {
 /**
  * Main audit function
  */
-function auditAllComponents() {
+async function auditAllComponents() {
   console.log('🔍 Auditing CSS classes in TSX components...\n');
   
   // Find all TSX files
-  const componentFiles = glob.sync(`${COMPONENTS_DIR}/**/*.tsx`);
+  const componentFiles = await glob(`${COMPONENTS_DIR}/**/*.tsx`);
   
   const results = {
     total: componentFiles.length,
@@ -181,13 +181,11 @@ function auditAllComponents() {
 }
 
 // Run the audit
-if (require.main === module) {
-  try {
-    auditAllComponents();
-  } catch (error) {
-    console.error('❌ Error running audit:', error.message);
-    process.exit(1);
-  }
+try {
+  await auditAllComponents();
+} catch (error) {
+  console.error('❌ Error running audit:', error.message);
+  process.exit(1);
 }
 
-module.exports = { auditAllComponents, auditComponent };
+export { auditAllComponents, auditComponent };

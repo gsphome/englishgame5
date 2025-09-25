@@ -1,0 +1,31 @@
+/**
+ * Toast Container Component - BEM Implementation
+ * 
+ * Container for toast notifications with proper positioning
+ */
+
+/* === TOAST CONTAINER === */
+.toast-container {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 50;
+  pointer-events: none;
+  max-width: 24rem;
+  width: 100%;
+}
+
+/* Mobile positioning */
+@media (max-width: 640px) {
+  .toast-container {
+    top: 0.5rem;
+    right: 0.5rem;
+    left: 0.5rem;
+    max-width: none;
+  }
+}
+
+/* Ensure toasts are interactive */
+.toast-container > * {
+  pointer-events: auto;
+}

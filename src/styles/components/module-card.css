@@ -586,6 +586,11 @@
     width: 100%;
   }
 }
+/* === UTILITY CLASSES === */
+.text-white {
+  color: #ffffff !important;
+}
+
 /* === MODULE CARD ICONS === */
 .module-card__status-icon {
   color: var(--theme-text-tertiary);
