@@ -247,10 +247,15 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
                 </div>
 
                 <div className="compact-settings__field compact-settings__field--dev">
-                  <label className="compact-settings__label compact-settings__label--dev">
-                    🔧 {t('settings.developmentMode', 'Modo Desarrollo')}
-                  </label>
                   <div className="compact-settings__toggle-container">
+                    <label 
+                      className="compact-settings__label compact-settings__label--dev"
+                      title={t('settings.developmentModeDescription', 'Unlock all modes for testing')}
+                    >
+                      🔧 Dev Mode: {localDevelopmentMode
+                        ? t('settings.enabled', 'Enabled')
+                        : t('settings.disabled', 'Disabled')}
+                    </label>
                     <input
                       type="checkbox"
                       id="developmentMode"
@@ -258,17 +263,7 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
                       checked={localDevelopmentMode}
                       onChange={e => setLocalDevelopmentMode(e.target.checked)}
                     />
-                    <label htmlFor="developmentMode" className="compact-settings__toggle-label">
-                      <span className="compact-settings__toggle-text">
-                        {localDevelopmentMode
-                          ? t('settings.enabled', 'Habilitado')
-                          : t('settings.disabled', 'Deshabilitado')}
-                      </span>
-                    </label>
                   </div>
-                  <p className="compact-settings__description compact-settings__description--dev">
-                    {t('settings.developmentModeDescription', 'Info adicional para desarrollo')}
-                  </p>
                 </div>
               </div>
             </div>
