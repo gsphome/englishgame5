@@ -448,3 +448,26 @@ html.dark .main-menu__search:focus-within .search-bar {
     border-radius: 1rem;
   }
 }
+
+/* === CRITICAL FIX: FORZAR ANCHO CORRECTO === */
+/* Usando CSS layers para máxima especificidad y evitar conflictos jerárquicos */
+@layer overrides {
+  /* Máxima especificidad para evitar conflictos jerárquicos */
+  .main-menu .main-menu__search .search-bar {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Asegurar que el input también respete el ancho */
+  .main-menu .main-menu__search .search-bar .search-bar__input {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Forzar que todos los elementos internos respeten el contenedor */
+  .main-menu .main-menu__search .search-bar * {
+    box-sizing: border-box !important;
+  }
+}

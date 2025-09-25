@@ -726,3 +726,51 @@ html.dark .main-menu__grid::-webkit-scrollbar-thumb:hover {
   outline: 2px solid orange;
 }
 */
+
+/* === CRITICAL FIX: MÁXIMA ESPECIFICIDAD PARA SEARCH BAR === */
+/* Usando CSS layers para máxima especificidad y evitar conflictos jerárquicos */
+@layer overrides {
+  /* Reglas con máxima especificidad para forzar el ancho correcto del search bar */
+  .main-menu > .main-menu__search {
+    width: 100% !important;
+    max-width: 280px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  .main-menu > .main-menu__search > .search-bar {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* Responsive overrides con máxima especificidad */
+  @media (max-width: 639px) {
+    .main-menu > .main-menu__search {
+      max-width: 240px !important;
+    }
+  }
+
+  @media (min-width: 640px) and (max-width: 899px) {
+    .main-menu > .main-menu__search {
+      max-width: 300px !important;
+    }
+  }
+
+  @media (min-width: 900px) {
+    .main-menu > .main-menu__search {
+      max-width: 320px !important;
+    }
+  }
+
+  /* Forzar que el input también respete el ancho */
+  .main-menu .main-menu__search .search-bar .search-bar__input {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+}

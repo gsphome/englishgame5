@@ -31,7 +31,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
         type="text"
         value={query}
         onChange={e => onQueryChange(e.target.value)}
-        className="search__input"
+        className="search-bar__input"
         placeholder={placeholder}
         disabled={disabled}
         aria-describedby={query ? clearButtonId : undefined}
@@ -45,7 +45,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
           aria-label={`Clear search query: ${query}`}
           type="button"
         >
-          <X className="search__clear-icon" />
+          <X className="search-bar__clear-icon" />
         </button>
       )}
     </div>
