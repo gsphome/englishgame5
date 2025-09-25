@@ -10,33 +10,33 @@
 }
 
 /* Base segment styles */
-.content-segment {
+.content-renderer__segment {
   display: inline;
 }
 
-.content-segment--text {
+.content-renderer__segment--text {
   /* Regular text - no special styling */
 }
 
 /* Term segments (previously quoted text) */
-.content-segment--term {
+.content-renderer__segment--term {
   color: #1d4ed8;
   font-weight: bold;
 }
 
 /* Dark mode for terms */
-.dark .content-segment--term {
+.dark .content-renderer__segment--term {
   color: #60a5fa;
 }
 
 /* Emphasis segments */
-.content-segment--emphasis {
+.content-renderer__segment--emphasis {
   font-weight: bold;
   color: inherit;
 }
 
 /* Code segments */
-.content-segment--code {
+.content-renderer__segment--code {
   font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
   background-color: #f3f4f6;
   padding: 0.125rem 0.25rem;
@@ -44,77 +44,77 @@
   font-size: 0.875em;
 }
 
-.dark .content-segment--code {
+.dark .content-renderer__segment--code {
   background-color: #374151;
   color: #e5e7eb;
 }
 
 /* Variable segments */
-.content-segment--variable {
+.content-renderer__segment--variable {
   color: #7c3aed;
   font-style: italic;
   font-weight: 500;
 }
 
-.dark .content-segment--variable {
+.dark .content-renderer__segment--variable {
   color: #a78bfa;
 }
 
 /* Link segments */
-.content-segment--link {
+.content-renderer__segment--link {
   color: #2563eb;
   text-decoration: underline;
   cursor: pointer;
 }
 
-.dark .content-segment--link {
+.dark .content-renderer__segment--link {
   color: #3b82f6;
 }
 
 /* Format-specific overrides */
 
 /* Quiz format - enhance term visibility */
-.content-renderer--quiz .content-segment--term {
+.content-renderer--quiz .content-renderer__segment--term {
   color: #1d4ed8;
   font-weight: bold;
   /* Slightly larger for better visibility in questions */
   font-size: 1.02em;
 }
 
-.dark .content-renderer--quiz .content-segment--term {
+.dark .content-renderer--quiz .content-renderer__segment--term {
   color: #60a5fa;
 }
 
 /* Flashcard format - softer styling */
-.content-renderer--flashcard .content-segment--term {
+.content-renderer--flashcard .content-renderer__segment--term {
   color: #1e40af;
   font-weight: 600;
 }
 
-.dark .content-renderer--flashcard .content-segment--term {
+.dark .content-renderer--flashcard .content-renderer__segment--term {
   color: #93c5fd;
 }
 
 /* Explanation format - educational styling */
-.content-renderer--explanation .content-segment--term {
+.content-renderer--explanation .content-renderer__segment--term {
   color: #1d4ed8;
   font-weight: 600;
   border-bottom: 1px dotted currentColor;
 }
 
-.dark .content-renderer--explanation .content-segment--term {
+.dark .content-renderer--explanation .content-renderer__segment--term {
   color: #60a5fa;
 }
 
 /* Hover effects for interactive segments */
-.content-segment--term:hover,
-.content-segment--link:hover {
+.content-renderer__segment--term:hover,
+.content-renderer__segment--link:hover {
   opacity: 0.8;
   transition: opacity 0.2s ease;
 }
 
 /* Accessibility improvements */
-.content-segment--term[title]:hover::after {
+.content-renderer__segment--term[title]:hover::after {
   content: attr(title);
   position: absolute;
   background: #1f2937;
@@ -128,6 +128,6 @@
   margin-left: -1rem;
 }
 
-.dark .content-segment--term[title]:hover::after {
+.dark .content-renderer__segment--term[title]:hover::after {
   background: #374151;
 }
