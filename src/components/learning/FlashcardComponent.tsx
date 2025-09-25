@@ -163,14 +163,14 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
 
       {/* Flashcard */}
       <div
-        className={`flashcard relative h-56 sm:h-64 w-full cursor-pointer ${
-          isFlipped ? 'flipped' : ''
+        className={`flashcard-component__card ${
+          isFlipped ? 'flashcard-component__card--flipped' : ''
         }`}
         onClick={handleFlip}
       >
-        <div className="flashcard-inner">
+        <div className="flashcard-component__card-inner">
           {/* Front */}
-          <div className="flashcard-front">
+          <div className="flashcard-component__card-front">
             <div className="flashcard-component__front-text">
               <ContentRenderer
                 content={ContentAdapter.ensureStructured(
@@ -196,7 +196,7 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
           </div>
 
           {/* Back */}
-          <div className="flashcard-back">
+          <div className="flashcard-component__card-back">
             <div className="flashcard-component__back-text">
               <ContentRenderer
                 content={ContentAdapter.ensureStructured(
