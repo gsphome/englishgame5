@@ -13,6 +13,8 @@ export const FluentFlowLogo: React.FC<FluentFlowLogoProps> = ({ size = 'md', cla
     lg: '24',
   };
 
+  // Generate unique gradient ID to avoid conflicts
+  const gradientId = `logoGradient-${Math.random().toString(36).substr(2, 9)}`;
   const logoClass = `fluent-flow-logo fluent-flow-logo--${size} ${className}`;
 
   return (
@@ -23,14 +25,14 @@ export const FluentFlowLogo: React.FC<FluentFlowLogoProps> = ({ size = 'md', cla
       xmlns="http://www.w3.org/2000/svg"
     >
       <defs>
-        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" className="fluent-flow-logo__gradient-start" style={{ stopColor: 'currentColor' }} />
-          <stop offset="100%" className="fluent-flow-logo__gradient-end" style={{ stopColor: 'currentColor' }} />
+        <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" className="fluent-flow-logo__gradient-start" />
+          <stop offset="100%" className="fluent-flow-logo__gradient-end" />
         </linearGradient>
       </defs>
 
       {/* Background circle */}
-      <circle cx="16" cy="16" r="14" fill="url(#logoGradient)" className="fluent-flow-logo__background" />
+      <circle cx="16" cy="16" r="14" fill={`url(#${gradientId})`} className="fluent-flow-logo__background" />
 
       {/* Flow lines */}
       <path

@@ -219,7 +219,7 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
       <div className="completion-component__header">
         <div className="completion-component__header-top">
           <h2 className="completion-component__title">{module.name}</h2>
-          <span className="counter-badge">
+          <span className="completion-component__counter">
             {randomizedExercises.length > 0
               ? `${currentIndex + 1}/${randomizedExercises.length}`
               : '...'}
@@ -227,19 +227,19 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
         </div>
         <div className="completion-component__progress-container">
           <div
-            className="progress-bar__fill progress-bar__fill--purple"
+            className="completion-component__progress-fill"
             style={{ '--progress-width': `${((currentIndex + 1) / randomizedExercises.length) * 100}%` } as React.CSSProperties}
           />
         </div>
         <p className="completion-component__help-text">
-          {showResult ? 'Press Enter for next exercise' : 'Fill the blank and press Enter'}
+          {showResult ? t('learning.pressEnterNext') : t('learning.fillBlank')}
         </p>
       </div>
 
       {/* Exercise */}
       <div className="completion-component__exercise-card">
         <h3 className="completion-component__instruction">
-          Complete the sentence:
+          {t('learning.completeSentence')}
         </h3>
 
         {currentExercise?.tip && (

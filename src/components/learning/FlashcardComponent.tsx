@@ -150,22 +150,21 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
         </div>
         <div className="flashcard-component__progress-container">
           <div
-            className="progress-bar__fill progress-bar__fill--blue"
+            className="flashcard-component__progress-fill"
             style={{ '--progress-width': `${((currentIndex + 1) / randomizedFlashcards.length) * 100}%` } as React.CSSProperties}
           />
         </div>
         <p className="flashcard-component__help-text">
           {isFlipped
-            ? 'Press Enter/Space for next card'
-            : 'Click card or press Enter/Space to flip'}
+            ? t('learning.helpTextFlipped')
+            : t('learning.helpTextNotFlipped')}
         </p>
       </div>
 
       {/* Flashcard */}
       <div
-        className={`flashcard-component__card ${
-          isFlipped ? 'flashcard-component__card--flipped' : ''
-        }`}
+        className={`flashcard-component__card ${isFlipped ? 'flashcard-component__card--flipped' : ''
+          }`}
         onClick={handleFlip}
       >
         <div className="flashcard-component__card-inner">
@@ -174,7 +173,7 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
             <div className="flashcard-component__front-text">
               <ContentRenderer
                 content={ContentAdapter.ensureStructured(
-                  currentCard?.front || 'Loading...',
+                  currentCard?.front || t('common.loading'),
                   'flashcard'
                 )}
               />
@@ -200,7 +199,7 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
             <div className="flashcard-component__back-text">
               <ContentRenderer
                 content={ContentAdapter.ensureStructured(
-                  currentCard?.front || 'Loading...',
+                  currentCard?.front || t('common.loading'),
                   'flashcard'
                 )}
               />
@@ -213,7 +212,7 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
             <div className="flashcard-component__back-answer">
               <ContentRenderer
                 content={ContentAdapter.ensureStructured(
-                  currentCard?.back || 'Loading...',
+                  currentCard?.back || t('common.loading'),
                   'flashcard'
                 )}
               />
@@ -245,8 +244,8 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
       {/* Unified Control Bar */}
       <div className="flashcard-component__controls">
         {/* Navigation */}
-        <NavigationButton onClick={() => setCurrentView('menu')} title="Return to main menu">
-          Back to Menu
+        <NavigationButton onClick={() => setCurrentView('menu')} title={t('learning.returnToMainMenu')}>
+          {t('learning.backToMenu')}
         </NavigationButton>
 
         {/* Separator */}
@@ -256,7 +255,7 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
           onClick={handlePrev}
           disabled={currentIndex === 0}
           className="flashcard-component__nav-btn flashcard-component__nav-btn--prev"
-          title="Previous Card (←)"
+          title={t('learning.previousCard')}
         >
           <ChevronLeft className="flashcard-component__nav-btn__icon" />
         </button>
@@ -266,14 +265,14 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
           className="flashcard-component__flip-btn"
         >
           <RotateCcw className="flashcard-component__flip-btn-icon" />
-          <span>{isFlipped ? 'Flip Back' : 'Flip'}</span>
+          <span>{isFlipped ? t('learning.flipBack') : t('learning.flip')}</span>
         </button>
 
         <button
           onClick={handleNext}
           className="flashcard-component__nav-btn flashcard-component__nav-btn--next"
           title={
-            currentIndex === randomizedFlashcards.length - 1 ? 'Finish Flashcards' : 'Next Card (→)'
+            currentIndex === randomizedFlashcards.length - 1 ? t('learning.finishFlashcards') : t('learning.nextCard')
           }
         >
           <ChevronRight className="flashcard-component__nav-btn__icon" />

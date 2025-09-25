@@ -4,6 +4,7 @@ import { useAppStore } from '../../stores/appStore';
 import { useUserStore } from '../../stores/userStore';
 import { useSettingsStore } from '../../stores/settingsStore';
 import { useProgressStore } from '../../stores/progressStore';
+import { useTranslation } from '../../utils/i18n';
 import { useToast } from '../../hooks/useToast';
 import { useLearningCleanup } from '../../hooks/useLearningCleanup';
 import { shuffleArray } from '../../utils/randomUtils';
@@ -45,8 +46,9 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
 
   const { updateSessionScore, setCurrentView } = useAppStore();
   const { updateUserScore } = useUserStore();
-  const { theme } = useSettingsStore();
+  const { theme, language } = useSettingsStore();
   const { addProgressEntry } = useProgressStore();
+  const { t } = useTranslation(language);
   const { showCorrectAnswer, showIncorrectAnswer, showModuleCompleted } = useToast();
   useLearningCleanup();
 
@@ -144,12 +146,12 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
   if (!randomizedQuestions.length) {
     return (
       <div className="quiz-component__no-data">
-        <p className="quiz-component__no-data-text">No quiz questions available</p>
+        <p className="quiz-component__no-data-text">{t('learning.noQuizQuestions')}</p>
         <button
           onClick={() => setCurrentView('menu')}
           className="quiz-component__no-data-btn"
         >
-          Back to Menu
+          {t('learning.backToMenu')}
         </button>
       </div>
     );
@@ -161,20 +163,20 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
       <div className="quiz-component__header">
         <div className="quiz-component__header-top">
           <h2 className="quiz-component__title">{module.name}</h2>
-          <span className="counter-badge">
+          <span className="quiz-component__counter">
             {randomizedQuestions.length > 0
               ? `${currentIndex + 1}/${randomizedQuestions.length}`
               : '...'}
           </span>
         </div>
-        <div className="progress-bar progress-bar--green">
+        <div className="quiz-component__progress-container">
           <div
-            className="progress-bar__fill"
+            className="quiz-component__progress-fill"
             style={{ '--progress-width': `${((currentIndex + 1) / randomizedQuestions.length) * 100}%` } as React.CSSProperties}
           />
         </div>
         <p className="quiz-component__help-text">
-          {showResult ? 'Press Enter for next question' : 'Press 1-4 to select or click an option'}
+          {showResult ? t('learning.pressEnterNext') : t('learning.pressSelectOption')}
         </p>
       </div>
 
@@ -186,7 +188,7 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
         >
           <ContentRenderer
             content={ContentAdapter.ensureStructured(
-              currentQuestion?.question || currentQuestion?.sentence || 'Loading question...',
+              currentQuestion?.question || currentQuestion?.sentence || t('learning.loadingQuestion'),
               'quiz'
             )}
           />
@@ -260,7 +262,7 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
               className="quiz-component__explanation-title dynamic-text-color"
               style={{ '--dynamic-text-color': textColor } as React.CSSProperties}
             >
-              Explanation:
+              {t('learning.explanation')}:
             </h4>
             <div 
               className="quiz-component__explanation-content dynamic-text-color"
@@ -280,8 +282,8 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
       {/* Unified Control Bar */}
       <div className="quiz-component__controls">
         {/* Navigation */}
-        <NavigationButton onClick={() => setCurrentView('menu')} title="Return to main menu">
-          Back to Menu
+        <NavigationButton onClick={() => setCurrentView('menu')} title={t('learning.returnToMainMenu')}>
+          {t('learning.backToMenu')}
         </NavigationButton>
 
         {/* Separator */}
@@ -293,7 +295,7 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
           className="quiz-component__next-btn"
         >
           <span>
-            {currentIndex === randomizedQuestions.length - 1 ? 'Finish Quiz' : 'Next Question'}
+            {currentIndex === randomizedQuestions.length - 1 ? t('learning.finishQuiz') : t('learning.nextQuestion')}
           </span>
           <ArrowRight className="quiz-component__next-btn-icon" />
         </button>

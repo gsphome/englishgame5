@@ -4,6 +4,7 @@ import { useAppStore } from '../../stores/appStore';
 import { useUserStore } from '../../stores/userStore';
 import { useSettingsStore } from '../../stores/settingsStore';
 import { useProgressStore } from '../../stores/progressStore';
+import { useTranslation } from '../../utils/i18n';
 import { useToast } from '../../hooks/useToast';
 import { useLearningCleanup } from '../../hooks/useLearningCleanup';
 import { ContentAdapter } from '../../utils/contentAdapter';
@@ -13,21 +14,7 @@ import '../../styles/components/sorting-modal.css';
 import '../../styles/components/sorting-component.css';
 import type { LearningModule } from '../../types';
 
-// Get category display name from module data
-const getCategoryDisplayName = (categoryId: string, moduleData: any): string => {
-  // Try to find the category mapping in the module's categories array
-  if (moduleData?.categories && Array.isArray(moduleData.categories)) {
-    const categoryMapping = moduleData.categories.find(
-      (cat: any) => cat.category_id === categoryId
-    );
-    if (categoryMapping?.category_show) {
-      return categoryMapping.category_show;
-    }
-  }
 
-  // Fallback to formatted category ID if no mapping found
-  return categoryId.charAt(0).toUpperCase() + categoryId.slice(1).replace(/_/g, ' ');
-};
 
 interface SortingData {
   id: string;
@@ -51,7 +38,9 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
 
   const { updateSessionScore, setCurrentView } = useAppStore();
   const { updateUserScore } = useUserStore();
+  const { language } = useSettingsStore();
   const { addProgressEntry } = useProgressStore();
+  const { t } = useTranslation(language);
   const { showCorrectAnswer, showIncorrectAnswer, showModuleCompleted } = useToast();
   useLearningCleanup();
 
@@ -80,6 +69,15 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
       const firstItem = module.data[0];
       if (firstItem && 'category' in firstItem && 'word' in firstItem) {
         const uniqueCategories = [...new Set(module.data.map((item: any) => item.category))];
+
+        // Validation: Ensure we have at least 2 categories for sorting to make sense
+        if (uniqueCategories.length < 2) {
+          console.warn(`Module "${module.name}" has only ${uniqueCategories.length} category. Sorting requires at least 2 categories.`);
+          console.warn(`Available categories:`, uniqueCategories);
+          setExercise({ id: 'sorting-exercise', words: [], categories: [] });
+          return;
+        }
+
         const shuffledCategories = uniqueCategories.sort(() => Math.random() - 0.5);
         const { gameSettings } = useSettingsStore.getState();
         const totalWords = gameSettings.sortingMode.wordCount;
@@ -93,25 +91,56 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
           category: item.category,
         }));
 
-        // Shuffle and take exactly the requested number of words
-        const shuffledWords = allAvailableWords.sort(() => Math.random() - 0.5);
-        const selectedWords = shuffledWords.slice(0, totalWords);
-
-        // Group selected words by category
+        // Group words by category first
         const wordsByCategory: Record<string, string[]> = {};
-        selectedWords.forEach(({ word, category }) => {
+        allAvailableWords.forEach(({ word, category }) => {
           if (!wordsByCategory[category]) {
             wordsByCategory[category] = [];
           }
           wordsByCategory[category].push(word);
         });
 
+        // Ensure we select words from at least 2 categories
+        const categoriesWithWords = Object.keys(wordsByCategory);
+        const minWordsPerCategory = Math.max(1, Math.floor(totalWords / categoriesWithWords.length));
+
+        let selectedWords: { word: string; category: string }[] = [];
+
+        // First, ensure each category gets at least one word
+        categoriesWithWords.forEach(category => {
+          const categoryWords = wordsByCategory[category].sort(() => Math.random() - 0.5);
+          const wordsToTake = Math.min(minWordsPerCategory, categoryWords.length);
+          for (let i = 0; i < wordsToTake && selectedWords.length < totalWords; i++) {
+            selectedWords.push({ word: categoryWords[i], category });
+          }
+        });
+
+        // If we still need more words, randomly select from remaining words
+        if (selectedWords.length < totalWords) {
+          const usedWords = new Set(selectedWords.map(w => w.word));
+          const remainingWords = allAvailableWords.filter(w => !usedWords.has(w.word));
+          const shuffledRemaining = remainingWords.sort(() => Math.random() - 0.5);
+
+          for (let i = 0; i < shuffledRemaining.length && selectedWords.length < totalWords; i++) {
+            selectedWords.push(shuffledRemaining[i]);
+          }
+        }
+
+        // Rebuild wordsByCategory with selected words only
+        const finalWordsByCategory: Record<string, string[]> = {};
+        selectedWords.forEach(({ word, category }) => {
+          if (!finalWordsByCategory[category]) {
+            finalWordsByCategory[category] = [];
+          }
+          finalWordsByCategory[category].push(word);
+        });
+
         // Create categories array with actual selected words
         const categories = selectedCategories
-          .filter(categoryId => wordsByCategory[categoryId]) // Only include categories that have words
+          .filter(categoryId => finalWordsByCategory[categoryId]) // Only include categories that have words
           .map(categoryId => ({
-            name: getCategoryDisplayName(categoryId, module),
-            items: wordsByCategory[categoryId],
+            name: categoryId, // Use the category name directly since it's already the display name
+            items: finalWordsByCategory[categoryId],
           }));
 
         const finalWords = selectedWords.map(item => item.word);
@@ -287,7 +316,7 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
     return (
       <div className="sorting-component">
         <div className="sorting-component__loading">
-          <p className="sorting-component__loading-text">Loading sorting exercise...</p>
+          <p className="sorting-component__loading-text">{t('learning.loadingSorting')}</p>
         </div>
       </div>
     );
@@ -312,133 +341,135 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
         <div className="sorting-component__instructions">
           <p className="sorting-component__instruction-text">
             {allWordsSorted
-              ? 'All words sorted! Check your answers'
-              : 'Drag and drop words into categories'}
+              ? t('learning.allSorted')
+              : t('learning.dragDropWords')}
           </p>
         </div>
       </div>
 
-      {/* Available Words */}
-      <div className="sorting-component__available-section">
-        <h3 className="sorting-component__section-header">Available Words</h3>
-        <div className="sorting-component__available-area">
-          <div className="sorting-component__words-container">
-            {availableWords.map((word, index) => (
-              <div
-                key={`available-${index}-${word}`}
-                draggable
-                onDragStart={e => handleDragStart(e, word)}
-                className="sorting-component__word-chip"
-              >
-                <ContentRenderer content={ContentAdapter.ensureStructured(word, 'quiz')} />
-              </div>
-            ))}
+      {/* Workspace */}
+      <div className="sorting-component__workspace">
+        {/* Available Words */}
+        <div className="sorting-component__available-section">
+          <h3 className="sorting-component__section-header">{t('learning.availableWords')}</h3>
+          <div className="sorting-component__available-area">
+            <div className="sorting-component__words-container">
+              {availableWords.map((word, index) => (
+                <div
+                  key={`available-${index}-${word}`}
+                  draggable
+                  onDragStart={e => handleDragStart(e, word)}
+                  className="sorting-component__word-chip"
+                >
+                  <ContentRenderer content={ContentAdapter.ensureStructured(word, 'quiz')} />
+                </div>
+              ))}
+            </div>
+            {availableWords.length === 0 && (
+              <p className="sorting-component__empty-message">{t('learning.allWordsSorted')}</p>
+            )}
           </div>
-          {availableWords.length === 0 && (
-            <p className="sorting-component__empty-message">All words have been sorted!</p>
-          )}
         </div>
-      </div>
 
-      {/* Categories */}
-      <div className="sorting-component__categories">
-        {(exercise.categories || []).map(category => {
-          const userItems = sortedItems[category.name] || [];
-          const isCorrect =
-            showResult &&
-            userItems.length === category.items.length &&
-            userItems.every(item => category.items.includes(item));
-          const hasErrors = showResult && !isCorrect;
+        {/* Categories */}
+        <div className="sorting-component__categories">
+          {(exercise.categories || []).map(category => {
+            const userItems = sortedItems[category.name] || [];
+            const isCorrect =
+              showResult &&
+              userItems.length === category.items.length &&
+              userItems.every(item => category.items.includes(item));
+            const hasErrors = showResult && !isCorrect;
 
-          const isDragOver = dragOverCategory === category.name;
+            const isDragOver = dragOverCategory === category.name;
 
-          let dropZoneClass = 'sorting-component__drop-zone ';
+            let dropZoneClass = 'sorting-component__drop-zone ';
 
-          if (showResult) {
-            if (isCorrect) {
-              dropZoneClass += 'sorting-component__drop-zone--correct';
-            } else if (hasErrors) {
-              dropZoneClass += 'sorting-component__drop-zone--error';
+            if (showResult) {
+              if (isCorrect) {
+                dropZoneClass += 'sorting-component__drop-zone--correct';
+              } else if (hasErrors) {
+                dropZoneClass += 'sorting-component__drop-zone--error';
+              } else {
+                dropZoneClass += 'sorting-component__drop-zone--neutral';
+              }
             } else {
-              dropZoneClass += 'sorting-component__drop-zone--neutral';
+              dropZoneClass += 'sorting-component__drop-zone--interactive';
+              if (isDragOver) {
+                dropZoneClass += ' sorting-component__drop-zone--drag-over';
+              }
             }
-          } else {
-            dropZoneClass += 'sorting-component__drop-zone--interactive';
-            if (isDragOver) {
-              dropZoneClass += ' sorting-component__drop-zone--drag-over';
-            }
-          }
 
-          return (
-            <div
-              key={category.name}
-              onDragOver={e => handleDragOver(e, category.name)}
-              onDragLeave={handleDragLeave}
-              onDrop={e => handleDrop(e, category.name)}
-              className={dropZoneClass}
-            >
-              <h4 className="sorting-component__category-header">
-                {category.name}
-                {showResult && (
-                  <span
-                    className={`sorting-component__category-status ${
-                      isCorrect
+            return (
+              <div
+                key={category.name}
+                onDragOver={e => handleDragOver(e, category.name)}
+                onDragLeave={handleDragLeave}
+                onDrop={e => handleDrop(e, category.name)}
+                className={dropZoneClass}
+              >
+                <h4 className="sorting-component__category-header">
+                  {category.name}
+                  {showResult && (
+                    <span
+                      className={`sorting-component__category-status ${isCorrect
                         ? 'sorting-component__category-status--correct'
                         : 'sorting-component__category-status--incorrect'
-                    }`}
-                  >
-                    {isCorrect ? '✓' : '✗'}
-                  </span>
-                )}
-              </h4>
-
-              <div className="sorting-component__sorted-items">
-                {userItems.map((word, index) => {
-                  let itemClass = 'sorting-component__sorted-item ';
-
-                  if (showResult) {
-                    itemClass += category.items.includes(word)
-                      ? 'sorting-component__sorted-item--correct'
-                      : 'sorting-component__sorted-item--incorrect';
-                  } else {
-                    itemClass += 'sorting-component__sorted-item--default';
-                  }
-
-                  return (
-                    <div
-                      key={`${category.name}-${index}-${word}`}
-                      onClick={() => handleRemoveFromCategory(word, category.name)}
-                      className={itemClass}
+                        }`}
                     >
-                      <ContentRenderer content={ContentAdapter.ensureStructured(word, 'quiz')} />
-                    </div>
-                  );
-                })}
-              </div>
+                      {isCorrect ? '✓' : '✗'}
+                    </span>
+                  )}
+                </h4>
 
-              {showResult && hasErrors && (
-                <div className="sorting-component__feedback sorting-component__feedback--error">
-                  <span className="sorting-component__feedback-label">Correct items:</span>{' '}
-                  <span className="sorting-component__feedback-text">
-                    {category.items.map((item, idx) => (
-                      <span key={idx}>
-                        <ContentRenderer content={ContentAdapter.ensureStructured(item, 'quiz')} />
-                        {idx < category.items.length - 1 ? ', ' : ''}
-                      </span>
-                    ))}
-                  </span>
+                <div className="sorting-component__sorted-items">
+                  {userItems.map((word, index) => {
+                    let itemClass = 'sorting-component__sorted-item ';
+
+                    if (showResult) {
+                      itemClass += category.items.includes(word)
+                        ? 'sorting-component__sorted-item--correct'
+                        : 'sorting-component__sorted-item--incorrect';
+                    } else {
+                      itemClass += 'sorting-component__sorted-item--default';
+                    }
+
+                    return (
+                      <div
+                        key={`${category.name}-${index}-${word}`}
+                        onClick={() => handleRemoveFromCategory(word, category.name)}
+                        className={itemClass}
+                      >
+                        <ContentRenderer content={ContentAdapter.ensureStructured(word, 'quiz')} />
+                      </div>
+                    );
+                  })}
                 </div>
-              )}
-            </div>
-          );
-        })}
+
+                {showResult && hasErrors && (
+                  <div className="sorting-component__feedback sorting-component__feedback--error">
+                    <span className="sorting-component__feedback-label">Correct items:</span>{' '}
+                    <span className="sorting-component__feedback-text">
+                      {category.items.map((item, idx) => (
+                        <span key={idx}>
+                          <ContentRenderer content={ContentAdapter.ensureStructured(item, 'quiz')} />
+                          {idx < category.items.length - 1 ? ', ' : ''}
+                        </span>
+                      ))}
+                    </span>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
       </div>
 
       {/* Unified Control Bar */}
       <div className="sorting-component__actions">
         {/* Navigation */}
-        <NavigationButton onClick={() => setCurrentView('menu')} title="Return to main menu">
-          Back to Menu
+        <NavigationButton onClick={() => setCurrentView('menu')} title={t('learning.returnToMainMenu')}>
+          {t('learning.backToMenu')}
         </NavigationButton>
 
         {/* Separator */}
@@ -460,7 +491,7 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
               className="sorting-component__button sorting-component__button--primary"
             >
               <Check className="sorting-component__button-icon" />
-              <span>Check Answers</span>
+              <span>{t('learning.checkAnswers')}</span>
             </button>
           </>
         ) : (
@@ -470,13 +501,13 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
               className="sorting-component__button sorting-component__button--secondary"
             >
               <Info className="sorting-component__button-icon" />
-              <span>View Summary</span>
+              <span>{t('learning.viewSummary')}</span>
             </button>
             <button
               onClick={finishExercise}
               className="sorting-component__button sorting-component__button--success"
             >
-              <span>Finish Exercise</span>
+              <span>{t('learning.finishExercise')}</span>
             </button>
           </>
         )}
@@ -503,20 +534,18 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
                   {selectedTerm.results.map((result: any, index: number) => (
                     <div
                       key={index}
-                      className={`sorting-modal__result-card ${
-                        result.isCorrect
-                          ? 'sorting-modal__result-card--correct'
-                          : 'sorting-modal__result-card--incorrect'
-                      }`}
+                      className={`sorting-modal__result-card ${result.isCorrect
+                        ? 'sorting-modal__result-card--correct'
+                        : 'sorting-modal__result-card--incorrect'
+                        }`}
                     >
                       <div className="sorting-modal__result-card__header">
                         <h4 className="sorting-modal__result-card__word">{result.word}</h4>
                         <span
-                          className={`sorting-modal__result-card__status ${
-                            result.isCorrect
-                              ? 'sorting-modal__result-card__status--correct'
-                              : 'sorting-modal__result-card__status--incorrect'
-                          }`}
+                          className={`sorting-modal__result-card__status ${result.isCorrect
+                            ? 'sorting-modal__result-card__status--correct'
+                            : 'sorting-modal__result-card__status--incorrect'
+                            }`}
                         >
                           {result.isCorrect ? '✓' : '✗'}
                         </span>

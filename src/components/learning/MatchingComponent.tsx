@@ -2,13 +2,14 @@ import React, { useState, useEffect, useRef } from 'react';
 import { RotateCcw, Check, Info, X } from 'lucide-react';
 import { useAppStore } from '../../stores/appStore';
 import { useUserStore } from '../../stores/userStore';
+import { useSettingsStore } from '../../stores/settingsStore';
 import { useToast } from '../../hooks/useToast';
 import { useLearningCleanup } from '../../hooks/useLearningCleanup';
+import { useTranslation } from '../../utils/i18n';
 import { ContentAdapter } from '../../utils/contentAdapter';
 import ContentRenderer from '../ui/ContentRenderer';
 import NavigationButton from '../ui/NavigationButton';
 import '../../styles/components/matching-modal.css';
-import '../../styles/components/matching-component.css';
 import '../../styles/components/matching-component.css';
 import type { LearningModule } from '../../types';
 
@@ -30,7 +31,9 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
 
   const { updateSessionScore, setCurrentView } = useAppStore();
   const { updateUserScore } = useUserStore();
+  const { language } = useSettingsStore();
   const { showCorrectAnswer, showIncorrectAnswer, showModuleCompleted } = useToast();
+  const { t } = useTranslation(language);
   useLearningCleanup();
 
   // Initialize component when module changes
@@ -85,7 +88,7 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
     return (
       <div className="matching-component">
         <div className="matching-component__loading">
-          <p className="matching-component__loading-text">Loading matching exercise...</p>
+          <p className="matching-component__loading-text">{t('learning.loadingMatching')}</p>
         </div>
       </div>
     );
@@ -241,7 +244,7 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
         <div className="matching-component__header-info">
           <h2 className="matching-component__title">{module.name}</h2>
           <span className="matching-component__progress-badge">
-            {Object.keys(matches).length}/{pairs.length} matched
+            {Object.keys(matches).length}/{pairs.length}
           </span>
         </div>
         <div className="matching-component__progress-bar">
@@ -252,8 +255,8 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
         </div>
         <p className="matching-component__instruction-text">
           {allMatched
-            ? 'All matched! Check your answers'
-            : 'Click items from both columns to match them'}
+            ? t('learning.allMatched')
+            : t('learning.clickToMatch')}
         </p>
       </div>
 
@@ -262,7 +265,7 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
         <div className="matching-component__columns">
           {/* Terms Column */}
           <div className="matching-component__column">
-            <h3 className="matching-component__column-header">Terms</h3>
+            <h3 className="matching-component__column-header">{t('learning.terms')}</h3>
             {leftItems.map((item, index) => {
               const isMatched = matches[item];
               const isSelected = selectedLeft === item;
@@ -327,7 +330,7 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
 
           {/* Definitions Column */}
           <div className="matching-component__column">
-            <h3 className="matching-component__column-header">Definitions</h3>
+            <h3 className="matching-component__column-header">{t('learning.definitions')}</h3>
             {rightItems.map((item, index) => {
               const isMatched = Object.values(matches).includes(item);
               const isSelected = selectedRight === item;
