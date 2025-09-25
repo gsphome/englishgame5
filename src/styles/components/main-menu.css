@@ -97,13 +97,12 @@
   color: var(--theme-text-primary);
 }
 
-/* === SEARCH SECTION - ULTRA COMPACT DESIGN === */
+/* === SEARCH SECTION - HARMONIOUS PROPORTIONS === */
 .main-menu__search {
-  /* Ultra-compact spacing */
+  /* Harmonious width - equivalent to ~3 module cards */
   width: 100%;
-  max-width: 100%;
-  margin: 0 0 0.25rem 0;
-  /* Maximum compactness */
+  max-width: 280px;
+  margin: 0 auto 0.25rem auto;
 
   /* Container Properties */
   position: relative;
@@ -664,9 +663,10 @@ html.dark .main-menu__grid::-webkit-scrollbar-thumb:hover {
 
 /* Results count alignment */
 .main-menu__results-count {
-  /* Center align with other elements */
+  /* Center align with search proportions */
   width: auto;
-  max-width: 32rem;
+  max-width: 280px;
+  margin: 1.5rem auto 0 auto;
 }
 
 /* No results and error state alignment */
@@ -680,32 +680,30 @@ html.dark .main-menu__grid::-webkit-scrollbar-thumb:hover {
 
 /* === RESPONSIVE ALIGNMENT FIXES === */
 
-/* Mobile: Ensure perfect alignment */
+/* Mobile: Proportional to available space */
 @media (max-width: 639px) {
+  .main-menu__search {
+    max-width: 240px;
+  }
 
-  .main-menu__search,
   .main-menu__grid {
     margin-left: 0;
     margin-right: 0;
     width: 100%;
   }
-
-  .main-menu__search .main-menu__search {
-    max-width: 100%;
-  }
 }
 
-/* Tablet: Maintain alignment */
+/* Tablet: Proportional to 3 cards */
 @media (min-width: 640px) and (max-width: 899px) {
-  .main-menu__search .main-menu__search {
-    max-width: 28rem;
+  .main-menu__search {
+    max-width: 300px;
   }
 }
 
-/* Desktop: Perfect alignment */
+/* Desktop: Harmonious proportions */
 @media (min-width: 900px) {
-  .main-menu__search .main-menu__search {
-    max-width: 32rem;
+  .main-menu__search {
+    max-width: 320px;
   }
 }
 
