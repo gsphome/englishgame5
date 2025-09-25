@@ -133,12 +133,16 @@ export const CompactProfile: React.FC<CompactProfileProps> = ({ isOpen, onClose 
           <div className="compact-profile__content">
             {/* Basic Info */}
             <div className="compact-profile__section">
+              <h3 className="compact-profile__section-title">
+                👤 {t('profile.basicInfo', 'Información Básica')}
+              </h3>
+              
               <div className="compact-profile__field">
-                <label className="compact-profile__label">{t('profile.name', 'Nombre')} *</label>
+                <label className="compact-profile__label">{t('profile.name', 'Nombre')}</label>
                 <input
                   {...register('name')}
                   className={`compact-profile__input ${errors.name ? 'compact-profile__input--error' : ''}`}
-                  placeholder={t('profile.enterName', 'Ingresa tu nombre')}
+                  placeholder={t('profile.enterName', 'Ej: María González')}
                 />
                 {errors.name && (
                   <span className="compact-profile__error">{errors.name.message}</span>
@@ -147,15 +151,15 @@ export const CompactProfile: React.FC<CompactProfileProps> = ({ isOpen, onClose 
 
               <div className="compact-profile__field">
                 <label className="compact-profile__label">
-                  {t('profile.englishLevel', 'Nivel de Inglés')} *
+                  {t('profile.englishLevel', 'Nivel de Inglés')}
                 </label>
                 <select
                   {...register('level')}
                   className={`compact-profile__select ${errors.level ? 'compact-profile__select--error' : ''}`}
                 >
-                  <option value="beginner">🟢 {t('profile.beginner', 'Principiante')}</option>
-                  <option value="intermediate">🟡 {t('profile.intermediate', 'Intermedio')}</option>
-                  <option value="advanced">🔴 {t('profile.advanced', 'Avanzado')}</option>
+                  <option value="beginner">🌱 {t('profile.beginner', 'Principiante')} - Empezando mi viaje</option>
+                  <option value="intermediate">🚀 {t('profile.intermediate', 'Intermedio')} - Construyendo confianza</option>
+                  <option value="advanced">⭐ {t('profile.advanced', 'Avanzado')} - Perfeccionando habilidades</option>
                 </select>
               </div>
             </div>
@@ -163,13 +167,13 @@ export const CompactProfile: React.FC<CompactProfileProps> = ({ isOpen, onClose 
             {/* Preferences */}
             <div className="compact-profile__section">
               <h3 className="compact-profile__section-title">
-                {t('profile.preferences', 'Preferencias')}
+                ⚙️ {t('profile.preferences', 'Preferencias de Aprendizaje')}
               </h3>
 
               <div className="compact-profile__field-row">
                 <div className="compact-profile__field compact-profile__field--half">
-                  <label className="compact-profile__label">
-                    {t('profile.language', 'Idioma')}
+                  <label className="compact-profile__label compact-profile__label--optional">
+                    {t('profile.language', 'Idioma de la App')}
                   </label>
                   <select {...register('preferences.language')} className="compact-profile__select">
                     <option value="en">🇺🇸 English</option>
@@ -178,7 +182,7 @@ export const CompactProfile: React.FC<CompactProfileProps> = ({ isOpen, onClose 
                 </div>
 
                 <div className="compact-profile__field compact-profile__field--half">
-                  <label className="compact-profile__label">
+                  <label className="compact-profile__label compact-profile__label--optional">
                     {t('profile.dailyGoal', 'Meta Diaria')}
                   </label>
                   <div className="compact-profile__input-group">
@@ -188,6 +192,7 @@ export const CompactProfile: React.FC<CompactProfileProps> = ({ isOpen, onClose 
                       min="1"
                       max="100"
                       className="compact-profile__input compact-profile__input--number"
+                      placeholder="15"
                     />
                     <span className="compact-profile__input-addon">min</span>
                   </div>
@@ -195,8 +200,8 @@ export const CompactProfile: React.FC<CompactProfileProps> = ({ isOpen, onClose 
               </div>
 
               <div className="compact-profile__field">
-                <label className="compact-profile__label">
-                  {t('profile.difficulty', 'Dificultad')}: {getDifficultyEmoji(watchedDifficulty)}{' '}
+                <label className="compact-profile__label compact-profile__label--optional">
+                  {t('profile.difficulty', 'Nivel de Desafío')}: {getDifficultyEmoji(watchedDifficulty)}{' '}
                   {getDifficultyLabel(watchedDifficulty)}
                 </label>
                 <input
@@ -211,9 +216,9 @@ export const CompactProfile: React.FC<CompactProfileProps> = ({ isOpen, onClose 
 
             {/* Categories */}
             <div className="compact-profile__section">
-              <label className="compact-profile__label">
-                {t('profile.interestedCategories', 'Categorías de Interés')} *
-              </label>
+              <h3 className="compact-profile__section-title">
+                🎯 {t('profile.interestedCategories', 'Áreas de Enfoque')}
+              </h3>
               <div className="compact-profile__categories">
                 {categories.map(category => (
                   <label key={category} className="compact-profile__category">
@@ -243,6 +248,9 @@ export const CompactProfile: React.FC<CompactProfileProps> = ({ isOpen, onClose 
 
             {/* Notifications */}
             <div className="compact-profile__section">
+              <h3 className="compact-profile__section-title">
+                🔔 {t('profile.notifications', 'Notificaciones')}
+              </h3>
               <label className="compact-profile__notification">
                 <input
                   type="checkbox"
@@ -251,10 +259,10 @@ export const CompactProfile: React.FC<CompactProfileProps> = ({ isOpen, onClose 
                 />
                 <div className="compact-profile__notification-content">
                   <span className="compact-profile__notification-title">
-                    🔔 {t('profile.enableNotifications', 'Habilitar Notificaciones')}
+                    {t('profile.enableNotifications', 'Recordatorios Inteligentes')}
                   </span>
                   <p className="compact-profile__notification-description">
-                    {t('profile.notificationDescription', 'Recibe recordatorios para practicar')}
+                    {t('profile.notificationDescription', 'Recibe recordatorios personalizados para mantener tu racha de aprendizaje')}
                   </p>
                 </div>
               </label>
