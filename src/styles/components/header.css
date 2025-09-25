@@ -2,25 +2,25 @@
 
 /* === HEADER VARIABLES === */
 :root {
-  --header-bg: #ffffff;
-  --header-border: #e5e7eb;
-  --header-text-primary: #111827;
-  --header-text-secondary: #6b7280;
-  --header-icon-color: #374151;
-  --header-icon-hover: #111827;
-  --header-button-hover-bg: #f3f4f6;
-  --header-button-active-bg: #e5e7eb;
+  --header-bg: var(--theme-bg-elevated, #ffffff);
+  --header-border: var(--theme-border-soft, #e5e7eb);
+  --header-text-primary: var(--theme-text-primary, #111827);
+  --header-text-secondary: var(--theme-text-secondary, #6b7280);
+  --header-icon-color: var(--theme-text-secondary, #374151);
+  --header-icon-hover: var(--theme-text-primary, #111827);
+  --header-button-hover-bg: var(--theme-bg-subtle, #f3f4f6);
+  --header-button-active-bg: var(--theme-bg-soft, #e5e7eb);
 }
 
-.dark {
-  --header-bg: #1f2937;
-  --header-border: #4b5563;
-  --header-text-primary: #ffffff;
-  --header-text-secondary: #e5e7eb;
-  --header-icon-color: #e5e7eb;
-  --header-icon-hover: #ffffff;
-  --header-button-hover-bg: #374151;
-  --header-button-active-bg: #4b5563;
+html.dark {
+  --header-bg: var(--theme-bg-elevated, #1f2937);
+  --header-border: var(--theme-border-soft, #4b5563);
+  --header-text-primary: var(--theme-text-primary, #ffffff);
+  --header-text-secondary: var(--theme-text-secondary, #e5e7eb);
+  --header-icon-color: var(--theme-text-secondary, #e5e7eb);
+  --header-icon-hover: var(--theme-text-primary, #ffffff);
+  --header-button-hover-bg: var(--theme-bg-subtle, #374151);
+  --header-button-active-bg: var(--theme-bg-soft, #4b5563);
 }
 
 /* === HEADER CONTAINER === */
@@ -28,6 +28,10 @@
   background-color: var(--header-bg);
   border-bottom: 1px solid var(--header-border);
   min-height: 56px;
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .header-redesigned__container {
@@ -38,6 +42,24 @@
   max-width: 72rem;
   margin: 0 auto;
   min-height: 56px;
+}
+
+/* Header mode variants */
+.header-redesigned--menu {
+  /* Menu mode specific styles */
+}
+
+.header-redesigned--learning {
+  /* Learning mode specific styles */
+  background-color: var(--header-bg);
+}
+
+.header-redesigned__container--menu {
+  /* Menu container specific styles */
+}
+
+.header-redesigned__container--learning {
+  /* Learning container specific styles */
 }
 
 /* === HEADER SECTIONS === */
@@ -77,6 +99,7 @@
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease;
+  gap: 0.5rem;
 }
 
 .header-redesigned__menu-btn:hover,
@@ -85,6 +108,29 @@
 .header-redesigned__control-btn:hover {
   color: var(--header-icon-hover);
   background-color: var(--header-button-hover-bg);
+}
+
+.header-redesigned__menu-btn:focus,
+.header-redesigned__user-btn:focus,
+.header-redesigned__login-btn:focus,
+.header-redesigned__control-btn:focus {
+  outline: 2px solid var(--header-icon-color);
+  outline-offset: 2px;
+}
+
+/* Button variants */
+.header-redesigned__menu-btn--primary,
+.header-redesigned__user-btn--primary,
+.header-redesigned__login-btn--primary {
+  /* Primary button styles */
+  font-weight: 500;
+}
+
+.header-redesigned__menu-btn--primary:hover,
+.header-redesigned__user-btn--primary:hover,
+.header-redesigned__login-btn--primary:hover {
+  background-color: var(--header-button-hover-bg);
+  transform: translateY(-1px);
 }
 
 /* === ICONS === */
@@ -126,6 +172,7 @@
   inset: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 40;
+  animation: fadeIn 0.2s ease-out;
 }
 
 .header-side-menu {
@@ -138,6 +185,18 @@
   background-color: var(--header-bg);
   border-right: 1px solid var(--header-border);
   box-shadow: 4px 0 25px rgba(0, 0, 0, 0.15);
+  animation: slideInLeft 0.3s ease-out;
+  overflow-y: auto;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
 }
 
 .header-side-menu__header {
@@ -311,5 +370,114 @@
   
   .header-redesigned__dev-text {
     display: none;
+  }
+}
+
+/* === ENHANCED VISUAL STYLES === */
+/* Better visual hierarchy and spacing */
+.header-redesigned {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.header-redesigned__brand {
+  user-select: none;
+}
+
+.header-redesigned__title {
+  background: linear-gradient(135deg, var(--header-text-primary), var(--header-text-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Enhanced button interactions */
+.header-redesigned__menu-btn,
+.header-redesigned__user-btn,
+.header-redesigned__login-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.header-redesigned__menu-btn::before,
+.header-redesigned__user-btn::before,
+.header-redesigned__login-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle, var(--header-button-hover-bg) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.header-redesigned__menu-btn:hover::before,
+.header-redesigned__user-btn:hover::before,
+.header-redesigned__login-btn:hover::before {
+  opacity: 1;
+}
+
+/* Side menu enhancements */
+.header-side-menu {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.header-side-menu__item {
+  position: relative;
+  overflow: hidden;
+}
+
+.header-side-menu__item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--theme-primary-blue, #3b82f6);
+  transform: scaleY(0);
+  transition: transform 0.2s ease;
+}
+
+.header-side-menu__item:hover::before {
+  transform: scaleY(1);
+}
+
+/* Dark mode enhancements */
+html.dark .header-redesigned {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+html.dark .header-side-menu {
+  box-shadow: 4px 0 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .header-side-menu-overlay,
+  .header-side-menu,
+  .header-redesigned__menu-btn::before,
+  .header-redesigned__user-btn::before,
+  .header-redesigned__login-btn::before,
+  .header-side-menu__item::before {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .header-redesigned {
+    border-bottom-width: 2px;
+  }
+  
+  .header-redesigned__menu-btn,
+  .header-redesigned__user-btn,
+  .header-redesigned__login-btn {
+    border: 2px solid var(--header-icon-color);
   }
 }
