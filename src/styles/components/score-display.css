@@ -199,6 +199,23 @@
   min-width: 2.5rem;
 }
 
+/* === MISSING MODIFIERS === */
+.score-display-compact--learning {
+  /* Learning mode specific styles */
+}
+
+.score-display-compact--menu {
+  /* Menu mode specific styles */
+}
+
+.score-display-compact__container--in-game {
+  min-width: 160px;
+}
+
+.score-display-compact__container--full {
+  min-width: 200px;
+}
+
 /* === ACCESSIBILITY === */
 @media (prefers-reduced-motion: reduce) {
   .score-display-compact__progress-fill {
