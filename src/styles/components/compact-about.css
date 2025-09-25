@@ -1,5 +1,12 @@
 /* Compact About Modal - PURE BEM ARCHITECTURE */
 
+/* === BOX SIZING RESET === */
+.compact-about *,
+.compact-about *::before,
+.compact-about *::after {
+  box-sizing: border-box;
+}
+
 /* === MODAL OVERLAY === */
 .compact-about {
   position: fixed;
@@ -14,32 +21,25 @@
   padding: 1rem;
   z-index: 50;
   animation: modalFadeIn 0.2s ease-out;
-  backdrop-filter: blur(4px);
   min-height: 100vh;
   min-height: 100dvh;
+  overflow: hidden;
 }
 
 /* === MODAL CONTAINER === */
 .compact-about__container {
-  background: linear-gradient(135deg,
-      var(--theme-bg-elevated, #ffffff) 0%,
-      var(--theme-bg-subtle, #fafbfc) 100%);
-  border: 1px solid var(--theme-border-soft, #f3f4f6);
-  border-radius: 1rem;
-  box-shadow:
-    0 25px 50px -12px rgba(0, 0, 0, 0.25),
-    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
-  max-width: 28rem;
+  background-color: var(--theme-bg-elevated, #ffffff);
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  max-width: 24rem;
   width: 100%;
   max-height: 90vh;
-  max-height: 90dvh;
   overflow: hidden;
-  animation: modalSlideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: modalSlideIn 0.3s ease-out;
   position: relative;
-  margin: auto;
   display: flex;
   flex-direction: column;
-  backdrop-filter: blur(20px);
 }
 
 
@@ -49,24 +49,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.75rem 1rem;
-  background: linear-gradient(135deg,
-      rgba(139, 92, 246, 0.05) 0%,
-      rgba(59, 130, 246, 0.05) 100%);
-  border-bottom: 1px solid var(--theme-border-soft, #f3f4f6);
+  padding: 0.5rem 0.75rem;
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
   position: relative;
-}
-
-.compact-about__header::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg,
-      var(--theme-primary-purple, #8b5cf6) 0%,
-      var(--theme-primary-blue, #3b82f6) 100%);
+  overflow: hidden;
 }
 
 .compact-about__title-section {
@@ -106,14 +92,14 @@
 
 /* === CONTENT === */
 .compact-about__content {
-  padding: 1rem 1.25rem 1.25rem 1.25rem;
+  padding: 0.5rem 0.75rem;
+  flex: 1;
   overflow-y: auto;
   max-height: calc(90vh - 100px);
-  flex: 1;
 }
 
 .compact-about__content>*+* {
-  margin-top: 1rem;
+  margin-top: 0.375rem;
 }
 
 /* === SECTIONS === */

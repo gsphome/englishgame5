@@ -1,5 +1,12 @@
 /* Compact Learning Path - BEM Implementation with Compact UX */
 
+/* === BOX SIZING RESET === */
+.compact-learning-path *,
+.compact-learning-path *::before,
+.compact-learning-path *::after {
+  box-sizing: border-box;
+}
+
 .compact-learning-path {
   position: fixed;
   top: 0;
@@ -13,18 +20,19 @@
   padding: 1rem;
   z-index: 50;
   animation: modalFadeIn 0.2s ease-out;
+  overflow: hidden;
 }
 
 .compact-learning-path__container {
   background-color: var(--theme-bg-elevated, #ffffff);
-  border: 1px solid var(--theme-border-soft, #e5e7eb);
+  border: none;
   border-radius: 0.5rem;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  max-width: 26rem;
+  max-width: 24rem;
   width: 100%;
-  max-height: 95vh;
+  max-height: 90vh;
   overflow: hidden;
-  animation: modalSlideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: modalSlideIn 0.3s ease-out;
   display: flex;
   flex-direction: column;
 }
@@ -33,8 +41,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.5rem;
-  border-bottom: 1px solid var(--theme-border-soft, #e5e7eb);
+  padding: 0.5rem 0.75rem;
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
 }
 
 .compact-learning-path__title {
@@ -46,13 +54,13 @@
 }
 
 .compact-learning-path__content {
-  padding: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  flex: 1;
+  overflow-y: auto;
+  max-height: calc(90vh - 100px);
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  overflow-y: auto;
-  max-height: calc(95vh - 90px);
-  flex: 1;
+  gap: 0.375rem;
 }
 
 /* Progress Overview - Unified Grid Distribution */

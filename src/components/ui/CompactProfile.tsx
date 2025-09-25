@@ -247,9 +247,7 @@ export const CompactProfile: React.FC<CompactProfileProps> = ({ isOpen, onClose 
 
             {/* Notifications */}
             <div className="compact-profile__section">
-              <h3 className="compact-profile__section-title">
-                🔔 {t('profile.notifications', 'Notificaciones')}
-              </h3>
+
               <label className="compact-profile__notification">
                 <input
                   type="checkbox"
@@ -258,11 +256,8 @@ export const CompactProfile: React.FC<CompactProfileProps> = ({ isOpen, onClose 
                 />
                 <div className="compact-profile__notification-content">
                   <span className="compact-profile__notification-title">
-                    {t('profile.enableNotifications', 'Recordatorios')}
+                    {t('profile.enableNotifications', 'Recordatorios diarios')}
                   </span>
-                  <p className="compact-profile__notification-description">
-                    {t('profile.notificationDescription', 'Mantén tu racha de aprendizaje')}
-                  </p>
                 </div>
               </label>
             </div>
