@@ -9,9 +9,16 @@
  * Uses design system tokens and eliminates all Tailwind classes
  */
 
-/* === FLASHCARD COMPONENT CONTAINER === */
+/* === FLASHCARD COMPONENT BLOCK === */
+.flashcard-component {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 0.75rem;
+  color: var(--theme-text-primary);
+}
+
 .flashcard-component__container {
-  max-width: 72rem;
+  max-width: 48rem;
   margin: 0 auto;
   padding: 0.75rem;
 }
@@ -96,11 +103,7 @@
   background-color: var(--theme-bg-subtle);
 }
 
-@media (min-width: 640px) {
-  .flashcard-component__container {
-    padding: 1.5rem;
-  }
-}
+
 
 /* === NO DATA STATE === */
 .flashcard-component__no-data {
@@ -184,7 +187,7 @@
 }
 
 /* === FLASHCARD CARD === */
-.flashcard-component {
+.flashcard-component__card {
   position: relative;
   height: 14rem;
   width: 100%;
@@ -195,6 +198,10 @@
 
 @media (min-width: 640px) {
   .flashcard-component {
+    padding: 1.5rem;
+  }
+  
+  .flashcard-component__card {
     height: 16rem;
   }
 }
@@ -208,7 +215,7 @@
   transform-style: preserve-3d;
 }
 
-.flashcard-component.flipped .flashcard-component__inner {
+.flashcard-component__card.flipped .flashcard-component__inner {
   transform: rotateY(180deg);
 }
 
@@ -423,7 +430,7 @@
 
 /* === MOBILE OPTIMIZATIONS === */
 @media (max-width: 768px) {
-  .flashcard-component__container {
+  .flashcard-component {
     padding: 0.5rem;
   }
   
