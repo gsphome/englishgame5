@@ -30,8 +30,7 @@
 @import './components/toast-card.css';
 @import './components/toast.css';
 
-/* Design System Foundation */
-@import '../design-system/color-palette.css';
+/* Design System Foundation already imported in index.css */
 
 /* ALL LEGACY @APPLY STYLES REMOVED */
 /* Use dedicated component CSS files with pure BEM architecture */
