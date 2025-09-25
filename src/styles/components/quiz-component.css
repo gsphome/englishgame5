@@ -224,6 +224,7 @@
 }
 
 .quiz-component__option-number {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -242,6 +243,31 @@
 .quiz-component__option--correct .quiz-component__option-number,
 .quiz-component__option--incorrect .quiz-component__option-number {
   background-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+.quiz-component__option-check {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.5rem;
+  font-weight: 700;
+  z-index: 1;
+}
+
+.quiz-component__option--correct .quiz-component__option-check {
+  background-color: var(--theme-success, #10b981);
+  color: #ffffff;
+}
+
+.quiz-component__option--incorrect .quiz-component__option-check {
+  background-color: var(--theme-error, #ef4444);
   color: #ffffff;
 }
 
