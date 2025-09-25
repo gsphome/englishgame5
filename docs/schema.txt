@@ -1,0 +1,46 @@
+📋 Nombres de Contenedores de la Pantalla Principal
+🏗️ Estructura de Layout Principal
+
+layout-container
+├── header-redesigned
+│   └── header-redesigned__container
+│       ├── header-redesigned__left
+│       ├── header-redesigned__center  
+│       └── header-redesigned__right
+├── layout-main
+│   └── main-menu
+│       ├── main-menu__search
+│       └── main-menu__grid
+│           └── main-menu__grid-container
+└── toast-container (si hay notificaciones)
+
+
+🎯 Contenedores Principales por Sección
+
+1. Layout Global
+layout-container - Contenedor principal de toda la app
+layout-main - Área principal de contenido
+
+2. Header/Navegación
+header-redesigned - Header principal
+header-redesigned__container - Contenedor interno del header
+header-redesigned__left - Sección izquierda (menú + logo)
+header-redesigned__center - Sección central (score display)
+header-redesigned__right - Sección derecha (usuario)
+
+3. Menú Principal
+main-menu - Contenedor principal del menú
+main-menu__search - Contenedor de la barra de búsqueda
+main-menu__grid - Contenedor del grid de módulos
+main-menu__grid-container - Grid interno con los módulos
+
+4. Barra de Búsqueda
+search - Contenedor de la barra de búsqueda
+search__input - Input de búsqueda
+search__icon - Icono de búsqueda
+search__clear - Botón de limpiar
+
+5. Estados Especiales
+main-menu__no-results - Cuando no hay resultados
+main-menu__error - Estado de error
+main-menu__results-count - Contador de resultados

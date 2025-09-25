@@ -7,6 +7,7 @@ import { useUserStore } from '../../stores/userStore';
 import { useSettingsStore } from '../../stores/settingsStore';
 import { useTranslation } from '../../utils/i18n';
 import '../../styles/components/compact-profile.css';
+import '../../styles/components/modal-buttons.css';
 
 // Base schema for type inference
 const _baseProfileSchema = z.object({
@@ -121,10 +122,10 @@ export const CompactProfile: React.FC<CompactProfileProps> = ({ isOpen, onClose 
           </div>
           <button
             onClick={onClose}
-            className="compact-profile__close-btn"
+            className="modal__close-btn"
             aria-label={t('common.close')}
           >
-            <X className="compact-profile__close-icon" />
+            <X className="modal__close-icon" />
           </button>
         </div>
 
@@ -261,16 +262,19 @@ export const CompactProfile: React.FC<CompactProfileProps> = ({ isOpen, onClose 
           </div>
 
           {/* Actions */}
-          <div className="compact-profile__actions">
+          <div className="modal__actions modal__actions--double">
             <button
               type="button"
               onClick={onClose}
-              className="compact-profile__btn compact-profile__btn--cancel"
+              className="modal__btn modal__btn--secondary"
             >
               {t('common.cancel', 'Cancelar')}
             </button>
-            <button type="submit" className="compact-profile__btn compact-profile__btn--save">
-              <Save className="compact-profile__btn-icon" />
+            <button 
+              type="submit" 
+              className="modal__btn modal__btn--primary"
+            >
+              <Save className="modal__btn-icon" />
               {t('profile.saveProfile', 'Guardar')}
             </button>
           </div>

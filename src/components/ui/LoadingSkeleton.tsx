@@ -86,19 +86,19 @@ export const HeaderSkeleton: React.FC = () => (
 
 export const DashboardSkeleton: React.FC = () => (
   <div
-    className="max-w-6xl mx-auto px-3 sm:px-6 space-y-6"
+    className="dashboard-skeleton"
     role="status"
     aria-label="Loading dashboard"
   >
     <LoadingSkeleton variant="header" width="300px" />
 
     {/* Stats Cards Skeleton */}
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+    <div className="dashboard-skeleton__stats-grid">
       {Array.from({ length: 4 }).map((_, index) => (
-        <div key={index} className="bg-white p-6 rounded-lg shadow-lg">
-          <div className="flex items-center space-y-2">
-            <LoadingSkeleton width="32px" height="32px" className="rounded-full mr-3" />
-            <div className="flex-1">
+        <div key={index} className="dashboard-skeleton__stat-card">
+          <div className="dashboard-skeleton__stat-content">
+            <LoadingSkeleton width="32px" height="32px" className="dashboard-skeleton__stat-icon" />
+            <div className="dashboard-skeleton__stat-info">
               <LoadingSkeleton variant="text" width="80px" />
               <LoadingSkeleton variant="text" width="60px" />
             </div>
@@ -108,10 +108,10 @@ export const DashboardSkeleton: React.FC = () => (
     </div>
 
     {/* Charts Skeleton */}
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <div className="dashboard-skeleton__charts-grid">
       {Array.from({ length: 2 }).map((_, index) => (
-        <div key={index} className="bg-white p-6 rounded-lg shadow-lg">
-          <LoadingSkeleton variant="header" width="200px" className="mb-4" />
+        <div key={index} className="dashboard-skeleton__chart-card">
+          <LoadingSkeleton variant="header" width="200px" className="dashboard-skeleton__chart-title" />
           <LoadingSkeleton width="100%" height="300px" />
         </div>
       ))}

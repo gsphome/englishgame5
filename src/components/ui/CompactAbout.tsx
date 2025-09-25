@@ -5,6 +5,7 @@ import { useSettingsStore } from '../../stores/settingsStore';
 import { useTranslation } from '../../utils/i18n';
 import { FluentFlowLogo } from './FluentFlowLogo';
 import '../../styles/components/compact-about.css';
+import '../../styles/components/modal-buttons.css';
 
 interface CompactAboutProps {
   isOpen: boolean;
@@ -32,10 +33,10 @@ export const CompactAbout: React.FC<CompactAboutProps> = ({ isOpen, onClose }) =
           </div>
           <button
             onClick={onClose}
-            className="compact-about__close-btn"
+            className="modal__close-btn"
             aria-label={t('common.close')}
           >
-            <X className="compact-about__close-icon" />
+            <X className="modal__close-icon" />
           </button>
         </div>
 
@@ -149,8 +150,8 @@ export const CompactAbout: React.FC<CompactAboutProps> = ({ isOpen, onClose }) =
           </div>
 
           {/* Actions */}
-          <div className="compact-about__actions">
-            <button onClick={onClose} className="compact-about__btn compact-about__btn--primary">
+          <div className="modal__actions modal__actions--single">
+            <button onClick={onClose} className="modal__btn modal__btn--primary">
               {t('common.close', 'Cerrar')}
             </button>
           </div>

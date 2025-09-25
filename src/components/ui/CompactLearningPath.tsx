@@ -1,10 +1,11 @@
 import React from 'react';
-import { X, CheckCircle, Lock, Star, ArrowRight } from 'lucide-react';
+import { X, CheckCircle, Lock, Star } from 'lucide-react';
 import { useProgression } from '../../hooks/useProgression';
-import { useProgressStore } from '../../stores/progressStore';
+// Note: useProgressStore removed as we consolidated the information
 import { useSettingsStore } from '../../stores/settingsStore';
 import { useTranslation } from '../../utils/i18n';
 import '../../styles/components/compact-learning-path.css';
+import '../../styles/components/modal-buttons.css';
 
 interface CompactLearningPathProps {
   isOpen: boolean;
@@ -13,27 +14,24 @@ interface CompactLearningPathProps {
 
 export const CompactLearningPath: React.FC<CompactLearningPathProps> = ({ isOpen, onClose }) => {
   const progression = useProgression();
-  const { isModuleCompleted } = useProgressStore();
+  // Note: isModuleCompleted removed as we consolidated the information
   const { language } = useSettingsStore();
   const { t } = useTranslation(language);
 
   if (!isOpen) return null;
 
-  const { stats, unlockedModules } = progression;
+  const { stats } = progression;
   const nextRecommended = progression.getNextRecommendedModule();
 
-  // Get next 3 available modules
-  const availableModules = unlockedModules
-    .filter(module => !isModuleCompleted(module.id))
-    .slice(0, 3);
+  // Note: availableModules removed as we consolidated the information
 
   const unitInfo = {
-    1: { name: 'Foundation', code: 'A1', color: 'emerald' },
-    2: { name: 'Elementary', code: 'A2', color: 'blue' },
-    3: { name: 'Intermediate', code: 'B1', color: 'purple' },
-    4: { name: 'Upper-Intermediate', code: 'B2', color: 'orange' },
-    5: { name: 'Advanced', code: 'C1', color: 'red' },
-    6: { name: 'Mastery', code: 'C2', color: 'indigo' },
+    1: { name: 'Foundation', shortName: 'Found', code: 'A1', color: 'emerald' },
+    2: { name: 'Elementary', shortName: 'Elem', code: 'A2', color: 'blue' },
+    3: { name: 'Intermediate', shortName: 'Inter', code: 'B1', color: 'purple' },
+    4: { name: 'Upper-Intermediate', shortName: 'Upper', code: 'B2', color: 'orange' },
+    5: { name: 'Advanced', shortName: 'Adv', code: 'C1', color: 'red' },
+    6: { name: 'Mastery', shortName: 'Mast', code: 'C2', color: 'indigo' },
   };
 
   return (
@@ -45,75 +43,67 @@ export const CompactLearningPath: React.FC<CompactLearningPathProps> = ({ isOpen
           </h2>
           <button
             onClick={onClose}
-            className="compact-learning-path__close-btn"
+            className="modal__close-btn"
             aria-label={t('common.close')}
           >
-            <X className="compact-learning-path__close-icon" />
+            <X className="modal__close-icon" />
           </button>
         </div>
 
         <div className="compact-learning-path__content">
           {/* Progress Overview */}
           <div className="compact-learning-path__overview">
-            <div className="compact-learning-path__progress-ring">
-              <svg className="compact-learning-path__progress-svg" viewBox="0 0 36 36">
-                <path
-                  className="compact-learning-path__progress-bg"
-                  d="M18 2.0845
-                    a 15.9155 15.9155 0 0 1 0 31.831
-                    a 15.9155 15.9155 0 0 1 0 -31.831"
-                />
-                <path
-                  className="compact-learning-path__progress-fill"
-                  strokeDasharray={`${stats.completionPercentage}, 100`}
-                  d="M18 2.0845
-                    a 15.9155 15.9155 0 0 1 0 31.831
-                    a 15.9155 15.9155 0 0 1 0 -31.831"
-                />
-              </svg>
-              <div className="compact-learning-path__progress-text">
-                <span className="compact-learning-path__progress-value">
-                  {stats.completionPercentage}%
-                </span>
-                <span className="compact-learning-path__progress-label">
-                  {t('learningPath.complete', 'Completo')}
-                </span>
-              </div>
+            {/* Progress Circle - Grid Item 1 */}
+            <div className="compact-learning-path__stat">
+              <div className="compact-learning-path__stat-icon compact-learning-path__stat-icon--emoji">📊</div>
+              <span className="compact-learning-path__stat-value">{stats.completionPercentage}%</span>
+              <span className="compact-learning-path__stat-label">
+                {t('learningPath.complete', 'Completo')}
+              </span>
             </div>
 
-            <div className="compact-learning-path__stats">
-              <div className="compact-learning-path__stat">
-                <CheckCircle className="compact-learning-path__stat-icon compact-learning-path__stat-icon--completed" />
-                <span className="compact-learning-path__stat-value">{stats.completedModules}</span>
-                <span className="compact-learning-path__stat-label">
-                  {t('learningPath.completed', 'Completados')}
-                </span>
-              </div>
-              <div className="compact-learning-path__stat">
-                <Star className="compact-learning-path__stat-icon compact-learning-path__stat-icon--available" />
-                <span className="compact-learning-path__stat-value">{stats.unlockedModules}</span>
-                <span className="compact-learning-path__stat-label">
-                  {t('learningPath.available', 'Disponibles')}
-                </span>
-              </div>
-              <div className="compact-learning-path__stat">
-                <Lock className="compact-learning-path__stat-icon compact-learning-path__stat-icon--locked" />
-                <span className="compact-learning-path__stat-value">{stats.lockedModules}</span>
-                <span className="compact-learning-path__stat-label">
-                  {t('learningPath.locked', 'Bloqueados')}
-                </span>
-              </div>
+            {/* Completed Stat - Grid Item 2 */}
+            <div className="compact-learning-path__stat">
+              <CheckCircle className="compact-learning-path__stat-icon compact-learning-path__stat-icon--completed" />
+              <span className="compact-learning-path__stat-value">{stats.completedModules}</span>
+              <span className="compact-learning-path__stat-label">
+                {t('learningPath.completed', 'Completados')}
+              </span>
+            </div>
+
+            {/* Available Stat - Grid Item 3 */}
+            <div className="compact-learning-path__stat">
+              <Star className="compact-learning-path__stat-icon compact-learning-path__stat-icon--available" />
+              <span className="compact-learning-path__stat-value">{stats.unlockedModules}</span>
+              <span className="compact-learning-path__stat-label">
+                {t('learningPath.available', 'Disponibles')}
+              </span>
+            </div>
+
+            {/* Locked Stat - Grid Item 4 */}
+            <div className="compact-learning-path__stat">
+              <Lock className="compact-learning-path__stat-icon compact-learning-path__stat-icon--locked" />
+              <span className="compact-learning-path__stat-value">{stats.lockedModules}</span>
+              <span className="compact-learning-path__stat-label">
+                {t('learningPath.locked', 'Bloqueados')}
+              </span>
             </div>
           </div>
 
-          {/* Next Recommended */}
+          {/* Next Recommended Module - Consolidated */}
           {nextRecommended && (
-            <div className="compact-learning-path__next">
+            <div className="compact-learning-path__next-module">
               <h3 className="compact-learning-path__section-title">
-                <ArrowRight className="compact-learning-path__section-icon" />
+                <Star className="compact-learning-path__section-icon" />
                 {t('learningPath.nextRecommended', 'Siguiente Recomendado')}
               </h3>
-              <div className="compact-learning-path__module compact-learning-path__module--recommended">
+              <div className="compact-learning-path__recommended-card">
+                <div className="compact-learning-path__module-priority">
+                  <Star className="compact-learning-path__module-priority-icon" />
+                  <span className="compact-learning-path__module-priority-text">
+                    {t('learningPath.recommended', 'Recomendado')}
+                  </span>
+                </div>
                 <div className="compact-learning-path__module-info">
                   <div className="compact-learning-path__module-header">
                     <span
@@ -126,71 +116,54 @@ export const CompactLearningPath: React.FC<CompactLearningPathProps> = ({ isOpen
                     </span>
                   </div>
                   <h4 className="compact-learning-path__module-name">{nextRecommended.name}</h4>
-                  {nextRecommended.description && (
-                    <p className="compact-learning-path__module-description">
-                      {nextRecommended.description}
-                    </p>
-                  )}
                 </div>
-                <Star className="compact-learning-path__module-star" />
               </div>
             </div>
           )}
 
-          {/* Available Modules */}
-          {availableModules.length > 0 && (
-            <div className="compact-learning-path__available">
-              <h3 className="compact-learning-path__section-title">
-                {t('learningPath.availableModules', 'Módulos Disponibles')}
-              </h3>
-              <div className="compact-learning-path__modules">
-                {availableModules.map(module => (
-                  <div key={module.id} className="compact-learning-path__module">
-                    <div className="compact-learning-path__module-info">
-                      <div className="compact-learning-path__module-header">
-                        <span
-                          className={`compact-learning-path__module-level compact-learning-path__module-level--${unitInfo[module.unit as keyof typeof unitInfo]?.color}`}
-                        >
-                          {unitInfo[module.unit as keyof typeof unitInfo]?.code}
-                        </span>
-                        <span className="compact-learning-path__module-type">
-                          {module.learningMode}
-                        </span>
-                      </div>
-                      <h4 className="compact-learning-path__module-name">{module.name}</h4>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Unit Progress Summary */}
+          {/* Unit Progress Summary - Circular Design */}
           <div className="compact-learning-path__units">
             <h3 className="compact-learning-path__section-title">
               {t('learningPath.unitProgress', 'Progreso por Nivel')}
             </h3>
-            <div className="compact-learning-path__unit-list">
-              {stats.unitStats.map(unitStat => {
+            <div className="compact-learning-path__unit-grid">
+              {stats.unitStats.map((unitStat) => {
                 const info = unitInfo[unitStat.unit as keyof typeof unitInfo];
+
                 return (
-                  <div key={unitStat.unit} className="compact-learning-path__unit">
-                    <div className="compact-learning-path__unit-info">
-                      <span
-                        className={`compact-learning-path__unit-badge compact-learning-path__unit-badge--${info?.color}`}
-                      >
-                        {info?.code}
-                      </span>
-                      <span className="compact-learning-path__unit-name">{info?.name}</span>
-                    </div>
-                    <div className="compact-learning-path__unit-progress">
-                      <div className="compact-learning-path__unit-progress-bar">
-                        <div
-                          className="compact-learning-path__unit-progress-fill"
-                          style={{ '--progress-width': `${unitStat.percentage}%` } as React.CSSProperties}
+                  <div
+                    key={unitStat.unit}
+                    className="compact-learning-path__unit-item"
+                  >
+                    <div className="compact-learning-path__unit-circle">
+                      <svg className="compact-learning-path__unit-circle-svg" viewBox="0 0 36 36">
+                        <path
+                          className="compact-learning-path__unit-circle-bg"
+                          d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
                         />
+                        <path
+                          className={`compact-learning-path__unit-circle-fill compact-learning-path__unit-circle-fill--${info?.color}`}
+                          strokeDasharray={`${unitStat.percentage}, 100`}
+                          d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                        />
+                      </svg>
+                      <div className="compact-learning-path__unit-circle-content">
+                        <span className={`compact-learning-path__unit-circle-badge compact-learning-path__unit-circle-badge--${info?.color}`}>
+                          {info?.code}
+                        </span>
+                        <span className="compact-learning-path__unit-circle-percentage">
+                          {unitStat.percentage}%
+                        </span>
                       </div>
-                      <span className="compact-learning-path__unit-progress-text">
+                    </div>
+                    <div className="compact-learning-path__unit-circle-info">
+                      <span
+                        className="compact-learning-path__unit-circle-name"
+                        title={info?.name}
+                      >
+                        {info?.shortName}
+                      </span>
+                      <span className="compact-learning-path__unit-circle-stats">
                         {unitStat.completed}/{unitStat.total}
                       </span>
                     </div>
@@ -201,10 +174,10 @@ export const CompactLearningPath: React.FC<CompactLearningPathProps> = ({ isOpen
           </div>
 
           {/* Actions */}
-          <div className="compact-learning-path__actions">
+          <div className="modal__actions modal__actions--single">
             <button
               onClick={onClose}
-              className="compact-learning-path__btn compact-learning-path__btn--primary"
+              className="modal__btn modal__btn--primary"
             >
               {t('common.continue', 'Continuar Aprendiendo')}
             </button>

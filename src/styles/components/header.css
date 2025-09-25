@@ -1,180 +1,396 @@
-/* Header Component Styles - SIMPLIFIED ARCHITECTURE */
-
 /* === HEADER VARIABLES === */
 :root {
-  --header-bg: var(--theme-bg-elevated, #ffffff);
-  --header-border: var(--theme-border-soft, #e5e7eb);
-  --header-text-primary: var(--theme-text-primary, #111827);
-  --header-text-secondary: var(--theme-text-secondary, #6b7280);
-  --header-icon-color: var(--theme-text-secondary, #374151);
-  --header-icon-hover: var(--theme-text-primary, #111827);
-  --header-button-hover-bg: var(--theme-bg-subtle, #f3f4f6);
-  --header-button-active-bg: var(--theme-bg-soft, #e5e7eb);
+  --header-bg: #ffffff;
+  --header-border: #e5e7eb;
+  --header-text-primary: #111827;
+  --header-text-secondary: #6b7280;
+  --header-icon-color: #374151;
+  --header-icon-hover: #111827;
+  --header-button-hover-bg: #f3f4f6;
+  --header-button-active-bg: #e5e7eb;
+  --header-focus-ring: #3b82f6;
+  --menu-bg: #ffffff;
+  --menu-border: #e5e7eb;
+  --menu-header-bg: #f9fafb;
+  --menu-item-hover: #f3f4f6;
+  --menu-item-active: #e5e7eb;
+
+  /* Theme variables needed by other components */
+  --theme-bg-elevated: #ffffff;
+  --theme-bg-subtle: #f9fafb;
+  --theme-bg-soft: #f3f4f6;
+  --theme-border-soft: #e5e7eb;
+  --theme-border-medium: #d1d5db;
+  --theme-text-primary: #111827;
+  --theme-text-secondary: #6b7280;
+  --theme-primary-blue: #3b82f6;
+  --theme-primary-blue-hover: #2563eb;
 }
 
 html.dark {
-  --header-bg: var(--theme-bg-elevated, #1f2937);
-  --header-border: var(--theme-border-soft, #4b5563);
-  --header-text-primary: var(--theme-text-primary, #ffffff);
-  --header-text-secondary: var(--theme-text-secondary, #e5e7eb);
-  --header-icon-color: var(--theme-text-secondary, #e5e7eb);
-  --header-icon-hover: var(--theme-text-primary, #ffffff);
-  --header-button-hover-bg: var(--theme-bg-subtle, #374151);
-  --header-button-active-bg: var(--theme-bg-soft, #4b5563);
+  --header-bg: #1f2937;
+  --header-border: #4b5563;
+  --header-text-primary: #ffffff;
+  --header-text-secondary: #e5e7eb;
+  --header-icon-color: #e5e7eb;
+  --header-icon-hover: #ffffff;
+  --header-button-hover-bg: #374151;
+  --header-button-active-bg: #4b5563;
+  --header-focus-ring: #60a5fa;
+  --menu-bg: #1f2937;
+  --menu-border: #4b5563;
+  --menu-header-bg: #111827;
+  --menu-item-hover: #374151;
+  --menu-item-active: #4b5563;
+
+  /* Theme variables for dark mode */
+  --theme-bg-elevated: #1f2937;
+  --theme-bg-subtle: #374151;
+  --theme-bg-soft: #4b5563;
+  --theme-border-soft: #4b5563;
+  --theme-border-medium: #6b7280;
+  --theme-text-primary: #ffffff;
+  --theme-text-secondary: #e5e7eb;
+  --theme-primary-blue: #3b82f6;
+  --theme-primary-blue-hover: #2563eb;
 }
 
-/* === HEADER CONTAINER === */
 .header-redesigned {
   background-color: var(--header-bg);
   border-bottom: 1px solid var(--header-border);
-  min-height: 56px;
-  position: sticky;
-  top: 0;
-  z-index: 30;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow:
+    0 1px 3px 0 rgba(0, 0, 0, 0.1),
+    0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  min-height: 64px;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  z-index: 10;
+}
+
+/* Enhanced shadow and border for dark mode */
+.dark .header-redesigned {
+  box-shadow:
+    0 1px 3px 0 rgba(0, 0, 0, 0.3),
+    0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid var(--header-border);
+  background: linear-gradient(180deg, #1f2937 0%, #1a202c 100%);
 }
 
 .header-redesigned__container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.5rem;
-  max-width: 72rem;
-  margin: 0 auto;
-  min-height: 56px;
+  padding: 0.75rem;
+  max-width: 42rem;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 64px;
+  /* Ensure consistent height */
 }
 
-/* Header mode variants */
-.header-redesigned--menu {
-  /* Menu mode specific styles */
+@media (min-width: 640px) {
+  .header-redesigned__container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
 }
 
-.header-redesigned--learning {
-  /* Learning mode specific styles */
-  background-color: var(--header-bg);
-}
-
-.header-redesigned__container--menu {
-  /* Menu container specific styles */
-}
-
+/* Learning mode maintains same height but optimized spacing */
 .header-redesigned__container--learning {
-  /* Learning container specific styles */
+  padding: 0.75rem;
+  /* Consistent padding with layout-main */
 }
 
-/* === HEADER SECTIONS === */
+@media (min-width: 640px) {
+  .header-redesigned__container--learning {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+/* Left Section - Enhanced Consistency */
 .header-redesigned__left {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.75rem;
+  min-height: 40px;
+  /* Consistent inner height */
 }
 
-.header-redesigned__center {
-  flex: 1;
+.header-redesigned__menu-btn {
+  padding: 8px;
+  border-radius: 6px;
+  color: var(--header-icon-color);
+  background-color: transparent;
+  min-width: 40px;
+  min-height: 40px;
+  transition: all 0.2s ease-in-out;
+  border: none;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+/* Menu button now uses primary button styles - no specific rules needed */
+.header-redesigned__menu-btn:active {
+  background-color: var(--header-button-active-bg);
+  transform: translateY(0);
+}
+
+.header-redesigned__menu-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--header-focus-ring);
+}
+
+.header-redesigned__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 40px;
+  /* Consistent brand height */
+}
+
+.header-redesigned__logo {
+  font-size: 1.75rem;
+  line-height: 1;
+  padding: 6px;
+  border-radius: 50%;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: var(--theme-bg-elevated);
+  border: 1px solid var(--theme-border-soft);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.header-redesigned__title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--header-text-primary);
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  transition: color 0.2s ease-in-out;
+}
+
+/* Center Section - Consistent Alignment */
+.header-redesigned__center {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  justify-content: center;
+  align-items: center;
+  min-height: 40px;
+  /* Consistent center height */
+}
+
+/* Development Mode Indicator */
+.header-redesigned__dev-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  height: 24px;
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  color: white;
+  border-radius: 0.25rem;
+  font-size: 0.625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  box-shadow: 0 1px 2px rgba(220, 38, 38, 0.3);
+  animation: devPulse 2s infinite;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin-right: 1.5rem;
+}
+
+.dark .header-redesigned__dev-indicator {
+  background: linear-gradient(135deg, #f87171 0%, #ef4444 100%);
+  color: #1f2937;
+  box-shadow: 0 1px 2px rgba(248, 113, 113, 0.4);
+}
+
+.header-redesigned__dev-icon {
+  font-size: 0.625rem;
+  line-height: 1;
+}
+
+.header-redesigned__dev-text {
+  font-size: 0.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+@keyframes devPulse {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.85;
+    transform: scale(1.01);
+  }
+}
+
+/* Right Section - Enhanced Consistency */
 .header-redesigned__right {
   display: flex;
   align-items: center;
-  gap: 0.375rem;
+  gap: 0.75rem;
+  min-height: 40px;
+  /* Consistent right section height */
 }
 
-/* === BUTTONS === */
-.header-redesigned__menu-btn,
-.header-redesigned__user-btn,
-.header-redesigned__login-btn,
+.header-redesigned__user-section {
+  display: flex;
+  align-items: center;
+}
+
+.header-redesigned__user-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 6px;
+  color: var(--header-text-secondary);
+  background-color: transparent;
+  min-height: 40px;
+  transition: all 0.2s ease-in-out;
+  border: none;
+  cursor: pointer;
+}
+
+.header-redesigned__user-btn:hover {
+  color: var(--header-text-primary);
+  background-color: var(--header-button-hover-bg);
+  transform: translateY(-1px);
+}
+
+.header-redesigned__user-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--header-focus-ring);
+}
+
+.header-redesigned__login-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px;
+  border-radius: 6px;
+  color: var(--header-text-secondary);
+  background-color: transparent;
+  min-height: 40px;
+  transition: all 0.2s ease-in-out;
+  border: none;
+  cursor: pointer;
+}
+
+.header-redesigned__login-btn:hover {
+  color: var(--header-text-primary);
+  background-color: var(--header-button-hover-bg);
+  transform: translateY(-1px);
+}
+
+.header-redesigned__login-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--header-focus-ring);
+}
+
+/* Avatar styles removed - now using consistent icon-only approach */
+.header-redesigned__user-info {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .header-redesigned__user-info {
+    display: block;
+  }
+}
+
+.header-redesigned__username {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--header-text-primary);
+  transition: color 0.2s ease-in-out;
+}
+
+/* Quick Actions - Simplified Control Panel */
+.header-redesigned__quick-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Button Hierarchy System - Homologated Design */
+.header-redesigned__menu-btn--primary,
+.header-redesigned__user-btn--primary,
+.header-redesigned__login-btn--primary,
+.header-redesigned__control-btn--primary {
+  background-color: var(--header-button-hover-bg);
+  border: 1px solid var(--header-border);
+  border-radius: 8px;
+}
+
+.header-redesigned__menu-btn--primary:hover,
+.header-redesigned__user-btn--primary:hover,
+.header-redesigned__login-btn--primary:hover,
+.header-redesigned__control-btn--primary:hover {
+  background-color: var(--header-button-active-bg);
+  border-color: var(--header-icon-hover);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Deprecated - using --primary for consistency */
 .header-redesigned__control-btn {
   padding: 8px;
   border-radius: 6px;
   color: var(--header-icon-color);
   background-color: transparent;
-  border: none;
-  cursor: pointer;
   min-width: 40px;
   min-height: 40px;
+  transition: all 0.2s ease-in-out;
+  border: none;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s ease;
-  gap: 0.5rem;
 }
 
-.header-redesigned__menu-btn:hover,
-.header-redesigned__user-btn:hover,
-.header-redesigned__login-btn:hover,
 .header-redesigned__control-btn:hover {
   color: var(--header-icon-hover);
-  background-color: var(--header-button-hover-bg);
-}
-
-.header-redesigned__menu-btn:focus,
-.header-redesigned__user-btn:focus,
-.header-redesigned__login-btn:focus,
-.header-redesigned__control-btn:focus {
-  outline: 2px solid var(--header-icon-color);
-  outline-offset: 2px;
-}
-
-/* Button variants */
-.header-redesigned__menu-btn--primary,
-.header-redesigned__user-btn--primary,
-.header-redesigned__login-btn--primary {
-  /* Primary button styles */
-  font-weight: 500;
-}
-
-.header-redesigned__menu-btn--primary:hover,
-.header-redesigned__user-btn--primary:hover,
-.header-redesigned__login-btn--primary:hover {
   background-color: var(--header-button-hover-bg);
   transform: translateY(-1px);
 }
 
-/* === ICONS === */
-.header-redesigned svg {
-  color: currentColor;
-  stroke: currentColor;
-  fill: none;
-  stroke-width: 1.5;
-  width: 20px;
-  height: 20px;
+.header-redesigned__control-btn:active {
+  background-color: var(--header-button-active-bg);
+  transform: translateY(0);
 }
 
-/* === BRAND === */
-.header-redesigned__brand {
-  display: flex;
-  align-items: center;
-  gap: 0.375rem;
+.header-redesigned__control-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--header-focus-ring);
 }
 
-.header-redesigned__logo {
-  font-size: 1.5rem;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-}
-
-.header-redesigned__title {
-  font-size: 1.125rem;
-  font-weight: 700;
-  color: var(--header-text-primary);
-}
-
-/* === SIDE MENU === */
+/* Side Menu Styles */
 .header-side-menu-overlay {
   position: fixed;
-  inset: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 40;
-  animation: fadeIn 0.2s ease-out;
 }
 
+/* Enhanced Hamburger Menu with Design System */
 .header-side-menu {
   position: fixed;
   left: 0;
@@ -182,40 +398,68 @@ html.dark {
   height: 100vh;
   width: 280px;
   z-index: 50;
-  background-color: var(--header-bg);
-  border-right: 1px solid var(--header-border);
+  background-color: var(--menu-bg);
+  border-right: 1px solid var(--menu-border);
   box-shadow: 4px 0 25px rgba(0, 0, 0, 0.15);
-  animation: slideInLeft 0.3s ease-out;
-  overflow-y: auto;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(8px);
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+/* Enhanced shadow for dark mode */
+.dark .header-side-menu {
+  box-shadow: 4px 0 25px rgba(0, 0, 0, 0.5);
 }
 
-@keyframes slideInLeft {
-  from { transform: translateX(-100%); }
-  to { transform: translateX(0); }
-}
-
+/* Enhanced Menu Header */
 .header-side-menu__header {
   padding: 20px;
-  background-color: var(--header-bg);
-  border-bottom: 1px solid var(--header-border);
+  background-color: var(--menu-header-bg);
+  border-bottom: 1px solid var(--menu-border);
+  backdrop-filter: blur(8px);
 }
 
+/* Enhanced Menu Title Typography */
 .header-side-menu__title {
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--header-text-primary);
-  margin: 0;
+  letter-spacing: -0.025em;
+  margin: 0 0 4px 0;
 }
 
+.header-side-menu__subtitle {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--header-text-secondary);
+  margin: 0;
+  opacity: 0.8;
+}
+
+/* Menu Content */
 .header-side-menu__content {
   padding: 1rem;
 }
 
+.header-side-menu__content>*+* {
+  margin-top: 1.5rem;
+}
+
+/* Menu Sections */
+.header-side-menu__section>*+* {
+  margin-top: 0.5rem;
+}
+
+.header-side-menu__section-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--header-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 8px 16px;
+  opacity: 0.7;
+}
+
+/* Enhanced Menu Items with Better UX */
 .header-side-menu__item {
   width: 100%;
   text-align: left;
@@ -225,251 +469,180 @@ html.dark {
   display: flex;
   align-items: center;
   gap: 12px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   color: var(--header-text-secondary);
   background-color: transparent;
   border: none;
   cursor: pointer;
-  transition: all 0.2s ease;
+  font-weight: 500;
 }
 
 .header-side-menu__item:hover {
-  background-color: var(--header-button-hover-bg);
+  background-color: var(--menu-item-hover);
   color: var(--header-text-primary);
+  transform: translateX(4px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header-side-menu__item:active {
+  background-color: var(--menu-item-active);
+  transform: translateX(2px);
+}
+
+.header-side-menu__item:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--header-focus-ring);
+}
+
+/* Enhanced shadow for dark mode menu items */
+.dark .header-side-menu__item:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Enhanced Menu Icons and Text */
+.header-side-menu__text {
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: inherit;
+  transition: color 0.2s ease-in-out;
 }
 
 .header-side-menu__icon {
-  color: currentColor;
-  stroke: currentColor;
-  width: 20px;
-  height: 20px;
-}
-
-/* === USER SECTION === */
-.header-redesigned__user-section {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.header-redesigned__user-info {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-left: 0.5rem;
-}
-
-.header-redesigned__username {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--header-text-primary);
-  line-height: 1.2;
-}
-
-.header-redesigned__login-text {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--header-text-primary);
-  margin-left: 0.5rem;
-}
-
-/* === ICONS === */
-.header-redesigned__menu-icon,
-.header-redesigned__user-icon {
   width: 20px;
   height: 20px;
   color: currentColor;
   stroke: currentColor;
 }
 
-/* === QUICK ACTIONS === */
-.header-redesigned__quick-actions {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-}
-
-/* === DEVELOPMENT INDICATOR === */
-.header-redesigned__dev-indicator {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  padding: 0.25rem 0.5rem;
-  background-color: rgba(255, 165, 0, 0.1);
-  border: 1px solid rgba(255, 165, 0, 0.3);
-  border-radius: 0.375rem;
-  margin-left: 0.5rem;
-}
-
-.header-redesigned__dev-icon {
-  font-size: 0.875rem;
-}
-
-.header-redesigned__dev-text {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #d97706;
-}
-
-/* === SIDE MENU CONTENT === */
-.header-side-menu__subtitle {
-  font-size: 0.875rem;
-  color: var(--header-text-secondary);
-  margin: 0.25rem 0 0 0;
-}
-
-.header-side-menu__section {
-  margin-bottom: 1.5rem;
-}
-
-.header-side-menu__section-title {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--header-text-primary);
-  margin: 0 0 0.5rem 0;
-  padding: 0 16px;
-}
-
-.header-side-menu__text {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: currentColor;
-}
-
-/* === RESPONSIVE === */
-@media (max-width: 640px) {
+/* Enhanced Responsive Design */
+@media (max-width: 719px) {
   .header-redesigned__container {
     padding: 0.5rem 0.75rem;
+    min-height: 56px;
   }
-  
+
+  .header-redesigned__container--learning {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .header-redesigned__left {
+    gap: 0.5rem;
+    min-height: 36px;
+  }
+
+  /* Progressive disclosure on mobile */
   .header-redesigned__title {
     display: none;
   }
-  
-  .header-redesigned__user-info {
+
+  .header-redesigned__username {
     display: none;
   }
-  
-  .header-redesigned__login-text {
+
+  /* Simplified quick actions on mobile */
+  .header-redesigned__quick-actions span {
     display: none;
   }
-  
+
+  .header-redesigned__center,
+  .header-redesigned__right {
+    min-height: 36px;
+  }
+
+  .header-redesigned__menu-btn,
+  .header-redesigned__user-btn,
+  .header-redesigned__login-btn,
+  .header-redesigned__control-btn {
+    min-width: 36px;
+    min-height: 36px;
+    padding: 6px;
+  }
+
+  /* Enhanced side menu on mobile */
   .header-side-menu {
     width: 100%;
     max-width: 320px;
   }
 }
 
+/* Extra small screens - make score display smaller but balanced */
 @media (max-width: 480px) {
+  .header-redesigned__center {
+    flex: 1;
+    max-width: 160px;
+    min-width: 140px;
+  }
+
+  .header-redesigned__container {
+    min-height: 52px;
+    padding: 0.5rem;
+  }
+
+  .header-redesigned__left,
+  .header-redesigned__right {
+    flex-shrink: 0;
+  }
+
+  .header-redesigned__left {
+    gap: 0.25rem;
+  }
+
+  .header-redesigned__right {
+    gap: 0.25rem;
+  }
+}
+
+/* Ultra small screens - hide app logo */
+@media (max-width: 400px) {
   .header-redesigned__logo {
     display: none;
   }
-  
-  .header-redesigned__dev-indicator {
-    margin-left: 0.25rem;
-  }
-  
-  .header-redesigned__dev-text {
-    display: none;
+
+  .header-redesigned__left {
+    gap: 0.25rem;
   }
 }
 
-/* === ENHANCED VISUAL STYLES === */
-/* Better visual hierarchy and spacing */
-.header-redesigned {
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
+/* Extremely small screens - minimal score display */
+@media (max-width: 300px) {
+  .header-redesigned__center {
+    max-width: 100px;
+    min-width: 80px;
+  }
 
-.header-redesigned__brand {
-  user-select: none;
-}
-
-.header-redesigned__title {
-  background: linear-gradient(135deg, var(--header-text-primary), var(--header-text-secondary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Enhanced button interactions */
-.header-redesigned__menu-btn,
-.header-redesigned__user-btn,
-.header-redesigned__login-btn {
-  position: relative;
-  overflow: hidden;
-}
-
-.header-redesigned__menu-btn::before,
-.header-redesigned__user-btn::before,
-.header-redesigned__login-btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle, var(--header-button-hover-bg) 0%, transparent 70%);
-  opacity: 0;
-  transition: opacity 0.2s ease;
-  pointer-events: none;
-}
-
-.header-redesigned__menu-btn:hover::before,
-.header-redesigned__user-btn:hover::before,
-.header-redesigned__login-btn:hover::before {
-  opacity: 1;
-}
-
-/* Side menu enhancements */
-.header-side-menu {
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
-
-.header-side-menu__item {
-  position: relative;
-  overflow: hidden;
-}
-
-.header-side-menu__item::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  background: var(--theme-primary-blue, #3b82f6);
-  transform: scaleY(0);
-  transition: transform 0.2s ease;
-}
-
-.header-side-menu__item:hover::before {
-  transform: scaleY(1);
-}
-
-/* Dark mode enhancements */
-html.dark .header-redesigned {
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-}
-
-html.dark .header-side-menu {
-  box-shadow: 4px 0 25px rgba(0, 0, 0, 0.4);
-}
-
-/* Accessibility improvements */
-@media (prefers-reduced-motion: reduce) {
-  .header-side-menu-overlay,
-  .header-side-menu,
-  .header-redesigned__menu-btn::before,
-  .header-redesigned__user-btn::before,
-  .header-redesigned__login-btn::before,
-  .header-side-menu__item::before {
-    animation: none !important;
-    transition: none !important;
+  .header-redesigned__container {
+    padding: 0.25rem;
+    min-height: 44px;
   }
 }
 
-/* === UTILITY CLASSES === */
+/* Enhanced Accessibility and High Contrast Support */
+@media (prefers-contrast: high) {
+  :root {
+    --header-icon-color: #000000;
+    --header-icon-hover: #000000;
+    --header-text-primary: #000000;
+    --header-text-secondary: #333333;
+  }
+
+  .dark {
+    --header-icon-color: #ffffff;
+    --header-icon-hover: #ffffff;
+    --header-text-primary: #ffffff;
+    --header-text-secondary: #e5e5e5;
+    --header-button-hover-bg: #4b5563;
+    --header-button-active-bg: #6b7280;
+  }
+}
+
+/* Enhanced Focus Indicators for Better Accessibility */
+.header-redesigned button:focus-visible {
+  outline: 2px solid var(--header-focus-ring);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+/* Screen Reader Only Text */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -482,15 +655,393 @@ html.dark .header-side-menu {
   border: 0;
 }
 
-/* High contrast mode */
+/* Button Hierarchy Styles */
+.header-redesigned__menu-btn--tertiary {
+  opacity: 0.7;
+  transition: all 0.2s ease-in-out;
+}
+
+.header-redesigned__menu-btn--tertiary:hover {
+  opacity: 1;
+}
+
+/* Improved Animation Performance */
+.header-redesigned *,
+.header-side-menu * {
+  will-change: auto;
+}
+
+.header-redesigned button:hover,
+.header-side-menu__item:hover {
+  will-change: transform, background-color;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+
+  .header-redesigned *,
+  .header-side-menu * {
+    transition: none !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}
+
+/* Enhanced Logo with Better Dark Mode Contrast */
+.dark .header-redesigned__logo {
+  background: linear-gradient(135deg, #374151 0%, #4b5563 100%);
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Hover effect for logo in dark mode */
+.dark .header-redesigned__brand:hover .header-redesigned__logo {
+  background: linear-gradient(135deg, #4b5563 0%, #6b7280 100%);
+  transform: scale(1.05);
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Light mode - keep it clean */
+.header-redesigned__logo {
+  background: transparent;
+}
+
+.header-redesigned__brand:hover .header-redesigned__logo {
+  transform: scale(1.05);
+  background-color: var(--header-button-hover-bg);
+  border-color: var(--theme-border-medium);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Better Overlay for Side Menu */
+.header-side-menu-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 40;
+  backdrop-filter: blur(4px);
+  transition: opacity 0.3s ease-in-out;
+}
+
+.dark .header-side-menu-overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Logo Animation and Accessibility Enhancements */
+.header-redesigned__brand {
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.header-redesigned__brand:focus {
+  outline: none;
+}
+
+.header-redesigned__brand:focus .header-redesigned__logo {
+  box-shadow: 0 0 0 2px var(--header-focus-ring);
+}
+
+/* Alternative high contrast version for accessibility */
 @media (prefers-contrast: high) {
-  .header-redesigned {
-    border-bottom-width: 2px;
+  .dark .header-redesigned__logo {
+    background: #000000;
+    border: 2px solid #ffffff;
+    box-shadow: none;
   }
-  
-  .header-redesigned__menu-btn,
-  .header-redesigned__user-btn,
-  .header-redesigned__login-btn {
-    border: 2px solid var(--header-icon-color);
+
+  .dark .header-redesigned__brand:hover .header-redesigned__logo {
+    background: #333333;
+    border: 2px solid #ffffff;
   }
+}
+
+/* Reduced motion support for logo */
+@media (prefers-reduced-motion: reduce) {
+
+  .header-redesigned__logo,
+  .header-redesigned__brand:hover .header-redesigned__logo {
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* Enhanced Button Definitions for Dark Mode */
+.dark .header-redesigned__menu-btn,
+.dark .header-redesigned__user-btn,
+.dark .header-redesigned__login-btn,
+.dark .header-redesigned__control-btn {
+  border: 1px solid transparent;
+  transition: all 0.2s ease-in-out;
+}
+
+.dark .header-redesigned__menu-btn:hover,
+.dark .header-redesigned__user-btn:hover,
+.dark .header-redesigned__login-btn:hover,
+.dark .header-redesigned__control-btn:hover {
+  border-color: var(--header-border);
+  background-color: var(--header-button-hover-bg);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Enhanced Primary Buttons in Dark Mode - Homologated */
+.dark .header-redesigned__menu-btn--primary,
+.dark .header-redesigned__user-btn--primary,
+.dark .header-redesigned__login-btn--primary,
+.dark .header-redesigned__control-btn--primary {
+  background-color: rgba(75, 85, 99, 0.5);
+  border: 1px solid var(--header-border);
+  backdrop-filter: blur(8px);
+}
+
+.dark .header-redesigned__menu-btn--primary:hover,
+.dark .header-redesigned__user-btn--primary:hover,
+.dark .header-redesigned__login-btn--primary:hover,
+.dark .header-redesigned__control-btn--primary:hover {
+  background-color: var(--header-button-active-bg);
+  border-color: #6b7280;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Avatar styles removed - now using consistent icon-only approach for all buttons */
+
+/* Enhanced Side Menu for Dark Mode */
+.dark .header-side-menu {
+  background: linear-gradient(180deg, #1f2937 0%, #1a202c 100%);
+  border-right: 1px solid var(--menu-border);
+  box-shadow:
+    4px 0 25px rgba(0, 0, 0, 0.5),
+    inset -1px 0 0 rgba(255, 255, 255, 0.05);
+}
+
+.dark .header-side-menu__header {
+  background: linear-gradient(180deg, #111827 0%, #0f172a 100%);
+  border-bottom: 1px solid var(--menu-border);
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Enhanced Menu Items for Dark Mode */
+.dark .header-side-menu__item {
+  border: 1px solid transparent;
+  margin: 2px 8px;
+}
+
+.dark .header-side-menu__item:hover {
+  background: linear-gradient(90deg, rgba(75, 85, 99, 0.5) 0%, rgba(107, 114, 128, 0.3) 100%);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Enhanced Section Titles for Dark Mode */
+.dark .header-side-menu__section-title {
+  color: #9ca3af;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Enhanced Focus States for Dark Mode */
+.dark .header-redesigned button:focus-visible {
+  outline: 2px solid #60a5fa;
+  outline-offset: 2px;
+  box-shadow:
+    0 0 0 4px rgba(96, 165, 250, 0.2),
+    0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Enhanced Overlay for Dark Mode */
+.dark .header-side-menu-overlay {
+  background: linear-gradient(45deg,
+      rgba(0, 0, 0, 0.7) 0%,
+      rgba(0, 0, 0, 0.5) 50%,
+      rgba(0, 0, 0, 0.7) 100%);
+  backdrop-filter: blur(8px);
+}
+
+/* Enhanced Logo Glow Effect for Dark Mode */
+.dark .header-redesigned__logo {
+  background: linear-gradient(135deg, #374151 0%, #4b5563 100%);
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 0 20px rgba(96, 165, 250, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark .header-redesigned__brand:hover .header-redesigned__logo {
+  background: linear-gradient(135deg, #4b5563 0%, #6b7280 100%);
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 0 30px rgba(96, 165, 250, 0.2);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Enhanced Typography Contrast for Dark Mode */
+.dark .header-redesigned__title {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+}
+
+.dark .header-redesigned__username {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  color: #e5e7eb;
+}
+
+/* Enhanced Quick Actions for Dark Mode - Now using --primary for consistency */
+
+/* Homologated Button Sections - Equal Visual Weight */
+.header-redesigned__user-section,
+.header-redesigned__quick-actions {
+  display: flex;
+  align-items: center;
+}
+
+/* Ensure consistent spacing between primary action buttons */
+.header-redesigned__right>*+* {
+  margin-left: 8px;
+}
+
+/* Homologated Primary Button Styles - All buttons get same treatment */
+.header-redesigned__menu-btn--primary,
+.header-redesigned__user-btn--primary,
+.header-redesigned__login-btn--primary,
+.header-redesigned__control-btn--primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 12px;
+  min-height: 40px;
+  min-width: 40px;
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: var(--header-text-primary);
+}
+
+/* Ensure icons have consistent visual weight and better contrast */
+.header-redesigned__menu-btn--primary svg,
+.header-redesigned__user-btn--primary svg,
+.header-redesigned__login-btn--primary svg,
+.header-redesigned__control-btn--primary svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: var(--header-text-primary);
+  stroke: var(--header-text-primary);
+}
+
+/* Ensure all text within primary buttons uses consistent color */
+.header-redesigned__menu-btn--primary span,
+.header-redesigned__user-btn--primary span,
+.header-redesigned__login-btn--primary span,
+.header-redesigned__control-btn--primary span,
+.header-redesigned__username {
+  color: var(--header-text-primary);
+  font-weight: 500;
+}
+
+/* Ensure Stats button has same visual weight as User button */
+.header-redesigned__control-btn--primary {
+  min-width: 40px;
+}
+
+/* Ensure consistent button alignment in right section */
+.header-redesigned__user-section,
+.header-redesigned__quick-actions {
+  align-items: center;
+  height: 40px;
+}
+
+/* Dark mode - ensure all primary buttons have identical treatment */
+.dark .header-redesigned__menu-btn--primary,
+.dark .header-redesigned__user-btn--primary,
+.dark .header-redesigned__login-btn--primary,
+.dark .header-redesigned__control-btn--primary {
+  background: linear-gradient(135deg, rgba(75, 85, 99, 0.6) 0%, rgba(55, 65, 81, 0.4) 100%);
+  border: 1px solid var(--header-border);
+  backdrop-filter: blur(8px);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  color: var(--header-text-primary);
+}
+
+.dark .header-redesigned__menu-btn--primary:hover,
+.dark .header-redesigned__user-btn--primary:hover,
+.dark .header-redesigned__login-btn--primary:hover,
+.dark .header-redesigned__control-btn--primary:hover {
+  background: linear-gradient(135deg, rgba(107, 114, 128, 0.7) 0%, rgba(75, 85, 99, 0.5) 100%);
+  border-color: #6b7280;
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+  color: var(--header-text-primary);
+}
+
+/* Ensure dark mode hover state maintains consistent text color */
+.dark .header-redesigned__menu-btn--primary:hover span,
+.dark .header-redesigned__user-btn--primary:hover span,
+.dark .header-redesigned__login-btn--primary:hover span,
+.dark .header-redesigned__control-btn--primary:hover span,
+.dark .header-redesigned__user-btn--primary:hover .header-redesigned__username {
+  color: var(--header-text-primary);
+}
+
+/* Light mode - ensure consistency */
+.header-redesigned__menu-btn--primary,
+.header-redesigned__user-btn--primary,
+.header-redesigned__login-btn--primary,
+.header-redesigned__control-btn--primary {
+  background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+  border: 1px solid var(--header-border);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  color: var(--header-text-primary);
+}
+
+.header-redesigned__menu-btn--primary:hover,
+.header-redesigned__user-btn--primary:hover,
+.header-redesigned__login-btn--primary:hover,
+.header-redesigned__control-btn--primary:hover {
+  background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+  border-color: #9ca3af;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+  color: var(--header-text-primary);
+}
+
+/* Ensure hover state maintains consistent text color for all elements */
+.header-redesigned__menu-btn--primary:hover span,
+.header-redesigned__user-btn--primary:hover span,
+.header-redesigned__login-btn--primary:hover span,
+.header-redesigned__control-btn--primary:hover span,
+.header-redesigned__user-btn--primary:hover .header-redesigned__username {
+  color: var(--header-text-primary);
+}
+
+/* Additional styles for login text */
+.header-redesigned__login-text {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--header-text-primary);
+}
+
+/* Additional styles for user icon */
+.header-redesigned__user-icon {
+  width: 16px;
+  height: 16px;
+  color: currentColor;
+  stroke: currentColor;
+}
+
+/* Additional styles for menu icon */
+.header-redesigned__menu-icon {
+  width: 16px;
+  height: 16px;
+  color: currentColor;
+  stroke: currentColor;
 }

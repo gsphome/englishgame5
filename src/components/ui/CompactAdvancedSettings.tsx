@@ -4,6 +4,7 @@ import { useSettingsStore } from '../../stores/settingsStore';
 import { useTranslation } from '../../utils/i18n';
 import { validateGameSettings } from '../../utils/inputValidation';
 import '../../styles/components/compact-advanced-settings.css';
+import '../../styles/components/modal-buttons.css';
 
 interface CompactAdvancedSettingsProps {
   isOpen: boolean;
@@ -159,10 +160,10 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
           </div>
           <button
             onClick={onClose}
-            className="compact-settings__close-btn"
+            className="modal__close-btn"
             aria-label={t('common.close')}
           >
-            <X className="compact-settings__close-icon" />
+            <X className="modal__close-icon" />
           </button>
         </div>
 
@@ -180,7 +181,7 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
             className={`compact-settings__tab ${activeTab === 'games' ? 'compact-settings__tab--active' : ''}`}
           >
             <Gamepad2 className="compact-settings__tab-icon" />
-            <span className="compact-settings__tab-title">{t('settings.games', 'Juegos')}</span>
+            <span className="compact-settings__tab-title compact-settings__tab-title--compact">{t('settings.games', 'Games')}</span>
           </button>
           <button
             onClick={() => setActiveTab('categories')}
@@ -436,25 +437,25 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
         </div>
 
         {/* Footer Actions - Fixed outside scroll area */}
-        <div className="compact-settings__footer">
+        <div className={`modal__actions ${hasChanges ? 'modal__actions--double' : 'modal__actions--single'}`}>
           {hasChanges && (
             <button
               onClick={handleReset}
-              className="compact-settings__btn compact-settings__btn--reset"
+              className="modal__btn modal__btn--secondary"
               aria-label={t('settings.reset', 'Restablecer')}
             >
-              <RotateCcw className="compact-settings__btn-icon" />
+              <RotateCcw className="modal__btn-icon" />
               {t('settings.reset', 'Restablecer')}
             </button>
           )}
           <button
             onClick={hasChanges ? handleSave : onClose}
-            className="compact-settings__btn compact-settings__btn--primary"
+            className="modal__btn modal__btn--primary"
             aria-label={hasChanges ? t('settings.save', 'Guardar') : t('common.close', 'Cerrar')}
           >
             {hasChanges ? (
               <>
-                <Save className="compact-settings__btn-icon" />
+                <Save className="modal__btn-icon" />
                 {t('settings.save', 'Guardar')}
               </>
             ) : (

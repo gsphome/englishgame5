@@ -5,6 +5,7 @@ import { useUserStore } from '../../stores/userStore';
 import { useSettingsStore } from '../../stores/settingsStore';
 import { useTranslation } from '../../utils/i18n';
 import '../../styles/components/compact-progress-dashboard.css';
+import '../../styles/components/modal-buttons.css';
 
 interface CompactProgressDashboardProps {
   isOpen: boolean;
@@ -45,10 +46,10 @@ export const CompactProgressDashboard: React.FC<CompactProgressDashboardProps> =
           </h2>
           <button
             onClick={onClose}
-            className="compact-dashboard__close-btn"
+            className="modal__close-btn"
             aria-label={t('common.close')}
           >
-            <X className="compact-dashboard__close-icon" />
+            <X className="modal__close-icon" />
           </button>
         </div>
 
@@ -137,10 +138,10 @@ export const CompactProgressDashboard: React.FC<CompactProgressDashboardProps> =
           </div>
 
           {/* Quick Actions */}
-          <div className="compact-dashboard__actions">
+          <div className="modal__actions modal__actions--single">
             <button
               onClick={onClose}
-              className="compact-dashboard__btn compact-dashboard__btn--primary"
+              className="modal__btn modal__btn--primary"
             >
               {t('common.continue', 'Continuar Aprendiendo')}
             </button>
