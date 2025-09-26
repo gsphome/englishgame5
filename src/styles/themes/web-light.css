@@ -14,10 +14,8 @@
 /* AI_VALIDATION: WEB_LIGHT_MEDIA_QUERY - Desktop/tablet light theme context */
 /* AI_CONTEXT: Applies to screens 769px+ in light mode */
 @media (min-width: 769px) {
-
   html.light,
   html:not(.dark) {
-
     /* === HEADER COMPONENT === */
     /* AI_VALIDATION: HEADER_WEB_LIGHT - Header styling for desktop light mode */
     /* DISABLED: These rules conflict with header.css variables */
@@ -62,15 +60,24 @@
     }
 
     /* Apply theme colors to non-colored module cards */
-    .module-card:not(.module-card--flashcard):not(.module-card--quiz):not(.module-card--completion):not(.module-card--sorting):not(.module-card--matching) .module-card__title {
+    .module-card:not(.module-card--flashcard):not(.module-card--quiz):not(
+        .module-card--completion
+      ):not(.module-card--sorting):not(.module-card--matching)
+      .module-card__title {
       color: var(--theme-text-primary);
     }
 
-    .module-card:not(.module-card--flashcard):not(.module-card--quiz):not(.module-card--completion):not(.module-card--sorting):not(.module-card--matching) .module-card__description {
+    .module-card:not(.module-card--flashcard):not(.module-card--quiz):not(
+        .module-card--completion
+      ):not(.module-card--sorting):not(.module-card--matching)
+      .module-card__description {
       color: var(--theme-text-secondary);
     }
 
-    .module-card:not(.module-card--flashcard):not(.module-card--quiz):not(.module-card--completion):not(.module-card--sorting):not(.module-card--matching) svg {
+    .module-card:not(.module-card--flashcard):not(.module-card--quiz):not(
+        .module-card--completion
+      ):not(.module-card--sorting):not(.module-card--matching)
+      svg {
       color: var(--theme-text-secondary);
       stroke: var(--theme-text-secondary);
     }
@@ -186,8 +193,8 @@
     }
 
     /* Force white text on any button with gradient background */
-    html.light button[class*="gradient"],
-    html:not(.dark) button[class*="gradient"],
+    html.light button[class*='gradient'],
+    html:not(.dark) button[class*='gradient'],
     html.light .bg-gradient-to-r,
     html:not(.dark) .bg-gradient-to-r {
       color: #ffffff !important;
@@ -271,8 +278,6 @@
       background-color: var(--theme-bg-elevated);
       border-color: var(--theme-border-soft);
     }
-
-
   }
 }
 

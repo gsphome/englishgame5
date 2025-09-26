@@ -58,7 +58,8 @@ export const ScoreDisplay: React.FC = () => {
                 {sessionScore.incorrect}
               </span>
             </div>
-            <div className="score-display-compact__accuracy min-width-sm"
+            <div
+              className="score-display-compact__accuracy min-width-sm"
               aria-label={`${sessionScore.accuracy.toFixed(0)} percent accuracy`}
             >
               {sessionScore.total > 0 ? `${sessionScore.accuracy.toFixed(0)}%` : '0%'}
@@ -88,7 +89,8 @@ export const ScoreDisplay: React.FC = () => {
                   {globalScore.incorrect}
                 </span>
               </div>
-              <div className="score-display-compact__accuracy min-width-sm"
+              <div
+                className="score-display-compact__accuracy min-width-sm"
                 aria-label={`${globalScore.accuracy.toFixed(0)} percent overall accuracy`}
               >
                 {globalScore.total > 0 ? `${globalScore.accuracy.toFixed(0)}%` : '0%'}

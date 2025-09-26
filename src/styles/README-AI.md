@@ -7,12 +7,14 @@ This guide provides AI developers with comprehensive patterns, examples, and val
 ## Architecture Philosophy
 
 ### Pure CSS Architecture (No Hybrid Code)
+
 - **NO Tailwind classes** in HTML/JSX: `className="text-gray-500"` ❌
 - **NO @apply directives** in CSS: `@apply bg-white text-black` ❌
 - **Pure BEM only**: `className="compact-settings__close-btn"` ✅
 - **Design tokens only**: `color: var(--theme-text-primary)` ✅
 
 ### Design Token System
+
 All styling uses a centralized token system with theme-aware variables:
 
 ```css
@@ -25,7 +27,7 @@ All styling uses a centralized token system with theme-aware variables:
 
 /* ❌ INCORRECT: Direct colors or Tailwind */
 .component__element {
-  color: #374151;           /* Direct color */
+  color: #374151; /* Direct color */
   @apply bg-white text-black; /* @apply directive */
 }
 ```
@@ -33,23 +35,33 @@ All styling uses a centralized token system with theme-aware variables:
 ## BEM Methodology - Strict Implementation
 
 ### Naming Convention Rules
+
 ```css
 /* Block: Component name */
-.compact-settings { }
+.compact-settings {
+}
 
 /* Element: Component part */
-.compact-settings__container { }
-.compact-settings__header { }
-.compact-settings__title { }
-.compact-settings__close-btn { }
+.compact-settings__container {
+}
+.compact-settings__header {
+}
+.compact-settings__title {
+}
+.compact-settings__close-btn {
+}
 
 /* Modifier: Variation or state */
-.compact-settings--active { }
-.compact-settings__close-btn--disabled { }
-.compact-settings__container--loading { }
+.compact-settings--active {
+}
+.compact-settings__close-btn--disabled {
+}
+.compact-settings__container--loading {
+}
 ```
 
 ### AI Pattern Recognition
+
 When creating new components, follow this structure:
 
 1. **Identify the block** (main component name)
@@ -60,6 +72,7 @@ When creating new components, follow this structure:
 ## Design Token Categories
 
 ### Text Hierarchy
+
 ```css
 /* Primary text - main content */
 color: var(--theme-text-primary);
@@ -75,6 +88,7 @@ color: var(--theme-text-on-colored);
 ```
 
 ### Background System
+
 ```css
 /* Elevated surfaces - cards, modals */
 background-color: var(--theme-bg-elevated);
@@ -90,6 +104,7 @@ background-color: var(--theme-bg-primary);
 ```
 
 ### Border System
+
 ```css
 /* Almost invisible borders */
 border-color: var(--theme-border-subtle);
@@ -105,6 +120,7 @@ border-color: var(--theme-border-on-colored);
 ```
 
 ### Interactive Colors
+
 ```css
 /* Primary actions */
 background-color: var(--theme-primary-blue);
@@ -120,6 +136,7 @@ background-color: var(--theme-primary-purple-light);
 ## Component Development Pattern
 
 ### 1. Create Component Structure
+
 ```typescript
 // Component.tsx
 import './component-name.css';
@@ -140,6 +157,7 @@ export const ComponentName = () => {
 ```
 
 ### 2. Create CSS File
+
 ```css
 /* component-name.css */
 
@@ -219,6 +237,7 @@ export const ComponentName = () => {
 ## Theme Context System
 
 ### 4 Theme Contexts
+
 The system supports 4 distinct theme contexts:
 
 1. **Web Light** (`html.light` + `@media (min-width: 769px)`)
@@ -227,6 +246,7 @@ The system supports 4 distinct theme contexts:
 4. **Mobile Dark** (`html.dark` + `@media (max-width: 768px)`)
 
 ### Theme-Aware Development
+
 ```css
 /* AI_VALIDATION: THEME_CONTEXT_USAGE */
 /* Base styles use theme variables - automatically adapt */
@@ -253,58 +273,81 @@ The system supports 4 distinct theme contexts:
 ## CSS Specificity Hierarchy
 
 ### Controlled Specificity Order
+
 ```css
 /* 1. Design Tokens (0,0,0,1) */
-:root { --token: value; }
+:root {
+  --token: value;
+}
 
 /* 2. BEM Base (0,0,1,0) */
-.block__element { }
+.block__element {
+}
 
 /* 3. BEM Modifiers (0,0,2,0) */
-.block__element--modifier { }
+.block__element--modifier {
+}
 
 /* 4. Theme Context (0,0,1,1) */
-html.light .block__element { }
+html.light .block__element {
+}
 
 /* 5. State Overrides (0,0,2,0) */
-.block__element:hover { }
-.block__element:focus { }
+.block__element:hover {
+}
+.block__element:focus {
+}
 
 /* 6. Important (use sparingly) */
-.block__element { property: value !important; }
+.block__element {
+  property: value !important;
+}
 ```
 
 ## AI Validation Patterns
 
 ### Automated Validation Comments
+
 Use these comments for AI validation:
 
 ```css
 /* AI_VALIDATION: BEM_BLOCK - Main component block */
-.component-name { }
+.component-name {
+}
 
 /* AI_VALIDATION: BEM_ELEMENT - Component element */
-.component-name__element { }
+.component-name__element {
+}
 
 /* AI_VALIDATION: BEM_MODIFIER - Component variation */
-.component-name--modifier { }
+.component-name--modifier {
+}
 
 /* AI_VALIDATION: DESIGN_TOKEN_USAGE - Uses design tokens */
-.component { color: var(--theme-text-primary); }
+.component {
+  color: var(--theme-text-primary);
+}
 
 /* AI_VALIDATION: THEME_CONTEXT_USAGE - Theme-aware styling */
-.component { background-color: var(--theme-bg-elevated); }
+.component {
+  background-color: var(--theme-bg-elevated);
+}
 
 /* AI_VALIDATION: NO_TAILWIND - Pure CSS, no Tailwind */
-.component { padding: 1rem; } /* Not @apply p-4 */
+.component {
+  padding: 1rem;
+} /* Not @apply p-4 */
 
 /* AI_VALIDATION: ACCESSIBILITY - Accessible implementation */
-.component:focus { outline: 2px solid var(--theme-primary-blue); }
+.component:focus {
+  outline: 2px solid var(--theme-primary-blue);
+}
 ```
 
 ## Anti-Patterns to Avoid
 
 ### ❌ Hybrid Code (Forbidden)
+
 ```css
 /* NEVER mix BEM with Tailwind */
 .component__element {
@@ -318,6 +361,7 @@ Use these comments for AI validation:
 ```
 
 ### ❌ Direct Colors
+
 ```css
 /* NEVER use direct colors */
 .component {
@@ -327,21 +371,27 @@ Use these comments for AI validation:
 ```
 
 ### ❌ Non-BEM Naming
+
 ```css
 /* NEVER use non-BEM naming */
-.componentTitle { } /* ❌ Use .component__title */
-.component-title { } /* ❌ Use .component__title */
-.component_title { } /* ❌ Use .component__title */
+.componentTitle {
+} /* ❌ Use .component__title */
+.component-title {
+} /* ❌ Use .component__title */
+.component_title {
+} /* ❌ Use .component__title */
 ```
 
 ## Performance Guidelines
 
 ### CSS Chunk Management
+
 - Keep CSS files under 500KB per chunk
 - Use lazy loading for component CSS
 - Minimize CSS custom property re-evaluation
 
 ### Optimization Patterns
+
 ```css
 /* AI_VALIDATION: PERFORMANCE_OPTIMIZED */
 .component {
@@ -349,10 +399,10 @@ Use these comments for AI validation:
   color: var(--theme-text-primary);
   background-color: var(--theme-bg-elevated);
   border-color: var(--theme-border-soft);
-  
+
   /* Optimize transitions */
   transition: all 0.2s ease;
-  
+
   /* Use transform for animations */
   transform: translateZ(0); /* GPU acceleration */
 }
@@ -365,13 +415,14 @@ Use these comments for AI validation:
 ## Accessibility Requirements
 
 ### Mandatory Accessibility Patterns
+
 ```css
 /* AI_VALIDATION: ACCESSIBILITY_COMPLIANT */
 .component__button {
   /* Minimum touch target */
   min-height: 44px;
   min-width: 44px;
-  
+
   /* Focus indicators */
   outline: none;
 }
@@ -405,6 +456,7 @@ Use these comments for AI validation:
 ## File Organization
 
 ### Required File Structure
+
 ```
 src/styles/
 ├── design-system/
@@ -422,6 +474,7 @@ src/styles/
 ```
 
 ### Import Pattern
+
 ```css
 /* component-name.css */
 /* AI_VALIDATION: PROPER_IMPORTS */
@@ -437,13 +490,14 @@ src/styles/
 ## Testing Integration
 
 ### CSS Testing Patterns
+
 ```typescript
 // AI_VALIDATION: TESTABLE_CSS
 describe('ComponentName CSS', () => {
   it('should use design tokens', () => {
     const element = screen.getByTestId('component');
     expect(element).toHaveStyle({
-      color: 'var(--theme-text-primary)'
+      color: 'var(--theme-text-primary)',
     });
   });
 
@@ -457,6 +511,7 @@ describe('ComponentName CSS', () => {
 ## Migration from Hybrid Code
 
 ### Step-by-Step Migration
+
 1. **Identify Tailwind classes** in JSX
 2. **Remove @apply directives** from CSS
 3. **Create BEM structure** for component
@@ -465,6 +520,7 @@ describe('ComponentName CSS', () => {
 6. **Test in all 4 theme contexts**
 
 ### Example Migration
+
 ```tsx
 // BEFORE (Hybrid)
 <button className="compact-settings__close-btn text-gray-500 hover:text-gray-700">
@@ -496,6 +552,7 @@ describe('ComponentName CSS', () => {
 ## Quick Reference
 
 ### Essential Design Tokens
+
 ```css
 /* Text */
 var(--theme-text-primary)     /* Main text */
@@ -520,12 +577,14 @@ var(--theme-primary-purple)   /* Secondary actions */
 ```
 
 ### BEM Quick Check
+
 - Block: `.component-name`
 - Element: `.component-name__element`
 - Modifier: `.component-name--modifier`
 - State: `.component-name__element:hover`
 
 ### Validation Commands
+
 ```bash
 # Check BEM compliance
 npm run test:bem

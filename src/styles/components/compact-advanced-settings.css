@@ -224,8 +224,6 @@ html.dark .compact-settings__container {
   flex: 1;
 }
 
-
-
 .compact-settings__toggle-container {
   display: flex;
   align-items: center;
@@ -261,8 +259,6 @@ html.dark .compact-settings__container {
   color: var(--theme-text-secondary);
   margin-top: 0.25rem;
 }
-
-
 
 .compact-settings__games {
   display: grid;

@@ -20,7 +20,9 @@
   width: 100%;
   background-color: var(--theme-bg-elevated);
   border-radius: 0.5rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
   padding: 1.5rem;
   text-align: center;
 }
@@ -66,7 +68,8 @@
   font-size: 0.875rem;
   margin-top: 0.5rem;
   overflow: auto;
-  font-family: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+  font-family:
+    ui-monospace, SFMono-Regular, 'SF Mono', Consolas, 'Liberation Mono', Menlo, monospace;
   white-space: pre-wrap;
   color: var(--theme-text-secondary);
 }
@@ -113,7 +116,9 @@
 
 .dark .error-fallback__card {
   background-color: var(--gray-800);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.3),
+    0 4px 6px -2px rgba(0, 0, 0, 0.2);
 }
 
 .dark .error-fallback__details {
@@ -134,15 +139,15 @@
   .error-fallback {
     padding: 0.75rem;
   }
-  
+
   .error-fallback__card {
     padding: 1.25rem;
   }
-  
+
   .error-fallback__icon {
     font-size: 3rem;
   }
-  
+
   .error-fallback__title {
     font-size: 1.125rem;
   }
@@ -159,7 +164,7 @@
   .error-fallback__card {
     border: 2px solid var(--theme-text-primary);
   }
-  
+
   .error-fallback__button {
     border: 2px solid currentColor;
   }

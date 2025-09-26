@@ -44,11 +44,7 @@ export const CompactProgressDashboard: React.FC<CompactProgressDashboardProps> =
           <h2 className="compact-dashboard__title">
             {t('dashboard.title', 'Dashboard de Progreso')}
           </h2>
-          <button
-            onClick={onClose}
-            className="modal__close-btn"
-            aria-label={t('common.close')}
-          >
+          <button onClick={onClose} className="modal__close-btn" aria-label={t('common.close')}>
             <X className="modal__close-icon" />
           </button>
         </div>
@@ -122,7 +118,11 @@ export const CompactProgressDashboard: React.FC<CompactProgressDashboardProps> =
                         <div className="compact-dashboard__progress-bar">
                           <div
                             className="compact-dashboard__progress-fill dynamic-height"
-                            style={{ '--dynamic-height': `${Math.max(day.averageScore || 0, 5)}%` } as React.CSSProperties}
+                            style={
+                              {
+                                '--dynamic-height': `${Math.max(day.averageScore || 0, 5)}%`,
+                              } as React.CSSProperties
+                            }
                           />
                         </div>
                         <span className="compact-dashboard__progress-day-label">{dayName}</span>
@@ -139,10 +139,7 @@ export const CompactProgressDashboard: React.FC<CompactProgressDashboardProps> =
 
           {/* Quick Actions */}
           <div className="modal__actions modal__actions--single">
-            <button
-              onClick={onClose}
-              className="modal__btn modal__btn--primary"
-            >
+            <button onClick={onClose} className="modal__btn modal__btn--primary">
               {t('common.continue', 'Continuar Aprendiendo')}
             </button>
           </div>

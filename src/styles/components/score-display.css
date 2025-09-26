@@ -181,16 +181,16 @@
   .score-display-compact__container--in-game {
     min-width: 140px;
   }
-  
+
   .score-display-compact__container--full {
     min-width: 180px;
   }
-  
+
   .score-display-compact__accuracy {
     min-width: 35px;
     font-size: 0.75rem;
   }
-  
+
   .score-display-compact__progress-bar {
     width: 35px;
   }
@@ -229,7 +229,7 @@
   .score-display-compact__container {
     border-width: 2px;
   }
-  
+
   .score-display-compact__progress-bar {
     border: 1px solid currentColor;
   }

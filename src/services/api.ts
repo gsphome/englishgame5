@@ -155,7 +155,7 @@ class ApiService {
       // For sorting modules, don't filter by level or categories
       // because the sorting component needs access to all categories and their items
       // The module itself is already level-appropriate based on its placement in the curriculum
-      
+
       // Apply limit with balanced category selection if specified
       if (filters.limit && filters.limit > 0 && filteredData.length > filters.limit) {
         // Group by category first to ensure balanced selection
@@ -170,21 +170,25 @@ class ApiService {
 
         const categories = Object.keys(itemsByCategory);
         const itemsPerCategory = Math.ceil(filters.limit / categories.length);
-        
+
         let balancedData: any[] = [];
         categories.forEach(category => {
           const categoryItems = itemsByCategory[category].slice(0, itemsPerCategory);
           balancedData.push(...categoryItems);
         });
-        
+
         // If we still need more items, add remaining ones
         if (balancedData.length < filters.limit) {
-          const usedItems = new Set(balancedData.map(item => item.word || item.id || JSON.stringify(item)));
-          const remainingItems = filteredData.filter(item => !usedItems.has(item.word || item.id || JSON.stringify(item)));
+          const usedItems = new Set(
+            balancedData.map(item => item.word || item.id || JSON.stringify(item))
+          );
+          const remainingItems = filteredData.filter(
+            item => !usedItems.has(item.word || item.id || JSON.stringify(item))
+          );
           const additionalItems = remainingItems.slice(0, filters.limit - balancedData.length);
           balancedData.push(...additionalItems);
         }
-        
+
         filteredData = balancedData.slice(0, filters.limit);
       }
 
@@ -290,7 +294,9 @@ export const apiService = {
 // Export convenience functions
 export const fetchModules = () => apiService.fetchModules();
 export const fetchModuleData = (moduleId: string) => apiService.fetchModuleData(moduleId);
-export const filterModuleData = <T extends { category?: string; level?: string; word?: string; id?: string }>(
+export const filterModuleData = <
+  T extends { category?: string; level?: string; word?: string; id?: string },
+>(
   data: T[],
   filters: ModuleFilters,
   moduleId: string

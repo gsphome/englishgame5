@@ -18,12 +18,7 @@ export const FluentFlowLogo: React.FC<FluentFlowLogoProps> = ({ size = 'md', cla
   const logoClass = `fluent-flow-logo fluent-flow-logo--${size} ${className}`;
 
   return (
-    <svg
-      className={logoClass}
-      viewBox="0 0 32 32"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg className={logoClass} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" className="fluent-flow-logo__gradient-start" />
@@ -32,7 +27,13 @@ export const FluentFlowLogo: React.FC<FluentFlowLogoProps> = ({ size = 'md', cla
       </defs>
 
       {/* Background circle */}
-      <circle cx="16" cy="16" r="14" fill={`url(#${gradientId})`} className="fluent-flow-logo__background" />
+      <circle
+        cx="16"
+        cy="16"
+        r="14"
+        fill={`url(#${gradientId})`}
+        className="fluent-flow-logo__background"
+      />
 
       {/* Flow lines */}
       <path

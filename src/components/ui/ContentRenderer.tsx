@@ -69,7 +69,9 @@ const ContentSegmentComponent: React.FC<ContentSegmentProps> = ({ segment, forma
 
     case 'text':
     default:
-      return <span className="content-renderer__segment content-renderer__segment--text">{content}</span>;
+      return (
+        <span className="content-renderer__segment content-renderer__segment--text">{content}</span>
+      );
   }
 };
 

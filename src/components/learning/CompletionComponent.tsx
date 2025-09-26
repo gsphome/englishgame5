@@ -202,7 +202,11 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
             placeholder="..."
             autoComplete="off"
             className={inputClass}
-            style={{ '--dynamic-width': `${Math.max(120, (answer?.length || 3) * 12 + 60)}px` } as React.CSSProperties}
+            style={
+              {
+                '--dynamic-width': `${Math.max(120, (answer?.length || 3) * 12 + 60)}px`,
+              } as React.CSSProperties
+            }
           />
         );
       }
@@ -228,7 +232,11 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
         <div className="completion-component__progress-container">
           <div
             className="completion-component__progress-fill"
-            style={{ '--progress-width': `${((currentIndex + 1) / randomizedExercises.length) * 100}%` } as React.CSSProperties}
+            style={
+              {
+                '--progress-width': `${((currentIndex + 1) / randomizedExercises.length) * 100}%`,
+              } as React.CSSProperties
+            }
           />
         </div>
         <p className="completion-component__help-text">
@@ -238,9 +246,7 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
 
       {/* Exercise */}
       <div className="completion-component__exercise-card">
-        <h3 className="completion-component__instruction">
-          {t('learning.completeSentence')}
-        </h3>
+        <h3 className="completion-component__instruction">{t('learning.completeSentence')}</h3>
 
         {currentExercise?.tip && (
           <div className="completion-component__tip">
@@ -257,7 +263,9 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
         {/* Result and Explanation - Compact unified section */}
         <div
           className={`completion-component__result-container ${
-            showResult ? 'completion-component__result-container--visible' : 'completion-component__result-container--hidden'
+            showResult
+              ? 'completion-component__result-container--visible'
+              : 'completion-component__result-container--hidden'
           }`}
         >
           <div className="completion-component__result">
@@ -303,8 +311,8 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
       {/* Unified Control Bar */}
       <div className="game-controls">
         {/* Home Navigation */}
-        <button 
-          onClick={() => setCurrentView('menu')} 
+        <button
+          onClick={() => setCurrentView('menu')}
           className="game-controls__home-btn"
           title="Return to main menu"
         >

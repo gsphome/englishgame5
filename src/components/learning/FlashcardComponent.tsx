@@ -125,11 +125,10 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
   if (!randomizedFlashcards.length) {
     return (
       <div className="flashcard-component__no-data">
-        <p className="flashcard-component__no-data-text">{t('noDataAvailable') || 'No flashcards available'}</p>
-        <button
-          onClick={() => setCurrentView('menu')}
-          className="flashcard-component__no-data-btn"
-        >
+        <p className="flashcard-component__no-data-text">
+          {t('noDataAvailable') || 'No flashcards available'}
+        </p>
+        <button onClick={() => setCurrentView('menu')} className="flashcard-component__no-data-btn">
           {t('navigation.mainMenu')}
         </button>
       </div>
@@ -141,9 +140,7 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
       {/* Compact header with progress */}
       <div className="flashcard-component__header">
         <div className="flashcard-component__header-top">
-          <h2 className="flashcard-component__title">
-            {module.name}
-          </h2>
+          <h2 className="flashcard-component__title">{module.name}</h2>
           <span className="flashcard-component__counter">
             {currentIndex + 1}/{randomizedFlashcards.length}
           </span>
@@ -151,20 +148,23 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
         <div className="flashcard-component__progress-container">
           <div
             className="flashcard-component__progress-fill"
-            style={{ '--progress-width': `${((currentIndex + 1) / randomizedFlashcards.length) * 100}%` } as React.CSSProperties}
+            style={
+              {
+                '--progress-width': `${((currentIndex + 1) / randomizedFlashcards.length) * 100}%`,
+              } as React.CSSProperties
+            }
           />
         </div>
         <p className="flashcard-component__help-text">
-          {isFlipped
-            ? t('learning.helpTextFlipped')
-            : t('learning.helpTextNotFlipped')}
+          {isFlipped ? t('learning.helpTextFlipped') : t('learning.helpTextNotFlipped')}
         </p>
       </div>
 
       {/* Flashcard */}
       <div
-        className={`flashcard-component__card ${isFlipped ? 'flashcard-component__card--flipped' : ''
-          }`}
+        className={`flashcard-component__card ${
+          isFlipped ? 'flashcard-component__card--flipped' : ''
+        }`}
         onClick={handleFlip}
       >
         <div className="flashcard-component__card-inner">
@@ -178,11 +178,7 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
                 )}
               />
             </div>
-            {currentCard?.ipa && (
-              <p className="flashcard-component__ipa">
-                {currentCard.ipa}
-              </p>
-            )}
+            {currentCard?.ipa && <p className="flashcard-component__ipa">{currentCard.ipa}</p>}
             {currentCard?.example && (
               <div className="flashcard-component__example">
                 "
@@ -244,8 +240,8 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
       {/* Unified Control Bar */}
       <div className="game-controls">
         {/* Home Navigation */}
-        <button 
-          onClick={() => setCurrentView('menu')} 
+        <button
+          onClick={() => setCurrentView('menu')}
           className="game-controls__home-btn"
           title={t('learning.returnToMainMenu')}
         >
@@ -273,7 +269,9 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
           onClick={handleNext}
           className="game-controls__nav-btn"
           title={
-            currentIndex === randomizedFlashcards.length - 1 ? t('learning.finishFlashcards') : t('learning.nextCard')
+            currentIndex === randomizedFlashcards.length - 1
+              ? t('learning.finishFlashcards')
+              : t('learning.nextCard')
           }
         >
           <ChevronRight className="game-controls__nav-btn__icon" />

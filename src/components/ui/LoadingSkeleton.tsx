@@ -85,11 +85,7 @@ export const HeaderSkeleton: React.FC = () => (
 );
 
 export const DashboardSkeleton: React.FC = () => (
-  <div
-    className="dashboard-skeleton"
-    role="status"
-    aria-label="Loading dashboard"
-  >
+  <div className="dashboard-skeleton" role="status" aria-label="Loading dashboard">
     <LoadingSkeleton variant="header" width="300px" />
 
     {/* Stats Cards Skeleton */}
@@ -111,7 +107,11 @@ export const DashboardSkeleton: React.FC = () => (
     <div className="dashboard-skeleton__charts-grid">
       {Array.from({ length: 2 }).map((_, index) => (
         <div key={index} className="dashboard-skeleton__chart-card">
-          <LoadingSkeleton variant="header" width="200px" className="dashboard-skeleton__chart-title" />
+          <LoadingSkeleton
+            variant="header"
+            width="200px"
+            className="dashboard-skeleton__chart-title"
+          />
           <LoadingSkeleton width="100%" height="300px" />
         </div>
       ))}

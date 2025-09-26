@@ -137,12 +137,12 @@ html.dark .modal__actions {
     flex-direction: column;
     gap: 0.5rem;
   }
-  
+
   .modal__actions--double,
   .modal__actions--row {
     flex-direction: column;
   }
-  
+
   .modal__btn {
     width: 100%;
   }

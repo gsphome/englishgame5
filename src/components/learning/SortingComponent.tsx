@@ -14,8 +14,6 @@ import '../../styles/components/sorting-modal.css';
 import '../../styles/components/sorting-component.css';
 import type { LearningModule } from '../../types';
 
-
-
 interface SortingData {
   id: string;
   words: string[];
@@ -72,7 +70,9 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
 
         // Validation: Ensure we have at least 2 categories for sorting to make sense
         if (uniqueCategories.length < 2) {
-          console.warn(`Module "${module.name}" has only ${uniqueCategories.length} category. Sorting requires at least 2 categories.`);
+          console.warn(
+            `Module "${module.name}" has only ${uniqueCategories.length} category. Sorting requires at least 2 categories.`
+          );
           console.warn(`Available categories:`, uniqueCategories);
           setExercise({ id: 'sorting-exercise', words: [], categories: [] });
           return;
@@ -102,7 +102,10 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
 
         // Ensure we select words from at least 2 categories
         const categoriesWithWords = Object.keys(wordsByCategory);
-        const minWordsPerCategory = Math.max(1, Math.floor(totalWords / categoriesWithWords.length));
+        const minWordsPerCategory = Math.max(
+          1,
+          Math.floor(totalWords / categoriesWithWords.length)
+        );
 
         let selectedWords: { word: string; category: string }[] = [];
 
@@ -335,14 +338,16 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
         <div className="sorting-component__progress-bar">
           <div
             className="sorting-component__progress-fill"
-            style={{ '--progress-width': `${exercise.words.length > 0 ? ((exercise.words.length - availableWords.length) / exercise.words.length) * 100 : 0}%` } as React.CSSProperties}
+            style={
+              {
+                '--progress-width': `${exercise.words.length > 0 ? ((exercise.words.length - availableWords.length) / exercise.words.length) * 100 : 0}%`,
+              } as React.CSSProperties
+            }
           />
         </div>
         <div className="sorting-component__instructions">
           <p className="sorting-component__instruction-text">
-            {allWordsSorted
-              ? t('learning.allSorted')
-              : t('learning.dragDropWords')}
+            {allWordsSorted ? t('learning.allSorted') : t('learning.dragDropWords')}
           </p>
         </div>
       </div>
@@ -412,10 +417,11 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
                   {category.name}
                   {showResult && (
                     <span
-                      className={`sorting-component__category-status ${isCorrect
-                        ? 'sorting-component__category-status--correct'
-                        : 'sorting-component__category-status--incorrect'
-                        }`}
+                      className={`sorting-component__category-status ${
+                        isCorrect
+                          ? 'sorting-component__category-status--correct'
+                          : 'sorting-component__category-status--incorrect'
+                      }`}
                     >
                       {isCorrect ? '✓' : '✗'}
                     </span>
@@ -452,7 +458,9 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
                     <span className="sorting-component__feedback-text">
                       {category.items.map((item, idx) => (
                         <span key={idx}>
-                          <ContentRenderer content={ContentAdapter.ensureStructured(item, 'quiz')} />
+                          <ContentRenderer
+                            content={ContentAdapter.ensureStructured(item, 'quiz')}
+                          />
                           {idx < category.items.length - 1 ? ', ' : ''}
                         </span>
                       ))}
@@ -468,8 +476,8 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
       {/* Unified Control Bar */}
       <div className="game-controls">
         {/* Home Navigation */}
-        <button 
-          onClick={() => setCurrentView('menu')} 
+        <button
+          onClick={() => setCurrentView('menu')}
           className="game-controls__home-btn"
           title={t('learning.returnToMainMenu')}
         >
@@ -536,18 +544,20 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
                   {selectedTerm.results.map((result: any, index: number) => (
                     <div
                       key={index}
-                      className={`sorting-modal__result-card ${result.isCorrect
-                        ? 'sorting-modal__result-card--correct'
-                        : 'sorting-modal__result-card--incorrect'
-                        }`}
+                      className={`sorting-modal__result-card ${
+                        result.isCorrect
+                          ? 'sorting-modal__result-card--correct'
+                          : 'sorting-modal__result-card--incorrect'
+                      }`}
                     >
                       <div className="sorting-modal__result-card__header">
                         <h4 className="sorting-modal__result-card__word">{result.word}</h4>
                         <span
-                          className={`sorting-modal__result-card__status ${result.isCorrect
-                            ? 'sorting-modal__result-card__status--correct'
-                            : 'sorting-modal__result-card__status--incorrect'
-                            }`}
+                          className={`sorting-modal__result-card__status ${
+                            result.isCorrect
+                              ? 'sorting-modal__result-card__status--correct'
+                              : 'sorting-modal__result-card__status--incorrect'
+                          }`}
                         >
                           {result.isCorrect ? '✓' : '✗'}
                         </span>
@@ -555,7 +565,9 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
 
                       <div className="sorting-modal__result-card__content">
                         <div className="sorting-modal__result-card__field">
-                          <span className="sorting-modal__result-card__label">Correct category:</span>
+                          <span className="sorting-modal__result-card__label">
+                            Correct category:
+                          </span>
                           <p className="sorting-modal__result-card__value sorting-modal__result-card__value--correct">
                             {result.correctCategory}
                           </p>
@@ -573,7 +585,9 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
                         {result.explanation && (
                           <div className="sorting-modal__result-card__field">
                             <span className="sorting-modal__result-card__label">Explanation:</span>
-                            <p className="sorting-modal__result-card__explanation">{result.explanation}</p>
+                            <p className="sorting-modal__result-card__explanation">
+                              {result.explanation}
+                            </p>
                           </div>
                         )}
                       </div>

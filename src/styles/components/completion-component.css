@@ -12,9 +12,11 @@
   padding: 0.5rem;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(135deg,
-      var(--theme-bg-elevated, #ffffff) 0%,
-      var(--theme-bg-subtle, #f9fafb) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--theme-bg-elevated, #ffffff) 0%,
+    var(--theme-bg-subtle, #f9fafb) 100%
+  );
 }
 
 /* === RESULT CONTAINER === */
@@ -113,9 +115,11 @@
   --progress-width: 0%;
   width: var(--progress-width);
   height: 100%;
-  background: linear-gradient(90deg,
-      var(--theme-primary-purple, #8b5cf6) 0%,
-      var(--theme-primary-blue, #3b82f6) 100%);
+  background: linear-gradient(
+    90deg,
+    var(--theme-primary-purple, #8b5cf6) 0%,
+    var(--theme-primary-blue, #3b82f6) 100%
+  );
   border-radius: inherit;
   transition: width 0.3s ease;
 }
@@ -201,7 +205,7 @@
 /* === COMPLETION INPUT === */
 .completion-component__input {
   --dynamic-width: 120px;
-  
+
   display: inline-block;
   width: var(--dynamic-width);
   min-width: 120px;
@@ -346,16 +350,16 @@
   .completion-component__container {
     padding: 0.375rem;
   }
-  
+
   .completion-component__exercise-card {
     padding: 0.875rem;
   }
-  
+
   .completion-component__sentence-container {
     padding: 1rem;
     font-size: 1rem;
   }
-  
+
   .completion-component__input {
     min-width: 100px;
     font-size: 1.1rem;
@@ -365,9 +369,11 @@
 
 /* === DARK MODE === */
 html.dark .completion-component__container {
-  background: linear-gradient(135deg,
-      var(--theme-bg-elevated, #1f2937) 0%,
-      var(--theme-bg-subtle, #374151) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--theme-bg-elevated, #1f2937) 0%,
+    var(--theme-bg-subtle, #374151) 100%
+  );
 }
 
 html.dark .completion-component__exercise-card {

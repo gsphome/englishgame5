@@ -13,9 +13,9 @@
 /* AI_VALIDATION: BREAKPOINT_TOKENS - Standard breakpoint values */
 /* AI_CONTEXT: 768px is the critical mobile/web boundary */
 :root {
-  --breakpoint-mobile: 768px;          /* AI_CONTEXT: Mobile/web boundary - critical for theme contexts */
-  --breakpoint-tablet: 1024px;         /* AI_CONTEXT: Tablet breakpoint - optional optimization */
-  --breakpoint-desktop: 1200px;        /* AI_CONTEXT: Desktop breakpoint - large screen optimization */
+  --breakpoint-mobile: 768px; /* AI_CONTEXT: Mobile/web boundary - critical for theme contexts */
+  --breakpoint-tablet: 1024px; /* AI_CONTEXT: Tablet breakpoint - optional optimization */
+  --breakpoint-desktop: 1200px; /* AI_CONTEXT: Desktop breakpoint - large screen optimization */
 }
 
 /* === DEVICE DETECTION MIXINS === */
@@ -106,12 +106,12 @@
 @media (prefers-contrast: high) {
   .theme-context--web-light,
   .theme-context--mobile-light {
-    --contrast-mode: high-light;    /* AI_CONTEXT: High contrast light mode */
+    --contrast-mode: high-light; /* AI_CONTEXT: High contrast light mode */
   }
 
   .theme-context--web-dark,
   .theme-context--mobile-dark {
-    --contrast-mode: high-dark;     /* AI_CONTEXT: High contrast dark mode */
+    --contrast-mode: high-dark; /* AI_CONTEXT: High contrast dark mode */
   }
 }
 
@@ -122,6 +122,6 @@
   .theme-context--web-dark,
   .theme-context--mobile-light,
   .theme-context--mobile-dark {
-    --motion-mode: reduced;         /* AI_CONTEXT: Reduced motion preference detected */
+    --motion-mode: reduced; /* AI_CONTEXT: Reduced motion preference detected */
   }
 }

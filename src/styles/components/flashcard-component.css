@@ -14,9 +14,11 @@
   padding: 0.75rem;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(135deg,
-      var(--theme-bg-elevated, #ffffff) 0%,
-      var(--theme-bg-subtle, #f9fafb) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--theme-bg-elevated, #ffffff) 0%,
+    var(--theme-bg-subtle, #f9fafb) 100%
+  );
 }
 
 /* === HEADER SECTION === */
@@ -62,9 +64,11 @@
   --progress-width: 0%;
   width: var(--progress-width);
   height: 100%;
-  background: linear-gradient(90deg,
-      var(--theme-primary-blue, #3b82f6) 0%,
-      var(--theme-primary-purple, #8b5cf6) 100%);
+  background: linear-gradient(
+    90deg,
+    var(--theme-primary-blue, #3b82f6) 0%,
+    var(--theme-primary-purple, #8b5cf6) 100%
+  );
   border-radius: inherit;
   transition: width 0.3s ease;
 }
@@ -118,9 +122,11 @@
   justify-content: flex-start;
   align-items: center;
   padding: 0.75rem;
-  background: linear-gradient(135deg,
-      var(--theme-bg-elevated, #ffffff) 0%,
-      rgba(59, 130, 246, 0.02) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--theme-bg-elevated, #ffffff) 0%,
+    rgba(59, 130, 246, 0.02) 100%
+  );
   border: 1px solid var(--theme-border-soft, #f3f4f6);
   overflow: hidden;
   box-sizing: border-box;
@@ -128,9 +134,11 @@
 
 .flashcard-component__card-back {
   transform: rotateY(180deg);
-  background: linear-gradient(135deg,
-      rgba(59, 130, 246, 0.05) 0%,
-      var(--theme-bg-elevated, #ffffff) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.05) 0%,
+    var(--theme-bg-elevated, #ffffff) 100%
+  );
 }
 
 /* === CARD CONTENT === */
@@ -327,23 +335,29 @@
 
 /* === DARK MODE === */
 html.dark .flashcard-component__container {
-  background: linear-gradient(135deg,
-      var(--theme-bg-elevated, #1f2937) 0%,
-      var(--theme-bg-subtle, #374151) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--theme-bg-elevated, #1f2937) 0%,
+    var(--theme-bg-subtle, #374151) 100%
+  );
 }
 
 html.dark .flashcard-component__card-front,
 html.dark .flashcard-component__card-back {
-  background: linear-gradient(135deg,
-      var(--theme-bg-elevated, #1f2937) 0%,
-      rgba(59, 130, 246, 0.1) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--theme-bg-elevated, #1f2937) 0%,
+    rgba(59, 130, 246, 0.1) 100%
+  );
   border-color: var(--theme-border-soft, #4b5563);
 }
 
 html.dark .flashcard-component__card-back {
-  background: linear-gradient(135deg,
-      rgba(59, 130, 246, 0.1) 0%,
-      var(--theme-bg-elevated, #1f2937) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.1) 0%,
+    var(--theme-bg-elevated, #1f2937) 100%
+  );
 }
 
 html.dark .flashcard-component__title,
@@ -375,7 +389,6 @@ html.dark .flashcard-component__controls {
 }
 
 @media (prefers-contrast: high) {
-
   .flashcard-component__card-front,
   .flashcard-component__card-back {
     border-width: 2px;

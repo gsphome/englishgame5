@@ -31,11 +31,7 @@ export const CompactAbout: React.FC<CompactAboutProps> = ({ isOpen, onClose }) =
               </p>
             </div>
           </div>
-          <button
-            onClick={onClose}
-            className="modal__close-btn"
-            aria-label={t('common.close')}
-          >
+          <button onClick={onClose} className="modal__close-btn" aria-label={t('common.close')}>
             <X className="modal__close-icon" />
           </button>
         </div>

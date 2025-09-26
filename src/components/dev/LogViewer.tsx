@@ -60,8 +60,6 @@ export const LogViewer: React.FC<LogViewerProps> = ({ isOpen, onClose }) => {
     setLogs([]);
   };
 
-
-
   const getLevelIcon = (level: string) => {
     switch (level) {
       case 'error':
@@ -91,17 +89,10 @@ export const LogViewer: React.FC<LogViewerProps> = ({ isOpen, onClose }) => {
             >
               <Download className="log-viewer__icon" />
             </button>
-            <button
-              onClick={handleClear}
-              className="log-viewer__action-btn"
-              title="Clear logs"
-            >
+            <button onClick={handleClear} className="log-viewer__action-btn" title="Clear logs">
               <Trash2 className="log-viewer__icon" />
             </button>
-            <button
-              onClick={onClose}
-              className="log-viewer__action-btn"
-            >
+            <button onClick={onClose} className="log-viewer__action-btn">
               <X className="log-viewer__icon" />
             </button>
           </div>
@@ -140,24 +131,17 @@ export const LogViewer: React.FC<LogViewerProps> = ({ isOpen, onClose }) => {
         {/* Logs */}
         <div className="log-viewer__content">
           {filteredLogs.length === 0 ? (
-            <div className="log-viewer__empty">
-              No logs found matching the current filters.
-            </div>
+            <div className="log-viewer__empty">No logs found matching the current filters.</div>
           ) : (
             <div className="log-viewer__logs">
               {filteredLogs.map((log, index) => (
-                <div
-                  key={index}
-                  className={`log-viewer__log log-viewer__log--${log.level}`}
-                >
+                <div key={index} className={`log-viewer__log log-viewer__log--${log.level}`}>
                   <div className="log-viewer__log-header">
                     <div className="log-viewer__log-meta">
                       <span className="log-viewer__log-icon">{getLevelIcon(log.level)}</span>
                       <span className="log-viewer__log-level">{log.level}</span>
                       {log.component && (
-                        <span className="log-viewer__log-component">
-                          {log.component}
-                        </span>
+                        <span className="log-viewer__log-component">{log.component}</span>
                       )}
                       <span className="log-viewer__log-time">
                         {new Date(log.timestamp).toLocaleTimeString()}
@@ -169,12 +153,8 @@ export const LogViewer: React.FC<LogViewerProps> = ({ isOpen, onClose }) => {
 
                   {log.data && (
                     <details className="log-viewer__log-data">
-                      <summary>
-                        Show data
-                      </summary>
-                      <pre>
-                        {JSON.stringify(log.data, null, 2)}
-                      </pre>
+                      <summary>Show data</summary>
+                      <pre>{JSON.stringify(log.data, null, 2)}</pre>
                     </details>
                   )}
                 </div>

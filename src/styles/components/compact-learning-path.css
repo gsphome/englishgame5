@@ -158,8 +158,6 @@
   text-overflow: ellipsis;
 }
 
-
-
 /* Section Titles - Unified Design */
 .compact-learning-path__section-title {
   font-size: 0.8125rem;
@@ -283,8 +281,6 @@
   color: var(--theme-text-primary, #111827);
   line-height: 1.2;
 }
-
-
 
 .compact-learning-path__section-icon {
   width: 0.75rem;
@@ -722,8 +718,6 @@ html.dark .compact-learning-path__unit-circle-badge--indigo {
     grid-template-columns: repeat(2, 1fr);
     gap: 0.375rem;
   }
-
-
 
   .compact-learning-path__stat-icon {
     width: 0.9625rem;

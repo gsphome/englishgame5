@@ -11,7 +11,6 @@ import { shuffleArray } from '../../utils/randomUtils';
 import { ContentAdapter } from '../../utils/contentAdapter';
 import ContentRenderer from '../ui/ContentRenderer';
 
-
 import type { LearningModule, QuizData } from '../../types';
 
 interface QuizComponentProps {
@@ -147,10 +146,7 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
     return (
       <div className="quiz-component__no-data">
         <p className="quiz-component__no-data-text">{t('learning.noQuizQuestions')}</p>
-        <button
-          onClick={() => setCurrentView('menu')}
-          className="quiz-component__no-data-btn"
-        >
+        <button onClick={() => setCurrentView('menu')} className="quiz-component__no-data-btn">
           {t('learning.backToMenu')}
         </button>
       </div>
@@ -172,7 +168,11 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
         <div className="quiz-component__progress-container">
           <div
             className="quiz-component__progress-fill"
-            style={{ '--progress-width': `${((currentIndex + 1) / randomizedQuestions.length) * 100}%` } as React.CSSProperties}
+            style={
+              {
+                '--progress-width': `${((currentIndex + 1) / randomizedQuestions.length) * 100}%`,
+              } as React.CSSProperties
+            }
           />
         </div>
         <p className="quiz-component__help-text">
@@ -182,13 +182,15 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
 
       {/* Question */}
       <div className="quiz-component__question-card">
-        <h3 
+        <h3
           className="quiz-component__question-title dynamic-text-color"
           style={{ '--dynamic-text-color': textColor } as React.CSSProperties}
         >
           <ContentRenderer
             content={ContentAdapter.ensureStructured(
-              currentQuestion?.question || currentQuestion?.sentence || t('learning.loadingQuestion'),
+              currentQuestion?.question ||
+                currentQuestion?.sentence ||
+                t('learning.loadingQuestion'),
               'quiz'
             )}
           />
@@ -221,10 +223,8 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
               >
                 <div className="quiz-component__option-content">
                   <div className="quiz-component__option-left">
-                    <span className="quiz-component__option-number">
-                      {index + 1}
-                    </span>
-                    <span 
+                    <span className="quiz-component__option-number">{index + 1}</span>
+                    <span
                       className="quiz-component__option-text dynamic-text-color"
                       style={{ '--dynamic-text-color': textColor } as React.CSSProperties}
                     >
@@ -258,13 +258,13 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
           }`}
         >
           <div className="quiz-component__explanation">
-            <h4 
+            <h4
               className="quiz-component__explanation-title dynamic-text-color"
               style={{ '--dynamic-text-color': textColor } as React.CSSProperties}
             >
               {t('learning.explanation')}:
             </h4>
-            <div 
+            <div
               className="quiz-component__explanation-content dynamic-text-color"
               style={{ '--dynamic-text-color': textColor } as React.CSSProperties}
             >
@@ -282,8 +282,8 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
       {/* Unified Control Bar */}
       <div className="game-controls">
         {/* Home Navigation */}
-        <button 
-          onClick={() => setCurrentView('menu')} 
+        <button
+          onClick={() => setCurrentView('menu')}
           className="game-controls__home-btn"
           title={t('learning.returnToMainMenu')}
         >
@@ -296,7 +296,9 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
           className="game-controls__primary-btn game-controls__primary-btn--green"
         >
           <span>
-            {currentIndex === randomizedQuestions.length - 1 ? t('learning.finishQuiz') : t('learning.nextQuestion')}
+            {currentIndex === randomizedQuestions.length - 1
+              ? t('learning.finishQuiz')
+              : t('learning.nextQuestion')}
           </span>
           <ArrowRight className="game-controls__primary-btn__icon" />
         </button>

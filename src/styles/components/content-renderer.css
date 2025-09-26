@@ -178,9 +178,13 @@ html:not(.dark) .matching-component__item--matched-inactive:hover .content-rende
 html:not(.dark) .matching-component__item--matched:hover .content-renderer__segment--term,
 html:not(.dark) .matching-component__item--matched-inactive:hover .content-renderer__segment--term,
 html:not(.dark) .matching-component__item--matched:hover .content-renderer__segment--emphasis,
-html:not(.dark) .matching-component__item--matched-inactive:hover .content-renderer__segment--emphasis,
+html:not(.dark)
+  .matching-component__item--matched-inactive:hover
+  .content-renderer__segment--emphasis,
 html:not(.dark) .matching-component__item--matched:hover .content-renderer__segment--variable,
-html:not(.dark) .matching-component__item--matched-inactive:hover .content-renderer__segment--variable,
+html:not(.dark)
+  .matching-component__item--matched-inactive:hover
+  .content-renderer__segment--variable,
 html:not(.dark) .matching-component__item--matched:hover .content-renderer__segment--code,
 html:not(.dark) .matching-component__item--matched-inactive:hover .content-renderer__segment--code {
   color: #111827 !important;
@@ -226,8 +230,6 @@ html:not(.dark) .matching-component__item--unmatched .content-renderer__segment-
 .matching-component__item--selected:hover .content-renderer__segment--code {
   color: #ffffff !important;
 }
-
-
 
 .matching-component__item--selected .content-renderer__segment--emphasis,
 .matching-component__item--matched .content-renderer__segment--emphasis,

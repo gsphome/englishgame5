@@ -7,9 +7,11 @@
   padding: 0.75rem;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(135deg,
-      var(--theme-bg-elevated, #ffffff) 0%,
-      var(--theme-bg-subtle, #f9fafb) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--theme-bg-elevated, #ffffff) 0%,
+    var(--theme-bg-subtle, #f9fafb) 100%
+  );
 }
 
 /* === LOADING === */
@@ -21,8 +23,6 @@
 .sorting-component__loading-text {
   color: var(--theme-text-secondary);
 }
-
-
 
 /* === WORKSPACE === */
 .sorting-component__workspace {
@@ -237,9 +237,11 @@
 
 .sorting-component__button--primary {
   width: 8rem;
-  background: linear-gradient(135deg,
-      var(--theme-primary-purple, #8b5cf6) 0%,
-      var(--theme-primary-blue, #3b82f6) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--theme-primary-purple, #8b5cf6) 0%,
+    var(--theme-primary-blue, #3b82f6) 100%
+  );
   color: white;
 }
 
@@ -250,9 +252,11 @@
 
 .sorting-component__button--secondary {
   width: 8rem;
-  background: linear-gradient(135deg,
-      var(--theme-primary-blue, #3b82f6) 0%,
-      var(--theme-primary-purple, #8b5cf6) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--theme-primary-blue, #3b82f6) 0%,
+    var(--theme-primary-purple, #8b5cf6) 100%
+  );
   color: white;
 }
 
@@ -263,9 +267,11 @@
 
 .sorting-component__button--success {
   width: 8rem;
-  background: linear-gradient(135deg,
-      var(--theme-success, #10b981) 0%,
-      var(--theme-success-dark, #059669) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--theme-success, #10b981) 0%,
+    var(--theme-success-dark, #059669) 100%
+  );
   color: white;
 }
 
@@ -340,9 +346,11 @@
   --progress-width: 0%;
   width: var(--progress-width);
   height: 100%;
-  background: linear-gradient(90deg,
-      var(--theme-primary-purple, #8b5cf6) 0%,
-      var(--theme-primary-blue, #3b82f6) 100%);
+  background: linear-gradient(
+    90deg,
+    var(--theme-primary-purple, #8b5cf6) 0%,
+    var(--theme-primary-blue, #3b82f6) 100%
+  );
   border-radius: inherit;
   transition: width 0.3s ease;
 }
@@ -519,9 +527,11 @@
 
 /* === DARK MODE === */
 html.dark .sorting-component {
-  background: linear-gradient(135deg,
-      var(--theme-bg-elevated, #1f2937) 0%,
-      var(--theme-bg-subtle, #374151) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--theme-bg-elevated, #1f2937) 0%,
+    var(--theme-bg-subtle, #374151) 100%
+  );
 }
 
 html.dark .sorting-component__workspace {
@@ -582,7 +592,6 @@ html.dark .sorting-component__drop-zone--error {
 }
 
 @media (min-width: 1024px) {
-
   /* Ultra-compact for desktop */
   .sorting-component__categories {
     grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));

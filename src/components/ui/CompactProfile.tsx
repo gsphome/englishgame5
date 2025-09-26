@@ -120,11 +120,7 @@ export const CompactProfile: React.FC<CompactProfileProps> = ({ isOpen, onClose 
               {t('profile.userProfile', 'Perfil de Usuario')}
             </h2>
           </div>
-          <button
-            onClick={onClose}
-            className="modal__close-btn"
-            aria-label={t('common.close')}
-          >
+          <button onClick={onClose} className="modal__close-btn" aria-label={t('common.close')}>
             <X className="modal__close-icon" />
           </button>
         </div>
@@ -138,7 +134,9 @@ export const CompactProfile: React.FC<CompactProfileProps> = ({ isOpen, onClose 
               </h3>
 
               <div className="compact-profile__field">
-                <label className="compact-profile__label compact-profile__label--required">{t('profile.name', 'Nombre')}</label>
+                <label className="compact-profile__label compact-profile__label--required">
+                  {t('profile.name', 'Nombre')}
+                </label>
                 <input
                   {...register('name')}
                   className={`compact-profile__input ${errors.name ? 'compact-profile__input--error' : ''}`}
@@ -201,7 +199,8 @@ export const CompactProfile: React.FC<CompactProfileProps> = ({ isOpen, onClose 
 
               <div className="compact-profile__field">
                 <label className="compact-profile__label">
-                  {t('profile.difficulty', 'Dificultad')}: {getDifficultyEmoji(watchedDifficulty)} {getDifficultyLabel(watchedDifficulty)}
+                  {t('profile.difficulty', 'Dificultad')}: {getDifficultyEmoji(watchedDifficulty)}{' '}
+                  {getDifficultyLabel(watchedDifficulty)}
                 </label>
                 <input
                   type="range"
@@ -216,7 +215,10 @@ export const CompactProfile: React.FC<CompactProfileProps> = ({ isOpen, onClose 
             {/* Categories */}
             <div className="compact-profile__section">
               <h3 className="compact-profile__section-title">
-                🎯 {t('profile.interestedCategories', 'Categorías')} <span style={{ color: 'var(--theme-error, #ef4444)', marginLeft: '0.25rem' }}>*</span>
+                🎯 {t('profile.interestedCategories', 'Categorías')}{' '}
+                <span style={{ color: 'var(--theme-error, #ef4444)', marginLeft: '0.25rem' }}>
+                  *
+                </span>
               </h3>
               <div className="compact-profile__categories">
                 {categories.map(category => (
@@ -247,7 +249,6 @@ export const CompactProfile: React.FC<CompactProfileProps> = ({ isOpen, onClose 
 
             {/* Notifications */}
             <div className="compact-profile__section">
-
               <label className="compact-profile__notification">
                 <input
                   type="checkbox"
@@ -265,17 +266,10 @@ export const CompactProfile: React.FC<CompactProfileProps> = ({ isOpen, onClose 
 
           {/* Actions */}
           <div className="modal__actions modal__actions--double">
-            <button
-              type="button"
-              onClick={onClose}
-              className="modal__btn modal__btn--secondary"
-            >
+            <button type="button" onClick={onClose} className="modal__btn modal__btn--secondary">
               {t('common.cancel', 'Cancelar')}
             </button>
-            <button
-              type="submit"
-              className="modal__btn modal__btn--primary"
-            >
+            <button type="submit" className="modal__btn modal__btn--primary">
               <Save className="modal__btn-icon" />
               {t('profile.saveProfile', 'Guardar')}
             </button>

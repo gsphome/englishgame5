@@ -41,11 +41,7 @@ export const CompactLearningPath: React.FC<CompactLearningPathProps> = ({ isOpen
           <h2 className="compact-learning-path__title">
             {t('learningPath.title', 'Ruta de Aprendizaje')}
           </h2>
-          <button
-            onClick={onClose}
-            className="modal__close-btn"
-            aria-label={t('common.close')}
-          >
+          <button onClick={onClose} className="modal__close-btn" aria-label={t('common.close')}>
             <X className="modal__close-icon" />
           </button>
         </div>
@@ -55,8 +51,12 @@ export const CompactLearningPath: React.FC<CompactLearningPathProps> = ({ isOpen
           <div className="compact-learning-path__overview">
             {/* Progress Circle - Grid Item 1 */}
             <div className="compact-learning-path__stat">
-              <div className="compact-learning-path__stat-icon compact-learning-path__stat-icon--emoji">📊</div>
-              <span className="compact-learning-path__stat-value">{stats.completionPercentage}%</span>
+              <div className="compact-learning-path__stat-icon compact-learning-path__stat-icon--emoji">
+                📊
+              </div>
+              <span className="compact-learning-path__stat-value">
+                {stats.completionPercentage}%
+              </span>
               <span className="compact-learning-path__stat-label">
                 {t('learningPath.complete', 'Completo')}
               </span>
@@ -127,14 +127,11 @@ export const CompactLearningPath: React.FC<CompactLearningPathProps> = ({ isOpen
               {t('learningPath.unitProgress', 'Progreso por Nivel')}
             </h3>
             <div className="compact-learning-path__unit-grid">
-              {stats.unitStats.map((unitStat) => {
+              {stats.unitStats.map(unitStat => {
                 const info = unitInfo[unitStat.unit as keyof typeof unitInfo];
 
                 return (
-                  <div
-                    key={unitStat.unit}
-                    className="compact-learning-path__unit-item"
-                  >
+                  <div key={unitStat.unit} className="compact-learning-path__unit-item">
                     <div className="compact-learning-path__unit-circle">
                       <svg className="compact-learning-path__unit-circle-svg" viewBox="0 0 36 36">
                         <path
@@ -148,7 +145,9 @@ export const CompactLearningPath: React.FC<CompactLearningPathProps> = ({ isOpen
                         />
                       </svg>
                       <div className="compact-learning-path__unit-circle-content">
-                        <span className={`compact-learning-path__unit-circle-badge compact-learning-path__unit-circle-badge--${info?.color}`}>
+                        <span
+                          className={`compact-learning-path__unit-circle-badge compact-learning-path__unit-circle-badge--${info?.color}`}
+                        >
                           {info?.code}
                         </span>
                         <span className="compact-learning-path__unit-circle-percentage">
@@ -157,10 +156,7 @@ export const CompactLearningPath: React.FC<CompactLearningPathProps> = ({ isOpen
                       </div>
                     </div>
                     <div className="compact-learning-path__unit-circle-info">
-                      <span
-                        className="compact-learning-path__unit-circle-name"
-                        title={info?.name}
-                      >
+                      <span className="compact-learning-path__unit-circle-name" title={info?.name}>
                         {info?.shortName}
                       </span>
                       <span className="compact-learning-path__unit-circle-stats">
@@ -175,10 +171,7 @@ export const CompactLearningPath: React.FC<CompactLearningPathProps> = ({ isOpen
 
           {/* Actions */}
           <div className="modal__actions modal__actions--single">
-            <button
-              onClick={onClose}
-              className="modal__btn modal__btn--primary"
-            >
+            <button onClick={onClose} className="modal__btn modal__btn--primary">
               {t('common.continue', 'Continuar Aprendiendo')}
             </button>
           </div>

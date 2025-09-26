@@ -24,10 +24,7 @@ export const DefaultErrorFallback: React.FC<ErrorFallbackProps> = ({ error, retr
         </details>
       )}
       <div className="error-fallback__actions">
-        <button
-          onClick={retry}
-          className="error-fallback__button error-fallback__button--primary"
-        >
+        <button onClick={retry} className="error-fallback__button error-fallback__button--primary">
           Try Again
         </button>
         <button

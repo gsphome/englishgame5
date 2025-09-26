@@ -13,7 +13,9 @@ const FlashcardComponent = lazy(() =>
       default: module.default,
     }))
     .catch(() => ({
-      default: () => <div className="app-router__error-fallback">Failed to load Flashcard component</div>,
+      default: () => (
+        <div className="app-router__error-fallback">Failed to load Flashcard component</div>
+      ),
     }))
 );
 
@@ -23,7 +25,9 @@ const QuizComponent = lazy(() =>
       default: module.default,
     }))
     .catch(() => ({
-      default: () => <div className="app-router__error-fallback">Failed to load Quiz component</div>,
+      default: () => (
+        <div className="app-router__error-fallback">Failed to load Quiz component</div>
+      ),
     }))
 );
 
@@ -33,7 +37,9 @@ const CompletionComponent = lazy(() =>
       default: module.default,
     }))
     .catch(() => ({
-      default: () => <div className="app-router__error-fallback">Failed to load Completion component</div>,
+      default: () => (
+        <div className="app-router__error-fallback">Failed to load Completion component</div>
+      ),
     }))
 );
 
@@ -43,7 +49,9 @@ const SortingComponent = lazy(() =>
       default: module.default,
     }))
     .catch(() => ({
-      default: () => <div className="app-router__error-fallback">Failed to load Sorting component</div>,
+      default: () => (
+        <div className="app-router__error-fallback">Failed to load Sorting component</div>
+      ),
     }))
 );
 
@@ -53,7 +61,9 @@ const MatchingComponent = lazy(() =>
       default: module.default,
     }))
     .catch(() => ({
-      default: () => <div className="app-router__error-fallback">Failed to load Matching component</div>,
+      default: () => (
+        <div className="app-router__error-fallback">Failed to load Matching component</div>
+      ),
     }))
 );
 
@@ -76,10 +86,7 @@ const ModuleError: React.FC<{ error: Error; moduleId: string; onRetry: () => voi
       <h3 className="app-router__error-title">Failed to load module: {moduleId}</h3>
       <p className="app-router__error-message">{error.message}</p>
       <div className="app-router__error-actions">
-        <button
-          onClick={onRetry}
-          className="app-router__error-btn app-router__error-btn--primary"
-        >
+        <button onClick={onRetry} className="app-router__error-btn app-router__error-btn--primary">
           Retry
         </button>
         <button
@@ -138,10 +145,7 @@ export const AppRouter: React.FC = () => {
     return (
       <div className="app-router__no-module">
         <p className="app-router__no-module-text">No module selected</p>
-        <button
-          onClick={() => window.location.reload()}
-          className="app-router__no-module-btn"
-        >
+        <button onClick={() => window.location.reload()} className="app-router__no-module-btn">
           Return to Menu
         </button>
       </div>

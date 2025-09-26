@@ -250,13 +250,15 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
         <div className="matching-component__progress-bar">
           <div
             className="matching-component__progress-fill"
-            style={{ '--progress-width': `${(Object.keys(matches).length / pairs.length) * 100}%` } as React.CSSProperties}
+            style={
+              {
+                '--progress-width': `${(Object.keys(matches).length / pairs.length) * 100}%`,
+              } as React.CSSProperties
+            }
           />
         </div>
         <p className="matching-component__instruction-text">
-          {allMatched
-            ? t('learning.allMatched')
-            : t('learning.clickToMatch')}
+          {allMatched ? t('learning.allMatched') : t('learning.clickToMatch')}
         </p>
       </div>
 
@@ -385,8 +387,8 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
       {/* Unified Control Bar */}
       <div className="game-controls">
         {/* Home Navigation */}
-        <button 
-          onClick={() => setCurrentView('menu')} 
+        <button
+          onClick={() => setCurrentView('menu')}
           className="game-controls__home-btn"
           title="Return to main menu"
         >
@@ -477,7 +479,9 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
 
                         <div className="matching-modal__result-card__content">
                           <div className="matching-modal__result-card__field">
-                            <span className="matching-modal__result-card__label">Correct answer:</span>
+                            <span className="matching-modal__result-card__label">
+                              Correct answer:
+                            </span>
                             <p className="matching-modal__result-card__value matching-modal__result-card__value--correct">
                               {result.right}
                             </p>
@@ -485,7 +489,9 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
 
                           {!result.isCorrect && (
                             <div className="matching-modal__result-card__field">
-                              <span className="matching-modal__result-card__label">Your answer:</span>
+                              <span className="matching-modal__result-card__label">
+                                Your answer:
+                              </span>
                               <p className="matching-modal__result-card__value matching-modal__result-card__value--incorrect">
                                 {result.userAnswer}
                               </p>
@@ -494,7 +500,9 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
 
                           {result.explanation && (
                             <div className="matching-modal__result-card__field">
-                              <span className="matching-modal__result-card__label">Explanation:</span>
+                              <span className="matching-modal__result-card__label">
+                                Explanation:
+                              </span>
                               <p className="matching-modal__result-card__explanation">
                                 {result.explanation}
                               </p>
