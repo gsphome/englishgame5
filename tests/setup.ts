@@ -133,7 +133,7 @@ Object.defineProperty(CSS, 'supports', {
 // Mock getComputedStyle for CSS testing
 Object.defineProperty(window, 'getComputedStyle', {
   writable: true,
-  value: vi.fn().mockImplementation((element: Element) => {
+  value: vi.fn().mockImplementation((_element: Element) => {
     // Return a mock computed style with design token support
     return {
       display: 'block',
