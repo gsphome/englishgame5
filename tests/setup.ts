@@ -130,39 +130,72 @@ Object.defineProperty(CSS, 'supports', {
   }),
 });
 
-// Mock getComputedStyle for CSS testing
+// Mock getComputedStyle for CSS testing with comprehensive CSSStyleDeclaration
+const createMockCSSStyleDeclaration = () => {
+  const mockProperties: Record<string, string> = {
+    display: 'block',
+    visibility: 'visible',
+    opacity: '1',
+    position: 'static',
+    width: '100px',
+    height: '100px',
+    color: '#000000',
+    backgroundColor: '#ffffff',
+    fontSize: '16px',
+    fontFamily: 'Arial, sans-serif',
+    margin: '0px',
+    padding: '0px',
+    border: '0px',
+    borderColor: '#000000',
+    borderStyle: 'none',
+    borderWidth: '0px',
+    outline: 'none',
+    textAlign: 'left',
+    verticalAlign: 'baseline',
+    zIndex: 'auto',
+    // Design tokens
+    '--theme-text-primary': '#374151',
+    '--theme-text-secondary': '#6b7280',
+    '--theme-bg-primary': '#ffffff',
+    '--theme-bg-secondary': '#fafafa',
+    '--theme-border-primary': '#f3f4f6',
+  };
+
+  // Create a Proxy to handle any property access
+  return new Proxy(mockProperties, {
+    get(target, prop) {
+      if (prop === 'getPropertyValue') {
+        return vi.fn((property: string) => target[property] || '');
+      }
+      if (prop === 'setProperty') {
+        return vi.fn((property: string, value: string) => {
+          target[property] = value;
+        });
+      }
+      if (prop === 'removeProperty') {
+        return vi.fn((property: string) => {
+          delete target[property];
+        });
+      }
+      if (prop === 'item') {
+        return vi.fn((index: number) => Object.keys(target)[index] || '');
+      }
+      if (prop === 'length') {
+        return Object.keys(target).length;
+      }
+      return target[prop as string] || '';
+    },
+    set(target, prop, value) {
+      target[prop as string] = value;
+      return true;
+    }
+  });
+};
+
 Object.defineProperty(window, 'getComputedStyle', {
   writable: true,
   value: vi.fn().mockImplementation((_element: Element) => {
-    // Return a mock computed style with design token support
-    return {
-      display: 'block',
-      visibility: 'visible',
-      opacity: '1',
-      position: 'static',
-      width: '100px',
-      height: '100px',
-      getPropertyValue: vi.fn((prop: string) => {
-        // Mock design tokens for testing
-        const mockTokens: Record<string, string> = {
-          '--theme-text-primary': '#374151',
-          '--theme-text-secondary': '#6b7280',
-          '--theme-bg-primary': '#ffffff',
-          '--theme-bg-secondary': '#fafafa',
-          '--theme-border-primary': '#f3f4f6',
-          '--text-primary': '#374151',
-          '--bg-elevated': '#ffffff',
-          '--border-soft': '#f3f4f6',
-          '--primary-blue': '#3b82f6',
-          '--primary-purple': '#8b5cf6',
-          'display': 'block',
-          'visibility': 'visible',
-          'opacity': '1'
-        };
-        
-        return mockTokens[prop] || '';
-      })
-    };
+    return createMockCSSStyleDeclaration();
   })
 });
 
@@ -179,5 +212,41 @@ Object.defineProperty(window, 'cancelAnimationFrame', {
   writable: true,
   value: vi.fn().mockImplementation((id: number) => {
     clearTimeout(id);
+  })
+});
+
+// Enhanced DOM mocking for better test compatibility
+Object.defineProperty(HTMLElement.prototype, 'offsetParent', {
+  get() { return this.parentNode; }
+});
+
+Object.defineProperty(HTMLElement.prototype, 'offsetTop', {
+  get() { return 0; }
+});
+
+Object.defineProperty(HTMLElement.prototype, 'offsetLeft', {
+  get() { return 0; }
+});
+
+Object.defineProperty(HTMLElement.prototype, 'offsetWidth', {
+  get() { return 100; }
+});
+
+Object.defineProperty(HTMLElement.prototype, 'offsetHeight', {
+  get() { return 100; }
+});
+
+// Mock getBoundingClientRect for better layout testing
+Object.defineProperty(HTMLElement.prototype, 'getBoundingClientRect', {
+  value: vi.fn().mockReturnValue({
+    top: 0,
+    left: 0,
+    bottom: 100,
+    right: 100,
+    width: 100,
+    height: 100,
+    x: 0,
+    y: 0,
+    toJSON: vi.fn()
   })
 });

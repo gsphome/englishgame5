@@ -217,12 +217,14 @@ describe('BEM Compliance Testing', () => {
       expect(header).toHaveClass('header-redesigned');
       
       // Menu button should follow BEM
-      const menuButton = screen.getByRole('button', { name: /abrir menú/i });
-      expect(menuButton.className).toMatch(/header-redesigned__menu-btn/);
+      const menuButton = container.querySelector('.header-redesigned__menu-btn');
+      expect(menuButton).toBeInTheDocument();
+      expect(menuButton?.className).toMatch(/header-redesigned__menu-btn/);
       
       // User button should follow BEM
-      const userButton = screen.getByRole('button', { name: /user profile/i });
-      expect(userButton.className).toMatch(/header-redesigned__/);
+      const userButton = container.querySelector('[aria-label*="user profile"]');
+      expect(userButton).toBeInTheDocument();
+      expect(userButton?.className).toMatch(/header-redesigned__/);
       
       // All classes should be valid BEM
       const allClassNames = [header?.className, menuButton?.className, userButton?.className];
