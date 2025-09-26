@@ -31,46 +31,46 @@ export const captureVisualBaseline = (
   viewport: string = 'desktop'
 ): VisualBaseline => {
   const elements: VisualBaseline['elements'] = {};
-  
+
   // Capture key elements based on component type
   if (componentName === 'Header') {
     const header = container.querySelector('header');
     const menuBtn = container.querySelector('.header-redesigned__menu-btn');
     const userBtn = container.querySelector('[aria-label*="user profile"]');
-    
+
     elements.header = {
-      visible: header ? header.style.display !== 'none' : false,
+      visible: header ? (header as HTMLElement).style.display !== 'none' : false,
       className: header?.className || '',
     };
-    
+
     elements.menuButton = {
-      visible: menuBtn ? menuBtn.style.display !== 'none' : false,
+      visible: menuBtn ? (menuBtn as HTMLElement).style.display !== 'none' : false,
       className: menuBtn?.className || '',
     };
-    
+
     elements.userButton = {
-      visible: userBtn ? userBtn.style.display !== 'none' : false,
+      visible: userBtn ? (userBtn as HTMLElement).style.display !== 'none' : false,
       className: userBtn?.className || '',
     };
   }
-  
+
   if (componentName === 'CompactAdvancedSettings') {
     const modal = container.querySelector('.compact-settings');
     const closeBtn = container.querySelector('.compact-settings__close-btn');
     const title = container.querySelector('.compact-settings__title');
-    
+
     elements.modal = {
-      visible: modal ? modal.style.display !== 'none' : false,
+      visible: modal ? (modal as HTMLElement).style.display !== 'none' : false,
       className: modal?.className || '',
     };
-    
+
     elements.closeButton = {
-      visible: closeBtn ? closeBtn.style.display !== 'none' : false,
+      visible: closeBtn ? (closeBtn as HTMLElement).style.display !== 'none' : false,
       className: closeBtn?.className || '',
     };
-    
+
     elements.title = {
-      visible: title ? title.style.display !== 'none' : false,
+      visible: title ? (title as HTMLElement).style.display !== 'none' : false,
       className: title?.className || '',
     };
   }
@@ -91,50 +91,50 @@ export const compareVisualBaseline = (
   baseline: VisualBaseline
 ): VisualDiff => {
   const differences: string[] = [];
-  
+
   // Compare basic metadata
   if (current.componentName !== baseline.componentName) {
     differences.push(`Component name mismatch: ${current.componentName} vs ${baseline.componentName}`);
   }
-  
+
   if (current.themeContext !== baseline.themeContext) {
     differences.push(`Theme context mismatch: ${current.themeContext} vs ${baseline.themeContext}`);
   }
-  
+
   // Compare elements
   const currentElements = Object.keys(current.elements);
   const baselineElements = Object.keys(baseline.elements);
-  
+
   // Check for missing elements
   baselineElements.forEach(elementKey => {
     if (!currentElements.includes(elementKey)) {
       differences.push(`Missing element: ${elementKey}`);
     }
   });
-  
+
   // Check for extra elements
   currentElements.forEach(elementKey => {
     if (!baselineElements.includes(elementKey)) {
       differences.push(`Extra element: ${elementKey}`);
     }
   });
-  
+
   // Compare element properties
   currentElements.forEach(elementKey => {
     if (baseline.elements[elementKey]) {
       const currentEl = current.elements[elementKey];
       const baselineEl = baseline.elements[elementKey];
-      
+
       if (currentEl.visible !== baselineEl.visible) {
         differences.push(`${elementKey} visibility changed: ${baselineEl.visible} -> ${currentEl.visible}`);
       }
-      
+
       if (currentEl.className !== baselineEl.className) {
         differences.push(`${elementKey} className changed: "${baselineEl.className}" -> "${currentEl.className}"`);
       }
     }
   });
-  
+
   return {
     componentName: current.componentName,
     themeContext: current.themeContext,
@@ -185,7 +185,7 @@ export const setupThemeContext = (theme: 'light' | 'dark', viewport: 'desktop' |
  */
 export const validateBEMNaming = (className: string): boolean => {
   if (!className || typeof className !== 'string') return true;
-  
+
   // Special case: reject patterns that look like they should be single BEM classes but have spaces
   // e.g., "header redesigned" should be "header-redesigned"
   if (className.includes(' ') && !className.includes('__') && !className.includes('--')) {
@@ -194,28 +194,28 @@ export const validateBEMNaming = (className: string): boolean => {
       return false; // This looks like it should be hyphenated
     }
   }
-  
+
   // Split by spaces to check each class
   const classes = className.split(' ').filter(cls => cls.length > 0);
-  
+
   // If there are multiple classes, they should all be valid BEM or utility classes
   return classes.every(cls => {
     // Allow utility classes like 'sr-only' or data attributes
     if (cls.startsWith('sr-') || cls.startsWith('data-')) return true;
-    
+
     // Check for invalid patterns first
     if (/[A-Z]/.test(cls)) return false; // PascalCase or camelCase
     if (cls.includes('_') && !cls.includes('__')) return false; // Snake case (but allow __)
     if (cls.includes('.')) return false; // Dot notation
     if (cls.includes('__') && cls.split('__').length > 2) return false; // Double nesting
     if (cls.includes('--') && cls.split('--').length > 2) return false; // Double modifier
-    
+
     // Check for Tailwind patterns
     if (/^(text-|bg-|border-|hover:|focus:|active:|dark:|w-\d+|h-\d+|p-\d+|m-\d+)/.test(cls)) return false;
-    
+
     // BEM pattern: block__element--modifier (with hyphens allowed in names)
     const bemPattern = /^[a-z][a-z0-9]*(-[a-z0-9]+)*(__[a-z][a-z0-9]*(-[a-z0-9]+)*)?(--[a-z][a-z0-9]*(-[a-z0-9]+)*)?$/;
-    
+
     return bemPattern.test(cls);
   });
 };
@@ -225,7 +225,7 @@ export const validateBEMNaming = (className: string): boolean => {
  */
 export const validateNoTailwindClasses = (className: string): boolean => {
   if (!className || typeof className !== 'string') return true;
-  
+
   const tailwindPatterns = [
     /\b(text-gray-|bg-gray-|border-gray-)/,  // Gray color utilities
     /\b(hover:|focus:|active:|dark:)/,       // State prefixes
@@ -233,7 +233,7 @@ export const validateNoTailwindClasses = (className: string): boolean => {
     /\b(flex|grid|block|inline)/,            // Display utilities
     /\b(rounded|shadow|border)\b/,           // Common utilities
   ];
-  
+
   return !tailwindPatterns.some(pattern => pattern.test(className));
 };
 
@@ -244,9 +244,9 @@ export const measureThemeSwitchPerformance = async (
   switchThemeFunction: () => void | Promise<void>
 ): Promise<number> => {
   const startTime = performance.now();
-  
+
   await switchThemeFunction();
-  
+
   const endTime = performance.now();
   return endTime - startTime;
 };
