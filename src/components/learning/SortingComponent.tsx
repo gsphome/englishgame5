@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { RotateCcw, Check, Info, X } from 'lucide-react';
+import { RotateCcw, Check, Info, X, Home } from 'lucide-react';
 import { useAppStore } from '../../stores/appStore';
 import { useUserStore } from '../../stores/userStore';
 import { useSettingsStore } from '../../stores/settingsStore';
@@ -9,7 +9,7 @@ import { useToast } from '../../hooks/useToast';
 import { useLearningCleanup } from '../../hooks/useLearningCleanup';
 import { ContentAdapter } from '../../utils/contentAdapter';
 import ContentRenderer from '../ui/ContentRenderer';
-import NavigationButton from '../ui/NavigationButton';
+
 import '../../styles/components/sorting-modal.css';
 import '../../styles/components/sorting-component.css';
 import type { LearningModule } from '../../types';
@@ -466,31 +466,32 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
       </div>
 
       {/* Unified Control Bar */}
-      <div className="sorting-component__actions">
-        {/* Navigation */}
-        <NavigationButton onClick={() => setCurrentView('menu')} title={t('learning.returnToMainMenu')}>
-          {t('learning.backToMenu')}
-        </NavigationButton>
-
-        {/* Separator */}
-        <div className="sorting-component__separator"></div>
+      <div className="game-controls">
+        {/* Home Navigation */}
+        <button 
+          onClick={() => setCurrentView('menu')} 
+          className="game-controls__home-btn"
+          title={t('learning.returnToMainMenu')}
+        >
+          <Home className="game-controls__home-btn__icon" />
+        </button>
 
         {!showResult ? (
           <>
             <button
               onClick={resetExercise}
-              className="sorting-component__button sorting-component__button--reset"
+              className="game-controls__icon-btn"
               title="Reset Exercise"
             >
-              <RotateCcw className="sorting-component__button-icon" />
+              <RotateCcw className="game-controls__icon-btn__icon" />
             </button>
 
             <button
               onClick={checkAnswers}
               disabled={!allWordsSorted}
-              className="sorting-component__button sorting-component__button--primary"
+              className="game-controls__primary-btn game-controls__primary-btn--orange"
             >
-              <Check className="sorting-component__button-icon" />
+              <Check className="game-controls__primary-btn__icon" />
               <span>{t('learning.checkAnswers')}</span>
             </button>
           </>
@@ -498,16 +499,17 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
           <>
             <button
               onClick={showSummaryModal}
-              className="sorting-component__button sorting-component__button--secondary"
+              className="game-controls__icon-btn"
+              title={t('learning.viewSummary')}
             >
-              <Info className="sorting-component__button-icon" />
-              <span>{t('learning.viewSummary')}</span>
+              <Info className="game-controls__icon-btn__icon" />
             </button>
             <button
               onClick={finishExercise}
-              className="sorting-component__button sorting-component__button--success"
+              className="game-controls__primary-btn game-controls__primary-btn--green"
             >
-              <span>{t('learning.finishExercise')}</span>
+              <Check className="game-controls__primary-btn__icon" />
+              <span>{t('learning.finish')}</span>
             </button>
           </>
         )}
@@ -515,8 +517,8 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
 
       {/* Explanation/Summary Modal */}
       {showExplanation && selectedTerm && (
-        <div className="sorting-modal-overlay">
-          <div className="sorting-modal-container">
+        <div className="sorting-modal">
+          <div className="sorting-modal__container">
             <div className="sorting-modal__content">
               <div className="sorting-modal__header">
                 <h3 className="sorting-modal__title">Exercise Summary - Past Tense Verbs</h3>

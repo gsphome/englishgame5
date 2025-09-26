@@ -15,6 +15,7 @@
 @import './components/example-component.css';
 @import './components/flashcard-component.css';
 @import './components/fluent-flow-logo.css';
+@import './components/game-controls.css';
 @import './components/header.css';
 @import './components/loading-skeleton.css';
 @import './components/log-viewer.css';

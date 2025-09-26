@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { RotateCcw, Check, Info, X } from 'lucide-react';
+import { RotateCcw, Check, Info, X, Home } from 'lucide-react';
 import { useAppStore } from '../../stores/appStore';
 import { useUserStore } from '../../stores/userStore';
 import { useSettingsStore } from '../../stores/settingsStore';
@@ -8,7 +8,7 @@ import { useLearningCleanup } from '../../hooks/useLearningCleanup';
 import { useTranslation } from '../../utils/i18n';
 import { ContentAdapter } from '../../utils/contentAdapter';
 import ContentRenderer from '../ui/ContentRenderer';
-import NavigationButton from '../ui/NavigationButton';
+
 import '../../styles/components/matching-modal.css';
 import '../../styles/components/matching-component.css';
 import type { LearningModule } from '../../types';
@@ -383,31 +383,32 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
       </div>
 
       {/* Unified Control Bar */}
-      <div className="matching-component__actions">
-        {/* Navigation */}
-        <NavigationButton onClick={() => setCurrentView('menu')} title="Return to main menu">
-          Back to Menu
-        </NavigationButton>
-
-        {/* Separator */}
-        <div className="matching-component__separator"></div>
+      <div className="game-controls">
+        {/* Home Navigation */}
+        <button 
+          onClick={() => setCurrentView('menu')} 
+          className="game-controls__home-btn"
+          title="Return to main menu"
+        >
+          <Home className="game-controls__home-btn__icon" />
+        </button>
 
         {!showResult ? (
           <>
             <button
               onClick={resetExercise}
-              className="matching-component__button matching-component__button--secondary"
+              className="game-controls__icon-btn"
               title="Reset Exercise"
             >
-              <RotateCcw className="matching-component__button-icon" />
+              <RotateCcw className="game-controls__icon-btn__icon" />
             </button>
 
             <button
               onClick={checkAnswers}
               disabled={!allMatched}
-              className="matching-component__button matching-component__button--primary"
+              className="game-controls__primary-btn game-controls__primary-btn--orange"
             >
-              <Check className="matching-component__button-icon" />
+              <Check className="game-controls__primary-btn__icon" />
               <span>Check Matches</span>
             </button>
           </>
@@ -415,16 +416,17 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
           <>
             <button
               onClick={showSummaryModal}
-              className="matching-component__button matching-component__button--primary"
+              className="game-controls__icon-btn"
+              title="View Summary"
             >
-              <Info className="matching-component__button-icon" />
-              <span>View Summary</span>
+              <Info className="game-controls__icon-btn__icon" />
             </button>
             <button
               onClick={finishExercise}
-              className="matching-component__button matching-component__button--success"
+              className="game-controls__primary-btn game-controls__primary-btn--green"
             >
-              <span>Finish Exercise</span>
+              <Check className="game-controls__primary-btn__icon" />
+              <span>Finish</span>
             </button>
           </>
         )}

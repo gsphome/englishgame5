@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
-import { CheckCircle, XCircle, ArrowRight } from 'lucide-react';
+import { CheckCircle, XCircle, ArrowRight, Home } from 'lucide-react';
 import { useAppStore } from '../../stores/appStore';
 import { useUserStore } from '../../stores/userStore';
 import { useSettingsStore } from '../../stores/settingsStore';
@@ -10,7 +10,7 @@ import { useLearningCleanup } from '../../hooks/useLearningCleanup';
 import { shuffleArray } from '../../utils/randomUtils';
 import { ContentAdapter } from '../../utils/contentAdapter';
 import ContentRenderer from '../ui/ContentRenderer';
-import NavigationButton from '../ui/NavigationButton';
+
 
 import type { LearningModule, QuizData } from '../../types';
 
@@ -280,24 +280,25 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
       </div>
 
       {/* Unified Control Bar */}
-      <div className="quiz-component__controls">
-        {/* Navigation */}
-        <NavigationButton onClick={() => setCurrentView('menu')} title={t('learning.returnToMainMenu')}>
-          {t('learning.backToMenu')}
-        </NavigationButton>
-
-        {/* Separator */}
-        <div className="quiz-component__separator"></div>
+      <div className="game-controls">
+        {/* Home Navigation */}
+        <button 
+          onClick={() => setCurrentView('menu')} 
+          className="game-controls__home-btn"
+          title={t('learning.returnToMainMenu')}
+        >
+          <Home className="game-controls__home-btn__icon" />
+        </button>
 
         <button
           onClick={handleNext}
           disabled={!showResult}
-          className="quiz-component__next-btn"
+          className="game-controls__primary-btn game-controls__primary-btn--green"
         >
           <span>
             {currentIndex === randomizedQuestions.length - 1 ? t('learning.finishQuiz') : t('learning.nextQuestion')}
           </span>
-          <ArrowRight className="quiz-component__next-btn-icon" />
+          <ArrowRight className="game-controls__primary-btn__icon" />
         </button>
       </div>
     </div>

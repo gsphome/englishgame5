@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
-import { ChevronLeft, ChevronRight, RotateCcw } from 'lucide-react';
+import { ChevronLeft, ChevronRight, RotateCcw, Home } from 'lucide-react';
 import { useAppStore } from '../../stores/appStore';
 import { useUserStore } from '../../stores/userStore';
 import { useSettingsStore } from '../../stores/settingsStore';
@@ -9,7 +9,7 @@ import { useLearningCleanup } from '../../hooks/useLearningCleanup';
 import { shuffleArray } from '../../utils/randomUtils';
 import { ContentAdapter } from '../../utils/contentAdapter';
 import ContentRenderer from '../ui/ContentRenderer';
-import NavigationButton from '../ui/NavigationButton';
+
 import '../../styles/components/flashcard-component.css';
 import type { FlashcardData, LearningModule } from '../../types';
 
@@ -242,40 +242,41 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
       </div>
 
       {/* Unified Control Bar */}
-      <div className="flashcard-component__controls">
-        {/* Navigation */}
-        <NavigationButton onClick={() => setCurrentView('menu')} title={t('learning.returnToMainMenu')}>
-          {t('learning.backToMenu')}
-        </NavigationButton>
-
-        {/* Separator */}
-        <div className="flashcard-component__separator"></div>
+      <div className="game-controls">
+        {/* Home Navigation */}
+        <button 
+          onClick={() => setCurrentView('menu')} 
+          className="game-controls__home-btn"
+          title={t('learning.returnToMainMenu')}
+        >
+          <Home className="game-controls__home-btn__icon" />
+        </button>
 
         <button
           onClick={handlePrev}
           disabled={currentIndex === 0}
-          className="flashcard-component__nav-btn flashcard-component__nav-btn--prev"
+          className="game-controls__nav-btn"
           title={t('learning.previousCard')}
         >
-          <ChevronLeft className="flashcard-component__nav-btn__icon" />
+          <ChevronLeft className="game-controls__nav-btn__icon" />
         </button>
 
         <button
           onClick={handleFlip}
-          className="flashcard-component__flip-btn"
+          className="game-controls__primary-btn game-controls__primary-btn--blue"
         >
-          <RotateCcw className="flashcard-component__flip-btn-icon" />
+          <RotateCcw className="game-controls__primary-btn__icon" />
           <span>{isFlipped ? t('learning.flipBack') : t('learning.flip')}</span>
         </button>
 
         <button
           onClick={handleNext}
-          className="flashcard-component__nav-btn flashcard-component__nav-btn--next"
+          className="game-controls__nav-btn"
           title={
             currentIndex === randomizedFlashcards.length - 1 ? t('learning.finishFlashcards') : t('learning.nextCard')
           }
         >
-          <ChevronRight className="flashcard-component__nav-btn__icon" />
+          <ChevronRight className="game-controls__nav-btn__icon" />
         </button>
       </div>
     </div>

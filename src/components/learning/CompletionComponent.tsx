@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
-import { Check, X, ArrowRight } from 'lucide-react';
+import { Check, X, ArrowRight, Home } from 'lucide-react';
 import { useAppStore } from '../../stores/appStore';
 import { useUserStore } from '../../stores/userStore';
 import { useSettingsStore } from '../../stores/settingsStore';
@@ -11,7 +11,7 @@ import { shuffleArray } from '../../utils/randomUtils';
 import '../../styles/components/completion-component.css';
 import { ContentAdapter } from '../../utils/contentAdapter';
 import ContentRenderer from '../ui/ContentRenderer';
-import NavigationButton from '../ui/NavigationButton';
+
 import type { LearningModule } from '../../types';
 
 interface CompletionData {
@@ -301,35 +301,36 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
       </div>
 
       {/* Unified Control Bar */}
-      <div className="completion-component__controls">
-        {/* Navigation */}
-        <NavigationButton onClick={() => setCurrentView('menu')} title="Return to main menu">
-          Back to Menu
-        </NavigationButton>
-
-        {/* Separator */}
-        <div className="completion-component__separator"></div>
+      <div className="game-controls">
+        {/* Home Navigation */}
+        <button 
+          onClick={() => setCurrentView('menu')} 
+          className="game-controls__home-btn"
+          title="Return to main menu"
+        >
+          <Home className="game-controls__home-btn__icon" />
+        </button>
 
         {!showResult ? (
           <button
             onClick={checkAnswer}
             disabled={!hasAnswer}
-            className="completion-component__check-btn"
+            className="game-controls__primary-btn game-controls__primary-btn--purple"
           >
-            <Check className="completion-component__btn-icon" />
+            <Check className="game-controls__primary-btn__icon" />
             <span>Check Answer</span>
           </button>
         ) : (
           <button
             onClick={handleNext}
-            className="completion-component__next-btn"
+            className="game-controls__primary-btn game-controls__primary-btn--green"
           >
             <span>
               {currentIndex === randomizedExercises.length - 1
                 ? 'Finish Exercise'
                 : 'Next Exercise'}
             </span>
-            <ArrowRight className="completion-component__btn-icon" />
+            <ArrowRight className="game-controls__primary-btn__icon" />
           </button>
         )}
       </div>

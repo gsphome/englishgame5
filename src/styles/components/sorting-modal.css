@@ -1,7 +1,7 @@
 /* Sorting Modal Component - BEM-like Classes with High Specificity */
 
 /* Modal Overlay */
-.sorting-modal-overlay {
+.sorting-modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -20,12 +20,12 @@
   /* Dynamic viewport height for mobile */
 }
 
-.dark .sorting-modal-overlay {
+.dark .sorting-modal {
   background-color: rgba(0, 0, 0, 0.8) !important;
 }
 
 /* Modal Container */
-.sorting-modal-container {
+.sorting-modal__container {
   background-color: white;
   border: 1px solid #e5e7eb;
   border-radius: 0.75rem;
@@ -36,7 +36,7 @@
   overflow-y: auto;
 }
 
-.dark .sorting-modal-container {
+.dark .sorting-modal__container {
   background-color: #111827 !important;
   border-color: #374151 !important;
 }
