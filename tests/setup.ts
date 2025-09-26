@@ -131,13 +131,17 @@ Object.defineProperty(CSS, 'supports', {
 });
 
 // Mock getComputedStyle for CSS testing
-const originalGetComputedStyle = window.getComputedStyle;
 Object.defineProperty(window, 'getComputedStyle', {
   writable: true,
   value: vi.fn().mockImplementation((element: Element) => {
     // Return a mock computed style with design token support
     return {
-      ...originalGetComputedStyle(element),
+      display: 'block',
+      visibility: 'visible',
+      opacity: '1',
+      position: 'static',
+      width: '100px',
+      height: '100px',
       getPropertyValue: vi.fn((prop: string) => {
         // Mock design tokens for testing
         const mockTokens: Record<string, string> = {
@@ -150,7 +154,10 @@ Object.defineProperty(window, 'getComputedStyle', {
           '--bg-elevated': '#ffffff',
           '--border-soft': '#f3f4f6',
           '--primary-blue': '#3b82f6',
-          '--primary-purple': '#8b5cf6'
+          '--primary-purple': '#8b5cf6',
+          'display': 'block',
+          'visibility': 'visible',
+          'opacity': '1'
         };
         
         return mockTokens[prop] || '';

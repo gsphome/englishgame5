@@ -64,11 +64,13 @@ describe('MatchingComponent', () => {
   });
 
   it('should show progress indicator', () => {
-    const { getByText } = renderWithProviders(
+    const { container } = renderWithProviders(
       <MatchingComponent module={mockModule} />
     );
 
-    expect(getByText('0/3 matched')).toBeInTheDocument();
+    const progressBadge = container.querySelector('.matching-component__progress-badge');
+    expect(progressBadge).toBeInTheDocument();
+    expect(progressBadge?.textContent?.trim()).toBe('0/3');
   });
 
   it('should apply proper BEM classes for pure CSS architecture', () => {
@@ -100,9 +102,9 @@ describe('MatchingComponent', () => {
     expect(container.querySelector('.matching-component__item-text')).toBeInTheDocument();
     expect(container.querySelector('.matching-component__item-letter')).toBeInTheDocument();
 
-    // Check actions section (BEM elements)
-    expect(container.querySelector('.matching-component__actions')).toBeInTheDocument();
-    expect(container.querySelector('.matching-component__button')).toBeInTheDocument();
+    // Check game controls section (BEM elements)
+    expect(container.querySelector('.game-controls')).toBeInTheDocument();
+    expect(container.querySelector('.game-controls__primary-btn')).toBeInTheDocument();
   });
 
   it('should use design tokens for theme context support', () => {

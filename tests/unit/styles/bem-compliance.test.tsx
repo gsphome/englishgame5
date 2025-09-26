@@ -11,6 +11,8 @@ vi.mock('../../../src/stores/appStore', () => ({
   useAppStore: () => ({
     setCurrentView: vi.fn(),
     currentView: 'menu',
+    sessionScore: { correct: 5, incorrect: 2, accuracy: 71.4 },
+    globalScore: { correct: 50, incorrect: 10, accuracy: 83.3 },
   }),
 }));
 
@@ -21,6 +23,7 @@ vi.mock('../../../src/stores/userStore', () => ({
       name: 'Test User',
       email: 'test@example.com',
     },
+    getTotalScore: () => 150,
   }),
 }));
 

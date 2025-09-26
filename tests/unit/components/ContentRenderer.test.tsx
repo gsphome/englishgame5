@@ -13,7 +13,7 @@ describe('ContentRenderer', () => {
       
       // Check that the terms are rendered with the correct class
       const termElements = screen.getAllByText((content, element) => {
-        return element?.classList.contains('content-segment--term') || false;
+        return element?.classList.contains('content-renderer__segment--term') || false;
       });
       
       expect(termElements).toHaveLength(2); // 'be' and 'I'
@@ -25,13 +25,13 @@ describe('ContentRenderer', () => {
       render(<ContentRenderer content={content} />);
       
       // Check for term
-      expect(screen.getByText('hello')).toHaveClass('content-segment--term');
+      expect(screen.getByText('hello')).toHaveClass('content-renderer__segment--term');
       
       // Check for emphasis
-      expect(screen.getByText('important')).toHaveClass('content-segment--emphasis');
+      expect(screen.getByText('important')).toHaveClass('content-renderer__segment--emphasis');
       
       // Check for code
-      expect(screen.getByText('code')).toHaveClass('content-segment--code');
+      expect(screen.getByText('code')).toHaveClass('content-renderer__segment--code');
     });
 
     it('should handle plain text without formatting', () => {
@@ -59,7 +59,7 @@ describe('ContentRenderer', () => {
       const { container } = render(<ContentRenderer content={content} />);
       
       // Empty content creates an empty text segment
-      expect(container.querySelector('.content-segment--text')).toBeInTheDocument();
+      expect(container.querySelector('.content-renderer__segment--text')).toBeInTheDocument();
     });
   });
 
@@ -71,7 +71,7 @@ describe('ContentRenderer', () => {
       render(<ContentRenderer content={content} />);
       
       expect(screen.getByText('Which article goes before')).toBeInTheDocument();
-      expect(screen.getByText('apple')).toHaveClass('content-segment--term');
+      expect(screen.getByText('apple')).toHaveClass('content-renderer__segment--term');
       expect(screen.getByText('?')).toBeInTheDocument();
     });
 

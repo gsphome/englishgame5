@@ -186,15 +186,35 @@ export const setupThemeContext = (theme: 'light' | 'dark', viewport: 'desktop' |
 export const validateBEMNaming = (className: string): boolean => {
   if (!className || typeof className !== 'string') return true;
   
-  // BEM pattern: block__element--modifier
-  const bemPattern = /^[a-z-]+(__[a-z-]+)?(--[a-z-]+)?$/;
+  // Special case: reject patterns that look like they should be single BEM classes but have spaces
+  // e.g., "header redesigned" should be "header-redesigned"
+  if (className.includes(' ') && !className.includes('__') && !className.includes('--')) {
+    const words = className.split(' ');
+    if (words.length === 2 && words.every(word => /^[a-z]+$/.test(word))) {
+      return false; // This looks like it should be hyphenated
+    }
+  }
   
   // Split by spaces to check each class
   const classes = className.split(' ').filter(cls => cls.length > 0);
   
+  // If there are multiple classes, they should all be valid BEM or utility classes
   return classes.every(cls => {
     // Allow utility classes like 'sr-only' or data attributes
     if (cls.startsWith('sr-') || cls.startsWith('data-')) return true;
+    
+    // Check for invalid patterns first
+    if (/[A-Z]/.test(cls)) return false; // PascalCase or camelCase
+    if (cls.includes('_') && !cls.includes('__')) return false; // Snake case (but allow __)
+    if (cls.includes('.')) return false; // Dot notation
+    if (cls.includes('__') && cls.split('__').length > 2) return false; // Double nesting
+    if (cls.includes('--') && cls.split('--').length > 2) return false; // Double modifier
+    
+    // Check for Tailwind patterns
+    if (/^(text-|bg-|border-|hover:|focus:|active:|dark:|w-\d+|h-\d+|p-\d+|m-\d+)/.test(cls)) return false;
+    
+    // BEM pattern: block__element--modifier (with hyphens allowed in names)
+    const bemPattern = /^[a-z][a-z0-9]*(-[a-z0-9]+)*(__[a-z][a-z0-9]*(-[a-z0-9]+)*)?(--[a-z][a-z0-9]*(-[a-z0-9]+)*)?$/;
     
     return bemPattern.test(cls);
   });
