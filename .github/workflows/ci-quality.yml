@@ -49,12 +49,23 @@ jobs:
       - name: Generate coverage
         run: npm run test:coverage:ci
 
+      - name: Verify coverage files
+        run: |
+          echo "🔍 Checking coverage files:"
+          ls -la coverage/ || echo "Coverage directory not found"
+          if [ -f coverage/lcov.info ]; then
+            echo "✅ lcov.info exists ($(wc -l < coverage/lcov.info) lines)"
+          else
+            echo "❌ lcov.info missing"
+            exit 1
+          fi
+
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v5
+        if: success()
         with:
           files: ./coverage/lcov.info
           flags: unittests
           name: codecov-umbrella
           fail_ci_if_error: false
-          verbose: true
-          token: ${{ secrets.CODECOV_TOKEN }}
+          verbose: false
