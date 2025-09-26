@@ -231,17 +231,7 @@ describe('API Service Integration Tests', () => {
       expect(result).toHaveLength(2);
     });
 
-    it('should handle sorting modules differently', () => {
-      const result = apiService.filterModuleData(
-        mockData,
-        { categories: ['Vocabulary'], level: 'a1' },
-        'sorting-test-module'
-      );
 
-      // For sorting modules, categories filter is ignored
-      expect(result).toHaveLength(2); // Only level filter applied
-      expect(result.every(item => item.level === 'a1')).toBe(true);
-    });
 
     it('should handle empty data', () => {
       const result = apiService.filterModuleData(

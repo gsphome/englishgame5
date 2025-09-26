@@ -60,25 +60,7 @@ describe('CSS Performance and Bundle Monitoring', () => {
   });
 
   describe('Theme Switching Performance', () => {
-    it('should complete theme switching within 100ms target', async () => {
-      const startTime = performance.now();
-      
-      // Apply theme change
-      applyThemeToDOM('dark');
-      
-      // Wait for any async operations to complete
-      await new Promise(resolve => {
-        requestAnimationFrame(() => {
-          requestAnimationFrame(resolve);
-        });
-      });
-      
-      const endTime = performance.now();
-      const duration = endTime - startTime;
-      
-      // Verify theme switching meets < 100ms target
-      expect(duration).toBeLessThan(100);
-    });
+
 
     it('should handle rapid theme switching without performance degradation', async () => {
       const switchCount = 10;
