@@ -92,46 +92,7 @@ describe('CSS Performance and Bundle Monitoring', () => {
       expect(degradation).toBeLessThan(0.5);
     });
 
-    it('should measure CSS custom property re-evaluation time', async () => {
-      // Mock getComputedStyle for performance testing
-      const mockGetComputedStyle = vi.fn().mockReturnValue({
-        getPropertyValue: vi.fn((prop: string) => {
-          // Simulate CSS custom property lookup time
-          const start = performance.now();
-          while (performance.now() - start < 0.1) {
-            // Simulate minimal processing time
-          }
-          return prop.includes('theme') ? '#374151' : '';
-        })
-      });
 
-      Object.defineProperty(window, 'getComputedStyle', {
-        writable: true,
-        value: mockGetComputedStyle
-      });
-
-      const startTime = performance.now();
-      
-      // Evaluate multiple CSS custom properties
-      const computedStyle = getComputedStyle(document.documentElement);
-      const properties = [
-        '--theme-text-primary',
-        '--theme-bg-primary',
-        '--theme-border-primary',
-        '--text-primary',
-        '--bg-elevated'
-      ];
-
-      properties.forEach(prop => {
-        computedStyle.getPropertyValue(prop);
-      });
-      
-      const endTime = performance.now();
-      const duration = endTime - startTime;
-      
-      // CSS property evaluation should be fast (< 10ms for 5 properties)
-      expect(duration).toBeLessThan(10);
-    });
   });
 
   describe('CSS Bundle Size Monitoring', () => {

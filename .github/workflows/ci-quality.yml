@@ -40,13 +40,21 @@ jobs:
       - name: Run unit tests
         run: npm run test:unit:ci
 
-      # Temporarily disable integration tests and format check for debugging
-      # - name: Run integration tests
-      #   run: npm run test:integration:ci
+      - name: Run integration tests
+        run: npm run test:integration:ci
 
-      # - name: Check formatting
-      #   run: npm run format:check
+      - name: Check formatting
+        run: npm run format:check
 
-      # Coverage temporarily disabled for debugging
-      # - name: Generate coverage
-      #   run: npm run test:coverage:ci
+      - name: Generate coverage
+        run: npm run test:coverage:ci
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          files: ./coverage/lcov.info
+          flags: unittests
+          name: codecov-umbrella
+          fail_ci_if_error: false
+          verbose: true
+          token: ${{ secrets.CODECOV_TOKEN }}
