@@ -12,8 +12,8 @@
 /* === QUIZ COMPONENT CONTAINER === */
 .quiz-component__container {
   max-width: 42rem;
-  margin: 0 auto;
-  padding: 0.75rem;
+  margin: 0.125rem auto;
+  padding: 0.5rem;
   display: flex;
   flex-direction: column;
   background: linear-gradient(
@@ -39,7 +39,7 @@
 
 @media (min-width: 640px) {
   .quiz-component__container {
-    padding: 1.5rem;
+    padding: 0.75rem;
   }
 }
 
@@ -77,71 +77,7 @@
   background-color: #2563eb;
 }
 
-/* === QUIZ HEADER === */
-.quiz-component__header {
-  margin-bottom: 0.75rem;
-  text-align: center;
-}
-
-.quiz-component__header-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.5rem;
-}
-
-.quiz-component__title {
-  font-size: 1.125rem;
-  font-weight: 700;
-  color: var(--theme-text-primary, #111827);
-  margin: 0;
-}
-
-@media (min-width: 640px) {
-  .quiz-component__title {
-    font-size: 1.25rem;
-  }
-}
-
-.quiz-component__counter {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 60px;
-  padding: 0.25rem 0.75rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  text-align: center;
-  background-color: var(--theme-bg-soft, #f3f4f6);
-  color: var(--theme-text-secondary, #6b7280);
-  border-radius: 9999px;
-  border: 1px solid var(--theme-border-subtle, #e5e7eb);
-}
-
-.quiz-component__progress-container {
-  width: 100%;
-  height: 6px;
-  background-color: var(--theme-bg-soft, #f3f4f6);
-  border-radius: 9999px;
-  overflow: hidden;
-  margin-bottom: 0.5rem;
-}
-
-.quiz-component__progress-fill {
-  --progress-width: 0%;
-  width: var(--progress-width);
-  height: 100%;
-  background-color: var(--theme-success, #10b981);
-  border-radius: inherit;
-  transition: width 0.3s ease;
-}
-
-.quiz-component__progress-hint {
-  font-size: 0.75rem;
-  color: var(--theme-text-tertiary, #9ca3af);
-  margin: 0;
-  text-align: center;
-}
+/* === QUIZ HEADER - Now using unified LearningProgressHeader === */
 
 /* === QUIZ PROGRESS === */
 
@@ -150,7 +86,7 @@
   background-color: var(--theme-bg-elevated, #ffffff);
   border: 1px solid var(--theme-border-subtle, #e5e7eb);
   border-radius: 0.5rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  box-shadow: var(--shadow-subtle);
   padding: 0.75rem;
   margin-bottom: 0.75rem;
 }
@@ -361,14 +297,6 @@
 }
 
 /* === DARK MODE === */
-.dark .quiz-component__counter {
-  background-color: var(--gray-700);
-  color: var(--gray-300);
-}
-
-.dark .quiz-component__progress-bar {
-  background-color: var(--gray-700);
-}
 
 .dark .quiz-component__question-card {
   background-color: var(--gray-800);

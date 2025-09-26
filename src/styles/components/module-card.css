@@ -88,11 +88,12 @@
   transform: scale(1.1);
 }
 
-/* Typography Elements - Harmonious & Readable */
+/* Typography Elements - FIXED LEGIBILITY - Using Typography System */
 .module-card__title {
-  font-size: 0.625rem;
-  font-weight: 700;
-  line-height: 1.2;
+  /* CRITICAL FIX: Increased from 0.625rem (10px) to 0.875rem (14px) for legibility */
+  font-size: var(--text-sm, 0.875rem);
+  font-weight: var(--font-semibold, 600);
+  line-height: var(--leading-tight, 1.25);
   color: rgba(255, 255, 255, 0.98);
   /* Consistent micro-spacing for visual rhythm */
   margin-bottom: 0.03125rem;
@@ -107,16 +108,17 @@
   transition: color 0.2s ease-in-out;
   text-align: center;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  height: 1.5rem;
+  height: 1.75rem; /* Adjusted for larger text */
 }
 
 .module-card__type {
-  font-size: 0.4375rem;
-  font-weight: 600;
-  line-height: 1;
+  /* CRITICAL FIX: Increased from 0.4375rem (7px) to 0.75rem (12px) - minimum legible size */
+  font-size: var(--text-xs, 0.75rem);
+  font-weight: var(--font-medium, 500);
+  line-height: var(--leading-none, 1);
   color: rgba(255, 255, 255, 0.85);
   text-transform: uppercase;
-  letter-spacing: 0.025em;
+  letter-spacing: var(--tracking-wide, 0.025em);
   /* Micro-spacing for tight visual grouping */
   margin-bottom: 0.03125rem;
   flex-shrink: 0;
@@ -125,9 +127,10 @@
 }
 
 .module-card__level {
-  font-size: 0.5rem;
-  font-weight: 700;
-  line-height: 1;
+  /* CRITICAL FIX: Increased from 0.5rem (8px) to 0.75rem (12px) for consistency */
+  font-size: var(--text-xs, 0.75rem);
+  font-weight: var(--font-semibold, 600);
+  line-height: var(--leading-none, 1);
   color: rgba(255, 255, 255, 0.9);
   background-color: rgba(255, 255, 255, 0.15);
   padding: 0.0625rem 0.1875rem;
@@ -382,28 +385,31 @@
 
 /* Removed obsolete styles - now using structured BEM-Like approach */
 
-/* Enhanced Typography for 3-Column Range - Compact */
+/* Enhanced Typography for 3-Column Range - LEGIBLE SCALING */
 @media (min-width: 410px) and (max-width: 719px) {
   .module-card__title {
-    font-size: 0.6875rem;
-    font-weight: 700;
-    line-height: 1.2;
-    height: 1.65rem;
+    /* IMPROVED: Increased from 0.6875rem to 0.9375rem for better legibility */
+    font-size: 0.9375rem;
+    font-weight: var(--font-semibold, 600);
+    line-height: var(--leading-tight, 1.25);
+    height: 1.875rem; /* Adjusted for larger text */
   }
 
   .module-card__type {
-    font-size: 0.5rem;
-    font-weight: 600;
+    /* IMPROVED: Maintained minimum legible size */
+    font-size: var(--text-xs, 0.75rem);
+    font-weight: var(--font-medium, 500);
   }
 
   .module-card__level {
-    font-size: 0.5rem;
-    font-weight: 700;
+    /* IMPROVED: Maintained minimum legible size */
+    font-size: var(--text-xs, 0.75rem);
+    font-weight: var(--font-semibold, 600);
     padding: 0.0625rem 0.1875rem;
   }
 }
 
-/* Responsive Design - 4 Columns */
+/* Responsive Design - 4 Columns - LEGIBLE SCALING */
 @media (min-width: 720px) {
   .module-card {
     width: var(--card-width-tablet);
@@ -421,21 +427,24 @@
   }
 
   .module-card__title {
-    font-size: 0.75rem;
-    line-height: 1.2;
-    font-weight: 700;
-    height: 1.8rem;
+    /* IMPROVED: Increased from 0.75rem to 1rem for tablet legibility */
+    font-size: var(--text-base, 1rem);
+    line-height: var(--leading-tight, 1.25);
+    font-weight: var(--font-semibold, 600);
+    height: 2rem; /* Adjusted for larger text */
   }
 
   .module-card__type {
-    font-size: 0.5625rem;
-    font-weight: 600;
+    /* FIXED: Use recommended minimum size for consistency */
+    font-size: var(--text-sm, 0.875rem);
+    font-weight: var(--font-medium, 500);
   }
 
   .module-card__level {
-    font-size: 0.5625rem;
+    /* FIXED: Use recommended minimum size for consistency */
+    font-size: var(--text-sm, 0.875rem);
     padding: 0.0625rem 0.1875rem;
-    font-weight: 700;
+    font-weight: var(--font-semibold, 600);
   }
 }
 
@@ -456,21 +465,24 @@
   }
 
   .module-card__title {
-    font-size: 0.8125rem;
-    line-height: 1.2;
-    font-weight: 700;
-    height: 1.95rem;
+    /* IMPROVED: Increased from 0.8125rem to 1.125rem for desktop clarity */
+    font-size: var(--text-lg, 1.125rem);
+    line-height: var(--leading-tight, 1.25);
+    font-weight: var(--font-semibold, 600);
+    height: 2.25rem; /* Adjusted for larger text */
   }
 
   .module-card__type {
-    font-size: 0.5625rem;
-    font-weight: 600;
+    /* CONSISTENT: Use standard typography token across all breakpoints */
+    font-size: var(--text-sm, 0.875rem);
+    font-weight: var(--font-medium, 500);
   }
 
   .module-card__level {
-    font-size: 0.5625rem;
+    /* CONSISTENT: Use standard typography token across all breakpoints */
+    font-size: var(--text-sm, 0.875rem);
     padding: 0.0625rem 0.25rem;
-    font-weight: 700;
+    font-weight: var(--font-semibold, 600);
   }
 }
 

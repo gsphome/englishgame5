@@ -10,6 +10,7 @@ import { useLearningCleanup } from '../../hooks/useLearningCleanup';
 import { shuffleArray } from '../../utils/randomUtils';
 import { ContentAdapter } from '../../utils/contentAdapter';
 import ContentRenderer from '../ui/ContentRenderer';
+import LearningProgressHeader from '../ui/LearningProgressHeader';
 
 import type { LearningModule, QuizData } from '../../types';
 
@@ -155,30 +156,14 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
 
   return (
     <div className="quiz-component__container">
-      {/* Compact header with progress */}
-      <div className="quiz-component__header">
-        <div className="quiz-component__header-top">
-          <h2 className="quiz-component__title">{module.name}</h2>
-          <span className="quiz-component__counter">
-            {randomizedQuestions.length > 0
-              ? `${currentIndex + 1}/${randomizedQuestions.length}`
-              : '...'}
-          </span>
-        </div>
-        <div className="quiz-component__progress-container">
-          <div
-            className="quiz-component__progress-fill"
-            style={
-              {
-                '--progress-width': `${((currentIndex + 1) / randomizedQuestions.length) * 100}%`,
-              } as React.CSSProperties
-            }
-          />
-        </div>
-        <p className="quiz-component__help-text">
-          {showResult ? t('learning.pressEnterNext') : t('learning.pressSelectOption')}
-        </p>
-      </div>
+      {/* Unified progress header */}
+      <LearningProgressHeader
+        title={module.name}
+        currentIndex={currentIndex}
+        totalItems={randomizedQuestions.length}
+        mode="quiz"
+        helpText={showResult ? t('learning.pressEnterNext') : t('learning.pressSelectOption')}
+      />
 
       {/* Question */}
       <div className="quiz-component__question-card">

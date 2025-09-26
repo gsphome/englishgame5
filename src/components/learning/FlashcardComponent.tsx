@@ -9,6 +9,7 @@ import { useLearningCleanup } from '../../hooks/useLearningCleanup';
 import { shuffleArray } from '../../utils/randomUtils';
 import { ContentAdapter } from '../../utils/contentAdapter';
 import ContentRenderer from '../ui/ContentRenderer';
+import LearningProgressHeader from '../ui/LearningProgressHeader';
 
 import '../../styles/components/flashcard-component.css';
 import type { FlashcardData, LearningModule } from '../../types';
@@ -137,28 +138,14 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
 
   return (
     <div className="flashcard-component__container">
-      {/* Compact header with progress */}
-      <div className="flashcard-component__header">
-        <div className="flashcard-component__header-top">
-          <h2 className="flashcard-component__title">{module.name}</h2>
-          <span className="flashcard-component__counter">
-            {currentIndex + 1}/{randomizedFlashcards.length}
-          </span>
-        </div>
-        <div className="flashcard-component__progress-container">
-          <div
-            className="flashcard-component__progress-fill"
-            style={
-              {
-                '--progress-width': `${((currentIndex + 1) / randomizedFlashcards.length) * 100}%`,
-              } as React.CSSProperties
-            }
-          />
-        </div>
-        <p className="flashcard-component__help-text">
-          {isFlipped ? t('learning.helpTextFlipped') : t('learning.helpTextNotFlipped')}
-        </p>
-      </div>
+      {/* Unified progress header */}
+      <LearningProgressHeader
+        title={module.name}
+        currentIndex={currentIndex}
+        totalItems={randomizedFlashcards.length}
+        mode="flashcard"
+        helpText={isFlipped ? t('learning.helpTextFlipped') : t('learning.helpTextNotFlipped')}
+      />
 
       {/* Flashcard */}
       <div

@@ -11,6 +11,7 @@ import { shuffleArray } from '../../utils/randomUtils';
 import '../../styles/components/completion-component.css';
 import { ContentAdapter } from '../../utils/contentAdapter';
 import ContentRenderer from '../ui/ContentRenderer';
+import LearningProgressHeader from '../ui/LearningProgressHeader';
 
 import type { LearningModule } from '../../types';
 
@@ -219,30 +220,14 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
 
   return (
     <div className="completion-component__container">
-      {/* Compact header with progress */}
-      <div className="completion-component__header">
-        <div className="completion-component__header-top">
-          <h2 className="completion-component__title">{module.name}</h2>
-          <span className="completion-component__counter">
-            {randomizedExercises.length > 0
-              ? `${currentIndex + 1}/${randomizedExercises.length}`
-              : '...'}
-          </span>
-        </div>
-        <div className="completion-component__progress-container">
-          <div
-            className="completion-component__progress-fill"
-            style={
-              {
-                '--progress-width': `${((currentIndex + 1) / randomizedExercises.length) * 100}%`,
-              } as React.CSSProperties
-            }
-          />
-        </div>
-        <p className="completion-component__help-text">
-          {showResult ? t('learning.pressEnterNext') : t('learning.fillBlank')}
-        </p>
-      </div>
+      {/* Unified progress header */}
+      <LearningProgressHeader
+        title={module.name}
+        currentIndex={currentIndex}
+        totalItems={randomizedExercises.length}
+        mode="completion"
+        helpText={showResult ? t('learning.pressEnterNext') : t('learning.fillBlank')}
+      />
 
       {/* Exercise */}
       <div className="completion-component__exercise-card">

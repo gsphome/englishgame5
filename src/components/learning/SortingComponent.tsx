@@ -9,6 +9,7 @@ import { useToast } from '../../hooks/useToast';
 import { useLearningCleanup } from '../../hooks/useLearningCleanup';
 import { ContentAdapter } from '../../utils/contentAdapter';
 import ContentRenderer from '../ui/ContentRenderer';
+import LearningProgressHeader from '../ui/LearningProgressHeader';
 
 import '../../styles/components/sorting-modal.css';
 import '../../styles/components/sorting-component.css';
@@ -327,30 +328,14 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
 
   return (
     <div className="sorting-component">
-      {/* Compact header with progress */}
-      <div className="sorting-component__header">
-        <div className="sorting-component__header-info">
-          <h2 className="sorting-component__title">{module.name}</h2>
-          <span className="sorting-component__progress-badge">
-            {exercise.words.length - availableWords.length}/{exercise.words.length}
-          </span>
-        </div>
-        <div className="sorting-component__progress-bar">
-          <div
-            className="sorting-component__progress-fill"
-            style={
-              {
-                '--progress-width': `${exercise.words.length > 0 ? ((exercise.words.length - availableWords.length) / exercise.words.length) * 100 : 0}%`,
-              } as React.CSSProperties
-            }
-          />
-        </div>
-        <div className="sorting-component__instructions">
-          <p className="sorting-component__instruction-text">
-            {allWordsSorted ? t('learning.allSorted') : t('learning.dragDropWords')}
-          </p>
-        </div>
-      </div>
+      {/* Unified progress header */}
+      <LearningProgressHeader
+        title={module.name}
+        currentIndex={exercise.words.length - availableWords.length - 1}
+        totalItems={exercise.words.length}
+        mode="sorting"
+        helpText={allWordsSorted ? t('learning.allSorted') : t('learning.dragDropWords')}
+      />
 
       {/* Workspace */}
       <div className="sorting-component__workspace">

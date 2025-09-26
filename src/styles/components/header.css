@@ -80,7 +80,7 @@ html.dark {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.75rem;
+  padding: 0.5rem;
   max-width: 42rem;
   margin-left: auto;
   margin-right: auto;
@@ -90,14 +90,14 @@ html.dark {
 
 @media (min-width: 640px) {
   .header-redesigned__container {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
   }
 }
 
 /* Learning mode maintains same height but optimized spacing */
 .header-redesigned__container--learning {
-  padding: 0.75rem;
+  padding: 0.5rem;
   /* Consistent padding with layout-main */
 }
 
@@ -198,10 +198,10 @@ html.dark {
   background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
   color: white;
   border-radius: 0.25rem;
-  font-size: 0.625rem;
-  font-weight: 600;
+  font-size: var(--text-xs, 0.75rem);
+  font-weight: var(--font-semibold, 600);
   text-transform: uppercase;
-  letter-spacing: 0.025em;
+  letter-spacing: var(--tracking-wide, 0.025em);
   box-shadow: 0 1px 2px rgba(220, 38, 38, 0.3);
   animation: devPulse 2s infinite;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -215,14 +215,14 @@ html.dark {
 }
 
 .header-redesigned__dev-icon {
-  font-size: 0.625rem;
-  line-height: 1;
+  font-size: var(--text-xs, 0.75rem);
+  line-height: var(--leading-none, 1);
 }
 
 .header-redesigned__dev-text {
-  font-size: 0.5rem;
-  font-weight: 700;
-  line-height: 1;
+  font-size: var(--text-xs, 0.75rem);
+  font-weight: var(--font-bold, 700);
+  line-height: var(--leading-none, 1);
 }
 
 @keyframes devPulse {
@@ -449,11 +449,11 @@ html.dark {
 }
 
 .header-side-menu__section-title {
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: var(--text-sm, 0.875rem);
+  font-weight: var(--font-semibold, 600);
   color: var(--header-text-secondary);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--tracking-wider, 0.05em);
   margin: 0 0 8px 16px;
   opacity: 0.7;
 }
