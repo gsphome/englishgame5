@@ -38,16 +38,16 @@ jobs:
         run: npm run type-check
 
       - name: Run unit tests
-        run: vitest run tests/unit --config config/vitest.config.ts
+        run: npm run test:unit:ci
 
       - name: Run integration tests
-        run: vitest run tests/integration --config config/vitest.config.ts
+        run: npm run test:integration:ci
 
       - name: Check formatting
         run: npm run format:check
 
       - name: Generate coverage
-        run: vitest run --coverage --config config/vitest.config.ts
+        run: npm run test:coverage:ci
 
       - name: Diagnose coverage (debug)
         if: always()
