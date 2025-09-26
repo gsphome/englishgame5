@@ -1,5 +1,4 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import { screen } from '@testing-library/react';
 import { renderWithProviders } from '../../helpers/test-utils';
 import { validateBEMNaming, validateNoTailwindClasses } from '../../helpers/visual-regression-utils';
 import React from 'react';
