@@ -74,7 +74,7 @@ vi.mock('../../../src/components/ui/ScoreDisplay', () => ({
 }));
 
 vi.mock('../../../src/components/ui/FluentFlowLogo', () => ({
-  FluentFlowLogo: ({ size, className }: { size: string; className: string }) => 
+  FluentFlowLogo: ({ size: _size, className }: { size: string; className: string }) => 
     React.createElement('div', { 'data-testid': 'fluent-flow-logo', className: className }, '🌊'),
 }));
 

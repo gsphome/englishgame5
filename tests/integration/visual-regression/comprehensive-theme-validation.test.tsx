@@ -1,6 +1,6 @@
 import React from 'react';
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import { screen, fireEvent, waitFor } from '@testing-library/react';
+import { fireEvent, waitFor } from '@testing-library/react';
 import { renderWithProviders } from '../../helpers/test-utils';
 import { applyThemeToDOM } from '../../../src/utils/themeInitializer';
 import { THEME_CLASSES } from '../../../src/utils/themeConstants';
@@ -233,7 +233,7 @@ describe('Comprehensive Theme Context Validation - All Refactored Components', (
     testComponentInAllThemeContexts(
       'Header',
       () => renderWithProviders(<Header />),
-      (container, theme, viewport) => {
+      (container, _theme, _viewport) => {
         const header = container.querySelector('header');
         expect(header).toBeInTheDocument();
         expect(header).toHaveClass('header-redesigned');
@@ -259,7 +259,7 @@ describe('Comprehensive Theme Context Validation - All Refactored Components', (
           <CompactAdvancedSettings isOpen={true} onClose={mockOnClose} />
         );
       },
-      (container, theme, viewport) => {
+      (container, _theme, _viewport) => {
         const modal = container.querySelector('.compact-settings');
         expect(modal).toBeInTheDocument();
 
@@ -280,7 +280,7 @@ describe('Comprehensive Theme Context Validation - All Refactored Components', (
     testComponentInAllThemeContexts(
       'FlashcardComponent',
       () => renderWithProviders(<FlashcardComponent />),
-      (container, theme, viewport) => {
+      (container, _theme, _viewport) => {
         const flashcardContainer = container.querySelector('.flashcard-component__container');
         expect(flashcardContainer).toBeInTheDocument();
 
@@ -300,7 +300,7 @@ describe('Comprehensive Theme Context Validation - All Refactored Components', (
     testComponentInAllThemeContexts(
       'QuizComponent',
       () => renderWithProviders(<QuizComponent />),
-      (container, theme, viewport) => {
+      (container, _theme, _viewport) => {
         // Quiz component should render with BEM classes
         const quizElements = container.querySelectorAll('[class*="quiz-component"]');
         expect(quizElements.length).toBeGreaterThan(0);
@@ -312,7 +312,7 @@ describe('Comprehensive Theme Context Validation - All Refactored Components', (
     testComponentInAllThemeContexts(
       'CompletionComponent',
       () => renderWithProviders(<CompletionComponent />),
-      (container, theme, viewport) => {
+      (container, _theme, _viewport) => {
         // Completion component should render with BEM classes
         const completionElements = container.querySelectorAll('[class*="completion-component"]');
         expect(completionElements.length).toBeGreaterThan(0);
@@ -329,7 +329,7 @@ describe('Comprehensive Theme Context Validation - All Refactored Components', (
           <LogViewer isOpen={true} onClose={mockOnClose} />
         );
       },
-      (container, theme, viewport) => {
+      (container, _theme, _viewport) => {
         const logViewer = container.querySelector('.log-viewer');
         expect(logViewer).toBeInTheDocument();
 
@@ -349,7 +349,7 @@ describe('Comprehensive Theme Context Validation - All Refactored Components', (
     testComponentInAllThemeContexts(
       'AppRouter',
       () => renderWithProviders(<AppRouter />),
-      (container, theme, viewport) => {
+      (container, _theme, _viewport) => {
         // AppRouter should render with BEM classes for error states
         const appRouterElements = container.querySelectorAll('[class*="app-router"]');
         expect(appRouterElements.length).toBeGreaterThan(0);
@@ -366,7 +366,7 @@ describe('Comprehensive Theme Context Validation - All Refactored Components', (
           <CompactProgressDashboard isOpen={true} onClose={mockOnClose} />
         );
       },
-      (container, theme, viewport) => {
+      (container, _theme, _viewport) => {
         const dashboard = container.querySelector('.compact-dashboard');
         expect(dashboard).toBeInTheDocument();
 
@@ -389,7 +389,7 @@ describe('Comprehensive Theme Context Validation - All Refactored Components', (
     testComponentInAllThemeContexts(
       'FluentFlowLogo',
       () => renderWithProviders(<FluentFlowLogo size="medium" className="test-logo" />),
-      (container, theme, viewport) => {
+      (container, _theme, _viewport) => {
         const logo = container.querySelector('[data-testid="fluent-flow-logo"]');
         expect(logo).toBeInTheDocument();
       }
@@ -406,7 +406,7 @@ describe('Comprehensive Theme Context Validation - All Refactored Components', (
           <ErrorFallback error={mockError} retry={mockRetry} />
         );
       },
-      (container, theme, viewport) => {
+      (container, _theme, _viewport) => {
         const errorFallback = container.querySelector('.error-fallback');
         expect(errorFallback).toBeInTheDocument();
 

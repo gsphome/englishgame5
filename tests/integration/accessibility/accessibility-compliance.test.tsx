@@ -74,7 +74,7 @@ vi.mock('../../../src/components/ui/ScoreDisplay', () => ({
 }));
 
 vi.mock('../../../src/components/ui/FluentFlowLogo', () => ({
-  FluentFlowLogo: ({ size, className }: { size: string; className: string }) => 
+  FluentFlowLogo: ({ size: _size, className }: { size: string; className: string }) => 
     React.createElement('div', { 'data-testid': 'fluent-flow-logo', className: className }, '🌊'),
 }));
 
@@ -335,11 +335,11 @@ describe('Accessibility and Performance Standards', () => {
 
   describe('Keyboard Navigation', () => {
     it('should support full keyboard navigation in Header', async () => {
-      const { container } = renderWithProviders(<Header />);
+      renderWithProviders(<Header />);
 
       // All interactive elements should be focusable
       const menuButton = screen.getByRole('button', { name: /abrir menú/i });
-      const userButton = screen.getByRole('button', { name: /user profile/i });
+      const _userButton = screen.getByRole('button', { name: /user profile/i });
 
       // Test tab navigation
       menuButton.focus();
@@ -466,7 +466,7 @@ describe('Accessibility and Performance Standards', () => {
 
   describe('Performance Standards', () => {
     it('should meet theme switching performance target (< 100ms)', async () => {
-      const { container } = renderWithProviders(<Header />);
+      renderWithProviders(<Header />);
 
       const switchTheme = async () => {
         applyThemeToDOM('dark');
@@ -591,7 +591,7 @@ describe('Accessibility and Performance Standards', () => {
     });
 
     it('should maintain focus management across theme switches', async () => {
-      const { container } = renderWithProviders(<Header />);
+      renderWithProviders(<Header />);
 
       const menuButton = screen.getByRole('button', { name: /abrir menú/i });
       menuButton.focus();

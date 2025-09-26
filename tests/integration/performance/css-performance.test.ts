@@ -17,7 +17,7 @@ describe('CSS Performance and Bundle Monitoring', () => {
     originalRequestAnimationFrame = global.requestAnimationFrame;
 
     // Mock requestAnimationFrame for controlled timing
-    mockRequestAnimationFrame = vi.fn((callback: FrameRequestCallback) => {
+    mockRequestAnimationFrame = vi.fn((callback: (time: number) => void) => {
       // Simulate frame timing
       setTimeout(() => callback(performance.now()), 16); // ~60fps
       return 1;

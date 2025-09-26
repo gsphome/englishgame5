@@ -162,7 +162,7 @@ Object.defineProperty(window, 'getComputedStyle', {
 // Mock requestAnimationFrame for CSS animation testing
 Object.defineProperty(window, 'requestAnimationFrame', {
   writable: true,
-  value: vi.fn().mockImplementation((callback: FrameRequestCallback) => {
+  value: vi.fn().mockImplementation((callback: (time: number) => void) => {
     return setTimeout(() => callback(Date.now()), 16);
   })
 });

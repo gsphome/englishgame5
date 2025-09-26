@@ -161,7 +161,7 @@ export const testUtils = {
   },
 
   // Validate BEM structure in rendered component
-  validateBEMStructure: (container: HTMLElement, componentName: string) => {
+  validateBEMStructure: (container: HTMLElement, _componentName: string) => {
     const validation = cssTestingUtils.bem.validateContainerBEM(container);
     expect(validation.valid).toBe(true);
     

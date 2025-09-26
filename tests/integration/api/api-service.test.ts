@@ -1,5 +1,5 @@
+import React from 'react';
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { render } from '@testing-library/react';
 import { apiService } from '../../../src/services/api';
 import * as secureHttp from '../../../src/utils/secureHttp';
 import * as pathUtils from '../../../src/utils/pathUtils';
@@ -311,7 +311,7 @@ describe('API Service Integration Tests', () => {
 
       // Render component with API data
       const { container } = renderWithProviders(
-        <MatchingComponent module={apiResult.data} />
+        React.createElement(MatchingComponent, { module: apiResult.data })
       );
 
       // Verify component renders with proper BEM classes
@@ -364,13 +364,13 @@ describe('API Service Integration Tests', () => {
       // Test light theme
       document.documentElement.classList.remove('dark');
       const { container: lightContainer } = renderWithProviders(
-        <MatchingComponent module={apiResult.data} />
+        React.createElement(MatchingComponent, { module: apiResult.data })
       );
 
       // Test dark theme
       document.documentElement.classList.add('dark');
       const { container: darkContainer } = renderWithProviders(
-        <MatchingComponent module={apiResult.data} />
+        React.createElement(MatchingComponent, { module: apiResult.data })
       );
 
       // Both should render with same BEM structure
@@ -442,7 +442,7 @@ describe('API Service Integration Tests', () => {
 
       const apiResult = await apiService.fetchModuleData('bem-validation-module');
       const { container } = renderWithProviders(
-        <MatchingComponent module={apiResult.data} />
+        React.createElement(MatchingComponent, { module: apiResult.data })
       );
 
       // Validate strict BEM naming in API-driven component
