@@ -206,7 +206,7 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
       matches: matches,
       results: pairs.map(pair => ({
         ...pair,
-        userAnswer: matches[pair.left] || 'No answer',
+        userAnswer: matches[pair.left] || t('learning.noAnswer'),
         isCorrect: matches[pair.left] === pair.right,
       })),
     };
@@ -300,7 +300,7 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
                             setShowExplanation(true);
                           }}
                           className="matching-component__info-button"
-                          title="Show explanation"
+                          title={t('learning.showExplanation')}
                         >
                           <Info className="matching-component__info-icon" />
                         </div>
@@ -377,7 +377,7 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
         <button
           onClick={() => setCurrentView('menu')}
           className="game-controls__home-btn"
-          title="Return to main menu"
+          title={t('learning.returnToMainMenu')}
         >
           <Home className="game-controls__home-btn__icon" />
         </button>
@@ -387,7 +387,7 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
             <button
               onClick={resetExercise}
               className="game-controls__icon-btn"
-              title="Reset Exercise"
+              title={t('learning.resetExercise')}
             >
               <RotateCcw className="game-controls__icon-btn__icon" />
             </button>
@@ -406,7 +406,7 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
             <button
               onClick={showSummaryModal}
               className="game-controls__icon-btn"
-              title="View Summary"
+              title={t('learning.viewSummary')}
             >
               <Info className="game-controls__icon-btn__icon" />
             </button>
@@ -428,7 +428,7 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
             <div className="matching-modal__content">
               <div className="matching-modal__header">
                 <h3 className="matching-modal__title">
-                  {selectedTerm.pairs ? 'Exercise Summary' : selectedTerm.left}
+                  {selectedTerm.pairs ? t('learning.exerciseSummary') : selectedTerm.left}
                 </h3>
                 <button
                   onClick={() => setShowExplanation(false)}

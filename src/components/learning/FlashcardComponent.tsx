@@ -127,7 +127,7 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
     return (
       <div className="flashcard-component__no-data">
         <p className="flashcard-component__no-data-text">
-          {t('noDataAvailable') || 'No flashcards available'}
+          {t('learning.noFlashcardsAvailable')}
         </p>
         <button onClick={() => setCurrentView('menu')} className="flashcard-component__no-data-btn">
           {t('navigation.mainMenu')}

@@ -10,6 +10,8 @@ import {
   CheckCircle,
 } from 'lucide-react';
 import { useModuleProgression } from '../../hooks/useProgression';
+import { useTranslation } from '../../utils/i18n';
+import { useSettingsStore } from '../../stores/settingsStore';
 import type { LearningModule } from '../../types';
 
 interface ModuleCardProps {
@@ -34,15 +36,15 @@ const getIcon = (learningMode: string) => {
   return icons[learningMode] || <CreditCard {...iconProps} />;
 };
 
-const getLearningModeLabel = (learningMode: string): string => {
+const getLearningModeLabel = (learningMode: string, t: any): string => {
   const labels: Record<string, string> = {
-    flashcard: 'Flashcards',
-    quiz: 'Quiz',
-    completion: 'Complete',
-    sorting: 'Sort',
-    matching: 'Match',
+    flashcard: t('learning.flashcardMode'),
+    quiz: t('learning.quizMode'),
+    completion: t('learning.completionMode'),
+    sorting: t('learning.sortingMode'),
+    matching: t('learning.matchingMode'),
   };
-  return labels[learningMode] || 'Exercise';
+  return labels[learningMode] || t('common.exercise');
 };
 
 export const ModuleCard: React.FC<ModuleCardProps> = ({
@@ -54,13 +56,15 @@ export const ModuleCard: React.FC<ModuleCardProps> = ({
   'aria-setsize': ariaSetsize,
 }) => {
   const progression = useModuleProgression(module.id);
+  const { language } = useSettingsStore();
+  const { t } = useTranslation(language);
 
   const difficultyLevel =
     module.level && Array.isArray(module.level) && module.level.length > 0
       ? module.level.map((l: string) => l.toUpperCase()).join('/')
       : 'B1';
 
-  const learningModeLabel = getLearningModeLabel(module.learningMode);
+  const learningModeLabel = getLearningModeLabel(module.learningMode, t);
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === 'Enter' || event.key === ' ') {
@@ -83,7 +87,7 @@ export const ModuleCard: React.FC<ModuleCardProps> = ({
       return {
         className: 'module-card--loading',
         statusIcon: null,
-        statusText: 'Loading...',
+        statusText: t('common.loading'),
         disabled: true,
       };
     }
@@ -93,28 +97,31 @@ export const ModuleCard: React.FC<ModuleCardProps> = ({
         return {
           className: 'module-card--completed',
           statusIcon: <CheckCircle size={12} className="text-white" />,
-          statusText: 'Completed',
+          statusText: t('common.completed'),
           disabled: false,
         };
       case 'unlocked':
         return {
           className: 'module-card--unlocked',
           statusIcon: <LockOpen size={12} className="text-white" />,
-          statusText: 'Available',
+          statusText: t('common.available'),
           disabled: false,
         };
       case 'locked':
         return {
           className: 'module-card--locked',
           statusIcon: <Lock size={12} className="text-white" />,
-          statusText: `Requires ${progression.missingPrerequisites.length} prerequisite${progression.missingPrerequisites.length !== 1 ? 's' : ''}`,
+          statusText: t('learning.requiresPrerequisites', undefined, {
+            count: progression.missingPrerequisites.length,
+            plural: progression.missingPrerequisites.length !== 1 ? 's' : ''
+          }),
           disabled: true,
         };
       default:
         return {
           className: 'module-card--locked',
           statusIcon: <Lock size={16} className="module-card__status-icon" />,
-          statusText: 'Locked',
+          statusText: t('common.locked'),
           disabled: true,
         };
     }
@@ -134,8 +141,8 @@ export const ModuleCard: React.FC<ModuleCardProps> = ({
       aria-label={`${module.name} - ${learningModeLabel} - Difficulty level ${difficultyLevel} - ${statusInfo.statusText}`}
       title={
         statusInfo.disabled
-          ? `${module.name} is locked. ${statusInfo.statusText}`
-          : `Start ${learningModeLabel.toLowerCase()}: ${module.name} (Level: ${difficultyLevel})`
+          ? t('learning.exerciseIsLocked', undefined, { name: module.name, status: statusInfo.statusText })
+          : t('learning.startExercise', undefined, { mode: learningModeLabel.toLowerCase(), name: module.name, level: difficultyLevel })
       }
       disabled={statusInfo.disabled}
       aria-disabled={statusInfo.disabled}

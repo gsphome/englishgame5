@@ -5,6 +5,8 @@ import { CompactLearningPath } from './CompactLearningPath';
 import { CompactAdvancedSettings } from './CompactAdvancedSettings';
 import { CompactAbout } from './CompactAbout';
 import { CompactProfile } from './CompactProfile';
+import { useTranslation } from '../../utils/i18n';
+import { useSettingsStore } from '../../stores/settingsStore';
 import '../../styles/components/compact-modals-demo.css';
 
 /**
@@ -13,40 +15,42 @@ import '../../styles/components/compact-modals-demo.css';
  */
 export const CompactModalsDemo: React.FC = () => {
   const [activeModal, setActiveModal] = useState<string | null>(null);
+  const { language } = useSettingsStore();
+  const { t } = useTranslation(language);
 
   const modals = [
     {
       id: 'dashboard',
-      title: 'Dashboard de Progreso',
-      description: 'Vista compacta del progreso de aprendizaje',
+      title: t('modals.progressDashboard'),
+      description: t('modals.progressDashboardDesc'),
       icon: BarChart3,
       component: CompactProgressDashboard,
     },
     {
       id: 'learning-path',
-      title: 'Ruta de Aprendizaje',
-      description: 'Progreso por niveles y módulos disponibles',
+      title: t('modals.learningPath'),
+      description: t('modals.learningPathDesc'),
       icon: Route,
       component: CompactLearningPath,
     },
     {
       id: 'settings',
-      title: 'Configuración Avanzada',
-      description: 'Ajustes de tema, idioma y juegos',
+      title: t('modals.advancedSettings'),
+      description: t('modals.advancedSettingsDesc'),
       icon: Settings,
       component: CompactAdvancedSettings,
     },
     {
       id: 'about',
-      title: 'Acerca de',
-      description: 'Información de la aplicación y desarrollador',
+      title: t('modals.aboutApp'),
+      description: t('modals.aboutAppDesc'),
       icon: Info,
       component: CompactAbout,
     },
     {
       id: 'profile',
-      title: 'Perfil de Usuario',
-      description: 'Configuración personal y preferencias',
+      title: t('modals.userProfile'),
+      description: t('modals.userProfileDesc'),
       icon: User,
       component: CompactProfile,
     },

@@ -4,6 +4,7 @@ import '../../styles/components/header.css';
 import { useAppStore } from '../../stores/appStore';
 import { useUserStore } from '../../stores/userStore';
 import { useSettingsStore } from '../../stores/settingsStore';
+import { useTranslation } from '../../utils/i18n';
 // import { toast } from '../../stores/toastStore';
 
 // Compact modals - optimized versions
@@ -22,7 +23,8 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = () => {
   const { setCurrentView, currentView } = useAppStore();
   const { user } = useUserStore();
-  const { developmentMode } = useSettingsStore();
+  const { developmentMode, language } = useSettingsStore();
+  const { t } = useTranslation(language);
   const [showProfileForm, setShowProfileForm] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [showAbout, setShowAbout] = useState(false);
@@ -170,7 +172,7 @@ export const Header: React.FC<HeaderProps> = () => {
                   aria-label="Ir al menú principal de módulos"
                 >
                   <Menu className="header-side-menu__icon" aria-hidden="true" />
-                  <span className="header-side-menu__text">Menú Principal</span>
+                  <span className="header-side-menu__text">{t('navigation.mainMenu')}</span>
                 </button>
                 <button
                   onClick={() => {
@@ -181,7 +183,7 @@ export const Header: React.FC<HeaderProps> = () => {
                   aria-label="Ver dashboard completo de progreso y estadísticas"
                 >
                   <BarChart3 className="header-side-menu__icon" aria-hidden="true" />
-                  <span className="header-side-menu__text">Dashboard de Progreso</span>
+                  <span className="header-side-menu__text">{t('navigation.progressDashboard')}</span>
                 </button>
                 <button
                   onClick={() => {
@@ -192,13 +194,13 @@ export const Header: React.FC<HeaderProps> = () => {
                   aria-label="Ver progresión de módulos y ruta de aprendizaje"
                 >
                   <BookOpen className="header-side-menu__icon" aria-hidden="true" />
-                  <span className="header-side-menu__text">Ruta de Aprendizaje</span>
+                  <span className="header-side-menu__text">{t('navigation.learningPath')}</span>
                 </button>
               </div>
 
               {/* Settings Section */}
               <div className="header-side-menu__section">
-                <h3 className="header-side-menu__section-title">⚙️ Configuración</h3>
+                <h3 className="header-side-menu__section-title">⚙️ {t('navigation.configuration')}</h3>
                 <button
                   onClick={() => {
                     setShowSettings(true);
@@ -208,7 +210,7 @@ export const Header: React.FC<HeaderProps> = () => {
                   aria-label="Abrir configuración avanzada"
                 >
                   <Settings className="header-side-menu__icon" aria-hidden="true" />
-                  <span className="header-side-menu__text">Configuración Avanzada</span>
+                  <span className="header-side-menu__text">{t('navigation.advancedSettings')}</span>
                 </button>
                 <button
                   className="header-side-menu__item"
@@ -219,14 +221,14 @@ export const Header: React.FC<HeaderProps> = () => {
                   aria-label="Información sobre la aplicación"
                 >
                   <User className="header-side-menu__icon" aria-hidden="true" />
-                  <span className="header-side-menu__text">Acerca de FluentFlow</span>
+                  <span className="header-side-menu__text">{t('navigation.aboutFluentFlow')}</span>
                 </button>
               </div>
 
               {/* User Profile Section */}
               {user && (
                 <div className="header-side-menu__section">
-                  <h3 className="header-side-menu__section-title">👤 Perfil de Usuario</h3>
+                  <h3 className="header-side-menu__section-title">👤 {t('navigation.userProfile')}</h3>
                   <button
                     onClick={() => {
                       setShowProfileForm(true);
@@ -236,7 +238,7 @@ export const Header: React.FC<HeaderProps> = () => {
                     aria-label="Editar perfil de usuario"
                   >
                     <User className="header-side-menu__icon" aria-hidden="true" />
-                    <span className="header-side-menu__text">Editar Perfil</span>
+                    <span className="header-side-menu__text">{t('navigation.editProfile')}</span>
                   </button>
                 </div>
               )}

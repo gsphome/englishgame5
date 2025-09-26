@@ -18,6 +18,12 @@ export const translations = {
       pause: 'Pause',
       resume: 'Resume',
       reset: 'Reset',
+      correct: 'Correct!',
+      incorrect: 'Incorrect',
+      completed: 'Completed',
+      available: 'Available',
+      locked: 'Locked',
+      exercise: 'Exercise',
     },
     navigation: {
       mainMenu: 'Main Menu',
@@ -26,6 +32,25 @@ export const translations = {
       profile: 'Profile',
       help: 'Help',
       about: 'About',
+      progressDashboard: 'Progress Dashboard',
+      learningPath: 'Learning Path',
+      advancedSettings: 'Advanced Settings',
+      aboutFluentFlow: 'About FluentFlow',
+      userProfile: 'User Profile',
+      editProfile: 'Edit Profile',
+      configuration: 'Configuration',
+    },
+    modals: {
+      progressDashboard: 'Progress Dashboard',
+      progressDashboardDesc: 'Compact view of learning progress',
+      learningPath: 'Learning Path',
+      learningPathDesc: 'Progress by levels and available modules',
+      advancedSettings: 'Advanced Settings',
+      advancedSettingsDesc: 'Theme, language and game settings',
+      aboutApp: 'About',
+      aboutAppDesc: 'Application and developer information',
+      userProfile: 'User Profile',
+      userProfileDesc: 'Personal configuration and preferences',
     },
     settings: {
       settings: 'Settings',
@@ -87,6 +112,12 @@ export const translations = {
       completion: 'Completion',
       sorting: 'Sorting',
       matching: 'Matching',
+      // Learning mode labels
+      flashcardMode: 'Flashcards',
+      quizMode: 'Quiz',
+      completionMode: 'Complete',
+      sortingMode: 'Sort',
+      matchingMode: 'Match',
       startLearning: 'Start Learning',
       continueSession: 'Continue Session',
       newSession: 'New Session',
@@ -138,7 +169,28 @@ export const translations = {
       allSorted: 'All words sorted! Check your answers',
       dragDropWords: 'Drag and drop words into categories',
       checkAnswers: 'Check Answers',
+      finishSorting: 'Finish Sorting',
       loadingSorting: 'Loading sorting exercise...',
+      // Status messages
+      requiresPrerequisites: 'Requires {{count}} prerequisite{{plural}}',
+      startExercise: 'Start {{mode}}: {{name}} (Level: {{level}})',
+      exerciseIsLocked: '{{name}} is locked. {{status}}',
+      // No data messages
+      noFlashcardsAvailable: 'No flashcards available',
+      noCompletionExercisesAvailable: 'No completion exercises available',
+      noQuizQuestionsAvailable: 'No quiz questions available',
+      noSortingExercisesAvailable: 'No sorting exercises available',
+      noMatchingExercisesAvailable: 'No matching exercises available',
+      // Additional UI messages
+      finishExercise: 'Finish Exercise',
+      nextExercise: 'Next Exercise',
+      noAnswer: 'No answer',
+      showExplanation: 'Show explanation',
+      resetExercise: 'Reset Exercise',
+      viewSummary: 'View Summary',
+      exerciseSummary: 'Exercise Summary',
+      notSorted: 'Not sorted',
+      belongsToCategory: 'This word belongs to {{category}}',
     },
     scores: {
       correct: 'Correct',
@@ -264,6 +316,12 @@ export const translations = {
       pause: 'Pausar',
       resume: 'Continuar',
       reset: 'Reiniciar',
+      correct: '¡Correcto!',
+      incorrect: 'Incorrecto',
+      completed: 'Completado',
+      available: 'Disponible',
+      locked: 'Bloqueado',
+      exercise: 'Ejercicio',
     },
     navigation: {
       mainMenu: 'Menú Principal',
@@ -272,6 +330,25 @@ export const translations = {
       profile: 'Perfil',
       help: 'Ayuda',
       about: 'Acerca de',
+      progressDashboard: 'Dashboard de Progreso',
+      learningPath: 'Ruta de Aprendizaje',
+      advancedSettings: 'Configuración Avanzada',
+      aboutFluentFlow: 'Acerca de FluentFlow',
+      userProfile: 'Perfil de Usuario',
+      editProfile: 'Editar Perfil',
+      configuration: 'Configuración',
+    },
+    modals: {
+      progressDashboard: 'Dashboard de Progreso',
+      progressDashboardDesc: 'Vista compacta del progreso de aprendizaje',
+      learningPath: 'Ruta de Aprendizaje',
+      learningPathDesc: 'Progreso por niveles y módulos disponibles',
+      advancedSettings: 'Configuración Avanzada',
+      advancedSettingsDesc: 'Ajustes de tema, idioma y juegos',
+      aboutApp: 'Acerca de',
+      aboutAppDesc: 'Información de la aplicación y desarrollador',
+      userProfile: 'Perfil de Usuario',
+      userProfileDesc: 'Configuración personal y preferencias',
     },
     settings: {
       settings: 'Configuración',
@@ -333,6 +410,12 @@ export const translations = {
       completion: 'Completar',
       sorting: 'Clasificar',
       matching: 'Emparejar',
+      // Learning mode labels
+      flashcardMode: 'Tarjetas',
+      quizMode: 'Cuestionario',
+      completionMode: 'Completar',
+      sortingMode: 'Clasificar',
+      matchingMode: 'Emparejar',
       startLearning: 'Comenzar Aprendizaje',
       continueSession: 'Continuar Sesión',
       newSession: 'Nueva Sesión',
@@ -384,7 +467,28 @@ export const translations = {
       allSorted: '¡Todas las palabras clasificadas! Verifica tus respuestas',
       dragDropWords: 'Arrastra y suelta palabras en las categorías',
       checkAnswers: 'Verificar Respuestas',
+      finishSorting: 'Finalizar Clasificación',
       loadingSorting: 'Cargando ejercicio de clasificación...',
+      // Status messages
+      requiresPrerequisites: 'Requiere {{count}} prerrequisito{{plural}}',
+      startExercise: 'Iniciar {{mode}}: {{name}} (Nivel: {{level}})',
+      exerciseIsLocked: '{{name}} está bloqueado. {{status}}',
+      // No data messages
+      noFlashcardsAvailable: 'No hay tarjetas disponibles',
+      noCompletionExercisesAvailable: 'No hay ejercicios de completar disponibles',
+      noQuizQuestionsAvailable: 'No hay preguntas de cuestionario disponibles',
+      noSortingExercisesAvailable: 'No hay ejercicios de clasificación disponibles',
+      noMatchingExercisesAvailable: 'No hay ejercicios de emparejamiento disponibles',
+      // Additional UI messages
+      finishExercise: 'Finalizar Ejercicio',
+      nextExercise: 'Siguiente Ejercicio',
+      noAnswer: 'Sin respuesta',
+      showExplanation: 'Mostrar explicación',
+      resetExercise: 'Reiniciar Ejercicio',
+      viewSummary: 'Ver Resumen',
+      exerciseSummary: 'Resumen del Ejercicio',
+      notSorted: 'Sin clasificar',
+      belongsToCategory: 'Esta palabra pertenece a {{category}}',
     },
     scores: {
       correct: 'Correctas',
@@ -499,8 +603,8 @@ export const translations = {
 // Type-safe translation keys based on the JSON structure
 type NestedKeyOf<ObjectType extends object> = {
   [Key in keyof ObjectType & (string | number)]: ObjectType[Key] extends object
-    ? `${Key}` | `${Key}.${NestedKeyOf<ObjectType[Key]>}`
-    : `${Key}`;
+  ? `${Key}` | `${Key}.${NestedKeyOf<ObjectType[Key]>}`
+  : `${Key}`;
 }[keyof ObjectType & (string | number)];
 
 type TranslationKeys = NestedKeyOf<typeof translations.en>;

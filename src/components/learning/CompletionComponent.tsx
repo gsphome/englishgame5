@@ -144,7 +144,7 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
     return (
       <div className="completion-component__no-data">
         <p className="completion-component__no-data-text">
-          {t('noDataAvailable') || 'No completion exercises available'}
+          {t('learning.noCompletionExercisesAvailable')}
         </p>
         <button
           onClick={() => setCurrentView('menu')}
@@ -263,8 +263,8 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
               )}
               <span className="completion-component__feedback">
                 {answer.toLowerCase().trim() === currentExercise?.correct?.toLowerCase().trim()
-                  ? 'Correct!'
-                  : 'Incorrect'}
+                  ? t('common.correct')
+                  : t('common.incorrect')}
               </span>
 
               {/* Correct answer flows naturally after incorrect */}
@@ -299,7 +299,7 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
         <button
           onClick={() => setCurrentView('menu')}
           className="game-controls__home-btn"
-          title="Return to main menu"
+          title={t('learning.returnToMainMenu')}
         >
           <Home className="game-controls__home-btn__icon" />
         </button>
@@ -320,8 +320,8 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
           >
             <span>
               {currentIndex === randomizedExercises.length - 1
-                ? 'Finish Exercise'
-                : 'Next Exercise'}
+                ? t('learning.finishExercise')
+                : t('learning.nextExercise')}
             </span>
             <ArrowRight className="game-controls__primary-btn__icon" />
           </button>

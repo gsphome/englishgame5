@@ -302,9 +302,9 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
           return {
             word,
             correctCategory: category.name,
-            userCategory: userCategory || 'Not sorted',
+            userCategory: userCategory || t('learning.notSorted'),
             isCorrect,
-            explanation: wordData?.explanation || `This word belongs to ${category.name}`,
+            explanation: wordData?.explanation || t('learning.belongsToCategory', undefined, { category: category.name }),
           };
         })
       ),
@@ -474,7 +474,7 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
             <button
               onClick={resetExercise}
               className="game-controls__icon-btn"
-              title="Reset Exercise"
+              title={t('learning.resetExercise')}
             >
               <RotateCcw className="game-controls__icon-btn__icon" />
             </button>
@@ -502,7 +502,7 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
               className="game-controls__primary-btn game-controls__primary-btn--green"
             >
               <Check className="game-controls__primary-btn__icon" />
-              <span>{t('learning.finish')}</span>
+              <span>{t('learning.finishSorting')}</span>
             </button>
           </>
         )}
