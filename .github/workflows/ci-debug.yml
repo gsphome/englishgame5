@@ -1,0 +1,48 @@
+name: CI Debug
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  debug:
+    name: Debug CI Issues
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --prefer-offline --no-audit
+
+      - name: Test simple command
+        run: |
+          echo "Testing basic npm command..."
+          npm --version
+          node --version
+          echo "✅ Basic commands work"
+
+      - name: Test lint only
+        run: |
+          echo "Testing lint..."
+          npm run lint
+          echo "✅ Lint completed"
+
+      - name: Test TypeScript only
+        run: |
+          echo "Testing TypeScript..."
+          npm run type-check
+          echo "✅ TypeScript completed"
+
+      - name: Test unit tests only
+        run: |
+          echo "Testing unit tests..."
+          npm run test:unit:ci
+          echo "✅ Unit tests completed"
