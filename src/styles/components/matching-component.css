@@ -30,38 +30,31 @@
 /* === ITEM ACTIONS === */
 .matching-component__item-actions {
   display: flex;
+  align-items: center;
   gap: 0.5rem;
-  margin-top: 0.5rem;
+  margin-left: auto;
+  flex-shrink: 0;
+  min-width: 2rem;
+  height: 1.5rem;
 }
 
 .matching-component__match-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.5rem;
+  height: 1.5rem;
   background-color: var(--theme-primary-blue);
   color: white;
-  padding: 0.125rem 0.375rem;
-  border-radius: 0.25rem;
+  border-radius: 50%;
   font-size: 0.75rem;
   font-weight: 600;
+  flex-shrink: 0;
 }
 
 /* === CONTROLS === */
-.matching-component__actions {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  padding: 0.75rem;
-  background-color: var(--theme-bg-elevated, #ffffff);
-  border-radius: 0.75rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border: 1px solid var(--theme-border-soft, #f3f4f6);
-  margin-top: 0.625rem;
-}
-
-.matching-component__separator {
-  width: 1px;
-  height: 1.5rem;
-  background-color: var(--theme-border-soft, #f3f4f6);
-}
+/* === CONTROLS - Using Unified Game Controls === */
+/* All control styles moved to game-controls.css */
 
 /* === MODAL STYLES === */
 /* All modal styles have been moved to matching-modal.css to avoid conflicts and maintain consistency */
@@ -243,6 +236,7 @@
   width: 100%;
   gap: 0.75rem;
   min-height: 1.5rem;
+  position: relative;
 }
 
 .matching-component__item-letter {
@@ -293,6 +287,8 @@
   min-height: 1.25rem;
   display: flex;
   align-items: center;
+  margin-right: 0.5rem;
+  overflow: hidden;
 }
 
 .matching-component__item--selected .matching-component__item-text {
@@ -388,21 +384,49 @@
   justify-content: center;
   width: 1.5rem;
   height: 1.5rem;
-  background-color: transparent;
-  border: none;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   cursor: pointer;
   border-radius: 50%;
   transition: all 0.2s ease;
+  flex-shrink: 0;
+  backdrop-filter: blur(4px);
 }
 
 .matching-component__info-button:hover {
-  background-color: var(--theme-bg-subtle, #f9fafb);
+  background-color: var(--theme-primary-blue, #3b82f6);
+  border-color: var(--theme-primary-blue, #3b82f6);
+  transform: scale(1.05);
+}
+
+.matching-component__info-button:hover .matching-component__info-icon {
+  color: white;
 }
 
 .matching-component__info-icon {
-  width: 1rem;
-  height: 1rem;
+  width: 0.875rem;
+  height: 0.875rem;
   color: var(--theme-text-secondary, #6b7280);
+  transition: color 0.2s ease;
+}
+
+/* Info button states for different item states */
+.matching-component__item--correct .matching-component__info-button {
+  background-color: rgba(22, 163, 74, 0.1);
+  border-color: rgba(22, 163, 74, 0.3);
+}
+
+.matching-component__item--correct .matching-component__info-icon {
+  color: #166534;
+}
+
+.matching-component__item--incorrect .matching-component__info-button {
+  background-color: rgba(220, 38, 38, 0.1);
+  border-color: rgba(220, 38, 38, 0.3);
+}
+
+.matching-component__item--incorrect .matching-component__info-icon {
+  color: #991b1b;
 }
 
 /* === MATCHING NAVIGATION === */
