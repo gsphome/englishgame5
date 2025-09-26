@@ -63,78 +63,8 @@
   background-color: var(--theme-border-soft, #f3f4f6);
 }
 
-/* === MODAL === */
-.matching-modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-  z-index: 50;
-  animation: modalFadeIn 0.2s ease-out;
-  backdrop-filter: blur(4px);
-  /* Ensure proper viewport centering */
-  min-height: 100vh;
-  min-height: 100dvh;
-  /* Dynamic viewport height for mobile */
-}
-
-.matching-modal-container {
-  background-color: var(--theme-bg-elevated);
-  border: 1px solid var(--theme-border-soft);
-  border-radius: 0.75rem;
-  box-shadow:
-    0 25px 50px -12px rgba(0, 0, 0, 0.25),
-    0 0 0 1px rgba(255, 255, 255, 0.05);
-  padding: 1.5rem;
-  max-width: 32rem;
-  width: 100%;
-  max-height: 85vh;
-  overflow-y: auto;
-  animation: modalSlideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-/* === RESPONSIVE MODAL === */
-@media (max-width: 640px) {
-  .matching-modal-overlay {
-    padding: 0.5rem;
-    align-items: flex-end;
-  }
-
-  .matching-modal-container {
-    max-height: 90vh;
-    border-radius: 0.75rem 0.75rem 0 0;
-    animation: modalSlideUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  }
-}
-
-/* === ACCESSIBILITY === */
-@media (prefers-reduced-motion: reduce) {
-
-  .matching-modal-overlay,
-  .matching-modal-container {
-    animation: none !important;
-  }
-}
-
-/* === DARK MODE ENHANCEMENTS === */
-.dark .matching-modal-overlay {
-  background-color: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(8px);
-}
-
-.dark .matching-modal-container {
-  box-shadow:
-    0 25px 50px -12px rgba(0, 0, 0, 0.5),
-    0 0 0 1px rgba(255, 255, 255, 0.1);
-}
-
-/* Modal styles moved to matching-modal.css to avoid conflicts */
+/* === MODAL STYLES === */
+/* All modal styles have been moved to matching-modal.css to avoid conflicts and maintain consistency */
 
 @media (min-width: 640px) {
   .matching-component {

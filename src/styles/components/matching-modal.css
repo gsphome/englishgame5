@@ -1,57 +1,76 @@
-/* Matching Modal Component - BEM-like Classes with High Specificity */
+/* Matching Modal Component - BEM Semantic Architecture */
 
-/* Modal Overlay */
-.matching-modal-overlay {
+/* === MODAL OVERLAY === */
+.matching-modal {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 1rem;
   z-index: 50;
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
-  /* Ensure proper viewport centering */
+  animation: modalFadeIn 0.2s ease-out;
   min-height: 100vh;
-  min-height: 100dvh; /* Dynamic viewport height for mobile */
+  min-height: 100dvh;
+  overflow: hidden;
 }
 
-.dark .matching-modal-overlay {
+.dark .matching-modal {
   background-color: rgba(0, 0, 0, 0.8) !important;
 }
 
-/* Modal Container */
-.matching-modal-container {
-  background-color: white;
-  border: 1px solid #e5e7eb;
-  border-radius: 0.75rem;
+/* === MODAL CONTAINER === */
+.matching-modal__container {
+  background-color: var(--theme-bg-elevated, #ffffff);
+  border: none;
+  border-radius: 0.5rem;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  max-width: 48rem;
+  max-width: 32rem;
   width: 100%;
-  max-height: 85vh;
-  overflow-y: auto;
+  max-height: 90vh;
+  overflow: hidden;
+  animation: modalSlideIn 0.3s ease-out;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
-.dark .matching-modal-container {
-  background-color: #111827 !important;
-  border-color: #374151 !important;
+.dark .matching-modal__container {
+  background-color: var(--theme-bg-elevated) !important;
 }
 
-/* Modal Header */
+/* === HEADER === */
 .matching-modal__header {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: linear-gradient(135deg, #ea580c 0%, #f97316 100%);
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+}
+
+.matching-modal__header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  pointer-events: none;
 }
 
 .matching-modal__title {
   font-size: 1rem;
   font-weight: 600;
-  color: #111827;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .dark .matching-modal__title {
@@ -64,37 +83,40 @@
   justify-content: center;
   width: 2rem;
   height: 2rem;
-  background-color: var(--theme-bg-subtle);
-  border: 1px solid var(--theme-border-soft);
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 50%;
-  color: var(--theme-text-secondary);
+  color: white;
   transition: all 0.2s;
   cursor: pointer;
+  backdrop-filter: blur(8px);
 }
 
 .matching-modal__close-btn:hover {
-  background-color: var(--theme-primary-blue);
-  color: white;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
   transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .dark .matching-modal__close-btn {
-  background-color: var(--theme-bg-subtle) !important;
-  border-color: var(--theme-border-soft) !important;
-  color: var(--theme-text-secondary) !important;
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  color: white !important;
 }
 
 .dark .matching-modal__close-btn:hover {
-  background-color: var(--theme-primary-blue) !important;
-  color: white !important;
+  background-color: rgba(255, 255, 255, 0.25) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
   transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-/* Modal Content */
+/* === CONTENT === */
 .matching-modal__content {
   padding: 1rem;
+  flex: 1;
+  overflow-y: auto;
 }
 
 .matching-modal__summary {
@@ -116,7 +138,7 @@
   }
 }
 
-/* Result Card */
+/* === RESULT CARDS === */
 .matching-modal__result-card {
   padding: 0.375rem !important;
   border-radius: 0.25rem;
@@ -161,7 +183,7 @@
   color: white !important;
 }
 
-/* Result Card Header */
+/* === RESULT CARD HEADER === */
 .matching-modal__result-card__header {
   display: flex;
   align-items: flex-start;
@@ -200,7 +222,7 @@
   color: #ef4444 !important;
 }
 
-/* Result Card Content */
+/* === RESULT CARD CONTENT === */
 .matching-modal__result-card__content {
   display: flex;
   flex-direction: column;
@@ -272,7 +294,7 @@
   border-color: #374151 !important;
 }
 
-/* Individual Explanation View */
+/* === INDIVIDUAL EXPLANATION === */
 .matching-modal__individual {
   display: flex;
   flex-direction: column;
@@ -328,7 +350,7 @@
   border-color: #1e40af !important;
 }
 
-/* Modal Actions */
+/* === ACTIONS === */
 .matching-modal__actions {
   width: 100%;
   margin-top: 1rem;
@@ -359,4 +381,72 @@
 
 .dark .matching-modal__close-button:hover {
   background-color: #3b82f6 !important;
+}
+
+/* === RESPONSIVE MODAL === */
+@media (max-width: 640px) {
+  .matching-modal {
+    padding: 0.5rem;
+    align-items: flex-end;
+  }
+
+  .matching-modal__container {
+    max-height: 95vh;
+    border-radius: 0.5rem 0.5rem 0 0;
+    animation: modalSlideUp 0.3s ease-out;
+  }
+
+  .matching-modal__header {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .matching-modal__content {
+    padding: 0.75rem;
+  }
+}
+
+/* === ACCESSIBILITY === */
+@media (prefers-reduced-motion: reduce) {
+
+  .matching-modal,
+  .matching-modal__container {
+    animation: none !important;
+  }
+}
+
+/* === ANIMATIONS === */
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+  }
+
+  to {
+    opacity: 1;
+    backdrop-filter: blur(4px);
+  }
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes modalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

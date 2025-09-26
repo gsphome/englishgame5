@@ -432,8 +432,8 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
 
       {/* Explanation/Summary Modal */}
       {showExplanation && selectedTerm && (
-        <div className="matching-modal-overlay">
-          <div className="matching-modal-container">
+        <div className="matching-modal">
+          <div className="matching-modal__container">
             <div className="matching-modal__content">
               <div className="matching-modal__header">
                 <h3 className="matching-modal__title">
