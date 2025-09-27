@@ -8,7 +8,6 @@ import { useLearningCleanup } from '../../hooks/useLearningCleanup';
 import { useTranslation } from '../../utils/i18n';
 import { ContentAdapter } from '../../utils/contentAdapter';
 import ContentRenderer from '../ui/ContentRenderer';
-import LearningProgressHeader from '../ui/LearningProgressHeader';
 
 import '../../styles/components/matching-modal.css';
 import '../../styles/components/matching-component.css';
@@ -240,14 +239,20 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
 
   return (
     <div className="matching-component">
-      {/* Unified progress header */}
-      <LearningProgressHeader
-        title={module.name}
-        currentIndex={Object.keys(matches).length - 1}
-        totalItems={pairs.length}
-        mode="matching"
-        helpText={allMatched ? t('learning.allMatched') : t('learning.clickToMatch')}
-      />
+      {/* Component header with progress */}
+      <div className="matching-component__header">
+        <h2 className="matching-component__title">{module.name}</h2>
+        <div className="matching-component__progress-badge">
+          {Object.keys(matches).length}/{pairs.length}
+        </div>
+      </div>
+
+      {/* Help text */}
+      <div className="matching-component__help">
+        <p className="matching-component__help-text">
+          {allMatched ? t('learning.allMatched') : t('learning.clickToMatch')}
+        </p>
+      </div>
 
       {/* Compact Matching Grid */}
       <div className="matching-component__grid">
@@ -279,7 +284,7 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
                 <button
                   key={`left-${index}`}
                   onClick={() => (isMatched ? removeMatch(item) : handleLeftClick(item))}
-                  className={className}
+                  className={`${className} matching-component__button matching-component__button--primary`}
                 >
                   <div className="matching-component__item-content">
                     <span className="matching-component__item-letter">
@@ -347,7 +352,7 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
                   key={`right-${index}`}
                   onClick={() => handleRightClick(item)}
                   disabled={isMatched}
-                  className={className}
+                  className={`${className} matching-component__button matching-component__button--secondary`}
                 >
                   <div className="matching-component__item-content">
                     <span className="matching-component__item-letter matching-component__item-letter--orange">

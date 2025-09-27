@@ -19,6 +19,44 @@
   );
 }
 
+/* === HEADER === */
+.matching-component__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--padding-md);
+  margin-bottom: var(--padding-sm);
+}
+
+.matching-component__title {
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  color: var(--theme-text-primary);
+  margin: 0;
+}
+
+.matching-component__progress-badge {
+  background: var(--theme-primary-blue);
+  color: white;
+  padding: var(--padding-xs) var(--padding-sm);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+}
+
+/* === HELP TEXT === */
+.matching-component__help {
+  padding: 0 var(--padding-md);
+  margin-bottom: var(--padding-md);
+}
+
+.matching-component__help-text {
+  font-size: var(--text-sm);
+  color: var(--theme-text-secondary);
+  text-align: center;
+  margin: 0;
+}
+
 /* === LOADING === */
 .matching-component__loading {
   text-align: center;
@@ -27,6 +65,23 @@
 
 .matching-component__loading-text {
   color: var(--theme-text-secondary);
+}
+
+/* === BUTTONS === */
+.matching-component__button {
+  /* Base button styles - inherited by all button modifiers */
+}
+
+.matching-component__button--primary {
+  /* Primary button styles for left column items */
+}
+
+.matching-component__button--secondary {
+  /* Secondary button styles for right column items */
+}
+
+.matching-component__button--success {
+  /* Success button styles for completed actions */
 }
 
 /* === ITEM ACTIONS === */
