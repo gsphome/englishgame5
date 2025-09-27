@@ -1,0 +1,33 @@
+{
+  "timestamp": "2025-09-27T13:06:00.667Z",
+  "target": 500,
+  "warningThreshold": 400,
+  "results": {
+    "chunks": [
+      {
+        "name": "main-D44EBPxa.css",
+        "size": 213,
+        "status": "PASS",
+        "message": "213KB < 500KB target"
+      },
+      {
+        "name": "components-BfOcQ7w1.css",
+        "size": 173.99,
+        "status": "PASS",
+        "message": "173.99KB < 500KB target"
+      }
+    ],
+    "totalSize": 386.99,
+    "compliance": {
+      "passed": 2,
+      "warnings": 0,
+      "failed": 0
+    },
+    "status": "PASS"
+  },
+  "metadata": {
+    "nodeVersion": "v20.19.4",
+    "platform": "darwin",
+    "generatedBy": "check-css-chunks.js"
+  }
+}
