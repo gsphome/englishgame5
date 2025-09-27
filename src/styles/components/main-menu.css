@@ -39,9 +39,9 @@
 /* === MAIN MENU CONTAINER - ULTRA COMPACT DESIGN === */
 .main-menu {
   /* Homologated with game modes - exact same container properties */
-  max-width: 42rem;
+  max-width: 43.5rem !important;
   margin: 0.125rem auto;
-  padding: 0.5rem;
+  padding: 0 !important;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -62,7 +62,7 @@
   gap: 0.5rem;
   padding: 0.5rem;
   background: var(--theme-bg-secondary);
-  border-radius: 0.5rem;
+  border-radius: var(--radius-md);
   margin-bottom: 0.25rem;
   /* Removed border and shadow to match game modes */
   box-sizing: border-box;
@@ -74,10 +74,10 @@
   display: flex;
   background: #ffffff;
   border: 1.5px solid #e5e7eb;
-  border-radius: 0.5rem;
+  border-radius: var(--radius-md);
   padding: 0;
   gap: 0;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-subtle);
   flex-shrink: 0;
   min-width: fit-content;
   overflow: hidden;
@@ -114,7 +114,7 @@
   background: #2563eb;
   color: #ffffff;
   border-color: #1d4ed8;
-  box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+  box-shadow: var(--shadow-interactive);
   font-weight: 700;
 }
 
@@ -435,7 +435,7 @@
 @media (max-width: 639px) {
   .main-menu {
     margin: 0.125rem;
-    padding: 0.375rem;
+    padding: 0;
     border-radius: var(--radius-lg);
   }
 
@@ -467,7 +467,7 @@
 @media (max-width: 374px) {
   .main-menu {
     margin: 0.0625rem;
-    padding: 0.25rem;
+    padding: 0;
   }
 
   .main-menu__search {
@@ -776,11 +776,14 @@ html.dark .main-menu__grid::-webkit-scrollbar-thumb:hover {
 }
 
 /* Header and View Toggle Responsive Styles - COMPACT */
-@media (max-width: 768px) {
+/* Homologate with sorting-component padding */
+@media (min-width: 640px) {
   .main-menu {
-    padding: 0.375rem;
+    padding: 0.75rem !important;
   }
+}
 
+@media (max-width: 639px) {
   .main-menu__header {
     flex-direction: column;
     gap: 0.5rem;
@@ -807,7 +810,7 @@ html.dark .main-menu__grid::-webkit-scrollbar-thumb:hover {
 
 @media (max-width: 480px) {
   .main-menu {
-    padding: 0.25rem;
+    padding: 0.25rem !important;
   }
 
   .main-menu__header {
@@ -845,7 +848,7 @@ rk Mode - High Contrast Toggle Buttons */
   background: #3b82f6;
   color: #ffffff;
   border-color: #2563eb;
-  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
+  box-shadow: var(--shadow-interactive);
 }
 
 /* Light Mode - Enhanced Contrast */
@@ -865,7 +868,7 @@ rk Mode - High Contrast Toggle Buttons */
   background: #2563eb;
   color: #ffffff;
   border-color: #1d4ed8;
-  box-shadow: 0 2px 4px rgba(37, 99, 235, 0.25);
+  box-shadow: var(--shadow-interactive);
 }
 
 /* Focus States for Accessibility */
@@ -895,13 +898,13 @@ rk Mode - High Contrast Toggle Buttons */
 .dark .main-menu__view-toggle {
   background: #1f2937;
   border-color: #374151;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--shadow-subtle);
 }
 
 :root:not(.dark) .main-menu__view-toggle {
   background: #ffffff;
   border-color: #e5e7eb;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-subtle);
 }
 
 /* He
