@@ -1,0 +1,33 @@
+{
+  "timestamp": "2025-09-27T03:28:21.087Z",
+  "target": 500,
+  "warningThreshold": 400,
+  "results": {
+    "chunks": [
+      {
+        "name": "main-DCaDTvqS.css",
+        "size": 205.07,
+        "status": "PASS",
+        "message": "205.07KB < 500KB target"
+      },
+      {
+        "name": "components-xVP9LE5D.css",
+        "size": 163.17,
+        "status": "PASS",
+        "message": "163.17KB < 500KB target"
+      }
+    ],
+    "totalSize": 368.24,
+    "compliance": {
+      "passed": 2,
+      "warnings": 0,
+      "failed": 0
+    },
+    "status": "PASS"
+  },
+  "metadata": {
+    "nodeVersion": "v20.19.4",
+    "platform": "darwin",
+    "generatedBy": "check-css-chunks.js"
+  }
+}
