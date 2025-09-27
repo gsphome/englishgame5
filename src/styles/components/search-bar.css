@@ -20,7 +20,11 @@
   margin: 0 auto;
 
   /* Enhanced Apple Background with subtle differentiation */
-  background: linear-gradient(145deg, var(--theme-bg-elevated, #ffffff) 0%, var(--theme-bg-subtle, #fafafa) 100%);
+  background: linear-gradient(
+    145deg,
+    var(--theme-bg-elevated, #ffffff) 0%,
+    var(--theme-bg-subtle, #fafafa) 100%
+  );
 
   /* Apple-style Border Radius */
   border-radius: var(--radius-lg, 0.5rem);
@@ -42,7 +46,11 @@
 
 .search-bar:hover {
   /* Subtle hover state - prepares for focus */
-  background: linear-gradient(145deg, var(--theme-bg-subtle, #fafafa) 0%, var(--theme-bg-elevated, #ffffff) 100%);
+  background: linear-gradient(
+    145deg,
+    var(--theme-bg-subtle, #fafafa) 0%,
+    var(--theme-bg-elevated, #ffffff) 100%
+  );
 
   /* Subtle blue hint on hover */
   border-color: rgba(59, 130, 246, 0.15);
@@ -56,7 +64,11 @@
 
 .search-bar:focus-within {
   /* Enhanced Apple-style focus - contained within search bar */
-  background: linear-gradient(145deg, var(--theme-bg-elevated, #ffffff) 0%, var(--theme-bg-primary, #f9fafb) 100%);
+  background: linear-gradient(
+    145deg,
+    var(--theme-bg-elevated, #ffffff) 0%,
+    var(--theme-bg-primary, #f9fafb) 100%
+  );
 
   /* Clean focus ring contained within the search bar */
   border: 2px solid rgba(59, 130, 246, 0.4);
@@ -394,7 +406,11 @@ html.dark .search-bar:focus-within {
   max-width: 100%;
 
   /* Enhanced integration styling with better visibility */
-  background: linear-gradient(145deg, var(--theme-bg-primary, #f9fafb) 0%, var(--theme-bg-elevated, #ffffff) 100%);
+  background: linear-gradient(
+    145deg,
+    var(--theme-bg-primary, #f9fafb) 0%,
+    var(--theme-bg-elevated, #ffffff) 100%
+  );
 
   border: 1.5px solid var(--theme-border-medium, #e5e7eb);
 
@@ -406,7 +422,11 @@ html.dark .search-bar:focus-within {
 
 .main-menu__search:focus-within .search-bar {
   /* Enhanced focus state when integrated */
-  background: linear-gradient(145deg, var(--theme-bg-elevated, #ffffff) 0%, var(--theme-bg-primary, #f9fafb) 100%);
+  background: linear-gradient(
+    145deg,
+    var(--theme-bg-elevated, #ffffff) 0%,
+    var(--theme-bg-primary, #f9fafb) 100%
+  );
 
   border-color: var(--theme-primary-blue, #3b82f6);
 
@@ -422,7 +442,11 @@ html.dark .search-bar:focus-within {
 /* Dark mode integration enhancement */
 html.dark .main-menu__search .search-bar {
   /* Enhanced dark mode background for better visibility */
-  background: linear-gradient(145deg, var(--theme-bg-elevated, #ffffff) 0%, var(--theme-bg-soft, #f9fafb) 100%);
+  background: linear-gradient(
+    145deg,
+    var(--theme-bg-elevated, #ffffff) 0%,
+    var(--theme-bg-soft, #f9fafb) 100%
+  );
 
   border: 1.5px solid var(--theme-border-soft, #f3f4f6);
 
@@ -434,7 +458,11 @@ html.dark .main-menu__search .search-bar {
 
 html.dark .main-menu__search:focus-within .search-bar {
   /* Enhanced dark mode focus state */
-  background: linear-gradient(145deg, var(--theme-bg-soft, #f9fafb) 0%, var(--theme-bg-elevated, #ffffff) 100%);
+  background: linear-gradient(
+    145deg,
+    var(--theme-bg-soft, #f9fafb) 0%,
+    var(--theme-bg-elevated, #ffffff) 100%
+  );
 
   border-color: var(--theme-primary-blue, #3b82f6);
 

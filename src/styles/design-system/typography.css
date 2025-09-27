@@ -238,7 +238,16 @@
 
 /* === SPECIALIZED TEXT === */
 .typography-code {
-  font-family: var(--font-mono, ui-monospace, SFMono-Regular, 'SF Mono', Consolas, 'Liberation Mono', Menlo, monospace);
+  font-family: var(
+    --font-mono,
+    ui-monospace,
+    SFMono-Regular,
+    'SF Mono',
+    Consolas,
+    'Liberation Mono',
+    Menlo,
+    monospace
+  );
   font-size: var(--text-sm, 0.875rem);
   font-weight: var(--font-normal, 400);
   line-height: var(--leading-snug, 1.375);

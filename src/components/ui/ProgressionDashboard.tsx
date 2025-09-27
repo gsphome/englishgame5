@@ -11,7 +11,9 @@ interface ProgressionDashboardProps {
   onModuleSelect: (module: LearningModule) => void;
 }
 
-export const ProgressionDashboard: React.FC<ProgressionDashboardProps> = ({ onModuleSelect: _onModuleSelect }) => {
+export const ProgressionDashboard: React.FC<ProgressionDashboardProps> = ({
+  onModuleSelect: _onModuleSelect,
+}) => {
   const { setCurrentModule, setCurrentView } = useAppStore();
   const { isModuleCompleted } = useProgressStore();
   const progression = useProgression();
