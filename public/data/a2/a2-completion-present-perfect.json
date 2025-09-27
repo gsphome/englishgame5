@@ -2,14 +2,14 @@
   {
     "sentence": "I have never ______ to Paris.",
     "correct": "been",
-    "explanation": "Use <been> (past participle of 'be/go') for experiences. <Have never been> means you have no experience of visiting Paris.",
-    "tip": "Complete with the past participle of <go>"
+    "explanation": "Use <been> for travel experiences in Present Perfect. <Have never been to Paris> means you have no experience of visiting Paris. We use <been> (not <gone>) when talking about places we've visited.",
+    "tip": "Use the past participle for travel experiences (not the same as movement away)"
   },
   {
     "sentence": "She ______ finished her homework yet.",
     "correct": "hasn't",
-    "explanation": "Use <hasn>t< with >yet' in negative sentences to show something is not complete.",
-    "tip": "Complete with <haven>t< or >hasn<t>"
+    "explanation": "Use <hasn't> with <yet> in negative sentences to show something is not complete.",
+    "tip": "Complete with <haven't> or <hasn't>"
   },
   {
     "sentence": "Have you ______ lunch today?",
