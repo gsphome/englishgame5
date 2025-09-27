@@ -80,6 +80,25 @@
   height: 1rem;
 }
 
+/* === DISABLED STATE === */
+.modal__btn--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.modal__btn--primary.modal__btn--disabled {
+  background: linear-gradient(135deg, #9ca3af 0%, #6b7280 100%);
+  box-shadow: none;
+  transform: none;
+}
+
+.modal__btn--secondary.modal__btn--disabled {
+  background-color: var(--theme-bg-subtle, #f9fafb);
+  color: var(--theme-text-tertiary, #9ca3af);
+  border-color: var(--theme-border-soft, #e5e7eb);
+}
+
 /* === FOOTER LAYOUT STANDARD === */
 .modal__actions {
   display: flex;
@@ -128,6 +147,12 @@ html.dark .modal__btn--secondary:hover {
 
 html.dark .modal__actions {
   background-color: var(--theme-bg-elevated, #1f2937);
+  border-color: var(--theme-border-soft, #4b5563);
+}
+
+html.dark .modal__btn--secondary.modal__btn--disabled {
+  background-color: var(--theme-bg-subtle, #374151);
+  color: var(--theme-text-tertiary, #6b7280);
   border-color: var(--theme-border-soft, #4b5563);
 }
 

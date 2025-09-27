@@ -265,13 +265,10 @@ export const CompactProfile: React.FC<CompactProfileProps> = ({ isOpen, onClose 
           </div>
 
           {/* Actions */}
-          <div className="modal__actions modal__actions--double">
-            <button type="button" onClick={onClose} className="modal__btn modal__btn--secondary">
-              {t('common.cancel', 'Cancelar')}
-            </button>
+          <div className="modal__actions modal__actions--single">
             <button type="submit" className="modal__btn modal__btn--primary">
               <Save className="modal__btn-icon" />
-              {t('profile.saveProfile', 'Guardar')}
+              {t('profile.saveProfile', 'Guardar Perfil')}
             </button>
           </div>
         </form>

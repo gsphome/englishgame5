@@ -81,6 +81,8 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
   ]);
 
   const handleSave = () => {
+    if (!hasChanges) return;
+    
     // Validate all settings before saving
     const validatedSettings = validateGameSettings(localGameSettings);
 
@@ -429,33 +431,25 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
           )}
         </div>
 
-        {/* Footer Actions - Fixed outside scroll area */}
-        <div
-          className={`modal__actions ${hasChanges ? 'modal__actions--double' : 'modal__actions--single'}`}
-        >
-          {hasChanges && (
-            <button
-              onClick={handleReset}
-              className="modal__btn modal__btn--secondary"
-              aria-label={t('settings.reset', 'Restablecer')}
-            >
-              <RotateCcw className="modal__btn-icon" />
-              {t('settings.reset', 'Restablecer')}
-            </button>
-          )}
+        {/* Footer Actions - Fixed layout for better UX */}
+        <div className="modal__actions modal__actions--double">
           <button
-            onClick={hasChanges ? handleSave : onClose}
-            className="modal__btn modal__btn--primary"
-            aria-label={hasChanges ? t('settings.save', 'Guardar') : t('common.close', 'Cerrar')}
+            onClick={handleReset}
+            className={`modal__btn modal__btn--secondary ${!hasChanges ? 'modal__btn--disabled' : ''}`}
+            disabled={!hasChanges}
+            aria-label={t('settings.reset', 'Restablecer cambios')}
           >
-            {hasChanges ? (
-              <>
-                <Save className="modal__btn-icon" />
-                {t('settings.save', 'Guardar')}
-              </>
-            ) : (
-              t('common.close', 'Cerrar')
-            )}
+            <RotateCcw className="modal__btn-icon" />
+            {t('settings.reset', 'Restablecer')}
+          </button>
+          <button
+            onClick={handleSave}
+            className={`modal__btn modal__btn--primary ${!hasChanges ? 'modal__btn--disabled' : ''}`}
+            disabled={!hasChanges}
+            aria-label={t('settings.save', 'Guardar cambios')}
+          >
+            <Save className="modal__btn-icon" />
+            {t('settings.save', 'Guardar')}
           </button>
         </div>
       </div>
