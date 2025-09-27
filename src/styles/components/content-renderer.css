@@ -40,7 +40,7 @@
   font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
   background-color: #f3f4f6;
   padding: 0.125rem 0.25rem;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-sm, 0.25rem);
   font-size: 0.875em;
 }
 
@@ -119,8 +119,8 @@
   position: absolute;
   background: #1f2937;
   color: white;
-  padding: var(--padding-xs) var(--padding-md);
-  border-radius: var(--radius-sm);
+  padding: var(--padding-xs, 0.25rem) var(--padding-md, 1rem);
+  border-radius: var(--radius-sm, 0.25rem);
   font-size: 0.75rem;
   white-space: nowrap;
   z-index: 5;

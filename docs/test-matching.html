@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matching Component Test</title>
+    <link rel="stylesheet" href="src/styles/components/matching-component.css">
+    <link rel="stylesheet" href="src/styles/components/game-controls.css">
+    <link rel="stylesheet" href="src/styles/design-system/color-palette.css">
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f9fafb;
+        }
+
+        /* Basic theme setup */
+        :root {
+            --theme-text-primary: #374151;
+            --theme-text-secondary: #6b7280;
+            --theme-bg-elevated: #ffffff;
+            --theme-bg-subtle: #f9fafb;
+            --theme-border-soft: #f3f4f6;
+            --theme-primary-blue: #3b82f6;
+            --radius-md: 0.375rem;
+            --padding-md: 1rem;
+            --padding-sm: 0.5rem;
+            --padding-xs: 0.25rem;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Matching Component CSS Test</h1>
+
+    <div class="matching-component">
+        <!-- Header -->
+        <div class="matching-component__header">
+            <h2 class="matching-component__title">Test Matching Exercise</h2>
+            <div class="matching-component__progress-badge">2/4</div>
+        </div>
+
+        <!-- Help text -->
+        <div class="matching-component__help">
+            <p class="matching-component__help-text">Click items to match them</p>
+        </div>
+
+        <!-- Grid -->
+        <div class="matching-component__grid">
+            <div class="matching-component__columns">
+                <!-- Left column -->
+                <div class="matching-component__column">
+                    <h3 class="matching-component__column-header">Terms</h3>
+
+                    <!-- Normal item -->
+                    <button class="matching-component__item matching-component__item--default">
+                        <div class="matching-component__item-content">
+                            <span class="matching-component__item-letter">A</span>
+                            <span class="matching-component__item-text">Hello</span>
+                        </div>
+                    </button>
+
+                    <!-- Selected item -->
+                    <button class="matching-component__item matching-component__item--selected">
+                        <div class="matching-component__item-content">
+                            <span class="matching-component__item-letter">B</span>
+                            <span class="matching-component__item-text">Thank you</span>
+                        </div>
+                    </button>
+
+                    <!-- Matched item -->
+                    <button class="matching-component__item matching-component__item--matched">
+                        <div class="matching-component__item-content">
+                            <span class="matching-component__item-letter">C</span>
+                            <span class="matching-component__item-text">Goodbye</span>
+                            <div class="matching-component__item-actions">
+                                <span class="matching-component__match-number">3</span>
+                            </div>
+                        </div>
+                    </button>
+
+                    <!-- Correct item -->
+                    <button class="matching-component__item matching-component__item--correct">
+                        <div class="matching-component__item-content">
+                            <span class="matching-component__item-letter">D</span>
+                            <span class="matching-component__item-text">Please</span>
+                        </div>
+                    </button>
+                </div>
+
+                <!-- Right column -->
+                <div class="matching-component__column">
+                    <h3 class="matching-component__column-header">Definitions</h3>
+
+                    <!-- Normal item -->
+                    <button class="matching-component__item matching-component__item--default">
+                        <div class="matching-component__item-content">
+                            <span
+                                class="matching-component__item-letter matching-component__item-letter--orange">1</span>
+                            <span class="matching-component__item-text">Hola</span>
+                        </div>
+                    </button>
+
+                    <!-- Matched inactive item -->
+                    <button class="matching-component__item matching-component__item--matched-inactive" disabled>
+                        <div class="matching-component__item-content">
+                            <span
+                                class="matching-component__item-letter matching-component__item-letter--orange">2</span>
+                            <span class="matching-component__item-text">Gracias</span>
+                            <span class="matching-component__item-letter">B</span>
+                        </div>
+                    </button>
+
+                    <!-- Unmatched item -->
+                    <button class="matching-component__item matching-component__item--unmatched">
+                        <div class="matching-component__item-content">
+                            <span
+                                class="matching-component__item-letter matching-component__item-letter--orange">3</span>
+                            <span class="matching-component__item-text">Adiós</span>
+                        </div>
+                    </button>
+
+                    <!-- Incorrect item -->
+                    <button class="matching-component__item matching-component__item--incorrect">
+                        <div class="matching-component__item-content">
+                            <span
+                                class="matching-component__item-letter matching-component__item-letter--orange">4</span>
+                            <span class="matching-component__item-text">Por favor</span>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game controls -->
+        <div class="game-controls">
+            <button class="game-controls__home-btn">🏠</button>
+            <button class="game-controls__icon-btn">🔄</button>
+            <button class="game-controls__primary-btn game-controls__primary-btn--orange">
+                <span>Check Matches</span>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Simple interactivity test
+        document.querySelectorAll('.matching-component__item').forEach(item => {
+            item.addEventListener('click', () => {
+                console.log('Item clicked:', item.textContent.trim());
+            });
+        });
+
+        console.log('Matching component test loaded successfully!');
+    </script>
+</body>
+
+</html>

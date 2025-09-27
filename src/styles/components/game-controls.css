@@ -8,8 +8,8 @@
   gap: 0.75rem;
   padding: 0.5rem;
   background-color: var(--theme-bg-elevated, #ffffff);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-medium);
+  border-radius: var(--radius-lg, 0.5rem);
+  box-shadow: var(--shadow-medium, 0 4px 6px rgba(0, 0, 0, 0.1));
   border: 1px solid var(--theme-border-soft, #f3f4f6);
   margin-top: 0.5rem;
   flex-wrap: wrap;
@@ -81,12 +81,12 @@
     var(--theme-primary-purple, #8b5cf6) 100%
   );
   color: white;
-  box-shadow: var(--shadow-interactive);
+  box-shadow: var(--shadow-interactive, 0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
 .game-controls__primary-btn--blue:hover:not(:disabled) {
   transform: translateY(-1px);
-  box-shadow: var(--shadow-interactive);
+  box-shadow: var(--shadow-interactive, 0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
 .game-controls__primary-btn--green {
@@ -96,12 +96,12 @@
     var(--theme-primary-blue, #3b82f6) 100%
   );
   color: white;
-  box-shadow: var(--shadow-interactive);
+  box-shadow: var(--shadow-interactive, 0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
 .game-controls__primary-btn--green:hover:not(:disabled) {
   transform: translateY(-1px);
-  box-shadow: var(--shadow-interactive);
+  box-shadow: var(--shadow-interactive, 0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
 .game-controls__primary-btn--purple {
@@ -111,12 +111,12 @@
     var(--theme-primary-blue, #3b82f6) 100%
   );
   color: white;
-  box-shadow: var(--shadow-interactive);
+  box-shadow: var(--shadow-interactive, 0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
 .game-controls__primary-btn--purple:hover:not(:disabled) {
   transform: translateY(-1px);
-  box-shadow: var(--shadow-interactive);
+  box-shadow: var(--shadow-interactive, 0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
 .game-controls__primary-btn--orange {
@@ -165,7 +165,7 @@
   background-color: var(--theme-bg-soft, #f3f4f6);
   color: var(--theme-text-primary, #374151);
   transform: translateY(-1px);
-  box-shadow: var(--shadow-interactive);
+  box-shadow: var(--shadow-interactive, 0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
 .game-controls__secondary-btn:disabled {

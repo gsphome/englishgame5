@@ -2,6 +2,7 @@ import React from 'react';
 import { useProgression } from '../../hooks/useProgression';
 import { useAppStore } from '../../stores/appStore';
 import { useProgressStore } from '../../stores/progressStore';
+import { toast } from '../../stores/toastStore';
 import { CheckCircle, Lock, Play } from 'lucide-react';
 import type { LearningModule } from '../../types';
 import '../../styles/components/progression-dashboard.css';
@@ -19,6 +20,21 @@ export const ProgressionDashboard: React.FC<ProgressionDashboardProps> = ({ onMo
 
   const handleContinueLearning = () => {
     if (nextRecommended) {
+      // Show toast when continuing a module (same as MainMenu)
+      const modeLabels: Record<string, string> = {
+        flashcard: 'Flashcards',
+        quiz: 'Quiz',
+        completion: 'Completar oraciones',
+        sorting: 'Ejercicio de clasificación',
+        matching: 'Ejercicio de emparejamiento',
+      };
+
+      toast.info(
+        'Continuando módulo',
+        `${nextRecommended.name} - ${modeLabels[nextRecommended.learningMode] || 'Ejercicio'}`,
+        { duration: 1500 }
+      );
+
       setCurrentModule(nextRecommended);
       setCurrentView(nextRecommended.learningMode);
     }
@@ -26,9 +42,34 @@ export const ProgressionDashboard: React.FC<ProgressionDashboardProps> = ({ onMo
 
   const handleModuleClick = (module: LearningModule) => {
     const status = progression.getModuleStatus(module.id);
-    if (status === 'unlocked') {
-      onModuleSelect(module);
+    
+    // Check if module is accessible (same logic as MainMenu)
+    if (!progression.canAccessModule(module.id)) {
+      const missingPrereqs = progression.getMissingPrerequisites(module.id);
+      const prereqNames = missingPrereqs.map(p => p.name).join(', ');
+
+      toast.warning('Módulo bloqueado', `Completa primero: ${prereqNames}`, { duration: 3000 });
+      return;
     }
+
+    // Show toast when starting a module (same as MainMenu)
+    const modeLabels: Record<string, string> = {
+      flashcard: 'Flashcards',
+      quiz: 'Quiz',
+      completion: 'Completar oraciones',
+      sorting: 'Ejercicio de clasificación',
+      matching: 'Ejercicio de emparejamiento',
+    };
+
+    toast.info(
+      'Iniciando módulo',
+      `${module.name} - ${modeLabels[module.learningMode] || 'Ejercicio'}`,
+      { duration: 1500 }
+    );
+
+    // Navigate directly to the module
+    setCurrentModule(module);
+    setCurrentView(module.learningMode);
   };
 
   const getUnitTitle = (unit: number): string => {

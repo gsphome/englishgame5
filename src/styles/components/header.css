@@ -57,8 +57,8 @@ html.dark {
 
 .header-redesigned {
   background-color: var(--header-bg);
-  border-bottom: 1px solid var(--header-border);
-  box-shadow: var(--shadow-subtle);
+  border-bottom: 1px solid var(--header-border, #e5e7eb);
+  box-shadow: var(--shadow-subtle, 0 1px 3px rgba(0, 0, 0, 0.1));
   min-height: 64px;
   transition: all 0.3s ease-in-out;
   position: relative;
@@ -67,8 +67,8 @@ html.dark {
 
 /* Enhanced shadow and border for dark mode */
 .dark .header-redesigned {
-  box-shadow: var(--shadow-medium);
-  border-bottom: 1px solid var(--header-border);
+  box-shadow: var(--shadow-medium, 0 4px 6px rgba(0, 0, 0, 0.1));
+  border-bottom: 1px solid var(--header-border, #e5e7eb);
   background: linear-gradient(180deg, #1f2937 0%, #1a202c 100%);
 }
 
@@ -158,15 +158,15 @@ html.dark {
   justify-content: center;
   width: 40px;
   height: 40px;
-  background-color: var(--theme-bg-elevated);
-  border: 1px solid var(--theme-border-soft);
-  box-shadow: var(--shadow-subtle);
+  background-color: var(--theme-bg-elevated, #ffffff);
+  border: 1px solid var(--theme-border-soft, #f3f4f6);
+  box-shadow: var(--shadow-subtle, 0 1px 3px rgba(0, 0, 0, 0.1));
 }
 
 .header-redesigned__title {
   font-size: 1.25rem;
   font-weight: 700;
-  color: var(--header-text-primary);
+  color: var(--header-text-primary, #111827);
   line-height: 1.2;
   letter-spacing: -0.025em;
   transition: color 0.2s ease-in-out;
@@ -193,7 +193,7 @@ html.dark {
   height: 24px;
   background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
   color: white;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-sm, 0.25rem);
   font-size: var(--text-xs, 0.75rem);
   font-weight: var(--font-semibold, 600);
   text-transform: uppercase;
@@ -263,7 +263,7 @@ html.dark {
 }
 
 .header-redesigned__user-btn:hover {
-  color: var(--header-text-primary);
+  color: var(--header-text-primary, #111827);
   background-color: var(--header-button-hover-bg);
   transform: translateY(-1px);
 }
@@ -288,7 +288,7 @@ html.dark {
 }
 
 .header-redesigned__login-btn:hover {
-  color: var(--header-text-primary);
+  color: var(--header-text-primary, #111827);
   background-color: var(--header-button-hover-bg);
   transform: translateY(-1px);
 }
@@ -312,7 +312,7 @@ html.dark {
 .header-redesigned__username {
   font-size: 0.875rem;
   font-weight: 500;
-  color: var(--header-text-primary);
+  color: var(--header-text-primary, #111827);
   transition: color 0.2s ease-in-out;
 }
 
@@ -329,7 +329,7 @@ html.dark {
 .header-redesigned__login-btn--primary,
 .header-redesigned__control-btn--primary {
   background-color: var(--header-button-hover-bg);
-  border: 1px solid var(--header-border);
+  border: 1px solid var(--header-border, #e5e7eb);
   border-radius: 8px;
 }
 
@@ -339,7 +339,7 @@ html.dark {
 .header-redesigned__control-btn--primary:hover {
   background-color: var(--header-button-active-bg);
   border-color: var(--header-icon-hover);
-  box-shadow: var(--shadow-medium);
+  box-shadow: var(--shadow-medium, 0 4px 6px rgba(0, 0, 0, 0.1));
 }
 
 /* Deprecated - using --primary for consistency */
@@ -417,7 +417,7 @@ html.dark {
 .header-side-menu__title {
   font-size: 1.25rem;
   font-weight: 700;
-  color: var(--header-text-primary);
+  color: var(--header-text-primary, #111827);
   letter-spacing: -0.025em;
   margin: 0 0 4px 0;
 }
@@ -432,7 +432,7 @@ html.dark {
 
 /* Menu Content */
 .header-side-menu__content {
-  padding: var(--padding-xl);
+  padding: var(--padding-xl, 2rem);
 }
 
 .header-side-menu__content > * + * {
@@ -474,9 +474,9 @@ html.dark {
 
 .header-side-menu__item:hover {
   background-color: var(--menu-item-hover);
-  color: var(--header-text-primary);
+  color: var(--header-text-primary, #111827);
   transform: translateX(4px);
-  box-shadow: var(--shadow-medium);
+  box-shadow: var(--shadow-medium, 0 4px 6px rgba(0, 0, 0, 0.1));
 }
 
 .header-side-menu__item:active {
@@ -491,7 +491,7 @@ html.dark {
 
 /* Enhanced shadow for dark mode menu items */
 .dark .header-side-menu__item:hover {
-  box-shadow: var(--shadow-medium);
+  box-shadow: var(--shadow-medium, 0 4px 6px rgba(0, 0, 0, 0.1));
 }
 
 /* Enhanced Menu Icons and Text */
@@ -707,7 +707,7 @@ html.dark {
 .header-redesigned__brand:hover .header-redesigned__logo {
   transform: scale(1.05);
   background-color: var(--header-button-hover-bg);
-  border-color: var(--theme-border-medium);
+  border-color: var(--theme-border-medium, #e5e7eb);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
@@ -775,7 +775,7 @@ html.dark {
 .dark .header-redesigned__user-btn:hover,
 .dark .header-redesigned__login-btn:hover,
 .dark .header-redesigned__control-btn:hover {
-  border-color: var(--header-border);
+  border-color: var(--header-border, #e5e7eb);
   background-color: var(--header-button-hover-bg);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
@@ -786,7 +786,7 @@ html.dark {
 .dark .header-redesigned__login-btn--primary,
 .dark .header-redesigned__control-btn--primary {
   background-color: rgba(75, 85, 99, 0.5);
-  border: 1px solid var(--header-border);
+  border: 1px solid var(--header-border, #e5e7eb);
   backdrop-filter: blur(8px);
 }
 
@@ -914,7 +914,7 @@ html.dark {
   min-width: 40px;
   font-weight: 500;
   font-size: 0.875rem;
-  color: var(--header-text-primary);
+  color: var(--header-text-primary, #111827);
 }
 
 /* Ensure icons have consistent visual weight and better contrast */
@@ -925,8 +925,8 @@ html.dark {
   width: 16px;
   height: 16px;
   flex-shrink: 0;
-  color: var(--header-text-primary);
-  stroke: var(--header-text-primary);
+  color: var(--header-text-primary, #111827);
+  stroke: var(--header-text-primary, #111827);
 }
 
 /* Ensure all text within primary buttons uses consistent color */
@@ -935,7 +935,7 @@ html.dark {
 .header-redesigned__login-btn--primary span,
 .header-redesigned__control-btn--primary span,
 .header-redesigned__username {
-  color: var(--header-text-primary);
+  color: var(--header-text-primary, #111827);
   font-weight: 500;
 }
 
@@ -957,12 +957,12 @@ html.dark {
 .dark .header-redesigned__login-btn--primary,
 .dark .header-redesigned__control-btn--primary {
   background: linear-gradient(135deg, rgba(75, 85, 99, 0.6) 0%, rgba(55, 65, 81, 0.4) 100%);
-  border: 1px solid var(--header-border);
+  border: 1px solid var(--header-border, #e5e7eb);
   backdrop-filter: blur(8px);
   box-shadow:
     0 1px 3px rgba(0, 0, 0, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  color: var(--header-text-primary);
+  color: var(--header-text-primary, #111827);
 }
 
 .dark .header-redesigned__menu-btn--primary:hover,
@@ -975,7 +975,7 @@ html.dark {
     0 4px 12px rgba(0, 0, 0, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.15);
   transform: translateY(-1px);
-  color: var(--header-text-primary);
+  color: var(--header-text-primary, #111827);
 }
 
 /* Ensure dark mode hover state maintains consistent text color */
@@ -984,7 +984,7 @@ html.dark {
 .dark .header-redesigned__login-btn--primary:hover span,
 .dark .header-redesigned__control-btn--primary:hover span,
 .dark .header-redesigned__user-btn--primary:hover .header-redesigned__username {
-  color: var(--header-text-primary);
+  color: var(--header-text-primary, #111827);
 }
 
 /* Light mode - ensure consistency */
@@ -993,9 +993,9 @@ html.dark {
 .header-redesigned__login-btn--primary,
 .header-redesigned__control-btn--primary {
   background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
-  border: 1px solid var(--header-border);
+  border: 1px solid var(--header-border, #e5e7eb);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  color: var(--header-text-primary);
+  color: var(--header-text-primary, #111827);
 }
 
 .header-redesigned__menu-btn--primary:hover,
@@ -1006,7 +1006,7 @@ html.dark {
   border-color: #9ca3af;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   transform: translateY(-1px);
-  color: var(--header-text-primary);
+  color: var(--header-text-primary, #111827);
 }
 
 /* Ensure hover state maintains consistent text color for all elements */
@@ -1015,14 +1015,14 @@ html.dark {
 .header-redesigned__login-btn--primary:hover span,
 .header-redesigned__control-btn--primary:hover span,
 .header-redesigned__user-btn--primary:hover .header-redesigned__username {
-  color: var(--header-text-primary);
+  color: var(--header-text-primary, #111827);
 }
 
 /* Additional styles for login text */
 .header-redesigned__login-text {
   font-size: 0.875rem;
   font-weight: 500;
-  color: var(--header-text-primary);
+  color: var(--header-text-primary, #111827);
 }
 
 /* Additional styles for user icon */

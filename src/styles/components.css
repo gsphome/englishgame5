@@ -53,7 +53,7 @@
 /* Focus Styles */
 .focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px var(--theme-primary-blue);
+  box-shadow: 0 0 0 2px var(--theme-primary-blue, #3b82f6);
 }
 
 /* Reduced Motion Support */

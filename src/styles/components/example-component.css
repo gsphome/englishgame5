@@ -24,13 +24,13 @@
   gap: 1rem;
 
   /* Visual styling with design tokens */
-  background-color: var(--theme-bg-elevated);
-  border: 1px solid var(--theme-border-soft);
-  border-radius: var(--radius-md);
+  background-color: var(--theme-bg-elevated, #ffffff);
+  border: 1px solid var(--theme-border-soft, #f3f4f6);
+  border-radius: var(--radius-md, 0.375rem);
   padding: 1.5rem;
 
   /* Typography */
-  color: var(--theme-text-primary);
+  color: var(--theme-text-primary, #374151);
   font-family: inherit;
 
   /* Transitions for smooth interactions */
@@ -49,7 +49,7 @@
   justify-content: space-between;
   margin-bottom: 1rem;
   padding-bottom: 0.75rem;
-  border-bottom: 1px solid var(--theme-border-subtle);
+  border-bottom: 1px solid var(--theme-border-subtle, #f9fafb);
 }
 
 /* AI_VALIDATION: BEM_ELEMENT - Component title */
@@ -57,7 +57,7 @@
 .example-component__title {
   font-size: 1.25rem;
   font-weight: 600;
-  color: var(--theme-text-primary);
+  color: var(--theme-text-primary, #374151);
   margin: 0;
   line-height: 1.2;
 }
@@ -65,7 +65,7 @@
 /* AI_VALIDATION: BEM_ELEMENT - Component subtitle */
 .example-component__subtitle {
   font-size: 0.875rem;
-  color: var(--theme-text-secondary);
+  color: var(--theme-text-secondary, #6b7280);
   margin: 0.25rem 0 0 0;
   line-height: 1.4;
 }
@@ -76,13 +76,13 @@
   /* Accessibility: Minimum 44px touch target */
   min-height: 44px;
   min-width: 44px;
-  padding: var(--padding-lg) var(--padding-xl);
+  padding: var(--padding-lg, 1.5rem) var(--padding-xl, 2rem);
 
   /* Visual styling */
-  background-color: var(--theme-primary-blue);
-  color: var(--theme-text-on-colored);
+  background-color: var(--theme-primary-blue, #3b82f6);
+  color: var(--theme-text-on-colored, #ffffff);
   border: none;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-sm, 0.25rem);
 
   /* Typography */
   font-size: 0.875rem;
@@ -103,13 +103,13 @@
 /* AI_VALIDATION: BEM_ELEMENT - Content area */
 .example-component__content {
   flex: 1;
-  color: var(--theme-text-primary);
+  color: var(--theme-text-primary, #374151);
   line-height: 1.6;
 }
 
 /* AI_VALIDATION: BEM_ELEMENT - Text content */
 .example-component__text {
-  color: var(--theme-text-secondary);
+  color: var(--theme-text-secondary, #6b7280);
   margin: 0 0 1rem 0;
   line-height: 1.5;
 }
@@ -122,7 +122,7 @@
   gap: 0.75rem;
   margin-top: 1rem;
   padding-top: 0.75rem;
-  border-top: 1px solid var(--theme-border-subtle);
+  border-top: 1px solid var(--theme-border-subtle, #f9fafb);
 }
 
 /* === INTERACTIVE STATES === */
@@ -149,14 +149,14 @@
 }
 
 .example-component__button:focus-visible {
-  outline: 2px solid var(--theme-primary-blue);
+  outline: 2px solid var(--theme-primary-blue, #3b82f6);
   outline-offset: 2px;
 }
 
 /* AI_VALIDATION: BEM_ELEMENT_STATE - Button disabled state */
 .example-component__button:disabled {
-  background-color: var(--theme-text-tertiary);
-  color: var(--theme-text-on-colored);
+  background-color: var(--theme-text-tertiary, #9ca3af);
+  color: var(--theme-text-on-colored, #ffffff);
   cursor: not-allowed;
   opacity: 0.6;
   transform: none;
@@ -188,18 +188,18 @@
 }
 
 .example-component--loading .example-component__button {
-  background-color: var(--theme-text-tertiary);
+  background-color: var(--theme-text-tertiary, #9ca3af);
   cursor: wait;
 }
 
 /* AI_VALIDATION: BEM_MODIFIER - Component error state */
 .example-component--error {
-  border-color: var(--error);
+  border-color: var(--error, #ef4444);
   background-color: rgba(239, 68, 68, 0.05);
 }
 
 .example-component--error .example-component__title {
-  color: var(--error);
+  color: var(--error, #ef4444);
 }
 
 /* AI_VALIDATION: BEM_MODIFIER - Component success state */
@@ -255,7 +255,7 @@
   }
 
   .example-component__button:focus {
-    border-color: var(--theme-primary-blue);
+    border-color: var(--theme-primary-blue, #3b82f6);
   }
 }
 
@@ -274,7 +274,7 @@
 /* AI_CONTEXT: Desktop gets hover effects and enhanced interactions */
 @media (min-width: 769px) {
   .example-component:hover {
-    border-color: var(--theme-border-medium);
+    border-color: var(--theme-border-medium, #e5e7eb);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   }
 
@@ -293,7 +293,7 @@
 
   .example-component:hover {
     /* Mobile: Disable hover effects */
-    border-color: var(--theme-border-soft);
+    border-color: var(--theme-border-soft, #f3f4f6);
     box-shadow: none;
   }
 }

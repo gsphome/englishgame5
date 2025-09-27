@@ -30,8 +30,8 @@
 .compact-dashboard__container {
   background-color: var(--theme-bg-elevated, #ffffff);
   border: none;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-strong);
+  border-radius: var(--radius-lg, 0.5rem);
+  box-shadow: var(--shadow-strong, 0 10px 15px rgba(0, 0, 0, 0.1));
   max-width: 24rem;
   width: 100%;
   max-height: 90vh;
@@ -79,7 +79,7 @@
   background-color: rgba(255, 255, 255, 0.2);
   border-color: rgba(255, 255, 255, 0.4);
   transform: translateY(-1px);
-  box-shadow: var(--shadow-interactive);
+  box-shadow: var(--shadow-interactive, 0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
 .dark .compact-dashboard__header .modal__close-btn {
@@ -116,7 +116,7 @@
 
 .compact-dashboard__stat {
   padding: 0.5rem;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-sm, 0.25rem);
   border: 1px solid;
   display: flex;
   align-items: center;
@@ -173,12 +173,12 @@
 .compact-dashboard__stat-value {
   font-size: 1rem;
   font-weight: 700;
-  color: var(--theme-text-primary);
+  color: var(--theme-text-primary, #374151);
 }
 
 .compact-dashboard__stat-label {
   font-size: 0.75rem;
-  color: var(--theme-text-tertiary);
+  color: var(--theme-text-tertiary, #9ca3af);
 }
 
 /* === PROGRESS SECTION === */
@@ -189,12 +189,12 @@
 .compact-dashboard__section-title {
   font-size: 0.75rem;
   font-weight: 600;
-  color: var(--theme-text-primary);
+  color: var(--theme-text-primary, #374151);
 }
 
 .compact-dashboard__progress-content {
-  background-color: var(--theme-bg-subtle);
-  border-radius: var(--radius-sm);
+  background-color: var(--theme-bg-subtle, #fafafa);
+  border-radius: var(--radius-sm, 0.25rem);
   padding: 0.5rem;
 }
 
@@ -216,7 +216,7 @@
 .compact-dashboard__progress-bar {
   width: 100%;
   height: 3rem;
-  background-color: var(--theme-bg-soft);
+  background-color: var(--theme-bg-soft, #f9fafb);
   border-radius: 0.125rem 0.125rem 0 0;
   position: relative;
 }
@@ -233,13 +233,13 @@
 
 .compact-dashboard__progress-day-label {
   font-size: 0.75rem;
-  color: var(--theme-text-tertiary);
+  color: var(--theme-text-tertiary, #9ca3af);
 }
 
 .compact-dashboard__progress-day-value {
   font-size: 0.75rem;
   font-weight: 600;
-  color: var(--theme-text-primary);
+  color: var(--theme-text-primary, #374151);
 }
 
 /* === NO DATA STATE === */
@@ -251,13 +251,13 @@
 .compact-dashboard__no-data-icon {
   width: 2rem;
   height: 2rem;
-  color: var(--theme-text-tertiary);
+  color: var(--theme-text-tertiary, #9ca3af);
   margin: 0 auto 0.5rem;
 }
 
 .compact-dashboard__no-data-text {
   font-size: 0.875rem;
-  color: var(--theme-text-tertiary);
+  color: var(--theme-text-tertiary, #9ca3af);
 }
 
 /* === ACTIONS === */

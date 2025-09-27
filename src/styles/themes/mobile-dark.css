@@ -22,23 +22,23 @@
     /* DISABLED: These rules conflict with header.css variables */
     /*
     .header-redesigned {
-      background-color: var(--theme-bg-elevated);
-      color: var(--theme-text-primary);
-      border-color: var(--theme-border-soft);
+      background-color: var(--theme-bg-elevated, #ffffff);
+      color: var(--theme-text-primary, #374151);
+      border-color: var(--theme-border-soft, #f3f4f6);
       min-height: 56px;
       padding: 0.75rem 1rem;
     }
 
     .header-redesigned__title,
     .header-redesigned__username {
-      color: var(--theme-text-primary);
+      color: var(--theme-text-primary, #374151);
       font-size: 1.1rem;
     }
 
     .header-redesigned svg,
     .header-redesigned [data-lucide] {
-      color: var(--theme-text-secondary);
-      stroke: var(--theme-text-secondary);
+      color: var(--theme-text-secondary, #6b7280);
+      stroke: var(--theme-text-secondary, #6b7280);
       width: 24px;
       height: 24px;
     }
@@ -50,39 +50,39 @@
     }
 
     .header-redesigned__button:hover {
-      background-color: var(--theme-bg-soft);
+      background-color: var(--theme-bg-soft, #f9fafb);
     }
     */
 
     /* === MODULE CARDS === */
     .module-card {
-      background-color: var(--theme-bg-elevated);
-      color: var(--theme-text-primary);
-      border-color: var(--theme-border-soft);
+      background-color: var(--theme-bg-elevated, #ffffff);
+      color: var(--theme-text-primary, #374151);
+      border-color: var(--theme-border-soft, #f3f4f6);
       /* Mobile-specific: Card optimizations with touch-friendly spacing */
       margin-bottom: 1rem;
       padding: 1.25rem;
       border-radius: 12px;
-      box-shadow: var(--shadow-medium);
+      box-shadow: var(--shadow-medium, 0 4px 6px rgba(0, 0, 0, 0.1));
       /* Touch target optimization */
       min-height: 44px;
     }
 
     .module-card__title {
-      color: var(--theme-text-primary);
+      color: var(--theme-text-primary, #374151);
       font-size: 1.2rem;
       margin-bottom: 0.5rem;
     }
 
     .module-card__description {
-      color: var(--theme-text-secondary);
+      color: var(--theme-text-secondary, #6b7280);
       font-size: 0.95rem;
       line-height: 1.5;
     }
 
     .module-card svg {
-      color: var(--theme-text-secondary);
-      stroke: var(--theme-text-secondary);
+      color: var(--theme-text-secondary, #6b7280);
+      stroke: var(--theme-text-secondary, #6b7280);
       /* Mobile-specific: Appropriately sized icons */
       width: 20px;
       height: 20px;
@@ -91,8 +91,8 @@
     /* === NAVIGATION === */
     .nav-btn {
       background-color: transparent;
-      color: var(--theme-text-primary);
-      border-color: var(--theme-border-soft);
+      color: var(--theme-text-primary, #374151);
+      border-color: var(--theme-border-soft, #f3f4f6);
       /* Mobile-specific: 44px minimum touch targets */
       min-width: 44px;
       min-height: 44px;
@@ -100,63 +100,63 @@
     }
 
     .nav-btn:active {
-      background-color: var(--theme-border-medium);
+      background-color: var(--theme-border-medium, #e5e7eb);
       transform: scale(0.98);
     }
 
     .nav-btn--on-colored {
-      color: var(--theme-text-on-colored);
+      color: var(--theme-text-on-colored, #ffffff);
       border-color: var(--theme-border-on-colored);
     }
 
     /* === COMPACT SETTINGS === */
     .compact-settings__container {
-      background-color: var(--theme-bg-elevated);
-      border-color: var(--theme-border-subtle);
+      background-color: var(--theme-bg-elevated, #ffffff);
+      border-color: var(--theme-border-subtle, #f9fafb);
       /* Mobile-specific: Full width, better spacing */
       margin: 0.5rem;
       border-radius: 16px;
       padding: 1.5rem;
-      box-shadow: var(--shadow-strong);
+      box-shadow: var(--shadow-strong, 0 10px 15px rgba(0, 0, 0, 0.1));
     }
 
     .compact-settings__header {
-      background-color: var(--theme-bg-elevated);
-      color: var(--theme-text-primary);
+      background-color: var(--theme-bg-elevated, #ffffff);
+      color: var(--theme-text-primary, #374151);
       padding-bottom: 1rem;
-      border-bottom: 1px solid var(--theme-border-soft);
+      border-bottom: 1px solid var(--theme-border-soft, #f3f4f6);
     }
 
     .compact-settings__content {
-      background-color: var(--theme-bg-elevated);
-      color: var(--theme-text-primary);
+      background-color: var(--theme-bg-elevated, #ffffff);
+      color: var(--theme-text-primary, #374151);
       padding: 1rem 0;
     }
 
     .compact-settings__footer {
-      background-color: var(--theme-bg-elevated);
-      color: var(--theme-text-primary);
+      background-color: var(--theme-bg-elevated, #ffffff);
+      color: var(--theme-text-primary, #374151);
       padding-top: 1rem;
-      border-top: 1px solid var(--theme-border-soft);
+      border-top: 1px solid var(--theme-border-soft, #f3f4f6);
     }
 
     .compact-settings__title {
-      color: var(--theme-text-primary);
+      color: var(--theme-text-primary, #374151);
       font-size: 1.3rem;
       font-weight: 600;
     }
 
     .compact-settings__label {
-      color: var(--theme-text-primary);
+      color: var(--theme-text-primary, #374151);
       font-size: 1rem;
       margin-bottom: 0.5rem;
     }
 
     .compact-settings__input,
     .compact-settings__select {
-      background-color: var(--theme-bg-subtle);
-      color: var(--theme-text-primary);
-      border-color: var(--theme-border-soft);
+      background-color: var(--theme-bg-subtle, #fafafa);
+      color: var(--theme-text-primary, #374151);
+      border-color: var(--theme-border-soft, #f3f4f6);
       /* Mobile-specific: 44px minimum touch targets */
       min-height: 44px;
       padding: 0.75rem 1rem;
@@ -176,47 +176,47 @@
     .quiz-component,
     .sorting-component,
     .matching-component {
-      background-color: var(--theme-bg-elevated);
-      color: var(--theme-text-primary);
-      border-color: var(--theme-border-soft);
+      background-color: var(--theme-bg-elevated, #ffffff);
+      color: var(--theme-text-primary, #374151);
+      border-color: var(--theme-border-soft, #f3f4f6);
       /* Mobile-specific: Better spacing and touch */
       margin: 0.75rem;
       padding: 1.5rem;
       border-radius: 16px;
-      box-shadow: var(--shadow-medium);
+      box-shadow: var(--shadow-medium, 0 4px 6px rgba(0, 0, 0, 0.1));
     }
 
     .quiz-component__question-card,
     .flashcard-component__card,
     .matching-component__item,
     .sorting-component__item {
-      background-color: var(--theme-bg-elevated);
-      border-color: var(--theme-border-soft);
-      box-shadow: var(--shadow-subtle);
+      background-color: var(--theme-bg-elevated, #ffffff);
+      border-color: var(--theme-border-soft, #f3f4f6);
+      box-shadow: var(--shadow-subtle, 0 1px 3px rgba(0, 0, 0, 0.1));
       /* Touch target optimization */
       min-height: 44px;
     }
 
     .quiz-component__option--selected,
     .matching-component__item--selected {
-      color: var(--theme-text-on-colored);
+      color: var(--theme-text-on-colored, #ffffff);
       border-color: transparent;
     }
 
     .progress-bar {
-      background-color: var(--theme-bg-soft);
+      background-color: var(--theme-bg-soft, #f9fafb);
     }
 
     /* === MAIN MENU === */
     .main-menu {
-      background-color: var(--theme-bg-elevated);
-      border-color: var(--theme-border-soft);
+      background-color: var(--theme-bg-elevated, #ffffff);
+      border-color: var(--theme-border-soft, #f3f4f6);
       /* Mobile-specific: Full screen overlay */
       border-radius: 0;
     }
 
     .main-menu__item {
-      color: var(--theme-text-primary);
+      color: var(--theme-text-primary, #374151);
       /* Mobile-specific: 44px minimum touch targets */
       padding: 1rem 1.5rem;
       font-size: 1.1rem;
@@ -224,7 +224,7 @@
     }
 
     .main-menu__item:active {
-      background-color: var(--theme-border-medium);
+      background-color: var(--theme-border-medium, #e5e7eb);
       transform: scale(0.98);
     }
   }
@@ -300,19 +300,19 @@
     .compact-settings__container {
       border-width: 2px;
       border-style: solid;
-      border-color: var(--theme-text-primary);
+      border-color: var(--theme-text-primary, #374151);
     }
 
     .compact-settings__input,
     .compact-settings__select {
       border-width: 2px;
-      border-color: var(--theme-text-primary);
+      border-color: var(--theme-text-primary, #374151);
     }
 
     .header-redesigned__title,
     .module-card__title,
     .compact-settings__title {
-      color: var(--theme-text-primary);
+      color: var(--theme-text-primary, #374151);
       font-weight: 600;
     }
   }

@@ -4,7 +4,7 @@
  * AI_CONTEXT: This file contains the complete design token system for FluentFlow.
  * AI developers should ALWAYS use these tokens instead of hardcoded colors.
  * 
- * AI_USAGE_PATTERN: Use var(--theme-text-primary) for theme-aware styling
+ * AI_USAGE_PATTERN: Use var(--theme-text-primary, #374151) for theme-aware styling
  * AI_VALIDATION: All components must use design tokens from this system
  * 
  * Extracted from existing system components to maintain visual consistency
@@ -66,13 +66,13 @@
   /* === SETTINGS SYSTEM COLORS === */
   /* Improved UX with softer contrasts */
   --settings-bg: var(--bg-elevated);
-  --settings-border: var(--border-soft);
+  --settings-border: var(--border-soft, #f3f4f6);
   --settings-text-primary: var(--text-primary);
   --settings-text-secondary: var(--text-secondary);
   --settings-section-bg: #faf5ff;
   --settings-section-border: rgba(216, 180, 254, 0.5);
   --settings-input-bg: var(--bg-elevated);
-  --settings-input-border: var(--border-soft);
+  --settings-input-border: var(--border-soft, #f3f4f6);
   --settings-focus-ring: var(--primary-purple);
 
   /* === PRIMARY SYSTEM COLORS === */
@@ -187,7 +187,7 @@
   --settings-section-bg: var(--primary-purple-light);
   --settings-section-border: var(--primary-purple-hover);
   --settings-input-bg: var(--bg-subtle);
-  --settings-input-border: var(--border-soft);
+  --settings-input-border: var(--border-soft, #f3f4f6);
   --settings-focus-ring: var(--primary-purple);
 
   /* Enhancement Colors Dark Mode Adjustments */
@@ -257,7 +257,7 @@ html.light {
   --theme-bg-soft: var(--bg-soft);
 
   --theme-border-subtle: var(--border-subtle);
-  --theme-border-soft: var(--border-soft);
+  --theme-border-soft: var(--border-soft, #f3f4f6);
   --theme-border-medium: var(--border-medium);
   --theme-border-on-colored: var(--border-on-colored);
 
@@ -269,7 +269,7 @@ html.light {
   --theme-primary-purple-light: var(--primary-purple-light);
 
   --theme-success: var(--success);
-  --theme-error: var(--error);
+  --theme-error: var(--error, #ef4444);
   --theme-warning: var(--warning);
   --theme-info: var(--info);
   --theme-text-disabled: var(--text-tertiary);
@@ -289,7 +289,7 @@ html.dark {
   --theme-bg-soft: var(--bg-soft);
 
   --theme-border-subtle: var(--border-subtle);
-  --theme-border-soft: var(--border-soft);
+  --theme-border-soft: var(--border-soft, #f3f4f6);
   --theme-border-medium: var(--border-medium);
   --theme-border-on-colored: var(--border-on-colored);
 
@@ -301,7 +301,7 @@ html.dark {
   --theme-primary-purple-light: var(--primary-purple-light);
 
   --theme-success: var(--success);
-  --theme-error: var(--error);
+  --theme-error: var(--error, #ef4444);
   --theme-warning: var(--warning);
   --theme-info: var(--info);
   --theme-text-disabled: var(--text-tertiary);

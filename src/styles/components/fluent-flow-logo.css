@@ -28,7 +28,7 @@
 
 /* === GRADIENT STOPS === */
 .fluent-flow-logo__gradient-start {
-  stop-color: var(--theme-primary-blue);
+  stop-color: var(--theme-primary-blue, #3b82f6);
 }
 
 .fluent-flow-logo__gradient-end {

@@ -11,6 +11,7 @@ import ContentRenderer from '../ui/ContentRenderer';
 
 import '../../styles/components/matching-modal.css';
 import '../../styles/components/matching-component.css';
+import '../../styles/components/game-controls.css';
 import type { LearningModule } from '../../types';
 
 interface MatchingComponentProps {
@@ -450,20 +451,18 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
                     {selectedTerm.results.map((result: any, index: number) => (
                       <div
                         key={index}
-                        className={`matching-modal__result-card ${
-                          result.isCorrect
-                            ? 'matching-modal__result-card--correct'
-                            : 'matching-modal__result-card--incorrect'
-                        }`}
+                        className={`matching-modal__result-card ${result.isCorrect
+                          ? 'matching-modal__result-card--correct'
+                          : 'matching-modal__result-card--incorrect'
+                          }`}
                       >
                         <div className="matching-modal__result-card__header">
                           <h4 className="matching-modal__result-card__term">{result.left}</h4>
                           <span
-                            className={`matching-modal__result-card__status ${
-                              result.isCorrect
-                                ? 'matching-modal__result-card__status--correct'
-                                : 'matching-modal__result-card__status--incorrect'
-                            }`}
+                            className={`matching-modal__result-card__status ${result.isCorrect
+                              ? 'matching-modal__result-card__status--correct'
+                              : 'matching-modal__result-card__status--incorrect'
+                              }`}
                           >
                             {result.isCorrect ? '✓' : '✗'}
                           </span>
