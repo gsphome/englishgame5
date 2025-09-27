@@ -473,8 +473,6 @@ html.dark .sorting-component__actions {
   border-color: var(--theme-border-soft, #4b5563);
 }
 
-
-
 html.dark .sorting-component__sorted-item--default {
   background-color: var(--theme-bg-elevated, #1f2937);
   border-color: var(--theme-border-soft, #4b5563);

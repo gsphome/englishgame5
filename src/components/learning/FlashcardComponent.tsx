@@ -126,9 +126,7 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
   if (!randomizedFlashcards.length) {
     return (
       <div className="flashcard-component__no-data">
-        <p className="flashcard-component__no-data-text">
-          {t('learning.noFlashcardsAvailable')}
-        </p>
+        <p className="flashcard-component__no-data-text">{t('learning.noFlashcardsAvailable')}</p>
         <button onClick={() => setCurrentView('menu')} className="flashcard-component__no-data-btn">
           {t('navigation.mainMenu')}
         </button>

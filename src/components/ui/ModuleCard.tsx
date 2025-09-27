@@ -113,7 +113,7 @@ export const ModuleCard: React.FC<ModuleCardProps> = ({
           statusIcon: <Lock size={12} className="text-white" />,
           statusText: t('learning.requiresPrerequisites', undefined, {
             count: progression.missingPrerequisites.length,
-            plural: progression.missingPrerequisites.length !== 1 ? 's' : ''
+            plural: progression.missingPrerequisites.length !== 1 ? 's' : '',
           }),
           disabled: true,
         };
@@ -141,8 +141,15 @@ export const ModuleCard: React.FC<ModuleCardProps> = ({
       aria-label={`${module.name} - ${learningModeLabel} - Difficulty level ${difficultyLevel} - ${statusInfo.statusText}`}
       title={
         statusInfo.disabled
-          ? t('learning.exerciseIsLocked', undefined, { name: module.name, status: statusInfo.statusText })
-          : t('learning.startExercise', undefined, { mode: learningModeLabel.toLowerCase(), name: module.name, level: difficultyLevel })
+          ? t('learning.exerciseIsLocked', undefined, {
+              name: module.name,
+              status: statusInfo.statusText,
+            })
+          : t('learning.startExercise', undefined, {
+              mode: learningModeLabel.toLowerCase(),
+              name: module.name,
+              level: difficultyLevel,
+            })
       }
       disabled={statusInfo.disabled}
       aria-disabled={statusInfo.disabled}

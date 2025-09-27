@@ -38,9 +38,7 @@ const LearningProgressHeader: React.FC<LearningProgressHeaderProps> = ({
           }
         />
       </div>
-      {helpText && (
-        <p className="learning-progress-header__help-text">{helpText}</p>
-      )}
+      {helpText && <p className="learning-progress-header__help-text">{helpText}</p>}
     </div>
   );
 };

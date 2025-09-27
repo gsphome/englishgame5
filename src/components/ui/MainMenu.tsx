@@ -119,7 +119,7 @@ export const MainMenu: React.FC = () => {
             placeholder="Search modules, categories, or topics..."
           />
         </div>
-        
+
         <div className="main-menu__view-toggle">
           <button
             className={`main-menu__view-btn ${viewMode === 'progression' ? 'main-menu__view-btn--active' : ''}`}

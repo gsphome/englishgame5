@@ -47,9 +47,11 @@
   box-sizing: border-box;
 
   /* Homologated with game modes - exact same gradient */
-  background: linear-gradient(135deg,
-      var(--theme-bg-elevated, #ffffff) 0%,
-      var(--theme-bg-subtle, #f9fafb) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--theme-bg-elevated, #ffffff) 0%,
+    var(--theme-bg-subtle, #f9fafb) 100%
+  );
 
   /* Homologated with game modes - consistent styling */
 }
@@ -126,7 +128,7 @@
 }
 
 /* === CONTENT WRAPPER FOR PERFECT ALIGNMENT === */
-.main-menu>* {
+.main-menu > * {
   /* Ensure all direct children have consistent width */
   width: 100%;
   max-width: 100%;
@@ -172,10 +174,12 @@
   width: 100%;
 
   /* ENHANCED: Strong background differentiation */
-  background: linear-gradient(145deg,
-      var(--theme-bg-subtle) 0%,
-      var(--theme-bg-soft) 50%,
-      var(--theme-bg-elevated) 100%);
+  background: linear-gradient(
+    145deg,
+    var(--theme-bg-subtle) 0%,
+    var(--theme-bg-soft) 50%,
+    var(--theme-bg-elevated) 100%
+  );
 
   /* Apple-style Border Radius */
   border-radius: var(--radius-lg);
@@ -457,7 +461,7 @@
   }
 
   /* Enhanced touch targets for accessibility */
-  .main-menu__grid-container>* {
+  .main-menu__grid-container > * {
     min-height: 44px;
     min-width: 44px;
   }
@@ -487,7 +491,7 @@
 /* === UX ENHANCEMENTS: ACCESSIBILITY & VISUAL HIERARCHY === */
 
 /* Focus Management - Enhanced keyboard navigation */
-.main-menu__grid-container>*:focus-visible {
+.main-menu__grid-container > *:focus-visible {
   outline: 3px solid var(--theme-primary-blue);
   outline-offset: 2px;
   border-radius: var(--radius-md);
@@ -511,7 +515,6 @@
 
 /* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
-
   .main-menu,
   .main-menu__grid,
   .main-menu__search::before,
@@ -567,10 +570,12 @@ html.dark .main-menu {
 
 html.dark .main-menu__grid {
   /* ENHANCED: Strong dark mode grid differentiation */
-  background: linear-gradient(145deg,
-      var(--theme-bg-soft) 0%,
-      var(--theme-bg-elevated) 50%,
-      var(--theme-bg-subtle) 100%);
+  background: linear-gradient(
+    145deg,
+    var(--theme-bg-soft) 0%,
+    var(--theme-bg-elevated) 50%,
+    var(--theme-bg-subtle) 100%
+  );
 
   /* Enhanced dark mode border */
   border-color: var(--theme-border-medium);
@@ -603,7 +608,6 @@ html.dark .main-menu__grid::-webkit-scrollbar-thumb:hover {
 
 /* Print Styles */
 @media print {
-
   .main-menu__search,
   .main-menu__error-btn {
     display: none;
@@ -729,9 +733,8 @@ html.dark .main-menu__grid::-webkit-scrollbar-thumb:hover {
 /* === CRITICAL FIX: MÁXIMA ESPECIFICIDAD PARA SEARCH BAR === */
 /* Usando CSS layers para máxima especificidad y evitar conflictos jerárquicos */
 @layer overrides {
-
   /* Reglas con máxima especificidad para forzar el ancho correcto del search bar */
-  .main-menu>.main-menu__search {
+  .main-menu > .main-menu__search {
     width: 100% !important;
     max-width: 280px !important;
     margin-left: auto !important;
@@ -741,7 +744,7 @@ html.dark .main-menu__grid::-webkit-scrollbar-thumb:hover {
     justify-content: center !important;
   }
 
-  .main-menu>.main-menu__search>.search-bar {
+  .main-menu > .main-menu__search > .search-bar {
     width: 100% !important;
     max-width: 100% !important;
     margin: 0 !important;
@@ -751,19 +754,19 @@ html.dark .main-menu__grid::-webkit-scrollbar-thumb:hover {
 
   /* Responsive overrides con máxima especificidad */
   @media (max-width: 639px) {
-    .main-menu>.main-menu__search {
+    .main-menu > .main-menu__search {
       max-width: 240px !important;
     }
   }
 
   @media (min-width: 640px) and (max-width: 899px) {
-    .main-menu>.main-menu__search {
+    .main-menu > .main-menu__search {
       max-width: 300px !important;
     }
   }
 
   @media (min-width: 900px) {
-    .main-menu>.main-menu__search {
+    .main-menu > .main-menu__search {
       max-width: 320px !important;
     }
   }

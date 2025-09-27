@@ -82,7 +82,7 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
 
   const handleSave = () => {
     if (!hasChanges) return;
-    
+
     // Validate all settings before saving
     const validatedSettings = validateGameSettings(localGameSettings);
 

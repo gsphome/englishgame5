@@ -34,11 +34,11 @@ export const ProgressionDashboard: React.FC<ProgressionDashboardProps> = ({ onMo
   const getUnitTitle = (unit: number): string => {
     const titles = {
       1: 'Foundation',
-      2: 'Elementary', 
+      2: 'Elementary',
       3: 'Intermediate',
       4: 'Upper-Intermediate',
       5: 'Advanced',
-      6: 'Mastery'
+      6: 'Mastery',
     };
     return titles[unit as keyof typeof titles] || `Unit ${unit}`;
   };
@@ -46,11 +46,11 @@ export const ProgressionDashboard: React.FC<ProgressionDashboardProps> = ({ onMo
   const getLevelColor = (level: string): string => {
     const colors = {
       a1: '#10b981', // green
-      a2: '#3b82f6', // blue  
+      a2: '#3b82f6', // blue
       b1: '#f59e0b', // amber
       b2: '#ef4444', // red
       c1: '#8b5cf6', // violet
-      c2: '#ec4899'  // pink
+      c2: '#ec4899', // pink
     };
     return colors[level as keyof typeof colors] || '#6b7280';
   };
@@ -78,16 +78,26 @@ export const ProgressionDashboard: React.FC<ProgressionDashboardProps> = ({ onMo
                 <h3 className="progression-dashboard__next-name">{nextRecommended.name}</h3>
                 <p className="progression-dashboard__next-desc">{nextRecommended.description}</p>
                 <div className="progression-dashboard__next-meta">
-                  <span 
+                  <span
                     className="progression-dashboard__level-badge"
-                    style={{ backgroundColor: getLevelColor(Array.isArray(nextRecommended.level) ? nextRecommended.level[0] : nextRecommended.level) }}
+                    style={{
+                      backgroundColor: getLevelColor(
+                        Array.isArray(nextRecommended.level)
+                          ? nextRecommended.level[0]
+                          : nextRecommended.level
+                      ),
+                    }}
                   >
-                    {Array.isArray(nextRecommended.level) ? nextRecommended.level[0].toUpperCase() : nextRecommended.level.toUpperCase()}
+                    {Array.isArray(nextRecommended.level)
+                      ? nextRecommended.level[0].toUpperCase()
+                      : nextRecommended.level.toUpperCase()}
                   </span>
-                  <span className="progression-dashboard__time">~{nextRecommended.estimatedTime}min</span>
+                  <span className="progression-dashboard__time">
+                    ~{nextRecommended.estimatedTime}min
+                  </span>
                 </div>
               </div>
-              <button 
+              <button
                 className="progression-dashboard__continue-btn"
                 onClick={handleContinueLearning}
               >
@@ -107,19 +117,17 @@ export const ProgressionDashboard: React.FC<ProgressionDashboardProps> = ({ onMo
           .map(([unitStr, modules]) => {
             const unit = Number(unitStr);
             const unitStatus = progression.getUnitCompletionStatus(unit);
-            
+
             return (
               <div key={unit} className="progression-dashboard__unit">
                 <div className="progression-dashboard__unit-header">
-                  <h3 className="progression-dashboard__unit-title">
-                    {getUnitTitle(unit)}
-                  </h3>
+                  <h3 className="progression-dashboard__unit-title">{getUnitTitle(unit)}</h3>
                   <div className="progression-dashboard__unit-progress">
                     <span className="progression-dashboard__unit-stats">
                       {unitStatus.completed}/{unitStatus.total} completed
                     </span>
                     <div className="progression-dashboard__progress-bar">
-                      <div 
+                      <div
                         className="progression-dashboard__progress-fill"
                         style={{ width: `${unitStatus.percentage}%` }}
                       />
@@ -132,9 +140,9 @@ export const ProgressionDashboard: React.FC<ProgressionDashboardProps> = ({ onMo
                     const status = progression.getModuleStatus(module.id);
                     const isCompleted = isModuleCompleted(module.id);
                     const isNext = nextRecommended?.id === module.id;
-                    
+
                     return (
-                      <div 
+                      <div
                         key={module.id}
                         className={`progression-dashboard__module progression-dashboard__module--${status} ${isNext ? 'progression-dashboard__module--next' : ''}`}
                         onClick={() => handleModuleClick(module)}
@@ -148,19 +156,29 @@ export const ProgressionDashboard: React.FC<ProgressionDashboardProps> = ({ onMo
                             <Play className="progression-dashboard__icon progression-dashboard__icon--available" />
                           )}
                         </div>
-                        
+
                         <div className="progression-dashboard__module-content">
                           <h4 className="progression-dashboard__module-name">{module.name}</h4>
                           <p className="progression-dashboard__module-desc">{module.description}</p>
                           <div className="progression-dashboard__module-meta">
-                            <span 
+                            <span
                               className="progression-dashboard__level-badge"
-                              style={{ backgroundColor: getLevelColor(Array.isArray(module.level) ? module.level[0] : module.level) }}
+                              style={{
+                                backgroundColor: getLevelColor(
+                                  Array.isArray(module.level) ? module.level[0] : module.level
+                                ),
+                              }}
                             >
-                              {Array.isArray(module.level) ? module.level[0].toUpperCase() : module.level.toUpperCase()}
+                              {Array.isArray(module.level)
+                                ? module.level[0].toUpperCase()
+                                : module.level.toUpperCase()}
                             </span>
-                            <span className="progression-dashboard__module-type">{module.learningMode}</span>
-                            <span className="progression-dashboard__module-time">~{module.estimatedTime}min</span>
+                            <span className="progression-dashboard__module-type">
+                              {module.learningMode}
+                            </span>
+                            <span className="progression-dashboard__module-time">
+                              ~{module.estimatedTime}min
+                            </span>
                           </div>
                         </div>
 

@@ -304,7 +304,9 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
             correctCategory: category.name,
             userCategory: userCategory || t('learning.notSorted'),
             isCorrect,
-            explanation: wordData?.explanation || t('learning.belongsToCategory', undefined, { category: category.name }),
+            explanation:
+              wordData?.explanation ||
+              t('learning.belongsToCategory', undefined, { category: category.name }),
           };
         })
       ),

@@ -583,8 +583,8 @@ export const translations = {
 // Type-safe translation keys based on the JSON structure
 type NestedKeyOf<ObjectType extends object> = {
   [Key in keyof ObjectType & (string | number)]: ObjectType[Key] extends object
-  ? `${Key}` | `${Key}.${NestedKeyOf<ObjectType[Key]>}`
-  : `${Key}`;
+    ? `${Key}` | `${Key}.${NestedKeyOf<ObjectType[Key]>}`
+    : `${Key}`;
 }[keyof ObjectType & (string | number)];
 
 type TranslationKeys = NestedKeyOf<typeof translations.en>;

@@ -17,7 +17,8 @@
   /* === FONT FAMILIES === */
   /* AI_VALIDATION: FONT_FAMILIES - Consistent font stack across application */
   --font-primary: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Consolas, 'Liberation Mono', Menlo, monospace;
+  --font-mono:
+    ui-monospace, SFMono-Regular, 'SF Mono', Consolas, 'Liberation Mono', Menlo, monospace;
 
   /* === FONT SIZES - MODULAR SCALE === */
   /* AI_VALIDATION: FONT_SCALE - Harmonious scale based on 1rem base */
@@ -419,7 +420,6 @@
 
 /* High contrast mode support */
 @media (prefers-contrast: high) {
-
   .typography-h1,
   .typography-h2,
   .typography-h3,
@@ -455,7 +455,6 @@
 
 /* === PRINT STYLES === */
 @media print {
-
   .typography-h1,
   .typography-h2,
   .typography-h3,
@@ -481,7 +480,6 @@
 /* === DARK MODE ADJUSTMENTS === */
 /* AI_VALIDATION: DARK_MODE_TYPOGRAPHY - Enhanced contrast for dark themes */
 html.dark {
-
   /* Slightly increase font weights for better contrast on dark backgrounds */
   .typography-h1,
   .typography-h2,
