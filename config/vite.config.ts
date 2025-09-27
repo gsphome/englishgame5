@@ -32,9 +32,33 @@ export default defineConfig(({ mode }) => {
       emptyOutDir: true,
       // CSS chunk optimization for 500KB target compliance (pure CSS architecture)
       rollupOptions: {
+        // Ensure proper loading order for dependencies
+        external: [],
         output: {
-          // Manual CSS chunk splitting to stay under 500KB per chunk
+          // Ensure vendor chunk loads first (contains React)
+          chunkFileNames: (chunkInfo) => {
+            if (chunkInfo.name === 'vendor') {
+              return 'assets/vendor-[hash].js';
+            }
+            return 'assets/[name]-[hash].js';
+          },
+          // Manual chunk splitting with proper dependency order
           manualChunks: (id) => {
+            // CRITICAL: Keep React in main bundle to ensure synchronous loading
+            // Don't separate React into vendor chunk to avoid async loading issues
+            if (id.includes('node_modules/react') || 
+                id.includes('node_modules/react-dom')) {
+              return undefined; // Keep in main bundle
+            }
+            
+            // Other vendor dependencies can be separate
+            if (id.includes('node_modules/zustand') ||
+                id.includes('node_modules/@tanstack/react-query') ||
+                id.includes('node_modules/lucide-react') ||
+                id.includes('node_modules/fuse.js')) {
+              return 'vendor';
+            }
+            
             // Split CSS by type for better chunk management
             if (id.includes('src/styles/design-system/')) {
               return 'design-system';
@@ -45,6 +69,7 @@ export default defineConfig(({ mode }) => {
             if (id.includes('src/styles/components/')) {
               return 'components';
             }
+            
             // Keep learning components together for lazy loading
             if (id.includes('src/components/learning/')) {
               return 'learning-components';
@@ -53,6 +78,7 @@ export default defineConfig(({ mode }) => {
             if (id.includes('src/components/layout/') || id.includes('src/components/ui/')) {
               return 'ui-components';
             }
+            
             return undefined;
           },
           // Optimize CSS file naming for better caching and identification
@@ -74,9 +100,7 @@ export default defineConfig(({ mode }) => {
               return 'assets/[name]-[hash].css';
             }
             return 'assets/[name]-[hash][extname]';
-          },
-          // Optimize chunk size limits for CSS
-          chunkFileNames: 'assets/[name]-[hash].js'
+          }
         }
       },
       // Enable CSS code splitting for better chunk management
@@ -111,8 +135,17 @@ export default defineConfig(({ mode }) => {
       }
     },
     optimizeDeps: {
-      include: ['react', 'react-dom', 'zustand'],
-      exclude: []
+      // Pre-bundle critical dependencies to ensure they're available
+      include: [
+        'react', 
+        'react-dom', 
+        'react/jsx-runtime',
+        'zustand',
+        '@tanstack/react-query'
+      ],
+      exclude: [],
+      // Don't force optimization to allow proper bundling
+      force: false
     },
     server: {
       fs: {
