@@ -41,8 +41,6 @@ export const ProgressionDashboard: React.FC<ProgressionDashboardProps> = ({ onMo
   };
 
   const handleModuleClick = (module: LearningModule) => {
-    const _status = progression.getModuleStatus(module.id);
-    
     // Check if module is accessible (same logic as MainMenu)
     if (!progression.canAccessModule(module.id)) {
       const missingPrereqs = progression.getMissingPrerequisites(module.id);
