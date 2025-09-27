@@ -1,12 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SearchBar } from './SearchBar';
 import { ModuleCard } from './ModuleCard';
 import { ModuleGridSkeleton } from './LoadingSkeleton';
+import { ProgressionDashboard } from './ProgressionDashboard';
 import { useAllModules } from '../../hooks/useModuleData';
 import { useProgression } from '../../hooks/useProgression';
 import { useSearch } from '../../hooks/useSearch';
 import { useAppStore } from '../../stores/appStore';
 import { toast } from '../../stores/toastStore';
+import { List, BarChart3 } from 'lucide-react';
 import '../../styles/components/main-menu.css';
 
 export const MainMenu: React.FC = () => {
@@ -14,6 +16,7 @@ export const MainMenu: React.FC = () => {
   const progression = useProgression();
   const { query, setQuery, results } = useSearch(modules);
   const { setCurrentModule, setCurrentView } = useAppStore();
+  const [viewMode, setViewMode] = useState<'progression' | 'list'>('progression');
 
   // Show welcome toast when modules are loaded (only once per session)
   useEffect(() => {
@@ -107,31 +110,86 @@ export const MainMenu: React.FC = () => {
 
   return (
     <div className="main-menu">
-      <div className="main-menu__search">
-        <SearchBar
-          query={query}
-          onQueryChange={setQuery}
-          placeholder="Search modules, categories, or topics..."
-        />
+      {/* Header with view toggle */}
+      <div className="main-menu__header">
+        <div className="main-menu__search">
+          <SearchBar
+            query={query}
+            onQueryChange={setQuery}
+            placeholder="Search modules, categories, or topics..."
+          />
+        </div>
+        
+        <div className="main-menu__view-toggle">
+          <button
+            className={`main-menu__view-btn ${viewMode === 'progression' ? 'main-menu__view-btn--active' : ''}`}
+            onClick={() => setViewMode('progression')}
+            aria-label="Progression view"
+          >
+            <BarChart3 className="main-menu__view-icon" />
+            Progress
+          </button>
+          <button
+            className={`main-menu__view-btn ${viewMode === 'list' ? 'main-menu__view-btn--active' : ''}`}
+            onClick={() => setViewMode('list')}
+            aria-label="List view"
+          >
+            <List className="main-menu__view-icon" />
+            All Modules
+          </button>
+        </div>
       </div>
 
-      {results.length === 0 && query ? (
-        <div className="main-menu__no-results" role="status" aria-live="polite">
-          <p className="main-menu__no-results-text">
-            No modules found for "<strong>{query}</strong>"
-          </p>
-          <p className="main-menu__no-results-hint">
-            Try adjusting your search terms or browse all available modules.
-          </p>
-        </div>
+      {/* Content based on view mode and search */}
+      {query ? (
+        // Search results view
+        results.length === 0 ? (
+          <div className="main-menu__no-results" role="status" aria-live="polite">
+            <p className="main-menu__no-results-text">
+              No modules found for "<strong>{query}</strong>"
+            </p>
+            <p className="main-menu__no-results-hint">
+              Try adjusting your search terms or browse all available modules.
+            </p>
+          </div>
+        ) : (
+          <>
+            <div className="main-menu__grid">
+              <div
+                className="main-menu__grid-container"
+                role="grid"
+                aria-label={`${results.length} learning modules available`}
+              >
+                {results.map((module, index) => (
+                  <ModuleCard
+                    key={module.id}
+                    module={module}
+                    onClick={() => handleModuleClick(module)}
+                    tabIndex={0}
+                    role="gridcell"
+                    aria-posinset={index + 1}
+                    aria-setsize={results.length}
+                  />
+                ))}
+              </div>
+            </div>
+            <div className="main-menu__results-count" role="status" aria-live="polite">
+              Showing <strong>{results.length}</strong> of <strong>{modules.length}</strong> modules
+            </div>
+          </>
+        )
+      ) : viewMode === 'progression' ? (
+        // Progression dashboard view
+        <ProgressionDashboard onModuleSelect={handleModuleClick} />
       ) : (
+        // List view (original grid)
         <div className="main-menu__grid">
           <div
             className="main-menu__grid-container"
             role="grid"
-            aria-label={`${results.length} learning modules available`}
+            aria-label={`${modules.length} learning modules available`}
           >
-            {results.map((module, index) => (
+            {modules.map((module, index) => (
               <ModuleCard
                 key={module.id}
                 module={module}
@@ -139,16 +197,10 @@ export const MainMenu: React.FC = () => {
                 tabIndex={0}
                 role="gridcell"
                 aria-posinset={index + 1}
-                aria-setsize={results.length}
+                aria-setsize={modules.length}
               />
             ))}
           </div>
-        </div>
-      )}
-
-      {query && results.length > 0 && (
-        <div className="main-menu__results-count" role="status" aria-live="polite">
-          Showing <strong>{results.length}</strong> of <strong>{modules.length}</strong> modules
         </div>
       )}
     </div>

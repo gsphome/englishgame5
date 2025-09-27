@@ -92,7 +92,7 @@
 .sorting-component__drop-zone {
   background-color: var(--theme-bg-subtle, #f9fafb);
   border: 2px dashed var(--theme-border-soft, #f3f4f6);
-  border-radius: 0.5rem;
+  border-radius: var(--radius-md);
   padding: 0.75rem;
   min-height: 6rem;
   transition: all 0.2s ease;
@@ -136,7 +136,7 @@
 
 .sorting-component__category-status {
   padding: 0.125rem 0.375rem;
-  border-radius: 0.25rem;
+  border-radius: var(--radius-sm);
   font-size: 0.75rem;
   font-weight: 500;
 }

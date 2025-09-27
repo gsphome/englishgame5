@@ -58,9 +58,7 @@ html.dark {
 .header-redesigned {
   background-color: var(--header-bg);
   border-bottom: 1px solid var(--header-border);
-  box-shadow:
-    0 1px 3px 0 rgba(0, 0, 0, 0.1),
-    0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  box-shadow: var(--shadow-subtle);
   min-height: 64px;
   transition: all 0.3s ease-in-out;
   position: relative;
@@ -69,9 +67,7 @@ html.dark {
 
 /* Enhanced shadow and border for dark mode */
 .dark .header-redesigned {
-  box-shadow:
-    0 1px 3px 0 rgba(0, 0, 0, 0.3),
-    0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow-medium);
   border-bottom: 1px solid var(--header-border);
   background: linear-gradient(180deg, #1f2937 0%, #1a202c 100%);
 }
@@ -164,7 +160,7 @@ html.dark {
   height: 40px;
   background-color: var(--theme-bg-elevated);
   border: 1px solid var(--theme-border-soft);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-subtle);
 }
 
 .header-redesigned__title {
@@ -197,7 +193,7 @@ html.dark {
   height: 24px;
   background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
   color: white;
-  border-radius: 0.25rem;
+  border-radius: var(--radius-sm);
   font-size: var(--text-xs, 0.75rem);
   font-weight: var(--font-semibold, 600);
   text-transform: uppercase;
@@ -343,7 +339,7 @@ html.dark {
 .header-redesigned__control-btn--primary:hover {
   background-color: var(--header-button-active-bg);
   border-color: var(--header-icon-hover);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-medium);
 }
 
 /* Deprecated - using --primary for consistency */
@@ -480,7 +476,7 @@ html.dark {
   background-color: var(--menu-item-hover);
   color: var(--header-text-primary);
   transform: translateX(4px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-medium);
 }
 
 .header-side-menu__item:active {
@@ -495,7 +491,7 @@ html.dark {
 
 /* Enhanced shadow for dark mode menu items */
 .dark .header-side-menu__item:hover {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--shadow-medium);
 }
 
 /* Enhanced Menu Icons and Text */

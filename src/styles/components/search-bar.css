@@ -23,7 +23,7 @@
   background: linear-gradient(145deg, var(--theme-bg-elevated) 0%, var(--theme-bg-subtle) 100%);
 
   /* Apple-style Border Radius */
-  border-radius: 0.875rem;
+  border-radius: var(--radius-lg);
 
   /* Enhanced Apple Border for better visibility */
   border: 1.5px solid var(--theme-border-medium);
@@ -115,10 +115,12 @@
 .search-bar__input::placeholder {
   color: var(--theme-text-tertiary);
   font-weight: 400;
+  font-size: 0.75rem;
 }
 
 .search-bar__input:focus::placeholder {
   color: var(--theme-text-secondary);
+  font-size: 0.75rem;
 }
 
 .search-bar__input:disabled {
@@ -173,12 +175,20 @@
 @media (max-width: 640px) {
   .search-bar {
     max-width: 100%;
-    border-radius: 0.5rem;
+    border-radius: var(--radius-md);
   }
 
   .search-bar__input {
     font-size: 1rem; /* Prevent zoom on iOS */
     padding: 0.625rem 3rem 0.625rem 2.75rem;
+  }
+
+  .search-bar__input::placeholder {
+    font-size: 0.6875rem; /* Smaller on mobile */
+  }
+
+  .search-bar__input:focus::placeholder {
+    font-size: 0.6875rem; /* Consistent on mobile */
   }
 
   .search-bar__icon {
@@ -210,6 +220,14 @@
   .search-bar__input {
     padding: 0.75rem 3.5rem 0.75rem 3rem;
     font-size: 1rem;
+  }
+
+  .search-bar__input::placeholder {
+    font-size: 0.75rem; /* Smaller on desktop too */
+  }
+
+  .search-bar__input:focus::placeholder {
+    font-size: 0.75rem; /* Consistent on desktop */
   }
 
   .search-bar__icon {
@@ -255,7 +273,7 @@
 .search-bar__clear:focus-visible {
   outline: 2px solid var(--theme-primary-blue);
   outline-offset: 2px;
-  border-radius: 0.25rem;
+  border-radius: var(--radius-sm);
 }
 
 /* === HIGH CONTRAST MODE SUPPORT === */
@@ -431,14 +449,14 @@ html.dark .main-menu__search:focus-within .search-bar {
 /* Perfect responsive integration */
 @media (max-width: 639px) {
   .main-menu__search .search-bar {
-    border-radius: 0.75rem;
+    border-radius: var(--radius-lg);
     max-width: 100%;
   }
 }
 
 @media (min-width: 640px) and (max-width: 899px) {
   .main-menu__search .search-bar {
-    border-radius: 0.875rem;
+    border-radius: var(--radius-lg);
   }
 }
 

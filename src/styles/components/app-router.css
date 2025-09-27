@@ -79,7 +79,7 @@
 
 .app-router__error-btn {
   padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
+  border-radius: var(--radius-md);
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -120,7 +120,7 @@
   padding: 0.5rem 1rem;
   background-color: var(--primary-blue);
   color: white;
-  border-radius: 0.5rem;
+  border-radius: var(--radius-md);
   border: none;
   cursor: pointer;
   transition: background-color 0.2s ease;

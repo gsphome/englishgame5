@@ -190,7 +190,7 @@
     .sorting-component__item {
       background-color: var(--theme-bg-elevated);
       border-color: var(--theme-border-soft);
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+      box-shadow: var(--shadow-subtle);
       /* Touch target optimization */
       min-height: 44px;
     }

@@ -148,7 +148,7 @@
 }
 
 .compact-profile__section:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-medium);
   border-color: var(--theme-primary-blue-light, #dbeafe);
 }
 
@@ -381,7 +381,7 @@
 
 .compact-profile__category:hover {
   border-color: var(--theme-primary-blue-light, #dbeafe);
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+  box-shadow: var(--shadow-interactive);
   transform: translateY(-1px);
 }
 

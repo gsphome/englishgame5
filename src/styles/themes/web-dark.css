@@ -46,13 +46,13 @@
       background-color: var(--theme-bg-elevated);
       color: var(--theme-text-primary);
       border-color: var(--theme-border-soft);
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+      box-shadow: var(--shadow-subtle);
       transition: all 0.2s ease;
     }
 
     .module-card:hover {
       border-color: var(--theme-border-medium);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      box-shadow: var(--shadow-strong);
     }
 
     .module-card__title,
@@ -132,7 +132,7 @@
     .sorting-component__item {
       background-color: var(--theme-bg-elevated);
       border-color: var(--theme-border-soft);
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+      box-shadow: var(--shadow-subtle);
     }
 
     .quiz-component__option--selected,
@@ -164,7 +164,7 @@
       background-color: var(--theme-bg-elevated);
       color: var(--theme-text-primary);
       border-color: var(--theme-border-soft);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      box-shadow: var(--shadow-strong);
     }
 
     /* === PROGRESS DASHBOARD === */

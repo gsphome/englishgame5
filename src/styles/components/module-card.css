@@ -2,9 +2,9 @@
 
 /* CSS Variables for Consistent Design System */
 :root {
-  --card-border-radius: 0.75rem;
-  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --card-shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --card-border-radius: var(--radius-lg);
+  --card-shadow: var(--shadow-subtle);
+  --card-shadow-hover: var(--shadow-medium);
   --card-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   --card-width-mobile: 100px;
   --card-height-mobile: 85px;
@@ -31,7 +31,7 @@
 
 .module-card:hover {
   box-shadow: var(--card-shadow-hover);
-  transform: translateY(-2px);
+  /* Removed translateY - too distracting */
   border-color: rgba(255, 255, 255, 0.2);
 }
 
@@ -134,7 +134,7 @@
   color: rgba(255, 255, 255, 0.9);
   background-color: rgba(255, 255, 255, 0.15);
   padding: 0.0625rem 0.1875rem;
-  border-radius: 0.1875rem;
+  border-radius: var(--radius-sm);
   flex-shrink: 0;
   transition: all 0.2s ease-in-out;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
@@ -304,7 +304,7 @@
   justify-content: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: all 0.2s ease-in-out;
-  z-index: 10;
+  z-index: 2;
 }
 
 /* BEM-Like Status Modifiers */
@@ -357,7 +357,7 @@
   justify-content: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: all 0.2s ease-in-out;
-  z-index: 10;
+  z-index: 2;
 }
 
 .module-card__status-icon svg {
@@ -380,7 +380,7 @@
   border-radius: 50%;
   color: rgba(255, 255, 255, 0.9);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  z-index: 10;
+  z-index: 2;
 }
 
 /* Removed obsolete styles - now using structured BEM-Like approach */
