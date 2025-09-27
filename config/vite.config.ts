@@ -9,10 +9,10 @@ const __dirname = dirname(__filename);
 export default defineConfig(({ mode }) => {
   // Load env file from config directory based on mode
   const env = loadEnv(mode, __dirname, '');
-  
+
   // Set NODE_ENV properly based on mode (Vite best practice)
   const isProduction = mode === 'production';
-  
+
   return {
     plugins: [
       react({
@@ -46,19 +46,19 @@ export default defineConfig(({ mode }) => {
           manualChunks: (id) => {
             // CRITICAL: Keep React in main bundle to ensure synchronous loading
             // Don't separate React into vendor chunk to avoid async loading issues
-            if (id.includes('node_modules/react') || 
-                id.includes('node_modules/react-dom')) {
+            if (id.includes('node_modules/react') ||
+              id.includes('node_modules/react-dom')) {
               return undefined; // Keep in main bundle
             }
-            
+
             // Other vendor dependencies can be separate
             if (id.includes('node_modules/zustand') ||
-                id.includes('node_modules/@tanstack/react-query') ||
-                id.includes('node_modules/lucide-react') ||
-                id.includes('node_modules/fuse.js')) {
+              id.includes('node_modules/@tanstack/react-query') ||
+              id.includes('node_modules/lucide-react') ||
+              id.includes('node_modules/fuse.js')) {
               return 'vendor';
             }
-            
+
             // Split CSS by type for better chunk management
             if (id.includes('src/styles/design-system/')) {
               return 'design-system';
@@ -69,7 +69,7 @@ export default defineConfig(({ mode }) => {
             if (id.includes('src/styles/components/')) {
               return 'components';
             }
-            
+
             // Keep learning components together for lazy loading
             if (id.includes('src/components/learning/')) {
               return 'learning-components';
@@ -78,7 +78,7 @@ export default defineConfig(({ mode }) => {
             if (id.includes('src/components/layout/') || id.includes('src/components/ui/')) {
               return 'ui-components';
             }
-            
+
             return undefined;
           },
           // Optimize CSS file naming for better caching and identification
@@ -116,18 +116,7 @@ export default defineConfig(({ mode }) => {
       // CSS optimization settings for pure CSS architecture
       devSourcemap: mode === 'development',
       // Disable CSS modules - using pure BEM methodology
-      modules: false,
-      // CSS preprocessing optimizations for pure CSS
-      preprocessorOptions: {
-        css: {
-          // Remove charset declarations to reduce bundle size
-          charset: false,
-          // Optimize CSS output for pure CSS architecture
-          additionalData: ''
-        }
-      },
-      // CSS transformer optimizations
-      transformer: 'postcss'
+      modules: false
     },
     resolve: {
       alias: {
@@ -137,8 +126,8 @@ export default defineConfig(({ mode }) => {
     optimizeDeps: {
       // Pre-bundle critical dependencies to ensure they're available
       include: [
-        'react', 
-        'react-dom', 
+        'react',
+        'react-dom',
         'react/jsx-runtime',
         'zustand',
         '@tanstack/react-query'

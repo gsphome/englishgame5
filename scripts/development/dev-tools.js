@@ -111,7 +111,8 @@ const pipelines = {
     commands: [
       { cmd: 'npm run build', desc: 'Build application' },
       { cmd: 'npm run build:verify', desc: 'Verify build output' },
-      { cmd: 'npm run build:size-check', desc: 'Bundle size check' }
+      { cmd: 'npm run build:size-check', desc: 'Bundle size check' },
+      { cmd: 'npm run build:validate-production', desc: 'Validate production readiness' }
     ],
     color: colors.green
   }
