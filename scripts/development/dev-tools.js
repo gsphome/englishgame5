@@ -329,8 +329,9 @@ async function runWorkflow(workflowKey) {
       }
 
       console.log('');
+      log('🎯 Local: ✅ | Remote: ⏳ (Est. 3-5min)', colors.bright + colors.green);
+      log('🔄 Monitor: npm run gh:watch', colors.cyan);
       log('🌐 Live: https://gsphome.github.io/englishgame5/', colors.cyan);
-      log('📊 Status: npm run gh:watch', colors.cyan);
       console.log('='.repeat(50));
     }
   } else {

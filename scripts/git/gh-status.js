@@ -380,6 +380,27 @@ function showCurrentStatus() {
 }
 
 /**
+ * Get adaptive polling interval based on workflow states
+ */
+function getAdaptiveInterval(runs, latestCommit) {
+  const currentRuns = runs.filter(run => run.headSha === latestCommit);
+  
+  if (currentRuns.length === 0) return 30;
+  
+  const states = currentRuns.map(run => run.status);
+  
+  // Prioritize most urgent state
+  if (states.includes('queued') || states.includes('requested')) {
+    return 10; // Check frequently when queued
+  }
+  if (states.includes('in_progress')) {
+    return 15; // Medium frequency when running
+  }
+  
+  return 30; // Default interval
+}
+
+/**
  * Check if there are active workflows (running or pending)
  */
 function hasActiveWorkflows() {
@@ -410,8 +431,8 @@ function hasActiveWorkflows() {
 /**
  * Watch workflow status (polling) - stops automatically when all workflows complete
  */
-function watchStatus(interval = 30) {
-  logInfo(`👀 Watching GitHub Actions (${interval}s intervals)`);
+function watchStatus(baseInterval = 30) {
+  logInfo(`👀 Watching GitHub Actions (adaptive polling)`);
   logInfo('Press Ctrl+C to stop watching manually\n');
   
   let iteration = 0;
@@ -431,10 +452,8 @@ function watchStatus(interval = 30) {
       
       // Stop after just 1 check with no activity (faster exit)
       if (consecutiveNoActivity >= 1) {
-        logInfo('\n🏁 All workflows completed. Stopping watch automatically.');
-        logInfo('💡 Use "npm run gh:current" to check final status');
-        logInfo('💡 Use "npm run deploy:status" to check deployment status');
-        logInfo('💡 Use "npm run gh:watch" to start watching again');
+        logInfo('\n🏁 All workflows completed ✅');
+        logInfo('🚀 Check deployment: npm run deploy:status');
         
         // Show final status before stopping
         showCurrentStatus();
@@ -448,13 +467,18 @@ function watchStatus(interval = 30) {
     
     // Double-check: if showCurrentStatus also reports no activity, stop immediately
     if (!result.hasActivity && !hasActivity) {
-      logInfo('\n🏁 Confirmed: All workflows completed. Stopping watch.');
-      logInfo('💡 Use "npm run deploy:status" to check deployment status');
+      logInfo('\n🏁 All workflows completed ✅');
+      logInfo('🚀 Check deployment: npm run deploy:status');
       return; // Stop watching immediately
     }
     
-    // Continue watching
-    setTimeout(watch, interval * 1000);
+    // Continue watching with adaptive interval
+    const runs = getWorkflowRuns(20);
+    const latestCommit = getLatestCommit();
+    const adaptiveInterval = getAdaptiveInterval(runs, latestCommit);
+    
+    logInfo(`\n⏰ Next check in ${adaptiveInterval}s (adaptive polling)`);
+    setTimeout(watch, adaptiveInterval * 1000);
   };
   
   // Initial check
@@ -467,14 +491,20 @@ function watchStatus(interval = 30) {
     // Show current status and stop
     const result = showCurrentStatus();
     
-    logInfo('\n🏁 No active workflows found. Watch mode not needed.');
-    logInfo('💡 Use "npm run deploy:status" to check deployment status');
-    logInfo('💡 Use "npm run gh:watch" again if new workflows start');
+    logInfo('\n🏁 No active workflows found. All completed ✅');
+    logInfo('🚀 Check deployment: npm run deploy:status');
     return; // Don't start watching if there's no activity
   } else {
-    logInfo('🔄 Active workflows detected. Starting watch mode...\n');
+    logInfo('🔄 Active workflows detected. Starting adaptive watch mode...\n');
     const result = showCurrentStatus();
-    setTimeout(watch, interval * 1000);
+    
+    // Use adaptive interval for first check
+    const runs = getWorkflowRuns(20);
+    const latestCommit = getLatestCommit();
+    const adaptiveInterval = getAdaptiveInterval(runs, latestCommit);
+    
+    logInfo(`⏰ Next check in ${adaptiveInterval}s (adaptive polling)`);
+    setTimeout(watch, adaptiveInterval * 1000);
   }
 }
 

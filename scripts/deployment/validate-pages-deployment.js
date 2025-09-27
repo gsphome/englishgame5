@@ -227,24 +227,33 @@ async function checkActiveWorkflows() {
 }
 
 /**
- * Test if the deployed site is accessible
+ * Test if the deployed site is accessible with performance metrics
  */
 async function testSiteAccessibility() {
   try {
     logInfo(`Testing site accessibility: ${PAGES_URL}`);
 
-    const curlCommand = `curl -s -o /dev/null -w "%{http_code}" --max-time 10 "${PAGES_URL}"`;
-    const httpCode = execSync(curlCommand, { encoding: 'utf8' }).trim();
+    // Enhanced curl command with performance metrics
+    const curlCommand = `curl -s -o /dev/null -w "%{http_code}|%{time_total}|%{size_download}" --max-time 10 "${PAGES_URL}"`;
+    const response = execSync(curlCommand, { encoding: 'utf8' }).trim();
+    
+    const [httpCode, timeTotal, sizeDownload] = response.split('|');
+    const responseTimeMs = Math.round(parseFloat(timeTotal) * 1000);
+    const sizeKB = Math.round(parseInt(sizeDownload) / 1024);
 
     return {
       accessible: httpCode === '200',
-      httpCode: httpCode
+      httpCode: httpCode,
+      responseTime: responseTimeMs,
+      size: sizeKB
     };
   } catch (error) {
     logError(`Failed to test site accessibility: ${error.message}`);
     return {
       accessible: false,
-      httpCode: 'ERROR'
+      httpCode: 'ERROR',
+      responseTime: null,
+      size: null
     };
   }
 }
@@ -351,11 +360,13 @@ async function validateDeployment() {
     logInfo(`⚡ Active: ${workflowNames}`);
   }
 
-  // Test site accessibility
+  // Test site accessibility with performance metrics
   const accessibility = await testSiteAccessibility();
 
   if (accessibility.accessible) {
-    logSuccess(`🌐 Site accessible (HTTP ${accessibility.httpCode})`);
+    const perfInfo = accessibility.responseTime ? ` | ${accessibility.responseTime}ms` : '';
+    const sizeInfo = accessibility.size ? ` | ${accessibility.size}KB` : '';
+    logSuccess(`🌐 Site accessible (HTTP ${accessibility.httpCode}${perfInfo}${sizeInfo})`);
   } else {
     logError(`🌐 Site not accessible (HTTP ${accessibility.httpCode})`);
   }
@@ -399,9 +410,23 @@ async function validateDeployment() {
 
   console.log('='.repeat(40));
 
-  // Add final message with useful commands
-  logInfo('🌐 Live: https://gsphome.github.io/englishgame5/');
-  logInfo('📊 Monitor: npm run gh:watch');
+  // Enhanced final message with temporal context
+  logInfo('🌐 https://gsphome.github.io/englishgame5/');
+  
+  // Add deployment timing context
+  if (deploymentInfo?.deployment) {
+    const deployTime = formatTimestamp(deploymentInfo.deployment.created_at);
+    const timeAgo = deployTime.split('(')[1]?.replace(')', '') || 'recently';
+    logInfo(`⏰ Last deploy: ${timeAgo}`);
+  }
+  
+  // Add performance context if available
+  if (accessibility.accessible && accessibility.responseTime) {
+    const perfStatus = accessibility.responseTime < 200 ? '⚡ Fast' : 
+                      accessibility.responseTime < 500 ? '🟡 Good' : '🔴 Slow';
+    logInfo(`${perfStatus} response: ${accessibility.responseTime}ms`);
+  }
+  
   console.log('='.repeat(40));
 
   return overallStatus === 'HEALTHY' || overallStatus === 'ACCESSIBLE' || overallStatus === 'UPDATING';
