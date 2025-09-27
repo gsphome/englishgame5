@@ -11,7 +11,7 @@ interface ProgressionDashboardProps {
   onModuleSelect: (module: LearningModule) => void;
 }
 
-export const ProgressionDashboard: React.FC<ProgressionDashboardProps> = ({ onModuleSelect }) => {
+export const ProgressionDashboard: React.FC<ProgressionDashboardProps> = ({ onModuleSelect: _onModuleSelect }) => {
   const { setCurrentModule, setCurrentView } = useAppStore();
   const { isModuleCompleted } = useProgressStore();
   const progression = useProgression();
@@ -41,7 +41,7 @@ export const ProgressionDashboard: React.FC<ProgressionDashboardProps> = ({ onMo
   };
 
   const handleModuleClick = (module: LearningModule) => {
-    const status = progression.getModuleStatus(module.id);
+    const _status = progression.getModuleStatus(module.id);
     
     // Check if module is accessible (same logic as MainMenu)
     if (!progression.canAccessModule(module.id)) {
