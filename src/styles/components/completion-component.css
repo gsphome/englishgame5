@@ -59,7 +59,7 @@
 }
 
 .completion-component__no-data-btn {
-  padding: 0.5rem 1rem;
+  padding: var(--padding-md) var(--padding-xl);
   background-color: var(--theme-primary-blue, #3b82f6);
   color: white;
   border-radius: var(--radius-md);
@@ -154,7 +154,7 @@
   min-width: 120px;
   max-width: 200px;
   margin: 0 0.5rem;
-  padding: 0.375rem 0.75rem;
+  padding: var(--padding-sm) var(--padding-lg);
   border: 2px solid;
   border-radius: var(--radius-md);
   font-size: 1rem;
@@ -291,7 +291,7 @@
 /* === MOBILE OPTIMIZATIONS === */
 @media (max-width: 768px) {
   .completion-component__container {
-    padding: 0.375rem;
+    padding: var(--padding-sm);
   }
 
   .completion-component__exercise-card {

@@ -26,7 +26,7 @@
   /* Visual styling with design tokens */
   background-color: var(--theme-bg-elevated);
   border: 1px solid var(--theme-border-soft);
-  border-radius: 0.5rem;
+  border-radius: var(--radius-md);
   padding: 1.5rem;
 
   /* Typography */
@@ -76,13 +76,13 @@
   /* Accessibility: Minimum 44px touch target */
   min-height: 44px;
   min-width: 44px;
-  padding: 0.75rem 1rem;
+  padding: var(--padding-lg) var(--padding-xl);
 
   /* Visual styling */
   background-color: var(--theme-primary-blue);
   color: var(--theme-text-on-colored);
   border: none;
-  border-radius: 0.375rem;
+  border-radius: var(--radius-sm);
 
   /* Typography */
   font-size: 0.875rem;

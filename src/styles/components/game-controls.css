@@ -9,7 +9,7 @@
   padding: 0.5rem;
   background-color: var(--theme-bg-elevated, #ffffff);
   border-radius: var(--radius-lg);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-medium);
   border: 1px solid var(--theme-border-soft, #f3f4f6);
   margin-top: 0.5rem;
   flex-wrap: wrap;
@@ -81,12 +81,12 @@
     var(--theme-primary-purple, #8b5cf6) 100%
   );
   color: white;
-  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
+  box-shadow: var(--shadow-interactive);
 }
 
 .game-controls__primary-btn--blue:hover:not(:disabled) {
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+  box-shadow: var(--shadow-interactive);
 }
 
 .game-controls__primary-btn--green {
@@ -96,12 +96,12 @@
     var(--theme-primary-blue, #3b82f6) 100%
   );
   color: white;
-  box-shadow: 0 2px 4px rgba(16, 185, 129, 0.3);
+  box-shadow: var(--shadow-interactive);
 }
 
 .game-controls__primary-btn--green:hover:not(:disabled) {
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+  box-shadow: var(--shadow-interactive);
 }
 
 .game-controls__primary-btn--purple {
@@ -111,12 +111,12 @@
     var(--theme-primary-blue, #3b82f6) 100%
   );
   color: white;
-  box-shadow: 0 2px 4px rgba(139, 92, 246, 0.3);
+  box-shadow: var(--shadow-interactive);
 }
 
 .game-controls__primary-btn--purple:hover:not(:disabled) {
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4);
+  box-shadow: var(--shadow-interactive);
 }
 
 .game-controls__primary-btn--orange {

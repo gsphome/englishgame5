@@ -113,7 +113,7 @@ html.dark .compact-settings__container {
   align-items: center;
   justify-content: center;
   gap: 0.25rem;
-  padding: 0.375rem;
+  padding: var(--padding-sm);
   background: none;
   border: none;
   cursor: pointer;
@@ -145,7 +145,7 @@ html.dark .compact-settings__container {
 }
 
 .compact-settings__content {
-  padding: 0.75rem;
+  padding: var(--padding-lg);
   flex: 1;
   overflow: visible;
   height: 230px;
@@ -188,7 +188,7 @@ html.dark .compact-settings__container {
 }
 
 .compact-settings__select {
-  padding: 0.375rem 0.5rem;
+  padding: var(--padding-sm) var(--padding-md);
   border: 1px solid var(--theme-border-soft);
   border-radius: var(--radius-sm);
   background-color: var(--theme-bg-elevated);
@@ -200,7 +200,7 @@ html.dark .compact-settings__container {
 .compact-settings__field--dev {
   background: linear-gradient(135deg, rgba(245, 158, 11, 0.06) 0%, rgba(251, 191, 36, 0.04) 100%);
   padding: 0.5rem 0.75rem;
-  border-radius: 0.5rem;
+  border-radius: var(--radius-md);
   border: 1px solid rgba(245, 158, 11, 0.15);
   position: relative;
   overflow: hidden;
@@ -272,7 +272,7 @@ html.dark .compact-settings__container {
   display: flex;
   flex-direction: column;
   gap: 0.1875rem;
-  padding: 0.375rem;
+  padding: var(--padding-sm);
   background-color: var(--theme-bg-subtle);
   border-radius: var(--radius-sm);
 }

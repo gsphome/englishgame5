@@ -47,7 +47,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.5rem;
+  padding: var(--padding-md);
   background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
   position: relative;
   overflow: hidden;
@@ -141,8 +141,8 @@
 /* === SECTIONS === */
 .compact-profile__section {
   background: var(--theme-bg-elevated, #ffffff);
-  border-radius: 0.375rem;
-  padding: 0.25rem;
+  border-radius: var(--radius-md);
+  padding: var(--padding-xs);
   border: 1px solid var(--theme-border-soft, #f3f4f6);
   box-shadow: var(--shadow-subtle);
 }
@@ -211,10 +211,10 @@
 
 .compact-profile__input {
   width: 100%;
-  padding: 0.375rem 0.5rem;
+  padding: var(--padding-sm) var(--padding-md);
   background-color: var(--theme-bg-elevated, #ffffff);
   border: 1px solid var(--theme-border-soft, #f3f4f6);
-  border-radius: 0.25rem;
+  border-radius: var(--radius-sm);
   font-size: 0.75rem;
   color: var(--theme-text-primary, #111827);
 }
@@ -265,10 +265,10 @@
 
 .compact-profile__select {
   width: 100%;
-  padding: 0.375rem 0.5rem;
+  padding: var(--padding-sm) var(--padding-md);
   background-color: var(--theme-bg-elevated, #ffffff);
   border: 1px solid var(--theme-border-soft, #f3f4f6);
-  border-radius: 0.25rem;
+  border-radius: var(--radius-sm);
   font-size: 0.75rem;
   color: var(--theme-text-primary, #111827);
   cursor: pointer;
@@ -305,7 +305,7 @@
     #8b5cf6 75%,
     #dc2626 100%
   );
-  border-radius: 0.25rem;
+  border-radius: var(--radius-sm);
   appearance: none;
   cursor: pointer;
   outline: none;
@@ -350,7 +350,7 @@
   padding: 0.5rem 0.75rem;
   background-color: rgba(239, 68, 68, 0.05);
   border: 1px solid rgba(239, 68, 68, 0.2);
-  border-radius: 0.375rem;
+  border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -372,10 +372,10 @@
   display: flex;
   align-items: center;
   gap: 0.375rem;
-  padding: 0.375rem;
+  padding: var(--padding-sm);
   background-color: var(--theme-bg-subtle, #f9fafb);
   border: 1px solid var(--theme-border-soft, #f3f4f6);
-  border-radius: 0.25rem;
+  border-radius: var(--radius-sm);
   cursor: pointer;
 }
 
@@ -397,7 +397,7 @@
   color: var(--theme-primary-blue, #3b82f6);
   background-color: var(--theme-bg-elevated, #ffffff);
   border: 2px solid var(--theme-border-soft, #f3f4f6);
-  border-radius: 0.375rem;
+  border-radius: var(--radius-md);
   cursor: pointer;
   transition: all 0.2s ease;
   position: relative;
@@ -425,10 +425,10 @@
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  padding: 0.25rem;
+  padding: var(--padding-xs);
   background-color: rgba(59, 130, 246, 0.05);
   border: 1px solid var(--theme-primary-blue-light, #dbeafe);
-  border-radius: 0.25rem;
+  border-radius: var(--radius-sm);
   cursor: pointer;
 }
 

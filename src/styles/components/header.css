@@ -432,7 +432,7 @@ html.dark {
 
 /* Menu Content */
 .header-side-menu__content {
-  padding: 1rem;
+  padding: var(--padding-xl);
 }
 
 .header-side-menu__content > * + * {

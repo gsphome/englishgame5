@@ -2,7 +2,7 @@
 
 /* === CLOSE BUTTON STANDARD === */
 .modal__close-btn {
-  padding: 0.375rem;
+  padding: var(--padding-sm);
   color: var(--theme-text-tertiary, #9ca3af);
   background-color: transparent;
   border: none;
@@ -26,7 +26,7 @@
 
 /* === PRIMARY BUTTON STANDARD === */
 .modal__btn {
-  padding: 0.375rem 0.75rem;
+  padding: var(--padding-sm) var(--padding-lg);
   border-radius: var(--radius-sm);
   font-weight: 500;
   font-size: 0.75rem;
@@ -48,7 +48,7 @@
 
 .modal__btn--primary:hover {
   background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-interactive);
   transform: translateY(-1px);
 }
 
@@ -66,12 +66,12 @@
 .modal__btn--danger {
   background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
   color: #ffffff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-subtle);
 }
 
 .modal__btn--danger:hover {
   background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-interactive);
   transform: translateY(-1px);
 }
 

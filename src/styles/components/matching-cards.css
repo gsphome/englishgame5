@@ -3,11 +3,11 @@
 /* Base Matching Card */
 .matching-cards__card {
   width: 100%;
-  padding: 0.75rem;
+  padding: var(--padding-lg);
   font-size: 0.875rem;
   text-align: left;
   border-width: 2px;
-  border-radius: 0.75rem;
+  border-radius: var(--radius-lg);
   transition: all 0.2s ease;
   font-weight: 500;
   cursor: pointer;

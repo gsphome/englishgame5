@@ -48,7 +48,7 @@
 .app-router__error-container {
   background-color: var(--bg-error-subtle, #fef2f2);
   border: 2px solid var(--border-error, #fecaca);
-  border-radius: 0.75rem;
+  border-radius: var(--radius-lg);
   padding: 2rem;
   box-shadow: 0 4px 12px rgba(239, 68, 68, 0.1);
 }
@@ -78,7 +78,7 @@
 }
 
 .app-router__error-btn {
-  padding: 0.5rem 1rem;
+  padding: var(--padding-md) var(--padding-xl);
   border-radius: var(--radius-md);
   font-weight: 500;
   cursor: pointer;
@@ -117,7 +117,7 @@
 }
 
 .app-router__no-module-btn {
-  padding: 0.5rem 1rem;
+  padding: var(--padding-md) var(--padding-xl);
   background-color: var(--primary-blue);
   color: white;
   border-radius: var(--radius-md);

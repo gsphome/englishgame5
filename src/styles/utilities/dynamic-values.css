@@ -126,7 +126,7 @@
 }
 
 .rounded-lg {
-  border-radius: 0.5rem;
+  border-radius: var(--radius-md);
 }
 
 .shadow-lg {

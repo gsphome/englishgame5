@@ -17,7 +17,7 @@
 
 .log-viewer__container {
   background-color: var(--theme-bg-primary);
-  border-radius: 0.5rem;
+  border-radius: var(--radius-md);
   width: 91.666667%; /* w-11/12 */
   height: 83.333333%; /* h-5/6 */
   max-width: 72rem; /* max-w-6xl */
@@ -53,7 +53,7 @@
   color: var(--theme-text-secondary);
   background-color: transparent;
   border: none;
-  border-radius: 0.25rem;
+  border-radius: var(--radius-sm);
   cursor: pointer;
   transition: all 0.2s ease;
 }
@@ -96,7 +96,7 @@
 
 .log-viewer__select {
   border: 1px solid var(--theme-border-medium);
-  border-radius: 0.25rem;
+  border-radius: var(--radius-sm);
   padding: 0.25rem 0.5rem;
   font-size: 0.875rem;
   background-color: var(--theme-bg-primary);
@@ -105,7 +105,7 @@
 
 .log-viewer__search {
   border: 1px solid var(--theme-border-medium);
-  border-radius: 0.25rem;
+  border-radius: var(--radius-sm);
   padding: 0.25rem 0.75rem;
   font-size: 0.875rem;
   flex: 1;
@@ -142,8 +142,8 @@
 }
 
 .log-viewer__log {
-  padding: 0.75rem;
-  border-radius: 0.25rem;
+  padding: var(--padding-lg);
+  border-radius: var(--radius-sm);
   border-left: 4px solid currentColor;
 }
 
@@ -194,7 +194,7 @@
   font-size: 0.75rem;
   background-color: var(--bg-soft);
   padding: 0.25rem 0.5rem;
-  border-radius: 0.25rem;
+  border-radius: var(--radius-sm);
 }
 
 .log-viewer__log-time {
@@ -227,7 +227,7 @@
   font-size: 0.75rem;
   background-color: var(--bg-subtle);
   padding: 0.5rem;
-  border-radius: 0.25rem;
+  border-radius: var(--radius-sm);
   overflow: auto;
   max-height: 8rem;
 }

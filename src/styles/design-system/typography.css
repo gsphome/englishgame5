@@ -22,12 +22,18 @@
   /* === FONT SIZES - MODULAR SCALE === */
   /* AI_VALIDATION: FONT_SCALE - Harmonious scale based on 1rem base */
   /* AI_CONTEXT: Minimum 12px (0.75rem) for accessibility compliance */
-  --text-xs: 0.75rem;     /* 12px - Minimum legible size */
-  --text-sm: 0.875rem;    /* 14px - Small text, labels */
-  --text-base: 1rem;      /* 16px - Body text baseline */
-  --text-lg: 1.125rem;    /* 18px - Emphasized text */
-  --text-xl: 1.25rem;     /* 20px - Small headings */
-  --text-2xl: 1.5rem;     /* 24px - Medium headings */
+  --text-xs: 0.75rem;
+  /* 12px - Minimum legible size */
+  --text-sm: 0.875rem;
+  /* 14px - Small text, labels */
+  --text-base: 1rem;
+  /* 16px - Body text baseline */
+  --text-lg: 1.125rem;
+  /* 18px - Emphasized text */
+  --text-xl: 1.25rem;
+  /* 20px - Small headings */
+  --text-2xl: 1.5rem;
+  /* 24px - Medium headings */
 
   /* === SHADOW SYSTEM - UNIFIED DESIGN === */
   /* AI_VALIDATION: SHADOW_SYSTEM - Consistent elevation across components */
@@ -39,12 +45,32 @@
 
   /* === BORDER RADIUS SYSTEM === */
   /* AI_VALIDATION: RADIUS_SYSTEM - Consistent corner radius across components */
-  --radius-sm: 0.25rem;   /* 4px - Small elements */
-  --radius-md: 0.5rem;    /* 8px - Medium elements */
-  --radius-lg: 1rem;      /* 16px - Large containers */
-  --radius-xl: 1.25rem;   /* 20px - Extra large containers */
-  --text-3xl: 1.875rem;   /* 30px - Large headings */
-  --text-4xl: 2.25rem;    /* 36px - Hero text */
+  --radius-sm: 0.25rem;
+  /* 4px - Small elements */
+  --radius-md: 0.5rem;
+  /* 8px - Medium elements */
+  --radius-lg: 1rem;
+  /* 16px - Large containers */
+  --radius-xl: 1.25rem;
+  /* 20px - Extra large containers */
+
+  /* === PADDING SYSTEM === */
+  /* AI_VALIDATION: PADDING_SYSTEM - Consistent spacing across components */
+  --padding-xs: 0.25rem;
+  /* 4px - Extra small padding */
+  --padding-sm: 0.375rem;
+  /* 6px - Small padding */
+  --padding-md: 0.5rem;
+  /* 8px - Medium padding */
+  --padding-lg: 0.75rem;
+  /* 12px - Large padding */
+  --padding-xl: 1rem;
+  /* 16px - Extra large padding */
+
+  --text-3xl: 1.875rem;
+  /* 30px - Large headings */
+  --text-4xl: 2.25rem;
+  /* 36px - Hero text */
 
   /* === FONT WEIGHTS === */
   /* AI_VALIDATION: FONT_WEIGHTS - Semantic weight system */
@@ -81,22 +107,32 @@
 /* Mobile: Larger base sizes for touch interfaces */
 @media (max-width: 640px) {
   :root {
-    --text-xs: 0.875rem;    /* 14px - Larger minimum on mobile */
-    --text-sm: 1rem;        /* 16px - Prevents iOS zoom */
-    --text-base: 1.125rem;  /* 18px - Comfortable reading */
-    --text-lg: 1.25rem;     /* 20px */
-    --text-xl: 1.375rem;    /* 22px */
-    --text-2xl: 1.625rem;   /* 26px */
-    --text-3xl: 2rem;       /* 32px */
+    --text-xs: 0.875rem;
+    /* 14px - Larger minimum on mobile */
+    --text-sm: 1rem;
+    /* 16px - Prevents iOS zoom */
+    --text-base: 1.125rem;
+    /* 18px - Comfortable reading */
+    --text-lg: 1.25rem;
+    /* 20px */
+    --text-xl: 1.375rem;
+    /* 22px */
+    --text-2xl: 1.625rem;
+    /* 26px */
+    --text-3xl: 2rem;
+    /* 32px */
   }
 }
 
 /* Tablet: Balanced scaling */
 @media (min-width: 641px) and (max-width: 1024px) {
   :root {
-    --text-xs: 0.8125rem;   /* 13px */
-    --text-sm: 0.9375rem;   /* 15px */
-    --text-base: 1.0625rem; /* 17px */
+    --text-xs: 0.8125rem;
+    /* 13px */
+    --text-sm: 0.9375rem;
+    /* 15px */
+    --text-base: 1.0625rem;
+    /* 17px */
   }
 }
 
@@ -208,7 +244,7 @@
   color: var(--theme-text-primary);
   background-color: var(--theme-bg-soft);
   padding: 0.125rem 0.25rem;
-  border-radius: 0.25rem;
+  border-radius: var(--radius-sm);
 }
 
 .typography-link {
@@ -232,7 +268,8 @@
 /* === MODULE CARDS - FIXED LEGIBILITY === */
 .typography-card-title {
   font-family: var(--font-primary);
-  font-size: var(--text-sm);        /* 14px - LEGIBLE (was 0.625rem/10px) */
+  font-size: var(--text-sm);
+  /* 14px - LEGIBLE (was 0.625rem/10px) */
   font-weight: var(--font-semibold);
   line-height: var(--leading-tight);
   color: var(--theme-text-on-colored, #ffffff);
@@ -241,7 +278,8 @@
 
 .typography-card-type {
   font-family: var(--font-primary);
-  font-size: var(--text-xs);        /* 12px - MINIMUM LEGIBLE (was 0.4375rem/7px) */
+  font-size: var(--text-xs);
+  /* 12px - MINIMUM LEGIBLE (was 0.4375rem/7px) */
   font-weight: var(--font-medium);
   line-height: var(--leading-none);
   letter-spacing: var(--tracking-wide);
@@ -252,7 +290,8 @@
 
 .typography-card-level {
   font-family: var(--font-primary);
-  font-size: var(--text-xs);        /* 12px - CONSISTENT (was 0.5rem/8px) */
+  font-size: var(--text-xs);
+  /* 12px - CONSISTENT (was 0.5rem/8px) */
   font-weight: var(--font-semibold);
   line-height: var(--leading-none);
   color: var(--theme-text-on-colored, rgba(255, 255, 255, 0.9));
@@ -262,7 +301,8 @@
 /* === MODAL HEADERS - UNIFIED === */
 .typography-modal-title {
   font-family: var(--font-primary);
-  font-size: var(--text-lg);        /* CONSISTENT ACROSS ALL MODALS */
+  font-size: var(--text-lg);
+  /* CONSISTENT ACROSS ALL MODALS */
   font-weight: var(--font-semibold);
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-tight);
@@ -272,7 +312,8 @@
 
 .typography-modal-subtitle {
   font-family: var(--font-primary);
-  font-size: var(--text-sm);        /* CONSISTENT ACROSS ALL MODALS */
+  font-size: var(--text-sm);
+  /* CONSISTENT ACROSS ALL MODALS */
   font-weight: var(--font-normal);
   line-height: var(--leading-snug);
   color: rgba(255, 255, 255, 0.85);
@@ -282,7 +323,8 @@
 /* === HEADER COMPONENTS - HOMOLOGATED === */
 .typography-header-title {
   font-family: var(--font-primary);
-  font-size: var(--text-xl);        /* CONSISTENT MAIN TITLE */
+  font-size: var(--text-xl);
+  /* CONSISTENT MAIN TITLE */
   font-weight: var(--font-bold);
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-tight);
@@ -291,7 +333,8 @@
 
 .typography-header-username {
   font-family: var(--font-primary);
-  font-size: var(--text-sm);        /* CONSISTENT USER INFO */
+  font-size: var(--text-sm);
+  /* CONSISTENT USER INFO */
   font-weight: var(--font-medium);
   line-height: var(--leading-snug);
   color: var(--theme-text-primary);
@@ -299,7 +342,8 @@
 
 .typography-header-nav {
   font-family: var(--font-primary);
-  font-size: var(--text-sm);        /* CONSISTENT NAVIGATION */
+  font-size: var(--text-sm);
+  /* CONSISTENT NAVIGATION */
   font-weight: var(--font-medium);
   line-height: var(--leading-snug);
   color: var(--theme-text-primary);
@@ -308,7 +352,8 @@
 /* === FORM ELEMENTS - STANDARDIZED === */
 .typography-form-label {
   font-family: var(--font-primary);
-  font-size: var(--text-sm);        /* CONSISTENT FORM LABELS */
+  font-size: var(--text-sm);
+  /* CONSISTENT FORM LABELS */
   font-weight: var(--font-medium);
   line-height: var(--leading-snug);
   color: var(--theme-text-primary);
@@ -316,7 +361,8 @@
 
 .typography-form-input {
   font-family: var(--font-primary);
-  font-size: var(--text-base);      /* CONSISTENT INPUT TEXT */
+  font-size: var(--text-base);
+  /* CONSISTENT INPUT TEXT */
   font-weight: var(--font-normal);
   line-height: var(--leading-normal);
   color: var(--theme-text-primary);
@@ -324,7 +370,8 @@
 
 .typography-form-help {
   font-family: var(--font-primary);
-  font-size: var(--text-xs);        /* CONSISTENT HELP TEXT */
+  font-size: var(--text-xs);
+  /* CONSISTENT HELP TEXT */
   font-weight: var(--font-normal);
   line-height: var(--leading-normal);
   color: var(--theme-text-tertiary);
@@ -332,7 +379,8 @@
 
 .typography-form-error {
   font-family: var(--font-primary);
-  font-size: var(--text-sm);        /* CONSISTENT ERROR TEXT */
+  font-size: var(--text-sm);
+  /* CONSISTENT ERROR TEXT */
   font-weight: var(--font-medium);
   line-height: var(--leading-snug);
   color: var(--theme-error);
@@ -341,7 +389,8 @@
 /* === LEARNING COMPONENTS - OPTIMIZED === */
 .typography-flashcard-front {
   font-family: var(--font-primary);
-  font-size: var(--text-2xl);       /* PROMINENT FRONT TEXT */
+  font-size: var(--text-2xl);
+  /* PROMINENT FRONT TEXT */
   font-weight: var(--font-bold);
   line-height: var(--leading-tight);
   color: var(--theme-text-primary);
@@ -349,7 +398,8 @@
 
 .typography-flashcard-back {
   font-family: var(--font-primary);
-  font-size: var(--text-xl);        /* CLEAR BACK TEXT */
+  font-size: var(--text-xl);
+  /* CLEAR BACK TEXT */
   font-weight: var(--font-semibold);
   line-height: var(--leading-snug);
   color: var(--theme-primary-blue);
@@ -357,7 +407,8 @@
 
 .typography-quiz-question {
   font-family: var(--font-primary);
-  font-size: var(--text-lg);        /* READABLE QUESTIONS */
+  font-size: var(--text-lg);
+  /* READABLE QUESTIONS */
   font-weight: var(--font-semibold);
   line-height: var(--leading-snug);
   color: var(--theme-text-primary);
@@ -368,6 +419,7 @@
 
 /* High contrast mode support */
 @media (prefers-contrast: high) {
+
   .typography-h1,
   .typography-h2,
   .typography-h3,
@@ -403,6 +455,7 @@
 
 /* === PRINT STYLES === */
 @media print {
+
   .typography-h1,
   .typography-h2,
   .typography-h3,
@@ -428,6 +481,7 @@
 /* === DARK MODE ADJUSTMENTS === */
 /* AI_VALIDATION: DARK_MODE_TYPOGRAPHY - Enhanced contrast for dark themes */
 html.dark {
+
   /* Slightly increase font weights for better contrast on dark backgrounds */
   .typography-h1,
   .typography-h2,
