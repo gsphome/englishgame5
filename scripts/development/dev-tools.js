@@ -323,14 +323,14 @@ async function runWorkflow(workflowKey) {
             log('🎯 FINAL STATUS: GITHUB ACTIONS STATUS UNKNOWN ⚠️', colors.bright + colors.yellow);
             log('✅ Local pipelines: PASSED', colors.green);
             log('⚠️  GitHub Actions: UNKNOWN', colors.yellow);
-            log('💡 Use "npm run gh:current" to check status', colors.cyan);
+            log('💡 Use "npm run gh:watch" to check status', colors.cyan);
             break;
         }
       }
 
       console.log('');
       log('🌐 Live: https://gsphome.github.io/englishgame5/', colors.cyan);
-      log('📊 Status: npm run gh:current', colors.cyan);
+      log('📊 Status: npm run gh:watch', colors.cyan);
       console.log('='.repeat(50));
     }
   } else {

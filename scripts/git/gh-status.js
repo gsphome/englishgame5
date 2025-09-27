@@ -427,12 +427,13 @@ function watchStatus(interval = 30) {
     
     if (!hasActivity) {
       consecutiveNoActivity++;
-      logInfo(`\n⚪ No active workflows detected (${consecutiveNoActivity}/2 checks)`);
+      logInfo(`\n⚪ No active workflows detected (${consecutiveNoActivity}/1 checks)`);
       
-      // Stop after just 2 consecutive checks with no activity
-      if (consecutiveNoActivity >= 2) {
+      // Stop after just 1 check with no activity (faster exit)
+      if (consecutiveNoActivity >= 1) {
         logInfo('\n🏁 All workflows completed. Stopping watch automatically.');
         logInfo('💡 Use "npm run gh:current" to check final status');
+        logInfo('💡 Use "npm run deploy:status" to check deployment status');
         logInfo('💡 Use "npm run gh:watch" to start watching again');
         
         // Show final status before stopping
@@ -448,6 +449,7 @@ function watchStatus(interval = 30) {
     // Double-check: if showCurrentStatus also reports no activity, stop immediately
     if (!result.hasActivity && !hasActivity) {
       logInfo('\n🏁 Confirmed: All workflows completed. Stopping watch.');
+      logInfo('💡 Use "npm run deploy:status" to check deployment status');
       return; // Stop watching immediately
     }
     
@@ -466,6 +468,7 @@ function watchStatus(interval = 30) {
     const result = showCurrentStatus();
     
     logInfo('\n🏁 No active workflows found. Watch mode not needed.');
+    logInfo('💡 Use "npm run deploy:status" to check deployment status');
     logInfo('💡 Use "npm run gh:watch" again if new workflows start');
     return; // Don't start watching if there's no activity
   } else {

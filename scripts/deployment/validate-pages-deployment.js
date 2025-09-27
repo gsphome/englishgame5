@@ -63,29 +63,29 @@ async function fixPagesConfiguration(pagesInfo) {
     if (pagesInfo?.build_type === 'workflow' && pagesInfo?.source?.branch === 'gh-pages') {
       logWarning('Detected legacy configuration with modern deployment method');
       logInfo('Attempting to update Pages configuration...');
-      
+
       // Try to update the configuration to properly reflect GitHub Actions
       try {
         // First, try to disable and re-enable Pages with correct settings
         logInfo('🔧 Updating GitHub Pages configuration via API...');
-        
+
         // The correct way is to ensure build_type is set to workflow
         // The source will be managed automatically by GitHub Actions
         const updateCommand = `gh api --method PUT repos/${REPO_OWNER}/${REPO_NAME}/pages --field build_type=workflow`;
         execSync(updateCommand, { encoding: 'utf8' });
-        
+
         logSuccess('✅ GitHub Pages configuration updated successfully');
         logInfo('💡 Configuration now properly reflects GitHub Actions deployment');
-        
+
         // Verify the update
         const verifyCommand = `gh api repos/${REPO_OWNER}/${REPO_NAME}/pages --jq '{build_type: .build_type, source: .source}'`;
         const updatedConfig = execSync(verifyCommand, { encoding: 'utf8' });
         const config = JSON.parse(updatedConfig);
-        
+
         logInfo('📋 Updated configuration:');
         logInfo(`   Build Type: ${config.build_type}`);
         logInfo(`   Source: ${config.source?.branch || 'GitHub Actions managed'}`);
-        
+
         return true;
       } catch (apiError) {
         logWarning('⚠️ API update method not fully supported for this configuration');
@@ -94,7 +94,7 @@ async function fixPagesConfiguration(pagesInfo) {
         return false;
       }
     }
-    
+
     return true;
   } catch (error) {
     logError(`Failed to fix Pages configuration: ${error.message}`);
@@ -132,13 +132,13 @@ function getCurrentBranch() {
 async function fetchPagesDeployment() {
   try {
     logInfo('Fetching GitHub Pages configuration...');
-    
+
     // Use gh CLI which handles authentication properly
     const ghCommand = `gh api repos/${REPO_OWNER}/${REPO_NAME}/pages`;
-    
+
     const response = execSync(ghCommand, { encoding: 'utf8' });
     const pagesInfo = JSON.parse(response);
-    
+
     return pagesInfo;
   } catch (error) {
     // Check if it's a 404 (Pages not configured) or authentication issue
@@ -159,28 +159,28 @@ async function fetchPagesDeployment() {
 async function fetchLatestDeployment() {
   try {
     logInfo('Fetching latest deployment information...');
-    
+
     // Try both production and github-pages environments
     const environments = ['production', 'github-pages'];
     let latestDeployment = null;
     let deploymentStatus = null;
-    
+
     for (const env of environments) {
       try {
         const ghCommand = `gh api repos/${REPO_OWNER}/${REPO_NAME}/deployments --jq '[.[] | select(.environment == "${env}")] | .[0]'`;
         const response = execSync(ghCommand, { encoding: 'utf8' }).trim();
-        
+
         if (response && response !== 'null') {
           const deployment = JSON.parse(response);
-          
+
           // Use the most recent deployment across all environments
           if (!latestDeployment || new Date(deployment.created_at) > new Date(latestDeployment.created_at)) {
             latestDeployment = deployment;
-            
+
             // Fetch deployment status
             const statusCommand = `gh api repos/${REPO_OWNER}/${REPO_NAME}/deployments/${deployment.id}/statuses --jq '.[0]'`;
             const statusResponse = execSync(statusCommand, { encoding: 'utf8' }).trim();
-            
+
             deploymentStatus = statusResponse && statusResponse !== 'null' ? JSON.parse(statusResponse) : null;
           }
         }
@@ -189,11 +189,11 @@ async function fetchLatestDeployment() {
         continue;
       }
     }
-    
+
     if (!latestDeployment) {
       return null;
     }
-    
+
     return {
       deployment: latestDeployment,
       status: deploymentStatus
@@ -210,13 +210,13 @@ async function fetchLatestDeployment() {
 async function checkActiveWorkflows() {
   try {
     const ghCommand = `gh api repos/${REPO_OWNER}/${REPO_NAME}/actions/runs --jq '.workflow_runs[] | select(.status == "in_progress" or .status == "queued") | {name: .name, status: .status, html_url: .html_url, head_sha: .head_sha}'`;
-    
+
     const response = execSync(ghCommand, { encoding: 'utf8' }).trim();
-    
+
     if (!response) {
       return [];
     }
-    
+
     // Parse multiple JSON objects (one per line)
     const lines = response.split('\n').filter(line => line.trim());
     return lines.map(line => JSON.parse(line));
@@ -232,10 +232,10 @@ async function checkActiveWorkflows() {
 async function testSiteAccessibility() {
   try {
     logInfo(`Testing site accessibility: ${PAGES_URL}`);
-    
+
     const curlCommand = `curl -s -o /dev/null -w "%{http_code}" --max-time 10 "${PAGES_URL}"`;
     const httpCode = execSync(curlCommand, { encoding: 'utf8' }).trim();
-    
+
     return {
       accessible: httpCode === '200',
       httpCode: httpCode
@@ -254,14 +254,14 @@ async function testSiteAccessibility() {
  */
 function formatTimestamp(timestamp) {
   if (!timestamp) return 'Unknown';
-  
+
   const date = new Date(timestamp);
   const now = new Date();
   const diffMs = now - date;
   const diffMins = Math.floor(diffMs / (1000 * 60));
   const diffHours = Math.floor(diffMins / 60);
   const diffDays = Math.floor(diffHours / 24);
-  
+
   let timeAgo = '';
   if (diffDays > 0) {
     timeAgo = `${diffDays} day${diffDays > 1 ? 's' : ''} ago`;
@@ -272,7 +272,7 @@ function formatTimestamp(timestamp) {
   } else {
     timeAgo = 'Just now';
   }
-  
+
   return `${date.toLocaleString()} (${timeAgo})`;
 }
 
@@ -281,14 +281,14 @@ function formatTimestamp(timestamp) {
  */
 async function validateDeployment() {
   logHeader('🚀 Deployment Status');
-  
+
   const currentCommit = getCurrentCommit();
   const currentBranch = getCurrentBranch();
-  
+
   if (currentCommit && currentBranch) {
     logInfo(`📍 ${currentBranch}@${currentCommit.substring(0, 8)}`);
   }
-  
+
   // Fetch Pages configuration
   const pagesInfo = await fetchPagesDeployment();
   if (pagesInfo) {
@@ -303,36 +303,36 @@ async function validateDeployment() {
       logInfo(`📋 Source: ${pagesInfo.source.branch} branch (Legacy)`);
     }
   }
-  
+
   // Fetch latest deployment
   const deploymentInfo = await fetchLatestDeployment();
   if (deploymentInfo) {
     const { deployment, status } = deploymentInfo;
-    
+
     const deployedSha = deployment.sha?.substring(0, 8) || 'Unknown';
     const deploymentTime = formatTimestamp(deployment.created_at);
-    
+
     if (status) {
-      const statusColor = status.state === 'success' ? colors.green : 
-                         status.state === 'failure' ? colors.red : 
-                         status.state === 'pending' ? colors.yellow : colors.white;
-      
+      const statusColor = status.state === 'success' ? colors.green :
+        status.state === 'failure' ? colors.red :
+          status.state === 'pending' ? colors.yellow : colors.white;
+
       log(`\n📦 Deployment: ${status.state} | ${deployedSha} | ${deploymentTime}`, statusColor);
     } else {
       logInfo(`\n📦 Deployment: ${deployedSha} | ${deploymentTime}`);
     }
-    
+
     // Check if current commit matches deployed commit
     if (currentCommit && deployment.sha) {
       const isCurrentDeployed = currentCommit.startsWith(deployment.sha) || deployment.sha.startsWith(currentCommit);
-      
+
       if (isCurrentDeployed) {
         logSuccess('✅ Current commit deployed');
       } else {
         const deploymentTime = new Date(deployment.created_at);
         const now = new Date();
         const diffMinutes = (now - deploymentTime) / (1000 * 60);
-        
+
         if (diffMinutes < 10 && status?.state === 'pending') {
           logInfo('🚀 Deployment in progress');
         } else if (diffMinutes < 10 && status?.state === 'success') {
@@ -343,7 +343,7 @@ async function validateDeployment() {
       }
     }
   }
-  
+
   // Check for active workflows
   const activeWorkflows = await checkActiveWorkflows();
   if (activeWorkflows.length > 0) {
@@ -353,22 +353,22 @@ async function validateDeployment() {
 
   // Test site accessibility
   const accessibility = await testSiteAccessibility();
-  
+
   if (accessibility.accessible) {
     logSuccess(`🌐 Site accessible (HTTP ${accessibility.httpCode})`);
   } else {
     logError(`🌐 Site not accessible (HTTP ${accessibility.httpCode})`);
   }
-  
+
   // Final summary
   let overallStatus = 'UNKNOWN';
   let statusColor = colors.white;
-  
+
   // Determine status based on available information
   if (accessibility.accessible) {
     if (deploymentInfo?.status?.state === 'success') {
       if (activeWorkflows.length > 0 && currentCommit && deploymentInfo?.deployment?.sha &&
-          !currentCommit.startsWith(deploymentInfo.deployment.sha)) {
+        !currentCommit.startsWith(deploymentInfo.deployment.sha)) {
         overallStatus = 'UPDATING';
         statusColor = colors.yellow;
       } else {
@@ -394,11 +394,16 @@ async function validateDeployment() {
       statusColor = colors.red;
     }
   }
-  
+
   log(`\n📊 Status: ${overallStatus}`, colors.bright + statusColor);
-  
+
   console.log('='.repeat(40));
-  
+
+  // Add final message with useful commands
+  logInfo('🌐 Live: https://gsphome.github.io/englishgame5/');
+  logInfo('📊 Monitor: npm run gh:watch');
+  console.log('='.repeat(40));
+
   return overallStatus === 'HEALTHY' || overallStatus === 'ACCESSIBLE' || overallStatus === 'UPDATING';
 }
 
