@@ -14,7 +14,17 @@ export default defineConfig(({ mode }) => {
   const isProduction = mode === 'production';
   
   return {
-    plugins: [react()],
+    plugins: [
+      react({
+        // Ensure React is available globally to prevent createContext issues
+        jsxRuntime: 'automatic',
+        jsxImportSource: 'react',
+        // Add babel config to ensure proper React handling
+        babel: {
+          plugins: []
+        }
+      })
+    ],
     root: resolve(__dirname, '..'),
     base: env.VITE_APP_BASE_URL || '/',
     build: {
@@ -99,6 +109,10 @@ export default defineConfig(({ mode }) => {
       alias: {
         '@': resolve(__dirname, '../src')
       }
+    },
+    optimizeDeps: {
+      include: ['react', 'react-dom', 'zustand'],
+      exclude: []
     },
     server: {
       fs: {
