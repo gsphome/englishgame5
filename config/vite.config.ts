@@ -10,6 +10,9 @@ export default defineConfig(({ mode }) => {
   // Load env file from config directory based on mode
   const env = loadEnv(mode, __dirname, '');
   
+  // Set NODE_ENV properly based on mode (Vite best practice)
+  const isProduction = mode === 'production';
+  
   return {
     plugins: [react()],
     root: resolve(__dirname, '..'),
@@ -111,7 +114,11 @@ export default defineConfig(({ mode }) => {
     define: {
       __APP_VERSION__: JSON.stringify(process.env.npm_package_version),
       __BUILD_TIME__: JSON.stringify(new Date().toISOString()),
-      'window.__BUILD_TIME__': JSON.stringify(new Date().toISOString())
+      'window.__BUILD_TIME__': JSON.stringify(new Date().toISOString()),
+      // Properly define NODE_ENV for runtime (Vite best practice)
+      'process.env.NODE_ENV': JSON.stringify(mode),
+      // Make environment variables available at build time
+      'import.meta.env.VITE_IS_PRODUCTION': JSON.stringify(isProduction)
     },
     envDir: __dirname
   };
