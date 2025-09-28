@@ -74,7 +74,17 @@ function createGitHubPagesServer() {
   });
   
   // Handle SPA routing (GitHub Pages behavior for 404s)
-  app.get('/englishgame5/*', (req, res, next) => {
+  app.use((req, res, next) => {
+    // Only handle requests that start with /englishgame5
+    if (!req.path.startsWith('/englishgame5')) {
+      return next();
+    }
+    
+    // Skip if this is a static file request that should be handled by express.static
+    if (req.path.match(/\.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$/)) {
+      return next();
+    }
+    
     const filePath = path.join(distPath, req.path.replace('/englishgame5', ''));
     
     // If file exists, serve it
