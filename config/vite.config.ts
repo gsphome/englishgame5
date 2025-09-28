@@ -42,45 +42,9 @@ export default defineConfig(({ mode }) => {
             }
             return 'assets/[name]-[hash].js';
           },
-          // Manual chunk splitting with proper dependency order
-          manualChunks: (id) => {
-            // CRITICAL: Keep React in main bundle to ensure synchronous loading
-            // Don't separate React into vendor chunk to avoid async loading issues
-            if (id.includes('node_modules/react') ||
-              id.includes('node_modules/react-dom')) {
-              return undefined; // Keep in main bundle
-            }
-
-            // Other vendor dependencies can be separate
-            if (id.includes('node_modules/zustand') ||
-              id.includes('node_modules/@tanstack/react-query') ||
-              id.includes('node_modules/lucide-react') ||
-              id.includes('node_modules/fuse.js')) {
-              return 'vendor';
-            }
-
-            // Split CSS by type for better chunk management
-            if (id.includes('src/styles/design-system/')) {
-              return 'design-system';
-            }
-            if (id.includes('src/styles/themes/')) {
-              return 'themes';
-            }
-            if (id.includes('src/styles/components/')) {
-              return 'components';
-            }
-
-            // Keep learning components together for lazy loading
-            if (id.includes('src/components/learning/')) {
-              return 'learning-components';
-            }
-            // Keep layout components together
-            if (id.includes('src/components/layout/') || id.includes('src/components/ui/')) {
-              return 'ui-components';
-            }
-
-            return undefined;
-          },
+          // SIMPLIFIED: No manual chunks - let Vite handle React bundling
+          // This ensures React stays in main bundle and loads synchronously
+          manualChunks: undefined,
           // Optimize CSS file naming for better caching and identification
           assetFileNames: (assetInfo) => {
             if (assetInfo.name?.endsWith('.css')) {
