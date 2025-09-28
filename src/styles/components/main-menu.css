@@ -2,19 +2,19 @@
 
 /* CSS Variables for Dynamic Height Calculations */
 :root {
-  --grid-gap-mobile: 0.25rem;
-  --grid-gap-tablet: 0.3rem;
-  --grid-gap-desktop: 0.375rem;
+  --grid-gap-mobile: 5px;
+  --grid-gap-tablet: 5px;
+  --grid-gap-desktop: 5px;
   --grid-padding-mobile: 0.375rem;
   --grid-padding-tablet: 0.5rem;
   --grid-padding-desktop: 0.625rem;
   --grid-padding-large-desktop: 0.75rem;
 
   /* Conservative heights for exactly 3 rows - no 4th row visible */
-  --grid-height-mobile: calc(85px * 3 + 0.5rem * 2 + 0.5rem * 2);
-  --grid-height-tablet: calc(105px * 3 + 0.75rem * 2 + 0.75rem * 2);
-  --grid-height-desktop: calc(125px * 3 + 0.875rem * 2 + 0.875rem * 2);
-  --grid-height-large-desktop: calc(125px * 3 + 0.875rem * 2 + 1rem * 2);
+  --grid-height-mobile: calc(85px * 3 + 5px * 2 + 5px * 2 + 5px);
+  --grid-height-tablet: calc(105px * 3 + 5px * 2 + 5px * 2 + 5px);
+  --grid-height-desktop: calc(125px * 3 + 5px * 2 + 5px * 2 + 5px);
+  --grid-height-large-desktop: calc(125px * 3 + 5px * 2 + 5px * 2 + 5px);
 }
 
 /* SVG Icon Inheritance Fix - Force white in dark mode */

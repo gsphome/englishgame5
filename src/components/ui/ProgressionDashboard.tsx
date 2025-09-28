@@ -170,7 +170,6 @@ export const ProgressionDashboard: React.FC<ProgressionDashboardProps> = ({
 
       {/* Units Progress */}
       <div className="progression-dashboard__units">
-        <h2 className="progression-dashboard__section-title">Your Progress</h2>
         {Object.entries(modulesByUnit)
           .sort(([a], [b]) => Number(a) - Number(b))
           .map(([unitStr, modules]) => {

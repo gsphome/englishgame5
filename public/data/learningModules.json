@@ -373,7 +373,7 @@
   },
   {
     "id": "quiz-used-to-advanced-b2",
-    "name": "Used To - Advanced Quiz",
+    "name": "Used To - Advanced",
     "learningMode": "quiz",
     "dataPath": "data/b2/b2-quiz-used-to-advanced.json",
     "level": [
