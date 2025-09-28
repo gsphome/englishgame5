@@ -135,6 +135,70 @@
   gap: 0.75rem;
 }
 
+.progression-dashboard__unit-header--clickable {
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: var(--radius-sm, 0.25rem);
+  padding: 0.25rem;
+  margin: -0.25rem;
+}
+
+.progression-dashboard__unit-header--clickable:hover {
+  background: rgba(59, 130, 246, 0.05);
+}
+
+.progression-dashboard__unit-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.progression-dashboard__unit-expand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: var(--theme-bg-tertiary);
+  transition: all 0.2s ease;
+}
+
+.progression-dashboard__expand-icon {
+  width: 1rem;
+  height: 1rem;
+  color: var(--theme-text-secondary);
+  transition: transform 0.2s ease;
+}
+
+.progression-dashboard__unit-next-indicator {
+  background: var(--theme-accent-primary);
+  color: white;
+  padding: 0.125rem 0.5rem;
+  border-radius: 0.75rem;
+  font-size: 0.625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.progression-dashboard__unit-next-label {
+  line-height: 1;
+}
+
+.progression-dashboard__unit-header--completed {
+  background: rgba(16, 185, 129, 0.05);
+}
+
+.progression-dashboard__unit-expand--completed {
+  background: #10b981;
+}
+
+.progression-dashboard__expand-icon--completed {
+  color: white;
+}
+
 .progression-dashboard__unit-title {
   font-size: 1rem;
   font-weight: 600;
@@ -170,10 +234,25 @@
   transition: width 0.3s ease;
 }
 
-/* Modules Grid */
+/* Modules Grid - Collapsible */
 .progression-dashboard__modules {
   display: grid;
   gap: 0.5rem;
+  animation: slideDown 0.3s ease-out;
+  overflow: hidden;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    max-height: 1000px;
+    transform: translateY(0);
+  }
 }
 
 .progression-dashboard__module {
@@ -327,10 +406,22 @@
   }
 
   .progression-dashboard__unit-header {
-    flex-direction: column;
-    align-items: stretch;
     gap: 0.375rem;
     margin-bottom: 0.375rem;
+  }
+
+  .progression-dashboard__unit-info {
+    gap: 0.375rem;
+  }
+
+  .progression-dashboard__unit-expand {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .progression-dashboard__expand-icon {
+    width: 0.875rem;
+    height: 0.875rem;
   }
 
   .progression-dashboard__unit-title {
