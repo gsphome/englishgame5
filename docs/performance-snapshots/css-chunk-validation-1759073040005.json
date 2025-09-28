@@ -1,0 +1,63 @@
+{
+  "timestamp": "2025-09-28T15:24:00.002Z",
+  "target": 500,
+  "warningThreshold": 400,
+  "results": {
+    "chunks": [
+      {
+        "name": "main-Cz1fengd.css",
+        "size": 225.82,
+        "status": "PASS",
+        "message": "225.82KB < 500KB target"
+      },
+      {
+        "name": "MatchingComponent-LhIIpJN-.css",
+        "size": 22.52,
+        "status": "PASS",
+        "message": "22.52KB < 500KB target"
+      },
+      {
+        "name": "SortingComponent-DEJj0Lk_.css",
+        "size": 18.24,
+        "status": "PASS",
+        "message": "18.24KB < 500KB target"
+      },
+      {
+        "name": "ContentRenderer-DLLwTr2n.css",
+        "size": 9.07,
+        "status": "PASS",
+        "message": "9.07KB < 500KB target"
+      },
+      {
+        "name": "CompletionComponent-C1Qe8BW-.css",
+        "size": 5.64,
+        "status": "PASS",
+        "message": "5.64KB < 500KB target"
+      },
+      {
+        "name": "FlashcardComponent-CoBYCdKB.css",
+        "size": 5.41,
+        "status": "PASS",
+        "message": "5.41KB < 500KB target"
+      },
+      {
+        "name": "LearningProgressHeader-3wIGTyDx.css",
+        "size": 2.74,
+        "status": "PASS",
+        "message": "2.74KB < 500KB target"
+      }
+    ],
+    "totalSize": 289.44,
+    "compliance": {
+      "passed": 7,
+      "warnings": 0,
+      "failed": 0
+    },
+    "status": "PASS"
+  },
+  "metadata": {
+    "nodeVersion": "v20.19.4",
+    "platform": "darwin",
+    "generatedBy": "check-css-chunks.js"
+  }
+}
