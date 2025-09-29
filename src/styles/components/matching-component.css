@@ -656,6 +656,11 @@
   margin: 4px !important;
 }
 
+/* Specific padding for matched button items */
+.matching-component__item.matching-component__item--matched.matching-component__button.matching-component__button--primary {
+  padding: 1rem !important;
+}
+
 @media (max-width: 768px) {
   .matching-component__columns {
     padding: 12px !important;
@@ -669,6 +674,11 @@
   
   .matching-component__item {
     margin: 4px !important;
+  }
+  
+  /* Specific padding for matched button items on mobile */
+  .matching-component__item.matching-component__item--matched.matching-component__button.matching-component__button--primary {
+    padding: 1rem !important;
   }
 }
 
