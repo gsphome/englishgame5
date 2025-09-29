@@ -287,6 +287,48 @@
   white-space: normal;
 }
 
+/* IMMEDIATE OVERRIDE - Applied right after base selector */
+/* NUCLEAR OPTION: Force white text with maximum possible specificity */
+
+/* Correct state - ALL possible selectors */
+.matching-component__item--correct .matching-component__item-text,
+.matching-component__item--correct .matching-component__item-text *,
+.matching-component__item--correct * .matching-component__item-text,
+.matching-component__item.matching-component__item--correct .matching-component__item-text,
+button.matching-component__item--correct .matching-component__item-text,
+div.matching-component__item--correct .matching-component__item-text,
+span.matching-component__item--correct .matching-component__item-text,
+[class*="matching-component__item--correct"] .matching-component__item-text {
+  color: #ffffff !important;
+  /* FORCE WHITE TEXT ON CORRECT STATE */
+}
+
+/* Incorrect state - ALL possible selectors */
+.matching-component__item--incorrect .matching-component__item-text,
+.matching-component__item--incorrect .matching-component__item-text *,
+.matching-component__item--incorrect * .matching-component__item-text,
+.matching-component__item.matching-component__item--incorrect .matching-component__item-text,
+button.matching-component__item--incorrect .matching-component__item-text,
+div.matching-component__item--incorrect .matching-component__item-text,
+span.matching-component__item--incorrect .matching-component__item-text,
+[class*="matching-component__item--incorrect"] .matching-component__item-text {
+  color: #ffffff !important;
+  /* FORCE WHITE TEXT ON INCORRECT STATE */
+}
+
+/* Selected state - ALL possible selectors */
+.matching-component__item--selected .matching-component__item-text,
+.matching-component__item--selected .matching-component__item-text *,
+.matching-component__item--selected * .matching-component__item-text,
+.matching-component__item.matching-component__item--selected .matching-component__item-text,
+button.matching-component__item--selected .matching-component__item-text,
+div.matching-component__item--selected .matching-component__item-text,
+span.matching-component__item--selected .matching-component__item-text,
+[class*="matching-component__item--selected"] .matching-component__item-text {
+  color: #ffffff !important;
+  /* FORCE WHITE TEXT ON SELECTED STATE */
+}
+
 /* CRITICAL: Override base color for state-specific items */
 .matching-component__item--correct .matching-component__item-text,
 .matching-component__item--incorrect .matching-component__item-text,
