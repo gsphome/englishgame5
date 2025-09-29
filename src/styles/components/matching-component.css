@@ -172,55 +172,55 @@
   box-shadow: 0 2px 8px rgba(59, 130, 246, 0.1);
 }
 
-/* SELECTED STATE - Blue like quiz */
+/* SELECTED STATE - Learning-focused blue */
 .matching-component__item--selected {
-  background-color: var(--theme-primary-blue, #3b82f6);
-  border-color: transparent;
-  color: #ffffff;
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%) !important;
+  border-color: transparent !important;
+  color: #ffffff !important;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
-/* MATCHED STATE - Light gray as requested */
+/* MATCHED STATE - Stronger gray as requested */
 .matching-component__item--matched {
-  background-color: #f8fafc;
-  border-color: #cbd5e1;
-  color: #475569;
+  background-color: #e2e8f0 !important;
+  border-color: #94a3b8 !important;
+  color: #334155 !important;
   cursor: default;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 /* MATCHED INACTIVE STATE - Disabled look */
 .matching-component__item--matched-inactive {
-  background-color: #f1f5f9;
-  border-color: #e2e8f0;
-  color: #94a3b8;
+  background-color: #f1f5f9 !important;
+  border-color: #e2e8f0 !important;
+  color: #94a3b8 !important;
   cursor: not-allowed;
   opacity: 0.7;
   box-shadow: none;
 }
 
-/* UNMATCHED STATE - Warning yellow */
+/* UNMATCHED STATE - Subtle warning */
 .matching-component__item--unmatched {
-  background-color: #fefce8;
-  border-color: #facc15;
-  color: #a16207;
-  box-shadow: 0 2px 4px rgba(250, 204, 21, 0.1);
+  background-color: #fef3c7 !important;
+  border-color: #f59e0b !important;
+  color: #92400e !important;
+  box-shadow: 0 2px 4px rgba(245, 158, 11, 0.15);
 }
 
 /* CORRECT STATE - Success green like quiz */
 .matching-component__item--correct {
-  background-color: var(--theme-success, #10b981);
-  border-color: transparent;
-  color: #ffffff;
+  background-color: var(--theme-success, #10b981) !important;
+  border-color: transparent !important;
+  color: #ffffff !important;
   box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
 }
 
 /* INCORRECT STATE - Error red like quiz */
 .matching-component__item--incorrect {
-  background-color: var(--theme-error, #ef4444);
-  border-color: transparent;
-  color: #ffffff;
+  background-color: var(--theme-error, #ef4444) !important;
+  border-color: transparent !important;
+  color: #ffffff !important;
   box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
 }
 
@@ -261,33 +261,33 @@
 
 /* Letter states - matching quiz component pattern */
 .matching-component__item--selected .matching-component__item-letter {
-  background-color: rgba(255, 255, 255, 0.2);
-  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
 }
 
 .matching-component__item--matched .matching-component__item-letter {
-  background-color: #cbd5e1;
-  color: #475569;
+  background-color: #94a3b8 !important;
+  color: #ffffff !important;
 }
 
 .matching-component__item--matched-inactive .matching-component__item-letter {
-  background-color: #e2e8f0;
-  color: #94a3b8;
+  background-color: #e2e8f0 !important;
+  color: #94a3b8 !important;
 }
 
 .matching-component__item--unmatched .matching-component__item-letter {
-  background-color: #fde047;
-  color: #a16207;
+  background-color: #f59e0b !important;
+  color: #ffffff !important;
 }
 
 .matching-component__item--correct .matching-component__item-letter {
-  background-color: rgba(255, 255, 255, 0.2);
-  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
 }
 
 .matching-component__item--incorrect .matching-component__item-letter {
-  background-color: rgba(255, 255, 255, 0.2);
-  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
 }
 
 .matching-component__item-text {
@@ -311,7 +311,7 @@
 }
 
 .matching-component__item--matched .matching-component__item-text {
-  color: #475569 !important;
+  color: #334155 !important;
 }
 
 .matching-component__item--matched-inactive .matching-component__item-text {
