@@ -720,6 +720,62 @@ button.matching-component__item.matching-component__item--incorrect .matching-co
 
 /* MODAL STYLES MOVED TO matching-modal.css */
 
+/* === CRITICAL FIX: FINAL OVERRIDE FOR WHITE TEXT === */
+/* These selectors have maximum priority and are placed at the end to ensure they override everything */
+
+/* ULTRA HIGH SPECIFICITY - FINAL OVERRIDE */
+.matching-component button.matching-component__item.matching-component__button.matching-component__item--correct .matching-component__item-text,
+.matching-component .matching-component__item.matching-component__button.matching-component__item--correct .matching-component__item-text,
+button.matching-component__item.matching-component__item--correct .matching-component__item-text,
+.matching-component__item.matching-component__item--correct .matching-component__item-text,
+.matching-component__item--correct .matching-component__item-text {
+  color: #ffffff !important;
+  /* Force white text on correct state */
+}
+
+.matching-component button.matching-component__item.matching-component__button.matching-component__item--incorrect .matching-component__item-text,
+.matching-component .matching-component__item.matching-component__button.matching-component__item--incorrect .matching-component__item-text,
+button.matching-component__item.matching-component__item--incorrect .matching-component__item-text,
+.matching-component__item.matching-component__item--incorrect .matching-component__item-text,
+.matching-component__item--incorrect .matching-component__item-text {
+  color: #ffffff !important;
+  /* Force white text on incorrect state */
+}
+
+.matching-component button.matching-component__item.matching-component__button.matching-component__item--selected .matching-component__item-text,
+.matching-component .matching-component__item.matching-component__button.matching-component__item--selected .matching-component__item-text,
+button.matching-component__item.matching-component__item--selected .matching-component__item-text,
+.matching-component__item.matching-component__item--selected .matching-component__item-text,
+.matching-component__item--selected .matching-component__item-text {
+  color: #ffffff !important;
+  /* Force white text on selected state */
+}
+
+/* Dark mode final overrides */
+.dark .matching-component button.matching-component__item.matching-component__button.matching-component__item--correct .matching-component__item-text,
+.dark .matching-component .matching-component__item.matching-component__button.matching-component__item--correct .matching-component__item-text,
+.dark button.matching-component__item.matching-component__item--correct .matching-component__item-text,
+.dark .matching-component__item.matching-component__item--correct .matching-component__item-text,
+.dark .matching-component__item--correct .matching-component__item-text {
+  color: #ffffff !important;
+}
+
+.dark .matching-component button.matching-component__item.matching-component__button.matching-component__item--incorrect .matching-component__item-text,
+.dark .matching-component .matching-component__item.matching-component__button.matching-component__item--incorrect .matching-component__item-text,
+.dark button.matching-component__item.matching-component__item--incorrect .matching-component__item-text,
+.dark .matching-component__item.matching-component__item--incorrect .matching-component__item-text,
+.dark .matching-component__item--incorrect .matching-component__item-text {
+  color: #ffffff !important;
+}
+
+.dark .matching-component button.matching-component__item.matching-component__button.matching-component__item--selected .matching-component__item-text,
+.dark .matching-component .matching-component__item.matching-component__button.matching-component__item--selected .matching-component__item-text,
+.dark button.matching-component__item.matching-component__item--selected .matching-component__item-text,
+.dark .matching-component__item.matching-component__item--selected .matching-component__item-text,
+.dark .matching-component__item--selected .matching-component__item-text {
+  color: #ffffff !important;
+}
+
 /* === ACCESSIBILITY === */
 @media (prefers-reduced-motion: reduce) {
 
