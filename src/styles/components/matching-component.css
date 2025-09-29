@@ -484,9 +484,19 @@
   color: var(--gray-200, #e5e7eb);
 }
 
+/* Dark mode base styles - MUST come FIRST */
 .dark .matching-component__item {
   background-color: var(--gray-800, #1f2937);
   border-color: var(--gray-600, #4b5563);
+}
+
+.dark .matching-component__item-letter {
+  background-color: var(--gray-600, #4b5563);
+  color: var(--gray-200, #e5e7eb);
+}
+
+.dark .matching-component__item-text {
+  color: var(--gray-200, #e5e7eb);
 }
 
 .dark .matching-component__item:hover:not(.matching-component__item--selected):not(.matching-component__item--matched):not(.matching-component__item--correct):not(.matching-component__item--incorrect) {
@@ -495,7 +505,7 @@
 }
 
 /* === DARK MODE STATE STYLES === */
-/* CRITICAL FIX: Proper dark mode colors without breaking layout */
+/* CRITICAL FIX: Proper dark mode colors with correct CSS cascade order */
 
 .dark .matching-component__item--selected {
   background-color: #1e40af !important;
@@ -503,9 +513,27 @@
   color: white !important;
 }
 
+.dark .matching-component__item--selected .matching-component__item-letter {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  color: white !important;
+}
+
+.dark .matching-component__item--selected .matching-component__item-text {
+  color: white !important;
+}
+
 .dark .matching-component__item--matched {
   background-color: var(--gray-700, #374151) !important;
   border-color: var(--gray-600, #4b5563) !important;
+  color: var(--gray-200, #e5e7eb) !important;
+}
+
+.dark .matching-component__item--matched .matching-component__item-letter {
+  background-color: var(--gray-600, #4b5563) !important;
+  color: var(--gray-200, #e5e7eb) !important;
+}
+
+.dark .matching-component__item--matched .matching-component__item-text {
   color: var(--gray-200, #e5e7eb) !important;
 }
 
@@ -522,26 +550,18 @@
   color: white !important;
 }
 
+.dark .matching-component__item--correct .matching-component__item-letter {
+  background-color: #22c55e !important;
+  color: white !important;
+}
+
+.dark .matching-component__item--correct .matching-component__item-text {
+  color: white !important;
+}
+
 .dark .matching-component__item--incorrect {
   background-color: #991b1b !important;
   border-color: #ef4444 !important;
-  color: white !important;
-}
-
-.dark .matching-component__item--unmatched {
-  background-color: #92400e !important;
-  border-color: #f59e0b !important;
-  color: #fef3c7 !important;
-}
-
-/* Dark mode letter styles for different states */
-.dark .matching-component__item--selected .matching-component__item-letter {
-  background-color: rgba(255, 255, 255, 0.2) !important;
-  color: white !important;
-}
-
-.dark .matching-component__item--correct .matching-component__item-letter {
-  background-color: #22c55e !important;
   color: white !important;
 }
 
@@ -550,36 +570,14 @@
   color: white !important;
 }
 
-.dark .matching-component__item--matched .matching-component__item-letter {
-  background-color: var(--gray-600, #4b5563) !important;
-  color: var(--gray-200, #e5e7eb) !important;
-}
-
-/* Dark mode base styles - MUST come before state-specific styles */
-.dark .matching-component__item-letter {
-  background-color: var(--gray-600, #4b5563);
-  color: var(--gray-200, #e5e7eb);
-}
-
-.dark .matching-component__item-text {
-  color: var(--gray-200, #e5e7eb);
-}
-
-/* Dark mode text styles for different states - Higher specificity */
-.dark .matching-component__item--selected .matching-component__item-text {
-  color: white !important;
-}
-
-.dark .matching-component__item--correct .matching-component__item-text {
-  color: white !important;
-}
-
 .dark .matching-component__item--incorrect .matching-component__item-text {
   color: white !important;
 }
 
-.dark .matching-component__item--matched .matching-component__item-text {
-  color: var(--gray-200, #e5e7eb) !important;
+.dark .matching-component__item--unmatched {
+  background-color: #92400e !important;
+  border-color: #f59e0b !important;
+  color: #fef3c7 !important;
 }
 
 /* === MOBILE OPTIMIZATIONS === */
