@@ -287,28 +287,50 @@
   white-space: normal;
 }
 
-/* STATE TEXT COLORS - Light Mode - Matching quiz component pattern */
+/* CRITICAL: Override base color for state-specific items */
+.matching-component__item--correct .matching-component__item-text,
+.matching-component__item--incorrect .matching-component__item-text,
 .matching-component__item--selected .matching-component__item-text {
   color: #ffffff !important;
 }
 
-.matching-component__item--matched .matching-component__item-text {
-  color: #374151 !important;
-}
+/* STATE TEXT COLORS - Light Mode - Matching quiz component pattern */
+/* CRITICAL: Maximum specificity selectors to ensure white text on correction states */
 
-.matching-component__item--matched-inactive .matching-component__item-text {
-  color: #6b7280 !important;
-}
-
-.matching-component__item--unmatched .matching-component__item-text {
-  color: #a16207 !important;
-}
-
-.matching-component__item--correct .matching-component__item-text {
+/* Button + Item + State + Text - Maximum specificity */
+button.matching-component__item.matching-component__item--selected .matching-component__item-text,
+.matching-component__button.matching-component__item.matching-component__item--selected .matching-component__item-text,
+.matching-component__item.matching-component__item--selected .matching-component__item-text {
   color: #ffffff !important;
 }
 
-.matching-component__item--incorrect .matching-component__item-text {
+button.matching-component__item.matching-component__item--matched .matching-component__item-text,
+.matching-component__button.matching-component__item.matching-component__item--matched .matching-component__item-text,
+.matching-component__item.matching-component__item--matched .matching-component__item-text {
+  color: #374151 !important;
+}
+
+button.matching-component__item.matching-component__item--matched-inactive .matching-component__item-text,
+.matching-component__button.matching-component__item.matching-component__item--matched-inactive .matching-component__item-text,
+.matching-component__item.matching-component__item--matched-inactive .matching-component__item-text {
+  color: #6b7280 !important;
+}
+
+button.matching-component__item.matching-component__item--unmatched .matching-component__item-text,
+.matching-component__button.matching-component__item.matching-component__item--unmatched .matching-component__item-text,
+.matching-component__item.matching-component__item--unmatched .matching-component__item-text {
+  color: #a16207 !important;
+}
+
+button.matching-component__item.matching-component__item--correct .matching-component__item-text,
+.matching-component__button.matching-component__item.matching-component__item--correct .matching-component__item-text,
+.matching-component__item.matching-component__item--correct .matching-component__item-text {
+  color: #ffffff !important;
+}
+
+button.matching-component__item.matching-component__item--incorrect .matching-component__item-text,
+.matching-component__button.matching-component__item.matching-component__item--incorrect .matching-component__item-text,
+.matching-component__item.matching-component__item--incorrect .matching-component__item-text {
   color: #ffffff !important;
 }
 
@@ -525,6 +547,9 @@
   color: white !important;
 }
 
+/* Dark mode - Maximum specificity for selected text */
+.dark button.matching-component__item.matching-component__item--selected .matching-component__item-text,
+.dark .matching-component__button.matching-component__item.matching-component__item--selected .matching-component__item-text,
 .dark .matching-component__item--selected .matching-component__item-text {
   color: white !important;
 }
@@ -540,6 +565,9 @@
   color: var(--gray-200, #e5e7eb) !important;
 }
 
+/* Dark mode - Maximum specificity for matched text */
+.dark button.matching-component__item.matching-component__item--matched .matching-component__item-text,
+.dark .matching-component__button.matching-component__item.matching-component__item--matched .matching-component__item-text,
 .dark .matching-component__item--matched .matching-component__item-text {
   color: var(--gray-200, #e5e7eb) !important;
 }
@@ -562,6 +590,9 @@
   color: white !important;
 }
 
+/* Dark mode - Maximum specificity for correct text */
+.dark button.matching-component__item.matching-component__item--correct .matching-component__item-text,
+.dark .matching-component__button.matching-component__item.matching-component__item--correct .matching-component__item-text,
 .dark .matching-component__item--correct .matching-component__item-text {
   color: white !important;
 }
@@ -577,6 +608,9 @@
   color: white !important;
 }
 
+/* Dark mode - Maximum specificity for incorrect text */
+.dark button.matching-component__item.matching-component__item--incorrect .matching-component__item-text,
+.dark .matching-component__button.matching-component__item.matching-component__item--incorrect .matching-component__item-text,
 .dark .matching-component__item--incorrect .matching-component__item-text {
   color: white !important;
 }
