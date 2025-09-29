@@ -273,7 +273,9 @@
   display: flex;
   align-items: center;
   margin-right: 0.5rem;
-  overflow: hidden;
+  overflow: visible; /* CHANGED: was 'hidden' - could be cutting off text */
+  word-wrap: break-word;
+  white-space: normal;
 }
 
 /* STATE TEXT COLORS - Light Mode */
