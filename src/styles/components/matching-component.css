@@ -276,20 +276,21 @@
   overflow: hidden;
 }
 
+/* STATE TEXT COLORS - Light Mode */
 .matching-component__item--selected .matching-component__item-text {
-  color: #ffffff;
+  color: #ffffff !important;
 }
 
 .matching-component__item--correct .matching-component__item-text {
-  color: #166534;
+  color: #166534 !important;
 }
 
 .matching-component__item--incorrect .matching-component__item-text {
-  color: #991b1b;
+  color: #991b1b !important;
 }
 
 .matching-component__item--matched .matching-component__item-text {
-  color: #374151;
+  color: #374151 !important;
 }
 
 /* === MATCHING BUTTONS === */
@@ -554,7 +555,17 @@
   color: var(--gray-200, #e5e7eb) !important;
 }
 
-/* Dark mode text styles for different states */
+/* Dark mode base styles - MUST come before state-specific styles */
+.dark .matching-component__item-letter {
+  background-color: var(--gray-600, #4b5563);
+  color: var(--gray-200, #e5e7eb);
+}
+
+.dark .matching-component__item-text {
+  color: var(--gray-200, #e5e7eb);
+}
+
+/* Dark mode text styles for different states - Higher specificity */
 .dark .matching-component__item--selected .matching-component__item-text {
   color: white !important;
 }
@@ -569,15 +580,6 @@
 
 .dark .matching-component__item--matched .matching-component__item-text {
   color: var(--gray-200, #e5e7eb) !important;
-}
-
-.dark .matching-component__item-letter {
-  background-color: var(--gray-600, #4b5563);
-  color: var(--gray-200, #e5e7eb);
-}
-
-.dark .matching-component__item-text {
-  color: var(--gray-200, #e5e7eb);
 }
 
 /* === MOBILE OPTIMIZATIONS === */
