@@ -8,6 +8,7 @@ import { useLearningCleanup } from '../../hooks/useLearningCleanup';
 import { useTranslation } from '../../utils/i18n';
 import { ContentAdapter } from '../../utils/contentAdapter';
 import ContentRenderer from '../ui/ContentRenderer';
+import LearningProgressHeader from '../ui/LearningProgressHeader';
 
 import '../../styles/components/matching-modal.css';
 import '../../styles/components/matching-component.css';
@@ -240,20 +241,14 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
 
   return (
     <div className="matching-component">
-      {/* Component header with progress */}
-      <div className="matching-component__header">
-        <h2 className="matching-component__title">{module.name}</h2>
-        <div className="matching-component__progress-badge">
-          {Object.keys(matches).length}/{pairs.length}
-        </div>
-      </div>
-
-      {/* Help text */}
-      <div className="matching-component__help">
-        <p className="matching-component__help-text">
-          {allMatched ? t('learning.allMatched') : t('learning.clickToMatch')}
-        </p>
-      </div>
+      {/* Unified progress header */}
+      <LearningProgressHeader
+        title={module.name}
+        currentIndex={Object.keys(matches).length - 1}
+        totalItems={pairs.length}
+        mode="matching"
+        helpText={allMatched ? t('learning.allMatched') : t('learning.clickToMatch')}
+      />
 
       {/* Compact Matching Grid */}
       <div className="matching-component__grid">

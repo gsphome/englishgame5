@@ -17,43 +17,8 @@
       var(--theme-bg-subtle, #f9fafb) 100%);
 }
 
-/* === HEADER === */
-.matching-component__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--padding-md, 1rem);
-  margin-bottom: var(--padding-sm, 0.5rem);
-}
-
-.matching-component__title {
-  font-size: var(--text-lg);
-  font-weight: var(--font-semibold);
-  color: var(--theme-text-primary, #374151);
-  margin: 0;
-}
-
-.matching-component__progress-badge {
-  background: var(--theme-primary-blue, #3b82f6);
-  color: white;
-  padding: var(--padding-xs, 0.25rem) var(--padding-sm, 0.5rem);
-  border-radius: var(--radius-md, 0.375rem);
-  font-size: var(--text-sm);
-  font-weight: var(--font-medium);
-}
-
-/* === HELP TEXT === */
-.matching-component__help {
-  padding: 0 var(--padding-md, 1rem);
-  margin-bottom: var(--padding-md, 1rem);
-}
-
-.matching-component__help-text {
-  font-size: var(--text-sm);
-  color: var(--theme-text-secondary, #6b7280);
-  text-align: center;
-  margin: 0;
-}
+/* === HEADER - Now using unified LearningProgressHeader === */
+/* Header styles removed - using LearningProgressHeader component */
 
 /* === LOADING === */
 .matching-component__loading {
@@ -168,12 +133,19 @@
   font-weight: 500;
 }
 
-/* HOVER STATE - Clear interactive feedback */
+/* HOVER STATE - Enhanced for non-selected cards */
 .matching-component__item:hover:not(.matching-component__item--selected):not(.matching-component__item--matched):not(.matching-component__item--correct):not(.matching-component__item--incorrect):not(.matching-component__item--matched-inactive) {
-  background-color: #f8fafc;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
   border-color: #3b82f6;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.2);
+}
+
+/* DEFAULT STATE - Improved design for non-selected cards */
+.matching-component__item:not(.matching-component__item--selected):not(.matching-component__item--matched):not(.matching-component__item--correct):not(.matching-component__item--incorrect):not(.matching-component__item--matched-inactive):not(.matching-component__item--unmatched) {
+  background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+  border: 2px solid #e5e7eb;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
 /* SELECTED STATE - Clear selection with strong border */
@@ -656,8 +628,24 @@
   margin: 4px !important;
 }
 
-/* Specific padding for matched button items */
-.matching-component__item.matching-component__item--matched.matching-component__button.matching-component__button--primary {
+/* Specific padding for ALL button item states - Terms and Definitions */
+.matching-component__item.matching-component__button {
+  padding: 1rem !important;
+}
+
+/* Ensure consistent padding for all states */
+.matching-component__item.matching-component__button.matching-component__button--primary,
+.matching-component__item.matching-component__button.matching-component__button--secondary {
+  padding: 1rem !important;
+}
+
+/* All matching item states get consistent padding */
+.matching-component__item--selected.matching-component__button,
+.matching-component__item--matched.matching-component__button,
+.matching-component__item--matched-inactive.matching-component__button,
+.matching-component__item--unmatched.matching-component__button,
+.matching-component__item--correct.matching-component__button,
+.matching-component__item--incorrect.matching-component__button {
   padding: 1rem !important;
 }
 
@@ -676,8 +664,22 @@
     margin: 4px !important;
   }
   
-  /* Specific padding for matched button items on mobile */
-  .matching-component__item.matching-component__item--matched.matching-component__button.matching-component__button--primary {
+  /* Specific padding for ALL button item states on mobile */
+  .matching-component__item.matching-component__button {
+    padding: 1rem !important;
+  }
+  
+  .matching-component__item.matching-component__button.matching-component__button--primary,
+  .matching-component__item.matching-component__button.matching-component__button--secondary {
+    padding: 1rem !important;
+  }
+  
+  .matching-component__item--selected.matching-component__button,
+  .matching-component__item--matched.matching-component__button,
+  .matching-component__item--matched-inactive.matching-component__button,
+  .matching-component__item--unmatched.matching-component__button,
+  .matching-component__item--correct.matching-component__button,
+  .matching-component__item--incorrect.matching-component__button {
     padding: 1rem !important;
   }
 }
