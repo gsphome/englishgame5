@@ -135,7 +135,7 @@
 /* Override colors for selected/matched states in matching component */
 .matching-component__item--selected .content-renderer__segment--term,
 .matching-component__item--selected .content-renderer {
-  color: #ffffff !important;
+  color: #ffffff !important; /* WHITE TEXT ON BLUE BACKGROUND */
 }
 
 .matching-component__item--matched .content-renderer__segment--term,
@@ -145,12 +145,12 @@
 
 .matching-component__item--correct .content-renderer__segment--term,
 .matching-component__item--correct .content-renderer {
-  color: #166534 !important;
+  color: #ffffff !important; /* WHITE TEXT ON GREEN BACKGROUND */
 }
 
 .matching-component__item--incorrect .content-renderer__segment--term,
 .matching-component__item--incorrect .content-renderer {
-  color: #991b1b !important;
+  color: #ffffff !important; /* WHITE TEXT ON RED BACKGROUND */
 }
 
 .matching-component__item--matched-inactive .content-renderer__segment--term {
@@ -190,14 +190,14 @@ html:not(.dark) .matching-component__item--matched-inactive:hover .content-rende
   color: #111827 !important;
 }
 
-/* Override for correct/incorrect states in light mode */
+/* Override for correct/incorrect states in light mode - WHITE TEXT FOR CONTRAST */
 html:not(.dark) .matching-component__item--correct .content-renderer,
 html:not(.dark) .matching-component__item--correct .content-renderer *,
 html:not(.dark) .matching-component__item--correct .content-renderer__segment--term,
 html:not(.dark) .matching-component__item--correct .content-renderer__segment--emphasis,
 html:not(.dark) .matching-component__item--correct .content-renderer__segment--variable,
 html:not(.dark) .matching-component__item--correct .content-renderer__segment--code {
-  color: #166534 !important;
+  color: #ffffff !important; /* WHITE TEXT ON GREEN BACKGROUND */
 }
 
 html:not(.dark) .matching-component__item--incorrect .content-renderer,
@@ -206,7 +206,7 @@ html:not(.dark) .matching-component__item--incorrect .content-renderer__segment-
 html:not(.dark) .matching-component__item--incorrect .content-renderer__segment--emphasis,
 html:not(.dark) .matching-component__item--incorrect .content-renderer__segment--variable,
 html:not(.dark) .matching-component__item--incorrect .content-renderer__segment--code {
-  color: #991b1b !important;
+  color: #ffffff !important; /* WHITE TEXT ON RED BACKGROUND */
 }
 
 /* Unmatched items ContentRenderer styles */
