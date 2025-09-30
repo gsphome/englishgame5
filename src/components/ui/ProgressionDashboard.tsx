@@ -136,8 +136,7 @@ export const ProgressionDashboard: React.FC<ProgressionDashboardProps> = ({
   return (
     <div className="progression-dashboard">
       {/* Continue Learning Section */}
-      {/* DEBUG: Siempre mostrar hero para testing */}
-      {(nextRecommended || true) && (
+      {nextRecommended && (
         <div
           className="progression-dashboard__hero"
           style={{

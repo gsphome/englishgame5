@@ -1,7 +1,6 @@
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { renderHook, act } from '@testing-library/react';
 import { useMenuNavigation } from '../../../src/hooks/useMenuNavigation';
-import { useAppStore } from '../../../src/stores/appStore';
 
 // Mock the store
 const mockSetCurrentView = vi.fn();
