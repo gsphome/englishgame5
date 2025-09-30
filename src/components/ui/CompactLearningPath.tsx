@@ -4,6 +4,7 @@ import { useProgression } from '../../hooks/useProgression';
 // Note: useProgressStore removed as we consolidated the information
 import { useSettingsStore } from '../../stores/settingsStore';
 import { useTranslation } from '../../utils/i18n';
+import { useEscapeKey } from '../../hooks/useEscapeKey';
 import '../../styles/components/compact-learning-path.css';
 import '../../styles/components/modal-buttons.css';
 
@@ -17,6 +18,9 @@ export const CompactLearningPath: React.FC<CompactLearningPathProps> = ({ isOpen
   // Note: isModuleCompleted removed as we consolidated the information
   const { language } = useSettingsStore();
   const { t } = useTranslation(language);
+
+  // Handle escape key to close modal
+  useEscapeKey(isOpen, onClose);
 
   if (!isOpen) return null;
 

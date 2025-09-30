@@ -6,6 +6,7 @@
 import React, { useState, useEffect } from 'react';
 import { X, Download, Trash2, Filter } from 'lucide-react';
 import { logger } from '../../utils/logger';
+import { useEscapeKey } from '../../hooks/useEscapeKey';
 import '../../styles/components/log-viewer.css';
 
 interface LogViewerProps {
@@ -17,6 +18,9 @@ export const LogViewer: React.FC<LogViewerProps> = ({ isOpen, onClose }) => {
   const [logs, setLogs] = useState<any[]>([]);
   const [filter, setFilter] = useState<string>('all');
   const [searchTerm, setSearchTerm] = useState<string>('');
+
+  // Handle escape key to close modal
+  useEscapeKey(isOpen, onClose);
 
   useEffect(() => {
     if (isOpen) {

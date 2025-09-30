@@ -5,6 +5,7 @@ import { useAppStore } from '../../stores/appStore';
 import { useUserStore } from '../../stores/userStore';
 import { useSettingsStore } from '../../stores/settingsStore';
 import { useTranslation } from '../../utils/i18n';
+import { useEscapeKey } from '../../hooks/useEscapeKey';
 // import { toast } from '../../stores/toastStore';
 
 // Compact modals - optimized versions
@@ -38,6 +39,9 @@ export const Header: React.FC<HeaderProps> = () => {
 
   // Theme is now handled by themeInitializer and settingsStore
   // This effect is kept for consistency but theme should already be applied
+
+  // Handle escape key for hamburger menu
+  useEscapeKey(showSideMenu, () => setShowSideMenu(false));
 
   const handleMenuToggle = () => {
     setShowSideMenu(!showSideMenu);

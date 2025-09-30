@@ -31,7 +31,7 @@
   box-shadow: var(--shadow-strong, 0 10px 15px rgba(0, 0, 0, 0.1));
   max-width: 24rem;
   width: 100%;
-  height: 310px;
+  height: 330px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -148,7 +148,6 @@ html.dark .compact-settings__container {
   padding: var(--padding-lg, 1.5rem);
   flex: 1;
   overflow: visible;
-  height: 230px;
 }
 
 .compact-settings__section {

@@ -4,6 +4,7 @@ import { useProgressStore } from '../../stores/progressStore';
 import { useUserStore } from '../../stores/userStore';
 import { useSettingsStore } from '../../stores/settingsStore';
 import { useTranslation } from '../../utils/i18n';
+import { useEscapeKey } from '../../hooks/useEscapeKey';
 import '../../styles/components/compact-progress-dashboard.css';
 import '../../styles/components/modal-buttons.css';
 
@@ -18,6 +19,9 @@ export const CompactProgressDashboard: React.FC<CompactProgressDashboardProps> =
 }) => {
   const { getProgressData, getWeeklyAverage } = useProgressStore();
   const { userScores, getTotalScore } = useUserStore();
+
+  // Handle escape key to close modal
+  useEscapeKey(isOpen, onClose);
   const { language } = useSettingsStore();
   const { t } = useTranslation(language);
 

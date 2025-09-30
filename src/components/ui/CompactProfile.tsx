@@ -6,6 +6,7 @@ import { X, User, Save } from 'lucide-react';
 import { useUserStore } from '../../stores/userStore';
 import { useSettingsStore } from '../../stores/settingsStore';
 import { useTranslation } from '../../utils/i18n';
+import { useEscapeKey } from '../../hooks/useEscapeKey';
 import '../../styles/components/compact-profile.css';
 import '../../styles/components/modal-buttons.css';
 
@@ -51,6 +52,9 @@ export const CompactProfile: React.FC<CompactProfileProps> = ({ isOpen, onClose 
   const { user, setUser } = useUserStore();
   const { language } = useSettingsStore();
   const { t } = useTranslation(language);
+
+  // Handle escape key to close modal
+  useEscapeKey(isOpen, onClose);
 
   const profileSchema = createProfileSchema(t);
 

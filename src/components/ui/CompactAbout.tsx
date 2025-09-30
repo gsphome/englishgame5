@@ -3,6 +3,7 @@ import { X, Heart, Info } from 'lucide-react';
 import { Github } from 'lucide-react';
 import { useSettingsStore } from '../../stores/settingsStore';
 import { useTranslation } from '../../utils/i18n';
+import { useEscapeKey } from '../../hooks/useEscapeKey';
 import { FluentFlowLogo } from './FluentFlowLogo';
 import '../../styles/components/compact-about.css';
 import '../../styles/components/modal-buttons.css';
@@ -15,6 +16,9 @@ interface CompactAboutProps {
 export const CompactAbout: React.FC<CompactAboutProps> = ({ isOpen, onClose }) => {
   const { language } = useSettingsStore();
   const { t } = useTranslation(language);
+
+  // Handle escape key to close modal
+  useEscapeKey(isOpen, onClose);
 
   if (!isOpen) return null;
 

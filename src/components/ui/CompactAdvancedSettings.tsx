@@ -3,6 +3,7 @@ import { X, Settings, Save, RotateCcw, Gamepad2, Palette, Wrench } from 'lucide-
 import { useSettingsStore } from '../../stores/settingsStore';
 import { useTranslation } from '../../utils/i18n';
 import { validateGameSettings } from '../../utils/inputValidation';
+import { useEscapeKey } from '../../hooks/useEscapeKey';
 import '../../styles/components/compact-advanced-settings.css';
 import '../../styles/components/modal-buttons.css';
 
@@ -33,6 +34,9 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
   const { t } = useTranslation(language);
   const [hasChanges, setHasChanges] = useState(false);
   const [activeTab, setActiveTab] = useState<'general' | 'games' | 'categories'>('general');
+
+  // Handle escape key to close modal
+  useEscapeKey(isOpen, onClose);
 
   // Local state for editing
   const [localTheme, setLocalTheme] = useState(theme);
