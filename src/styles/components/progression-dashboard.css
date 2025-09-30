@@ -8,9 +8,11 @@
 
 /* Continue Learning Section - ULTRA COMPACT */
 .progression-dashboard__hero {
-  background: linear-gradient(135deg,
-      var(--theme-accent-primary) 0%,
-      var(--theme-accent-secondary) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--theme-accent-primary) 0%,
+    var(--theme-accent-secondary) 100%
+  );
   border-radius: var(--radius-lg, 0.5rem);
   padding: 0.36rem !important;
   margin-bottom: 0.24rem !important;
@@ -339,9 +341,11 @@
 
 .progression-dashboard__module--next {
   border-color: var(--theme-accent-primary);
-  background: linear-gradient(135deg,
-      var(--theme-bg-primary, #f9fafb) 0%,
-      rgba(59, 130, 246, 0.05) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--theme-bg-primary, #f9fafb) 0%,
+    rgba(59, 130, 246, 0.05) 100%
+  );
 }
 
 .progression-dashboard__module-icon {

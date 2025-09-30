@@ -145,7 +145,7 @@ export const ProgressionDashboard: React.FC<ProgressionDashboardProps> = ({
             minHeight: 'auto',
             maxHeight: '100px',
             overflow: 'hidden',
-            margin: '0 0 0 0'
+            margin: '0 0 0 0',
           }}
         >
           <div
@@ -153,7 +153,7 @@ export const ProgressionDashboard: React.FC<ProgressionDashboardProps> = ({
             style={{
               padding: '0',
               margin: '0',
-              minHeight: 'auto'
+              minHeight: 'auto',
             }}
           >
             <div
@@ -164,7 +164,7 @@ export const ProgressionDashboard: React.FC<ProgressionDashboardProps> = ({
                 minHeight: 'auto',
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'space-between'
+                justifyContent: 'space-between',
               }}
             >
               <div
@@ -175,7 +175,7 @@ export const ProgressionDashboard: React.FC<ProgressionDashboardProps> = ({
                   minHeight: 'auto',
                   lineHeight: '1.2',
                   flex: '1',
-                  textAlign: 'left'
+                  textAlign: 'left',
                 }}
               >
                 <h3
@@ -184,7 +184,7 @@ export const ProgressionDashboard: React.FC<ProgressionDashboardProps> = ({
                     marginBottom: '0.1rem',
                     fontSize: '1rem',
                     lineHeight: '1.1',
-                    fontWeight: '700'
+                    fontWeight: '700',
                   }}
                 >
                   {nextRecommended?.name || 'DEBUG: Test Module'}
@@ -195,7 +195,7 @@ export const ProgressionDashboard: React.FC<ProgressionDashboardProps> = ({
                     marginBottom: '0.15rem',
                     fontSize: '0.8rem',
                     lineHeight: '1.2',
-                    opacity: '0.95'
+                    opacity: '0.95',
                   }}
                 >
                   {nextRecommended?.description || 'DEBUG: Testing hero section size reduction'}
@@ -206,31 +206,35 @@ export const ProgressionDashboard: React.FC<ProgressionDashboardProps> = ({
                     gap: '0.25rem',
                     marginTop: '0.02rem',
                     display: 'flex',
-                    alignItems: 'center'
+                    alignItems: 'center',
                   }}
                 >
                   <span
                     className="progression-dashboard__level-badge"
                     style={{
-                      backgroundColor: nextRecommended ? getLevelColor(
-                        Array.isArray(nextRecommended.level)
-                          ? nextRecommended.level[0]
-                          : nextRecommended.level
-                      ) : '#3b82f6',
+                      backgroundColor: nextRecommended
+                        ? getLevelColor(
+                            Array.isArray(nextRecommended.level)
+                              ? nextRecommended.level[0]
+                              : nextRecommended.level
+                          )
+                        : '#3b82f6',
                       padding: '0.03rem 0.15rem',
                       fontSize: '0.55rem',
-                      lineHeight: '1'
+                      lineHeight: '1',
                     }}
                   >
-                    {nextRecommended ? (Array.isArray(nextRecommended.level)
-                      ? nextRecommended.level[0].toUpperCase()
-                      : nextRecommended.level.toUpperCase()) : 'A1'}
+                    {nextRecommended
+                      ? Array.isArray(nextRecommended.level)
+                        ? nextRecommended.level[0].toUpperCase()
+                        : nextRecommended.level.toUpperCase()
+                      : 'A1'}
                   </span>
                   <span
                     className="progression-dashboard__time"
                     style={{
                       fontSize: '0.6rem',
-                      lineHeight: '1'
+                      lineHeight: '1',
                     }}
                   >
                     ~{nextRecommended?.estimatedTime || 5}min
@@ -245,7 +249,7 @@ export const ProgressionDashboard: React.FC<ProgressionDashboardProps> = ({
                   fontSize: '0.65rem',
                   minHeight: 'auto',
                   height: 'fit-content',
-                  flexShrink: '0'
+                  flexShrink: '0',
                 }}
                 onClick={handleContinueLearning}
               >

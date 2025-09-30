@@ -15,7 +15,8 @@ export const MainMenu: React.FC = () => {
   const { data: modules = [], isLoading, error } = useAllModules();
   const progression = useProgression();
   const { query, setQuery, results } = useSearch(modules);
-  const { setCurrentModule, setCurrentView, setPreviousMenuContext, previousMenuContext } = useAppStore();
+  const { setCurrentModule, setCurrentView, setPreviousMenuContext, previousMenuContext } =
+    useAppStore();
   const [viewMode, setViewMode] = useState<'progression' | 'list'>(previousMenuContext);
 
   // Sync view mode with stored context when component mounts

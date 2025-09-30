@@ -148,10 +148,7 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
         <p className="completion-component__no-data-text">
           {t('learning.noCompletionExercisesAvailable')}
         </p>
-        <button
-          onClick={returnToMenu}
-          className="completion-component__no-data-btn"
-        >
+        <button onClick={returnToMenu} className="completion-component__no-data-btn">
           {t('navigation.mainMenu')}
         </button>
       </div>
