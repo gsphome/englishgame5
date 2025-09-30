@@ -214,10 +214,10 @@ export const ProgressionDashboard: React.FC<ProgressionDashboardProps> = ({
                     style={{
                       backgroundColor: nextRecommended
                         ? getLevelColor(
-                          Array.isArray(nextRecommended.level)
-                            ? nextRecommended.level[0]
-                            : nextRecommended.level
-                        )
+                            Array.isArray(nextRecommended.level)
+                              ? nextRecommended.level[0]
+                              : nextRecommended.level
+                          )
                         : '#3b82f6',
                       padding: '0.03rem 0.15rem',
                       fontSize: '0.55rem',
