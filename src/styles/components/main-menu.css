@@ -10,11 +10,11 @@
   --grid-padding-desktop: 0.625rem;
   --grid-padding-large-desktop: 0.75rem;
 
-  /* Conservative heights for exactly 3 rows - no 4th row visible */
-  --grid-height-mobile: calc(85px * 3 + 5px * 2 + 5px * 2 + 5px);
-  --grid-height-tablet: calc(105px * 3 + 5px * 2 + 5px * 2 + 5px);
-  --grid-height-desktop: calc(125px * 3 + 5px * 2 + 5px * 2 + 5px);
-  --grid-height-large-desktop: calc(125px * 3 + 5px * 2 + 5px * 2 + 5px);
+  /* Heights for exactly 4 rows to match progression dashboard */
+  --grid-height-mobile: calc(85px * 4 + 5px * 3 + 5px * 2 + 5px);
+  --grid-height-tablet: calc(105px * 4 + 5px * 3 + 5px * 2 + 5px);
+  --grid-height-desktop: calc(125px * 4 + 5px * 3 + 5px * 2 + 5px);
+  --grid-height-large-desktop: calc(125px * 4 + 5px * 3 + 5px * 2 + 5px);
 }
 
 /* SVG Icon Inheritance Fix - Force white in dark mode */
