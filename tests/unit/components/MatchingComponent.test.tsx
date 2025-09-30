@@ -68,9 +68,9 @@ describe('MatchingComponent', () => {
       <MatchingComponent module={mockModule} />
     );
 
-    const progressBadge = container.querySelector('.matching-component__progress-badge');
-    expect(progressBadge).toBeInTheDocument();
-    expect(progressBadge?.textContent?.trim()).toBe('0/3');
+    // The progress is shown in LearningProgressHeader component
+    const progressHeader = container.querySelector('.learning-progress-header');
+    expect(progressHeader).toBeInTheDocument();
   });
 
   it('should apply proper BEM classes for pure CSS architecture', () => {
@@ -81,10 +81,8 @@ describe('MatchingComponent', () => {
     // Check main component class (BEM block)
     expect(container.querySelector('.matching-component')).toBeInTheDocument();
 
-    // Check header structure (BEM elements)
-    expect(container.querySelector('.matching-component__header')).toBeInTheDocument();
-    expect(container.querySelector('.matching-component__title')).toBeInTheDocument();
-    expect(container.querySelector('.matching-component__progress-badge')).toBeInTheDocument();
+    // Check that it uses LearningProgressHeader component
+    expect(container.querySelector('.learning-progress-header')).toBeInTheDocument();
 
     // Check grid structure (BEM elements)
     expect(container.querySelector('.matching-component__grid')).toBeInTheDocument();
