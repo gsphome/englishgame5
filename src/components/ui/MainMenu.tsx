@@ -15,8 +15,18 @@ export const MainMenu: React.FC = () => {
   const { data: modules = [], isLoading, error } = useAllModules();
   const progression = useProgression();
   const { query, setQuery, results } = useSearch(modules);
-  const { setCurrentModule, setCurrentView } = useAppStore();
-  const [viewMode, setViewMode] = useState<'progression' | 'list'>('progression');
+  const { setCurrentModule, setCurrentView, setPreviousMenuContext, previousMenuContext } = useAppStore();
+  const [viewMode, setViewMode] = useState<'progression' | 'list'>(previousMenuContext);
+
+  // Sync view mode with stored context when component mounts
+  useEffect(() => {
+    setViewMode(previousMenuContext);
+  }, [previousMenuContext]);
+
+  // Update stored context when view mode changes
+  useEffect(() => {
+    setPreviousMenuContext(viewMode);
+  }, [viewMode, setPreviousMenuContext]);
 
   // Show welcome toast when modules are loaded (only once per session)
   useEffect(() => {
@@ -68,6 +78,8 @@ export const MainMenu: React.FC = () => {
       { duration: 1500 }
     );
 
+    // Save current menu context before navigating to learning mode
+    setPreviousMenuContext(viewMode);
     setCurrentModule(module);
     setCurrentView(module.learningMode);
   };

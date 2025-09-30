@@ -3,6 +3,7 @@ import { RotateCcw, Check, Info, X, Home } from 'lucide-react';
 import { useAppStore } from '../../stores/appStore';
 import { useUserStore } from '../../stores/userStore';
 import { useSettingsStore } from '../../stores/settingsStore';
+import { useMenuNavigation } from '../../hooks/useMenuNavigation';
 import { useProgressStore } from '../../stores/progressStore';
 import { useTranslation } from '../../utils/i18n';
 import { useToast } from '../../hooks/useToast';
@@ -35,9 +36,10 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
   const [showExplanation, setShowExplanation] = useState(false);
   const [selectedTerm, setSelectedTerm] = useState<any>(null);
 
-  const { updateSessionScore, setCurrentView } = useAppStore();
+  const { updateSessionScore } = useAppStore();
   const { updateUserScore } = useUserStore();
   const { language } = useSettingsStore();
+  const { returnToMenu } = useMenuNavigation();
   const { addProgressEntry } = useProgressStore();
   const { t } = useTranslation(language);
   const { showCorrectAnswer, showIncorrectAnswer, showModuleCompleted } = useToast();
@@ -53,13 +55,13 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
           setShowExplanation(false);
         }
       } else if (e.key === 'Escape') {
-        setCurrentView('menu');
+        returnToMenu();
       }
     };
 
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [showExplanation, setCurrentView]);
+  }, [showExplanation, returnToMenu]);
 
   useEffect(() => {
     let newExercise: SortingData = { id: '', words: [], categories: [] };
@@ -280,7 +282,7 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
 
     showModuleCompleted(module.name, finalScore, accuracy);
     updateUserScore(module.id, finalScore, timeSpent);
-    setCurrentView('menu');
+    returnToMenu();
   };
 
   const showSummaryModal = () => {
@@ -464,7 +466,7 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
       <div className="game-controls">
         {/* Home Navigation */}
         <button
-          onClick={() => setCurrentView('menu')}
+          onClick={returnToMenu}
           className="game-controls__home-btn"
           title={t('learning.returnToMainMenu')}
         >

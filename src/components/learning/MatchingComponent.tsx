@@ -3,6 +3,7 @@ import { RotateCcw, Check, Info, X, Home } from 'lucide-react';
 import { useAppStore } from '../../stores/appStore';
 import { useUserStore } from '../../stores/userStore';
 import { useSettingsStore } from '../../stores/settingsStore';
+import { useMenuNavigation } from '../../hooks/useMenuNavigation';
 import { useToast } from '../../hooks/useToast';
 import { useLearningCleanup } from '../../hooks/useLearningCleanup';
 import { useTranslation } from '../../utils/i18n';
@@ -31,9 +32,10 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
   const [selectedTerm, setSelectedTerm] = useState<any>(null);
   const currentModuleIdRef = useRef<string | null>(null);
 
-  const { updateSessionScore, setCurrentView } = useAppStore();
+  const { updateSessionScore } = useAppStore();
   const { updateUserScore } = useUserStore();
   const { language } = useSettingsStore();
+  const { returnToMenu } = useMenuNavigation();
   const { showCorrectAnswer, showIncorrectAnswer, showModuleCompleted } = useToast();
   const { t } = useTranslation(language);
   useLearningCleanup();
@@ -47,13 +49,13 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
           setShowExplanation(false);
         }
       } else if (e.key === 'Escape') {
-        setCurrentView('menu');
+        returnToMenu();
       }
     };
 
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [showExplanation, setCurrentView]);
+  }, [showExplanation, returnToMenu]);
 
   useEffect(() => {
     if (!module?.data || !module?.id) return;
@@ -195,7 +197,7 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
 
     showModuleCompleted(module.name, finalScore, accuracy);
     updateUserScore(module.id, finalScore, timeSpent);
-    setCurrentView('menu');
+    returnToMenu();
   };
 
   const showSummaryModal = () => {
@@ -376,7 +378,7 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
       <div className="game-controls">
         {/* Home Navigation */}
         <button
-          onClick={() => setCurrentView('menu')}
+          onClick={returnToMenu}
           className="game-controls__home-btn"
           title={t('learning.returnToMainMenu')}
         >

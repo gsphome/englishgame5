@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { ChevronLeft, ChevronRight, RotateCcw, Home } from 'lucide-react';
-import { useAppStore } from '../../stores/appStore';
 import { useUserStore } from '../../stores/userStore';
 import { useSettingsStore } from '../../stores/settingsStore';
+import { useMenuNavigation } from '../../hooks/useMenuNavigation';
 import { useProgressStore } from '../../stores/progressStore';
 import { useTranslation } from '../../utils/i18n';
 import { useLearningCleanup } from '../../hooks/useLearningCleanup';
@@ -23,9 +23,9 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [startTime] = useState(Date.now());
 
-  const { setCurrentView } = useAppStore();
   const { updateUserScore } = useUserStore();
   const { language } = useSettingsStore();
+  const { returnToMenu } = useMenuNavigation();
   const { addProgressEntry } = useProgressStore();
   const { t } = useTranslation(language);
   useLearningCleanup();
@@ -58,7 +58,7 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
       });
 
       updateUserScore(module.id, 100, timeSpent); // 100% completion for finishing all flashcards
-      setCurrentView('menu');
+      returnToMenu();
     }
   }, [
     currentIndex,
@@ -67,7 +67,7 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
     addProgressEntry,
     module.id,
     updateUserScore,
-    setCurrentView,
+    returnToMenu,
   ]);
 
   const handlePrev = useCallback(() => {
@@ -105,7 +105,7 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
           }
           break;
         case 'Escape':
-          setCurrentView('menu');
+          returnToMenu();
           break;
       }
     };
@@ -119,7 +119,7 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
     handleFlip,
     handleNext,
     handlePrev,
-    setCurrentView,
+    returnToMenu,
   ]);
 
   // Early return if no data
@@ -127,7 +127,7 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
     return (
       <div className="flashcard-component__no-data">
         <p className="flashcard-component__no-data-text">{t('learning.noFlashcardsAvailable')}</p>
-        <button onClick={() => setCurrentView('menu')} className="flashcard-component__no-data-btn">
+        <button onClick={returnToMenu} className="flashcard-component__no-data-btn">
           {t('navigation.mainMenu')}
         </button>
       </div>
@@ -226,7 +226,7 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
       <div className="game-controls">
         {/* Home Navigation */}
         <button
-          onClick={() => setCurrentView('menu')}
+          onClick={returnToMenu}
           className="game-controls__home-btn"
           title={t('learning.returnToMainMenu')}
         >

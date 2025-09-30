@@ -122,10 +122,12 @@ export interface ModuleScore {
 
 // App State
 export type AppView = 'menu' | LearningMode;
+export type MenuContext = 'progression' | 'list';
 
 export interface AppState {
   currentModule: LearningModule | null;
   currentView: AppView;
+  previousMenuContext: MenuContext;
   sessionScore: SessionScore;
   globalScore: SessionScore;
   isLoading: boolean;

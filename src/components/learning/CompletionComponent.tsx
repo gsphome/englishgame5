@@ -3,6 +3,7 @@ import { Check, X, ArrowRight, Home } from 'lucide-react';
 import { useAppStore } from '../../stores/appStore';
 import { useUserStore } from '../../stores/userStore';
 import { useSettingsStore } from '../../stores/settingsStore';
+import { useMenuNavigation } from '../../hooks/useMenuNavigation';
 import { useProgressStore } from '../../stores/progressStore';
 import { useTranslation } from '../../utils/i18n';
 import { useToast } from '../../hooks/useToast';
@@ -32,9 +33,10 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
   const [showResult, setShowResult] = useState(false);
   const [startTime] = useState(Date.now());
 
-  const { updateSessionScore, setCurrentView } = useAppStore();
+  const { updateSessionScore } = useAppStore();
   const { updateUserScore } = useUserStore();
   const { language } = useSettingsStore();
+  const { returnToMenu } = useMenuNavigation();
   const { addProgressEntry } = useProgressStore();
   const { t } = useTranslation(language);
   const { showCorrectAnswer, showIncorrectAnswer, showModuleCompleted } = useToast();
@@ -106,7 +108,7 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
       const accuracy = sessionScore.accuracy;
       showModuleCompleted(module.name, finalScore, accuracy);
       updateUserScore(module.id, finalScore, timeSpent);
-      setCurrentView('menu');
+      returnToMenu();
     }
   }, [
     currentIndex,
@@ -117,7 +119,7 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
     module.name,
     showModuleCompleted,
     updateUserScore,
-    setCurrentView,
+    returnToMenu,
   ]);
 
   useEffect(() => {
@@ -131,13 +133,13 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
       } else if (e.key === 'Enter' && showResult) {
         handleNext();
       } else if (e.key === 'Escape') {
-        setCurrentView('menu');
+        returnToMenu();
       }
     };
 
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [answer, showResult, randomizedExercises.length, checkAnswer, handleNext, setCurrentView]);
+  }, [answer, showResult, randomizedExercises.length, checkAnswer, handleNext, returnToMenu]);
 
   // Early return if no data
   if (!randomizedExercises.length) {
@@ -147,7 +149,7 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
           {t('learning.noCompletionExercisesAvailable')}
         </p>
         <button
-          onClick={() => setCurrentView('menu')}
+          onClick={returnToMenu}
           className="completion-component__no-data-btn"
         >
           {t('navigation.mainMenu')}
@@ -297,7 +299,7 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
       <div className="game-controls">
         {/* Home Navigation */}
         <button
-          onClick={() => setCurrentView('menu')}
+          onClick={returnToMenu}
           className="game-controls__home-btn"
           title={t('learning.returnToMainMenu')}
         >

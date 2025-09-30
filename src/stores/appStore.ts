@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import type { AppState, LearningModule, SessionScore } from '../types';
+import type { AppState, LearningModule, SessionScore, MenuContext } from '../types';
 
 interface AppStore extends AppState {
   // Global score that persists across sessions
@@ -9,6 +9,7 @@ interface AppStore extends AppState {
   // Actions
   setCurrentModule: (module: LearningModule | null) => void;
   setCurrentView: (view: AppState['currentView']) => void;
+  setPreviousMenuContext: (context: MenuContext) => void;
   updateSessionScore: (score: Partial<SessionScore>) => void;
   updateGlobalScore: (score: Partial<SessionScore>) => void;
   setLoading: (loading: boolean) => void;
@@ -23,6 +24,7 @@ export const useAppStore = create<AppStore>()(
       // Initial state
       currentModule: null,
       currentView: 'menu',
+      previousMenuContext: 'progression',
       sessionScore: {
         correct: 0,
         incorrect: 0,
@@ -63,6 +65,11 @@ export const useAppStore = create<AppStore>()(
             currentModule: view === 'menu' ? null : state.currentModule,
           };
         }),
+
+      setPreviousMenuContext: context =>
+        set(() => ({
+          previousMenuContext: context,
+        })),
 
       updateSessionScore: scoreUpdate =>
         set(state => {
@@ -138,6 +145,7 @@ export const useAppStore = create<AppStore>()(
       partialize: state => ({
         currentView: state.currentView,
         currentModule: state.currentModule,
+        previousMenuContext: state.previousMenuContext,
         globalScore: state.globalScore,
         // sessionScore should NOT be persisted - it's session-only data
       }),

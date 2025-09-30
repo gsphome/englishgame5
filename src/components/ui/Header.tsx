@@ -4,6 +4,7 @@ import '../../styles/components/header.css';
 import { useAppStore } from '../../stores/appStore';
 import { useUserStore } from '../../stores/userStore';
 import { useSettingsStore } from '../../stores/settingsStore';
+import { useMenuNavigation } from '../../hooks/useMenuNavigation';
 import { useTranslation } from '../../utils/i18n';
 import { useEscapeKey } from '../../hooks/useEscapeKey';
 // import { toast } from '../../stores/toastStore';
@@ -22,9 +23,10 @@ interface HeaderProps {
 }
 
 export const Header: React.FC<HeaderProps> = () => {
-  const { setCurrentView, currentView } = useAppStore();
+  const { currentView } = useAppStore();
   const { user } = useUserStore();
   const { developmentMode, language } = useSettingsStore();
+  const { returnToMenu } = useMenuNavigation();
   const { t } = useTranslation(language);
   const [showProfileForm, setShowProfileForm] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
@@ -48,7 +50,7 @@ export const Header: React.FC<HeaderProps> = () => {
   };
 
   const handleGoToMenu = () => {
-    setCurrentView('menu');
+    returnToMenu();
     setShowSideMenu(false);
   };
 

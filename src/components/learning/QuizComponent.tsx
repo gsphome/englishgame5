@@ -3,6 +3,7 @@ import { CheckCircle, XCircle, ArrowRight, Home } from 'lucide-react';
 import { useAppStore } from '../../stores/appStore';
 import { useUserStore } from '../../stores/userStore';
 import { useSettingsStore } from '../../stores/settingsStore';
+import { useMenuNavigation } from '../../hooks/useMenuNavigation';
 import { useProgressStore } from '../../stores/progressStore';
 import { useTranslation } from '../../utils/i18n';
 import { useToast } from '../../hooks/useToast';
@@ -44,9 +45,10 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
     });
   }, [module?.data]);
 
-  const { updateSessionScore, setCurrentView } = useAppStore();
+  const { updateSessionScore } = useAppStore();
   const { updateUserScore } = useUserStore();
   const { theme, language } = useSettingsStore();
+  const { returnToMenu } = useMenuNavigation();
   const { addProgressEntry } = useProgressStore();
   const { t } = useTranslation(language);
   const { showCorrectAnswer, showIncorrectAnswer, showModuleCompleted } = useToast();
@@ -101,7 +103,7 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
 
       showModuleCompleted(module.name, finalScore, accuracy);
       updateUserScore(module.id, finalScore, timeSpent);
-      setCurrentView('menu');
+      returnToMenu();
     }
   }, [
     currentIndex,
@@ -112,7 +114,7 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
     module.name,
     showModuleCompleted,
     updateUserScore,
-    setCurrentView,
+    returnToMenu,
   ]);
 
   useEffect(() => {
@@ -127,7 +129,7 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
       } else if (e.key === 'Enter' && showResult) {
         handleNext();
       } else if (e.key === 'Escape') {
-        setCurrentView('menu');
+        returnToMenu();
       }
     };
 
@@ -139,7 +141,7 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
     randomizedQuestions.length,
     handleAnswerSelect,
     handleNext,
-    setCurrentView,
+    returnToMenu,
   ]);
 
   // Early return if no data
@@ -147,7 +149,7 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
     return (
       <div className="quiz-component__no-data">
         <p className="quiz-component__no-data-text">{t('learning.noQuizQuestions')}</p>
-        <button onClick={() => setCurrentView('menu')} className="quiz-component__no-data-btn">
+        <button onClick={returnToMenu} className="quiz-component__no-data-btn">
           {t('learning.backToMenu')}
         </button>
       </div>
@@ -268,7 +270,7 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
       <div className="game-controls">
         {/* Home Navigation */}
         <button
-          onClick={() => setCurrentView('menu')}
+          onClick={returnToMenu}
           className="game-controls__home-btn"
           title={t('learning.returnToMainMenu')}
         >

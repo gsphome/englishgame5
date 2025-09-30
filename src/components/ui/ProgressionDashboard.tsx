@@ -14,12 +14,15 @@ interface ProgressionDashboardProps {
 export const ProgressionDashboard: React.FC<ProgressionDashboardProps> = ({
   onModuleSelect: _onModuleSelect,
 }) => {
-  const { setCurrentModule, setCurrentView } = useAppStore();
+  const { setCurrentModule, setCurrentView, setPreviousMenuContext } = useAppStore();
   const { isModuleCompleted } = useProgressStore();
   const progression = useProgression();
   const [expandedUnits, setExpandedUnits] = React.useState<Set<number>>(new Set());
 
   const nextRecommended = progression.getNextRecommendedModule();
+
+  // DEBUG: Log para verificar si hay nextRecommended
+  console.log('🔍 DEBUG - nextRecommended:', nextRecommended);
 
   // Auto-expand unit with next recommended module
   React.useEffect(() => {
@@ -55,6 +58,8 @@ export const ProgressionDashboard: React.FC<ProgressionDashboardProps> = ({
         { duration: 1500 }
       );
 
+      // Save that user came from progression dashboard
+      setPreviousMenuContext('progression');
       setCurrentModule(nextRecommended);
       setCurrentView(nextRecommended.learningMode);
     }
@@ -85,6 +90,8 @@ export const ProgressionDashboard: React.FC<ProgressionDashboardProps> = ({
       { duration: 1500 }
     );
 
+    // Save that user came from progression dashboard
+    setPreviousMenuContext('progression');
     // Navigate directly to the module
     setCurrentModule(module);
     setCurrentView(module.learningMode);
@@ -129,35 +136,118 @@ export const ProgressionDashboard: React.FC<ProgressionDashboardProps> = ({
   return (
     <div className="progression-dashboard">
       {/* Continue Learning Section */}
-      {nextRecommended && (
-        <div className="progression-dashboard__hero">
-          <div className="progression-dashboard__continue">
-            <div className="progression-dashboard__next-module">
-              <div className="progression-dashboard__next-info">
-                <h3 className="progression-dashboard__next-name">{nextRecommended.name}</h3>
-                <p className="progression-dashboard__next-desc">{nextRecommended.description}</p>
-                <div className="progression-dashboard__next-meta">
+      {/* DEBUG: Siempre mostrar hero para testing */}
+      {(nextRecommended || true) && (
+        <div
+          className="progression-dashboard__hero"
+          style={{
+            padding: '0.35rem',
+            marginBottom: '0.25rem',
+            minHeight: 'auto',
+            maxHeight: '100px',
+            overflow: 'hidden',
+            margin: '0 0 0 0'
+          }}
+        >
+          <div
+            className="progression-dashboard__continue"
+            style={{
+              padding: '0',
+              margin: '0',
+              minHeight: 'auto'
+            }}
+          >
+            <div
+              className="progression-dashboard__next-module"
+              style={{
+                padding: '0.25rem',
+                gap: '0.25rem',
+                minHeight: 'auto',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between'
+              }}
+            >
+              <div
+                className="progression-dashboard__next-info"
+                style={{
+                  padding: '0',
+                  margin: '0',
+                  minHeight: 'auto',
+                  lineHeight: '1.2',
+                  flex: '1',
+                  textAlign: 'left'
+                }}
+              >
+                <h3
+                  className="progression-dashboard__next-name"
+                  style={{
+                    marginBottom: '0.1rem',
+                    fontSize: '1rem',
+                    lineHeight: '1.1',
+                    fontWeight: '700'
+                  }}
+                >
+                  {nextRecommended?.name || 'DEBUG: Test Module'}
+                </h3>
+                <p
+                  className="progression-dashboard__next-desc"
+                  style={{
+                    marginBottom: '0.15rem',
+                    fontSize: '0.8rem',
+                    lineHeight: '1.2',
+                    opacity: '0.95'
+                  }}
+                >
+                  {nextRecommended?.description || 'DEBUG: Testing hero section size reduction'}
+                </p>
+                <div
+                  className="progression-dashboard__next-meta"
+                  style={{
+                    gap: '0.25rem',
+                    marginTop: '0.02rem',
+                    display: 'flex',
+                    alignItems: 'center'
+                  }}
+                >
                   <span
                     className="progression-dashboard__level-badge"
                     style={{
-                      backgroundColor: getLevelColor(
+                      backgroundColor: nextRecommended ? getLevelColor(
                         Array.isArray(nextRecommended.level)
                           ? nextRecommended.level[0]
                           : nextRecommended.level
-                      ),
+                      ) : '#3b82f6',
+                      padding: '0.03rem 0.15rem',
+                      fontSize: '0.55rem',
+                      lineHeight: '1'
                     }}
                   >
-                    {Array.isArray(nextRecommended.level)
+                    {nextRecommended ? (Array.isArray(nextRecommended.level)
                       ? nextRecommended.level[0].toUpperCase()
-                      : nextRecommended.level.toUpperCase()}
+                      : nextRecommended.level.toUpperCase()) : 'A1'}
                   </span>
-                  <span className="progression-dashboard__time">
-                    ~{nextRecommended.estimatedTime}min
+                  <span
+                    className="progression-dashboard__time"
+                    style={{
+                      fontSize: '0.6rem',
+                      lineHeight: '1'
+                    }}
+                  >
+                    ~{nextRecommended?.estimatedTime || 5}min
                   </span>
                 </div>
               </div>
               <button
                 className="progression-dashboard__continue-btn"
+                style={{
+                  padding: '0.15rem 0.3rem',
+                  gap: '0.08rem',
+                  fontSize: '0.65rem',
+                  minHeight: 'auto',
+                  height: 'fit-content',
+                  flexShrink: '0'
+                }}
                 onClick={handleContinueLearning}
               >
                 <Play className="progression-dashboard__continue-icon" />
