@@ -46,7 +46,7 @@ export const CompactProgressDashboard: React.FC<CompactProgressDashboardProps> =
       <div className="compact-dashboard__container">
         <div className="compact-dashboard__header">
           <h2 className="compact-dashboard__title">
-            {t('dashboard.title', 'Dashboard de Progreso')}
+            {t('modals.progressDashboard', 'Progress Dashboard')}
           </h2>
           <button onClick={onClose} className="modal__close-btn" aria-label={t('common.close')}>
             <X className="modal__close-icon" />
@@ -61,7 +61,7 @@ export const CompactProgressDashboard: React.FC<CompactProgressDashboardProps> =
               <div className="compact-dashboard__stat-content">
                 <span className="compact-dashboard__stat-value">{totalScore.toLocaleString()}</span>
                 <span className="compact-dashboard__stat-label">
-                  {t('dashboard.totalPoints', 'Puntos')}
+                  {t('dashboard.totalScore', 'Points earned')}
                 </span>
               </div>
             </div>
@@ -71,7 +71,7 @@ export const CompactProgressDashboard: React.FC<CompactProgressDashboardProps> =
               <div className="compact-dashboard__stat-content">
                 <span className="compact-dashboard__stat-value">{avgScore}%</span>
                 <span className="compact-dashboard__stat-label">
-                  {t('dashboard.accuracy', 'Precisión')}
+                  {t('dashboard.learningAccuracy', 'Accuracy')}
                 </span>
               </div>
             </div>
@@ -81,7 +81,7 @@ export const CompactProgressDashboard: React.FC<CompactProgressDashboardProps> =
               <div className="compact-dashboard__stat-content">
                 <span className="compact-dashboard__stat-value">{totalSessions}</span>
                 <span className="compact-dashboard__stat-label">
-                  {t('dashboard.sessions', 'Sesiones')}
+                  {t('dashboard.studySessions', 'Sessions')}
                 </span>
               </div>
             </div>
@@ -93,7 +93,7 @@ export const CompactProgressDashboard: React.FC<CompactProgressDashboardProps> =
                   {Math.round(totalTimeSpent / 60)}
                 </span>
                 <span className="compact-dashboard__stat-label">
-                  {t('dashboard.minutes', 'Min')}
+                  {t('dashboard.timeSpent', 'Time practiced')}
                 </span>
               </div>
             </div>
@@ -109,7 +109,7 @@ export const CompactProgressDashboard: React.FC<CompactProgressDashboardProps> =
                 <div className="compact-dashboard__no-data">
                   <TrendingUp className="compact-dashboard__no-data-icon" />
                   <p className="compact-dashboard__no-data-text">
-                    {t('dashboard.noData', 'Completa algunos módulos para ver tu progreso')}
+                    {t('dashboard.completeModulesMessage')}
                   </p>
                 </div>
               ) : (

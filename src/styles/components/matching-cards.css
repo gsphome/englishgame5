@@ -21,9 +21,9 @@
 }
 
 .dark .matching-cards__card--normal {
-  border-color: #4b5563 !important;
-  background-color: #374151 !important;
-  color: white !important;
+  border-color: #4b5563;
+  background-color: #374151;
+  color: white;
 }
 
 .matching-cards__card--normal:hover {
@@ -34,8 +34,8 @@
 }
 
 .dark .matching-cards__card--normal:hover {
-  border-color: #ec4899 !important;
-  background-color: #831843 !important;
+  border-color: #ec4899;
+  background-color: #831843;
 }
 
 .matching-cards__card--selected {
@@ -47,9 +47,9 @@
 }
 
 .dark .matching-cards__card--selected {
-  border-color: #ec4899 !important;
-  background-color: #be185d !important;
-  color: white !important;
+  border-color: #ec4899;
+  background-color: #be185d;
+  color: white;
 }
 
 .matching-cards__card--matched {
@@ -60,36 +60,36 @@
 }
 
 .dark .matching-cards__card--matched {
-  border-color: #ec4899 !important;
-  background-color: #831843 !important;
-  color: white !important;
+  border-color: #ec4899;
+  background-color: #831843;
+  color: white;
 }
 
 /* Card States - After Correction (Professional Colors) */
 .matching-cards__card--result-correct {
-  border-color: #22c55e !important;
-  background-color: #22c55e !important;
-  color: white !important;
+  border-color: #22c55e;
+  background-color: #22c55e;
+  color: white;
   cursor: default;
 }
 
 .dark .matching-cards__card--result-correct {
-  border-color: #16a34a !important;
-  background-color: #16a34a !important;
-  color: white !important;
+  border-color: #16a34a;
+  background-color: #16a34a;
+  color: white;
 }
 
 .matching-cards__card--result-incorrect {
-  border-color: #ef4444 !important;
-  background-color: #ef4444 !important;
-  color: white !important;
+  border-color: #ef4444;
+  background-color: #ef4444;
+  color: white;
   cursor: default;
 }
 
 .dark .matching-cards__card--result-incorrect {
-  border-color: #dc2626 !important;
-  background-color: #dc2626 !important;
-  color: white !important;
+  border-color: #dc2626;
+  background-color: #dc2626;
+  color: white;
 }
 
 /* Card Content */
@@ -182,7 +182,7 @@
 }
 
 .dark .matching-cards__cards__header__title {
-  color: white !important;
+  color: white;
 }
 
 .matching-cards__cards__header__progress-badge {
@@ -195,8 +195,8 @@
 }
 
 .dark .matching-cards__cards__header__progress-badge {
-  color: #d1d5db !important;
-  background-color: #374151 !important;
+  color: #d1d5db;
+  background-color: #374151;
 }
 
 .matching-cards__cards__header__progress-bar {

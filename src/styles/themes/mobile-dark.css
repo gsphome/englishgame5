@@ -235,51 +235,52 @@
 @supports (-webkit-touch-callout: none) {
   @media (max-width: 768px) {
     /* Force dark mode when system is light but app is dark */
+    /* justified: Must override Safari's prefers-color-scheme */
     @media (prefers-color-scheme: light) {
       html.dark {
-        color-scheme: dark !important;
-        -webkit-color-scheme: dark !important;
-        background-color: var(--theme-bg-primary, #1f2937) !important;
-        color: var(--theme-text-primary, #ffffff) !important;
+        color-scheme: dark; /* Safari override */
+        -webkit-color-scheme: dark; /* Safari override */
+        background-color: var(--theme-bg-primary, #1f2937); /* Safari override */
+        color: var(--theme-text-primary, #ffffff); /* Safari override */
       }
 
       /* Component-specific Safari fixes with theme tokens */
       html.dark .header-redesigned,
       html.dark .module-card,
       html.dark .compact-settings__container {
-        background-color: var(--theme-bg-elevated, #1f2937) !important;
-        color: var(--theme-text-primary, #ffffff) !important;
-        border-color: var(--theme-border-soft, #4b5563) !important;
+        background-color: var(--theme-bg-elevated, #1f2937);
+        color: var(--theme-text-primary, #ffffff);
+        border-color: var(--theme-border-soft, #4b5563);
       }
 
       html.dark .compact-settings__header,
       html.dark .compact-settings__content,
       html.dark .compact-settings__footer {
-        background-color: var(--theme-bg-elevated, #1f2937) !important;
-        color: var(--theme-text-primary, #ffffff) !important;
+        background-color: var(--theme-bg-elevated, #1f2937);
+        color: var(--theme-text-primary, #ffffff);
       }
 
       html.dark .compact-settings__input,
       html.dark .compact-settings__select {
-        background-color: var(--theme-bg-subtle, #374151) !important;
-        color: var(--theme-text-primary, #ffffff) !important;
-        border-color: var(--theme-border-soft, #4b5563) !important;
+        background-color: var(--theme-bg-subtle, #374151);
+        color: var(--theme-text-primary, #ffffff);
+        border-color: var(--theme-border-soft, #4b5563);
         /* Safari-specific: Prevent zoom on focus */
-        font-size: 16px !important;
+        font-size: 16px;
       }
 
       /* SVG icons Safari fix with theme tokens */
       html.dark svg,
       html.dark [data-lucide] {
-        color: var(--theme-text-secondary, #e5e7eb) !important;
-        stroke: var(--theme-text-secondary, #e5e7eb) !important;
+        color: var(--theme-text-secondary, #e5e7eb);
+        stroke: var(--theme-text-secondary, #e5e7eb);
       }
     }
 
     /* Additional Safari webkit fixes */
     html.dark {
-      -webkit-appearance: none !important;
-      -webkit-color-scheme: dark !important;
+      -webkit-appearance: none;
+      -webkit-color-scheme: dark;
     }
 
     /* Safari touch target optimization */
@@ -323,14 +324,14 @@
   html.dark {
     .nav-btn:active,
     .main-menu__item:active {
-      transform: none !important;
+      transform: none;
     }
 
     .header-redesigned,
     .module-card,
     .nav-btn,
     .compact-settings__input {
-      transition: none !important;
+      transition: none;
     }
   }
 }

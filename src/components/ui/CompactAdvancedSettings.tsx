@@ -119,7 +119,7 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
   };
 
   const handleCategoryChange = (category: string, checked: boolean) => {
-    let newCategories;
+    let newCategories: string[];
     if (checked) {
       newCategories = [...localCategories, category];
     } else {
@@ -148,10 +148,10 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
 
   const allCategories = ['Vocabulary', 'Grammar', 'PhrasalVerbs', 'Idioms'];
   const categoryLabels = {
-    Vocabulary: t('settings.vocabulary', 'Vocabulario'),
-    Grammar: t('settings.grammar', 'Gramática'),
-    PhrasalVerbs: t('settings.phrasalVerbs', 'Phrasal Verbs'),
-    Idioms: t('settings.idioms', 'Modismos'),
+    Vocabulary: t('settings.vocabulary'),
+    Grammar: t('settings.grammar'),
+    PhrasalVerbs: t('settings.phrasalVerbs'),
+    Idioms: t('settings.idioms'),
   };
 
   return (
@@ -161,7 +161,7 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
           <div className="compact-settings__title-section">
             <Settings className="compact-settings__icon" />
             <h2 className="compact-settings__title">
-              {t('settings.advancedSettings', 'Configuración Avanzada')}
+              {t('modals.advancedSettings')}
             </h2>
           </div>
           <button onClick={onClose} className="modal__close-btn" aria-label={t('common.close')}>
@@ -176,7 +176,7 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
             className={`compact-settings__tab ${activeTab === 'general' ? 'compact-settings__tab--active' : ''}`}
           >
             <Palette className="compact-settings__tab-icon" />
-            <span className="compact-settings__tab-title">{t('settings.general', 'General')}</span>
+            <span className="compact-settings__tab-title">{t('settings.generalSettings')}</span>
           </button>
           <button
             onClick={() => setActiveTab('games')}
@@ -184,7 +184,7 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
           >
             <Gamepad2 className="compact-settings__tab-icon" />
             <span className="compact-settings__tab-title compact-settings__tab-title--compact">
-              {t('settings.games', 'Games')}
+              {t('settings.itemSettings')}
             </span>
           </button>
           <button
@@ -193,7 +193,7 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
           >
             <Wrench className="compact-settings__tab-icon" />
             <span className="compact-settings__tab-title">
-              {t('settings.categories', 'Categorías')}
+              {t('settings.categorySettings')}
             </span>
           </button>
         </div>
@@ -204,20 +204,20 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
             <div className="compact-settings__section">
               <div className="compact-settings__fields">
                 <div className="compact-settings__field">
-                  <label className="compact-settings__label">{t('settings.theme', 'Tema')}</label>
+                  <label className="compact-settings__label">{t('settings.theme')}</label>
                   <select
                     className="compact-settings__select"
                     value={localTheme}
                     onChange={e => setLocalTheme(e.target.value as 'light' | 'dark')}
                   >
-                    <option value="light">☀️ {t('settings.light', 'Claro')}</option>
-                    <option value="dark">🌙 {t('settings.dark', 'Oscuro')}</option>
+                    <option value="light">☀️ {t('settings.light')}</option>
+                    <option value="dark">🌙 {t('settings.dark')}</option>
                   </select>
                 </div>
 
                 <div className="compact-settings__field">
                   <label className="compact-settings__label">
-                    {t('settings.language', 'Idioma')}
+                    {t('settings.language')}
                   </label>
                   <select
                     className="compact-settings__select"
@@ -230,13 +230,13 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
                 </div>
 
                 <div className="compact-settings__field">
-                  <label className="compact-settings__label">{t('settings.level', 'Nivel')}</label>
+                  <label className="compact-settings__label">{t('settings.level')}</label>
                   <select
                     className="compact-settings__select"
                     value={localLevel}
                     onChange={e => setLocalLevel(e.target.value as any)}
                   >
-                    <option value="all">🌟 {t('settings.all', 'Todos')}</option>
+                    <option value="all">🌟 {t('settings.all')}</option>
                     <option value="a1">🟢 A1</option>
                     <option value="a2">🟡 A2</option>
                     <option value="b1">🟠 B1</option>
@@ -257,8 +257,8 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
                     >
                       🔧 Dev Mode:{' '}
                       {localDevelopmentMode
-                        ? t('settings.enabled', 'Enabled')
-                        : t('settings.disabled', 'Disabled')}
+                        ? t('settings.enabled')
+                        : t('settings.disabled')}
                     </label>
                     <input
                       type="checkbox"
@@ -279,7 +279,7 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
               <div className="compact-settings__games">
                 <div className="compact-settings__game">
                   <label className="compact-settings__game-label">
-                    📚 {t('settings.flashcards', 'Flashcards')}
+                    📚 {t('settings.flashcardMode')}
                   </label>
                   <div className="compact-settings__game-controls">
                     <input
@@ -304,7 +304,7 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
 
                 <div className="compact-settings__game">
                   <label className="compact-settings__game-label">
-                    ❓ {t('settings.quiz', 'Quiz')}
+                    ❓ {t('settings.quizMode')}
                   </label>
                   <div className="compact-settings__game-controls">
                     <input
@@ -329,7 +329,7 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
 
                 <div className="compact-settings__game">
                   <label className="compact-settings__game-label">
-                    ✏️ {t('settings.completion', 'Completar')}
+                    ✏️ {t('settings.completionMode')}
                   </label>
                   <div className="compact-settings__game-controls">
                     <input
@@ -354,7 +354,7 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
 
                 <div className="compact-settings__game">
                   <label className="compact-settings__game-label">
-                    🔄 {t('settings.sorting', 'Ordenar')}
+                    🔄 {t('settings.sortingMode')}
                   </label>
                   <div className="compact-settings__game-controls">
                     <input
@@ -379,7 +379,7 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
 
                 <div className="compact-settings__game">
                   <label className="compact-settings__game-label">
-                    🔗 {t('settings.matching', 'Emparejar')}
+                    🔗 {t('settings.matchingMode')}
                   </label>
                   <div className="compact-settings__game-controls">
                     <input
@@ -441,19 +441,19 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
             onClick={handleReset}
             className={`modal__btn modal__btn--secondary ${!hasChanges ? 'modal__btn--disabled' : ''}`}
             disabled={!hasChanges}
-            aria-label={t('settings.reset', 'Restablecer cambios')}
+            aria-label={t('common.reset')}
           >
             <RotateCcw className="modal__btn-icon" />
-            {t('settings.reset', 'Restablecer')}
+            {t('common.reset')}
           </button>
           <button
             onClick={handleSave}
             className={`modal__btn modal__btn--primary ${!hasChanges ? 'modal__btn--disabled' : ''}`}
             disabled={!hasChanges}
-            aria-label={t('settings.save', 'Guardar cambios')}
+            aria-label={t('common.save')}
           >
             <Save className="modal__btn-icon" />
-            {t('settings.save', 'Guardar')}
+            {t('common.save')}
           </button>
         </div>
       </div>

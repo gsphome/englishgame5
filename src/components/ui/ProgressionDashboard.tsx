@@ -6,6 +6,7 @@ import { toast } from '../../stores/toastStore';
 import { CheckCircle, Lock, Play, ChevronDown, ChevronRight } from 'lucide-react';
 import type { LearningModule } from '../../types';
 import '../../styles/components/progression-dashboard.css';
+import '../../styles/components/progression-dashboard-dark-theme.css';
 
 interface ProgressionDashboardProps {
   onModuleSelect: (module: LearningModule) => void;
@@ -18,11 +19,61 @@ export const ProgressionDashboard: React.FC<ProgressionDashboardProps> = ({
   const { isModuleCompleted } = useProgressStore();
   const progression = useProgression();
   const [expandedUnits, setExpandedUnits] = React.useState<Set<number>>(new Set());
+  const [isDarkMode, setIsDarkMode] = React.useState(false);
+
+  // Detect dark mode changes dynamically
+  React.useEffect(() => {
+    const checkDarkMode = () => {
+      const darkMode = document.documentElement.classList.contains('dark') ||
+        document.body.classList.contains('dark');
+      setIsDarkMode(darkMode);
+    };
+
+    // Initial check
+    checkDarkMode();
+
+    // Watch for theme changes
+    const observer = new MutationObserver(checkDarkMode);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+    observer.observe(document.body, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Emergency function to force white text (only if CSS fails)
+  const forceWhiteTextIfNeeded = React.useCallback(() => {
+    if (isDarkMode) {
+      // Only run this as last resort if CSS isn't working
+      const dashboardElement = document.querySelector('.progression-dashboard');
+      if (dashboardElement) {
+        const textElements = dashboardElement.querySelectorAll('*');
+        textElements.forEach((element) => {
+          const computedStyle = window.getComputedStyle(element);
+          const textColor = computedStyle.color;
+
+          // If text is still dark in dark mode, force it to white
+          if (textColor.includes('rgb(55, 65, 81)') || textColor.includes('rgb(107, 114, 128)')) {
+            (element as HTMLElement).style.color = '#ffffff';
+          }
+        });
+      }
+    }
+  }, [isDarkMode]);
+
+  // Run emergency fix after component mounts (only if needed)
+  React.useEffect(() => {
+    // Small delay to let CSS apply first
+    const timer = setTimeout(forceWhiteTextIfNeeded, 100);
+    return () => clearTimeout(timer);
+  }, [isDarkMode, forceWhiteTextIfNeeded]);
 
   const nextRecommended = progression.getNextRecommendedModule();
-
-  // DEBUG: Log para verificar si hay nextRecommended
-  console.log('🔍 DEBUG - nextRecommended:', nextRecommended);
 
   // Auto-expand unit with next recommended module
   React.useEffect(() => {
@@ -134,7 +185,7 @@ export const ProgressionDashboard: React.FC<ProgressionDashboardProps> = ({
   }, [progression.unlockedModules, progression.lockedModules]);
 
   return (
-    <div className="progression-dashboard">
+    <div className={`progression-dashboard ${isDarkMode ? 'progression-dashboard--dark-theme' : ''}`}>
       {/* Continue Learning Section */}
       {nextRecommended && (
         <div
@@ -187,7 +238,7 @@ export const ProgressionDashboard: React.FC<ProgressionDashboardProps> = ({
                     fontWeight: '700',
                   }}
                 >
-                  {nextRecommended?.name || 'DEBUG: Test Module'}
+                  {nextRecommended.name}
                 </h3>
                 <p
                   className="progression-dashboard__next-desc"
@@ -198,7 +249,7 @@ export const ProgressionDashboard: React.FC<ProgressionDashboardProps> = ({
                     opacity: '0.95',
                   }}
                 >
-                  {nextRecommended?.description || 'DEBUG: Testing hero section size reduction'}
+                  {nextRecommended.description}
                 </p>
                 <div
                   className="progression-dashboard__next-meta"
@@ -212,23 +263,19 @@ export const ProgressionDashboard: React.FC<ProgressionDashboardProps> = ({
                   <span
                     className="progression-dashboard__level-badge"
                     style={{
-                      backgroundColor: nextRecommended
-                        ? getLevelColor(
-                            Array.isArray(nextRecommended.level)
-                              ? nextRecommended.level[0]
-                              : nextRecommended.level
-                          )
-                        : '#3b82f6',
+                      backgroundColor: getLevelColor(
+                        Array.isArray(nextRecommended.level)
+                          ? nextRecommended.level[0]
+                          : nextRecommended.level
+                      ),
                       padding: '0.03rem 0.15rem',
                       fontSize: '0.55rem',
                       lineHeight: '1',
                     }}
                   >
-                    {nextRecommended
-                      ? Array.isArray(nextRecommended.level)
-                        ? nextRecommended.level[0].toUpperCase()
-                        : nextRecommended.level.toUpperCase()
-                      : 'A1'}
+                    {Array.isArray(nextRecommended.level)
+                      ? nextRecommended.level[0].toUpperCase()
+                      : nextRecommended.level.toUpperCase()}
                   </span>
                   <span
                     className="progression-dashboard__time"
@@ -237,7 +284,7 @@ export const ProgressionDashboard: React.FC<ProgressionDashboardProps> = ({
                       lineHeight: '1',
                     }}
                   >
-                    ~{nextRecommended?.estimatedTime || 5}min
+                    ~{nextRecommended.estimatedTime}min
                   </span>
                 </div>
               </div>
@@ -374,6 +421,6 @@ export const ProgressionDashboard: React.FC<ProgressionDashboardProps> = ({
             );
           })}
       </div>
-    </div>
+    </div >
   );
 };

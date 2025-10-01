@@ -70,14 +70,14 @@
 .hide-on-mobile {
   /* AI_CONTEXT: Hide element on mobile devices */
   @media (max-width: 768px) {
-    display: none !important;
+    display: none;
   }
 }
 
 .hide-on-web {
   /* AI_CONTEXT: Hide element on desktop/web devices */
   @media (min-width: 769px) {
-    display: none !important;
+    display: none;
   }
 }
 

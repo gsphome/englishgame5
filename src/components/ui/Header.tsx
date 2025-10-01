@@ -215,7 +215,7 @@ export const Header: React.FC<HeaderProps> = () => {
                     setShowSideMenu(false);
                   }}
                   className="header-side-menu__item"
-                  aria-label="Abrir configuración avanzada"
+                  aria-label={t('modals.advancedSettings', 'Advanced Settings')}
                 >
                   <Settings className="header-side-menu__icon" aria-hidden="true" />
                   <span className="header-side-menu__text">{t('modals.advancedSettings')}</span>

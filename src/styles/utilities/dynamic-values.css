@@ -298,8 +298,8 @@ html.dark .counter-badge {
   .fade-in,
   .fade-out,
   .slide-in {
-    animation: none !important;
-    transition: none !important;
+    animation: none;
+    transition: none;
   }
 }
 

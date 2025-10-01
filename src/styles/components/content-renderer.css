@@ -133,29 +133,29 @@
 /* Override colors for selected/matched states in matching component */
 .matching-component__item--selected .content-renderer__segment--term,
 .matching-component__item--selected .content-renderer {
-  color: #ffffff !important;
+  color: var(--theme-text-on-colored, #ffffff);
   /* WHITE TEXT ON BLUE BACKGROUND */
 }
 
 .matching-component__item--matched .content-renderer__segment--term,
 .matching-component__item--matched .content-renderer {
-  color: #374151 !important;
+  color: var(--theme-text-primary, #374151);
 }
 
 .matching-component__item--correct .content-renderer__segment--term,
 .matching-component__item--correct .content-renderer {
-  color: #ffffff !important;
+  color: var(--theme-text-on-colored, #ffffff);
   /* WHITE TEXT ON GREEN BACKGROUND */
 }
 
 .matching-component__item--incorrect .content-renderer__segment--term,
 .matching-component__item--incorrect .content-renderer {
-  color: #ffffff !important;
+  color: var(--theme-text-on-colored, #ffffff);
   /* WHITE TEXT ON RED BACKGROUND */
 }
 
 .matching-component__item--matched-inactive .content-renderer__segment--term {
-  color: #9ca3af !important;
+  color: var(--theme-text-tertiary, #9ca3af);
 }
 
 /* Light mode override for matched items content */
@@ -163,12 +163,12 @@ html:not(.dark) .matching-component__item--matched .content-renderer__segment--t
 html:not(.dark) .matching-component__item--matched .content-renderer__segment--emphasis,
 html:not(.dark) .matching-component__item--matched .content-renderer__segment--variable,
 html:not(.dark) .matching-component__item--matched .content-renderer__segment--code {
-  color: #374151 !important;
+  color: var(--theme-text-primary, #374151);
 }
 
 html:not(.dark) .matching-component__item--matched .content-renderer,
 html:not(.dark) .matching-component__item--matched .content-renderer * {
-  color: #374151 !important;
+  color: var(--theme-text-primary, #374151);
 }
 
 /* Ensure hover states don't override ContentRenderer colors */
@@ -188,7 +188,7 @@ html:not(.dark)
   .content-renderer__segment--variable,
 html:not(.dark) .matching-component__item--matched:hover .content-renderer__segment--code,
 html:not(.dark) .matching-component__item--matched-inactive:hover .content-renderer__segment--code {
-  color: #111827 !important;
+  color: #111827;
 }
 
 /* Override for correct/incorrect states in light mode - WHITE TEXT FOR CONTRAST */
@@ -198,7 +198,7 @@ html:not(.dark) .matching-component__item--correct .content-renderer__segment--t
 html:not(.dark) .matching-component__item--correct .content-renderer__segment--emphasis,
 html:not(.dark) .matching-component__item--correct .content-renderer__segment--variable,
 html:not(.dark) .matching-component__item--correct .content-renderer__segment--code {
-  color: #ffffff !important;
+  color: #ffffff;
   /* WHITE TEXT ON GREEN BACKGROUND */
 }
 
@@ -208,7 +208,7 @@ html:not(.dark) .matching-component__item--incorrect .content-renderer__segment-
 html:not(.dark) .matching-component__item--incorrect .content-renderer__segment--emphasis,
 html:not(.dark) .matching-component__item--incorrect .content-renderer__segment--variable,
 html:not(.dark) .matching-component__item--incorrect .content-renderer__segment--code {
-  color: #ffffff !important;
+  color: #ffffff;
   /* WHITE TEXT ON RED BACKGROUND */
 }
 
@@ -219,7 +219,7 @@ html:not(.dark) .matching-component__item--unmatched .content-renderer__segment-
 html:not(.dark) .matching-component__item--unmatched .content-renderer__segment--emphasis,
 html:not(.dark) .matching-component__item--unmatched .content-renderer__segment--variable,
 html:not(.dark) .matching-component__item--unmatched .content-renderer__segment--code {
-  color: #6b7280 !important;
+  color: #6b7280;
 }
 
 /* Ensure selected items maintain white text in ContentRenderer on hover */
@@ -231,7 +231,7 @@ html:not(.dark) .matching-component__item--unmatched .content-renderer__segment-
 .matching-component__item--selected:hover .content-renderer__segment--emphasis,
 .matching-component__item--selected:hover .content-renderer__segment--variable,
 .matching-component__item--selected:hover .content-renderer__segment--code {
-  color: #ffffff !important;
+  color: #ffffff;
 }
 
 .matching-component__item--selected .content-renderer__segment--emphasis,
@@ -239,11 +239,11 @@ html:not(.dark) .matching-component__item--unmatched .content-renderer__segment-
 .matching-component__item--matched-inactive .content-renderer__segment--emphasis,
 .matching-component__item--correct .content-renderer__segment--emphasis,
 .matching-component__item--incorrect .content-renderer__segment--emphasis {
-  color: #ffffff !important;
+  color: #ffffff;
 }
 
 .matching-component__item--matched-inactive .content-renderer__segment--emphasis {
-  color: var(--theme-text-disabled, #9ca3af) !important;
+  color: var(--theme-text-disabled, #9ca3af);
 }
 
 .matching-component__item--selected .content-renderer__segment--variable,
@@ -251,11 +251,11 @@ html:not(.dark) .matching-component__item--unmatched .content-renderer__segment-
 .matching-component__item--matched-inactive .content-renderer__segment--variable,
 .matching-component__item--correct .content-renderer__segment--variable,
 .matching-component__item--incorrect .content-renderer__segment--variable {
-  color: #ffffff !important;
+  color: #ffffff;
 }
 
 .matching-component__item--matched-inactive .content-renderer__segment--variable {
-  color: var(--theme-text-disabled, #9ca3af) !important;
+  color: var(--theme-text-disabled, #9ca3af);
 }
 
 .matching-component__item--selected .content-renderer__segment--code,
@@ -263,24 +263,24 @@ html:not(.dark) .matching-component__item--unmatched .content-renderer__segment-
 .matching-component__item--matched-inactive .content-renderer__segment--code,
 .matching-component__item--correct .content-renderer__segment--code,
 .matching-component__item--incorrect .content-renderer__segment--code {
-  color: #ffffff !important;
-  background-color: rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .matching-component__item--matched-inactive .content-renderer__segment--code {
-  color: var(--theme-text-disabled, #9ca3af) !important;
-  background-color: var(--theme-bg-subtle, #f9fafb) !important;
+  color: var(--theme-text-disabled, #9ca3af);
+  background-color: var(--theme-bg-subtle, #f9fafb);
 }
 
 /* Override colors for other components */
 .quiz-component__option--correct .content-renderer__segment--term,
 .quiz-component__option--incorrect .content-renderer__segment--term {
-  color: inherit !important;
+  color: inherit;
 }
 
 .sorting-component__sorted-item--correct .content-renderer__segment--term,
 .sorting-component__sorted-item--incorrect .content-renderer__segment--term {
-  color: #ffffff !important;
+  color: #ffffff;
 }
 
 /* Dark mode overrides for selected states */
@@ -289,11 +289,11 @@ html:not(.dark) .matching-component__item--unmatched .content-renderer__segment-
 .dark .matching-component__item--matched-inactive .content-renderer__segment--term,
 .dark .matching-component__item--correct .content-renderer__segment--term,
 .dark .matching-component__item--incorrect .content-renderer__segment--term {
-  color: #ffffff !important;
+  color: #ffffff;
 }
 
 .dark .matching-component__item--matched-inactive .content-renderer__segment--term {
-  color: #6b7280 !important;
+  color: #6b7280;
 }
 
 /* Dark mode - Force all text content in matched-inactive items to be visible */
@@ -302,10 +302,10 @@ html:not(.dark) .matching-component__item--unmatched .content-renderer__segment-
 .dark .matching-component__item--matched-inactive span,
 .dark .matching-component__item--matched-inactive p,
 .dark .matching-component__item--matched-inactive div {
-  color: #6b7280 !important;
+  color: #6b7280;
 }
 
 .dark .sorting-component__sorted-item--correct .content-renderer__segment--term,
 .dark .sorting-component__sorted-item--incorrect .content-renderer__segment--term {
-  color: #ffffff !important;
+  color: #ffffff;
 }

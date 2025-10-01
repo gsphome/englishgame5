@@ -513,38 +513,38 @@ html.dark {
 /* AI_VALIDATION: TYPOGRAPHY_MODIFIERS - Semantic text modifications */
 
 .typography--muted {
-  color: var(--theme-text-secondary, #6b7280) !important;
+  color: var(--theme-text-secondary, #6b7280);
 }
 
 .typography--subtle {
-  color: var(--theme-text-tertiary, #9ca3af) !important;
+  color: var(--theme-text-tertiary, #9ca3af);
 }
 
 .typography--emphasis {
-  font-weight: var(--font-semibold) !important;
+  font-weight: var(--font-semibold);
 }
 
 .typography--strong {
-  font-weight: var(--font-bold) !important;
+  font-weight: var(--font-bold);
 }
 
 .typography--italic {
-  font-style: italic !important;
+  font-style: italic;
 }
 
 .typography--uppercase {
-  text-transform: uppercase !important;
-  letter-spacing: var(--tracking-wide) !important;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
 }
 
 .typography--center {
-  text-align: center !important;
+  text-align: center;
 }
 
 .typography--truncate {
-  overflow: hidden !important;
-  text-overflow: ellipsis !important;
-  white-space: nowrap !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* === MIGRATION HELPERS === */
@@ -553,23 +553,23 @@ html.dark {
 
 /* Deprecated - use typography-card-title instead */
 .module-card__title {
-  font-size: var(--text-sm) !important;
-  font-weight: var(--font-semibold) !important;
-  line-height: var(--leading-tight) !important;
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  line-height: var(--leading-tight);
 }
 
 /* Deprecated - use typography-card-type instead */
 .module-card__type {
-  font-size: var(--text-xs) !important;
-  font-weight: var(--font-medium) !important;
-  line-height: var(--leading-none) !important;
+  font-size: var(--text-xs);
+  font-weight: var(--font-medium);
+  line-height: var(--leading-none);
 }
 
 /* Deprecated - use typography-card-level instead */
 .module-card__level {
-  font-size: var(--text-xs) !important;
-  font-weight: var(--font-semibold) !important;
-  line-height: var(--leading-none) !important;
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  line-height: var(--leading-none);
 }
 
 /* === PERFORMANCE OPTIMIZATIONS === */

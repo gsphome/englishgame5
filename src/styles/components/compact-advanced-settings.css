@@ -138,10 +138,10 @@ html.dark .compact-settings__container {
 }
 
 .compact-settings__tab .compact-settings__tab-title--compact {
-  font-size: 0.6875rem !important;
-  letter-spacing: -0.05em !important;
-  font-weight: 600 !important;
-  text-transform: uppercase !important;
+  font-size: 0.6875rem;
+  letter-spacing: -0.05em;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 .compact-settings__content {

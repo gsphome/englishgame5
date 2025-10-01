@@ -263,9 +263,9 @@
 @media (prefers-reduced-motion: reduce) {
   .example-component,
   .example-component__button {
-    transition: none !important;
-    transform: none !important;
-    animation: none !important;
+    transition: none;
+    transform: none;
+    animation: none;
   }
 }
 

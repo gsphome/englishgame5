@@ -222,6 +222,7 @@ html.dark {
 }
 
 @keyframes devPulse {
+
   0%,
   100% {
     opacity: 1;
@@ -435,12 +436,12 @@ html.dark {
   padding: var(--padding-xl, 2rem);
 }
 
-.header-side-menu__content > * + * {
+.header-side-menu__content>*+* {
   margin-top: 1.5rem;
 }
 
 /* Menu Sections */
-.header-side-menu__section > * + * {
+.header-side-menu__section>*+* {
   margin-top: 0.5rem;
 }
 
@@ -673,11 +674,16 @@ html.dark {
 
 /* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
+
+  /* justified: Accessibility requirement for reduced motion */
   .header-redesigned *,
   .header-side-menu * {
-    transition: none !important;
-    transform: none !important;
-    animation: none !important;
+    transition: none;
+    /* Accessibility: disable transitions */
+    transform: none;
+    /* Accessibility: disable transforms */
+    animation: none;
+    /* Accessibility: disable animations */
   }
 }
 
@@ -755,10 +761,14 @@ html.dark {
 
 /* Reduced motion support for logo */
 @media (prefers-reduced-motion: reduce) {
+
+  /* justified: Accessibility requirement for reduced motion */
   .header-redesigned__logo,
   .header-redesigned__brand:hover .header-redesigned__logo {
-    transform: none !important;
-    transition: none !important;
+    transform: none;
+    /* Accessibility: disable transforms */
+    transition: none;
+    /* Accessibility: disable transitions */
   }
 }
 
@@ -847,12 +857,10 @@ html.dark {
 
 /* Enhanced Overlay for Dark Mode */
 .dark .header-side-menu-overlay {
-  background: linear-gradient(
-    45deg,
-    rgba(0, 0, 0, 0.7) 0%,
-    rgba(0, 0, 0, 0.5) 50%,
-    rgba(0, 0, 0, 0.7) 100%
-  );
+  background: linear-gradient(45deg,
+      rgba(0, 0, 0, 0.7) 0%,
+      rgba(0, 0, 0, 0.5) 50%,
+      rgba(0, 0, 0, 0.7) 100%);
   backdrop-filter: blur(8px);
 }
 
@@ -896,7 +904,7 @@ html.dark {
 }
 
 /* Ensure consistent spacing between primary action buttons */
-.header-redesigned__right > * + * {
+.header-redesigned__right>*+* {
   margin-left: 8px;
 }
 

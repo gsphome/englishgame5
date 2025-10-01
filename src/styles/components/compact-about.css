@@ -498,20 +498,25 @@ html.dark .compact-about .compact-about__developer-link .compact-about__link-ico
 /* === DARK MODE OVERRIDES === */
 /* High specificity to override theme !important rules */
 html.dark .compact-about .compact-about__container {
-  background-color: var(--theme-bg-elevated, #1f2937);
-  border-color: var(--theme-border-soft, #4b5563);
+  background-color: var(--theme-bg-elevated, #1f2937) !important;
+  border-color: var(--theme-border-soft, #4b5563) !important;
+  color: var(--theme-text-primary, #ffffff) !important;
 }
 
+/* === HEADER DARK MODE FIXES === */
 html.dark .compact-about__header {
+  background: linear-gradient(135deg, #1e40af 0%, #7c3aed 100%) !important;
   border-bottom-color: var(--theme-border-soft, #4b5563);
 }
 
 html.dark .compact-about__title {
-  color: var(--theme-primary-purple, #a78bfa);
+  color: rgba(255, 255, 255, 0.95) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
 }
 
 html.dark .compact-about__subtitle {
-  color: var(--theme-primary-purple-light, rgba(139, 92, 246, 0.7));
+  color: rgba(255, 255, 255, 0.85) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
 }
 
 html.dark .compact-about__section-title {
@@ -523,7 +528,8 @@ html.dark .compact-about__section-icon {
 }
 
 html.dark .compact-about__info-item {
-  background-color: var(--theme-bg-subtle, #374151);
+  background-color: var(--theme-bg-subtle, #374151) !important;
+  border-color: var(--theme-border-soft, #4b5563) !important;
 }
 
 html.dark .compact-about__info-label {
@@ -539,7 +545,9 @@ html.dark .compact-about__info-time {
 }
 
 html.dark .compact-about__feature {
-  color: var(--theme-text-secondary, #d1d5db);
+  background-color: var(--theme-bg-subtle, #374151) !important;
+  border-color: var(--theme-border-soft, #4b5563) !important;
+  color: var(--theme-text-secondary, #d1d5db) !important;
 }
 
 html.dark .compact-about .compact-about__developer-name {
@@ -551,18 +559,29 @@ html.dark .compact-about__developer-title {
 }
 
 html.dark .compact-about__developer-link {
-  background-color: var(--theme-bg-subtle, #374151);
-  border-color: var(--theme-border-soft, #4b5563);
-  color: var(--theme-text-secondary, #d1d5db);
+  background: linear-gradient(135deg, #374151 0%, #4b5563 100%) !important;
+  border-color: var(--theme-border-soft, #4b5563) !important;
+  color: var(--theme-text-primary, #ffffff) !important;
 }
 
 html.dark .compact-about__developer-link:hover {
   background-color: var(--theme-bg-soft, #4b5563);
 }
 
+/* === TECH STACK DARK MODE FIXES === */
 html.dark .compact-about__tech-item {
-  background-color: var(--theme-primary-blue-light, rgba(59, 130, 246, 0.2));
-  color: var(--theme-primary-blue, #60a5fa);
+  background: linear-gradient(135deg, rgba(96, 165, 250, 0.2) 0%, rgba(139, 92, 246, 0.15) 100%) !important;
+  border: 1px solid rgba(96, 165, 250, 0.4) !important;
+  color: #60a5fa !important;
+  font-weight: 600 !important;
+}
+
+html.dark .compact-about__tech-item:hover {
+  background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%) !important;
+  border-color: transparent !important;
+  color: #ffffff !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(96, 165, 250, 0.3) !important;
 }
 
 html.dark .compact-about__content::-webkit-scrollbar-track {
@@ -575,6 +594,75 @@ html.dark .compact-about__content::-webkit-scrollbar-thumb {
 
 html.dark .compact-about__content::-webkit-scrollbar-thumb:hover {
   background-color: var(--theme-primary-purple, #a78bfa);
+}
+
+/* === ADDITIONAL DARK MODE FIXES === */
+/* Ensure all backgrounds and borders are properly themed */
+html.dark .compact-about__developer {
+  background: linear-gradient(135deg, var(--theme-bg-subtle, #374151) 0%, var(--theme-bg-soft, #4b5563) 100%) !important;
+  border-color: var(--theme-border-soft, #4b5563) !important;
+}
+
+html.dark .compact-about__tech-stack {
+  background: linear-gradient(135deg, var(--theme-bg-subtle, #374151) 0%, var(--theme-bg-soft, #4b5563) 100%) !important;
+  border-color: var(--theme-border-soft, #4b5563) !important;
+}
+
+/* Fix any remaining light backgrounds in dark mode */
+html.dark .compact-about__info-item:hover {
+  background-color: var(--theme-bg-soft, #4b5563) !important;
+  border-color: var(--theme-primary-blue, #60a5fa) !important;
+}
+
+html.dark .compact-about__feature:hover {
+  background-color: var(--theme-bg-soft, #4b5563) !important;
+  border-color: var(--theme-primary-purple, #a78bfa) !important;
+}
+
+/* === COMPREHENSIVE DARK MODE NUCLEAR FIXES === */
+/* Maximum specificity to ensure dark mode works properly */
+
+/* Header gradient override for dark mode */
+html.dark body .compact-about .compact-about__header {
+  background: linear-gradient(135deg, #1e40af 0%, #7c3aed 100%) !important;
+}
+
+/* Tech stack container dark mode */
+html.dark body .compact-about .compact-about__tech-stack {
+  background: linear-gradient(135deg, #374151 0%, #4b5563 100%) !important;
+  border: 1px solid #4b5563 !important;
+}
+
+/* Developer section dark mode */
+html.dark body .compact-about .compact-about__developer {
+  background: linear-gradient(135deg, #374151 0%, #4b5563 100%) !important;
+  border: 1px solid #4b5563 !important;
+}
+
+/* Features section dark mode */
+html.dark body .compact-about .compact-about__features .compact-about__feature {
+  background: linear-gradient(135deg, #374151 0%, #4b5563 100%) !important;
+  border: 1px solid #4b5563 !important;
+  color: #d1d5db !important;
+}
+
+/* Info grid dark mode */
+html.dark body .compact-about .compact-about__info-grid .compact-about__info-item {
+  background: linear-gradient(135deg, #374151 0%, #4b5563 100%) !important;
+  border: 1px solid #4b5563 !important;
+}
+
+/* Close button dark mode enhancement */
+html.dark .compact-about__header .modal__close-btn {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  color: rgba(255, 255, 255, 0.95) !important;
+}
+
+html.dark .compact-about__header .modal__close-btn:hover {
+  background-color: rgba(255, 255, 255, 0.3) !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  color: #ffffff !important;
 }
 
 /* === LIGHT MODE OVERRIDES === */

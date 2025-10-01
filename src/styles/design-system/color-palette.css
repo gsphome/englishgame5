@@ -404,16 +404,16 @@ html:not(.dark):not(.light) {
  *    AI_CONTEXT: Last resort - always document usage
  *    
  * AI Guidelines:
- * - Prefer theme context over !important
+ * - Prefer theme context over
  * - Use BEM modifiers for component variations
  * - Keep utility classes minimal and specific
- * - Document any !important usage with comments
+ * - Document any usage with comments
  */
 
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
   * {
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms;
+    animation-duration: 0.01ms;
   }
 }

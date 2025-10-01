@@ -318,7 +318,7 @@
   .search-bar__icon-svg,
   .search-bar__clear,
   .search-bar__clear-icon {
-    transition: none !important;
+    transition: none;
   }
 
   .search-bar__clear:active {
@@ -499,20 +499,20 @@ html.dark .main-menu__search:focus-within .search-bar {
 @layer overrides {
   /* Máxima especificidad para evitar conflictos jerárquicos */
   .main-menu .main-menu__search .search-bar {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 auto !important;
-    box-sizing: border-box !important;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
   }
 
   /* Asegurar que el input también respete el ancho */
   .main-menu .main-menu__search .search-bar .search-bar__input {
-    width: 100% !important;
-    box-sizing: border-box !important;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   /* Forzar que todos los elementos internos respeten el contenedor */
   .main-menu .main-menu__search .search-bar * {
-    box-sizing: border-box !important;
+    box-sizing: border-box;
   }
 }

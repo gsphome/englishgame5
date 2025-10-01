@@ -221,7 +221,7 @@
 /* === ACCESSIBILITY === */
 @media (prefers-reduced-motion: reduce) {
   .score-display-compact__progress-fill {
-    transition: none !important;
+    transition: none;
   }
 }
 

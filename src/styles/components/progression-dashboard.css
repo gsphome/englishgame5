@@ -14,8 +14,8 @@
     var(--theme-accent-secondary) 100%
   );
   border-radius: var(--radius-lg, 0.5rem);
-  padding: 0.36rem !important;
-  margin-bottom: 0.24rem !important;
+  padding: 0.36rem;
+  margin-bottom: 0.24rem;
   color: white;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
@@ -29,11 +29,11 @@
   background: rgba(255, 255, 255, 0.15);
   border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: var(--radius-md, 0.375rem);
-  padding: 0.41rem !important;
+  padding: 0.41rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.36rem !important;
+  gap: 0.36rem;
   backdrop-filter: blur(12px);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
@@ -46,13 +46,13 @@
 .progression-dashboard__next-name {
   font-size: 1.25rem;
   font-weight: 700;
-  margin-bottom: 0.26rem !important;
+  margin-bottom: 0.26rem;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .progression-dashboard__next-desc {
   opacity: 0.95;
-  margin-bottom: 0.35rem !important;
+  margin-bottom: 0.35rem;
   line-height: 1.4;
   font-size: 0.9375rem;
   font-weight: 400;
@@ -82,13 +82,13 @@
   background: rgba(255, 255, 255, 0.95);
   color: #1e40af;
   border: none;
-  padding: 0.36rem 0.71rem !important;
+  padding: 0.36rem 0.71rem;
   border-radius: var(--radius-lg, 0.5rem);
   font-weight: 700;
   font-size: 0.8125rem;
   display: flex;
   align-items: center;
-  gap: 0.24rem !important;
+  gap: 0.24rem;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -484,14 +484,14 @@
 
 @media (max-width: 768px) {
   .progression-dashboard__hero {
-    padding: 0.26rem !important;
-    margin-bottom: 0.18rem !important;
+    padding: 0.26rem;
+    margin-bottom: 0.18rem;
   }
 
   .progression-dashboard__next-module {
     flex-direction: column;
     text-align: center;
-    padding: 0.26rem !important;
+    padding: 0.26rem;
   }
 
   .progression-dashboard__next-info {
@@ -499,7 +499,7 @@
   }
 
   .progression-dashboard__continue-btn {
-    padding: 0.26rem 0.53rem !important;
+    padding: 0.26rem 0.53rem;
     font-size: 0.8125rem;
   }
 
@@ -575,14 +575,14 @@
 :root:not(.dark) .progression-dashboard__hero {
   background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
   color: white;
-  padding: 0.36rem !important;
-  margin-bottom: 0.24rem !important;
+  padding: 0.36rem;
+  margin-bottom: 0.24rem;
 }
 
 :root:not(.dark) .progression-dashboard__next-module {
   background: rgba(255, 255, 255, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.25);
-  padding: 0.41rem !important;
+  padding: 0.41rem;
 }
 
 :root:not(.dark) .progression-dashboard__unit {
@@ -630,35 +630,240 @@
   outline-offset: 2px;
 }
 
-/* Dark Theme Enhancements */
-.dark .progression-dashboard__unit {
-  background: var(--theme-bg-secondary);
-  border: 1px solid var(--theme-border-light, #f3f4f6);
+/* DARK THEME STRATEGY: Natural Specificity Layers */
+/* Layer 1: Theme context selectors (higher specificity) */
+html.dark .progression-dashboard {
+  background: var(--theme-bg-primary, #1f2937);
+  color: var(--theme-text-primary, #ffffff);
 }
 
-.dark .progression-dashboard__module {
-  background: var(--theme-bg-primary, #f9fafb);
-  border: 1px solid #000000;
+/* Layer 2: BEM-like semantic classes for component-specific overrides */
+.progression-dashboard--dark-theme {
+  background: var(--theme-bg-primary, #1f2937);
+  color: var(--theme-text-primary, #ffffff);
 }
 
-.dark .progression-dashboard__module:hover {
-  background: var(--theme-bg-secondary);
-  border-color: #000000;
+/* Layer 3: Specific element overrides (can be overridden by more specific BEM) */
+html.dark .progression-dashboard *,
+.progression-dashboard--dark-theme * {
+  color: var(--theme-text-primary, #ffffff);
 }
 
-.dark .progression-dashboard__continue-btn {
+/* Layer 1: Theme context for hero section */
+html.dark .progression-dashboard__hero {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: var(--theme-text-primary, #ffffff);
+}
+
+html.dark .progression-dashboard__next-module {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--theme-text-primary, #ffffff);
+}
+
+html.dark .progression-dashboard__next-name {
+  color: var(--theme-text-primary, #ffffff);
+}
+
+html.dark .progression-dashboard__next-desc {
+  color: var(--theme-text-primary, #ffffff);
+  opacity: 0.95;
+}
+
+html.dark .progression-dashboard__time {
+  color: var(--theme-text-primary, #ffffff);
+  opacity: 0.8;
+}
+
+/* Layer 2: BEM semantic classes for hero section (can override theme) */
+.progression-dashboard--dark-theme .progression-dashboard__hero {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: var(--theme-text-primary, #ffffff);
+}
+
+.progression-dashboard--dark-theme .progression-dashboard__next-module {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--theme-text-primary, #ffffff);
+}
+
+.progression-dashboard--dark-theme .progression-dashboard__next-name {
+  color: var(--theme-text-primary, #ffffff);
+}
+
+.progression-dashboard--dark-theme .progression-dashboard__next-desc {
+  color: var(--theme-text-primary, #ffffff);
+  opacity: 0.95;
+}
+
+.progression-dashboard--dark-theme .progression-dashboard__time {
+  color: var(--theme-text-primary, #ffffff);
+  opacity: 0.8;
+}
+
+/* REMOVED: All declarations moved to separate dark theme file */
+/* This section is now handled by progression-dashboard-dark-theme.css */
+
+body.dark .progression-dashboard__module-icon,
+html.dark body .progression-dashboard__module-icon {
+  background: #4b5563;
+  border: 1px solid #6b7280;
+}
+
+body.dark .progression-dashboard__next-label,
+html.dark body .progression-dashboard__next-label {
+  color: #ffffff;
+}
+
+body.dark .progression-dashboard__continue-btn,
+html.dark body .progression-dashboard__continue-btn {
   background: #1e40af;
   color: #ffffff;
   border: 2px solid #3b82f6;
 }
 
-.dark .progression-dashboard__continue-btn:hover {
+body.dark .progression-dashboard__continue-btn:hover,
+html.dark body .progression-dashboard__continue-btn:hover {
   background: #3b82f6;
   color: #ffffff;
   border-color: #60a5fa;
 }
 
-.dark .progression-dashboard__continue-btn:focus {
+body.dark .progression-dashboard__continue-btn:focus,
+html.dark body .progression-dashboard__continue-btn:focus {
   outline: 2px solid #60a5fa;
   outline-offset: 2px;
+}
+
+/* Ensure locked modules have proper contrast in dark mode */
+body.dark .progression-dashboard__module--locked .progression-dashboard__module-name,
+html.dark body .progression-dashboard__module--locked .progression-dashboard__module-name {
+  color: #d1d5db;
+}
+
+body.dark .progression-dashboard__module--locked .progression-dashboard__module-desc,
+html.dark body .progression-dashboard__module--locked .progression-dashboard__module-desc {
+  color: #9ca3af;
+}
+
+body.dark .progression-dashboard__module--locked .progression-dashboard__module-type,
+body.dark .progression-dashboard__module--locked .progression-dashboard__module-time,
+html.dark body .progression-dashboard__module--locked .progression-dashboard__module-type,
+html.dark body .progression-dashboard__module--locked .progression-dashboard__module-time {
+  color: #9ca3af;
+}
+/* Layer 2: Complete BEM-like semantic classes for all elements */
+.progression-dashboard--dark-theme .progression-dashboard__unit {
+  background: #374151;
+  border: 1px solid #4b5563;
+}
+
+.progression-dashboard--dark-theme .progression-dashboard__module {
+  background: #374151;
+  border: 1px solid #4b5563;
+}
+
+.progression-dashboard--dark-theme .progression-dashboard__module:hover {
+  background: #4b5563;
+  border-color: #3b82f6;
+}
+
+.progression-dashboard--dark-theme .progression-dashboard__module--next {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: #3b82f6;
+}
+
+.progression-dashboard--dark-theme .progression-dashboard__module-icon {
+  background: #4b5563;
+  border: 1px solid #6b7280;
+}
+
+.progression-dashboard--dark-theme .progression-dashboard__next-label {
+  color: #ffffff;
+}
+
+.progression-dashboard--dark-theme .progression-dashboard__continue-btn {
+  background: #1e40af;
+  color: #ffffff;
+  border: 2px solid #3b82f6;
+}
+
+.progression-dashboard--dark-theme .progression-dashboard__continue-btn:hover {
+  background: #3b82f6;
+  color: #ffffff;
+  border-color: #60a5fa;
+}
+
+.progression-dashboard--dark-theme .progression-dashboard__continue-btn:focus {
+  outline: 2px solid #60a5fa;
+  outline-offset: 2px;
+}
+
+/* Layer 2: BEM-like semantic classes for locked modules */
+.progression-dashboard--dark-theme .progression-dashboard__module--locked .progression-dashboard__module-name {
+  color: #d1d5db;
+}
+
+.progression-dashboard--dark-theme .progression-dashboard__module--locked .progression-dashboard__module-desc {
+  color: #9ca3af;
+}
+
+.progression-dashboard--dark-theme .progression-dashboard__module--locked .progression-dashboard__module-type,
+.progression-dashboard--dark-theme .progression-dashboard__module--locked .progression-dashboard__module-time {
+  color: #9ca3af;
+}
+
+/* Layer 3: Inline styles fallback - ONLY FOR EXTREME CASES */
+/* These classes can be applied via JavaScript if CSS layers fail */
+.progression-dashboard__text-white-force {
+  color: #ffffff;
+}
+
+.progression-dashboard__bg-dark-force {
+  background: #374151;
+}
+
+.progression-dashboard__border-dark-force {
+  border-color: #4b5563;
+}/
+* FINAL LAYER: Ensure ALL text elements are white in dark mode */
+/* Ultra-specific selectors for any missed text elements */
+
+/* Force white text on ALL possible text elements */
+.progression-dashboard--dark-theme h1,
+.progression-dashboard--dark-theme h2,
+.progression-dashboard--dark-theme h3,
+.progression-dashboard--dark-theme h4,
+.progression-dashboard--dark-theme h5,
+.progression-dashboard--dark-theme h6,
+.progression-dashboard--dark-theme p,
+.progression-dashboard--dark-theme span,
+.progression-dashboard--dark-theme div,
+.progression-dashboard--dark-theme button,
+.progression-dashboard--dark-theme a {
+  color: #ffffff;
+}
+
+/* Specific overrides for any remaining elements */
+html.dark .progression-dashboard--dark-theme,
+html.dark .progression-dashboard--dark-theme *,
+body.dark .progression-dashboard--dark-theme,
+body.dark .progression-dashboard--dark-theme * {
+  color: #ffffff;
+}
+
+/* Triple-layer protection for text elements */
+html.dark body .progression-dashboard--dark-theme *,
+body.dark html .progression-dashboard--dark-theme *,
+.dark .progression-dashboard--dark-theme * {
+  color: #ffffff;
+}
+
+/* Emergency inline-style equivalent classes */
+.progression-dashboard__emergency-white-text {
+  color: #ffffff;
+}
+
+.progression-dashboard__emergency-dark-bg {
+  background-color: #374151;
 }
