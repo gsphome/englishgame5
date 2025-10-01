@@ -610,24 +610,42 @@
 }
 /* Dark Mode Enhancements for Module Cards */
 /* Only apply dark styles to cards WITHOUT learning mode variants */
-html.dark .module-card:not(.module-card--flashcard):not(.module-card--quiz):not(.module-card--completion):not(.module-card--sorting):not(.module-card--matching) {
+html.dark
+  .module-card:not(.module-card--flashcard):not(.module-card--quiz):not(
+    .module-card--completion
+  ):not(.module-card--sorting):not(.module-card--matching) {
   background: var(--theme-bg-elevated, #1f2937);
   border-color: var(--theme-border-soft, #4b5563);
   color: var(--theme-text-primary, #ffffff);
 }
 
-html.dark .module-card:not(.module-card--flashcard):not(.module-card--quiz):not(.module-card--completion):not(.module-card--sorting):not(.module-card--matching):hover {
+html.dark
+  .module-card:not(.module-card--flashcard):not(.module-card--quiz):not(
+    .module-card--completion
+  ):not(.module-card--sorting):not(.module-card--matching):hover {
   background: var(--theme-bg-soft, #374151);
   border-color: var(--theme-primary-blue, #3b82f6);
 }
 
 /* Dark mode text for non-variant cards */
-html.dark .module-card:not(.module-card--flashcard):not(.module-card--quiz):not(.module-card--completion):not(.module-card--sorting):not(.module-card--matching) .module-card__title {
+html.dark
+  .module-card:not(.module-card--flashcard):not(.module-card--quiz):not(
+    .module-card--completion
+  ):not(.module-card--sorting):not(.module-card--matching)
+  .module-card__title {
   color: var(--theme-text-primary, #ffffff);
 }
 
-html.dark .module-card:not(.module-card--flashcard):not(.module-card--quiz):not(.module-card--completion):not(.module-card--sorting):not(.module-card--matching) .module-card__type,
-html.dark .module-card:not(.module-card--flashcard):not(.module-card--quiz):not(.module-card--completion):not(.module-card--sorting):not(.module-card--matching) .module-card__level {
+html.dark
+  .module-card:not(.module-card--flashcard):not(.module-card--quiz):not(
+    .module-card--completion
+  ):not(.module-card--sorting):not(.module-card--matching)
+  .module-card__type,
+html.dark
+  .module-card:not(.module-card--flashcard):not(.module-card--quiz):not(
+    .module-card--completion
+  ):not(.module-card--sorting):not(.module-card--matching)
+  .module-card__level {
   color: var(--theme-text-tertiary, #d1d5db);
 }
 
@@ -636,7 +654,10 @@ html.dark .module-card--locked {
   opacity: 0.7;
 }
 
-html.dark .module-card--locked:not(.module-card--flashcard):not(.module-card--quiz):not(.module-card--completion):not(.module-card--sorting):not(.module-card--matching) {
+html.dark
+  .module-card--locked:not(.module-card--flashcard):not(.module-card--quiz):not(
+    .module-card--completion
+  ):not(.module-card--sorting):not(.module-card--matching) {
   background: var(--theme-bg-subtle, #374151);
   border-color: var(--theme-border-subtle, #4b5563);
 }
@@ -646,10 +667,14 @@ html.dark .module-card--locked .module-card__title {
 }
 
 /* Dark mode icons for non-variant cards */
-html.dark .module-card:not(.module-card--flashcard):not(.module-card--quiz):not(.module-card--completion):not(.module-card--sorting):not(.module-card--matching) svg {
+html.dark
+  .module-card:not(.module-card--flashcard):not(.module-card--quiz):not(
+    .module-card--completion
+  ):not(.module-card--sorting):not(.module-card--matching)
+  svg {
   color: var(--theme-text-primary, #ffffff);
   stroke: var(--theme-text-primary, #ffffff);
-}/* Forc
+} /* Forc
 e smaller fonts with higher specificity */
 html body .main-menu__grid-container .module-card__title {
   font-size: 0.74rem;

@@ -24,7 +24,8 @@ export const ProgressionDashboard: React.FC<ProgressionDashboardProps> = ({
   // Detect dark mode changes dynamically
   React.useEffect(() => {
     const checkDarkMode = () => {
-      const darkMode = document.documentElement.classList.contains('dark') ||
+      const darkMode =
+        document.documentElement.classList.contains('dark') ||
         document.body.classList.contains('dark');
       setIsDarkMode(darkMode);
     };
@@ -36,11 +37,11 @@ export const ProgressionDashboard: React.FC<ProgressionDashboardProps> = ({
     const observer = new MutationObserver(checkDarkMode);
     observer.observe(document.documentElement, {
       attributes: true,
-      attributeFilter: ['class']
+      attributeFilter: ['class'],
     });
     observer.observe(document.body, {
       attributes: true,
-      attributeFilter: ['class']
+      attributeFilter: ['class'],
     });
 
     return () => observer.disconnect();
@@ -53,7 +54,7 @@ export const ProgressionDashboard: React.FC<ProgressionDashboardProps> = ({
       const dashboardElement = document.querySelector('.progression-dashboard');
       if (dashboardElement) {
         const textElements = dashboardElement.querySelectorAll('*');
-        textElements.forEach((element) => {
+        textElements.forEach(element => {
           const computedStyle = window.getComputedStyle(element);
           const textColor = computedStyle.color;
 
@@ -185,7 +186,9 @@ export const ProgressionDashboard: React.FC<ProgressionDashboardProps> = ({
   }, [progression.unlockedModules, progression.lockedModules]);
 
   return (
-    <div className={`progression-dashboard ${isDarkMode ? 'progression-dashboard--dark-theme' : ''}`}>
+    <div
+      className={`progression-dashboard ${isDarkMode ? 'progression-dashboard--dark-theme' : ''}`}
+    >
       {/* Continue Learning Section */}
       {nextRecommended && (
         <div
@@ -421,6 +424,6 @@ export const ProgressionDashboard: React.FC<ProgressionDashboardProps> = ({
             );
           })}
       </div>
-    </div >
+    </div>
   );
 };

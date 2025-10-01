@@ -570,7 +570,11 @@ html.dark .compact-about__developer-link:hover {
 
 /* === TECH STACK DARK MODE FIXES === */
 html.dark .compact-about__tech-item {
-  background: linear-gradient(135deg, rgba(96, 165, 250, 0.2) 0%, rgba(139, 92, 246, 0.15) 100%) !important;
+  background: linear-gradient(
+    135deg,
+    rgba(96, 165, 250, 0.2) 0%,
+    rgba(139, 92, 246, 0.15) 100%
+  ) !important;
   border: 1px solid rgba(96, 165, 250, 0.4) !important;
   color: #60a5fa !important;
   font-weight: 600 !important;
@@ -599,12 +603,20 @@ html.dark .compact-about__content::-webkit-scrollbar-thumb:hover {
 /* === ADDITIONAL DARK MODE FIXES === */
 /* Ensure all backgrounds and borders are properly themed */
 html.dark .compact-about__developer {
-  background: linear-gradient(135deg, var(--theme-bg-subtle, #374151) 0%, var(--theme-bg-soft, #4b5563) 100%) !important;
+  background: linear-gradient(
+    135deg,
+    var(--theme-bg-subtle, #374151) 0%,
+    var(--theme-bg-soft, #4b5563) 100%
+  ) !important;
   border-color: var(--theme-border-soft, #4b5563) !important;
 }
 
 html.dark .compact-about__tech-stack {
-  background: linear-gradient(135deg, var(--theme-bg-subtle, #374151) 0%, var(--theme-bg-soft, #4b5563) 100%) !important;
+  background: linear-gradient(
+    135deg,
+    var(--theme-bg-subtle, #374151) 0%,
+    var(--theme-bg-soft, #4b5563) 100%
+  ) !important;
   border-color: var(--theme-border-soft, #4b5563) !important;
 }
 

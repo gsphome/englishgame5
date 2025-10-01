@@ -26,16 +26,12 @@ const _baseProfileSchema = z.object({
 // Create schema with dynamic error messages
 const createProfileSchema = (t: (_key: string, _defaultValue?: string) => string) =>
   z.object({
-    name: z
-      .string()
-      .min(2, t('profile.nameRequired')),
+    name: z.string().min(2, t('profile.nameRequired')),
     level: z.enum(['beginner', 'intermediate', 'advanced']),
     preferences: z.object({
       language: z.enum(['en', 'es']),
       dailyGoal: z.number().min(1).max(100),
-      categories: z
-        .array(z.string())
-        .min(1, t('profile.categoriesRequired')),
+      categories: z.array(z.string()).min(1, t('profile.categoriesRequired')),
       difficulty: z.number().min(1).max(5),
       notifications: z.boolean(),
     }),
@@ -120,9 +116,7 @@ export const CompactProfile: React.FC<CompactProfileProps> = ({ isOpen, onClose 
         <div className="compact-profile__header">
           <div className="compact-profile__title-section">
             <User className="compact-profile__icon" />
-            <h2 className="compact-profile__title">
-              {t('modals.userProfile')}
-            </h2>
+            <h2 className="compact-profile__title">{t('modals.userProfile')}</h2>
           </div>
           <button onClick={onClose} className="modal__close-btn" aria-label={t('common.close')}>
             <X className="modal__close-icon" />
@@ -133,9 +127,7 @@ export const CompactProfile: React.FC<CompactProfileProps> = ({ isOpen, onClose 
           <div className="compact-profile__content">
             {/* Basic Info */}
             <div className="compact-profile__section">
-              <h3 className="compact-profile__section-title">
-                👤 {t('profile.basicInfo')}
-              </h3>
+              <h3 className="compact-profile__section-title">👤 {t('profile.basicInfo')}</h3>
 
               <div className="compact-profile__field">
                 <label className="compact-profile__label compact-profile__label--required">
@@ -168,15 +160,11 @@ export const CompactProfile: React.FC<CompactProfileProps> = ({ isOpen, onClose 
 
             {/* Preferences */}
             <div className="compact-profile__section">
-              <h3 className="compact-profile__section-title">
-                ⚙️ {t('profile.preferences')}
-              </h3>
+              <h3 className="compact-profile__section-title">⚙️ {t('profile.preferences')}</h3>
 
               <div className="compact-profile__field-row">
                 <div className="compact-profile__field compact-profile__field--half">
-                  <label className="compact-profile__label">
-                    {t('profile.language')}
-                  </label>
+                  <label className="compact-profile__label">{t('profile.language')}</label>
                   <select {...register('preferences.language')} className="compact-profile__select">
                     <option value="en">🇺🇸 English</option>
                     <option value="es">🇪🇸 Español</option>
@@ -234,11 +222,9 @@ export const CompactProfile: React.FC<CompactProfileProps> = ({ isOpen, onClose 
                       className="compact-profile__checkbox"
                     />
                     <span className="compact-profile__category-label">
-                      {category === 'Vocabulary' &&
-                        `📚 ${t('categories.vocabulary')}`}
+                      {category === 'Vocabulary' && `📚 ${t('categories.vocabulary')}`}
                       {category === 'Grammar' && `📝 ${t('categories.grammar')}`}
-                      {category === 'PhrasalVerbs' &&
-                        `🔗 ${t('categories.phrasalverbs')}`}
+                      {category === 'PhrasalVerbs' && `🔗 ${t('categories.phrasalverbs')}`}
                       {category === 'Idioms' && `💭 ${t('categories.idioms')}`}
                     </span>
                   </label>

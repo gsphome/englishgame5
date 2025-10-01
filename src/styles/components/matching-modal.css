@@ -432,7 +432,6 @@
 
 /* === ACCESSIBILITY === */
 @media (prefers-reduced-motion: reduce) {
-
   .matching-modal,
   .matching-modal__container {
     animation: none;

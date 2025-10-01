@@ -30,9 +30,7 @@ export const CompactAbout: React.FC<CompactAboutProps> = ({ isOpen, onClose }) =
             <FluentFlowLogo size="sm" />
             <div>
               <h2 className="compact-about__title">FluentFlow</h2>
-              <p className="compact-about__subtitle">
-                {t('about.subtitle')}
-              </p>
+              <p className="compact-about__subtitle">{t('about.subtitle')}</p>
             </div>
           </div>
           <button onClick={onClose} className="modal__close-btn" aria-label={t('common.close')}>
@@ -49,9 +47,7 @@ export const CompactAbout: React.FC<CompactAboutProps> = ({ isOpen, onClose }) =
                 <span className="compact-about__info-value">2.0.0</span>
               </div>
               <div className="compact-about__info-item">
-                <span className="compact-about__info-label">
-                  {t('about.platform')}
-                </span>
+                <span className="compact-about__info-label">{t('about.platform')}</span>
                 <span className="compact-about__info-value">Web</span>
               </div>
               <div className="compact-about__info-item">
@@ -87,27 +83,19 @@ export const CompactAbout: React.FC<CompactAboutProps> = ({ isOpen, onClose }) =
             <div className="compact-about__features">
               <div className="compact-about__feature">
                 <span className="compact-about__feature-icon">📚</span>
-                <span className="compact-about__feature-text">
-                  {t('about.feature1')}
-                </span>
+                <span className="compact-about__feature-text">{t('about.feature1')}</span>
               </div>
               <div className="compact-about__feature">
                 <span className="compact-about__feature-icon">🎯</span>
-                <span className="compact-about__feature-text">
-                  {t('about.feature2')}
-                </span>
+                <span className="compact-about__feature-text">{t('about.feature2')}</span>
               </div>
               <div className="compact-about__feature">
                 <span className="compact-about__feature-icon">📊</span>
-                <span className="compact-about__feature-text">
-                  {t('about.feature3')}
-                </span>
+                <span className="compact-about__feature-text">{t('about.feature3')}</span>
               </div>
               <div className="compact-about__feature">
                 <span className="compact-about__feature-icon">🌐</span>
-                <span className="compact-about__feature-text">
-                  {t('about.feature4')}
-                </span>
+                <span className="compact-about__feature-text">{t('about.feature4')}</span>
               </div>
             </div>
           </div>
@@ -121,9 +109,7 @@ export const CompactAbout: React.FC<CompactAboutProps> = ({ isOpen, onClose }) =
             <div className="compact-about__developer">
               <div className="compact-about__developer-info">
                 <span className="compact-about__developer-name">👨‍💻 Genil Suárez</span>
-                <span className="compact-about__developer-title">
-                  {t('about.developerTitle')}
-                </span>
+                <span className="compact-about__developer-title">{t('about.developerTitle')}</span>
               </div>
               <a
                 href="https://github.com/genilsuarez"

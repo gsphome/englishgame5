@@ -800,16 +800,24 @@ html.dark body .progression-dashboard__module--locked .progression-dashboard__mo
 }
 
 /* Layer 2: BEM-like semantic classes for locked modules */
-.progression-dashboard--dark-theme .progression-dashboard__module--locked .progression-dashboard__module-name {
+.progression-dashboard--dark-theme
+  .progression-dashboard__module--locked
+  .progression-dashboard__module-name {
   color: #d1d5db;
 }
 
-.progression-dashboard--dark-theme .progression-dashboard__module--locked .progression-dashboard__module-desc {
+.progression-dashboard--dark-theme
+  .progression-dashboard__module--locked
+  .progression-dashboard__module-desc {
   color: #9ca3af;
 }
 
-.progression-dashboard--dark-theme .progression-dashboard__module--locked .progression-dashboard__module-type,
-.progression-dashboard--dark-theme .progression-dashboard__module--locked .progression-dashboard__module-time {
+.progression-dashboard--dark-theme
+  .progression-dashboard__module--locked
+  .progression-dashboard__module-type,
+.progression-dashboard--dark-theme
+  .progression-dashboard__module--locked
+  .progression-dashboard__module-time {
   color: #9ca3af;
 }
 
@@ -825,7 +833,8 @@ html.dark body .progression-dashboard__module--locked .progression-dashboard__mo
 
 .progression-dashboard__border-dark-force {
   border-color: #4b5563;
-}/
+}
+/
 * FINAL LAYER: Ensure ALL text elements are white in dark mode */
 /* Ultra-specific selectors for any missed text elements */
 

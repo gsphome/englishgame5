@@ -216,7 +216,6 @@
 /* === WEB DARK ACCESSIBILITY === */
 @media (min-width: 769px) and (prefers-contrast: high) {
   html.dark {
-
     .header-redesigned,
     .module-card,
     .compact-settings__container {
@@ -237,7 +236,6 @@
 /* === WEB DARK REDUCED MOTION === */
 @media (min-width: 769px) and (prefers-reduced-motion: reduce) {
   html.dark {
-
     .header-redesigned,
     .module-card,
     .nav-btn,
@@ -250,7 +248,6 @@
 /* === COMPONENT SPECIFIC OVERRIDES === */
 /* Higher specificity through selector combination, not */
 @media (min-width: 769px) {
-
   /* === BUTTON OVERRIDES === */
   html.dark .compact-settings__btn--primary,
   html.dark .compact-profile__btn--save,

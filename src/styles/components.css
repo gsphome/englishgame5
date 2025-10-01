@@ -65,7 +65,7 @@
     animation-iteration-count: 1;
     transition-duration: 0.01ms;
   }
-  
+
   /* Additional specificity for common animation elements */
   html body * {
     animation-duration: 0.01ms;

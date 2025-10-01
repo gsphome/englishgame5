@@ -109,28 +109,38 @@
 }
 
 /* === LOCKED MODULES === */
-.progression-dashboard--dark-theme .progression-dashboard__module--locked .progression-dashboard__module-name {
+.progression-dashboard--dark-theme
+  .progression-dashboard__module--locked
+  .progression-dashboard__module-name {
   color: var(--theme-text-secondary, #d1d5db);
 }
 
-.progression-dashboard--dark-theme .progression-dashboard__module--locked .progression-dashboard__module-desc {
+.progression-dashboard--dark-theme
+  .progression-dashboard__module--locked
+  .progression-dashboard__module-desc {
   color: var(--theme-text-tertiary, #9ca3af);
 }
 
-.progression-dashboard--dark-theme .progression-dashboard__module--locked .progression-dashboard__module-type,
-.progression-dashboard--dark-theme .progression-dashboard__module--locked .progression-dashboard__module-time {
+.progression-dashboard--dark-theme
+  .progression-dashboard__module--locked
+  .progression-dashboard__module-type,
+.progression-dashboard--dark-theme
+  .progression-dashboard__module--locked
+  .progression-dashboard__module-time {
   color: var(--theme-text-tertiary, #9ca3af);
 }
 
 /* === COMPONENT-SPECIFIC MODIFIERS === */
 /* These can override global theme styles for specific use cases */
 
-.progression-dashboard--dark-theme.progression-dashboard--high-contrast .progression-dashboard__module-name {
+.progression-dashboard--dark-theme.progression-dashboard--high-contrast
+  .progression-dashboard__module-name {
   color: #ffffff;
   font-weight: 600;
 }
 
-.progression-dashboard--dark-theme.progression-dashboard--compact .progression-dashboard__module-desc {
+.progression-dashboard--dark-theme.progression-dashboard--compact
+  .progression-dashboard__module-desc {
   opacity: 1;
   color: var(--theme-text-secondary, #e5e7eb);
 }

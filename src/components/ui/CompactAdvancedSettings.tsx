@@ -160,9 +160,7 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
         <div className="compact-settings__header">
           <div className="compact-settings__title-section">
             <Settings className="compact-settings__icon" />
-            <h2 className="compact-settings__title">
-              {t('modals.advancedSettings')}
-            </h2>
+            <h2 className="compact-settings__title">{t('modals.advancedSettings')}</h2>
           </div>
           <button onClick={onClose} className="modal__close-btn" aria-label={t('common.close')}>
             <X className="modal__close-icon" />
@@ -192,9 +190,7 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
             className={`compact-settings__tab ${activeTab === 'categories' ? 'compact-settings__tab--active' : ''}`}
           >
             <Wrench className="compact-settings__tab-icon" />
-            <span className="compact-settings__tab-title">
-              {t('settings.categorySettings')}
-            </span>
+            <span className="compact-settings__tab-title">{t('settings.categorySettings')}</span>
           </button>
         </div>
 
@@ -216,9 +212,7 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
                 </div>
 
                 <div className="compact-settings__field">
-                  <label className="compact-settings__label">
-                    {t('settings.language')}
-                  </label>
+                  <label className="compact-settings__label">{t('settings.language')}</label>
                   <select
                     className="compact-settings__select"
                     value={localLanguage}
@@ -256,9 +250,7 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
                       )}
                     >
                       🔧 Dev Mode:{' '}
-                      {localDevelopmentMode
-                        ? t('settings.enabled')
-                        : t('settings.disabled')}
+                      {localDevelopmentMode ? t('settings.enabled') : t('settings.disabled')}
                     </label>
                     <input
                       type="checkbox"
