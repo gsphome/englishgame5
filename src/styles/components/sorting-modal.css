@@ -504,7 +504,6 @@
 
 /* === ACCESSIBILITY === */
 @media (prefers-reduced-motion: reduce) {
-
   .sorting-modal,
   .sorting-modal__container {
     animation: none;
