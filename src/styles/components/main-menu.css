@@ -64,6 +64,33 @@
   /* Homologated with game modes - consistent styling */
 }
 
+/* === MOBILE SAFE AREA MARGINS FOR MAIN MENU === */
+/* Específico para pantallas móviles pequeñas con bordes curvos */
+@media (max-width: 500px) {
+  .main-menu {
+    /* Márgenes de seguridad para evitar contenido cortado */
+    margin: 2px auto 2px auto;
+    /* Usar safe-area-insets para dispositivos con notch */
+    margin-left: max(2px, env(safe-area-inset-left));
+    margin-right: max(2px, env(safe-area-inset-right));
+    margin-bottom: max(2px, env(safe-area-inset-bottom));
+    
+    /* Reducir ancho máximo para compensar márgenes */
+    max-width: calc(100% - 4px);
+  }
+
+  .main-menu__header {
+    /* Reducir padding para compensar márgenes externos */
+    padding: 0.375rem;
+    margin-bottom: 0.125rem;
+  }
+
+  .main-menu__grid {
+    /* Asegurar que el grid también respete los márgenes */
+    padding: 0.25rem;
+  }
+}
+
 /* Header with search and view toggle - COMPACT */
 .main-menu__header {
   display: flex;
