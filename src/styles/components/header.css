@@ -758,27 +758,30 @@ html.dark {
   }
 }
 
-/* BREAKPOINT 6: Mobile Standard (360px - 419px) - Minimal layout */
+/* BREAKPOINT 6: Mobile Standard (360px - 419px) - CRITICAL: 400px overlap fix */
 @media (min-width: 360px) and (max-width: 419px) {
   .header-redesigned__container {
-    padding: 0.375rem 0.625rem;
-    min-height: 46px;
+    padding: 0.25rem 0.5rem;
+    min-height: 44px;
   }
 
   .header-redesigned__left {
-    gap: 0.25rem;
-    min-width: 70px;
+    gap: 0.125rem;
+    min-width: 60px;
+    flex-shrink: 0;
   }
 
   .header-redesigned__center {
     flex: 1;
-    max-width: 120px;
-    min-width: 90px;
+    max-width: 100px;
+    min-width: 80px;
+    margin: 0 0.375rem;
   }
 
   .header-redesigned__right {
-    gap: 0.25rem;
-    min-width: 60px;
+    gap: 0.125rem;
+    min-width: 50px;
+    flex-shrink: 0;
   }
 
   /* Hide logo and all text */
@@ -790,20 +793,26 @@ html.dark {
     display: none;
   }
 
-  /* Very compact buttons */
+  /* Ultra compact buttons */
   .header-redesigned__menu-btn,
   .header-redesigned__user-btn,
   .header-redesigned__login-btn {
-    min-width: 30px;
-    min-height: 30px;
-    padding: 3px;
+    min-width: 28px;
+    min-height: 28px;
+    padding: 2px;
   }
 
   /* Smaller icons */
   .header-redesigned__menu-icon,
   .header-redesigned__user-icon {
-    width: 13px;
-    height: 13px;
+    width: 12px;
+    height: 12px;
+  }
+
+  /* Prioritize login button */
+  .header-redesigned__user-btn,
+  .header-redesigned__login-btn {
+    flex-shrink: 0;
   }
 
   /* Full width side menu */
