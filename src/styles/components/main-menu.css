@@ -17,11 +17,11 @@
   /* Tablet: 4-6 cols = 12-8 rows, efficient viewing */
   --grid-height-tablet: calc(105px * 5 + 5px * 4 + 5px * 2 + 5px);
 
-  /* Desktop: 7-9 cols = 7-5 rows, optimal density */
+  /* Desktop: 5 cols = 10 rows, showing 4 rows (20 modules visible) */
   --grid-height-desktop: calc(125px * 4 + 6px * 3 + 6px * 2 + 6px);
 
-  /* Large Desktop: 10-11 cols = 5-4 rows, minimal scrolling */
-  --grid-height-large-desktop: calc(125px * 3 + 6px * 2 + 6px * 2 + 6px);
+  /* Large Desktop: 5 cols = 10 rows, showing 4 rows (20 modules visible) */
+  --grid-height-large-desktop: calc(125px * 4 + 6px * 3 + 6px * 2 + 6px);
 }
 
 /* SVG Icon Inheritance Fix - Force white in dark mode */
