@@ -509,105 +509,371 @@ html.dark {
   stroke: currentColor;
 }
 
-/* Enhanced Responsive Design */
-@media (max-width: 719px) {
+/* === HEADER INTELLIGENT BREAKPOINT SYSTEM === */
+/* Independent from main-menu breakpoints with progressive element removal */
+
+/* BREAKPOINT 1: Desktop Full (1200px+) - All elements visible */
+@media (min-width: 1200px) {
   .header-redesigned__container {
-    padding: 0.5rem 0.75rem;
+    padding: 0.75rem 2rem;
+    min-height: 68px;
+    max-width: 1200px;
+  }
+  
+  .header-redesigned__left {
+    gap: 1rem;
+    min-width: 280px;
+  }
+  
+  .header-redesigned__center {
+    flex: 1;
+    max-width: none;
+  }
+  
+  .header-redesigned__right {
+    gap: 1rem;
+    min-width: 200px;
+  }
+  
+  /* All elements fully visible */
+  .header-redesigned__title,
+  .header-redesigned__username,
+  .header-redesigned__login-text,
+  .header-redesigned__dev-text {
+    display: block;
+  }
+}
+
+/* BREAKPOINT 2: Desktop Standard (900px - 1199px) - Remove dev text */
+@media (min-width: 900px) and (max-width: 1199px) {
+  .header-redesigned__container {
+    padding: 0.75rem 1.5rem;
+    min-height: 64px;
+    max-width: 1000px;
+  }
+  
+  .header-redesigned__left {
+    gap: 0.875rem;
+    min-width: 240px;
+  }
+  
+  .header-redesigned__right {
+    gap: 0.875rem;
+    min-width: 180px;
+  }
+  
+  /* Hide dev mode text, keep icon */
+  .header-redesigned__dev-text {
+    display: none;
+  }
+  
+  /* Keep essential elements */
+  .header-redesigned__title,
+  .header-redesigned__username,
+  .header-redesigned__login-text {
+    display: block;
+  }
+}
+
+/* BREAKPOINT 3: Tablet Landscape (700px - 899px) - Remove username */
+@media (min-width: 700px) and (max-width: 899px) {
+  .header-redesigned__container {
+    padding: 0.75rem 1.25rem;
+    min-height: 60px;
+    max-width: 800px;
+  }
+  
+  .header-redesigned__left {
+    gap: 0.75rem;
+    min-width: 200px;
+  }
+  
+  .header-redesigned__right {
+    gap: 0.75rem;
+    min-width: 140px;
+  }
+  
+  /* Progressive removal: username and login text */
+  .header-redesigned__username,
+  .header-redesigned__login-text,
+  .header-redesigned__dev-text {
+    display: none;
+  }
+  
+  /* Keep app title */
+  .header-redesigned__title {
+    display: block;
+    font-size: 1.125rem;
+  }
+  
+  /* Compact user info */
+  .header-redesigned__user-info {
+    display: none;
+  }
+}
+
+/* BREAKPOINT 4: Tablet Portrait (520px - 699px) - Remove app title */
+@media (min-width: 520px) and (max-width: 699px) {
+  .header-redesigned__container {
+    padding: 0.625rem 1rem;
     min-height: 56px;
   }
-
-  .header-redesigned__container--learning {
-    padding: 0.5rem 0.75rem;
-  }
-
+  
   .header-redesigned__left {
-    gap: 0.5rem;
-    min-height: 36px;
+    gap: 0.625rem;
+    min-width: 160px;
   }
-
-  /* Progressive disclosure on mobile */
-  .header-redesigned__title {
-    display: none;
+  
+  .header-redesigned__center {
+    flex: 1;
+    max-width: 200px;
+    min-width: 140px;
   }
-
-  .header-redesigned__username {
-    display: none;
-  }
-
-  /* Simplified quick actions on mobile */
-  .header-redesigned__quick-actions span {
-    display: none;
-  }
-
-  .header-redesigned__center,
+  
   .header-redesigned__right {
-    min-height: 36px;
+    gap: 0.625rem;
+    min-width: 100px;
   }
-
+  
+  /* Remove app title for space */
+  .header-redesigned__title,
+  .header-redesigned__username,
+  .header-redesigned__login-text,
+  .header-redesigned__dev-text {
+    display: none;
+  }
+  
+  /* Compact buttons */
   .header-redesigned__menu-btn,
   .header-redesigned__user-btn,
-  .header-redesigned__login-btn,
-  .header-redesigned__control-btn {
+  .header-redesigned__login-btn {
+    min-width: 40px;
+    min-height: 40px;
+    padding: 8px;
+  }
+  
+  /* Enhanced side menu */
+  .header-side-menu {
+    width: 100%;
+    max-width: 360px;
+  }
+}
+
+/* BREAKPOINT 5: Mobile Large (420px - 519px) - Compact layout */
+@media (min-width: 420px) and (max-width: 519px) {
+  .header-redesigned__container {
+    padding: 0.5rem 0.875rem;
+    min-height: 52px;
+  }
+  
+  .header-redesigned__left {
+    gap: 0.5rem;
+    min-width: 120px;
+  }
+  
+  .header-redesigned__center {
+    flex: 1;
+    max-width: 160px;
+    min-width: 120px;
+  }
+  
+  .header-redesigned__right {
+    gap: 0.5rem;
+    min-width: 80px;
+  }
+  
+  /* Only essential elements */
+  .header-redesigned__title,
+  .header-redesigned__username,
+  .header-redesigned__login-text,
+  .header-redesigned__dev-text {
+    display: none;
+  }
+  
+  /* Smaller buttons */
+  .header-redesigned__menu-btn,
+  .header-redesigned__user-btn,
+  .header-redesigned__login-btn {
     min-width: 36px;
     min-height: 36px;
     padding: 6px;
   }
-
-  /* Enhanced side menu on mobile */
-  .header-side-menu {
-    width: 100%;
-    max-width: 320px;
+  
+  /* Logo slightly smaller */
+  .header-redesigned__logo {
+    width: 36px;
+    height: 36px;
+    font-size: 1.5rem;
   }
 }
 
-/* Extra small screens - make score display smaller but balanced */
-@media (max-width: 480px) {
+/* BREAKPOINT 6: Mobile Standard (360px - 419px) - Remove logo */
+@media (min-width: 360px) and (max-width: 419px) {
+  .header-redesigned__container {
+    padding: 0.5rem 0.75rem;
+    min-height: 48px;
+  }
+  
+  .header-redesigned__left {
+    gap: 0.375rem;
+    min-width: 80px;
+  }
+  
   .header-redesigned__center {
     flex: 1;
-    max-width: 160px;
-    min-width: 140px;
+    max-width: 140px;
+    min-width: 100px;
   }
-
-  .header-redesigned__container {
-    min-height: 52px;
-    padding: 0.5rem;
-  }
-
-  .header-redesigned__left,
+  
   .header-redesigned__right {
-    flex-shrink: 0;
+    gap: 0.375rem;
+    min-width: 70px;
   }
-
-  .header-redesigned__left {
-    gap: 0.25rem;
-  }
-
-  .header-redesigned__right {
-    gap: 0.25rem;
-  }
-}
-
-/* Ultra small screens - hide app logo */
-@media (max-width: 400px) {
+  
+  /* Hide logo to save space */
   .header-redesigned__logo {
     display: none;
   }
-
-  .header-redesigned__left {
-    gap: 0.25rem;
+  
+  /* All text hidden */
+  .header-redesigned__title,
+  .header-redesigned__username,
+  .header-redesigned__login-text,
+  .header-redesigned__dev-text {
+    display: none;
+  }
+  
+  /* Compact buttons */
+  .header-redesigned__menu-btn,
+  .header-redesigned__user-btn,
+  .header-redesigned__login-btn {
+    min-width: 32px;
+    min-height: 32px;
+    padding: 4px;
+  }
+  
+  /* Smaller icons */
+  .header-redesigned__menu-icon,
+  .header-redesigned__user-icon {
+    width: 14px;
+    height: 14px;
+  }
+  
+  /* Full width side menu */
+  .header-side-menu {
+    width: 100%;
+    max-width: 100%;
   }
 }
 
-/* Extremely small screens - minimal score display */
-@media (max-width: 300px) {
+/* BREAKPOINT 7: Mobile Small (320px - 359px) - Ultra minimal */
+@media (min-width: 320px) and (max-width: 359px) {
+  .header-redesigned__container {
+    padding: 0.375rem 0.5rem;
+    min-height: 44px;
+  }
+  
+  .header-redesigned__left {
+    gap: 0.25rem;
+    min-width: 60px;
+  }
+  
   .header-redesigned__center {
-    max-width: 100px;
+    flex: 1;
+    max-width: 120px;
     min-width: 80px;
   }
+  
+  .header-redesigned__right {
+    gap: 0.25rem;
+    min-width: 60px;
+  }
+  
+  /* Ultra minimal - only icons */
+  .header-redesigned__logo,
+  .header-redesigned__title,
+  .header-redesigned__username,
+  .header-redesigned__login-text,
+  .header-redesigned__dev-text {
+    display: none;
+  }
+  
+  /* Smallest buttons */
+  .header-redesigned__menu-btn,
+  .header-redesigned__user-btn,
+  .header-redesigned__login-btn {
+    min-width: 28px;
+    min-height: 28px;
+    padding: 2px;
+  }
+  
+  /* Tiny icons */
+  .header-redesigned__menu-icon,
+  .header-redesigned__user-icon {
+    width: 12px;
+    height: 12px;
+  }
+  
+  /* Dev indicator ultra compact */
+  .header-redesigned__dev-indicator {
+    padding: 0.125rem 0.25rem;
+    height: 20px;
+    font-size: 0.625rem;
+  }
+  
+  .header-redesigned__dev-icon {
+    font-size: 0.625rem;
+  }
+}
 
+/* BREAKPOINT 8: Mobile Tiny (280px - 319px) - Emergency layout */
+@media (max-width: 319px) {
   .header-redesigned__container {
-    padding: 0.25rem;
-    min-height: 44px;
+    padding: 0.25rem 0.375rem;
+    min-height: 40px;
+  }
+  
+  .header-redesigned__left {
+    gap: 0.125rem;
+    min-width: 50px;
+  }
+  
+  .header-redesigned__center {
+    flex: 1;
+    max-width: 100px;
+    min-width: 60px;
+  }
+  
+  .header-redesigned__right {
+    gap: 0.125rem;
+    min-width: 50px;
+  }
+  
+  /* Emergency mode - absolute minimal */
+  .header-redesigned__logo,
+  .header-redesigned__title,
+  .header-redesigned__username,
+  .header-redesigned__login-text,
+  .header-redesigned__dev-text,
+  .header-redesigned__dev-indicator {
+    display: none;
+  }
+  
+  /* Emergency buttons */
+  .header-redesigned__menu-btn,
+  .header-redesigned__user-btn,
+  .header-redesigned__login-btn {
+    min-width: 24px;
+    min-height: 24px;
+    padding: 1px;
+    border-radius: 4px;
+  }
+  
+  /* Emergency icons */
+  .header-redesigned__menu-icon,
+  .header-redesigned__user-icon {
+    width: 10px;
+    height: 10px;
   }
 }
 
