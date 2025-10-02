@@ -23,6 +23,8 @@
 /* Continue Learning Section */
 .progression-dashboard__continue {
   text-align: center;
+  min-height: auto;
+  height: auto;
 }
 
 .progression-dashboard__next-module {
@@ -492,15 +494,22 @@
     flex-direction: column;
     text-align: center;
     padding: 0.26rem;
+    gap: 0.25rem;
+    min-height: auto;
+    height: auto;
+    align-items: center;
   }
 
   .progression-dashboard__next-info {
     text-align: center;
+    width: 100%;
   }
 
   .progression-dashboard__continue-btn {
     padding: 0.26rem 0.53rem;
     font-size: 0.8125rem;
+    align-self: center;
+    flex-shrink: 0;
   }
 
   .progression-dashboard__units {
