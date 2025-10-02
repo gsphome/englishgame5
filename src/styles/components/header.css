@@ -222,6 +222,7 @@ html.dark {
 }
 
 @keyframes devPulse {
+
   0%,
   100% {
     opacity: 1;
@@ -435,12 +436,12 @@ html.dark {
   padding: var(--padding-xl, 2rem);
 }
 
-.header-side-menu__content > * + * {
+.header-side-menu__content>*+* {
   margin-top: 1.5rem;
 }
 
 /* Menu Sections */
-.header-side-menu__section > * + * {
+.header-side-menu__section>*+* {
   margin-top: 0.5rem;
 }
 
@@ -702,27 +703,30 @@ html.dark {
   }
 }
 
-/* BREAKPOINT 5: Mobile Large (420px - 519px) - Hide logo, ultra compact */
+/* BREAKPOINT 5: Mobile Large (420px - 519px) - Hide logo, ultra compact, prioritize login */
 @media (min-width: 420px) and (max-width: 519px) {
   .header-redesigned__container {
-    padding: 0.5rem 0.75rem;
-    min-height: 50px;
+    padding: 0.375rem 0.625rem;
+    min-height: 48px;
   }
 
   .header-redesigned__left {
-    gap: 0.375rem;
-    min-width: 100px;
+    gap: 0.25rem;
+    min-width: 80px;
+    flex-shrink: 0;
   }
 
   .header-redesigned__center {
     flex: 1;
     max-width: 140px;
-    min-width: 100px;
+    min-width: 120px;
+    margin: 0 0.5rem;
   }
 
   .header-redesigned__right {
-    gap: 0.375rem;
-    min-width: 70px;
+    gap: 0.25rem;
+    min-width: 60px;
+    flex-shrink: 0;
   }
 
   /* Hide logo to prevent overlap */
@@ -738,20 +742,19 @@ html.dark {
     display: none;
   }
 
-  /* Smaller buttons */
+  /* Compact buttons - prioritize login button */
   .header-redesigned__menu-btn,
   .header-redesigned__user-btn,
   .header-redesigned__login-btn {
-    min-width: 32px;
-    min-height: 32px;
-    padding: 4px;
+    min-width: 36px;
+    min-height: 36px;
+    padding: 6px;
   }
 
-  /* Logo slightly smaller */
-  .header-redesigned__logo {
-    width: 36px;
-    height: 36px;
-    font-size: 1.5rem;
+  /* Ensure login button has priority */
+  .header-redesigned__user-btn,
+  .header-redesigned__login-btn {
+    flex-shrink: 0;
   }
 }
 
@@ -977,6 +980,7 @@ html.dark {
 
 /* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
+
   /* justified: Accessibility requirement for reduced motion */
   .header-redesigned *,
   .header-side-menu * {
@@ -1063,6 +1067,7 @@ html.dark {
 
 /* Reduced motion support for logo */
 @media (prefers-reduced-motion: reduce) {
+
   /* justified: Accessibility requirement for reduced motion */
   .header-redesigned__logo,
   .header-redesigned__brand:hover .header-redesigned__logo {
@@ -1158,12 +1163,10 @@ html.dark {
 
 /* Enhanced Overlay for Dark Mode */
 .dark .header-side-menu-overlay {
-  background: linear-gradient(
-    45deg,
-    rgba(0, 0, 0, 0.7) 0%,
-    rgba(0, 0, 0, 0.5) 50%,
-    rgba(0, 0, 0, 0.7) 100%
-  );
+  background: linear-gradient(45deg,
+      rgba(0, 0, 0, 0.7) 0%,
+      rgba(0, 0, 0, 0.5) 50%,
+      rgba(0, 0, 0, 0.7) 100%);
   backdrop-filter: blur(8px);
 }
 
@@ -1207,7 +1210,7 @@ html.dark {
 }
 
 /* Ensure consistent spacing between primary action buttons */
-.header-redesigned__right > * + * {
+.header-redesigned__right>*+* {
   margin-left: 8px;
 }
 
