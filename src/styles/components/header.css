@@ -885,8 +885,8 @@ html.dark {
   }
 }
 
-/* BREAKPOINT 8: Mobile Tiny (280px - 320px) - Emergency layout for 320px */
-@media (max-width: 320px) {
+/* BREAKPOINT 8A: Mobile Tiny (311px - 320px) - Emergency layout */
+@media (min-width: 311px) and (max-width: 320px) {
   .header-redesigned__container {
     padding: 0.0625rem 0.25rem;
     min-height: 38px;
@@ -936,6 +936,66 @@ html.dark {
   .header-redesigned__user-icon {
     width: 9px;
     height: 9px;
+  }
+
+  /* Absolute priority for login */
+  .header-redesigned__user-btn,
+  .header-redesigned__login-btn {
+    flex-shrink: 0;
+  }
+}
+
+/* BREAKPOINT 8B: Mobile Ultra Tiny (≤310px) - NO ICON mode */
+@media (max-width: 310px) {
+  .header-redesigned__container {
+    padding: 0.0625rem 0.1875rem;
+    min-height: 36px;
+  }
+
+  .header-redesigned__left {
+    gap: 0.03125rem;
+    min-width: 35px;
+    flex-shrink: 0;
+  }
+
+  .header-redesigned__center {
+    flex: 1;
+    max-width: 50px;
+    min-width: 45px;
+    margin: 0 0.0625rem;
+  }
+
+  .header-redesigned__right {
+    gap: 0.03125rem;
+    min-width: 35px;
+    flex-shrink: 0;
+  }
+
+  /* Ultra emergency mode - absolute minimal */
+  .header-redesigned__logo,
+  .header-redesigned__title,
+  .header-redesigned__username,
+  .header-redesigned__login-text,
+  .header-redesigned__dev-text,
+  .header-redesigned__dev-indicator {
+    display: none;
+  }
+
+  /* Ultra emergency buttons */
+  .header-redesigned__menu-btn,
+  .header-redesigned__user-btn,
+  .header-redesigned__login-btn {
+    min-width: 20px;
+    min-height: 20px;
+    padding: 0.5px;
+    border-radius: 2px;
+  }
+
+  /* Ultra emergency icons */
+  .header-redesigned__menu-icon,
+  .header-redesigned__user-icon {
+    width: 8px;
+    height: 8px;
   }
 
   /* Absolute priority for login */
