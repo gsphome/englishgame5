@@ -544,7 +544,7 @@ html.dark {
   }
 }
 
-/* BREAKPOINT 2: Desktop Standard (900px - 1199px) - Remove dev text */
+/* BREAKPOINT 2: Desktop Standard (900px - 1199px) - Remove dev text and username */
 @media (min-width: 900px) and (max-width: 1199px) {
   .header-redesigned__container {
     padding: 0.75rem 1.5rem;
@@ -554,28 +554,28 @@ html.dark {
 
   .header-redesigned__left {
     gap: 0.875rem;
-    min-width: 240px;
+    min-width: 220px;
   }
 
   .header-redesigned__right {
     gap: 0.875rem;
-    min-width: 180px;
+    min-width: 160px;
   }
 
-  /* Hide dev mode text, keep icon */
-  .header-redesigned__dev-text {
+  /* Hide dev mode text and username early to prevent overlap */
+  .header-redesigned__dev-text,
+  .header-redesigned__username {
     display: none;
   }
 
   /* Keep essential elements */
   .header-redesigned__title,
-  .header-redesigned__username,
   .header-redesigned__login-text {
     display: block;
   }
 }
 
-/* BREAKPOINT 3: Tablet Landscape (700px - 899px) - Remove username */
+/* BREAKPOINT 3: Tablet Landscape (700px - 899px) - Remove login text and title */
 @media (min-width: 700px) and (max-width: 899px) {
   .header-redesigned__container {
     padding: 0.75rem 1.25rem;
@@ -585,25 +585,20 @@ html.dark {
 
   .header-redesigned__left {
     gap: 0.75rem;
-    min-width: 200px;
+    min-width: 180px;
   }
 
   .header-redesigned__right {
     gap: 0.75rem;
-    min-width: 140px;
+    min-width: 120px;
   }
 
-  /* Progressive removal: username and login text */
+  /* Aggressive removal: username, login text, and title to prevent overlap */
   .header-redesigned__username,
   .header-redesigned__login-text,
-  .header-redesigned__dev-text {
-    display: none;
-  }
-
-  /* Keep app title */
+  .header-redesigned__dev-text,
   .header-redesigned__title {
-    display: block;
-    font-size: 1.125rem;
+    display: none;
   }
 
   /* Compact user info */
@@ -612,8 +607,8 @@ html.dark {
   }
 }
 
-/* BREAKPOINT 4: Tablet Portrait (520px - 699px) - Remove app title */
-@media (min-width: 520px) and (max-width: 699px) {
+/* BREAKPOINT 4A: Large Mobile/Small Tablet (600px - 699px) - Remove title, keep logo */
+@media (min-width: 600px) and (max-width: 699px) {
   .header-redesigned__container {
     padding: 0.625rem 1rem;
     min-height: 56px;
@@ -635,7 +630,7 @@ html.dark {
     min-width: 100px;
   }
 
-  /* Remove app title for space */
+  /* Remove all text elements but keep logo */
   .header-redesigned__title,
   .header-redesigned__username,
   .header-redesigned__login-text,
@@ -643,13 +638,61 @@ html.dark {
     display: none;
   }
 
-  /* Compact buttons */
+  /* Standard buttons */
   .header-redesigned__menu-btn,
   .header-redesigned__user-btn,
   .header-redesigned__login-btn {
     min-width: 40px;
     min-height: 40px;
     padding: 8px;
+  }
+}
+
+/* BREAKPOINT 4B: Tablet Portrait (520px - 599px) - Ultra compact, logo smaller */
+@media (min-width: 520px) and (max-width: 599px) {
+  .header-redesigned__container {
+    padding: 0.625rem 1rem;
+    min-height: 56px;
+  }
+
+  .header-redesigned__left {
+    gap: 0.5rem;
+    min-width: 140px;
+  }
+
+  .header-redesigned__center {
+    flex: 1;
+    max-width: 180px;
+    min-width: 120px;
+  }
+
+  .header-redesigned__right {
+    gap: 0.5rem;
+    min-width: 90px;
+  }
+
+  /* Remove all text elements */
+  .header-redesigned__title,
+  .header-redesigned__username,
+  .header-redesigned__login-text,
+  .header-redesigned__dev-text {
+    display: none;
+  }
+
+  /* Smaller logo to save space */
+  .header-redesigned__logo {
+    width: 32px;
+    height: 32px;
+    font-size: 1.25rem;
+  }
+
+  /* Compact buttons */
+  .header-redesigned__menu-btn,
+  .header-redesigned__user-btn,
+  .header-redesigned__login-btn {
+    min-width: 36px;
+    min-height: 36px;
+    padding: 6px;
   }
 
   /* Enhanced side menu */
@@ -659,64 +702,16 @@ html.dark {
   }
 }
 
-/* BREAKPOINT 5: Mobile Large (420px - 519px) - Compact layout */
+/* BREAKPOINT 5: Mobile Large (420px - 519px) - Hide logo, ultra compact */
 @media (min-width: 420px) and (max-width: 519px) {
   .header-redesigned__container {
-    padding: 0.5rem 0.875rem;
-    min-height: 52px;
-  }
-
-  .header-redesigned__left {
-    gap: 0.5rem;
-    min-width: 120px;
-  }
-
-  .header-redesigned__center {
-    flex: 1;
-    max-width: 160px;
-    min-width: 120px;
-  }
-
-  .header-redesigned__right {
-    gap: 0.5rem;
-    min-width: 80px;
-  }
-
-  /* Only essential elements */
-  .header-redesigned__title,
-  .header-redesigned__username,
-  .header-redesigned__login-text,
-  .header-redesigned__dev-text {
-    display: none;
-  }
-
-  /* Smaller buttons */
-  .header-redesigned__menu-btn,
-  .header-redesigned__user-btn,
-  .header-redesigned__login-btn {
-    min-width: 36px;
-    min-height: 36px;
-    padding: 6px;
-  }
-
-  /* Logo slightly smaller */
-  .header-redesigned__logo {
-    width: 36px;
-    height: 36px;
-    font-size: 1.5rem;
-  }
-}
-
-/* BREAKPOINT 6: Mobile Standard (360px - 419px) - Remove logo */
-@media (min-width: 360px) and (max-width: 419px) {
-  .header-redesigned__container {
     padding: 0.5rem 0.75rem;
-    min-height: 48px;
+    min-height: 50px;
   }
 
   .header-redesigned__left {
     gap: 0.375rem;
-    min-width: 80px;
+    min-width: 100px;
   }
 
   .header-redesigned__center {
@@ -730,12 +725,12 @@ html.dark {
     min-width: 70px;
   }
 
-  /* Hide logo to save space */
+  /* Hide logo to prevent overlap */
   .header-redesigned__logo {
     display: none;
   }
 
-  /* All text hidden */
+  /* Remove all text elements */
   .header-redesigned__title,
   .header-redesigned__username,
   .header-redesigned__login-text,
@@ -743,7 +738,7 @@ html.dark {
     display: none;
   }
 
-  /* Compact buttons */
+  /* Smaller buttons */
   .header-redesigned__menu-btn,
   .header-redesigned__user-btn,
   .header-redesigned__login-btn {
@@ -752,11 +747,60 @@ html.dark {
     padding: 4px;
   }
 
+  /* Logo slightly smaller */
+  .header-redesigned__logo {
+    width: 36px;
+    height: 36px;
+    font-size: 1.5rem;
+  }
+}
+
+/* BREAKPOINT 6: Mobile Standard (360px - 419px) - Minimal layout */
+@media (min-width: 360px) and (max-width: 419px) {
+  .header-redesigned__container {
+    padding: 0.375rem 0.625rem;
+    min-height: 46px;
+  }
+
+  .header-redesigned__left {
+    gap: 0.25rem;
+    min-width: 70px;
+  }
+
+  .header-redesigned__center {
+    flex: 1;
+    max-width: 120px;
+    min-width: 90px;
+  }
+
+  .header-redesigned__right {
+    gap: 0.25rem;
+    min-width: 60px;
+  }
+
+  /* Hide logo and all text */
+  .header-redesigned__logo,
+  .header-redesigned__title,
+  .header-redesigned__username,
+  .header-redesigned__login-text,
+  .header-redesigned__dev-text {
+    display: none;
+  }
+
+  /* Very compact buttons */
+  .header-redesigned__menu-btn,
+  .header-redesigned__user-btn,
+  .header-redesigned__login-btn {
+    min-width: 30px;
+    min-height: 30px;
+    padding: 3px;
+  }
+
   /* Smaller icons */
   .header-redesigned__menu-icon,
   .header-redesigned__user-icon {
-    width: 14px;
-    height: 14px;
+    width: 13px;
+    height: 13px;
   }
 
   /* Full width side menu */
@@ -769,24 +813,24 @@ html.dark {
 /* BREAKPOINT 7: Mobile Small (320px - 359px) - Ultra minimal */
 @media (min-width: 320px) and (max-width: 359px) {
   .header-redesigned__container {
-    padding: 0.375rem 0.5rem;
-    min-height: 44px;
+    padding: 0.25rem 0.5rem;
+    min-height: 42px;
   }
 
   .header-redesigned__left {
-    gap: 0.25rem;
-    min-width: 60px;
+    gap: 0.125rem;
+    min-width: 55px;
   }
 
   .header-redesigned__center {
     flex: 1;
-    max-width: 120px;
-    min-width: 80px;
+    max-width: 100px;
+    min-width: 70px;
   }
 
   .header-redesigned__right {
-    gap: 0.25rem;
-    min-width: 60px;
+    gap: 0.125rem;
+    min-width: 55px;
   }
 
   /* Ultra minimal - only icons */
@@ -802,27 +846,21 @@ html.dark {
   .header-redesigned__menu-btn,
   .header-redesigned__user-btn,
   .header-redesigned__login-btn {
-    min-width: 28px;
-    min-height: 28px;
-    padding: 2px;
+    min-width: 26px;
+    min-height: 26px;
+    padding: 1px;
   }
 
   /* Tiny icons */
   .header-redesigned__menu-icon,
   .header-redesigned__user-icon {
-    width: 12px;
-    height: 12px;
+    width: 11px;
+    height: 11px;
   }
 
-  /* Dev indicator ultra compact */
+  /* Hide dev indicator to save space */
   .header-redesigned__dev-indicator {
-    padding: 0.125rem 0.25rem;
-    height: 20px;
-    font-size: 0.625rem;
-  }
-
-  .header-redesigned__dev-icon {
-    font-size: 0.625rem;
+    display: none;
   }
 }
 

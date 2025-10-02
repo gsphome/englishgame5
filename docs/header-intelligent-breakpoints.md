@@ -42,63 +42,72 @@ Cada breakpoint tiene un propósito específico y elimina elementos estratégica
 **Elementos visibles**: Logo, título, username, login text, dev text
 
 ### 🖥️ BREAKPOINT 2: Desktop Standard (900px - 1199px)
-**Eliminación**: Dev mode text (mantiene icono)
+**Eliminación**: Dev mode text y username (más agresivo)
 ```css
 - Padding: 0.75rem 1.5rem
 - Height: 64px
 - Max-width: 1000px
 - Gap: 0.875rem
 ```
-**Razón**: El texto "DEV" es redundante cuando hay icono
+**Razón**: Prevenir solapamiento temprano, mantener elementos esenciales
 
 ### 📱 BREAKPOINT 3: Tablet Landscape (700px - 899px)
-**Eliminación**: Username y login text
+**Eliminación**: Login text y app title (eliminación agresiva)
 ```css
 - Padding: 0.75rem 1.25rem
 - Height: 60px
 - Max-width: 800px
 - Gap: 0.75rem
 ```
-**Razón**: El icono de usuario es suficientemente claro
+**Razón**: Solo iconos esenciales para evitar solapamiento
 
-### 📱 BREAKPOINT 4: Tablet Portrait (520px - 699px)
-**Eliminación**: App title
+### 📱 BREAKPOINT 4A: Large Mobile/Small Tablet (600px - 699px)
+**Eliminación**: Todos los textos, mantiene logo
 ```css
 - Padding: 0.625rem 1rem
 - Height: 56px
 - Gap: 0.625rem
 ```
-**Razón**: El logo ya identifica la app
+**Razón**: Transición suave antes de eliminar logo
+
+### 📱 BREAKPOINT 4B: Tablet Portrait (520px - 599px)
+**Eliminación**: Logo más pequeño, layout ultra compacto
+```css
+- Padding: 0.625rem 1rem
+- Height: 56px
+- Logo: 32px
+```
+**Razón**: Máximo aprovechamiento del espacio disponible
 
 ### 📱 BREAKPOINT 5: Mobile Large (420px - 519px)
-**Eliminación**: Ninguna adicional, layout compacto
-```css
-- Padding: 0.5rem 0.875rem
-- Height: 52px
-- Button size: 36px
-- Logo size: 36px
-```
-**Optimización**: Botones y logo más pequeños
-
-### 📱 BREAKPOINT 6: Mobile Standard (360px - 419px)
-**Eliminación**: Logo
+**Eliminación**: Logo (eliminación temprana para evitar solapamiento)
 ```css
 - Padding: 0.5rem 0.75rem
-- Height: 48px
+- Height: 50px
 - Button size: 32px
-- Icon size: 14px
+- No logo
 ```
-**Razón**: Espacio crítico, botón hamburguesa es suficiente
+**Optimización**: Solo elementos esenciales, sin solapamiento
+
+### 📱 BREAKPOINT 6: Mobile Standard (360px - 419px)
+**Eliminación**: Todos los elementos no esenciales
+```css
+- Padding: 0.375rem 0.625rem
+- Height: 46px
+- Button size: 30px
+- Icon size: 13px
+```
+**Razón**: Layout minimal, máxima eficiencia de espacio
 
 ### 📱 BREAKPOINT 7: Mobile Small (320px - 359px)
-**Eliminación**: Ninguna adicional, ultra minimal
+**Eliminación**: Dev indicator adicional
 ```css
-- Padding: 0.375rem 0.5rem
-- Height: 44px
-- Button size: 28px
-- Icon size: 12px
+- Padding: 0.25rem 0.5rem
+- Height: 42px
+- Button size: 26px
+- Icon size: 11px
 ```
-**Estado**: Solo iconos esenciales
+**Estado**: Ultra minimal, sin solapamiento garantizado
 
 ### 📱 BREAKPOINT 8: Mobile Tiny (280px - 319px)
 **Eliminación**: Dev indicator
@@ -134,17 +143,19 @@ Cada breakpoint tiene un propósito específico y elimina elementos estratégica
 
 ## Elementos por Breakpoint
 
-| Elemento | 1200px+ | 900px+ | 700px+ | 520px+ | 420px+ | 360px+ | 320px+ | <320px |
-|----------|---------|--------|--------|--------|--------|--------|--------|--------|
-| Logo | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ |
-| App Title | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
-| Username | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
-| Login Text | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
-| Dev Text | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
-| Dev Icon | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ |
-| Menu Button | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Score Display | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| User Button | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Elemento | 1200px+ | 900px+ | 700px+ | 600px+ | 520px+ | 420px+ | 360px+ | 320px+ | <320px |
+|----------|---------|--------|--------|--------|--------|--------|--------|--------|--------|
+| Logo | ✅ | ✅ | ❌ | ✅ | 🔸 | ❌ | ❌ | ❌ | ❌ |
+| App Title | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| Username | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| Login Text | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| Dev Text | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| Dev Icon | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ |
+| Menu Button | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Score Display | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| User Button | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+
+**Leyenda**: ✅ Visible | ❌ Oculto | 🔸 Reducido (32px)
 
 ## Implementación Técnica
 
