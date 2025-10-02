@@ -298,8 +298,16 @@
   }
 }
 
+/* Large Tablet: Six columns - OPTIMIZADO PARA 768px */
+@media (min-width: 720px) and (max-width: 879px) {
+  .main-menu__grid-container {
+    grid-template-columns: repeat(6, minmax(80px, 1fr));
+    gap: var(--grid-gap-tablet);
+  }
+}
+
 /* Large Desktop: Five columns - MÁXIMO ORIGINAL */
-@media (min-width: 720px) {
+@media (min-width: 880px) {
   .main-menu__grid-container {
     grid-template-columns: repeat(5, minmax(95px, 1fr));
     gap: var(--grid-gap-desktop);
