@@ -4,15 +4,13 @@
 /* === GLOBAL BASE STYLES === */
 body {
   background-color: #f3f4f6;
-  font-family: var(
-    --font-primary,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    sans-serif
-  );
+  font-family: var(--font-primary,
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      Roboto,
+      sans-serif);
   margin: 0;
   padding: 0;
   line-height: var(--leading-normal, 1.5);
@@ -244,22 +242,7 @@ body:has(.compact-learning-path) {
   color: #f3f4f6;
 }
 
-/* Module Cards - Legacy support */
-.module-card {
-  /* Base styles moved to module-card.css */
-}
-
-.module-card--flashcard,
-.module-card--quiz,
-.module-card--completion,
-.module-card--sorting,
-.module-card--matching {
-  /* Gradient backgrounds defined in module-card.css */
-}
-
-.module-card__icon,
-.module-card__title,
-.module-card__type,
-.module-card__level {
-  /* Styles defined in module-card.css with proper BEM-Like nomenclature */
-}
+/* Module Cards - Legacy support removed
+ * All styles moved to module-card.css with proper BEM-Like nomenclature
+ * This includes: .module-card, .module-card--*, .module-card__*
+ */
