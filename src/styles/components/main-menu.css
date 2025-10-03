@@ -1009,6 +1009,40 @@ html.dark .main-menu__grid::-webkit-scrollbar-thumb:hover {
   }
 }
 
+/* Mobile Ultra Compact - Hide text, show only icons for Progress/All Modules */
+@media (max-width: 400px) {
+  .main-menu__header .main-menu__search {
+    max-width: calc(100% - 80px);
+    min-width: 70px;
+  }
+
+  .main-menu__view-toggle {
+    height: 32px;
+    width: 70px;
+    max-width: 70px;
+    min-width: 70px;
+  }
+
+  .main-menu__view-btn {
+    padding: 0.25rem 0.125rem;
+    font-size: 0;  /* Hide text completely */
+    gap: 0;
+    min-height: 1.5rem;
+    justify-content: center;
+  }
+
+  .main-menu__view-icon {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+
+  /* Ensure icons are centered and visible */
+  .main-menu__view-btn .main-menu__view-icon {
+    margin: 0;
+    flex-shrink: 0;
+  }
+}
+
 /* Da
 rk Mode - High Contrast Toggle Buttons */
 .dark .main-menu__view-btn {
