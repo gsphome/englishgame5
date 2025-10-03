@@ -785,3 +785,54 @@ html.dark .compact-learning-path__unit-circle-badge--indigo {
     transition: none;
   }
 }
+/* === MOBILE OPTIMIZATION 400px === */
+@media (max-width: 400px) {
+  .compact-learning-path {
+    padding: 0.5rem;
+  }
+
+  .compact-learning-path__container {
+    max-width: 20rem;
+    max-height: 80vh;
+  }
+
+  .compact-learning-path__header {
+    padding: 0.6rem;
+  }
+
+  .compact-learning-path__title {
+    font-size: 0.9rem;
+  }
+
+  .compact-learning-path__content {
+    padding: 0.6rem;
+    gap: 0.6rem;
+  }
+
+  .compact-learning-path__unit {
+    padding: 0.4rem;
+    gap: 0.4rem;
+  }
+
+  .compact-learning-path__unit-title {
+    font-size: 0.7rem;
+  }
+
+  .compact-learning-path__modules {
+    gap: 0.3rem;
+  }
+
+  .compact-learning-path__module {
+    padding: 0.3rem;
+    font-size: 0.6rem;
+  }
+
+  .compact-learning-path__actions {
+    padding: 0.6rem;
+  }
+
+  .compact-learning-path__button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.7rem;
+  }
+}

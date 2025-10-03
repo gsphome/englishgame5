@@ -632,3 +632,60 @@ html.dark .compact-profile__error {
     transition: none;
   }
 }
+/* === MOBILE OPTIMIZATION 400px === */
+@media (max-width: 400px) {
+  .compact-profile {
+    padding: 0.5rem;
+  }
+
+  .compact-profile__container {
+    max-width: 20rem;
+    max-height: 85vh;
+  }
+
+  .compact-profile__header {
+    padding: 0.6rem;
+  }
+
+  .compact-profile__title {
+    font-size: 0.9rem;
+  }
+
+  .compact-profile__content {
+    padding: 0.6rem;
+    gap: 0.6rem;
+  }
+
+  .compact-profile__section {
+    gap: 0.4rem;
+  }
+
+  .compact-profile__section-title {
+    font-size: 0.7rem;
+    padding: 0.3rem 0;
+  }
+
+  .compact-profile__field {
+    gap: 0.3rem;
+  }
+
+  .compact-profile__label {
+    font-size: 0.7rem;
+  }
+
+  .compact-profile__input,
+  .compact-profile__select {
+    padding: 0.4rem;
+    font-size: 0.7rem;
+  }
+
+  .compact-profile__actions {
+    padding: 0.6rem;
+    gap: 0.4rem;
+  }
+
+  .compact-profile__button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.7rem;
+  }
+}
