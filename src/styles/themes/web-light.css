@@ -1,9 +1,9 @@
 /**
  * Web Light Theme - Desktop/Tablet Light Mode
  * 
- * AI_CONTEXT: Theme context for desktop/tablet devices in light mode
- * AI_VALIDATION: WEB_LIGHT_THEME - Desktop optimizations with light colors
- * AI_USAGE: Hover states, focus rings, and desktop-specific interactions
+ * Theme context for desktop/tablet devices in light mode
+ * WEB_LIGHT_THEME - Desktop optimizations with light colors
+ * Hover states, focus rings, and desktop-specific interactions
  * 
  * Optimized styles for web environments in light mode
  * Uses design system tokens with consolidated rules and proper media query scoping
@@ -11,13 +11,13 @@
  */
 
 /* === WEB LIGHT CONTEXT === */
-/* AI_VALIDATION: WEB_LIGHT_MEDIA_QUERY - Desktop/tablet light theme context */
-/* AI_CONTEXT: Applies to screens 769px+ in light mode */
+/* WEB_LIGHT_MEDIA_QUERY - Desktop/tablet light theme context */
+/* Applies to screens 769px+ in light mode */
 @media (min-width: 769px) {
   html.light,
   html:not(.dark) {
     /* === HEADER COMPONENT === */
-    /* AI_VALIDATION: HEADER_WEB_LIGHT - Header styling for desktop light mode */
+    /* HEADER_WEB_LIGHT - Header styling for desktop light mode */
     /* DISABLED: These rules conflict with header.css variables */
     /*
     .header-redesigned {

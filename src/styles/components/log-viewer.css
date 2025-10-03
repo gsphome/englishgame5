@@ -18,8 +18,8 @@
 .log-viewer__container {
   background-color: var(--theme-bg-primary, #f9fafb);
   border-radius: var(--radius-md, 0.375rem);
-  width: 91.666667%; /* w-11/12 */
-  height: 83.333333%; /* h-5/6 */
+  width: 91.666667%; /* w-11-12 */
+  height: 83.333333%; /* h-5-6 */
   max-width: 72rem; /* max-w-6xl */
   display: flex;
   flex-direction: column;

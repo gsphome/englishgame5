@@ -1,9 +1,9 @@
 /**
  * Mobile Light Theme - Mobile Light Mode + Safari Fixes
  * 
- * AI_CONTEXT: Theme context for mobile devices in light mode
- * AI_VALIDATION: MOBILE_LIGHT_THEME - Touch optimizations with light colors
- * AI_USAGE: 44px minimum touch targets, Safari fixes, mobile-specific interactions
+ * Theme context for mobile devices in light mode
+ * MOBILE_LIGHT_THEME - Touch optimizations with light colors
+ * 44px minimum touch targets, Safari fixes, mobile-specific interactions
  * 
  * Optimized styles for mobile devices in light mode
  * Includes Safari Mobile specific fixes and touch target optimizations (44px minimum)
@@ -11,13 +11,13 @@
  */
 
 /* === MOBILE LIGHT CONTEXT === */
-/* AI_VALIDATION: MOBILE_LIGHT_MEDIA_QUERY - Mobile light theme context */
-/* AI_CONTEXT: Applies to screens ≤768px in light mode */
+/* MOBILE_LIGHT_MEDIA_QUERY - Mobile light theme context */
+/* Applies to screens up to 768px in light mode */
 @media (max-width: 768px) {
   html.light,
   html:not(.dark) {
     /* === BASE MOBILE OPTIMIZATIONS === */
-    /* AI_CONTEXT: Touch targets optimized to 44px minimum for accessibility */
+    /* Touch targets optimized to 44px minimum for accessibility */
 
     /* === HEADER COMPONENT === */
     /* DISABLED: These rules conflict with header.css variables */

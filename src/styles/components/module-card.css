@@ -678,7 +678,7 @@ html.dark
 
 /* === RESPONSIVE BREAKPOINTS FOR SMALL SCREENS === */
 
-/* Mobile Ultra Small (≤400px) - Ultra compact cards */
+/* Mobile Ultra Small (up to 400px) - Ultra compact cards */
 @media (max-width: 400px) {
   .module-card {
     width: 70px;

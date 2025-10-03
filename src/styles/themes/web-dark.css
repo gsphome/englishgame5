@@ -1,21 +1,15 @@
-/**
- * Web Dark Theme - Desktop/Tablet Dark Mode
- * 
- * AI_CONTEXT: Theme context for desktop/tablet devices in dark mode
- * AI_VALIDATION: WEB_DARK_THEME - Desktop optimizations with dark colors
- * AI_USAGE: Enhanced shadows, high contrast, desktop interactions in dark mode
- * 
+/* Web Dark Theme - Desktop/Tablet Dark Mode
+ * Theme context for desktop/tablet devices in dark mode
+ * Desktop optimizations with dark colors
+ * Enhanced shadows, high contrast, desktop interactions in dark mode
  * Optimized styles for web environments in dark mode
- * Uses design system tokens with consolidated rules and proper media query scoping
- * Integrated content from theme-fix.css for complete consolidation
  */
 
-/* === WEB DARK CONTEXT === */
-/* AI_VALIDATION: WEB_DARK_MEDIA_QUERY - Desktop/tablet dark theme context */
-/* AI_CONTEXT: Applies to screens 769px+ in dark mode */
+/* WEB DARK CONTEXT */
+/* Desktop/tablet dark theme context for screens 769px and up in dark mode */
 @media (min-width: 769px) {
   html.dark {
-    /* === HEADER COMPONENT === */
+    /* HEADER COMPONENT */
     /* DISABLED: These rules conflict with header.css variables */
     /*
     .header-redesigned {
@@ -41,7 +35,7 @@
     }
     */
 
-    /* === MODULE CARDS === */
+    /* MODULE CARDS */
     .module-card {
       background-color: var(--theme-bg-elevated, #ffffff);
       color: var(--theme-text-primary, #374151);
@@ -65,7 +59,7 @@
       stroke: var(--theme-text-secondary, #6b7280);
     }
 
-    /* === NAVIGATION === */
+    /* NAVIGATION */
     .nav-btn {
       background-color: transparent;
       color: var(--theme-text-primary, #ffffff);
@@ -85,7 +79,7 @@
       border-color: var(--theme-border-on-colored);
     }
 
-    /* === SETTINGS COMPONENTS === */
+    /* SETTINGS COMPONENTS */
     .compact-settings__container {
       background-color: var(--theme-bg-elevated, #ffffff);
       border-color: var(--theme-border-subtle, #f9fafb);
@@ -116,7 +110,7 @@
       box-shadow: 0 0 0 3px var(--theme-primary-purple-light);
     }
 
-    /* === LEARNING COMPONENTS === */
+    /* LEARNING COMPONENTS */
     .flashcard-component,
     .quiz-component,
     .sorting-component,
@@ -145,7 +139,7 @@
       background-color: var(--theme-bg-soft, #f9fafb);
     }
 
-    /* === MAIN MENU === */
+    /* MAIN MENU */
     .main-menu {
       background-color: var(--theme-bg-elevated, #ffffff);
       border-color: var(--theme-border-soft, #f3f4f6);
@@ -159,7 +153,7 @@
       background-color: var(--theme-bg-soft, #f9fafb);
     }
 
-    /* === TOAST NOTIFICATIONS === */
+    /* TOAST NOTIFICATIONS */
     .toast-card {
       background-color: var(--theme-bg-elevated, #1f2937);
       color: var(--theme-text-primary, #ffffff);
@@ -167,7 +161,7 @@
       box-shadow: var(--shadow-strong, 0 10px 15px rgba(0, 0, 0, 0.3));
     }
 
-    /* === PROGRESS DASHBOARD === */
+    /* PROGRESS DASHBOARD */
     .compact-dashboard__title,
     .compact-dashboard__stat-value,
     .compact-dashboard__section-title,
@@ -175,7 +169,7 @@
       color: var(--theme-text-primary, #ffffff);
     }
 
-    /* === PROGRESSION DASHBOARD === */
+    /* PROGRESSION DASHBOARD */
     .progression-dashboard {
       background-color: var(--theme-bg-primary, #111827);
       color: var(--theme-text-primary, #ffffff);
@@ -213,7 +207,7 @@
   }
 }
 
-/* === WEB DARK ACCESSIBILITY === */
+/* WEB DARK ACCESSIBILITY */
 @media (min-width: 769px) and (prefers-contrast: high) {
   html.dark {
     .header-redesigned,
@@ -233,7 +227,7 @@
   }
 }
 
-/* === WEB DARK REDUCED MOTION === */
+/* WEB DARK REDUCED MOTION */
 @media (min-width: 769px) and (prefers-reduced-motion: reduce) {
   html.dark {
     .header-redesigned,
@@ -245,10 +239,10 @@
   }
 }
 
-/* === COMPONENT SPECIFIC OVERRIDES === */
+/* COMPONENT SPECIFIC OVERRIDES */
 /* Higher specificity through selector combination, not */
 @media (min-width: 769px) {
-  /* === BUTTON OVERRIDES === */
+  /* BUTTON OVERRIDES */
   html.dark .compact-settings__btn--primary,
   html.dark .compact-profile__btn--save,
   html.dark .compact-dashboard__btn--primary,
@@ -262,7 +256,7 @@
     stroke: var(--theme-text-on-colored, #ffffff);
   }
 
-  /* === DASHBOARD COMPONENT OVERRIDES === */
+  /* DASHBOARD COMPONENT OVERRIDES */
   html.dark .compact-dashboard__title,
   html.dark .compact-dashboard__stat-value,
   html.dark .compact-dashboard__section-title,
@@ -276,7 +270,7 @@
     color: var(--theme-text-secondary, #e5e7eb);
   }
 
-  /* === LEARNING PATH COMPONENT OVERRIDES === */
+  /* LEARNING PATH COMPONENT OVERRIDES */
   html.dark .compact-learning-path__title,
   html.dark .compact-learning-path__progress-value,
   html.dark .compact-learning-path__stat-value,
@@ -286,14 +280,14 @@
     color: var(--theme-text-primary, #ffffff);
   }
 
-  /* === ABOUT MODAL COMPONENT OVERRIDES === */
+  /* ABOUT MODAL COMPONENT OVERRIDES */
   html.dark .compact-about__section-title,
   html.dark .compact-about__info-value,
   html.dark .compact-about__developer-name {
     color: var(--theme-text-primary, #ffffff);
   }
 
-  /* === PROGRESSION DASHBOARD OVERRIDES === */
+  /* PROGRESSION DASHBOARD OVERRIDES */
   html.dark .progression-dashboard__unit-title,
   html.dark .progression-dashboard__unit-stats,
   html.dark .progression-dashboard__module-name,

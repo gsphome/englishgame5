@@ -1,24 +1,19 @@
-/**
- * Mobile Dark Theme - Mobile Dark Mode + Safari Fixes
- * 
- * AI_CONTEXT: Theme context for mobile devices in dark mode
- * AI_VALIDATION: MOBILE_DARK_THEME - Touch optimizations with dark colors
- * AI_USAGE: 44px minimum touch targets, Safari fixes, enhanced contrast for mobile dark mode
- * 
+/* Mobile Dark Theme - Mobile Dark Mode + Safari Fixes
+ * Theme context for mobile devices in dark mode
+ * Touch optimizations with dark colors
+ * 44px minimum touch targets, Safari fixes, enhanced contrast
  * Optimized styles for mobile devices in dark mode
- * Includes Safari Mobile specific fixes and touch target optimizations (44px minimum)
- * Integrated content from mobile-theme-fix.css and safari-mobile-fix.css
+ * Includes Safari Mobile specific fixes and touch target optimizations
  */
 
-/* === MOBILE DARK CONTEXT === */
-/* AI_VALIDATION: MOBILE_DARK_MEDIA_QUERY - Mobile dark theme context */
-/* AI_CONTEXT: Applies to screens ≤768px in dark mode */
+/* MOBILE DARK CONTEXT */
+/* Mobile dark theme context for screens up to 768px in dark mode */
 @media (max-width: 768px) {
   html.dark {
-    /* === BASE MOBILE OPTIMIZATIONS === */
-    /* AI_CONTEXT: Touch targets optimized to 44px minimum for accessibility */
+    /* BASE MOBILE OPTIMIZATIONS */
+    /* Touch targets optimized to 44px minimum for accessibility */
 
-    /* === HEADER COMPONENT === */
+    /* HEADER COMPONENT */
     /* DISABLED: These rules conflict with header.css variables */
     /*
     .header-redesigned {
@@ -54,12 +49,12 @@
     }
     */
 
-    /* === MODULE CARDS === */
+    /* MODULE CARDS */
     .module-card {
       background-color: var(--theme-bg-elevated, #ffffff);
       color: var(--theme-text-primary, #374151);
       border-color: var(--theme-border-soft, #f3f4f6);
-      /* Mobile-specific: Card optimizations with touch-friendly spacing */
+      /* Card optimizations with touch-friendly spacing */
       margin-bottom: 1rem;
       padding: 1.25rem;
       border-radius: 12px;
@@ -83,17 +78,17 @@
     .module-card svg {
       color: var(--theme-text-secondary, #6b7280);
       stroke: var(--theme-text-secondary, #6b7280);
-      /* Mobile-specific: Appropriately sized icons */
+      /* Appropriately sized icons */
       width: 20px;
       height: 20px;
     }
 
-    /* === NAVIGATION === */
+    /* NAVIGATION */
     .nav-btn {
       background-color: transparent;
       color: var(--theme-text-primary, #374151);
       border-color: var(--theme-border-soft, #f3f4f6);
-      /* Mobile-specific: 44px minimum touch targets */
+      /* 44px minimum touch targets */
       min-width: 44px;
       min-height: 44px;
       padding: 0.75rem;
@@ -109,11 +104,11 @@
       border-color: var(--theme-border-on-colored);
     }
 
-    /* === COMPACT SETTINGS === */
+    /* COMPACT SETTINGS */
     .compact-settings__container {
       background-color: var(--theme-bg-elevated, #ffffff);
       border-color: var(--theme-border-subtle, #f9fafb);
-      /* Mobile-specific: Full width, better spacing */
+      /* Full width, better spacing */
       margin: 0.5rem;
       border-radius: 16px;
       padding: 1.5rem;
@@ -157,7 +152,7 @@
       background-color: var(--theme-bg-subtle, #fafafa);
       color: var(--theme-text-primary, #374151);
       border-color: var(--theme-border-soft, #f3f4f6);
-      /* Mobile-specific: 44px minimum touch targets */
+      /* 44px minimum touch targets */
       min-height: 44px;
       padding: 0.75rem 1rem;
       font-size: 16px; /* Prevents zoom on iOS Safari */
@@ -171,7 +166,7 @@
       outline: none;
     }
 
-    /* === LEARNING COMPONENTS === */
+    /* LEARNING COMPONENTS */
     .flashcard-component,
     .quiz-component,
     .sorting-component,
@@ -179,7 +174,7 @@
       background-color: var(--theme-bg-elevated, #ffffff);
       color: var(--theme-text-primary, #374151);
       border-color: var(--theme-border-soft, #f3f4f6);
-      /* Mobile-specific: Better spacing and touch */
+      /* Better spacing and touch */
       margin: 0.75rem;
       padding: 1.5rem;
       border-radius: 16px;
@@ -207,17 +202,17 @@
       background-color: var(--theme-bg-soft, #f9fafb);
     }
 
-    /* === MAIN MENU === */
+    /* MAIN MENU */
     .main-menu {
       background-color: var(--theme-bg-elevated, #ffffff);
       border-color: var(--theme-border-soft, #f3f4f6);
-      /* Mobile-specific: Full screen overlay */
+      /* Full screen overlay */
       border-radius: 0;
     }
 
     .main-menu__item {
       color: var(--theme-text-primary, #374151);
-      /* Mobile-specific: 44px minimum touch targets */
+      /* 44px minimum touch targets */
       padding: 1rem 1.5rem;
       font-size: 1.1rem;
       min-height: 44px;
@@ -230,7 +225,7 @@
   }
 }
 
-/* === SAFARI MOBILE SPECIFIC FIXES === */
+/* SAFARI MOBILE SPECIFIC FIXES */
 /* Integrated from safari-mobile-fix.css for complete consolidation */
 @supports (-webkit-touch-callout: none) {
   @media (max-width: 768px) {
@@ -293,7 +288,7 @@
   }
 }
 
-/* === MOBILE DARK ACCESSIBILITY === */
+/* MOBILE DARK ACCESSIBILITY */
 @media (max-width: 768px) and (prefers-contrast: high) {
   html.dark {
     .header-redesigned,
@@ -319,7 +314,7 @@
   }
 }
 
-/* === MOBILE DARK REDUCED MOTION === */
+/* MOBILE DARK REDUCED MOTION */
 @media (max-width: 768px) and (prefers-reduced-motion: reduce) {
   html.dark {
     .nav-btn:active,

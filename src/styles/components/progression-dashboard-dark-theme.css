@@ -1,9 +1,9 @@
 /**
  * Progression Dashboard Dark Theme - Component-Specific Overrides
  * 
- * AI_CONTEXT: Component-specific dark theme styles that can override global theme
- * AI_VALIDATION: BEM_DARK_THEME - Semantic classes for component-level theming
- * AI_USAGE: Use .progression-dashboard--dark-theme for component-specific overrides
+ * Component-specific dark theme styles that can override global theme
+ * BEM_DARK_THEME - Semantic classes for component-level theming
+ * Use .progression-dashboard--dark-theme for component-specific overrides
  * 
  * This file provides component-level dark theme overrides that have higher
  * specificity than global theme files, allowing for fine-grained control

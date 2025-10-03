@@ -1,11 +1,11 @@
 /**
  * FluentFlow Design System - Color Palette
  * 
- * AI_CONTEXT: This file contains the complete design token system for FluentFlow.
+ * This file contains the complete design token system for FluentFlow.
  * AI developers should ALWAYS use these tokens instead of hardcoded colors.
  * 
  * AI_USAGE_PATTERN: Use var(--theme-text-primary, #374151) for theme-aware styling
- * AI_VALIDATION: All components must use design tokens from this system
+ * All components must use design tokens from this system
  * 
  * Extracted from existing system components to maintain visual consistency
  * for new learning enhancement features.
@@ -15,44 +15,44 @@
 
 :root {
   /* === SEMANTIC COLOR TOKENS === */
-  /* AI_VALIDATION: SEMANTIC_TOKENS - Base semantic color definitions */
-  /* AI_USAGE: Use these as fallbacks in theme context variables */
+  /* SEMANTIC_TOKENS - Base semantic color definitions */
+  /* Use these as fallbacks in theme context variables */
 
   /* Primary text hierarchy */
-  --text-primary: #374151; /* AI_CONTEXT: Main text - softer than black for better UX */
-  --text-secondary: #6b7280; /* AI_CONTEXT: Secondary text - labels, descriptions */
-  --text-tertiary: #9ca3af; /* AI_CONTEXT: Tertiary text - hints, placeholders */
-  --text-on-colored: #ffffff; /* AI_CONTEXT: Text on colored backgrounds - high contrast */
+  --text-primary: #374151; /* Main text - softer than black for better UX */
+  --text-secondary: #6b7280; /* Secondary text - labels, descriptions */
+  --text-tertiary: #9ca3af; /* Tertiary text - hints, placeholders */
+  --text-on-colored: #ffffff; /* Text on colored backgrounds - high contrast */
 
   /* === CONTEXTUAL TOKENS === */
-  /* AI_VALIDATION: CONTEXTUAL_TOKENS - Background system hierarchy */
-  /* AI_USAGE: Use for different surface levels and depth */
+  /* CONTEXTUAL_TOKENS - Background system hierarchy */
+  /* Use for different surface levels and depth */
 
   /* Background system */
-  --bg-elevated: #ffffff; /* AI_CONTEXT: Cards, modals, elevated surfaces - highest level */
-  --bg-subtle: #fafafa; /* AI_CONTEXT: Subtle backgrounds - sections, containers */
-  --bg-soft: #f9fafb; /* AI_CONTEXT: Soft backgrounds - hover states, gentle emphasis */
-  --bg-primary: #f9fafb; /* AI_CONTEXT: Primary background - main app background */
+  --bg-elevated: #ffffff; /* Cards, modals, elevated surfaces - highest level */
+  --bg-subtle: #fafafa; /* Subtle backgrounds - sections, containers */
+  --bg-soft: #f9fafb; /* Soft backgrounds - hover states, gentle emphasis */
+  --bg-primary: #f9fafb; /* Primary background - main app background */
 
   /* === BORDER SYSTEM TOKENS === */
-  /* AI_VALIDATION: BORDER_SYSTEM - Progressive border hierarchy */
-  /* AI_USAGE: Use --border-soft for most cases, --border-medium sparingly */
+  /* BORDER_SYSTEM - Progressive border hierarchy */
+  /* Use --border-soft for most cases, --border-medium sparingly */
 
-  --border-subtle: #f9fafb; /* AI_CONTEXT: Almost invisible borders - minimal separation */
-  --border-soft: #f3f4f6; /* AI_CONTEXT: Very subtle borders - most common use case */
-  --border-medium: #e5e7eb; /* AI_CONTEXT: Medium borders - use sparingly for emphasis */
-  --border-on-colored: rgba(255, 255, 255, 0.2); /* AI_CONTEXT: Borders on colored backgrounds */
+  --border-subtle: #f9fafb; /* Almost invisible borders - minimal separation */
+  --border-soft: #f3f4f6; /* Very subtle borders - most common use case */
+  --border-medium: #e5e7eb; /* Medium borders - use sparingly for emphasis */
+  --border-on-colored: rgba(255, 255, 255, 0.2); /* Borders on colored backgrounds */
 
   /* === INTERACTIVE TOKENS === */
-  /* AI_VALIDATION: INTERACTIVE_TOKENS - Action and interaction colors */
-  /* AI_USAGE: Use for buttons, links, and interactive elements */
+  /* INTERACTIVE_TOKENS - Action and interaction colors */
+  /* Use for buttons, links, and interactive elements */
 
-  --primary-blue: #3b82f6; /* AI_CONTEXT: Primary blue for main actions - CTA buttons */
-  --primary-blue-hover: #2563eb; /* AI_CONTEXT: Primary blue hover state - darker on hover */
-  --primary-blue-active: #1d4ed8; /* AI_CONTEXT: Primary blue active state - darkest when pressed */
-  --primary-purple: #8b5cf6; /* AI_CONTEXT: Primary purple for accents - secondary actions */
-  --primary-purple-hover: #7c3aed; /* AI_CONTEXT: Primary purple hover state */
-  --primary-purple-light: #d8b4fe; /* AI_CONTEXT: Light purple for backgrounds - subtle emphasis */
+  --primary-blue: #3b82f6; /* Primary blue for main actions - CTA buttons */
+  --primary-blue-hover: #2563eb; /* Primary blue hover state - darker on hover */
+  --primary-blue-active: #1d4ed8; /* Primary blue active state - darkest when pressed */
+  --primary-purple: #8b5cf6; /* Primary purple for accents - secondary actions */
+  --primary-purple-hover: #7c3aed; /* Primary purple hover state */
+  --primary-purple-light: #d8b4fe; /* Light purple for backgrounds - subtle emphasis */
 
   /* HEADER VARIABLES MOVED TO header.css for single source of truth */
 
@@ -143,25 +143,25 @@
 }
 
 /* === DARK MODE COLORS === */
-/* AI_VALIDATION: DARK_MODE_TOKENS - Dark theme color overrides */
-/* AI_CONTEXT: These tokens override light mode values when .dark class is present */
+/* DARK_MODE_TOKENS - Dark theme color overrides */
+/* These tokens override light mode values when .dark class is present */
 .dark {
   /* === SEMANTIC COLOR TOKENS - DARK MODE === */
-  /* AI_USAGE: Same token names, different values for dark theme */
+  /* Same token names, different values for dark theme */
 
-  --text-primary: #ffffff; /* AI_CONTEXT: Main text in dark mode - pure white for contrast */
-  --text-secondary: #e5e7eb; /* AI_CONTEXT: Secondary text in dark mode - light gray */
-  --text-tertiary: #d1d5db; /* AI_CONTEXT: Tertiary text in dark mode - medium gray */
-  --text-on-colored: #ffffff; /* AI_CONTEXT: Text on colored backgrounds - consistent white */
+  --text-primary: #ffffff; /* Main text in dark mode - pure white for contrast */
+  --text-secondary: #e5e7eb; /* Secondary text in dark mode - light gray */
+  --text-tertiary: #d1d5db; /* Tertiary text in dark mode - medium gray */
+  --text-on-colored: #ffffff; /* Text on colored backgrounds - consistent white */
 
   /* === CONTEXTUAL TOKENS - DARK MODE === */
-  /* AI_VALIDATION: DARK_CONTEXTUAL_TOKENS - Dark mode background hierarchy */
-  /* AI_USAGE: Maintains same hierarchy as light mode with appropriate dark values */
+  /* DARK_CONTEXTUAL_TOKENS - Dark mode background hierarchy */
+  /* Maintains same hierarchy as light mode with appropriate dark values */
 
-  --bg-elevated: #1f2937; /* AI_CONTEXT: Cards, modals in dark mode - lighter than primary */
-  --bg-subtle: #374151; /* AI_CONTEXT: Subtle backgrounds in dark mode - medium gray */
-  --bg-soft: #4b5563; /* AI_CONTEXT: Soft backgrounds in dark mode - lighter gray */
-  --bg-primary: #111827; /* AI_CONTEXT: Primary background in dark mode - darkest */
+  --bg-elevated: #1f2937; /* Cards, modals in dark mode - lighter than primary */
+  --bg-subtle: #374151; /* Subtle backgrounds in dark mode - medium gray */
+  --bg-soft: #4b5563; /* Soft backgrounds in dark mode - lighter gray */
+  --bg-primary: #111827; /* Primary background in dark mode - darkest */
 
   /* === BORDER SYSTEM TOKENS - DARK MODE === */
   --border-subtle: #374151; /* Subtle borders in dark mode */
@@ -235,16 +235,16 @@
 
 /* === THEME CONTEXT VARIABLE MAPPING SYSTEM === */
 /* 
- * AI_VALIDATION: THEME_CONTEXT_SYSTEM - Core theme-aware variable system
- * AI_CONTEXT: These variables automatically adapt to light/dark context
- * AI_USAGE: ALWAYS use --theme-* variables in components, never direct tokens
+ * THEME_CONTEXT_SYSTEM - Core theme-aware variable system
+ * These variables automatically adapt to light/dark context
+ * ALWAYS use --theme-* variables in components, never direct tokens
  * 
  * Theme-aware variables that automatically adapt to light/dark context
  * These provide a consistent API for components regardless of theme
  */
 
 /* Light Theme Context Variables */
-/* AI_VALIDATION: LIGHT_THEME_MAPPING - Maps semantic tokens to theme variables */
+/* LIGHT_THEME_MAPPING - Maps semantic tokens to theme variables */
 html.light {
   --theme-text-primary: var(--text-primary);
   --theme-text-secondary: var(--text-secondary);
@@ -276,7 +276,7 @@ html.light {
 }
 
 /* Dark Theme Context Variables */
-/* AI_VALIDATION: DARK_THEME_MAPPING - Maps dark mode tokens to theme variables */
+/* DARK_THEME_MAPPING - Maps dark mode tokens to theme variables */
 html.dark {
   --theme-text-primary: var(--text-primary);
   --theme-text-secondary: var(--text-secondary);
@@ -309,9 +309,9 @@ html.dark {
 
 /* === FALLBACK CHAIN FOR DESIGN TOKENS === */
 /*
- * AI_VALIDATION: FALLBACK_SYSTEM - Graceful degradation pattern
- * AI_CONTEXT: Ensures components work even if tokens are missing
- * AI_USAGE: Pattern: var(--theme-token, var(--semantic-token, fallback-value))
+ * FALLBACK_SYSTEM - Graceful degradation pattern
+ * Ensures components work even if tokens are missing
+ * Pattern: var(--theme-token, var(--semantic-token, fallback-value))
  * 
  * Fallback chain ensures graceful degradation if tokens are not defined
  * Pattern: var(--theme-token, var(--semantic-token, fallback-value))
@@ -367,41 +367,41 @@ html:not(.dark):not(.light) {
 
 /* === CSS SPECIFICITY HIERARCHY DOCUMENTATION === */
 /*
- * AI_VALIDATION: SPECIFICITY_HIERARCHY - Controlled CSS specificity system
- * AI_CONTEXT: Follow this hierarchy to avoid specificity conflicts
- * AI_USAGE: Use BEM modifiers before resorting to higher specificity
+ * SPECIFICITY_HIERARCHY - Controlled CSS specificity system
+ * Follow this hierarchy to avoid specificity conflicts
+ * Use BEM modifiers before resorting to higher specificity
  * 
  * CSS Specificity Hierarchy (from lowest to highest priority):
  * 
  * 1. Design Tokens (0,0,0,1)
  *    :root { --token: value; }
- *    AI_CONTEXT: Base token definitions
+ *    Base token definitions
  *    
  * 2. BEM Base (0,0,1,0)
  *    .block__element { }
- *    AI_CONTEXT: Standard component styling
+ *    Standard component styling
  *    
  * 3. BEM Modifiers (0,0,2,0)
  *    .block__element--modifier { }
- *    AI_CONTEXT: Component variations and states
+ *    Component variations and states
  *    
  * 4. Theme Context (0,0,1,1)
  *    html.light .block__element { }
  *    html.dark .block__element { }
- *    AI_CONTEXT: Theme-specific overrides
+ *    Theme-specific overrides
  *    
  * 5. Utilities (0,0,1,0)
  *    .utility-class { }
- *    AI_CONTEXT: Minimal utility classes
+ *    Minimal utility classes
  *    
  * 6. State Overrides (0,0,2,0 or higher)
  *    .block__element:hover { }
  *    .block__element--active { }
- *    AI_CONTEXT: Interactive states
+ *    Interactive states
  *    
  * 7. Important Declarations (!important)
  *    Use sparingly and document when necessary
- *    AI_CONTEXT: Last resort - always document usage
+ *    Last resort - always document usage
  *    
  * AI Guidelines:
  * - Prefer theme context over

@@ -1,7 +1,7 @@
 /* EMERGENCY OVERRIDE - Compact Matching Design */
 /* This file forces compact design with maximum CSS specificity */
 
-/* Force compact items - ALL possible selectors EXCEPT correct/incorrect states */
+/* Force compact items - ALL possible selectors EXCEPT correct incorrect states */
 .matching-component
   .matching-component__item:not(.matching-component__item--correct):not(
     .matching-component__item--incorrect
@@ -34,7 +34,7 @@
   line-height: 1.25 !important;
 }
 
-/* SPECIAL HANDLING FOR CORRECT/INCORRECT STATES - DO NOT OVERRIDE THEIR STYLING */
+/* SPECIAL HANDLING FOR CORRECT INCORRECT STATES - DO NOT OVERRIDE THEIR STYLING */
 .matching-component .matching-component__item--correct,
 .matching-component button.matching-component__item--correct,
 .matching-component

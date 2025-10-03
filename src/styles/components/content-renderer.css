@@ -130,7 +130,7 @@
   background: #374151;
 }
 
-/* Override colors for selected/matched states in matching component */
+/* Override colors for selected matched states in matching component */
 .matching-component__item--selected .content-renderer__segment--term,
 .matching-component__item--selected .content-renderer {
   color: var(--theme-text-on-colored, #ffffff);
@@ -191,7 +191,7 @@ html:not(.dark) .matching-component__item--matched-inactive:hover .content-rende
   color: #111827;
 }
 
-/* Override for correct/incorrect states in light mode - WHITE TEXT FOR CONTRAST */
+/* Override for correct incorrect states in light mode - WHITE TEXT FOR CONTRAST */
 html:not(.dark) .matching-component__item--correct .content-renderer,
 html:not(.dark) .matching-component__item--correct .content-renderer *,
 html:not(.dark) .matching-component__item--correct .content-renderer__segment--term,

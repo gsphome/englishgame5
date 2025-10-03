@@ -80,7 +80,7 @@ html.dark .nav-btn__text {
 
 /* === RESPONSIVE BREAKPOINTS === */
 
-/* Tablet and below (≤770px) - Compact navigation */
+/* Tablet and below (up to 770px) - Compact navigation */
 @media (max-width: 770px) {
   .nav-btn {
     padding: 0.5rem 0.75rem;
@@ -94,7 +94,7 @@ html.dark .nav-btn__text {
   }
 }
 
-/* Mobile Large (≤600px) - More compact */
+/* Mobile Large (up to 600px) - More compact */
 @media (max-width: 600px) {
   .nav-btn {
     padding: 0.375rem 0.625rem;
@@ -108,7 +108,7 @@ html.dark .nav-btn__text {
   }
 }
 
-/* Mobile Small (≤480px) - Ultra compact */
+/* Mobile Small (up to 480px) - Ultra compact */
 @media (max-width: 480px) {
   .nav-btn {
     padding: 0.3125rem 0.5rem;
@@ -122,7 +122,7 @@ html.dark .nav-btn__text {
   }
 }
 
-/* Mobile Ultra Small (≤400px) - Icon only option */
+/* Mobile Ultra Small (up to 400px) - Icon only option */
 @media (max-width: 400px) {
   .nav-btn {
     padding: 0.25rem;

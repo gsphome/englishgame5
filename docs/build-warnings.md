@@ -37,9 +37,24 @@ Estos archivos contienen comentarios de documentación extensos para el sistema 
 
 ## Solución
 
-Los warnings son **cosméticos** y no requieren acción inmediata. Si se desea eliminarlos:
+Los warnings son **cosméticos** y no requieren acción inmediata. 
 
-1. **Opción 1**: Simplificar comentarios CSS complejos
+### ✅ **Acciones Tomadas (Opción 1)**
+
+Se han simplificado los comentarios CSS complejos:
+- ✅ Eliminados prefijos AI_VALIDATION, AI_CONTEXT, AI_USAGE
+- ✅ Simplificados comentarios con caracteres "/" problemáticos
+- ✅ Reemplazados caracteres especiales (≤, ≥) por texto simple
+- ✅ Corregidos comentarios con fracciones (w-11/12 → w-11-12)
+- ✅ Eliminados comentarios con formato complejo
+
+### 📊 **Resultado**
+- **Antes**: Comentarios complejos con caracteres especiales
+- **Después**: Comentarios simplificados y limpios
+- **Warnings**: Persisten 2 warnings (problema en CSS compilado, no en fuente)
+
+### 🔍 **Opciones Restantes**
+
 2. **Opción 2**: Configurar esbuild para ignorar estos warnings
 3. **Opción 3**: Mantener como está (recomendado)
 
@@ -61,4 +76,5 @@ Los warnings son **cosméticos** y no requieren acción inmediata. Si se desea e
 ## Historial
 
 - **2025-01-03**: Warnings identificados durante implementación de safe-area margins
-- **Estado**: Documentado, no requiere acción
+- **2025-01-03**: Simplificados comentarios CSS complejos (Opción 1 implementada)
+- **Estado**: Warnings reducidos, comentarios limpios, funcionalidad completa

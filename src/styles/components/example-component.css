@@ -1,9 +1,9 @@
 /**
  * Example Component - AI Development Pattern Template
  * 
- * AI_CONTEXT: This file serves as a complete example for AI developers
- * AI_VALIDATION: EXAMPLE_COMPONENT - Template for pure BEM with design tokens
- * AI_USAGE: Copy this pattern when creating new component CSS files
+ * This file serves as a complete example for AI developers
+ * EXAMPLE_COMPONENT - Template for pure BEM with design tokens
+ * Copy this pattern when creating new component CSS files
  * 
  * This component demonstrates:
  * - Pure BEM methodology
@@ -15,8 +15,8 @@
  */
 
 /* === COMPONENT BLOCK === */
-/* AI_VALIDATION: BEM_BLOCK - Main component container */
-/* AI_CONTEXT: Use semantic class name that describes the component purpose */
+/* BEM_BLOCK - Main component container */
+/* Use semantic class name that describes the component purpose */
 .example-component {
   /* Layout and positioning */
   display: flex;
@@ -41,8 +41,8 @@
 }
 
 /* === COMPONENT ELEMENTS === */
-/* AI_VALIDATION: BEM_ELEMENT - Component header section */
-/* AI_CONTEXT: Use double underscore for element naming */
+/* BEM_ELEMENT - Component header section */
+/* Use double underscore for element naming */
 .example-component__header {
   display: flex;
   align-items: center;
@@ -52,8 +52,8 @@
   border-bottom: 1px solid var(--theme-border-subtle, #f9fafb);
 }
 
-/* AI_VALIDATION: BEM_ELEMENT - Component title */
-/* AI_CONTEXT: Typography elements should use text design tokens */
+/* BEM_ELEMENT - Component title */
+/* Typography elements should use text design tokens */
 .example-component__title {
   font-size: 1.25rem;
   font-weight: 600;
@@ -62,7 +62,7 @@
   line-height: 1.2;
 }
 
-/* AI_VALIDATION: BEM_ELEMENT - Component subtitle */
+/* BEM_ELEMENT - Component subtitle */
 .example-component__subtitle {
   font-size: 0.875rem;
   color: var(--theme-text-secondary, #6b7280);
@@ -70,8 +70,8 @@
   line-height: 1.4;
 }
 
-/* AI_VALIDATION: BEM_ELEMENT - Interactive button element */
-/* AI_CONTEXT: Buttons need accessibility features and touch targets */
+/* BEM_ELEMENT - Interactive button element */
+/* Buttons need accessibility features and touch targets */
 .example-component__button {
   /* Accessibility: Minimum 44px touch target */
   min-height: 44px;
@@ -100,21 +100,21 @@
   gap: 0.5rem;
 }
 
-/* AI_VALIDATION: BEM_ELEMENT - Content area */
+/* BEM_ELEMENT - Content area */
 .example-component__content {
   flex: 1;
   color: var(--theme-text-primary, #374151);
   line-height: 1.6;
 }
 
-/* AI_VALIDATION: BEM_ELEMENT - Text content */
+/* BEM_ELEMENT - Text content */
 .example-component__text {
   color: var(--theme-text-secondary, #6b7280);
   margin: 0 0 1rem 0;
   line-height: 1.5;
 }
 
-/* AI_VALIDATION: BEM_ELEMENT - Footer section */
+/* BEM_ELEMENT - Footer section */
 .example-component__footer {
   display: flex;
   align-items: center;
@@ -126,23 +126,23 @@
 }
 
 /* === INTERACTIVE STATES === */
-/* AI_VALIDATION: BEM_ELEMENT_STATE - Button hover state */
-/* AI_CONTEXT: Use design tokens for consistent hover effects */
+/* BEM_ELEMENT_STATE - Button hover state */
+/* Use design tokens for consistent hover effects */
 .example-component__button:hover {
   background-color: var(--theme-primary-blue-hover);
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
 }
 
-/* AI_VALIDATION: BEM_ELEMENT_STATE - Button active state */
+/* BEM_ELEMENT_STATE - Button active state */
 .example-component__button:active {
   background-color: var(--theme-primary-blue-active);
   transform: translateY(0);
   box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2);
 }
 
-/* AI_VALIDATION: BEM_ELEMENT_STATE - Button focus state */
-/* AI_CONTEXT: Focus states are mandatory for accessibility */
+/* BEM_ELEMENT_STATE - Button focus state */
+/* Focus states are mandatory for accessibility */
 .example-component__button:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
@@ -153,7 +153,7 @@
   outline-offset: 2px;
 }
 
-/* AI_VALIDATION: BEM_ELEMENT_STATE - Button disabled state */
+/* BEM_ELEMENT_STATE - Button disabled state */
 .example-component__button:disabled {
   background-color: var(--theme-text-tertiary, #9ca3af);
   color: var(--theme-text-on-colored, #ffffff);
@@ -164,8 +164,8 @@
 }
 
 /* === COMPONENT MODIFIERS === */
-/* AI_VALIDATION: BEM_MODIFIER - Component size variation */
-/* AI_CONTEXT: Use double dash for modifier naming */
+/* BEM_MODIFIER - Component size variation */
+/* Use double dash for modifier naming */
 .example-component--compact {
   padding: 1rem;
   gap: 0.75rem;
@@ -180,7 +180,7 @@
   font-size: 1rem;
 }
 
-/* AI_VALIDATION: BEM_MODIFIER - Component state variation */
+/* BEM_MODIFIER - Component state variation */
 .example-component--loading {
   opacity: 0.6;
   pointer-events: none;
@@ -192,7 +192,7 @@
   cursor: wait;
 }
 
-/* AI_VALIDATION: BEM_MODIFIER - Component error state */
+/* BEM_MODIFIER - Component error state */
 .example-component--error {
   border-color: var(--error, #ef4444);
   background-color: rgba(239, 68, 68, 0.05);
@@ -202,7 +202,7 @@
   color: var(--error, #ef4444);
 }
 
-/* AI_VALIDATION: BEM_MODIFIER - Component success state */
+/* BEM_MODIFIER - Component success state */
 .example-component--success {
   border-color: var(--success);
   background-color: rgba(34, 197, 94, 0.05);
@@ -213,8 +213,8 @@
 }
 
 /* === RESPONSIVE DESIGN === */
-/* AI_VALIDATION: RESPONSIVE_DESIGN - Mobile optimizations */
-/* AI_CONTEXT: Use standard breakpoints for responsive behavior */
+/* RESPONSIVE_DESIGN - Mobile optimizations */
+/* Use standard breakpoints for responsive behavior */
 @media (max-width: 768px) {
   .example-component {
     padding: 1rem;
@@ -242,8 +242,8 @@
 }
 
 /* === ACCESSIBILITY ENHANCEMENTS === */
-/* AI_VALIDATION: ACCESSIBILITY_COMPLIANCE - High contrast support */
-/* AI_CONTEXT: Support user accessibility preferences */
+/* ACCESSIBILITY_COMPLIANCE - High contrast support */
+/* Support user accessibility preferences */
 @media (prefers-contrast: high) {
   .example-component {
     border-width: 2px;
@@ -259,7 +259,7 @@
   }
 }
 
-/* AI_VALIDATION: ACCESSIBILITY_COMPLIANCE - Reduced motion support */
+/* ACCESSIBILITY_COMPLIANCE - Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
   .example-component,
   .example-component__button {
@@ -270,8 +270,8 @@
 }
 
 /* === THEME CONTEXT OPTIMIZATIONS === */
-/* AI_VALIDATION: THEME_CONTEXT_USAGE - Desktop-specific enhancements */
-/* AI_CONTEXT: Desktop gets hover effects and enhanced interactions */
+/* THEME_CONTEXT_USAGE - Desktop-specific enhancements */
+/* Desktop gets hover effects and enhanced interactions */
 @media (min-width: 769px) {
   .example-component:hover {
     border-color: var(--theme-border-medium, #e5e7eb);
@@ -284,7 +284,7 @@
   }
 }
 
-/* AI_VALIDATION: THEME_CONTEXT_USAGE - Mobile-specific optimizations */
+/* THEME_CONTEXT_USAGE - Mobile-specific optimizations */
 @media (max-width: 768px) {
   .example-component {
     /* Mobile: Remove hover effects, optimize for touch */
@@ -299,7 +299,7 @@
 }
 
 /* === DARK MODE ENHANCEMENTS === */
-/* AI_VALIDATION: DARK_MODE_OPTIMIZATION - Enhanced shadows for dark mode */
+/* DARK_MODE_OPTIMIZATION - Enhanced shadows for dark mode */
 .dark .example-component {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
@@ -313,7 +313,7 @@
 }
 
 /* === PERFORMANCE OPTIMIZATIONS === */
-/* AI_VALIDATION: PERFORMANCE_OPTIMIZATION - GPU acceleration for animations */
+/* PERFORMANCE_OPTIMIZATION - GPU acceleration for animations */
 .example-component__button {
   transform: translateZ(0); /* Force GPU layer */
 }
@@ -322,7 +322,7 @@
   transform: translateY(-1px) translateZ(0);
 }
 
-/* AI_VALIDATION: PERFORMANCE_OPTIMIZATION - Contain layout changes */
+/* PERFORMANCE_OPTIMIZATION - Contain layout changes */
 .example-component {
   contain: layout style;
 }
