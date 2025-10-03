@@ -51,8 +51,8 @@ export default defineConfig(({ mode }) => {
       },
       // Enable CSS code splitting for better chunk management
       cssCodeSplit: true,
-      // Disable Vite CSS minification - let PostCSS/cssnano handle it
-      cssMinify: false,
+      // Use esbuild for CSS minification (better performance than cssnano for this project)
+      cssMinify: 'esbuild',
       // Set chunk size warnings for CSS monitoring
       chunkSizeWarningLimit: 500, // 500KB warning limit
       // Configure esbuild for JS minification only
