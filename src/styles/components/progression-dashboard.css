@@ -842,8 +842,7 @@ html.dark body .progression-dashboard__module--locked .progression-dashboard__mo
 .progression-dashboard__border-dark-force {
   border-color: #4b5563;
 }
-/
-* FINAL LAYER: Ensure ALL text elements are white in dark mode */
+/* FINAL LAYER: Ensure ALL text elements are white in dark mode */
 /* Ultra-specific selectors for any missed text elements */
 
 /* Force white text on ALL possible text elements */

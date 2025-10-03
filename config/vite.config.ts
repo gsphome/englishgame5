@@ -47,18 +47,20 @@ export default defineConfig(({ mode }) => {
           manualChunks: undefined,
           // Optimize CSS file naming for better caching and identification
           assetFileNames: (assetInfo) => {
-            if (assetInfo.name?.endsWith('.css')) {
+            // Use names array instead of deprecated name property
+            const fileName = assetInfo.names?.[0] || assetInfo.originalFileName || 'unknown';
+            if (fileName.endsWith('.css')) {
               // Descriptive names for CSS chunks to monitor size
-              if (assetInfo.name.includes('index') || assetInfo.name.includes('main')) {
+              if (fileName.includes('index') || fileName.includes('main')) {
                 return 'assets/main-[hash].css';
               }
-              if (assetInfo.name.includes('design-system')) {
+              if (fileName.includes('design-system')) {
                 return 'assets/design-system-[hash].css';
               }
-              if (assetInfo.name.includes('themes')) {
+              if (fileName.includes('themes')) {
                 return 'assets/themes-[hash].css';
               }
-              if (assetInfo.name.includes('components')) {
+              if (fileName.includes('components')) {
                 return 'assets/components-[hash].css';
               }
               return 'assets/[name]-[hash].css';
@@ -69,19 +71,17 @@ export default defineConfig(({ mode }) => {
       },
       // Enable CSS code splitting for better chunk management
       cssCodeSplit: true,
-      // Optimize CSS minification for pure CSS
-      cssMinify: 'esbuild',
+      // Disable CSS minification by esbuild - use PostCSS cssnano instead
+      cssMinify: false,
       // Set chunk size warnings for CSS monitoring
       chunkSizeWarningLimit: 500, // 500KB warning limit
-      // Configure esbuild to suppress CSS syntax warnings
+      // Configure esbuild for JS minification only
       minify: 'esbuild',
       target: 'es2015'
     },
-    // Configure esbuild to suppress CSS warnings
+    // Configure esbuild for JS only - CSS handled by lightningcss
     esbuild: {
-      logOverride: {
-        'css-syntax-error': 'silent'
-      }
+      legalComments: 'none'
     },
     publicDir: resolve(__dirname, '../public'),
     css: {
