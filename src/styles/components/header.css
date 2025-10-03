@@ -877,6 +877,22 @@ html.dark {
     display: none;
   }
 
+  /* Hide text in side menu - show only icons for better mobile UX */
+  .header-side-menu__text {
+    display: none;
+  }
+
+  /* Adjust side menu item padding for icon-only display */
+  .header-side-menu__item {
+    padding: 0.75rem;
+    justify-content: center;
+  }
+
+  /* Center icons in menu items */
+  .header-side-menu__icon {
+    margin: 0;
+  }
+
   /* Ultra compact buttons */
   .header-redesigned__menu-btn,
   .header-redesigned__user-btn,
@@ -941,6 +957,22 @@ html.dark {
     display: none;
   }
 
+  /* Hide text in side menu - show only icons for better mobile UX */
+  .header-side-menu__text {
+    display: none;
+  }
+
+  /* Adjust side menu item padding for icon-only display */
+  .header-side-menu__item {
+    padding: 0.75rem;
+    justify-content: center;
+  }
+
+  /* Center icons in menu items */
+  .header-side-menu__icon {
+    margin: 0;
+  }
+
   /* Ultra compact buttons */
   .header-redesigned__menu-btn,
   .header-redesigned__user-btn,
@@ -1003,6 +1035,22 @@ html.dark {
   .header-redesigned__dev-text,
   .header-redesigned__dev-indicator {
     display: none;
+  }
+
+  /* Hide text in side menu - show only icons for better mobile UX */
+  .header-side-menu__text {
+    display: none;
+  }
+
+  /* Adjust side menu item padding for icon-only display */
+  .header-side-menu__item {
+    padding: 0.75rem;
+    justify-content: center;
+  }
+
+  /* Center icons in menu items */
+  .header-side-menu__icon {
+    margin: 0;
   }
 
   /* Emergency buttons - ultra compact */
@@ -1524,4 +1572,55 @@ html.dark {
   height: 16px;
   color: currentColor;
   stroke: currentColor;
+}
+
+/* === MOBILE OPTIMIZATION: ICON-ONLY MENU === */
+/* General rule for all mobile devices < 400px */
+@media (max-width: 399px) {
+  /* Hide all text in side menu for better mobile UX */
+  .header-side-menu__text {
+    display: none !important;
+  }
+
+  /* Optimize side menu items for icon-only display */
+  .header-side-menu__item {
+    padding: 0.875rem !important;
+    justify-content: center !important;
+    min-height: 48px;
+  }
+
+  /* Center icons perfectly in menu items */
+  .header-side-menu__icon {
+    margin: 0 !important;
+    width: 22px !important;
+    height: 22px !important;
+  }
+
+  /* Reduce side menu width for better mobile experience */
+  .header-side-menu {
+    max-width: 280px !important;
+  }
+
+  /* Add visual feedback for icon-only items */
+  .header-side-menu__item:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease-in-out;
+  }
+}
+
+/* Extra small devices optimization */
+@media (max-width: 320px) {
+  .header-side-menu {
+    max-width: 240px !important;
+  }
+
+  .header-side-menu__item {
+    padding: 0.75rem !important;
+    min-height: 44px;
+  }
+
+  .header-side-menu__icon {
+    width: 20px !important;
+    height: 20px !important;
+  }
 }
