@@ -47,21 +47,11 @@ export default defineConfig(({ mode }) => {
           manualChunks: undefined,
           // Optimize CSS file naming for better caching and identification
           assetFileNames: (assetInfo) => {
-            // Use names array instead of deprecated name property
-            const fileName = assetInfo.names?.[0] || assetInfo.originalFileName || 'unknown';
-            if (fileName.endsWith('.css')) {
-              // Descriptive names for CSS chunks to monitor size
-              if (fileName.includes('index') || fileName.includes('main')) {
+            // Simplified approach - let Vite handle naming automatically
+            if (assetInfo.type === 'asset' && assetInfo.fileName?.endsWith('.css')) {
+              // For CSS files, use descriptive names based on content
+              if (assetInfo.fileName.includes('main') || assetInfo.fileName.includes('index')) {
                 return 'assets/main-[hash].css';
-              }
-              if (fileName.includes('design-system')) {
-                return 'assets/design-system-[hash].css';
-              }
-              if (fileName.includes('themes')) {
-                return 'assets/themes-[hash].css';
-              }
-              if (fileName.includes('components')) {
-                return 'assets/components-[hash].css';
               }
               return 'assets/[name]-[hash].css';
             }
@@ -79,7 +69,7 @@ export default defineConfig(({ mode }) => {
       minify: 'esbuild',
       target: 'es2015'
     },
-    // Configure esbuild for JS only - CSS handled by lightningcss
+    // Configure esbuild for JS only - CSS handled by cssnano
     esbuild: {
       legalComments: 'none'
     },
