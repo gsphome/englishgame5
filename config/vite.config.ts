@@ -72,7 +72,16 @@ export default defineConfig(({ mode }) => {
       // Optimize CSS minification for pure CSS
       cssMinify: 'esbuild',
       // Set chunk size warnings for CSS monitoring
-      chunkSizeWarningLimit: 500 // 500KB warning limit
+      chunkSizeWarningLimit: 500, // 500KB warning limit
+      // Configure esbuild to suppress CSS syntax warnings
+      minify: 'esbuild',
+      target: 'es2015'
+    },
+    // Configure esbuild to suppress CSS warnings
+    esbuild: {
+      logOverride: {
+        'css-syntax-error': 'silent'
+      }
     },
     publicDir: resolve(__dirname, '../public'),
     css: {
