@@ -45,24 +45,14 @@ export default defineConfig(({ mode }) => {
           // SIMPLIFIED: No manual chunks - let Vite handle React bundling
           // This ensures React stays in main bundle and loads synchronously
           manualChunks: undefined,
-          // Optimize CSS file naming for better caching and identification
-          assetFileNames: (assetInfo) => {
-            // Simplified approach - let Vite handle naming automatically
-            if (assetInfo.type === 'asset' && assetInfo.fileName?.endsWith('.css')) {
-              // For CSS files, use descriptive names based on content
-              if (assetInfo.fileName.includes('main') || assetInfo.fileName.includes('index')) {
-                return 'assets/main-[hash].css';
-              }
-              return 'assets/[name]-[hash].css';
-            }
-            return 'assets/[name]-[hash][extname]';
-          }
+          // Simplified asset naming - let Vite handle automatically
+          assetFileNames: 'assets/[name]-[hash][extname]'
         }
       },
       // Enable CSS code splitting for better chunk management
       cssCodeSplit: true,
-      // Disable CSS minification by esbuild - use PostCSS cssnano instead
-      cssMinify: false,
+      // Re-enable esbuild CSS minification for speed
+      cssMinify: 'esbuild',
       // Set chunk size warnings for CSS monitoring
       chunkSizeWarningLimit: 500, // 500KB warning limit
       // Configure esbuild for JS minification only
