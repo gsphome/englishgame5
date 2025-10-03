@@ -74,7 +74,7 @@
     margin-left: max(2px, env(safe-area-inset-left));
     margin-right: max(2px, env(safe-area-inset-right));
     margin-bottom: max(2px, env(safe-area-inset-bottom));
-    
+
     /* Reducir ancho máximo para compensar márgenes */
     max-width: calc(100% - 4px);
   }

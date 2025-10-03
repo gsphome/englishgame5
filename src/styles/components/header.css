@@ -91,10 +91,10 @@ html.dark {
     /* Márgenes de seguridad horizontal */
     margin-left: max(2px, env(safe-area-inset-left));
     margin-right: max(2px, env(safe-area-inset-right));
-    
+
     /* Reducir padding para compensar márgenes */
     padding: 0.375rem 0.25rem;
-    
+
     /* Asegurar que no exceda el ancho disponible */
     max-width: calc(100% - 4px);
   }
