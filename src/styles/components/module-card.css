@@ -682,7 +682,7 @@ html.dark
 @media (max-width: 400px) {
   .module-card {
     width: 70px;
-    height: 55px;
+    height: 85px; /* Increased from 70px to 85px (+15px more) */
   }
 
   .module-card__content {
@@ -707,8 +707,7 @@ html.dark
   }
 
   .module-card__type {
-    font-size: 0.4rem;
-    margin-bottom: 0.00625rem;
+    display: none; /* Hidden on ultra small screens */
   }
 
   .module-card__level {

@@ -6,9 +6,9 @@
   flex-direction: column;
 }
 
-/* Mobile optimization for layout container */
+/* Mobile optimization for layout container - ONLY for main menu */
 @media (max-width: 400px) {
-  .layout-container {
+  .layout-container[data-view="menu"] {
     height: calc(100dvh - 30px) !important;
     max-height: calc(100dvh - 30px) !important;
     min-height: calc(100dvh - 30px) !important;
@@ -22,8 +22,17 @@
     padding-bottom: 0 !important;
   }
 
-  html,
-  body {
+  body:has(.layout-container[data-view="menu"]) {
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+    overflow: hidden !important;
+    position: fixed !important;
+    width: 100vw !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  html:has(.layout-container[data-view="menu"]) {
     height: 100dvh !important;
     max-height: 100dvh !important;
     overflow: hidden !important;

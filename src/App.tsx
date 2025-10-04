@@ -69,7 +69,7 @@ const AppContent: React.FC = () => {
 
   return (
     <ErrorBoundary>
-      <div className="layout-container">
+      <div className="layout-container" data-view={currentView}>
         <MemoizedHeader />
 
         <main className="layout-main">

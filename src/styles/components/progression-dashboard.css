@@ -943,6 +943,11 @@ body.dark html .progression-dashboard--dark-theme *,
     padding: 0.25rem !important;
   }
 
+  /* Hide description in module content for ultra small screens */
+  .progression-dashboard__module-desc {
+    display: none;
+  }
+
   .progression-dashboard__hero {
     padding: 0.15rem;
     margin-bottom: 0.1rem;
