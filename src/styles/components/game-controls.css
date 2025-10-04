@@ -104,9 +104,11 @@
 
 /* Primary Button Variants */
 .game-controls__primary-btn--blue {
-  background: linear-gradient(135deg,
-      var(--theme-primary-blue, #3b82f6) 0%,
-      var(--theme-primary-purple, #8b5cf6) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--theme-primary-blue, #3b82f6) 0%,
+    var(--theme-primary-purple, #8b5cf6) 100%
+  );
   color: white;
   box-shadow: var(--shadow-interactive, 0 2px 4px rgba(0, 0, 0, 0.1));
 }
@@ -117,9 +119,11 @@
 }
 
 .game-controls__primary-btn--green {
-  background: linear-gradient(135deg,
-      var(--theme-success, #10b981) 0%,
-      var(--theme-primary-blue, #3b82f6) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--theme-success, #10b981) 0%,
+    var(--theme-primary-blue, #3b82f6) 100%
+  );
   color: white;
   box-shadow: var(--shadow-interactive, 0 2px 4px rgba(0, 0, 0, 0.1));
 }
@@ -130,9 +134,11 @@
 }
 
 .game-controls__primary-btn--purple {
-  background: linear-gradient(135deg,
-      var(--theme-primary-purple, #8b5cf6) 0%,
-      var(--theme-primary-blue, #3b82f6) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--theme-primary-purple, #8b5cf6) 0%,
+    var(--theme-primary-blue, #3b82f6) 100%
+  );
   color: white;
   box-shadow: var(--shadow-interactive, 0 2px 4px rgba(0, 0, 0, 0.1));
 }
