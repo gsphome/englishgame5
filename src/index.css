@@ -1,5 +1,6 @@
 @import './styles/design-system/typography.css';
 @import './styles/components.css';
+@import './styles/layout.css';
 
 /* === GLOBAL BASE STYLES === */
 body {
