@@ -21,8 +21,9 @@
     width: 100vw !important;
     padding-bottom: 0 !important;
   }
-  
-  html, body {
+
+  html,
+  body {
     height: 100dvh !important;
     max-height: 100dvh !important;
     overflow: hidden !important;

@@ -1025,7 +1025,7 @@ html.dark .main-menu__grid::-webkit-scrollbar-thumb:hover {
 
   .main-menu__view-btn {
     padding: 0.25rem 0.125rem;
-    font-size: 0;  /* Hide text completely */
+    font-size: 0; /* Hide text completely */
     gap: 0;
     min-height: 1.5rem;
     justify-content: center;
