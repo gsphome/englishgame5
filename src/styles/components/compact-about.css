@@ -853,3 +853,90 @@ html:not(.dark) .compact-about .compact-about__info-value {
     line-height: 1.2; /* Tight line height */
   }
 }
+/* === CRITICAL: Mobile ≤400px - Ultra Compact About === */
+@media (max-width: 400px) {
+  .compact-about {
+    padding: 0.25rem;
+    /* Minimal padding for mobile */
+  }
+
+  .compact-about__container {
+    max-width: calc(100vw - 0.5rem);
+    /* Minimal margin from viewport */
+    max-height: 75vh;
+    /* Much smaller height */
+    border-radius: 0.375rem;
+    /* Smaller radius */
+  }
+
+  .compact-about__header {
+    padding: 0.1875rem 0.25rem;
+    /* Ultra minimal header padding */
+    min-height: 2rem;
+    /* Fixed minimal height */
+  }
+
+  .compact-about__title {
+    font-size: 0.8125rem;
+    /* Much smaller title */
+    font-weight: 600;
+    /* Reduced weight */
+  }
+
+  .compact-about__subtitle {
+    font-size: 0.625rem;
+    /* Much smaller subtitle */
+    margin-top: 0.0625rem;
+    /* Minimal margin */
+  }
+
+  .compact-about__content {
+    padding: 0.1875rem 0.25rem;
+    /* Ultra minimal content padding */
+  }
+
+  .compact-about__content > * + * {
+    margin-top: 0.1875rem;
+    /* Minimal margin between elements */
+  }
+
+  .compact-about__section > * + * {
+    margin-top: 0.25rem;
+    /* Reduced section spacing */
+  }
+
+  .compact-about__section-title {
+    font-size: 0.6875rem;
+    /* Much smaller section titles */
+  }
+
+  .compact-about__section-icon {
+    width: 0.875rem;
+    height: 0.875rem;
+    /* Smaller icons */
+    margin-right: 0.25rem;
+    /* Reduced margin */
+  }
+
+  .compact-about__info-grid {
+    gap: 0.1875rem;
+    /* Minimal gap */
+  }
+
+  .compact-about__info-item {
+    padding: 0.25rem 0.1875rem;
+    /* Ultra minimal padding */
+  }
+
+  .compact-about__info-label {
+    font-size: 0.5625rem;
+    /* Much smaller labels */
+    margin-bottom: 0.0625rem;
+    /* Minimal margin */
+  }
+
+  .compact-about__info-value {
+    font-size: 0.6875rem;
+    /* Much smaller values */
+  }
+}

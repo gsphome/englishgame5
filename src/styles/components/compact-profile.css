@@ -848,3 +848,72 @@ html.dark .compact-profile__error {
     /* Full width on mobile */
   }
 }
+/* === CRITICAL: Mobile ≤400px - Ultra Compact Profile === */
+@media (max-width: 400px) {
+  .compact-profile {
+    padding: 0.25rem;
+    /* Minimal padding for mobile */
+  }
+
+  .compact-profile__container {
+    max-width: calc(100vw - 0.5rem);
+    /* Minimal margin from viewport */
+    max-height: 75vh;
+    /* Much smaller height */
+    border-radius: 0.375rem;
+    /* Smaller radius */
+  }
+
+  .compact-profile__header {
+    padding: 0.1875rem 0.25rem;
+    /* Ultra minimal header padding */
+    min-height: 2rem;
+    /* Fixed minimal height */
+  }
+
+  .compact-profile__title {
+    font-size: 0.8125rem;
+    /* Much smaller title */
+    font-weight: 600;
+    /* Reduced weight */
+  }
+
+  .compact-profile__content {
+    padding: 0.1875rem 0.25rem;
+    /* Ultra minimal content padding */
+  }
+
+  .compact-profile__content > * + * {
+    margin-top: 0.125rem;
+    /* Minimal margin between elements */
+  }
+
+  .compact-profile__section {
+    padding: 0.125rem;
+    /* Ultra minimal section padding */
+    border-radius: 0.25rem;
+    /* Smaller radius */
+  }
+
+  .compact-profile__section > * + * {
+    margin-top: 0.0625rem;
+    /* Ultra minimal margin */
+  }
+
+  .compact-profile__section-title {
+    font-size: 0.6875rem;
+    /* Much smaller section titles */
+    margin-bottom: 0.0625rem;
+    /* Minimal margin */
+  }
+
+  .compact-profile__field > * + * {
+    margin-top: 0.03125rem;
+    /* Ultra minimal field spacing */
+  }
+
+  .compact-profile__field-row {
+    gap: 0.1875rem;
+    /* Minimal gap between fields */
+  }
+}
