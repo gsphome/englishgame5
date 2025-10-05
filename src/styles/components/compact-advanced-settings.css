@@ -455,3 +455,8 @@ html.dark .compact-settings__container {
     margin-top: 0.125rem; /* Minimal margin */
   }
 }
+  .compact-settings__container {
+    max-width: 80vw;
+    width: 80vw;
+    max-height: 75vh;
+  }

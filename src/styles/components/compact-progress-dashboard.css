@@ -419,3 +419,8 @@
     font-size: 0.625rem; /* Compact no-data text */
   }
 }
+  .compact-dashboard__container {
+    max-width: 80vw;
+    width: 80vw;
+    max-height: 75vh;
+  }
