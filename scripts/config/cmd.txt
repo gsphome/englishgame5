@@ -1,3 +1,8 @@
+npm run build:full
+if there are problem, fix it
+npm run gh:watch
+npm run deploy:status
+
 #########################################
 # 🎯 Uso Diario Normal:
 npm run build:full
