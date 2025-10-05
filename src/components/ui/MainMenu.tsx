@@ -92,7 +92,7 @@ export const MainMenu: React.FC = () => {
           <SearchBar
             query=""
             onQueryChange={() => {}}
-            placeholder="Search modules, categories, or topics..."
+            placeholder="Search"
             disabled={true}
           />
         </div>
@@ -129,7 +129,7 @@ export const MainMenu: React.FC = () => {
           <SearchBar
             query={query}
             onQueryChange={setQuery}
-            placeholder="Search modules, categories, or topics..."
+            placeholder="Search"
           />
         </div>
 
