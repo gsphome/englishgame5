@@ -1274,25 +1274,31 @@ html.dark .main-menu__title {
 
   /* View toggle buttons - make larger and same height as search bar */
   .main-menu__view-toggle {
-    min-width: 140px;
-    /* 25% wider than current ~120px */
-    max-width: 160px;
-    /* Increased maximum width */
-    height: 48px;
-    /* Same height as search bar */
+    min-width: 100px;
+    /* Wider for better touch targets but not excessive */
+    max-width: 120px;
+    /* Reasonable maximum width */
+    height: 40px;
+    /* Match search bar height exactly */
     flex-shrink: 0;
     /* Don't shrink buttons */
   }
 
   .main-menu__view-btn {
-    padding: 0.625rem 0.75rem;
-    /* Increased padding for larger buttons */
-    font-size: 0.6875rem;
-    /* Slightly smaller text to fit better */
-    font-weight: 700;
-    /* Bolder text for better readability */
-    min-height: 44px;
-    /* Ensure minimum touch-friendly height */
+    padding: 0.5rem 0.375rem;
+    /* Reduced padding to match search bar height */
+    font-size: 0;
+    /* Hide text completely */
+    min-height: 38px;
+    /* Match search bar internal height */
+    justify-content: center;
+    /* Center icons when text is hidden */
+  }
+
+  /* Hide button text on mobile ≤400px */
+  .main-menu__view-btn::after {
+    content: '';
+    /* Remove any text content */
   }
 
   .main-menu__view-icon {
@@ -1302,11 +1308,18 @@ html.dark .main-menu__title {
   }
 
   /* Ensure search bar input has appropriate sizing */
+  .main-menu__search .search-bar {
+    height: 40px;
+    /* Match button height exactly */
+  }
+
   .main-menu__search .search-bar__input {
     font-size: 0.875rem;
     /* Maintain readability */
-    padding: 0.625rem 2.75rem 0.625rem 2.5rem;
-    /* Adjusted padding for narrower container */
+    padding: 0.5rem 2.75rem 0.5rem 2.5rem;
+    /* Reduced padding to match button height */
+    height: 38px;
+    /* Match button internal height */
   }
 
   .main-menu__search .search-bar__input::placeholder {
