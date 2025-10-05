@@ -167,6 +167,9 @@ export const ModuleCard: React.FC<ModuleCardProps> = ({
         <div className="module-card__level" aria-label={`Difficulty level: ${difficultyLevel}`}>
           {difficultyLevel}
         </div>
+        <div className="module-card__time" aria-label={`Estimated time: ${module.estimatedTime || 5} minutes`}>
+          {module.estimatedTime || 5}min
+        </div>
 
         {/* Status indicators - Consistent positioning for all states */}
         {statusInfo.statusIcon && (

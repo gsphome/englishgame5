@@ -108,7 +108,8 @@
   transition: color 0.2s ease-in-out;
   text-align: center;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  height: 1.75rem; /* Adjusted for larger text */
+  height: 1.75rem;
+  /* Adjusted for larger text */
 }
 
 .module-card__type {
@@ -140,6 +141,19 @@
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
+.module-card__time {
+  font-size: 0.64rem;
+  font-weight: 500;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0.0625rem 0.1875rem;
+  border-radius: var(--radius-sm, 0.25rem);
+  flex-shrink: 0;
+  transition: all 0.2s ease-in-out;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
 /* Hover States - Enhanced Contrast */
 .module-card:hover .module-card__title {
   color: rgba(255, 255, 255, 1);
@@ -157,30 +171,41 @@
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
+.module-card:hover .module-card__time {
+  color: rgba(255, 255, 255, 1);
+  background-color: rgba(255, 255, 255, 0.2);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
 /* Learning Mode Variants - BEM-Like Modifiers */
 .module-card--flashcard {
   background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-  color: #ffffff; /* White text on blue background */
+  color: #ffffff;
+  /* White text on blue background */
 }
 
 .module-card--quiz {
   background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-  color: #ffffff; /* White text on green background */
+  color: #ffffff;
+  /* White text on green background */
 }
 
 .module-card--completion {
   background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
-  color: #ffffff; /* White text on purple background */
+  color: #ffffff;
+  /* White text on purple background */
 }
 
 .module-card--sorting {
   background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-  color: #ffffff; /* White text on orange background */
+  color: #ffffff;
+  /* White text on orange background */
 }
 
 .module-card--matching {
   background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
-  color: #ffffff; /* White text on pink background */
+  color: #ffffff;
+  /* White text on pink background */
 }
 
 /* Hover States for Variants */
@@ -208,18 +233,23 @@
 .module-card--flashcard .module-card__title,
 .module-card--flashcard .module-card__type,
 .module-card--flashcard .module-card__level,
+.module-card--flashcard .module-card__time,
 .module-card--quiz .module-card__title,
 .module-card--quiz .module-card__type,
 .module-card--quiz .module-card__level,
+.module-card--quiz .module-card__time,
 .module-card--completion .module-card__title,
 .module-card--completion .module-card__type,
 .module-card--completion .module-card__level,
+.module-card--completion .module-card__time,
 .module-card--sorting .module-card__title,
 .module-card--sorting .module-card__type,
 .module-card--sorting .module-card__level,
+.module-card--sorting .module-card__time,
 .module-card--matching .module-card__title,
 .module-card--matching .module-card__type,
-.module-card--matching .module-card__level {
+.module-card--matching .module-card__level,
+.module-card--matching .module-card__time {
   color: var(--theme-text-on-colored, #ffffff);
 }
 
@@ -392,7 +422,8 @@
     font-size: 0.9375rem;
     font-weight: var(--font-semibold, 600);
     line-height: var(--leading-tight, 1.25);
-    height: 1.875rem; /* Adjusted for larger text */
+    height: 1.875rem;
+    /* Adjusted for larger text */
   }
 
   .module-card__type {
@@ -431,7 +462,8 @@
     font-size: var(--text-base, 1rem);
     line-height: var(--leading-tight, 1.25);
     font-weight: var(--font-semibold, 600);
-    height: 2rem; /* Adjusted for larger text */
+    height: 2rem;
+    /* Adjusted for larger text */
   }
 
   .module-card__type {
@@ -469,7 +501,8 @@
     font-size: var(--text-lg, 1.125rem);
     line-height: var(--leading-tight, 1.25);
     font-weight: var(--font-semibold, 600);
-    height: 2.25rem; /* Adjusted for larger text */
+    height: 2.25rem;
+    /* Adjusted for larger text */
   }
 
   .module-card__type {
@@ -514,6 +547,7 @@
 
 /* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
+
   .module-card,
   .module-card__icon svg,
   .module-card__title,
@@ -552,20 +586,25 @@
 
 /* Safari-specific fixes for button flexbox centering */
 @supports (-webkit-appearance: none) {
+
   /* Safari has issues with flexbox on button elements */
   /* Using higher specificity instead of !important */
   html body .module-card {
     -webkit-appearance: none;
     appearance: none;
-    display: -webkit-flex; /* Safari flexbox fix */
-    display: flex; /* Safari flexbox fix */
+    display: -webkit-flex;
+    /* Safari flexbox fix */
+    display: flex;
+    /* Safari flexbox fix */
     -webkit-align-items: stretch;
     align-items: stretch;
   }
 
   html body .module-card__content {
-    display: -webkit-flex; /* Safari flexbox fix */
-    display: flex; /* Safari flexbox fix */
+    display: -webkit-flex;
+    /* Safari flexbox fix */
+    display: flex;
+    /* Safari flexbox fix */
     -webkit-flex-direction: column;
     flex-direction: column;
     -webkit-align-items: center;
@@ -599,6 +638,7 @@
     width: 100%;
   }
 }
+
 /* === UTILITY CLASSES === */
 .text-white {
   color: #ffffff !important;
@@ -608,44 +648,27 @@
 .module-card__status-icon {
   color: var(--theme-text-tertiary, #9ca3af);
 }
+
 /* Dark Mode Enhancements for Module Cards */
 /* Only apply dark styles to cards WITHOUT learning mode variants */
-html.dark
-  .module-card:not(.module-card--flashcard):not(.module-card--quiz):not(
-    .module-card--completion
-  ):not(.module-card--sorting):not(.module-card--matching) {
+html.dark .module-card:not(.module-card--flashcard):not(.module-card--quiz):not(.module-card--completion):not(.module-card--sorting):not(.module-card--matching) {
   background: var(--theme-bg-elevated, #1f2937);
   border-color: var(--theme-border-soft, #4b5563);
   color: var(--theme-text-primary, #ffffff);
 }
 
-html.dark
-  .module-card:not(.module-card--flashcard):not(.module-card--quiz):not(
-    .module-card--completion
-  ):not(.module-card--sorting):not(.module-card--matching):hover {
+html.dark .module-card:not(.module-card--flashcard):not(.module-card--quiz):not(.module-card--completion):not(.module-card--sorting):not(.module-card--matching):hover {
   background: var(--theme-bg-soft, #374151);
   border-color: var(--theme-primary-blue, #3b82f6);
 }
 
 /* Dark mode text for non-variant cards */
-html.dark
-  .module-card:not(.module-card--flashcard):not(.module-card--quiz):not(
-    .module-card--completion
-  ):not(.module-card--sorting):not(.module-card--matching)
-  .module-card__title {
+html.dark .module-card:not(.module-card--flashcard):not(.module-card--quiz):not(.module-card--completion):not(.module-card--sorting):not(.module-card--matching) .module-card__title {
   color: var(--theme-text-primary, #ffffff);
 }
 
-html.dark
-  .module-card:not(.module-card--flashcard):not(.module-card--quiz):not(
-    .module-card--completion
-  ):not(.module-card--sorting):not(.module-card--matching)
-  .module-card__type,
-html.dark
-  .module-card:not(.module-card--flashcard):not(.module-card--quiz):not(
-    .module-card--completion
-  ):not(.module-card--sorting):not(.module-card--matching)
-  .module-card__level {
+html.dark .module-card:not(.module-card--flashcard):not(.module-card--quiz):not(.module-card--completion):not(.module-card--sorting):not(.module-card--matching) .module-card__type,
+html.dark .module-card:not(.module-card--flashcard):not(.module-card--quiz):not(.module-card--completion):not(.module-card--sorting):not(.module-card--matching) .module-card__level {
   color: var(--theme-text-tertiary, #d1d5db);
 }
 
@@ -654,10 +677,7 @@ html.dark .module-card--locked {
   opacity: 0.7;
 }
 
-html.dark
-  .module-card--locked:not(.module-card--flashcard):not(.module-card--quiz):not(
-    .module-card--completion
-  ):not(.module-card--sorting):not(.module-card--matching) {
+html.dark .module-card--locked:not(.module-card--flashcard):not(.module-card--quiz):not(.module-card--completion):not(.module-card--sorting):not(.module-card--matching) {
   background: var(--theme-bg-subtle, #374151);
   border-color: var(--theme-border-subtle, #4b5563);
 }
@@ -667,31 +687,33 @@ html.dark .module-card--locked .module-card__title {
 }
 
 /* Dark mode icons for non-variant cards */
-html.dark
-  .module-card:not(.module-card--flashcard):not(.module-card--quiz):not(
-    .module-card--completion
-  ):not(.module-card--sorting):not(.module-card--matching)
-  svg {
+html.dark .module-card:not(.module-card--flashcard):not(.module-card--quiz):not(.module-card--completion):not(.module-card--sorting):not(.module-card--matching) svg {
   color: var(--theme-text-primary, #ffffff);
   stroke: var(--theme-text-primary, #ffffff);
 }
 
 /* === RESPONSIVE BREAKPOINTS FOR SMALL SCREENS === */
 
-/* Mobile Ultra Small (up to 400px) - Ultra compact cards */
+/* Mobile Ultra Small (up to 400px) - Uniform experience with 3 lines */
 @media (max-width: 400px) {
   .module-card {
     width: 70px;
-    height: 85px; /* Increased from 70px to 85px (+15px more) */
+    height: 85px;
+    /* Increased from 70px to 85px (+15px more) */
   }
 
   .module-card__content {
     padding: 0.125rem;
-    gap: 0.015625rem;
+    gap: 0.0625rem;
+    /* Increased gap for better line separation */
+    justify-content: flex-start;
+    /* Align content to top */
   }
 
   .module-card__icon {
-    margin-bottom: 0.015625rem;
+    margin-bottom: 0.0625rem;
+    order: 1;
+    /* Icon first */
   }
 
   .module-card__icon svg {
@@ -699,20 +721,65 @@ html.dark
     height: 0.75rem;
   }
 
+  /* Line 1: Name (truncated with ellipsis) */
   .module-card__title {
     font-size: 0.5rem;
-    line-height: 1;
-    height: 1rem;
-    margin-bottom: 0.00625rem;
+    line-height: 1.1;
+    height: 0.55rem;
+    /* Fixed height for one line */
+    margin-bottom: 0.0625rem;
+    order: 2;
+    /* Title second */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    /* Force single line */
+    width: 100%;
   }
 
+  /* Line 2: Type (show again for uniform experience) */
   .module-card__type {
-    display: none; /* Hidden on ultra small screens */
+    display: block;
+    /* Show type for uniform experience */
+    font-size: 0.4rem;
+    line-height: 1;
+    height: 0.4rem;
+    /* Fixed height for one line */
+    margin-bottom: 0.0625rem;
+    order: 3;
+    /* Type third */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
   }
 
+  /* Line 3: Level/Time */
   .module-card__level {
     font-size: 0.4rem;
+    line-height: 1;
+    height: 0.4rem;
+    /* Fixed height for one line */
     padding: 0.015625rem 0.0625rem;
+    order: 4;
+    /* Level last */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: fit-content;
+    max-width: 100%;
+  }
+
+  /* Hide time completely on ultra small screens - Aggressive hiding */
+  .module-card__time {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
   }
 
   .module-card__status-indicator,
@@ -763,6 +830,11 @@ html.dark
     font-size: 0.5625rem;
     padding: 0.0625rem 0.15625rem;
   }
+
+  .module-card__time {
+    font-size: 0.5625rem;
+    padding: 0.0625rem 0.15625rem;
+  }
 }
 
 /* Force smaller fonts with higher specificity for all screen sizes */
@@ -778,17 +850,88 @@ html body .main-menu__grid-container .module-card__level {
   font-size: 0.64rem;
 }
 
-/* Override for ultra small screens */
+html body .main-menu__grid-container .module-card__time {
+  font-size: 0.64rem;
+}
+
+/* Override for ultra small screens - Uniform 3-line experience */
 @media (max-width: 400px) {
+
+  /* Container adjustments */
+  html body .main-menu__grid-container .module-card__content {
+    padding: 0.125rem !important;
+    gap: 0.0625rem !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+  }
+
+  /* Header with icon - order 1 */
+  html body .main-menu__grid-container .module-card__header {
+    order: 1 !important;
+    margin-bottom: 0.0625rem !important;
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  html body .main-menu__grid-container .module-card__icon {
+    margin-bottom: 0 !important;
+  }
+
+  /* Line 1: Name (truncated with ellipsis) - order 2 */
   html body .main-menu__grid-container .module-card__title {
-    font-size: 0.5rem;
+    font-size: 0.5rem !important;
+    line-height: 1.1 !important;
+    height: 0.55rem !important;
+    margin-bottom: 0.0625rem !important;
+    order: 2 !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    width: 100% !important;
+    text-align: center !important;
   }
 
+  /* Line 2: Type (show again for uniform experience) - order 3 */
   html body .main-menu__grid-container .module-card__type {
-    font-size: 0.4rem;
+    display: block !important;
+    font-size: 0.4rem !important;
+    line-height: 1 !important;
+    height: 0.4rem !important;
+    margin-bottom: 0.0625rem !important;
+    order: 3 !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    width: 100% !important;
+    text-align: center !important;
   }
 
+  /* Line 3: Level - order 4 */
   html body .main-menu__grid-container .module-card__level {
-    font-size: 0.4rem;
+    font-size: 0.4rem !important;
+    line-height: 1 !important;
+    height: 0.4rem !important;
+    padding: 0.015625rem 0.0625rem !important;
+    order: 4 !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    width: fit-content !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+  }
+
+  /* Hide time on ultra small screens - Multiple selectors for maximum coverage */
+  html body .main-menu__grid-container .module-card__time,
+  .main-menu .module-card__time,
+  .module-card__time {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
   }
 }

@@ -943,9 +943,13 @@ body.dark html .progression-dashboard--dark-theme *,
     padding: 0.25rem !important;
   }
 
-  /* Hide description in module content for ultra small screens */
+  /* Hide description and time in module content for ultra small screens */
   .progression-dashboard__module-desc {
     display: none;
+  }
+
+  .progression-dashboard__module-time {
+    display: none !important;
   }
 
   .progression-dashboard__hero {
@@ -968,6 +972,7 @@ body.dark html .progression-dashboard--dark-theme *,
   .progression-dashboard__next-name {
     font-size: 1rem;
     margin-bottom: 0.1rem;
+    margin-top: 1px;
   }
 
   .progression-dashboard__next-desc {

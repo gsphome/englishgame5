@@ -35,6 +35,9 @@ export const translations = {
       about: 'About',
       configuration: 'Configuration',
     },
+    auth: {
+      logout: 'Logout',
+    },
     modals: {
       progressDashboard: 'Progress Dashboard',
       progressDashboardDesc: 'Compact view of learning progress',
@@ -343,6 +346,9 @@ export const translations = {
       help: 'Ayuda',
       about: 'Acerca de',
       configuration: 'Configuración',
+    },
+    auth: {
+      logout: 'Cerrar Sesión',
     },
     modals: {
       progressDashboard: 'Dashboard de Progreso',

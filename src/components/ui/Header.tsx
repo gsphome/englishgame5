@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { User, Settings, Menu, BarChart3, BookOpen } from 'lucide-react';
+import { User, Settings, Menu, BarChart3, BookOpen, LogOut } from 'lucide-react';
 import '../../styles/components/header.css';
 import { useAppStore } from '../../stores/appStore';
 import { useUserStore } from '../../stores/userStore';
@@ -247,6 +247,19 @@ export const Header: React.FC<HeaderProps> = () => {
                   >
                     <User className="header-side-menu__icon" aria-hidden="true" />
                     <span className="header-side-menu__text">{t('modals.editProfile')}</span>
+                  </button>
+
+                  <button
+                    onClick={() => {
+                      localStorage.clear();
+                      sessionStorage.clear();
+                      window.location.reload();
+                    }}
+                    className="header-side-menu__item header-side-menu__item--logout"
+                    aria-label={t('auth.logout', 'Logout')}
+                  >
+                    <LogOut className="header-side-menu__icon" aria-hidden="true" />
+                    <span className="header-side-menu__text">{t('auth.logout', 'Logout')}</span>
                   </button>
                 </div>
               )}

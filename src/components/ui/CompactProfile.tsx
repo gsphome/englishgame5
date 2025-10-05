@@ -162,7 +162,8 @@ export const CompactProfile: React.FC<CompactProfileProps> = ({ isOpen, onClose 
             <div className="compact-profile__section">
               <h3 className="compact-profile__section-title">⚙️ {t('profile.preferences')}</h3>
 
-              <div className="compact-profile__field-row">
+              {/* Desktop/Tablet version - Language & Daily Goal */}
+              <div className="compact-profile__field-row compact-profile__field-row--desktop">
                 <div className="compact-profile__field compact-profile__field--half">
                   <label className="compact-profile__label">{t('profile.language')}</label>
                   <select {...register('preferences.language')} className="compact-profile__select">
@@ -189,10 +190,53 @@ export const CompactProfile: React.FC<CompactProfileProps> = ({ isOpen, onClose 
                 </div>
               </div>
 
-              <div className="compact-profile__field">
+              {/* Desktop/Tablet version - Difficulty */}
+              <div className="compact-profile__field compact-profile__field--desktop">
                 <label className="compact-profile__label">
                   {t('profile.difficulty')}: {getDifficultyEmoji(watchedDifficulty)}{' '}
                   {getDifficultyLabel(watchedDifficulty)}
+                </label>
+                <input
+                  type="range"
+                  {...register('preferences.difficulty', { valueAsNumber: true })}
+                  min="1"
+                  max="5"
+                  className="compact-profile__range"
+                />
+              </div>
+
+              {/* Mobile version - Language & Daily Goal inline */}
+              <div className="compact-profile__field-row compact-profile__field-row--mobile">
+                <div className="compact-profile__field">
+                  <label className="compact-profile__label">{t('profile.language')}</label>
+                  <select {...register('preferences.language')} className="compact-profile__select">
+                    <option value="en">🇺🇸 EN</option>
+                    <option value="es">🇪🇸 ES</option>
+                  </select>
+                </div>
+
+                <div className="compact-profile__field">
+                  <label className="compact-profile__label compact-profile__label--optional">
+                    {t('profile.dailyGoal')}
+                  </label>
+                  <div className="compact-profile__input-group">
+                    <input
+                      type="number"
+                      {...register('preferences.dailyGoal', { valueAsNumber: true })}
+                      min="1"
+                      max="100"
+                      className="compact-profile__input compact-profile__input--number"
+                      placeholder="15"
+                    />
+                    <span className="compact-profile__input-addon">min</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Mobile version - Difficulty */}
+              <div className="compact-profile__field compact-profile__field--mobile">
+                <label className="compact-profile__label">
+                  {t('profile.difficulty')}: {getDifficultyEmoji(watchedDifficulty)}
                 </label>
                 <input
                   type="range"

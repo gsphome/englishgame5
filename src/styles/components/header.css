@@ -500,6 +500,18 @@ html.dark {
   box-shadow: var(--shadow-medium, 0 4px 6px rgba(0, 0, 0, 0.1));
 }
 
+.header-side-menu__item--logout {
+  border-top: 1px solid var(--theme-border-soft, #e5e7eb);
+  margin-top: 0.5rem;
+  padding-top: 0.75rem;
+  color: var(--theme-error, #ef4444);
+}
+
+.header-side-menu__item--logout:hover {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: var(--theme-error, #ef4444);
+}
+
 .header-side-menu__item:active {
   background-color: var(--menu-item-active);
   transform: translateX(2px);
