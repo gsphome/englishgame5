@@ -474,3 +474,152 @@
     transform: translateY(0);
   }
 }
+/* === CRITICAL: Mobile ≤400px - Prevent Horizontal Scroll === */
+@media (max-width: 400px) {
+  .matching-modal {
+    padding: 0.25rem;
+    /* Minimal padding to prevent overflow */
+    align-items: center;
+    /* Center modal instead of flex-end */
+  }
+
+  .matching-modal__container {
+    max-width: calc(100vw - 0.5rem);
+    /* Ensure modal fits within viewport */
+    width: calc(100vw - 0.5rem);
+    /* Force width to fit viewport */
+    max-height: calc(100vh - 1rem);
+    /* Prevent vertical overflow too */
+    margin: 0.25rem;
+    /* Minimal margin */
+    border-radius: 0.375rem;
+    /* Smaller border radius for compact design */
+  }
+
+  .matching-modal__header {
+    padding: 0.375rem 0.5rem;
+    /* Reduced horizontal and vertical padding */
+    min-height: 2rem;
+    /* Smaller header height */
+  }
+
+  .matching-modal__title {
+    font-size: 0.875rem;
+    /* Smaller title font */
+  }
+
+  .matching-modal__close-btn {
+    width: 1.75rem;
+    height: 1.75rem;
+    /* Smaller close button */
+  }
+
+  .matching-modal__content {
+    padding: 0.375rem 0.5rem 0.25rem 0.5rem;
+    /* Reduced padding on all sides */
+  }
+
+  .matching-modal__summary {
+    gap: 0.125rem;
+    /* Reduced gap between summary items */
+    margin: 0.125rem 0;
+    /* Reduced margin */
+  }
+
+  .matching-modal__results-grid {
+    gap: 0.125rem;
+    /* Reduced gap between result cards */
+  }
+
+  .matching-modal__result-card {
+    padding: 0.125rem;
+    /* Reduced padding in result cards */
+  }
+
+  .matching-modal__result-card__header {
+    margin-bottom: 0.03125rem;
+    /* Minimal margin */
+  }
+
+  .matching-modal__result-card__content {
+    gap: 0.125rem;
+    /* Reduced gap in card content */
+  }
+
+  .matching-modal__result-card__term {
+    font-size: 0.75rem;
+    /* Smaller term font */
+  }
+
+  .matching-modal__result-card__status {
+    font-size: 1rem;
+    /* Smaller status icon */
+  }
+
+  .matching-modal__result-card__label {
+    font-size: 0.625rem;
+    /* Smaller label font */
+  }
+
+  .matching-modal__result-card__value {
+    font-size: 0.625rem;
+    /* Smaller value font */
+    padding: 0.03125rem 0.0625rem;
+    /* Minimal padding */
+  }
+
+  .matching-modal__result-card__explanation {
+    font-size: 0.625rem;
+    /* Smaller explanation font */
+    padding: 0.03125rem 0.0625rem;
+    /* Minimal padding */
+  }
+
+  .matching-modal__actions {
+    margin-top: 0.25rem;
+    margin-bottom: 0.125rem;
+    padding: 0 0.5rem;
+    /* Reduced horizontal padding */
+  }
+
+  .matching-modal__close-button {
+    padding: 0.1875rem 0.5rem;
+    /* Reduced button padding */
+    font-size: 0.6875rem;
+    /* Smaller button font */
+    min-width: 3rem;
+    /* Smaller minimum width */
+  }
+
+  /* Individual explanation adjustments */
+  .matching-modal__individual {
+    gap: 0.5rem;
+    /* Reduced gap */
+  }
+
+  .matching-modal__individual__field {
+    gap: 0.125rem;
+    /* Reduced gap */
+  }
+
+  .matching-modal__individual__label {
+    font-size: 0.6875rem;
+    /* Smaller label font */
+  }
+
+  .matching-modal__individual__value {
+    font-size: 0.75rem;
+    /* Smaller value font */
+    padding: 0.25rem 0.375rem;
+    /* Reduced padding */
+  }
+
+  .matching-modal__individual__explanation {
+    font-size: 0.75rem;
+    /* Smaller explanation font */
+    padding: 0.25rem 0.375rem;
+    /* Reduced padding */
+    line-height: 1.2;
+    /* Tighter line height */
+  }
+}
