@@ -47,7 +47,7 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
     if (showExplanation) {
       // Use requestAnimationFrame to sync with modal animation
       const scrollY = window.scrollY;
-      
+
       // Apply scroll lock immediately but smoothly
       requestAnimationFrame(() => {
         document.documentElement.style.setProperty('--scroll-y', `-${scrollY}px`);
@@ -58,7 +58,7 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
         // Smooth cleanup with animation frame
         document.body.classList.remove('modal-open');
         document.documentElement.style.removeProperty('--scroll-y');
-        
+
         // Restore scroll position after a brief delay to prevent jump
         requestAnimationFrame(() => {
           window.scrollTo(0, scrollY);
@@ -474,18 +474,20 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
                     {selectedTerm.results.map((result: any, index: number) => (
                       <div
                         key={index}
-                        className={`matching-modal__result-card ${result.isCorrect
+                        className={`matching-modal__result-card ${
+                          result.isCorrect
                             ? 'matching-modal__result-card--correct'
                             : 'matching-modal__result-card--incorrect'
-                          }`}
+                        }`}
                       >
                         <div className="matching-modal__result-card__header">
                           <h4 className="matching-modal__result-card__term">{result.left}</h4>
                           <span
-                            className={`matching-modal__result-card__status ${result.isCorrect
+                            className={`matching-modal__result-card__status ${
+                              result.isCorrect
                                 ? 'matching-modal__result-card__status--correct'
                                 : 'matching-modal__result-card__status--incorrect'
-                              }`}
+                            }`}
                           >
                             {result.isCorrect ? '✓' : '✗'}
                           </span>

@@ -89,12 +89,7 @@ export const MainMenu: React.FC = () => {
     return (
       <div className="main-menu">
         <div className="main-menu__search">
-          <SearchBar
-            query=""
-            onQueryChange={() => {}}
-            placeholder="Search"
-            disabled={true}
-          />
+          <SearchBar query="" onQueryChange={() => {}} placeholder="Search" disabled={true} />
         </div>
         <ModuleGridSkeleton />
       </div>
@@ -126,11 +121,7 @@ export const MainMenu: React.FC = () => {
       {/* Header with view toggle */}
       <div className="main-menu__header">
         <div className="main-menu__search">
-          <SearchBar
-            query={query}
-            onQueryChange={setQuery}
-            placeholder="Search"
-          />
+          <SearchBar query={query} onQueryChange={setQuery} placeholder="Search" />
         </div>
 
         <div className="main-menu__view-toggle">
