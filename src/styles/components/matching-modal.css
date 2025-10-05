@@ -477,12 +477,22 @@
 /* === CRITICAL: Mobile ≤400px - Sr Designer Modal Experience === */
 @media (max-width: 400px) {
   .matching-modal {
-    padding: 1rem;
-    /* Proper padding to maintain modal feeling */
+    padding: 0;
+    /* Remove padding to prevent horizontal overflow */
     align-items: center;
     /* Center modal for better UX */
     justify-content: center;
     /* Perfect centering */
+    box-sizing: border-box;
+    /* Ensure proper box model */
+  }
+
+  /* Ensure all modal elements respect container bounds */
+  .matching-modal *,
+  .matching-modal *::before,
+  .matching-modal *::after {
+    box-sizing: border-box;
+    /* Force proper box model on all elements */
   }
 
   .matching-modal__container {
@@ -502,6 +512,8 @@
     /* Premium shadow for floating window effect */
     backdrop-filter: blur(8px);
     /* Modern glass effect */
+    box-sizing: border-box;
+    /* Ensure proper box model */
   }
 
   .matching-modal__header {
@@ -535,8 +547,14 @@
     /* Consistent with header padding */
     overflow-y: auto;
     /* Ensure scrollability */
+    overflow-x: hidden;
+    /* Prevent horizontal scroll */
     scrollbar-width: thin;
     /* Thin scrollbar for mobile */
+    box-sizing: border-box;
+    /* Ensure proper box model */
+    width: 100%;
+    /* Ensure content fits container */
   }
 
   .matching-modal__summary {
@@ -551,6 +569,12 @@
     /* Better visual separation between cards */
     grid-template-columns: 1fr;
     /* Single column for mobile compactness */
+    width: 100%;
+    /* Ensure grid fits container */
+    box-sizing: border-box;
+    /* Proper box model */
+    overflow: hidden;
+    /* Prevent any overflow */
   }
 
   .matching-modal__result-card {
@@ -560,6 +584,14 @@
     /* Consistent with modal radius */
     transition: transform 0.1s ease;
     /* Subtle interaction feedback */
+    width: 100%;
+    /* Ensure card fits container */
+    box-sizing: border-box;
+    /* Proper box model */
+    overflow: hidden;
+    /* Prevent content overflow */
+    word-wrap: break-word;
+    /* Handle long text */
   }
 
   .matching-modal__result-card:active {
