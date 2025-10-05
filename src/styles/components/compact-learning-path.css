@@ -1278,6 +1278,14 @@ html.dark .compact-learning-path .compact-learning-path__unit-circle-stats {
     /* Ultra tight line height */
     font-weight: 600;
     /* Reduced weight */
+    margin: 0;
+    /* Remove any default margin */
+    padding: 0;
+    /* Remove any default padding */
+    margin-bottom: 0.0625rem;
+    /* Ultra minimal bottom margin */
+    margin-top: 0.0625rem;
+    /* Ultra minimal top margin */
   }
 
   .compact-learning-path__module-priority {
