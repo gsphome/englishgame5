@@ -42,21 +42,27 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
   useLearningCleanup();
 
   // Initialize component when module changes
-  // Body scroll management for modal
+  // Body scroll management for modal - optimized to prevent double appearance
   useEffect(() => {
     if (showExplanation) {
-      // Store current scroll position
+      // Use requestAnimationFrame to sync with modal animation
       const scrollY = window.scrollY;
-      document.documentElement.style.setProperty('--scroll-y', `-${scrollY}px`);
       
-      // Add modal-open class to disable body scroll
-      document.body.classList.add('modal-open');
-      
+      // Apply scroll lock immediately but smoothly
+      requestAnimationFrame(() => {
+        document.documentElement.style.setProperty('--scroll-y', `-${scrollY}px`);
+        document.body.classList.add('modal-open');
+      });
+
       return () => {
-        // Remove modal-open class and restore scroll position
+        // Smooth cleanup with animation frame
         document.body.classList.remove('modal-open');
         document.documentElement.style.removeProperty('--scroll-y');
-        window.scrollTo(0, scrollY);
+        
+        // Restore scroll position after a brief delay to prevent jump
+        requestAnimationFrame(() => {
+          window.scrollTo(0, scrollY);
+        });
       };
     }
   }, [showExplanation]);
@@ -468,20 +474,18 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
                     {selectedTerm.results.map((result: any, index: number) => (
                       <div
                         key={index}
-                        className={`matching-modal__result-card ${
-                          result.isCorrect
+                        className={`matching-modal__result-card ${result.isCorrect
                             ? 'matching-modal__result-card--correct'
                             : 'matching-modal__result-card--incorrect'
-                        }`}
+                          }`}
                       >
                         <div className="matching-modal__result-card__header">
                           <h4 className="matching-modal__result-card__term">{result.left}</h4>
                           <span
-                            className={`matching-modal__result-card__status ${
-                              result.isCorrect
+                            className={`matching-modal__result-card__status ${result.isCorrect
                                 ? 'matching-modal__result-card__status--correct'
                                 : 'matching-modal__result-card__status--incorrect'
-                            }`}
+                              }`}
                           >
                             {result.isCorrect ? '✓' : '✗'}
                           </span>
