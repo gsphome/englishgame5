@@ -829,3 +829,58 @@
     outline: 2px solid #60a5fa;
     outline-offset: 2px;
   }
+/* === BODY SCROLL MANAGEMENT === */
+/* Disable body scroll when modal is active to prevent navigation issues */
+body.modal-open {
+  overflow: hidden;
+  /* Disable scrolling */
+  position: fixed;
+  /* Prevent scroll position jump */
+  width: 100%;
+  /* Maintain full width */
+  height: 100%;
+  /* Maintain full height */
+}
+
+/* Preserve scroll position when modal opens */
+body.modal-open {
+  top: var(--scroll-y, 0);
+  /* Maintain scroll position using CSS variable */
+}
+
+/* Mobile-specific body scroll management */
+@media (max-width: 768px) {
+  body.modal-open {
+    position: fixed;
+    /* More aggressive on mobile */
+    top: var(--scroll-y, 0);
+    left: 0;
+    right: 0;
+    /* Ensure full coverage */
+    -webkit-overflow-scrolling: touch;
+    /* iOS smooth scrolling when restored */
+  }
+}
+
+/* Prevent iOS bounce scroll when modal is open */
+@supports (-webkit-overflow-scrolling: touch) {
+  body.modal-open {
+    -webkit-overflow-scrolling: auto;
+    /* Disable momentum scrolling */
+    overscroll-behavior: none;
+    /* Prevent overscroll */
+  }
+}
+
+/* High contrast mode support for modal overlay */
+@media (prefers-contrast: high) {
+  body.modal-open .matching-modal {
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Higher contrast overlay */
+  }
+
+  .dark body.modal-open .matching-modal {
+    background-color: rgba(0, 0, 0, 0.9);
+    /* Even higher contrast in dark mode */
+  }
+}

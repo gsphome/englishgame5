@@ -42,6 +42,25 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
   useLearningCleanup();
 
   // Initialize component when module changes
+  // Body scroll management for modal
+  useEffect(() => {
+    if (showExplanation) {
+      // Store current scroll position
+      const scrollY = window.scrollY;
+      document.documentElement.style.setProperty('--scroll-y', `-${scrollY}px`);
+      
+      // Add modal-open class to disable body scroll
+      document.body.classList.add('modal-open');
+      
+      return () => {
+        // Remove modal-open class and restore scroll position
+        document.body.classList.remove('modal-open');
+        document.documentElement.style.removeProperty('--scroll-y');
+        window.scrollTo(0, scrollY);
+      };
+    }
+  }, [showExplanation]);
+
   // Keyboard navigation
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
