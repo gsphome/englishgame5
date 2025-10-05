@@ -474,121 +474,202 @@
     transform: translateY(0);
   }
 }
-/* === CRITICAL: Mobile ≤400px - Prevent Horizontal Scroll === */
+/* === CRITICAL: Mobile ≤400px - Sr Designer Modal Experience === */
 @media (max-width: 400px) {
   .matching-modal {
-    padding: 0.25rem;
-    /* Minimal padding to prevent overflow */
+    padding: 1rem;
+    /* Proper padding to maintain modal feeling */
     align-items: center;
-    /* Center modal instead of flex-end */
+    /* Center modal for better UX */
+    justify-content: center;
+    /* Perfect centering */
   }
 
   .matching-modal__container {
-    max-width: calc(100vw - 0.5rem);
-    /* Ensure modal fits within viewport */
-    width: calc(100vw - 0.5rem);
-    /* Force width to fit viewport */
-    max-height: calc(100vh - 1rem);
-    /* Prevent vertical overflow too */
-    margin: 0.25rem;
-    /* Minimal margin */
-    border-radius: 0.375rem;
-    /* Smaller border radius for compact design */
+    max-width: 80vw;
+    /* Sr Designer: 80% viewport width for modal feeling */
+    width: 80vw;
+    /* Consistent modal window experience */
+    max-height: 85vh;
+    /* Prevent vertical overflow while maintaining modal feel */
+    margin: 0;
+    /* Clean centering without extra margins */
+    border-radius: 0.75rem;
+    /* Larger radius for premium modal feel */
+    box-shadow: 
+      0 25px 50px -12px rgba(0, 0, 0, 0.25),
+      0 0 0 1px rgba(255, 255, 255, 0.1);
+    /* Premium shadow for floating window effect */
+    backdrop-filter: blur(8px);
+    /* Modern glass effect */
   }
 
   .matching-modal__header {
-    padding: 0.375rem 0.5rem;
-    /* Reduced horizontal and vertical padding */
-    min-height: 2rem;
-    /* Smaller header height */
+    padding: 0.5rem 0.75rem;
+    /* Balanced padding for premium feel */
+    min-height: 2.5rem;
+    /* Adequate header height for touch targets */
+    background: linear-gradient(135deg, #ea580c 0%, #f97316 100%);
+    /* Maintain brand gradient */
   }
 
   .matching-modal__title {
-    font-size: 0.875rem;
-    /* Smaller title font */
+    font-size: 0.9375rem;
+    /* Optimized readable size */
+    font-weight: 700;
+    /* Stronger weight for small size */
+    letter-spacing: -0.01em;
+    /* Tighter tracking for compactness */
   }
 
   .matching-modal__close-btn {
-    width: 1.75rem;
-    height: 1.75rem;
-    /* Smaller close button */
+    width: 2rem;
+    height: 2rem;
+    /* Adequate touch target */
+    flex-shrink: 0;
+    /* Prevent shrinking */
   }
 
   .matching-modal__content {
-    padding: 0.375rem 0.5rem 0.25rem 0.5rem;
-    /* Reduced padding on all sides */
+    padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+    /* Consistent with header padding */
+    overflow-y: auto;
+    /* Ensure scrollability */
+    scrollbar-width: thin;
+    /* Thin scrollbar for mobile */
   }
 
   .matching-modal__summary {
-    gap: 0.125rem;
-    /* Reduced gap between summary items */
-    margin: 0.125rem 0;
-    /* Reduced margin */
+    gap: 0.25rem;
+    /* Adequate spacing for readability */
+    margin: 0.25rem 0 0.5rem 0;
+    /* Clear separation from header */
   }
 
   .matching-modal__results-grid {
-    gap: 0.125rem;
-    /* Reduced gap between result cards */
+    gap: 0.375rem;
+    /* Better visual separation between cards */
+    grid-template-columns: 1fr;
+    /* Single column for mobile compactness */
   }
 
   .matching-modal__result-card {
-    padding: 0.125rem;
-    /* Reduced padding in result cards */
+    padding: 0.375rem;
+    /* Adequate padding for touch and readability */
+    border-radius: 0.375rem;
+    /* Consistent with modal radius */
+    transition: transform 0.1s ease;
+    /* Subtle interaction feedback */
+  }
+
+  .matching-modal__result-card:active {
+    transform: scale(0.98);
+    /* Touch feedback */
   }
 
   .matching-modal__result-card__header {
-    margin-bottom: 0.03125rem;
-    /* Minimal margin */
+    margin-bottom: 0.25rem;
+    /* Clear separation */
+    align-items: center;
+    /* Better alignment */
   }
 
   .matching-modal__result-card__content {
-    gap: 0.125rem;
-    /* Reduced gap in card content */
+    gap: 0.1875rem;
+    /* Optimized spacing */
   }
 
   .matching-modal__result-card__term {
-    font-size: 0.75rem;
-    /* Smaller term font */
+    font-size: 0.8125rem;
+    /* Optimized for readability */
+    font-weight: 700;
+    /* Strong weight for emphasis */
+    line-height: 1.2;
+    /* Tight line height */
+    letter-spacing: -0.01em;
+    /* Compact tracking */
   }
 
   .matching-modal__result-card__status {
-    font-size: 1rem;
-    /* Smaller status icon */
+    font-size: 1.125rem;
+    /* Adequate size for recognition */
+    line-height: 1;
+    /* Tight line height */
   }
 
   .matching-modal__result-card__label {
-    font-size: 0.625rem;
-    /* Smaller label font */
+    font-size: 0.6875rem;
+    /* Minimum readable size */
+    font-weight: 600;
+    /* Medium weight for clarity */
+    text-transform: uppercase;
+    /* Visual hierarchy */
+    letter-spacing: 0.025em;
+    /* Improved readability */
+    opacity: 0.8;
+    /* Subtle hierarchy */
   }
 
   .matching-modal__result-card__value {
-    font-size: 0.625rem;
-    /* Smaller value font */
-    padding: 0.03125rem 0.0625rem;
-    /* Minimal padding */
+    font-size: 0.75rem;
+    /* Readable size */
+    font-weight: 500;
+    /* Medium weight */
+    padding: 0.125rem 0.25rem;
+    /* Adequate padding */
+    line-height: 1.3;
+    /* Readable line height */
   }
 
   .matching-modal__result-card__explanation {
-    font-size: 0.625rem;
-    /* Smaller explanation font */
-    padding: 0.03125rem 0.0625rem;
-    /* Minimal padding */
+    font-size: 0.6875rem;
+    /* Compact but readable */
+    padding: 0.1875rem 0.25rem;
+    /* Balanced padding */
+    line-height: 1.4;
+    /* Readable line height */
+    font-style: italic;
+    /* Visual differentiation */
   }
 
   .matching-modal__actions {
-    margin-top: 0.25rem;
-    margin-bottom: 0.125rem;
-    padding: 0 0.5rem;
-    /* Reduced horizontal padding */
+    margin-top: 0.75rem;
+    margin-bottom: 0.5rem;
+    padding: 0 0.75rem;
+    /* Consistent with content padding */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    /* Subtle separation */
+    padding-top: 0.75rem;
+    /* Space above border */
   }
 
   .matching-modal__close-button {
-    padding: 0.1875rem 0.5rem;
-    /* Reduced button padding */
-    font-size: 0.6875rem;
-    /* Smaller button font */
-    min-width: 3rem;
-    /* Smaller minimum width */
+    padding: 0.5rem 1.5rem;
+    /* Adequate touch target */
+    font-size: 0.8125rem;
+    /* Readable button text */
+    font-weight: 600;
+    /* Medium weight */
+    min-width: 5rem;
+    /* Adequate button width */
+    border-radius: 0.5rem;
+    /* Consistent with modal design */
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    /* Premium gradient */
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    /* Elevated button feel */
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Smooth transitions */
+  }
+
+  .matching-modal__close-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4);
+  }
+
+  .matching-modal__close-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
   }
 
   /* Individual explanation adjustments */
@@ -622,4 +703,97 @@
     line-height: 1.2;
     /* Tighter line height */
   }
-}
+}  /* =
+== Sr Designer: Premium Mobile Experience Enhancements === */
+  
+  /* Glass morphism effect for modal container */
+  .matching-modal__container {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .dark .matching-modal__container {
+    background: rgba(15, 23, 42, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Optimized scrollbar for mobile */
+  .matching-modal__content::-webkit-scrollbar {
+    width: 2px;
+  }
+
+  .matching-modal__content::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .matching-modal__content::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 1px;
+  }
+
+  .dark .matching-modal__content::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  /* Enhanced result card hierarchy */
+  .matching-modal__result-card--correct {
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    border-left: 4px solid #22c55e;
+    box-shadow: 0 2px 8px rgba(34, 197, 94, 0.15);
+  }
+
+  .matching-modal__result-card--incorrect {
+    background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+    border-left: 4px solid #ef4444;
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.15);
+  }
+
+  .dark .matching-modal__result-card--correct {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(34, 197, 94, 0.05) 100%);
+    box-shadow: 0 2px 8px rgba(34, 197, 94, 0.2);
+  }
+
+  .dark .matching-modal__result-card--incorrect {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(239, 68, 68, 0.05) 100%);
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.2);
+  }
+
+  /* Micro-interactions for premium feel */
+  .matching-modal__result-card {
+    transform-origin: center;
+    will-change: transform;
+  }
+
+  .matching-modal__result-card:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Enhanced header with better visual hierarchy */
+  .matching-modal__header {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .matching-modal__header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
+  }
+
+  /* Improved focus states for accessibility */
+  .matching-modal__close-btn:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.8);
+    outline-offset: 2px;
+  }
+
+  .matching-modal__close-button:focus-visible {
+    outline: 2px solid #60a5fa;
+    outline-offset: 2px;
+  }
