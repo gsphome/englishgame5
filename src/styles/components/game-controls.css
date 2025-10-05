@@ -405,11 +405,16 @@
   }
 
   .game-controls__primary-btn {
-    min-width: 4.5rem;
+    min-width: 5.5rem;
+    /* Fixed width to accommodate both "Flip" and "Flip Back" text */
+    width: 5.5rem;
+    /* Ensure consistent width regardless of text content */
     font-size: 0.625rem;
     padding: 0.3125rem 0.5rem;
     height: 2.5rem;
     /* Maintained minimum touch-friendly size */
+    text-align: center;
+    /* Center text within fixed width */
   }
 
   .game-controls__secondary-btn {
