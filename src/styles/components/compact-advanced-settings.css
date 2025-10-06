@@ -460,23 +460,23 @@ html.dark .compact-settings__container {
   }
 }
 
-  .compact-settings__container {
-    max-width: 80vw;
-    width: 80vw;
-    max-height: 75vh;
-  }
+.compact-settings__container {
+  max-width: 80vw;
+  width: 80vw;
+  max-height: 75vh;
+}
 
-  /* Larger close button for mobile accessibility */
-  .compact-settings__header .modal__close-btn {
-    width: 2rem;
-    height: 2rem;
-    padding: 0.375rem;
-  }
+/* Larger close button for mobile accessibility */
+.compact-settings__header .modal__close-btn {
+  width: 2rem;
+  height: 2rem;
+  padding: 0.375rem;
+}
 
-  .compact-settings__header .modal__close-icon {
-    width: 1.25rem;
-    height: 1.25rem;
-  }
+.compact-settings__header .modal__close-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
 /* =
 == DESKTOP/TABLET OPTIMIZATION >400px === */
 @media (min-width: 401px) {
@@ -484,7 +484,7 @@ html.dark .compact-settings__container {
     max-width: 24rem;
     width: 100%;
   }
-}/* === DESK
+} /* === DESK
 TOP/TABLET POSITIONING >400px === */
 @media (min-width: 401px) {
   .compact-settings {

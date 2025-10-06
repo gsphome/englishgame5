@@ -83,24 +83,24 @@
     padding-top: 20px;
     /* Unified 20px from top for all modals */
   }
-  
+
   .compact-modals-demo__container {
     max-width: 80vw;
     width: 80vw;
     max-height: 75vh;
   }
 }
-  /* Larger close button for mobile accessibility */
-  .compact-modals-demo__header .modal__close-btn {
-    width: 2rem;
-    height: 2rem;
-    padding: 0.375rem;
-  }
+/* Larger close button for mobile accessibility */
+.compact-modals-demo__header .modal__close-btn {
+  width: 2rem;
+  height: 2rem;
+  padding: 0.375rem;
+}
 
-  .compact-modals-demo__header .modal__close-icon {
-    width: 1.25rem;
-    height: 1.25rem;
-  }/* ===
+.compact-modals-demo__header .modal__close-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+} /* ===
  DESKTOP/TABLET POSITIONING >400px === */
 @media (min-width: 401px) {
   .compact-modals-demo {

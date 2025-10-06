@@ -1343,18 +1343,18 @@ html.dark .compact-learning-path .compact-learning-path__unit-circle-stats {
     padding: 0.375rem;
     /* Reduced padding */
   }
-}  /* L
+} /* L
 arger close button for mobile accessibility */
-  .compact-learning-path__header .modal__close-btn {
-    width: 2rem;
-    height: 2rem;
-    padding: 0.375rem;
-  }
+.compact-learning-path__header .modal__close-btn {
+  width: 2rem;
+  height: 2rem;
+  padding: 0.375rem;
+}
 
-  .compact-learning-path__header .modal__close-icon {
-    width: 1.25rem;
-    height: 1.25rem;
-  }/* === 
+.compact-learning-path__header .modal__close-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+} /* === 
 DESKTOP/TABLET POSITIONING >400px === */
 @media (min-width: 401px) {
   .compact-learning-path {
