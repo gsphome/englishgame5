@@ -145,15 +145,15 @@
 }
 
 .matching-modal__results-grid {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 0.5rem;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 400px) {
   .matching-modal__results-grid {
     grid-template-columns: 1fr 1fr;
-    gap: 0.25rem;
+    gap: 0.5rem;
   }
 }
 
