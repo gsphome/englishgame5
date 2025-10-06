@@ -17,6 +17,8 @@
     var(--theme-bg-elevated, #ffffff) 0%,
     var(--theme-bg-subtle, #f9fafb) 100%
   );
+  border: 1px solid var(--theme-border-modal, rgba(0, 0, 0, 0.1));
+  border-radius: var(--radius-lg, 0.5rem);
 }
 
 /* === RESULT CONTAINER === */
@@ -440,4 +442,8 @@ html.dark .completion-component__controls {
     border-width: 3px;
     font-weight: 600;
   }
+}
+/* === LEARNING COMPONENT BORDER - DARK MODE === */
+html.dark .completion-component__container {
+  border-color: var(--theme-border-modal-dark, rgba(255, 255, 255, 0.15));
 }

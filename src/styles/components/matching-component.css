@@ -17,6 +17,8 @@
     var(--theme-bg-elevated, #ffffff) 0%,
     var(--theme-bg-subtle, #f9fafb) 100%
   );
+  border: 1px solid var(--theme-border-modal, rgba(0, 0, 0, 0.1));
+  border-radius: var(--radius-lg, 0.5rem);
 }
 
 /* === HEADER - Now using unified LearningProgressHeader === */
@@ -1316,4 +1318,8 @@ html.dark body .matching-component__item--correct .matching-component__item-text
   color: #ffffff !important;
   font-weight: 700 !important;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5) !important;
+}
+/* === LEARNING COMPONENT BORDER - DARK MODE === */
+html.dark .matching-component {
+  border-color: var(--theme-border-modal-dark, rgba(255, 255, 255, 0.15));
 }

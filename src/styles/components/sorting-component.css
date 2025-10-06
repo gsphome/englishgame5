@@ -12,6 +12,8 @@
     var(--theme-bg-elevated, #ffffff) 0%,
     var(--theme-bg-subtle, #f9fafb) 100%
   );
+  border: 1px solid var(--theme-border-modal, rgba(0, 0, 0, 0.1));
+  border-radius: var(--radius-lg, 0.5rem);
 }
 
 /* === LOADING === */
@@ -580,4 +582,8 @@ html.dark .sorting-component__drop-zone--error {
   opacity: 0.8;
   transform: rotate(3deg);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+/* === LEARNING COMPONENT BORDER - DARK MODE === */
+html.dark .sorting-component {
+  border-color: var(--theme-border-modal-dark, rgba(255, 255, 255, 0.15));
 }

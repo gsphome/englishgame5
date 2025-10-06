@@ -20,6 +20,8 @@ cua
     var(--theme-bg-elevated, #ffffff) 0%,
     var(--theme-bg-subtle, #f9fafb) 100%
   );
+  border: 1px solid var(--theme-border-modal, rgba(0, 0, 0, 0.1));
+  border-radius: var(--radius-lg, 0.5rem);
 }
 
 /* === HEADER SECTION - Now using unified LearningProgressHeader === */
@@ -402,4 +404,8 @@ html.dark .flashcard-component__controls {
   .flashcard-component__card-back {
     border-width: 2px;
   }
+}
+/* === LEARNING COMPONENT BORDER - DARK MODE === */
+html.dark .flashcard-component__container {
+  border-color: var(--theme-border-modal-dark, rgba(255, 255, 255, 0.15));
 }
