@@ -130,8 +130,8 @@
 }
 
 .compact-profile__content {
-  padding: 0.3rem 0.45rem;
-  /* Additional 20% reduction from 0.375rem 0.5625rem */
+  padding: 0.3rem 0;
+  /* Removed horizontal padding to eliminate side gaps */
   flex: 1;
   overflow-y: auto;
   max-height: calc(90vh - 100px);
@@ -148,6 +148,8 @@
   border-radius: var(--radius-md, 0.375rem);
   padding: 0.15rem;
   /* Additional 20% reduction from 0.1875rem */
+  margin: 0 0.45rem;
+  /* Add horizontal margin to maintain spacing */
   box-shadow: var(--shadow-subtle, 0 1px 3px rgba(0, 0, 0, 0.1));
 }
 
@@ -673,7 +675,11 @@ html.dark .compact-profile__error {
   }
 
   .compact-profile__content {
-    padding: 0.2rem 0.3rem; /* Ultra-compressed content padding */
+    padding: 0.2rem 0; /* Ultra-compressed content padding */
+  }
+  
+  .compact-profile__section {
+    margin: 0 0.3rem; /* Adjusted margin for smaller screens */
   }
 
   .compact-profile__content > * + * {
@@ -876,8 +882,12 @@ html.dark .compact-profile__error {
   }
 
   .compact-profile__content {
-    padding: 0.1875rem 0.25rem;
+    padding: 0.1875rem 0;
     /* Ultra minimal content padding */
+  }
+  
+  .compact-profile__section {
+    margin: 0 0.25rem; /* Adjusted margin for mobile */
   }
 
   .compact-profile__content > * + * {
