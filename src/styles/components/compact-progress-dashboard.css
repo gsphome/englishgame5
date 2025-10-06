@@ -354,8 +354,9 @@
   }
 
   .compact-dashboard__container {
-    max-width: 20rem; /* Unified modal width */
-    max-height: 85vh; /* Unified modal height */
+    max-width: 80vw;
+    width: 80vw;
+    max-height: 75vh;
   }
 
   .compact-dashboard__header {
