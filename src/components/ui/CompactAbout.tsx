@@ -28,10 +28,7 @@ export const CompactAbout: React.FC<CompactAboutProps> = ({ isOpen, onClose }) =
         <div className="compact-about__header">
           <div className="compact-about__title-section">
             <FluentFlowLogo size="sm" />
-            <div>
-              <h2 className="compact-about__title">FluentFlow</h2>
-              <p className="compact-about__subtitle">{t('about.subtitle')}</p>
-            </div>
+            <h2 className="compact-about__title">{t('about.title')}</h2>
           </div>
           <button onClick={onClose} className="modal__close-btn" aria-label={t('common.close')}>
             <X className="modal__close-icon" />
