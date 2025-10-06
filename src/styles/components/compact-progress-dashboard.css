@@ -29,7 +29,7 @@
 /* === MODAL CONTAINER === */
 .compact-dashboard__container {
   background-color: var(--theme-bg-elevated, #ffffff);
-  border: none;
+  border: 1px solid var(--theme-border-modal, rgba(0, 0, 0, 0.1));
   border-radius: var(--radius-lg, 0.5rem);
   box-shadow: var(--shadow-strong, 0 10px 15px rgba(0, 0, 0, 0.1));
   max-width: 24rem;
@@ -456,4 +456,8 @@
     padding-top: 8vh;
     /* Consistent top positioning for larger screens */
   }
+}
+/* === MODAL BORDER - DARK MODE === */
+html.dark .compact-dashboard__container {
+  border-color: var(--theme-border-modal-dark, rgba(255, 255, 255, 0.15));
 }
