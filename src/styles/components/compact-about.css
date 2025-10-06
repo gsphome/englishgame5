@@ -449,7 +449,7 @@ html.dark .compact-about .compact-about__developer-link .compact-about__link-ico
 /* === RESPONSIVE === */
 @media (max-width: 640px) {
   .compact-about__container {
-    max-width: 26rem;
+    max-width: 24rem;
   }
 
   .compact-about__info-grid {

@@ -503,7 +503,7 @@
 /* === RESPONSIVE === */
 @media (max-width: 640px) {
   .compact-profile__container {
-    max-width: 31.2rem;
+    max-width: 24rem;
   }
 
   .compact-profile__field-row {

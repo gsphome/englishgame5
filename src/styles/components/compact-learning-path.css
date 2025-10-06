@@ -790,7 +790,7 @@ html.dark .compact-learning-path .compact-learning-path__unit-circle-stats {
 /* Mobile Responsive */
 @media (max-width: 640px) {
   .compact-learning-path__container {
-    max-width: 23.4rem;
+    max-width: 24rem;
   }
 
   .compact-learning-path__overview {
