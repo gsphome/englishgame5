@@ -1,5 +1,5 @@
-import React from 'react';
-import { X, Heart, Info } from 'lucide-react';
+import React, { useState } from 'react';
+import { X, Heart, Info, Monitor } from 'lucide-react';
 import { Github } from 'lucide-react';
 import { useSettingsStore } from '../../stores/settingsStore';
 import { useTranslation } from '../../utils/i18n';
@@ -16,9 +16,21 @@ interface CompactAboutProps {
 export const CompactAbout: React.FC<CompactAboutProps> = ({ isOpen, onClose }) => {
   const { language } = useSettingsStore();
   const { t } = useTranslation(language);
+  const [showScreenInfo, setShowScreenInfo] = useState(false);
 
   // Handle escape key to close modal
   useEscapeKey(isOpen, onClose);
+
+  // Get screen information
+  const getScreenInfo = () => {
+    return {
+      resolution: `${window.screen.width} × ${window.screen.height}`,
+      viewport: `${window.innerWidth} × ${window.innerHeight}`,
+      devicePixelRatio: window.devicePixelRatio || 1,
+      colorDepth: window.screen.colorDepth,
+      orientation: window.screen.orientation?.type || 'unknown'
+    };
+  };
 
   if (!isOpen) return null;
 
@@ -124,7 +136,13 @@ export const CompactAbout: React.FC<CompactAboutProps> = ({ isOpen, onClose }) =
           {/* Tech Stack */}
           <div className="compact-about__section">
             <div className="compact-about__tech-stack">
-              <span className="compact-about__tech-item">React</span>
+              <button 
+                className="compact-about__tech-item compact-about__tech-item--clickable"
+                onClick={() => setShowScreenInfo(true)}
+                title="Click to view screen information"
+              >
+                React
+              </button>
               <span className="compact-about__tech-item">TypeScript</span>
               <span className="compact-about__tech-item">Pure CSS</span>
               <span className="compact-about__tech-item">Zustand</span>
@@ -140,6 +158,56 @@ export const CompactAbout: React.FC<CompactAboutProps> = ({ isOpen, onClose }) =
           </div>
         </div>
       </div>
+
+      {/* Screen Info Modal */}
+      {showScreenInfo && (
+        <div className="screen-info-modal">
+          <div className="screen-info-modal__container">
+            <div className="screen-info-modal__header">
+              <div className="screen-info-modal__title-section">
+                <Monitor className="screen-info-modal__icon" />
+                <h3 className="screen-info-modal__title">Screen Information</h3>
+              </div>
+              <button 
+                onClick={() => setShowScreenInfo(false)} 
+                className="screen-info-modal__close-btn"
+                aria-label="Close screen info"
+              >
+                <X className="screen-info-modal__close-icon" />
+              </button>
+            </div>
+            <div className="screen-info-modal__content">
+              {(() => {
+                const screenInfo = getScreenInfo();
+                return (
+                  <div className="screen-info-modal__grid">
+                    <div className="screen-info-modal__item">
+                      <span className="screen-info-modal__label">Resolution:</span>
+                      <span className="screen-info-modal__value">{screenInfo.resolution}</span>
+                    </div>
+                    <div className="screen-info-modal__item">
+                      <span className="screen-info-modal__label">Viewport:</span>
+                      <span className="screen-info-modal__value">{screenInfo.viewport}</span>
+                    </div>
+                    <div className="screen-info-modal__item">
+                      <span className="screen-info-modal__label">Pixel Ratio:</span>
+                      <span className="screen-info-modal__value">{screenInfo.devicePixelRatio}x</span>
+                    </div>
+                    <div className="screen-info-modal__item">
+                      <span className="screen-info-modal__label">Color Depth:</span>
+                      <span className="screen-info-modal__value">{screenInfo.colorDepth} bits</span>
+                    </div>
+                    <div className="screen-info-modal__item">
+                      <span className="screen-info-modal__label">Orientation:</span>
+                      <span className="screen-info-modal__value">{screenInfo.orientation}</span>
+                    </div>
+                  </div>
+                );
+              })()}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
