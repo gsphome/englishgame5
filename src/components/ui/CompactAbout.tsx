@@ -18,8 +18,21 @@ export const CompactAbout: React.FC<CompactAboutProps> = ({ isOpen, onClose }) =
   const { t } = useTranslation(language);
   const [showScreenInfo, setShowScreenInfo] = useState(false);
 
+  // Handle closing both modals
+  const handleClose = () => {
+    setShowScreenInfo(false);
+    onClose();
+  };
+
   // Handle escape key to close modal
-  useEscapeKey(isOpen, onClose);
+  useEscapeKey(isOpen, handleClose);
+
+  // Close screen info modal when About modal closes
+  React.useEffect(() => {
+    if (!isOpen && showScreenInfo) {
+      setShowScreenInfo(false);
+    }
+  }, [isOpen, showScreenInfo]);
 
   // Get screen information
   const getScreenInfo = () => {
@@ -42,7 +55,7 @@ export const CompactAbout: React.FC<CompactAboutProps> = ({ isOpen, onClose }) =
             <FluentFlowLogo size="sm" />
             <h2 className="compact-about__title">{t('about.title')}</h2>
           </div>
-          <button onClick={onClose} className="modal__close-btn" aria-label={t('common.close')}>
+          <button onClick={handleClose} className="modal__close-btn" aria-label={t('common.close')}>
             <X className="modal__close-icon" />
           </button>
         </div>
@@ -152,7 +165,7 @@ export const CompactAbout: React.FC<CompactAboutProps> = ({ isOpen, onClose }) =
 
           {/* Actions */}
           <div className="modal__actions modal__actions--single">
-            <button onClick={onClose} className="modal__btn modal__btn--primary">
+            <button onClick={handleClose} className="modal__btn modal__btn--primary">
               {t('common.close')}
             </button>
           </div>
