@@ -167,13 +167,13 @@
 }
 
 /* SELECTED STATE - Clear selection with strong border */
-.matching-component__item--selected {
-  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-  border: 3px solid #1e40af;
-  color: #ffffff;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
-  font-weight: 600;
+html body .matching-component .matching-component__item--selected {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%) !important;
+  border: 3px solid #1e40af !important;
+  color: #ffffff !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4) !important;
+  font-weight: 600 !important;
 }
 
 /* MATCHED STATE - Improved contrast */
@@ -270,6 +270,15 @@ html body .matching-component .matching-component__item--selected .matching-comp
   border: 2px solid #1d4ed8 !important;
   font-weight: 700 !important;
   box-shadow: 0 2px 4px rgba(37, 99, 235, 0.3) !important;
+}
+
+/* SELECTED TEXT - High specificity to ensure white text */
+html body .matching-component .matching-component__item--selected,
+html body .matching-component .matching-component__item--selected *,
+html body .matching-component button.matching-component__item--selected,
+html body .matching-component button.matching-component__item--selected * {
+  color: #ffffff !important;
+  font-weight: 600 !important;
 }
 
 html body .matching-component .matching-component__item--matched .matching-component__item-letter {
