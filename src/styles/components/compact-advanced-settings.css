@@ -477,3 +477,19 @@ html.dark .compact-settings__container {
     width: 1.25rem;
     height: 1.25rem;
   }
+/* =
+== DESKTOP/TABLET OPTIMIZATION >400px === */
+@media (min-width: 401px) {
+  .compact-settings__container {
+    max-width: 24rem;
+    width: 100%;
+  }
+}/* === DESK
+TOP/TABLET POSITIONING >400px === */
+@media (min-width: 401px) {
+  .compact-settings {
+    align-items: flex-start;
+    padding-top: 8vh;
+    /* Consistent top positioning for larger screens */
+  }
+}

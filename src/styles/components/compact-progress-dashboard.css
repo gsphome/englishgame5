@@ -448,4 +448,12 @@
   .compact-dashboard__header .modal__close-icon {
     width: 1.25rem;
     height: 1.25rem;
+  }/* =
+== DESKTOP/TABLET POSITIONING >400px === */
+@media (min-width: 401px) {
+  .compact-dashboard {
+    align-items: flex-start;
+    padding-top: 8vh;
+    /* Consistent top positioning for larger screens */
   }
+}
