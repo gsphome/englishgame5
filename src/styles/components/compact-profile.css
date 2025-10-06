@@ -148,13 +148,11 @@
   border-radius: var(--radius-md, 0.375rem);
   padding: 0.15rem;
   /* Additional 20% reduction from 0.1875rem */
-  border: 1px solid var(--theme-border-soft, #f3f4f6);
   box-shadow: var(--shadow-subtle, 0 1px 3px rgba(0, 0, 0, 0.1));
 }
 
 .compact-profile__section:hover {
   box-shadow: var(--shadow-medium, 0 4px 6px rgba(0, 0, 0, 0.1));
-  border-color: var(--theme-primary-blue-light, #dbeafe);
 }
 
 .compact-profile__section > * + * {
