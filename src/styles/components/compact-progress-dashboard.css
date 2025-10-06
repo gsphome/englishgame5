@@ -437,12 +437,8 @@
     font-size: 0.625rem; /* Compact no-data text */
   }
 }
-  .compact-dashboard__container {
-    max-width: 80vw;
-    width: 80vw;
-    max-height: 75vh;
-  }  /* 
-Larger close button for mobile accessibility */
+
+  /* Larger close button for mobile accessibility */
   .compact-dashboard__header .modal__close-btn {
     width: 2rem;
     height: 2rem;
