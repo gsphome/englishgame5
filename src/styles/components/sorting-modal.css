@@ -26,7 +26,7 @@
 /* === MODAL CONTAINER === */
 .sorting-modal__container {
   background-color: var(--theme-bg-elevated, #ffffff);
-  border: none;
+  border: 1px solid var(--theme-border-modal, rgba(0, 0, 0, 0.1));
   border-radius: 0.5rem;
   box-shadow: var(--shadow-strong, 0 10px 15px rgba(0, 0, 0, 0.1));
   max-width: 42rem;
@@ -42,7 +42,7 @@
 }
 
 .dark .sorting-modal__container {
-  background-color: var(--theme-bg-elevated, #ffffff);
+  background-color: var(--theme-bg-elevated, #1f2937);
 }
 
 /* === HEADER === */
@@ -122,13 +122,13 @@
   padding: 0.5rem 0.75rem 0.25rem 0.75rem;
   flex: 1;
   overflow-y: auto;
-  background-color: #1e293b;
+  background-color: var(--theme-bg-elevated, #ffffff);
   border-radius: 0 0 0.5rem 0.5rem;
   min-height: 0;
 }
 
 .dark .sorting-modal__content {
-  background-color: #0f172a;
+  background-color: var(--theme-bg-elevated, #1f2937);
 }
 
 .sorting-modal__summary {
@@ -545,4 +545,8 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+/* === MODAL BORDER - DARK MODE === */
+html.dark .sorting-modal__container {
+  border-color: var(--theme-border-modal-dark, rgba(255, 255, 255, 0.15));
 }
