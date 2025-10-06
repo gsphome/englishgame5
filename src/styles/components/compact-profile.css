@@ -852,7 +852,9 @@ html.dark .compact-profile__error {
 @media (max-width: 400px) {
   .compact-profile {
     padding: 0.25rem;
-    /* Minimal padding for mobile */
+    align-items: flex-start;
+    padding-top: 4rem;
+    /* Position below header with fallback overlap */
   }
 
   .compact-profile__container {

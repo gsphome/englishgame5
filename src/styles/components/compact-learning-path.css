@@ -1138,7 +1138,9 @@ html.dark .compact-learning-path .compact-learning-path__unit-circle-stats {
 @media (max-width: 400px) {
   .compact-learning-path {
     padding: 0.25rem;
-    /* Minimal padding for mobile */
+    align-items: flex-start;
+    padding-top: 4rem;
+    /* Position below header with fallback overlap */
   }
 
   .compact-learning-path__container {
