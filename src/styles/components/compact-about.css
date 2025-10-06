@@ -942,11 +942,12 @@ html.dark .compact-about__container {
 
 /* === TECH STACK CLICKABLE ITEM === */
 .compact-about__tech-item--clickable {
-  background: none;
-  border: none;
+  /* Inherit all base styles from .compact-about__tech-item */
   cursor: pointer;
   transition: all 0.2s ease;
   position: relative;
+  border: none;
+  /* Remove any button-specific styles to match other tech items */
 }
 
 .compact-about__tech-item--clickable:hover {
