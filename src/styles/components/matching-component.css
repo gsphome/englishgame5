@@ -241,21 +241,21 @@
   position: relative;
 }
 
-.matching-component__item-letter {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.5rem;
-  height: 1.5rem;
-  background-color: #e5e7eb;
-  color: #374151;
-  border-radius: 50%;
-  font-size: 0.875rem;
-  font-weight: 700;
-  flex-shrink: 0;
-  margin-right: 0.75rem;
-  transition: all 0.2s ease;
-  border: 1px solid #d1d5db;
+html body .matching-component .matching-component__item-letter {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  background-color: #e5e7eb !important;
+  color: #374151 !important;
+  border-radius: 50% !important;
+  font-size: 0.875rem !important;
+  font-weight: 700 !important;
+  flex-shrink: 0 !important;
+  margin-right: 0.75rem !important;
+  transition: all 0.2s ease !important;
+  border: 1px solid #d1d5db !important;
 }
 
 .matching-component__item-letter--orange {
@@ -264,19 +264,19 @@
 }
 
 /* Letter states - matching quiz component pattern */
-.matching-component__item--selected .matching-component__item-letter {
-  background-color: #ffffff;
-  color: #1e40af;
-  border: 2px solid rgba(255, 255, 255, 0.8);
-  font-weight: 700;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+html body .matching-component .matching-component__item--selected .matching-component__item-letter {
+  background-color: #ffffff !important;
+  color: #1e40af !important;
+  border: 2px solid rgba(255, 255, 255, 0.8) !important;
+  font-weight: 700 !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
 }
 
-.matching-component__item--matched .matching-component__item-letter {
-  background-color: #ffffff;
-  color: #0c4a6e;
-  border: 2px solid #0284c7;
-  font-weight: 700;
+html body .matching-component .matching-component__item--matched .matching-component__item-letter {
+  background-color: #ffffff !important;
+  color: #0c4a6e !important;
+  border: 2px solid #0284c7 !important;
+  font-weight: 700 !important;
 }
 
 .matching-component__item--matched-inactive .matching-component__item-letter {
@@ -293,7 +293,7 @@
   font-weight: 700;
 }
 
-.matching-component__item--correct .matching-component__item-letter {
+html body .matching-component .matching-component__item--correct .matching-component__item-letter {
   background-color: #ffffff !important;
   color: #166534 !important;
   font-weight: 700 !important;
