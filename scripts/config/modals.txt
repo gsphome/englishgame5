@@ -1,0 +1,6 @@
+CompactAbout
+CompactProfile
+CompactLearningPath
+CompactAdvancedSettings
+CompactProgressDashboard
+CompactModalsDemo
