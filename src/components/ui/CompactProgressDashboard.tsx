@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Trophy, Target, Clock, TrendingUp } from 'lucide-react';
+import { X, Trophy, Target, Clock, TrendingUp, BarChart3 } from 'lucide-react';
 import { useProgressStore } from '../../stores/progressStore';
 import { useUserStore } from '../../stores/userStore';
 import { useSettingsStore } from '../../stores/settingsStore';
@@ -45,9 +45,12 @@ export const CompactProgressDashboard: React.FC<CompactProgressDashboardProps> =
     <div className="compact-dashboard">
       <div className="compact-dashboard__container">
         <div className="compact-dashboard__header">
-          <h2 className="compact-dashboard__title">
-            {t('modals.progressDashboard', 'Progress Dashboard')}
-          </h2>
+          <div className="compact-dashboard__title-section">
+            <BarChart3 className="compact-dashboard__icon" />
+            <h2 className="compact-dashboard__title">
+              {t('modals.progressDashboard', 'Progress Dashboard')}
+            </h2>
+          </div>
           <button onClick={onClose} className="modal__close-btn" aria-label={t('common.close')}>
             <X className="modal__close-icon" />
           </button>

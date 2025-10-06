@@ -57,6 +57,18 @@
   background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
 }
 
+.compact-dashboard__title-section {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.compact-dashboard__icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: rgba(255, 255, 255, 0.95);
+}
+
 .compact-dashboard__title {
   font-size: 1rem;
   font-weight: 700;

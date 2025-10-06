@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, CheckCircle, Lock, Star } from 'lucide-react';
+import { X, CheckCircle, Lock, Star, MapPin } from 'lucide-react';
 import { useProgression } from '../../hooks/useProgression';
 // Note: useProgressStore removed as we consolidated the information
 import { useSettingsStore } from '../../stores/settingsStore';
@@ -42,9 +42,12 @@ export const CompactLearningPath: React.FC<CompactLearningPathProps> = ({ isOpen
     <div className="compact-learning-path">
       <div className="compact-learning-path__container">
         <div className="compact-learning-path__header">
-          <h2 className="compact-learning-path__title">
-            {t('modals.learningPath', 'Learning Path')}
-          </h2>
+          <div className="compact-learning-path__title-section">
+            <MapPin className="compact-learning-path__icon" />
+            <h2 className="compact-learning-path__title">
+              {t('modals.learningPath', 'Learning Path')}
+            </h2>
+          </div>
           <button onClick={onClose} className="modal__close-btn" aria-label={t('common.close')}>
             <X className="modal__close-icon" />
           </button>
