@@ -356,7 +356,6 @@ html.dark .compact-settings__container {
   }
 
   .compact-settings__container {
-    max-width: 20rem; /* Unified modal width */
     height: 350px; /* Increased to fit reset/save buttons */
   }
 
@@ -460,12 +459,14 @@ html.dark .compact-settings__container {
     margin-top: 0.125rem; /* Minimal margin */
   }
 }
+
   .compact-settings__container {
     max-width: 80vw;
     width: 80vw;
     max-height: 75vh;
-  }  
-/* Larger close button for mobile accessibility */
+  }
+
+  /* Larger close button for mobile accessibility */
   .compact-settings__header .modal__close-btn {
     width: 2rem;
     height: 2rem;
