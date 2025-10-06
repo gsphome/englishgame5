@@ -78,8 +78,8 @@
 @media (max-width: 400px) {
   .compact-modals-demo {
     align-items: flex-start;
-    padding-top: 4rem;
-    /* Position below header with fallback overlap */
+    padding-top: 20px;
+    /* Unified 20px from top for all modals */
   }
   
   .compact-modals-demo__container {

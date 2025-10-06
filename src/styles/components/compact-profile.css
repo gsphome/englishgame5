@@ -853,8 +853,8 @@ html.dark .compact-profile__error {
   .compact-profile {
     padding: 0.25rem;
     align-items: flex-start;
-    padding-top: 4rem;
-    /* Position below header with fallback overlap */
+    padding-top: 20px;
+    /* Unified 20px from top for all modals */
   }
 
   .compact-profile__container {

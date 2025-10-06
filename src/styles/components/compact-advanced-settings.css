@@ -351,8 +351,8 @@ html.dark .compact-settings__container {
   .compact-settings {
     padding: 0.5rem;
     align-items: flex-start;
-    padding-top: 4rem;
-    /* Position below header with fallback overlap */
+    padding-top: 20px;
+    /* Unified 20px from top for all modals */
   }
 
   .compact-settings__container {
