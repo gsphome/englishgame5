@@ -243,6 +243,7 @@ html.dark {
 }
 
 @keyframes devPulse {
+
   0%,
   100% {
     opacity: 1;
@@ -456,12 +457,12 @@ html.dark {
   padding: var(--padding-xl, 2rem);
 }
 
-.header-side-menu__content > * + * {
+.header-side-menu__content>*+* {
   margin-top: 1.5rem;
 }
 
 /* Menu Sections */
-.header-side-menu__section > * + * {
+.header-side-menu__section>*+* {
   margin-top: 0.5rem;
 }
 
@@ -918,67 +919,48 @@ html.dark {
   }
 }
 
-/* BREAKPOINT 7: Mobile Small (320px - 359px) - CRITICAL: 355px overlap fix */
-@media (min-width: 320px) and (max-width: 359px) {
-  .header-redesigned__container {
-    padding: 0.25rem 0.375rem;
-    min-height: 40px;
-  }
 
-  .header-redesigned__left {
-    gap: 0.0625rem;
-    min-width: 45px;
-    flex-shrink: 0;
-  }
 
-  .header-redesigned__center {
-    flex: 1;
-    max-width: 75px;
-    min-width: 60px;
-    margin: 0 0.25rem;
-  }
+.header-redesigned__right {
+  gap: 0.0625rem;
+  min-width: 45px;
+  flex-shrink: 0;
+}
 
-  .header-redesigned__right {
-    gap: 0.0625rem;
-    min-width: 45px;
-    flex-shrink: 0;
-  }
+/* Ultra minimal - only icons */
+.header-redesigned__logo,
+.header-redesigned__title,
+.header-redesigned__username,
+.header-redesigned__login-text,
+.header-redesigned__dev-text {
+  display: none;
+}
 
-  /* Ultra minimal - only icons */
-  .header-redesigned__logo,
-  .header-redesigned__title,
-  .header-redesigned__username,
-  .header-redesigned__login-text,
-  .header-redesigned__dev-text {
-    display: none;
-  }
+/* Ultra compact buttons */
+.header-redesigned__menu-btn,
+.header-redesigned__user-btn,
+.header-redesigned__login-btn {
+  min-width: 24px;
+  min-height: 24px;
+  padding: 1px;
+}
 
-  /* Ultra compact buttons */
-  .header-redesigned__menu-btn,
-  .header-redesigned__user-btn,
-  .header-redesigned__login-btn {
-    min-width: 24px;
-    min-height: 24px;
-    padding: 1px;
-  }
+/* Tiny icons */
+.header-redesigned__menu-icon,
+.header-redesigned__user-icon {
+  width: 10px;
+  height: 10px;
+}
 
-  /* Tiny icons */
-  .header-redesigned__menu-icon,
-  .header-redesigned__user-icon {
-    width: 10px;
-    height: 10px;
-  }
+/* Prioritize login button */
+.header-redesigned__user-btn,
+.header-redesigned__login-btn {
+  flex-shrink: 0;
+}
 
-  /* Prioritize login button */
-  .header-redesigned__user-btn,
-  .header-redesigned__login-btn {
-    flex-shrink: 0;
-  }
-
-  /* Hide dev indicator to save space */
-  .header-redesigned__dev-indicator {
-    display: none;
-  }
+/* Hide dev indicator to save space */
+.header-redesigned__dev-indicator {
+  display: none;
 }
 
 /* BREAKPOINT 8A: Mobile Tiny (311px - 320px) - Emergency layout */
@@ -1163,6 +1145,7 @@ html.dark {
 
 /* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
+
   /* justified: Accessibility requirement for reduced motion */
   .header-redesigned *,
   .header-side-menu * {
@@ -1249,6 +1232,7 @@ html.dark {
 
 /* Reduced motion support for logo */
 @media (prefers-reduced-motion: reduce) {
+
   /* justified: Accessibility requirement for reduced motion */
   .header-redesigned__logo,
   .header-redesigned__brand:hover .header-redesigned__logo {
@@ -1344,12 +1328,10 @@ html.dark {
 
 /* Enhanced Overlay for Dark Mode */
 .dark .header-side-menu-overlay {
-  background: linear-gradient(
-    45deg,
-    rgba(0, 0, 0, 0.7) 0%,
-    rgba(0, 0, 0, 0.5) 50%,
-    rgba(0, 0, 0, 0.7) 100%
-  );
+  background: linear-gradient(45deg,
+      rgba(0, 0, 0, 0.7) 0%,
+      rgba(0, 0, 0, 0.5) 50%,
+      rgba(0, 0, 0, 0.7) 100%);
   backdrop-filter: blur(8px);
 }
 
@@ -1393,7 +1375,7 @@ html.dark {
 }
 
 /* Ensure consistent spacing between primary action buttons */
-.header-redesigned__right > * + * {
+.header-redesigned__right>*+* {
   margin-left: 8px;
 }
 
@@ -1601,12 +1583,12 @@ html.dark {
   }
 
   /* Unified section spacing */
-  .header-side-menu__content > * + * {
+  .header-side-menu__content>*+* {
     margin-top: 0.5rem;
     /* Unified section gaps */
   }
 
-  .header-side-menu__section > * + * {
+  .header-side-menu__section>*+* {
     margin-top: 0.25rem;
     /* Unified element gaps */
   }

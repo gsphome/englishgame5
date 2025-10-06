@@ -317,13 +317,6 @@
   }
 }
 
-/* Mobile small - ULTRA minimal display (CRITICAL: 355px overlap fix) */
-@media (min-width: 321px) and (max-width: 359px) {
-  .score-display-compact__container {
-    padding: 0 0.125rem;
-    height: 26px;
-  }
-
   .score-display-compact__container--in-game {
     min-width: 60px;
   }
@@ -369,7 +362,6 @@
     height: 10px;
     margin: 0 0.1rem;
   }
-}
 
 /* Mobile emergency - EXTREME minimal display (CRITICAL: 320px overlap fix) */
 @media (min-width: 311px) and (max-width: 320px) {
