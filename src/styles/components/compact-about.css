@@ -981,7 +981,9 @@ html.dark .compact-about__container {
   background-color: var(--theme-bg-elevated, #ffffff);
   border: 1px solid var(--theme-border-modal, rgba(0, 0, 0, 0.1));
   border-radius: 0.5rem;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
   max-width: 20rem;
   width: 100%;
   overflow: hidden;
@@ -1109,19 +1111,19 @@ html.dark .screen-info-modal__value {
     max-width: 90vw;
     margin: 0 0.5rem;
   }
-  
+
   .screen-info-modal__header {
     padding: 0.5rem 0.75rem;
   }
-  
+
   .screen-info-modal__content {
     padding: 0.75rem;
   }
-  
+
   .screen-info-modal__grid {
     gap: 0.5rem;
   }
-  
+
   .screen-info-modal__item {
     padding: 0.375rem;
   }

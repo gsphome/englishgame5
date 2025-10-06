@@ -41,7 +41,7 @@ export const CompactAbout: React.FC<CompactAboutProps> = ({ isOpen, onClose }) =
       viewport: `${window.innerWidth} × ${window.innerHeight}`,
       devicePixelRatio: window.devicePixelRatio || 1,
       colorDepth: window.screen.colorDepth,
-      orientation: window.screen.orientation?.type || 'unknown'
+      orientation: window.screen.orientation?.type || 'unknown',
     };
   };
 
@@ -149,7 +149,7 @@ export const CompactAbout: React.FC<CompactAboutProps> = ({ isOpen, onClose }) =
           {/* Tech Stack */}
           <div className="compact-about__section">
             <div className="compact-about__tech-stack">
-              <button 
+              <button
                 className="compact-about__tech-item compact-about__tech-item--clickable"
                 onClick={() => setShowScreenInfo(true)}
                 title="Click to view screen information"
@@ -181,8 +181,8 @@ export const CompactAbout: React.FC<CompactAboutProps> = ({ isOpen, onClose }) =
                 <Monitor className="screen-info-modal__icon" />
                 <h3 className="screen-info-modal__title">Screen Information</h3>
               </div>
-              <button 
-                onClick={() => setShowScreenInfo(false)} 
+              <button
+                onClick={() => setShowScreenInfo(false)}
                 className="screen-info-modal__close-btn"
                 aria-label="Close screen info"
               >
@@ -204,7 +204,9 @@ export const CompactAbout: React.FC<CompactAboutProps> = ({ isOpen, onClose }) =
                     </div>
                     <div className="screen-info-modal__item">
                       <span className="screen-info-modal__label">Pixel Ratio:</span>
-                      <span className="screen-info-modal__value">{screenInfo.devicePixelRatio}x</span>
+                      <span className="screen-info-modal__value">
+                        {screenInfo.devicePixelRatio}x
+                      </span>
                     </div>
                     <div className="screen-info-modal__item">
                       <span className="screen-info-modal__label">Color Depth:</span>

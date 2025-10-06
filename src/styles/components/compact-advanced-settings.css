@@ -110,8 +110,8 @@ html.dark .compact-settings__container {
 }
 
 /* === ALTERNATIVE CLOSE BUTTON STYLES === */
-.compact-settings__header button[aria-label*="close"],
-.compact-settings__header button[aria-label*="Close"],
+.compact-settings__header button[aria-label*='close'],
+.compact-settings__header button[aria-label*='Close'],
 .compact-settings__header .close-btn,
 .compact-settings__header .close-button {
   display: flex;
@@ -128,8 +128,8 @@ html.dark .compact-settings__container {
   transition: all 0.2s ease;
 }
 
-.compact-settings__header button[aria-label*="close"]:hover,
-.compact-settings__header button[aria-label*="Close"]:hover,
+.compact-settings__header button[aria-label*='close']:hover,
+.compact-settings__header button[aria-label*='Close']:hover,
 .compact-settings__header .close-btn:hover,
 .compact-settings__header .close-button:hover {
   color: white;
