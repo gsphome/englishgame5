@@ -899,16 +899,9 @@ html.dark .compact-learning-path .compact-learning-path__unit-circle-stats {
 @media (max-width: 400px) {
   .compact-learning-path {
     padding: 0.5rem;
-    /* Modal overlay - centered content */
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    overflow: hidden !important;
+    align-items: flex-start !important;
+    padding-top: 20px;
+    /* Unified 20px from top for all modals */
   }
 
   .compact-learning-path__container {
@@ -1152,9 +1145,8 @@ html.dark .compact-learning-path .compact-learning-path__unit-circle-stats {
 
   .compact-learning-path__header {
     padding: 0.1875rem 0.25rem;
-    /* Ultra minimal header padding */
-    min-height: 2rem;
-    /* Fixed minimal height */
+    min-height: 2.5rem;
+    /* Unified header height for all modals */
   }
 
   .compact-learning-path__title {
@@ -1351,4 +1343,15 @@ html.dark .compact-learning-path .compact-learning-path__unit-circle-stats {
     padding: 0.375rem;
     /* Reduced padding */
   }
-}
+}  /* L
+arger close button for mobile accessibility */
+  .compact-learning-path__header .modal__close-btn {
+    width: 2rem;
+    height: 2rem;
+    padding: 0.375rem;
+  }
+
+  .compact-learning-path__header .modal__close-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }

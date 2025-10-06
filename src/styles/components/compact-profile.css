@@ -852,7 +852,7 @@ html.dark .compact-profile__error {
 @media (max-width: 400px) {
   .compact-profile {
     padding: 0.25rem;
-    align-items: flex-start;
+    align-items: flex-start !important;
     padding-top: 20px;
     /* Unified 20px from top for all modals */
   }
@@ -866,9 +866,8 @@ html.dark .compact-profile__error {
 
   .compact-profile__header {
     padding: 0.1875rem 0.25rem;
-    /* Ultra minimal header padding */
-    min-height: 2rem;
-    /* Fixed minimal height */
+    min-height: 2.5rem;
+    /* Unified header height for all modals */
   }
 
   .compact-profile__title {
@@ -916,4 +915,15 @@ html.dark .compact-profile__error {
     gap: 0.1875rem;
     /* Minimal gap between fields */
   }
-}
+} 
+ /* Larger close button for mobile accessibility */
+  .compact-profile__header .modal__close-btn {
+    width: 2rem;
+    height: 2rem;
+    padding: 0.375rem;
+  }
+
+  .compact-profile__header .modal__close-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }

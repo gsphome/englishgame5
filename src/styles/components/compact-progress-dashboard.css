@@ -348,7 +348,7 @@
 @media (max-width: 400px) {
   .compact-dashboard {
     padding: 0.5rem;
-    align-items: flex-start;
+    align-items: flex-start !important;
     padding-top: 20px;
     /* Unified 20px from top for all modals */
   }
@@ -359,7 +359,9 @@
   }
 
   .compact-dashboard__header {
-    padding: 0.5rem; /* Unified header padding */
+    padding: 0.1875rem 0.25rem;
+    min-height: 2.5rem;
+    /* Unified header height for all modals */
   }
 
   .compact-dashboard__title {
@@ -438,4 +440,15 @@
     max-width: 80vw;
     width: 80vw;
     max-height: 75vh;
+  }  /* 
+Larger close button for mobile accessibility */
+  .compact-dashboard__header .modal__close-btn {
+    width: 2rem;
+    height: 2rem;
+    padding: 0.375rem;
+  }
+
+  .compact-dashboard__header .modal__close-icon {
+    width: 1.25rem;
+    height: 1.25rem;
   }
