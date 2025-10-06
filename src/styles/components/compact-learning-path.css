@@ -1130,12 +1130,10 @@ html.dark .compact-learning-path .compact-learning-path__unit-circle-stats {
   }
 
   .compact-learning-path__container {
-    max-width: calc(100vw - 0.5rem);
-    /* Minimal margin from viewport */
+    max-width: 80vw;
+    width: 80vw;
     max-height: 75vh;
-    /* Much smaller height */
     border-radius: 0.375rem;
-    /* Smaller radius */
   }
 
   .compact-learning-path__header {
