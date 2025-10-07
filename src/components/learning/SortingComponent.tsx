@@ -35,11 +35,13 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
   const [dragOverCategory, setDragOverCategory] = useState<string | null>(null);
   const [showExplanation, setShowExplanation] = useState(false);
   const [selectedTerm, setSelectedTerm] = useState<any>(null);
-  
+
   // Mobile touch support
   const [touchStartPos, setTouchStartPos] = useState<{ x: number; y: number } | null>(null);
   const [isDragging, setIsDragging] = useState(false);
-  const [dragPreview, setDragPreview] = useState<{ word: string; x: number; y: number } | null>(null);
+  const [dragPreview, setDragPreview] = useState<{ word: string; x: number; y: number } | null>(
+    null
+  );
 
   const { updateSessionScore } = useAppStore();
   const { updateUserScore } = useUserStore();
@@ -208,64 +210,68 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
   // Mobile touch handlers
   const handleTouchStart = (e: React.TouchEvent, word: string) => {
     if (showResult) return;
-    
+
     const touch = e.touches[0];
     setTouchStartPos({ x: touch.clientX, y: touch.clientY });
     setDraggedItem(word);
-    
+
     // Prevent scrolling while dragging
     e.preventDefault();
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
     if (!draggedItem || !touchStartPos) return;
-    
+
     const touch = e.touches[0];
     const deltaX = Math.abs(touch.clientX - touchStartPos.x);
     const deltaY = Math.abs(touch.clientY - touchStartPos.y);
-    
+
     // Start dragging if moved enough
     if (!isDragging && (deltaX > 10 || deltaY > 10)) {
       setIsDragging(true);
       setDragPreview({
         word: draggedItem,
         x: touch.clientX,
-        y: touch.clientY
+        y: touch.clientY,
       });
     }
-    
+
     if (isDragging) {
-      setDragPreview(prev => prev ? {
-        ...prev,
-        x: touch.clientX,
-        y: touch.clientY
-      } : null);
-      
+      setDragPreview(prev =>
+        prev
+          ? {
+              ...prev,
+              x: touch.clientX,
+              y: touch.clientY,
+            }
+          : null
+      );
+
       // Find category under touch
       const element = document.elementFromPoint(touch.clientX, touch.clientY);
       const categoryElement = element?.closest('[data-category]');
       const categoryName = categoryElement?.getAttribute('data-category');
-      
+
       setDragOverCategory(categoryName || null);
     }
-    
+
     e.preventDefault();
   };
 
   const handleTouchEnd = (e: React.TouchEvent) => {
     if (!draggedItem) return;
-    
+
     if (isDragging && dragOverCategory) {
       moveWordToCategory(draggedItem, dragOverCategory);
     }
-    
+
     // Reset touch state
     setTouchStartPos(null);
     setIsDragging(false);
     setDragPreview(null);
     setDraggedItem(null);
     setDragOverCategory(null);
-    
+
     e.preventDefault();
   };
 
@@ -520,7 +526,7 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
                       <div
                         key={`${category.name}-${index}-${word}`}
                         onClick={() => handleItemTap(word, category.name)}
-                        onTouchEnd={(e) => {
+                        onTouchEnd={e => {
                           e.preventDefault();
                           handleItemTap(word, category.name);
                         }}
