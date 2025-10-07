@@ -34,7 +34,7 @@
 @import './components/toast.css';
 
 /* Safari Mobile Specific Fixes */
-/* @import './safari-mobile-fixes.css'; */
+@import './safari-mobile-fixes.css';
 
 /* Design System Foundation already imported in index.css */
 

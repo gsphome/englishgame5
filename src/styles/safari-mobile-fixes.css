@@ -1,7 +1,7 @@
-/* Safari Mobile Specific Fixes - SIMPLIFIED APPROACH */
-/* Only target Safari Mobile with surgical precision */
+/* Safari Mobile Specific Fixes - SAFARI ONLY */
+/* Use CSS class applied by JavaScript for precise Safari detection */
 
-@supports (-webkit-touch-callout: none) {
+.browser-safari-mobile {
 
   /* === BASIC SAFARI MOBILE FIXES === */
 
@@ -149,5 +149,38 @@
   html:not(.dark) .main-menu details summary::marker,
   html:not(.dark) .main-menu .chevron {
     color: #6b7280 !important;
+  }
+}
+
+/* === F
+ALLBACK: CSS-only Safari Mobile Detection === */
+/* In case JavaScript detection fails, use CSS feature detection */
+@supports (-webkit-touch-callout: none) and (-webkit-overflow-scrolling: touch) {
+  @media screen and (max-device-width: 768px) and (-webkit-min-device-pixel-ratio: 1) {
+
+    /* Only apply if NOT Chrome (Chrome doesn't support some Safari-specific features) */
+    html:not(.browser-chrome):not(.dark) .main-menu__view-btn--active {
+      background: #3b82f6 !important;
+      color: #ffffff !important;
+      border: 1px solid #3b82f6 !important;
+    }
+
+    html:not(.browser-chrome):not(.dark) .search-bar::before {
+      content: "🔍";
+      position: absolute;
+      left: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    html:not(.browser-chrome):not(.dark) .search-bar {
+      position: relative;
+    }
+
+    html:not(.browser-chrome):not(.dark) .search-bar input {
+      padding-left: 2.5rem !important;
+    }
   }
 }

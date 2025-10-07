@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import './index.css';
 import { initializeTheme } from './utils/themeInitializer';
+import './utils/safariDetection';
 
 try {
   // Debug: Check if React is properly loaded
