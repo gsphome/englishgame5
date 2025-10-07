@@ -75,7 +75,9 @@ export const Header: React.FC<HeaderProps> = () => {
             aria-controls="navigation-menu"
           >
             <Menu className="header-redesigned__menu-icon" />
-            <span className="sr-only">{showSideMenu ? t('navigation.closeMenu') : t('navigation.openMenuShort')}</span>
+            <span className="sr-only">
+              {showSideMenu ? t('navigation.closeMenu') : t('navigation.openMenuShort')}
+            </span>
           </button>
           <div className="header-redesigned__brand">
             <FluentFlowLogo size="md" className="header-redesigned__logo" />
@@ -171,7 +173,9 @@ export const Header: React.FC<HeaderProps> = () => {
             <div className="header-side-menu__content">
               {/* Navigation Section */}
               <div className="header-side-menu__section">
-                <h3 className="header-side-menu__section-title">📱 {t('navigation.mainNavigation')}</h3>
+                <h3 className="header-side-menu__section-title">
+                  📱 {t('navigation.mainNavigation')}
+                </h3>
                 <button
                   onClick={handleGoToMenu}
                   className="header-side-menu__item"
@@ -238,7 +242,7 @@ export const Header: React.FC<HeaderProps> = () => {
                 <h3 className="header-side-menu__section-title">
                   👤 {user ? t('modals.userProfile') : t('auth.userAccount', 'User Account')}
                 </h3>
-                
+
                 {user ? (
                   // Logged in user options
                   <>

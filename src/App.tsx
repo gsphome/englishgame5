@@ -79,7 +79,7 @@ const AppContent: React.FC = () => {
 
         <MemoizedToastContainer />
       </div>
-      
+
       {/* Orientation Lock - Only visible on mobile landscape */}
       <OrientationLock />
     </ErrorBoundary>
