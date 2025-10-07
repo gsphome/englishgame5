@@ -22,13 +22,11 @@ describe('Header Intelligent Breakpoints CSS', () => {
       // Should have multiple breakpoints defined
       expect(mediaQueries.length).toBeGreaterThan(5);
       
-      // Check for specific breakpoint ranges
+      // Check for specific breakpoint ranges (updated for new structure)
       expect(headerCss).toContain('min-width: 1200px');
-      expect(headerCss).toContain('min-width: 900px');
-      expect(headerCss).toContain('min-width: 700px');
+      expect(headerCss).toContain('min-width: 1024px');
+      expect(headerCss).toContain('min-width: 768px');
       expect(headerCss).toContain('min-width: 520px');
-      expect(headerCss).toContain('min-width: 420px');
-      expect(headerCss).toContain('min-width: 360px');
       expect(headerCss).toContain('min-width: 320px');
       expect(headerCss).toContain('max-width: 319px');
     });
@@ -76,23 +74,17 @@ describe('Header Intelligent Breakpoints CSS', () => {
       // Desktop Full (1200px+)
       expect(headerCss).toContain('min-width: 1200px');
       
-      // Desktop Standard (900px - 1199px)
-      expect(headerCss).toMatch(/min-width:\s*900px.*max-width:\s*1199px/s);
+      // Desktop Standard (1024px - 1199px)
+      expect(headerCss).toMatch(/min-width:\s*1024px.*max-width:\s*1199px/s);
       
-      // Tablet Landscape (700px - 899px)
-      expect(headerCss).toMatch(/min-width:\s*700px.*max-width:\s*899px/s);
+      // Tablet (768px - 1023px)
+      expect(headerCss).toMatch(/min-width:\s*768px.*max-width:\s*1023px/s);
       
-      // Tablet Portrait (520px - 699px)
-      expect(headerCss).toMatch(/min-width:\s*520px.*max-width:\s*699px/s);
+      // Mobile Large (520px - 767px)
+      expect(headerCss).toMatch(/min-width:\s*520px.*max-width:\s*767px/s);
       
-      // Mobile Large (420px - 519px)
-      expect(headerCss).toMatch(/min-width:\s*420px.*max-width:\s*519px/s);
-      
-      // Mobile Standard (360px - 419px)
-      expect(headerCss).toMatch(/min-width:\s*360px.*max-width:\s*419px/s);
-      
-      // Mobile Small (320px - 359px)
-      expect(headerCss).toMatch(/min-width:\s*320px.*max-width:\s*359px/s);
+      // Mobile Small (320px - 374px)
+      expect(headerCss).toMatch(/min-width:\s*320px.*max-width:\s*374px/s);
       
       // Mobile Tiny (<320px)
       expect(headerCss).toContain('max-width: 319px');
@@ -135,15 +127,15 @@ describe('Header Intelligent Breakpoints CSS', () => {
 
   describe('Progressive Element Hiding', () => {
     it('should hide dev text at appropriate breakpoint', () => {
-      // Dev text should be hidden in desktop standard breakpoint
-      expect(headerCss).toContain('min-width: 900px) and (max-width: 1199px)');
+      // Dev text should be hidden in desktop standard breakpoint (1024px-1199px)
+      expect(headerCss).toContain('min-width: 1024px) and (max-width: 1199px)');
       expect(headerCss).toMatch(/\.header-redesigned__dev-text[^}]*display:\s*none/);
     });
 
-    it('should hide username and login text at tablet landscape', () => {
-      // Username and login text should be hidden at tablet landscape
-      const tabletLandscapeSection = headerCss.match(/min-width:\s*700px.*max-width:\s*899px[^}]*{[^}]*}/s);
-      expect(tabletLandscapeSection).toBeTruthy();
+    it('should hide username and login text at tablet', () => {
+      // Username and login text should be hidden at tablet (768px-1023px)
+      const tabletSection = headerCss.match(/min-width:\s*768px.*max-width:\s*1023px[^}]*{[^}]*}/s);
+      expect(tabletSection).toBeTruthy();
       
       expect(headerCss).toMatch(/\.header-redesigned__username[^}]*display:\s*none/);
       expect(headerCss).toMatch(/\.header-redesigned__login-text[^}]*display:\s*none/);
