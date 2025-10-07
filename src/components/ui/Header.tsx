@@ -69,13 +69,13 @@ export const Header: React.FC<HeaderProps> = () => {
           <button
             onClick={handleMenuToggle}
             className="header-redesigned__menu-btn header-redesigned__menu-btn--primary"
-            title="Abrir menú de navegación y configuración"
-            aria-label="Abrir menú de navegación y configuración"
+            title={t('navigation.openMenu')}
+            aria-label={t('navigation.openMenu')}
             aria-expanded={showSideMenu}
             aria-controls="navigation-menu"
           >
             <Menu className="header-redesigned__menu-icon" />
-            <span className="sr-only">{showSideMenu ? 'Cerrar menú' : 'Abrir menú'}</span>
+            <span className="sr-only">{showSideMenu ? t('navigation.closeMenu') : t('navigation.openMenuShort')}</span>
           </button>
           <div className="header-redesigned__brand">
             <FluentFlowLogo size="md" className="header-redesigned__logo" />
@@ -116,10 +116,10 @@ export const Header: React.FC<HeaderProps> = () => {
               <button
                 onClick={() => setShowProfileForm(true)}
                 className="header-redesigned__login-btn header-redesigned__login-btn--primary"
-                aria-label="Login to your account"
+                aria-label={t('auth.loginToAccount')}
               >
                 <User className="header-redesigned__user-icon" />
-                <span className="header-redesigned__login-text">Login</span>
+                <span className="header-redesigned__login-text">{t('auth.login')}</span>
               </button>
             </div>
           )}
@@ -165,17 +165,17 @@ export const Header: React.FC<HeaderProps> = () => {
           >
             <div className="header-side-menu__header">
               <h2 className="header-side-menu__title">FluentFlow</h2>
-              <p className="header-side-menu__subtitle">Navegación y Configuración</p>
+              <p className="header-side-menu__subtitle">{t('navigation.navigationAndSettings')}</p>
             </div>
 
             <div className="header-side-menu__content">
               {/* Navigation Section */}
               <div className="header-side-menu__section">
-                <h3 className="header-side-menu__section-title">📱 Navegación Principal</h3>
+                <h3 className="header-side-menu__section-title">📱 {t('navigation.mainNavigation')}</h3>
                 <button
                   onClick={handleGoToMenu}
                   className="header-side-menu__item"
-                  aria-label="Ir al menú principal de módulos"
+                  aria-label={t('auth.goToMainMenu')}
                 >
                   <Menu className="header-side-menu__icon" aria-hidden="true" />
                   <span className="header-side-menu__text">{t('navigation.mainMenu')}</span>
@@ -186,7 +186,7 @@ export const Header: React.FC<HeaderProps> = () => {
                     setShowSideMenu(false);
                   }}
                   className="header-side-menu__item"
-                  aria-label="Ver dashboard completo de progreso y estadísticas"
+                  aria-label={t('auth.viewProgressDashboard')}
                 >
                   <BarChart3 className="header-side-menu__icon" aria-hidden="true" />
                   <span className="header-side-menu__text">{t('modals.progressDashboard')}</span>
@@ -197,7 +197,7 @@ export const Header: React.FC<HeaderProps> = () => {
                     setShowSideMenu(false);
                   }}
                   className="header-side-menu__item"
-                  aria-label="Ver progresión de módulos y ruta de aprendizaje"
+                  aria-label={t('auth.viewLearningPath')}
                 >
                   <BookOpen className="header-side-menu__icon" aria-hidden="true" />
                   <span className="header-side-menu__text">{t('modals.learningPath')}</span>
@@ -226,7 +226,7 @@ export const Header: React.FC<HeaderProps> = () => {
                     setShowAbout(true);
                     setShowSideMenu(false);
                   }}
-                  aria-label="Información sobre la aplicación"
+                  aria-label={t('auth.aboutApplication')}
                 >
                   <User className="header-side-menu__icon" aria-hidden="true" />
                   <span className="header-side-menu__text">{t('modals.aboutFluentFlow')}</span>
@@ -248,7 +248,7 @@ export const Header: React.FC<HeaderProps> = () => {
                         setShowSideMenu(false);
                       }}
                       className="header-side-menu__item"
-                      aria-label="Editar perfil de usuario"
+                      aria-label={t('auth.editUserProfile')}
                     >
                       <User className="header-side-menu__icon" aria-hidden="true" />
                       <span className="header-side-menu__text">{t('modals.editProfile')}</span>
@@ -275,7 +275,7 @@ export const Header: React.FC<HeaderProps> = () => {
                       setShowSideMenu(false);
                     }}
                     className="header-side-menu__item header-side-menu__item--login"
-                    aria-label={t('auth.login', 'Login to your account')}
+                    aria-label={t('auth.loginToAccount')}
                   >
                     <User className="header-side-menu__icon" aria-hidden="true" />
                     <span className="header-side-menu__text">{t('auth.login', 'Login')}</span>
