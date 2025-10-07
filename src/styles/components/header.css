@@ -807,43 +807,9 @@ html.dark {
   }
 }
 
-/* MOBILE STANDARD: 375px - 519px - Optimized for score-display */
-@media (min-width: 375px) and (max-width: 519px) {
-  .header-redesigned__container {
-    grid-template-columns: 60px 1fr 60px; /* Más espacio para centro */
-    padding: 0.25rem 0.5rem;
-    min-height: 36px;
-    gap: 0.25rem;
-  }
-
-  .header-redesigned__left,
-  .header-redesigned__right {
-    gap: 0.25rem;
-  }
-
-  /* Hide all text and logo */
-  .header-redesigned__title,
-  .header-redesigned__username,
-  .header-redesigned__login-text,
-  .header-redesigned__dev-text,
-  .header-redesigned__logo {
-    display: none;
-  }
-
-  .header-redesigned__menu-btn,
-  .header-redesigned__user-btn,
-  .header-redesigned__login-btn {
-    min-width: 32px;
-    min-height: 32px;
-    padding: 4px;
-  }
-
-  .header-redesigned__menu-icon,
-  .header-redesigned__user-icon {
-    width: 16px;
-    height: 16px;
-  }
-}
+/* MOBILE STANDARD: 375px - 519px - Removed unnecessary compression */
+/* This breakpoint was removed to prevent unnecessary header compression at 380px */
+/* The general mobile rules will apply instead, providing better spacing */
 
 /* MOBILE SMALL: 320px - 374px */
 @media (min-width: 320px) and (max-width: 374px) {
@@ -916,6 +882,47 @@ html.dark {
 @media (max-width: 767px) {
   .header-redesigned__user-info {
     display: none;
+  }
+}
+
+/* === CENTER ALIGNMENT OPTIMIZATION === */
+
+/* CRITICAL: Perfect centering for mobile breakpoints */
+@media (max-width: 519px) {
+  .header-redesigned__center {
+    justify-content: center !important;
+    align-items: center !important;
+    display: flex !important;
+    width: 100% !important;
+    text-align: center !important;
+    position: relative !important;
+  }
+
+  /* Force score-display to center with absolute positioning fallback */
+  .header-redesigned__center > * {
+    margin: 0 auto !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+
+  /* Ensure all score-display elements are centered */
+  .score-display-compact,
+  .score-display-compact__container,
+  .score-display-compact__values {
+    margin: 0 auto !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  /* Override any conflicting grid or flex rules */
+  .header-redesigned__container {
+    grid-template-columns: 60px 1fr 60px !important;
+    justify-items: center !important;
+    align-items: center !important;
   }
 }
 
