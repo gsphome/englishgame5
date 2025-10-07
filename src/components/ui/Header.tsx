@@ -233,36 +233,55 @@ export const Header: React.FC<HeaderProps> = () => {
                 </button>
               </div>
 
-              {/* User Profile Section */}
-              {user && (
-                <div className="header-side-menu__section">
-                  <h3 className="header-side-menu__section-title">👤 {t('modals.userProfile')}</h3>
+              {/* User Profile Section - Always visible for consistency */}
+              <div className="header-side-menu__section">
+                <h3 className="header-side-menu__section-title">
+                  👤 {user ? t('modals.userProfile') : t('auth.userAccount', 'User Account')}
+                </h3>
+                
+                {user ? (
+                  // Logged in user options
+                  <>
+                    <button
+                      onClick={() => {
+                        setShowProfileForm(true);
+                        setShowSideMenu(false);
+                      }}
+                      className="header-side-menu__item"
+                      aria-label="Editar perfil de usuario"
+                    >
+                      <User className="header-side-menu__icon" aria-hidden="true" />
+                      <span className="header-side-menu__text">{t('modals.editProfile')}</span>
+                    </button>
+
+                    <button
+                      onClick={() => {
+                        localStorage.clear();
+                        sessionStorage.clear();
+                        window.location.reload();
+                      }}
+                      className="header-side-menu__item header-side-menu__item--logout"
+                      aria-label={t('auth.logout', 'Logout')}
+                    >
+                      <LogOut className="header-side-menu__icon" aria-hidden="true" />
+                      <span className="header-side-menu__text">{t('auth.logout', 'Logout')}</span>
+                    </button>
+                  </>
+                ) : (
+                  // Not logged in - show login option
                   <button
                     onClick={() => {
                       setShowProfileForm(true);
                       setShowSideMenu(false);
                     }}
-                    className="header-side-menu__item"
-                    aria-label="Editar perfil de usuario"
+                    className="header-side-menu__item header-side-menu__item--login"
+                    aria-label={t('auth.login', 'Login to your account')}
                   >
                     <User className="header-side-menu__icon" aria-hidden="true" />
-                    <span className="header-side-menu__text">{t('modals.editProfile')}</span>
+                    <span className="header-side-menu__text">{t('auth.login', 'Login')}</span>
                   </button>
-
-                  <button
-                    onClick={() => {
-                      localStorage.clear();
-                      sessionStorage.clear();
-                      window.location.reload();
-                    }}
-                    className="header-side-menu__item header-side-menu__item--logout"
-                    aria-label={t('auth.logout', 'Logout')}
-                  >
-                    <LogOut className="header-side-menu__icon" aria-hidden="true" />
-                    <span className="header-side-menu__text">{t('auth.logout', 'Logout')}</span>
-                  </button>
-                </div>
-              )}
+                )}
+              </div>
             </div>
           </nav>
         </div>

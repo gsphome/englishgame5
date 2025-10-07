@@ -578,6 +578,19 @@ html.dark {
   color: var(--theme-error, #ef4444);
 }
 
+.header-side-menu__item--login {
+  border-top: 1px solid var(--theme-border-soft, #e5e7eb);
+  margin-top: 0.5rem;
+  padding-top: 0.75rem;
+  color: var(--theme-primary-blue, #3b82f6);
+  font-weight: 500;
+}
+
+.header-side-menu__item--login:hover {
+  background-color: rgba(59, 130, 246, 0.1);
+  color: var(--theme-primary-blue-hover, #2563eb);
+}
+
 .header-side-menu__item:active {
   background-color: var(--menu-item-active);
   transform: translateX(2px);

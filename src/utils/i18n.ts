@@ -36,7 +36,9 @@ export const translations = {
       configuration: 'Configuration',
     },
     auth: {
+      login: 'Login',
       logout: 'Logout',
+      userAccount: 'User Account',
     },
     modals: {
       progressDashboard: 'Progress Dashboard',
@@ -353,7 +355,9 @@ export const translations = {
       configuration: 'Configuración',
     },
     auth: {
+      login: 'Iniciar Sesión',
       logout: 'Cerrar Sesión',
+      userAccount: 'Cuenta de Usuario',
     },
     modals: {
       progressDashboard: 'Dashboard de Progreso',
