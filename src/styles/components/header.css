@@ -609,16 +609,57 @@ html.dark {
   stroke: currentColor;
 }
 
-/* === UNIFIED HEADER SYSTEM - PROFESSIONAL DESIGN === */
-/* Consistent heights, clean breakpoints, predictable behavior */
+/* === MODERN HEADER SYSTEM - CLEAN GRID DESIGN === */
+/* Professional, scalable, and consistent across all devices */
 
-/* DESKTOP: 1024px+ - Full experience */
-@media (min-width: 1024px) {
+/* === CORE GRID SYSTEM === */
+.header-redesigned__container {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas: "left center right";
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.5rem 1rem;
+  min-height: 48px;
+}
+
+.header-redesigned__left {
+  grid-area: left;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 10;
+}
+
+.header-redesigned__center {
+  grid-area: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0; /* Allow shrinking */
+  z-index: 1;
+}
+
+.header-redesigned__right {
+  grid-area: right;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 10;
+}
+
+/* === RESPONSIVE BREAKPOINTS === */
+
+/* DESKTOP: 1200px+ - Full experience */
+@media (min-width: 1200px) {
   .header-redesigned__container {
-    min-height: 44px; /* Igual a min-height de botones */
-    padding: 0 2rem;
-    max-width: 1200px;
-    align-items: center; /* Centrado vertical perfecto */
+    grid-template-columns: 280px 1fr 200px;
+    padding: 0.75rem 2rem;
+    min-height: 56px;
+    gap: 1rem;
   }
 
   .header-redesigned__left,
@@ -626,7 +667,7 @@ html.dark {
     gap: 1rem;
   }
 
-  /* All elements visible */
+  /* Show all elements */
   .header-redesigned__title,
   .header-redesigned__username,
   .header-redesigned__login-text {
@@ -634,8 +675,48 @@ html.dark {
   }
 
   .header-redesigned__logo {
-    width: 44px; /* Igual a botones */
-    height: 44px; /* Igual a botones */
+    width: 48px;
+    height: 48px;
+    font-size: 1.875rem;
+  }
+
+  .header-redesigned__menu-btn,
+  .header-redesigned__user-btn,
+  .header-redesigned__login-btn {
+    min-width: 48px;
+    min-height: 48px;
+    padding: 12px;
+  }
+}
+
+/* DESKTOP STANDARD: 1024px - 1199px */
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .header-redesigned__container {
+    grid-template-columns: 240px 1fr 180px;
+    padding: 0.75rem 1.5rem;
+    min-height: 52px;
+    gap: 0.875rem;
+  }
+
+  .header-redesigned__left,
+  .header-redesigned__right {
+    gap: 0.875rem;
+  }
+
+  /* Hide secondary text */
+  .header-redesigned__username,
+  .header-redesigned__login-text,
+  .header-redesigned__dev-text {
+    display: none;
+  }
+
+  .header-redesigned__title {
+    display: block;
+  }
+
+  .header-redesigned__logo {
+    width: 44px;
+    height: 44px;
     font-size: 1.75rem;
   }
 
@@ -648,12 +729,13 @@ html.dark {
   }
 }
 
-/* TABLET: 768px - 1023px - Simplified experience */
+/* TABLET: 768px - 1023px */
 @media (min-width: 768px) and (max-width: 1023px) {
   .header-redesigned__container {
-    min-height: 40px; /* Igual a min-height de botones */
-    padding: 0 1.5rem;
-    align-items: center; /* Centrado vertical perfecto */
+    grid-template-columns: 200px 1fr 160px;
+    padding: 0.625rem 1.25rem;
+    min-height: 48px;
+    gap: 0.75rem;
   }
 
   .header-redesigned__left,
@@ -661,21 +743,21 @@ html.dark {
     gap: 0.75rem;
   }
 
-  /* Hide secondary elements */
+  /* Hide all text except title */
   .header-redesigned__username,
   .header-redesigned__login-text,
   .header-redesigned__dev-text {
     display: none;
   }
 
-  /* Keep title visible */
   .header-redesigned__title {
     display: block;
+    font-size: 1.125rem;
   }
 
   .header-redesigned__logo {
-    width: 40px; /* Igual a botones */
-    height: 40px; /* Igual a botones */
+    width: 40px;
+    height: 40px;
     font-size: 1.5rem;
   }
 
@@ -688,12 +770,13 @@ html.dark {
   }
 }
 
-/* MOBILE LARGE: 520px - 767px - Logo only */
+/* MOBILE LARGE: 520px - 767px */
 @media (min-width: 520px) and (max-width: 767px) {
   .header-redesigned__container {
-    min-height: 36px; /* Igual a min-height de botones */
-    padding: 0 1rem;
-    align-items: center; /* Centrado vertical perfecto */
+    grid-template-columns: 120px 1fr 100px;
+    padding: 0.5rem 1rem;
+    min-height: 44px;
+    gap: 0.5rem;
   }
 
   .header-redesigned__left,
@@ -710,8 +793,8 @@ html.dark {
   }
 
   .header-redesigned__logo {
-    width: 36px; /* Igual a botones */
-    height: 36px; /* Igual a botones */
+    width: 36px;
+    height: 36px;
     font-size: 1.25rem;
   }
 
@@ -724,12 +807,13 @@ html.dark {
   }
 }
 
-/* MOBILE SMALL: 320px - 519px - Ultra minimal */
-@media (min-width: 320px) and (max-width: 519px) {
+/* MOBILE STANDARD: 375px - 519px - Optimized for score-display */
+@media (min-width: 375px) and (max-width: 519px) {
   .header-redesigned__container {
-    min-height: 32px; /* Igual a min-height de botones */
-    padding: 0 0.75rem;
-    align-items: center; /* Centrado vertical perfecto */
+    grid-template-columns: 60px 1fr 60px; /* Más espacio para centro */
+    padding: 0.25rem 0.5rem;
+    min-height: 36px;
+    gap: 0.25rem;
   }
 
   .header-redesigned__left,
@@ -741,10 +825,7 @@ html.dark {
   .header-redesigned__title,
   .header-redesigned__username,
   .header-redesigned__login-text,
-  .header-redesigned__dev-text {
-    display: none;
-  }
-
+  .header-redesigned__dev-text,
   .header-redesigned__logo {
     display: none;
   }
@@ -764,17 +845,18 @@ html.dark {
   }
 }
 
-/* MOBILE TINY: <320px - Emergency fallback */
-@media (max-width: 319px) {
+/* MOBILE SMALL: 320px - 374px */
+@media (min-width: 320px) and (max-width: 374px) {
   .header-redesigned__container {
-    min-height: 28px; /* Igual a min-height de botones */
-    padding: 0 0.5rem;
-    align-items: center; /* Centrado vertical perfecto */
+    grid-template-columns: 60px 1fr 60px;
+    padding: 0.25rem 0.5rem;
+    min-height: 36px;
+    gap: 0.25rem;
   }
 
   .header-redesigned__left,
   .header-redesigned__right {
-    gap: 0.125rem;
+    gap: 0.25rem;
   }
 
   .header-redesigned__menu-btn,
@@ -792,9 +874,47 @@ html.dark {
   }
 }
 
-/* Dev indicator hidden on small screens */
-@media (max-width: 767px) {
+/* MOBILE TINY: <320px - Emergency */
+@media (max-width: 319px) {
+  .header-redesigned__container {
+    grid-template-columns: 50px 1fr 50px;
+    padding: 0.125rem 0.25rem;
+    min-height: 32px;
+    gap: 0.125rem;
+  }
+
+  .header-redesigned__left,
+  .header-redesigned__right {
+    gap: 0.125rem;
+  }
+
+  .header-redesigned__menu-btn,
+  .header-redesigned__user-btn,
+  .header-redesigned__login-btn {
+    min-width: 24px;
+    min-height: 24px;
+    padding: 1px;
+  }
+
+  .header-redesigned__menu-icon,
+  .header-redesigned__user-icon {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+/* === ELEMENT VISIBILITY RULES === */
+
+/* Dev indicator visibility */
+@media (max-width: 1023px) {
   .header-redesigned__dev-indicator {
+    display: none;
+  }
+}
+
+/* User info visibility */
+@media (max-width: 767px) {
+  .header-redesigned__user-info {
     display: none;
   }
 }

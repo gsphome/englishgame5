@@ -588,52 +588,59 @@
   }
 }
 
-/* CRITICAL: Compact design for 500px screens - Header priority */
-@media (max-width: 500px) {
+/* CRITICAL: Mobile design for 519px and below - 3 elements only */
+@media (max-width: 519px) {
   /* Hide world icon completely */
   .score-display-compact__icon {
     display: none !important;
   }
 
-  /* Ultra compact containers for header priority */
+  /* Hide level to show only 3 core elements */
+  .score-display-compact__level {
+    display: none !important;
+  }
+
+  /* Ultra compact containers - centered design */
   .score-display-compact__container--in-game {
-    min-width: 60px !important;
-    max-width: 70px !important;
+    min-width: 80px !important;
+    max-width: 100px !important;
   }
 
   .score-display-compact__container--full {
-    min-width: 70px !important;
-    max-width: 80px !important;
+    min-width: 90px !important;
+    max-width: 120px !important;
   }
 
   .score-display-compact--menu {
-    min-width: 50px !important;
-    max-width: 60px !important;
+    min-width: 70px !important;
+    max-width: 90px !important;
   }
 
-  /* Compact elements */
+  /* Compact elements - 3 elements centered */
   .score-display-compact__container {
-    padding: 0 0.25rem !important;
+    padding: 0 0.375rem !important;
     height: 32px !important; /* Match header button height */
+    justify-content: center !important; /* Center the 3 elements */
   }
 
   .score-display-compact__accuracy,
   .score-display-compact__points {
-    min-width: 12px;
-    font-size: 0.75rem;
-  }
-
-  .score-display-compact__level-badge {
-    font-size: 0.7rem;
-    padding: 0.125rem 0.25rem;
     min-width: 16px;
+    font-size: 0.75rem;
+    text-align: center;
   }
 
   .score-display-compact__progress-bar {
-    width: 20px;
+    display: none !important; /* Hide to keep only 3 elements */
   }
 
   .score-display-compact__values {
-    gap: 0.125rem;
+    gap: 0.25rem;
+    justify-content: center;
+  }
+
+  /* Hide dividers for clean 3-element design */
+  .score-display-compact__divider {
+    display: none !important;
   }
 }
