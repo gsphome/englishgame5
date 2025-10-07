@@ -176,12 +176,12 @@ class AIComplianceValidator {
     
     if (overallPassed) {
       console.log('  ✅ Architecture is AI-ready!');
-      console.log('  📝 Use the patterns documented in src/styles/README-AI.md');
+      console.log('  📝 Use the patterns documented in docs/architecture/ai-css-development-guide.md');
       console.log('  🔄 Run this validation regularly during development');
       console.log('  📚 Refer to example-component.css for new components');
     } else {
       console.log('  🔧 Fix validation errors before proceeding');
-      console.log('  📖 Review AI development guidelines in src/styles/README-AI.md');
+      console.log('  📖 Review AI development guidelines in docs/architecture/ai-css-development-guide.md');
       console.log('  🎯 Focus on areas with lowest compliance scores');
       console.log('  🔄 Re-run validation after fixes');
     }

@@ -391,9 +391,9 @@ These anti-patterns are automatically detected and prevented by:
 
 ## Resources
 
-- [AI Development Guide](./README-AI.md)
-- [Example Component](./components/example-component.css)
-- [Design Token System](./design-system/color-palette.css)
+- [AI Development Guide](./ai-css-development-guide.md)
+- [Example Component](../../src/styles/components/example-component.css)
+- [Design Token System](../../src/styles/design-system/color-palette.css)
 - [BEM Methodology](https://getbem.com/)
 
 Remember: The goal is to create predictable, maintainable, and AI-friendly CSS that automatically adapts to theme contexts while following strict architectural patterns.

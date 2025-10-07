@@ -581,8 +581,8 @@ npm run test:ai-compliance --skip-patterns --skip-tokens
 ## Getting Help
 
 ### Internal Resources
-- [AI Development Guide](../src/styles/README-AI.md)
-- [AI Anti-Patterns](../src/styles/AI-ANTI-PATTERNS.md)
+- [AI Development Guide](./architecture/ai-css-development-guide.md)
+- [AI Anti-Patterns](./architecture/ai-anti-patterns.md)
 - [Example Component](../src/styles/components/example-component.css)
 
 ### Validation Commands

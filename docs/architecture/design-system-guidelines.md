@@ -238,7 +238,7 @@ color: var(--header-text-secondary); /* Secondary text */
 src/styles/
 ├── design-system/
 │   ├── color-palette.css          # This file
-│   └── enhancement-guidelines.md  # This document
+│   └── (moved to docs/architecture/design-system-guidelines.md)
 ├── components/
 │   ├── enhancements/
 │   │   ├── daily-challenge.css

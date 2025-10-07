@@ -63,8 +63,8 @@ Task 12 "Final validation and AI-readiness verification" has been completed succ
 ### 2. AI Development Documentation ✅
 
 **Core Documentation Created:**
-- `src/styles/README-AI.md` - Comprehensive AI development guide (existing, enhanced)
-- `src/styles/AI-ANTI-PATTERNS.md` - Anti-patterns to avoid (existing, enhanced)
+- `docs/architecture/ai-css-development-guide.md` - Comprehensive AI development guide (existing, enhanced)
+- `docs/architecture/ai-anti-patterns.md` - Anti-patterns to avoid (existing, enhanced)
 - `docs/ai-development-workflow.md` - Complete AI development workflow
 - `docs/ai-troubleshooting-guide.md` - Common issues and solutions
 - `docs/ai-safe-modification-patterns.md` - Safe change guidelines
@@ -224,8 +224,8 @@ The architecture is now ready to support AI-driven development with clear guidel
 - [AI Development Workflow](./ai-development-workflow.md)
 - [AI Troubleshooting Guide](./ai-troubleshooting-guide.md)
 - [AI-Safe Modification Patterns](./ai-safe-modification-patterns.md)
-- [AI Development Guide](../src/styles/README-AI.md)
-- [AI Anti-Patterns](../src/styles/AI-ANTI-PATTERNS.md)
+- [AI Development Guide](./architecture/ai-css-development-guide.md)
+- [AI Anti-Patterns](./architecture/ai-anti-patterns.md)
 
 ---
 

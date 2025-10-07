@@ -25,8 +25,8 @@ npm run test:bem
 #### 1.2 Architecture Understanding
 Before making any changes, AI developers must:
 
-1. **Read the AI Development Guide**: `src/styles/README-AI.md`
-2. **Review Anti-Patterns**: `src/styles/AI-ANTI-PATTERNS.md`
+1. **Read the AI Development Guide**: `docs/architecture/ai-css-development-guide.md`
+2. **Review Anti-Patterns**: `docs/architecture/ai-anti-patterns.md`
 3. **Study Example Component**: `src/styles/components/example-component.css`
 4. **Understand Design Tokens**: `src/styles/design-system/color-palette.css`
 
@@ -635,8 +635,8 @@ The workflow is designed to be iterative and supportive, providing clear guidanc
 ## Resources
 
 ### Core Documentation
-- [AI Development Guide](../src/styles/README-AI.md) - Comprehensive AI development patterns
-- [AI Anti-Patterns](../src/styles/AI-ANTI-PATTERNS.md) - Patterns to avoid
+- [AI Development Guide](./architecture/ai-css-development-guide.md) - Comprehensive AI development patterns
+- [AI Anti-Patterns](./architecture/ai-anti-patterns.md) - Patterns to avoid
 - [Example Component](../src/styles/components/example-component.css) - Reference implementation
 
 ### Troubleshooting and Support
