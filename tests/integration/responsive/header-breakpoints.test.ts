@@ -113,15 +113,14 @@ describe('Header Intelligent Breakpoints CSS', () => {
     });
 
     it('should have icon size adjustments for mobile', () => {
-      // Check for icon size rules
+      // Check for icon size rules (updated for new structure)
       expect(headerCss).toContain('width: 16px');
       expect(headerCss).toContain('height: 16px');
       expect(headerCss).toContain('width: 14px');
       expect(headerCss).toContain('height: 14px');
       expect(headerCss).toContain('width: 12px');
       expect(headerCss).toContain('height: 12px');
-      expect(headerCss).toContain('width: 10px');
-      expect(headerCss).toContain('height: 10px');
+      // Removed 10px icons as they no longer exist in new structure
     });
   });
 
