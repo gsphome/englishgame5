@@ -35,6 +35,11 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
   const [dragOverCategory, setDragOverCategory] = useState<string | null>(null);
   const [showExplanation, setShowExplanation] = useState(false);
   const [selectedTerm, setSelectedTerm] = useState<any>(null);
+  
+  // Mobile touch support
+  const [touchStartPos, setTouchStartPos] = useState<{ x: number; y: number } | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragPreview, setDragPreview] = useState<{ word: string; x: number; y: number } | null>(null);
 
   const { updateSessionScore } = useAppStore();
   const { updateUserScore } = useUserStore();
@@ -176,6 +181,7 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
     }
   }, [module]);
 
+  // Desktop drag handlers
   const handleDragStart = (e: React.DragEvent, word: string) => {
     setDraggedItem(word);
     e.dataTransfer.effectAllowed = 'move';
@@ -196,13 +202,82 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
     e.preventDefault();
     if (!draggedItem) return;
 
+    moveWordToCategory(draggedItem, categoryName);
+  };
+
+  // Mobile touch handlers
+  const handleTouchStart = (e: React.TouchEvent, word: string) => {
+    if (showResult) return;
+    
+    const touch = e.touches[0];
+    setTouchStartPos({ x: touch.clientX, y: touch.clientY });
+    setDraggedItem(word);
+    
+    // Prevent scrolling while dragging
+    e.preventDefault();
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!draggedItem || !touchStartPos) return;
+    
+    const touch = e.touches[0];
+    const deltaX = Math.abs(touch.clientX - touchStartPos.x);
+    const deltaY = Math.abs(touch.clientY - touchStartPos.y);
+    
+    // Start dragging if moved enough
+    if (!isDragging && (deltaX > 10 || deltaY > 10)) {
+      setIsDragging(true);
+      setDragPreview({
+        word: draggedItem,
+        x: touch.clientX,
+        y: touch.clientY
+      });
+    }
+    
+    if (isDragging) {
+      setDragPreview(prev => prev ? {
+        ...prev,
+        x: touch.clientX,
+        y: touch.clientY
+      } : null);
+      
+      // Find category under touch
+      const element = document.elementFromPoint(touch.clientX, touch.clientY);
+      const categoryElement = element?.closest('[data-category]');
+      const categoryName = categoryElement?.getAttribute('data-category');
+      
+      setDragOverCategory(categoryName || null);
+    }
+    
+    e.preventDefault();
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (!draggedItem) return;
+    
+    if (isDragging && dragOverCategory) {
+      moveWordToCategory(draggedItem, dragOverCategory);
+    }
+    
+    // Reset touch state
+    setTouchStartPos(null);
+    setIsDragging(false);
+    setDragPreview(null);
+    setDraggedItem(null);
+    setDragOverCategory(null);
+    
+    e.preventDefault();
+  };
+
+  // Unified move function for both desktop and mobile
+  const moveWordToCategory = (word: string, categoryName: string) => {
     // Remove from available words
-    setAvailableWords(prev => prev.filter(word => word !== draggedItem));
+    setAvailableWords(prev => prev.filter(w => w !== word));
 
     // Add to category
     setSortedItems(prev => ({
       ...prev,
-      [categoryName]: [...(prev[categoryName] || []), draggedItem],
+      [categoryName]: [...(prev[categoryName] || []), word],
     }));
 
     setDraggedItem(null);
@@ -220,6 +295,12 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
 
     // Add back to available words
     setAvailableWords(prev => [...prev, word]);
+  };
+
+  // Mobile-friendly tap to remove
+  const handleItemTap = (word: string, categoryName: string) => {
+    if (showResult) return;
+    handleRemoveFromCategory(word, categoryName);
   };
 
   const checkAnswers = () => {
@@ -351,9 +432,14 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
               {availableWords.map((word, index) => (
                 <div
                   key={`available-${index}-${word}`}
-                  draggable
+                  draggable={!showResult}
                   onDragStart={e => handleDragStart(e, word)}
-                  className="sorting-component__word-chip"
+                  onTouchStart={e => handleTouchStart(e, word)}
+                  onTouchMove={handleTouchMove}
+                  onTouchEnd={handleTouchEnd}
+                  className={`sorting-component__word-chip ${
+                    draggedItem === word ? 'sorting-component__word-chip--dragging' : ''
+                  }`}
                 >
                   <ContentRenderer content={ContentAdapter.ensureStructured(word, 'quiz')} />
                 </div>
@@ -397,6 +483,7 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
             return (
               <div
                 key={category.name}
+                data-category={category.name}
                 onDragOver={e => handleDragOver(e, category.name)}
                 onDragLeave={handleDragLeave}
                 onDrop={e => handleDrop(e, category.name)}
@@ -432,7 +519,11 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
                     return (
                       <div
                         key={`${category.name}-${index}-${word}`}
-                        onClick={() => handleRemoveFromCategory(word, category.name)}
+                        onClick={() => handleItemTap(word, category.name)}
+                        onTouchEnd={(e) => {
+                          e.preventDefault();
+                          handleItemTap(word, category.name);
+                        }}
                         className={itemClass}
                       >
                         <ContentRenderer content={ContentAdapter.ensureStructured(word, 'quiz')} />
@@ -511,6 +602,25 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
           </>
         )}
       </div>
+
+      {/* Mobile Drag Preview */}
+      {dragPreview && (
+        <div
+          className="sorting-component__drag-preview"
+          style={{
+            position: 'fixed',
+            left: dragPreview.x - 50,
+            top: dragPreview.y - 20,
+            zIndex: 1000,
+            pointerEvents: 'none',
+            transform: 'rotate(5deg)',
+          }}
+        >
+          <div className="sorting-component__word-chip sorting-component__word-chip--preview">
+            <ContentRenderer content={ContentAdapter.ensureStructured(dragPreview.word, 'quiz')} />
+          </div>
+        </div>
+      )}
 
       {/* Explanation/Summary Modal */}
       {showExplanation && selectedTerm && (
