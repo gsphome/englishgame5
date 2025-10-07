@@ -6,7 +6,7 @@ import { useMenuNavigation } from '../../hooks/useMenuNavigation';
 import { useProgressStore } from '../../stores/progressStore';
 import { useTranslation } from '../../utils/i18n';
 import { useLearningCleanup } from '../../hooks/useLearningCleanup';
-import { shuffleArray } from '../../utils/randomUtils';
+import { conditionalShuffle } from '../../utils/randomUtils';
 import { ContentAdapter } from '../../utils/contentAdapter';
 import ContentRenderer from '../ui/ContentRenderer';
 import LearningProgressHeader from '../ui/LearningProgressHeader';
@@ -24,23 +24,23 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
   const [startTime] = useState(Date.now());
 
   const { updateUserScore } = useUserStore();
-  const { language } = useSettingsStore();
+  const { language, randomizeItems } = useSettingsStore();
   const { returnToMenu } = useMenuNavigation();
   const { addProgressEntry } = useProgressStore();
   const { t } = useTranslation(language);
   useLearningCleanup();
 
-  // Generate new random set each time component mounts
-  const randomizedFlashcards = useMemo(() => {
+  // Generate set with optional randomization based on settings
+  const processedFlashcards = useMemo(() => {
     if (!module?.data) return [];
     const allFlashcards = module.data as FlashcardData[];
-    return shuffleArray(allFlashcards);
-  }, [module?.data]);
+    return conditionalShuffle(allFlashcards, randomizeItems);
+  }, [module?.data, randomizeItems]);
 
-  const currentCard = randomizedFlashcards[currentIndex];
+  const currentCard = processedFlashcards[currentIndex];
 
   const handleNext = useCallback(() => {
-    if (currentIndex < randomizedFlashcards.length - 1) {
+    if (currentIndex < processedFlashcards.length - 1) {
       setCurrentIndex(currentIndex + 1);
       setIsFlipped(false);
     } else {
@@ -50,8 +50,8 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
       // Register progress (assuming all flashcards were "correct" for completion)
       addProgressEntry({
         score: 100, // Flashcards are completion-based, so 100% for finishing
-        totalQuestions: randomizedFlashcards.length,
-        correctAnswers: randomizedFlashcards.length,
+        totalQuestions: processedFlashcards.length,
+        correctAnswers: processedFlashcards.length,
         moduleId: module.id,
         learningMode: 'flashcard',
         timeSpent: timeSpent,
@@ -62,7 +62,7 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
     }
   }, [
     currentIndex,
-    randomizedFlashcards.length,
+    processedFlashcards.length,
     startTime,
     addProgressEntry,
     module.id,
@@ -83,7 +83,7 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
 
   // Keyboard navigation
   useEffect(() => {
-    if (randomizedFlashcards.length === 0) return;
+    if (processedFlashcards.length === 0) return;
 
     const handleKeyPress = (e: KeyboardEvent) => {
       switch (e.key) {
@@ -114,7 +114,7 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
     return () => window.removeEventListener('keydown', handleKeyPress);
   }, [
     currentIndex,
-    randomizedFlashcards.length,
+    processedFlashcards.length,
     isFlipped,
     handleFlip,
     handleNext,
@@ -123,7 +123,7 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
   ]);
 
   // Early return if no data
-  if (!randomizedFlashcards.length) {
+  if (!processedFlashcards.length) {
     return (
       <div className="flashcard-component__no-data">
         <p className="flashcard-component__no-data-text">{t('learning.noFlashcardsAvailable')}</p>
@@ -140,7 +140,7 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
       <LearningProgressHeader
         title={module.name}
         currentIndex={currentIndex}
-        totalItems={randomizedFlashcards.length}
+        totalItems={processedFlashcards.length}
         mode="flashcard"
         helpText={isFlipped ? t('learning.helpTextFlipped') : t('learning.helpTextNotFlipped')}
       />
@@ -254,7 +254,7 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
           onClick={handleNext}
           className="game-controls__nav-btn"
           title={
-            currentIndex === randomizedFlashcards.length - 1
+            currentIndex === processedFlashcards.length - 1
               ? t('learning.finishFlashcards')
               : t('learning.nextCard')
           }

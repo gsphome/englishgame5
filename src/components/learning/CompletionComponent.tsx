@@ -8,7 +8,7 @@ import { useProgressStore } from '../../stores/progressStore';
 import { useTranslation } from '../../utils/i18n';
 import { useToast } from '../../hooks/useToast';
 import { useLearningCleanup } from '../../hooks/useLearningCleanup';
-import { shuffleArray } from '../../utils/randomUtils';
+import { conditionalShuffle } from '../../utils/randomUtils';
 import '../../styles/components/completion-component.css';
 import { ContentAdapter } from '../../utils/contentAdapter';
 import ContentRenderer from '../ui/ContentRenderer';
@@ -35,30 +35,30 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
 
   const { updateSessionScore } = useAppStore();
   const { updateUserScore } = useUserStore();
-  const { language } = useSettingsStore();
+  const { language, randomizeItems } = useSettingsStore();
   const { returnToMenu } = useMenuNavigation();
   const { addProgressEntry } = useProgressStore();
   const { t } = useTranslation(language);
   const { showCorrectAnswer, showIncorrectAnswer, showModuleCompleted } = useToast();
   useLearningCleanup();
 
-  // Randomize exercises once per component mount
-  const randomizedExercises = useMemo(() => {
+  // Process exercises with optional randomization based on settings
+  const processedExercises = useMemo(() => {
     if (!module?.data) return [];
-    return shuffleArray(module.data as CompletionData[]);
-  }, [module?.data]);
+    return conditionalShuffle(module.data as CompletionData[], randomizeItems);
+  }, [module?.data, randomizeItems]);
 
-  const currentExercise = randomizedExercises[currentIndex];
+  const currentExercise = processedExercises[currentIndex];
 
   // Auto-focus input when exercise changes or component mounts
   useEffect(() => {
-    if (!showResult && randomizedExercises.length > 0) {
+    if (!showResult && processedExercises.length > 0) {
       const inputElement = document.querySelector('input[type="text"]') as HTMLInputElement;
       if (inputElement) {
         setTimeout(() => inputElement.focus(), 100);
       }
     }
-  }, [currentIndex, showResult, randomizedExercises.length]);
+  }, [currentIndex, showResult, processedExercises.length]);
 
   const checkAnswer = useCallback(() => {
     if (showResult) return;
@@ -86,7 +86,7 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
   ]);
 
   const handleNext = useCallback(() => {
-    if (currentIndex < randomizedExercises.length - 1) {
+    if (currentIndex < processedExercises.length - 1) {
       setCurrentIndex(currentIndex + 1);
       setAnswer('');
       setShowResult(false);
@@ -112,7 +112,7 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
     }
   }, [
     currentIndex,
-    randomizedExercises.length,
+    processedExercises.length,
     startTime,
     addProgressEntry,
     module.id,
@@ -123,7 +123,7 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
   ]);
 
   useEffect(() => {
-    if (randomizedExercises.length === 0) return;
+    if (processedExercises.length === 0) return;
 
     const handleKeyPress = (e: KeyboardEvent) => {
       if (e.key === 'Enter' && !showResult) {
@@ -139,10 +139,10 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
 
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [answer, showResult, randomizedExercises.length, checkAnswer, handleNext, returnToMenu]);
+  }, [answer, showResult, processedExercises.length, checkAnswer, handleNext, returnToMenu]);
 
   // Early return if no data
-  if (!randomizedExercises.length) {
+  if (!processedExercises.length) {
     return (
       <div className="completion-component__no-data">
         <p className="completion-component__no-data-text">
@@ -224,7 +224,7 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
       <LearningProgressHeader
         title={module.name}
         currentIndex={currentIndex}
-        totalItems={randomizedExercises.length}
+        totalItems={processedExercises.length}
         mode="completion"
         helpText={showResult ? t('learning.pressEnterNext') : t('learning.fillBlank')}
       />
@@ -319,7 +319,7 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
             className="game-controls__primary-btn game-controls__primary-btn--green"
           >
             <span>
-              {currentIndex === randomizedExercises.length - 1
+              {currentIndex === processedExercises.length - 1
                 ? t('learning.finishExercise')
                 : t('learning.nextExercise')}
             </span>

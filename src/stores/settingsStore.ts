@@ -28,6 +28,9 @@ export interface SettingsState {
   // Development
   developmentMode: boolean;
 
+  // Learning Settings
+  randomizeItems: boolean;
+
   // Categories
   categories: string[];
 
@@ -42,6 +45,7 @@ export interface SettingsState {
   setLanguage: (language: 'en' | 'es') => void;
   setLevel: (level: string) => void;
   setDevelopmentMode: (enabled: boolean) => void;
+  setRandomizeItems: (enabled: boolean) => void;
   setCategories: (categories: string[]) => void;
   setGameSetting: (mode: keyof GameSettings, setting: string, value: number) => void;
   updateMaxLimits: (limits: MaxLimits) => void;
@@ -69,6 +73,7 @@ export const useSettingsStore = create<SettingsState>()(
       language: 'en',
       level: 'all',
       developmentMode: false,
+      randomizeItems: true, // Default: randomization enabled
       categories: DEFAULT_CATEGORIES,
       gameSettings: {
         flashcardMode: { wordCount: 10 },
@@ -100,6 +105,8 @@ export const useSettingsStore = create<SettingsState>()(
 
       setDevelopmentMode: enabled => set({ developmentMode: enabled }),
 
+      setRandomizeItems: enabled => set({ randomizeItems: enabled }),
+
       setCategories: categories => set({ categories }),
 
       setGameSetting: (mode, setting, value) => {
@@ -119,13 +126,20 @@ export const useSettingsStore = create<SettingsState>()(
     }),
     {
       name: 'settings-storage',
-      version: 2,
+      version: 3,
       migrate: (persistedState: any, version: number) => {
         // Migration from version 1 to version 2
         if (version < 2) {
           return {
             ...persistedState,
             categories: DEFAULT_CATEGORIES, // Expand from 4 to 10 categories
+          };
+        }
+        // Migration from version 2 to version 3
+        if (version < 3) {
+          return {
+            ...persistedState,
+            randomizeItems: true, // Default: randomization enabled
           };
         }
         return persistedState;

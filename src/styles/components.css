@@ -33,6 +33,9 @@
 @import './components/toast-card.css';
 @import './components/toast.css';
 
+/* Safari Mobile Specific Fixes */
+/* @import './safari-mobile-fixes.css'; */
+
 /* Design System Foundation already imported in index.css */
 
 /* ALL LEGACY @APPLY STYLES REMOVED */

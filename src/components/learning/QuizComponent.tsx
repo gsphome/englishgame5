@@ -8,7 +8,7 @@ import { useProgressStore } from '../../stores/progressStore';
 import { useTranslation } from '../../utils/i18n';
 import { useToast } from '../../hooks/useToast';
 import { useLearningCleanup } from '../../hooks/useLearningCleanup';
-import { shuffleArray } from '../../utils/randomUtils';
+import { conditionalShuffle } from '../../utils/randomUtils';
 import { ContentAdapter } from '../../utils/contentAdapter';
 import ContentRenderer from '../ui/ContentRenderer';
 import LearningProgressHeader from '../ui/LearningProgressHeader';
@@ -25,29 +25,29 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
   const [showResult, setShowResult] = useState(false);
   const [startTime] = useState(Date.now());
 
-  // Randomize questions and options once per component mount
-  const randomizedQuestions = useMemo(() => {
+  const { updateSessionScore } = useAppStore();
+  const { updateUserScore } = useUserStore();
+  const { theme, language, randomizeItems } = useSettingsStore();
+
+  // Process questions with optional randomization based on settings
+  const processedQuestions = useMemo(() => {
     if (!module?.data) return [];
 
     const questions = module.data as QuizData[];
-    const shuffledQuestions = shuffleArray(questions);
+    const processedQuestions = conditionalShuffle(questions, randomizeItems);
 
-    // Randomize options for each question
-    return shuffledQuestions.map(question => {
+    // Conditionally randomize options for each question
+    return processedQuestions.map(question => {
       if (!question.options || !question.correct) return question;
 
-      const shuffledOptions = shuffleArray([...question.options]);
+      const processedOptions = conditionalShuffle([...question.options], randomizeItems);
 
       return {
         ...question,
-        options: shuffledOptions,
+        options: processedOptions,
       };
     });
-  }, [module?.data]);
-
-  const { updateSessionScore } = useAppStore();
-  const { updateUserScore } = useUserStore();
-  const { theme, language } = useSettingsStore();
+  }, [module?.data, randomizeItems]);
   const { returnToMenu } = useMenuNavigation();
   const { addProgressEntry } = useProgressStore();
   const { t } = useTranslation(language);
@@ -57,7 +57,7 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
   const isDark = theme === 'dark';
   const textColor = isDark ? 'white' : '#111827';
 
-  const currentQuestion = randomizedQuestions[currentIndex];
+  const currentQuestion = processedQuestions[currentIndex];
 
   const handleAnswerSelect = useCallback(
     (optionIndex: number) => {
@@ -81,7 +81,7 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
   );
 
   const handleNext = useCallback(() => {
-    if (currentIndex < randomizedQuestions.length - 1) {
+    if (currentIndex < processedQuestions.length - 1) {
       setCurrentIndex(currentIndex + 1);
       setSelectedAnswer(null);
       setShowResult(false);
@@ -107,7 +107,7 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
     }
   }, [
     currentIndex,
-    randomizedQuestions.length,
+    processedQuestions.length,
     startTime,
     addProgressEntry,
     module.id,
@@ -118,7 +118,7 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
   ]);
 
   useEffect(() => {
-    if (randomizedQuestions.length === 0) return;
+    if (processedQuestions.length === 0) return;
 
     const handleKeyPress = (e: KeyboardEvent) => {
       if (e.key >= '1' && e.key <= '4' && !showResult && currentQuestion) {
@@ -138,14 +138,14 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
   }, [
     showResult,
     currentQuestion,
-    randomizedQuestions.length,
+    processedQuestions.length,
     handleAnswerSelect,
     handleNext,
     returnToMenu,
   ]);
 
   // Early return if no data
-  if (!randomizedQuestions.length) {
+  if (!processedQuestions.length) {
     return (
       <div className="quiz-component__no-data">
         <p className="quiz-component__no-data-text">{t('learning.noQuizQuestions')}</p>
@@ -162,7 +162,7 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
       <LearningProgressHeader
         title={module.name}
         currentIndex={currentIndex}
-        totalItems={randomizedQuestions.length}
+        totalItems={processedQuestions.length}
         mode="quiz"
         helpText={showResult ? t('learning.pressEnterNext') : t('learning.pressSelectOption')}
       />
@@ -283,7 +283,7 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
           className="game-controls__primary-btn game-controls__primary-btn--green"
         >
           <span>
-            {currentIndex === randomizedQuestions.length - 1
+            {currentIndex === processedQuestions.length - 1
               ? t('learning.finishQuiz')
               : t('learning.nextQuestion')}
           </span>

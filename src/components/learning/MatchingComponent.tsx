@@ -5,6 +5,7 @@ import { useUserStore } from '../../stores/userStore';
 import { useSettingsStore } from '../../stores/settingsStore';
 import { useMenuNavigation } from '../../hooks/useMenuNavigation';
 import { useToast } from '../../hooks/useToast';
+import { conditionalRandomSort } from '../../utils/randomUtils';
 import { useLearningCleanup } from '../../hooks/useLearningCleanup';
 import { useTranslation } from '../../utils/i18n';
 import { ContentAdapter } from '../../utils/contentAdapter';
@@ -35,7 +36,7 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
 
   const { updateSessionScore } = useAppStore();
   const { updateUserScore } = useUserStore();
-  const { language } = useSettingsStore();
+  const { language, randomizeItems } = useSettingsStore();
   const { returnToMenu } = useMenuNavigation();
   const { showCorrectAnswer, showIncorrectAnswer, showModuleCompleted } = useToast();
   const { t } = useTranslation(language);
@@ -99,10 +100,10 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
     if (pairs.length > 0) {
       const terms = pairs
         .map((pair: { left: string; right: string }) => pair.left)
-        .sort(() => Math.random() - 0.5);
+        .sort(conditionalRandomSort(randomizeItems));
       const definitions = pairs
         .map((pair: { left: string; right: string }) => pair.right)
-        .sort(() => Math.random() - 0.5);
+        .sort(conditionalRandomSort(randomizeItems));
 
       setLeftItems(terms);
       setRightItems(definitions);
@@ -200,10 +201,10 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
   const resetExercise = () => {
     const terms = pairs
       .map((pair: { left: string; right: string }) => pair.left)
-      .sort(() => Math.random() - 0.5);
+      .sort(conditionalRandomSort(randomizeItems));
     const definitions = pairs
       .map((pair: { left: string; right: string }) => pair.right)
-      .sort(() => Math.random() - 0.5);
+      .sort(conditionalRandomSort(randomizeItems));
 
     setLeftItems(terms);
     setRightItems(definitions);

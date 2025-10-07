@@ -21,12 +21,14 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
     language,
     level,
     developmentMode,
+    randomizeItems,
     categories,
     gameSettings,
     setTheme,
     setLanguage,
     setLevel,
     setDevelopmentMode,
+    setRandomizeItems,
     setCategories,
     setGameSetting,
   } = useSettingsStore();
@@ -43,6 +45,7 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
   const [localLanguage, setLocalLanguage] = useState(language);
   const [localLevel, setLocalLevel] = useState(level);
   const [localDevelopmentMode, setLocalDevelopmentMode] = useState(developmentMode);
+  const [localRandomizeItems, setLocalRandomizeItems] = useState(randomizeItems);
   const [localCategories, setLocalCategories] = useState(categories);
   const [localGameSettings, setLocalGameSettings] = useState(gameSettings);
 
@@ -53,11 +56,12 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
       setLocalLanguage(language);
       setLocalLevel(level);
       setLocalDevelopmentMode(developmentMode);
+      setLocalRandomizeItems(randomizeItems);
       setLocalCategories(categories);
       setLocalGameSettings(gameSettings);
       setHasChanges(false);
     }
-  }, [isOpen, theme, language, level, developmentMode, categories, gameSettings]);
+  }, [isOpen, theme, language, level, developmentMode, randomizeItems, categories, gameSettings]);
 
   // Check for changes
   useEffect(() => {
@@ -66,6 +70,7 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
       localLanguage !== language ||
       localLevel !== level ||
       localDevelopmentMode !== developmentMode ||
+      localRandomizeItems !== randomizeItems ||
       JSON.stringify(localCategories) !== JSON.stringify(categories) ||
       JSON.stringify(localGameSettings) !== JSON.stringify(gameSettings);
     setHasChanges(changed);
@@ -74,12 +79,14 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
     localLanguage,
     localLevel,
     localDevelopmentMode,
+    localRandomizeItems,
     localCategories,
     localGameSettings,
     theme,
     language,
     level,
     developmentMode,
+    randomizeItems,
     categories,
     gameSettings,
   ]);
@@ -95,6 +102,7 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
     setLanguage(localLanguage);
     setLevel(localLevel);
     setDevelopmentMode(localDevelopmentMode);
+    setRandomizeItems(localRandomizeItems);
     setCategories(localCategories);
 
     // Apply validated game settings
@@ -259,6 +267,28 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
                     />
                   </div>
                 </div>
+
+                <div className="compact-settings__field compact-settings__field--dev">
+                  <div className="compact-settings__toggle-container">
+                    <label
+                      className="compact-settings__label compact-settings__label--dev"
+                      title={t(
+                        'settings.randomizeItemsDescription',
+                        'Shuffle cards, questions and exercises in random order'
+                      )}
+                    >
+                      🎲 {t('settings.randomizeItems')}:{' '}
+                      {localRandomizeItems ? t('settings.enabled') : t('settings.disabled')}
+                    </label>
+                    <input
+                      type="checkbox"
+                      id="randomizeItems"
+                      className="compact-settings__toggle"
+                      checked={localRandomizeItems}
+                      onChange={e => setLocalRandomizeItems(e.target.checked)}
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           )}
@@ -271,24 +301,40 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
                   <label className="compact-settings__game-label">
                     📚 {t('settings.flashcardMode')}
                   </label>
-                  <div className="compact-settings__game-controls">
-                    <input
-                      type="range"
-                      min="5"
-                      max="30"
-                      value={localGameSettings.flashcardMode.wordCount || 10}
-                      onChange={e =>
+                  <div className="compact-settings__game-stepper">
+                    <button
+                      type="button"
+                      className="compact-settings__stepper-btn compact-settings__stepper-btn--minus"
+                      onClick={() =>
                         handleGameSettingChange(
                           'flashcardMode',
                           'wordCount',
-                          parseInt(e.target.value)
+                          Math.max(5, (localGameSettings.flashcardMode.wordCount || 10) - 1)
                         )
                       }
-                      className="compact-settings__range"
-                    />
-                    <span className="compact-settings__range-value">
+                      disabled={(localGameSettings.flashcardMode.wordCount || 10) <= 5}
+                      aria-label="Decrease flashcard count"
+                    >
+                      −
+                    </button>
+                    <span className="compact-settings__stepper-value">
                       {localGameSettings.flashcardMode.wordCount || 10}
                     </span>
+                    <button
+                      type="button"
+                      className="compact-settings__stepper-btn compact-settings__stepper-btn--plus"
+                      onClick={() =>
+                        handleGameSettingChange(
+                          'flashcardMode',
+                          'wordCount',
+                          Math.min(30, (localGameSettings.flashcardMode.wordCount || 10) + 1)
+                        )
+                      }
+                      disabled={(localGameSettings.flashcardMode.wordCount || 10) >= 30}
+                      aria-label="Increase flashcard count"
+                    >
+                      +
+                    </button>
                   </div>
                 </div>
 
@@ -296,24 +342,40 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
                   <label className="compact-settings__game-label">
                     ❓ {t('settings.quizMode')}
                   </label>
-                  <div className="compact-settings__game-controls">
-                    <input
-                      type="range"
-                      min="5"
-                      max="25"
-                      value={localGameSettings.quizMode.questionCount || 10}
-                      onChange={e =>
+                  <div className="compact-settings__game-stepper">
+                    <button
+                      type="button"
+                      className="compact-settings__stepper-btn compact-settings__stepper-btn--minus"
+                      onClick={() =>
                         handleGameSettingChange(
                           'quizMode',
                           'questionCount',
-                          parseInt(e.target.value)
+                          Math.max(5, (localGameSettings.quizMode.questionCount || 10) - 1)
                         )
                       }
-                      className="compact-settings__range"
-                    />
-                    <span className="compact-settings__range-value">
+                      disabled={(localGameSettings.quizMode.questionCount || 10) <= 5}
+                      aria-label="Decrease quiz count"
+                    >
+                      −
+                    </button>
+                    <span className="compact-settings__stepper-value">
                       {localGameSettings.quizMode.questionCount || 10}
                     </span>
+                    <button
+                      type="button"
+                      className="compact-settings__stepper-btn compact-settings__stepper-btn--plus"
+                      onClick={() =>
+                        handleGameSettingChange(
+                          'quizMode',
+                          'questionCount',
+                          Math.min(25, (localGameSettings.quizMode.questionCount || 10) + 1)
+                        )
+                      }
+                      disabled={(localGameSettings.quizMode.questionCount || 10) >= 25}
+                      aria-label="Increase quiz count"
+                    >
+                      +
+                    </button>
                   </div>
                 </div>
 
@@ -321,24 +383,40 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
                   <label className="compact-settings__game-label">
                     ✏️ {t('settings.completionMode')}
                   </label>
-                  <div className="compact-settings__game-controls">
-                    <input
-                      type="range"
-                      min="5"
-                      max="20"
-                      value={localGameSettings.completionMode.itemCount || 10}
-                      onChange={e =>
+                  <div className="compact-settings__game-stepper">
+                    <button
+                      type="button"
+                      className="compact-settings__stepper-btn compact-settings__stepper-btn--minus"
+                      onClick={() =>
                         handleGameSettingChange(
                           'completionMode',
                           'itemCount',
-                          parseInt(e.target.value)
+                          Math.max(5, (localGameSettings.completionMode.itemCount || 10) - 1)
                         )
                       }
-                      className="compact-settings__range"
-                    />
-                    <span className="compact-settings__range-value">
+                      disabled={(localGameSettings.completionMode.itemCount || 10) <= 5}
+                      aria-label="Decrease completion count"
+                    >
+                      −
+                    </button>
+                    <span className="compact-settings__stepper-value">
                       {localGameSettings.completionMode.itemCount || 10}
                     </span>
+                    <button
+                      type="button"
+                      className="compact-settings__stepper-btn compact-settings__stepper-btn--plus"
+                      onClick={() =>
+                        handleGameSettingChange(
+                          'completionMode',
+                          'itemCount',
+                          Math.min(20, (localGameSettings.completionMode.itemCount || 10) + 1)
+                        )
+                      }
+                      disabled={(localGameSettings.completionMode.itemCount || 10) >= 20}
+                      aria-label="Increase completion count"
+                    >
+                      +
+                    </button>
                   </div>
                 </div>
 
@@ -346,24 +424,40 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
                   <label className="compact-settings__game-label">
                     🔄 {t('settings.sortingMode')}
                   </label>
-                  <div className="compact-settings__game-controls">
-                    <input
-                      type="range"
-                      min="8"
-                      max="20"
-                      value={localGameSettings.sortingMode.wordCount || 12}
-                      onChange={e =>
+                  <div className="compact-settings__game-stepper">
+                    <button
+                      type="button"
+                      className="compact-settings__stepper-btn compact-settings__stepper-btn--minus"
+                      onClick={() =>
                         handleGameSettingChange(
                           'sortingMode',
                           'wordCount',
-                          parseInt(e.target.value)
+                          Math.max(8, (localGameSettings.sortingMode.wordCount || 12) - 1)
                         )
                       }
-                      className="compact-settings__range"
-                    />
-                    <span className="compact-settings__range-value">
+                      disabled={(localGameSettings.sortingMode.wordCount || 12) <= 8}
+                      aria-label="Decrease sorting count"
+                    >
+                      −
+                    </button>
+                    <span className="compact-settings__stepper-value">
                       {localGameSettings.sortingMode.wordCount || 12}
                     </span>
+                    <button
+                      type="button"
+                      className="compact-settings__stepper-btn compact-settings__stepper-btn--plus"
+                      onClick={() =>
+                        handleGameSettingChange(
+                          'sortingMode',
+                          'wordCount',
+                          Math.min(20, (localGameSettings.sortingMode.wordCount || 12) + 1)
+                        )
+                      }
+                      disabled={(localGameSettings.sortingMode.wordCount || 12) >= 20}
+                      aria-label="Increase sorting count"
+                    >
+                      +
+                    </button>
                   </div>
                 </div>
 
@@ -371,24 +465,40 @@ export const CompactAdvancedSettings: React.FC<CompactAdvancedSettingsProps> = (
                   <label className="compact-settings__game-label">
                     🔗 {t('settings.matchingMode')}
                   </label>
-                  <div className="compact-settings__game-controls">
-                    <input
-                      type="range"
-                      min="4"
-                      max="12"
-                      value={localGameSettings.matchingMode.wordCount || 6}
-                      onChange={e =>
+                  <div className="compact-settings__game-stepper">
+                    <button
+                      type="button"
+                      className="compact-settings__stepper-btn compact-settings__stepper-btn--minus"
+                      onClick={() =>
                         handleGameSettingChange(
                           'matchingMode',
                           'wordCount',
-                          parseInt(e.target.value)
+                          Math.max(4, (localGameSettings.matchingMode.wordCount || 6) - 1)
                         )
                       }
-                      className="compact-settings__range"
-                    />
-                    <span className="compact-settings__range-value">
+                      disabled={(localGameSettings.matchingMode.wordCount || 6) <= 4}
+                      aria-label="Decrease matching count"
+                    >
+                      −
+                    </button>
+                    <span className="compact-settings__stepper-value">
                       {localGameSettings.matchingMode.wordCount || 6}
                     </span>
+                    <button
+                      type="button"
+                      className="compact-settings__stepper-btn compact-settings__stepper-btn--plus"
+                      onClick={() =>
+                        handleGameSettingChange(
+                          'matchingMode',
+                          'wordCount',
+                          Math.min(12, (localGameSettings.matchingMode.wordCount || 6) + 1)
+                        )
+                      }
+                      disabled={(localGameSettings.matchingMode.wordCount || 6) >= 12}
+                      aria-label="Increase matching count"
+                    >
+                      +
+                    </button>
                   </div>
                 </div>
               </div>

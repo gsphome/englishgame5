@@ -134,7 +134,7 @@
   border: none;
   background: transparent;
   color: #6b7280;
-  font-size: 0.675rem; /* 0.75rem × 0.9 = 10% reduction from base */
+  font-size: 0.574rem; /* 0.675rem × 0.85 = 15% additional reduction */
   font-weight: 600;
   line-height: 1.3;
   border-radius: 0;
@@ -828,7 +828,7 @@ html.dark .main-menu__grid::-webkit-scrollbar-thumb:hover {
 /* Reduce text size by additional 10% for screens 520px and below */
 @media (max-width: 520px) {
   .main-menu__view-btn {
-    font-size: 0.6075rem !important; /* 0.675rem × 0.9 = 10% additional reduction from new base */
+    font-size: 0.488rem !important; /* 0.574rem × 0.85 = 15% additional reduction */
   }
 }
 
