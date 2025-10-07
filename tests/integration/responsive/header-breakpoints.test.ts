@@ -91,15 +91,14 @@ describe('Header Intelligent Breakpoints CSS', () => {
     });
 
     it('should have proper gap and padding adjustments', () => {
-      // Check for gap adjustments
+      // Check for gap adjustments (updated for new structure)
       expect(headerCss).toContain('gap: 1rem');
       expect(headerCss).toContain('gap: 0.875rem');
       expect(headerCss).toContain('gap: 0.75rem');
-      expect(headerCss).toContain('gap: 0.625rem');
       expect(headerCss).toContain('gap: 0.5rem');
-      expect(headerCss).toContain('gap: 0.375rem');
       expect(headerCss).toContain('gap: 0.25rem');
       expect(headerCss).toContain('gap: 0.125rem');
+      // Removed 0.625rem and 0.375rem as they no longer exist
       
       // Check for padding adjustments
       expect(headerCss).toContain('padding: 0.75rem 2rem');

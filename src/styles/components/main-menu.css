@@ -824,7 +824,7 @@ html.dark .main-menu__grid::-webkit-scrollbar-thumb:hover {
 /* Reduce text size by additional 10% for screens 520px and below */
 @media (max-width: 520px) {
   .main-menu__view-btn {
-    font-size: 0.5738rem !important; /* 0.6375rem × 0.9 = 10% additional reduction */
+    font-size: 0.6075rem !important; /* 0.675rem × 0.9 = 10% additional reduction from new base */
   }
 }
 
