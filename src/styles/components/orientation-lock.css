@@ -23,7 +23,7 @@
   bottom: 0;
   z-index: 9999; /* Above all other content */
   
-  /* Theme-aware background */
+  /* Theme-aware background - proper fallbacks for both modes */
   background-color: var(--theme-bg-primary, #f9fafb);
   
   /* Flexbox centering */
@@ -36,6 +36,11 @@
   animation: orientationLockFadeIn 0.3s ease-out forwards;
 }
 
+/* Dark mode background override */
+.dark .orientation-lock {
+  background-color: var(--theme-bg-primary, #111827);
+}
+
 /* === ORIENTATION LOCK CONTAINER === */
 .orientation-lock__container {
   display: flex;
@@ -45,18 +50,30 @@
   max-width: 400px;
   width: 100%;
   
-  /* Subtle elevation */
+  /* Subtle elevation - theme-aware */
   background-color: var(--theme-bg-elevated, #ffffff);
   border-radius: 1rem;
   padding: 3rem 2rem;
   
-  /* Soft shadow for depth */
+  /* Light mode shadow */
   box-shadow: 
     0 10px 25px rgba(0, 0, 0, 0.1),
     0 4px 10px rgba(0, 0, 0, 0.05);
   
-  /* Subtle border */
+  /* Subtle border - theme-aware */
   border: 1px solid var(--theme-border-soft, #f3f4f6);
+}
+
+/* Dark mode container overrides */
+.dark .orientation-lock__container {
+  background-color: var(--theme-bg-elevated, #1f2937);
+  border: 1px solid var(--theme-border-soft, #4b5563);
+  
+  /* Enhanced shadow for dark mode - more dramatic */
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.4),
+    0 4px 10px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.05); /* Subtle inner glow */
 }
 
 /* === ICON WRAPPER === */
@@ -76,8 +93,16 @@
   align-items: center;
   justify-content: center;
   
-  /* Subtle pulse animation */
+  /* Light mode pulse animation */
   animation: orientationIconPulse 2s ease-in-out infinite;
+}
+
+/* Dark mode icon wrapper */
+.dark .orientation-lock__icon-wrapper {
+  background-color: var(--theme-primary-blue, #60a5fa);
+  
+  /* Dark mode pulse animation */
+  animation: orientationIconPulseDark 2s ease-in-out infinite;
 }
 
 /* === ROTATION ICON === */
@@ -172,7 +197,7 @@
   }
 }
 
-/* Gentle pulse for the icon wrapper */
+/* Gentle pulse for the icon wrapper - Light mode */
 @keyframes orientationIconPulse {
   0%, 100% {
     transform: scale(1);
@@ -181,6 +206,18 @@
   50% {
     transform: scale(1.05);
     box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+  }
+}
+
+/* Dark mode pulse animation */
+@keyframes orientationIconPulseDark {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(96, 165, 250, 0.6);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(96, 165, 250, 0);
   }
 }
 
@@ -206,12 +243,31 @@
   }
 }
 
-/* === DARK MODE OVERRIDES === */
-.dark .orientation-lock__container {
-  /* Enhanced shadow for dark mode */
-  box-shadow: 
-    0 10px 25px rgba(0, 0, 0, 0.3),
-    0 4px 10px rgba(0, 0, 0, 0.2);
+/* === DARK MODE COMPREHENSIVE OVERRIDES === */
+
+/* Dark mode text color adjustments */
+.dark .orientation-lock__title {
+  color: var(--theme-text-primary, #ffffff);
+}
+
+.dark .orientation-lock__subtitle {
+  color: var(--theme-primary-blue, #60a5fa);
+}
+
+.dark .orientation-lock__explanation {
+  color: var(--theme-text-secondary, #e5e7eb);
+}
+
+/* Dark mode high contrast support */
+@media (prefers-contrast: high) {
+  .dark .orientation-lock__container {
+    border: 2px solid var(--theme-text-primary, #ffffff);
+    background-color: var(--theme-bg-elevated, #000000);
+  }
+  
+  .dark .orientation-lock__icon-wrapper {
+    border: 2px solid var(--theme-text-on-colored, #ffffff);
+  }
 }
 
 /* === ACCESSIBILITY === */
