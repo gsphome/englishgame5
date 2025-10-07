@@ -191,6 +191,10 @@
 
 /* Medium screens - slightly compact */
 @media (min-width: 520px) and (max-width: 599px) {
+  .score-display-compact__container {
+    height: 32px; /* Igual a botones del header (32px) */
+  }
+
   .score-display-compact__container--in-game {
     min-width: 140px;
   }
@@ -213,7 +217,7 @@
 @media (min-width: 420px) and (max-width: 519px) {
   .score-display-compact__container {
     padding: 0 0.5rem;
-    height: 36px;
+    height: 28px; /* Igual a botones del header (28px para ≤519px) */
   }
 
   .score-display-compact__container--in-game {
@@ -264,7 +268,7 @@
 }
 
 /* Mobile - ultra compact (CRITICAL: 400px overlap zone) */
-@media (min-width: 360px) and (max-width: 419px) {
+@media (min-width: 381px) and (max-width: 419px) {
   .score-display-compact__container {
     padding: 0 0.25rem;
     height: 30px;
@@ -278,42 +282,86 @@
     min-width: 100px;
   }
 
+  /* Ocultar ícono del mundo en breakpoints pequeños */
   .score-display-compact__icon {
-    font-size: 0.7rem;
+    display: none;
+  }
+}
+
+/* Mobile - ultra compact sin ícono (380px y menores) - PRIORIDAD: Menú hamburguesa y login */
+@media (min-width: 360px) and (max-width: 380px) {
+  .score-display-compact__container {
+    padding: 0 0.0625rem; /* Padding mínimo pero usable */
+    height: 28px; /* Igual a botones del header (28px para ≤519px) */
+    overflow: hidden; /* Ocultar cualquier desbordamiento */
   }
 
-  .score-display-compact__values {
-    gap: 0.05rem;
+  .score-display-compact__container--in-game {
+    min-width: 24px; /* Compacto pero legible */
+    max-width: 28px; /* Ancho máximo razonable */
   }
 
-  .score-display-compact__accuracy {
-    min-width: 20px;
-    font-size: 0.6rem;
+  .score-display-compact__container--full {
+    min-width: 28px; /* Compacto pero legible */
+    max-width: 32px; /* Ancho máximo razonable */
   }
 
+  /* Variante específica para menú - compacto */
+  .score-display-compact--menu {
+    min-width: 22px; /* Compacto para menú */
+    max-width: 26px; /* Ancho máximo para menú */
+    padding: 0 0.0625rem; /* Padding mínimo pero usable */
+  }
+
+  /* Ocultar ícono del mundo para ahorrar espacio horizontal */
+  .score-display-compact__icon {
+    display: none;
+  }
+
+  /* Ocultar divisor para máxima compactación horizontal */
+  .score-display-compact__divider {
+    display: none;
+  }
+
+  /* Ocultar level para máxima compactación horizontal */
   .score-display-compact__level {
-    gap: 0.15rem;
+    display: none;
   }
 
-  .score-display-compact__level-badge {
-    font-size: 0.6rem;
-    padding: 0.05rem 0.15rem;
-    min-width: 16px;
+  /* Estructura flexbox ultra compacta - solo elementos esenciales */
+  .score-display-compact__values {
+    gap: 0.0125rem; /* Gap ultra mínimo entre elementos visibles */
+    flex-wrap: nowrap; /* No permitir wrap para máxima compactación */
+  }
+
+  /* Solo elementos visibles optimizados */
+  .score-display-compact__accuracy {
+    min-width: 6px; /* Ancho mínimo legible */
+    max-width: 8px; /* Ancho máximo razonable */
+    font-size: 0.5rem; /* Fuente pequeña pero legible */
+    flex-shrink: 1; /* Permitir encogimiento */
   }
 
   .score-display-compact__points {
-    font-size: 0.6rem;
-    min-width: 18px;
+    min-width: 6px; /* Ancho mínimo legible */
+    max-width: 8px; /* Ancho máximo razonable */
+    font-size: 0.5rem; /* Fuente pequeña pero legible */
+    flex-shrink: 1; /* Permitir encogimiento */
   }
 
+  /* Barra de progreso compacta */
   .score-display-compact__progress-bar {
-    width: 20px;
+    width: 4px; /* Ancho compacto pero visible */
     height: 1px;
+    flex-shrink: 0; /* No permitir encogimiento de la barra */
   }
 
-  .score-display-compact__divider {
-    height: 12px;
-    margin: 0 0.15rem;
+  /* Contenedores principales ultra compactos */
+  .score-display-compact__main,
+  .score-display-compact__session,
+  .score-display-compact__global {
+    gap: 0.0125rem; /* Gap ultra mínimo entre secciones */
+    flex-shrink: 1; /* Permitir encogimiento */
   }
 }
 
@@ -366,49 +414,57 @@
 /* Mobile emergency - EXTREME minimal display (CRITICAL: 320px overlap fix) */
 @media (min-width: 311px) and (max-width: 320px) {
   .score-display-compact__container {
-    padding: 0 0.0625rem;
+    padding: 0 0.015625rem; /* Padding ultra mínimo */
     height: 24px;
+    overflow: hidden; /* Ocultar desbordamiento */
   }
 
   .score-display-compact__container--in-game {
-    min-width: 50px;
+    min-width: 20px; /* Compacto para 320px */
+    max-width: 22px; /* Ancho máximo */
   }
 
   .score-display-compact__container--full {
-    min-width: 60px;
+    min-width: 22px; /* Compacto para 320px */
+    max-width: 24px; /* Ancho máximo */
   }
 
+  /* Ocultar elementos no esenciales */
   .score-display-compact__icon {
-    font-size: 0.5rem;
+    display: none;
   }
 
-  .score-display-compact__values {
-    gap: 0.0125rem;
-  }
-
-  .score-display-compact__accuracy {
-    min-width: 12px;
-    font-size: 0.5rem;
+  .score-display-compact__divider {
+    display: none;
   }
 
   .score-display-compact__level {
-    gap: 0.075rem;
+    display: none;
   }
 
-  .score-display-compact__level-badge {
-    font-size: 0.5rem;
-    padding: 0.0125rem 0.075rem;
-    min-width: 12px;
+  .score-display-compact__values {
+    gap: 0.00625rem; /* Gap ultra mínimo */
+    flex-wrap: nowrap;
+  }
+
+  .score-display-compact__accuracy {
+    min-width: 3px; /* Mínimo absoluto */
+    max-width: 4px; /* Limitar ancho */
+    font-size: 0.4rem; /* Fuente ultra pequeña */
+    flex-shrink: 1;
   }
 
   .score-display-compact__points {
-    font-size: 0.5rem;
-    min-width: 12px;
+    min-width: 3px; /* Mínimo absoluto */
+    max-width: 4px; /* Limitar ancho */
+    font-size: 0.4rem; /* Fuente ultra pequeña */
+    flex-shrink: 1;
   }
 
   .score-display-compact__progress-bar {
-    width: 12px;
+    width: 2px; /* Ultra mínimo */
     height: 1px;
+    flex-shrink: 0;
   }
 
   .score-display-compact__divider {
@@ -420,50 +476,65 @@
 /* Mobile ultra emergency - NO ICON display (CRITICAL: 310px and below) */
 @media (max-width: 310px) {
   .score-display-compact__container {
-    padding: 0 0.03125rem;
+    padding: 0 0.0078125rem; /* Padding ultra mínimo */
     height: 20px;
+    overflow: hidden; /* Ocultar desbordamiento */
   }
 
   .score-display-compact__container--in-game {
-    min-width: 38px;
+    min-width: 18px; /* Compacto extremo para ≤310px */
+    max-width: 20px; /* Ancho máximo */
   }
 
   .score-display-compact__container--full {
-    min-width: 42px;
+    min-width: 20px; /* Compacto extremo para ≤310px */
+    max-width: 22px; /* Ancho máximo */
   }
 
-  /* Hide icon completely to save space */
+  /* Ocultar todos los elementos no esenciales */
   .score-display-compact__icon {
     display: none;
   }
 
-  .score-display-compact__values {
-    gap: 0.00625rem;
-  }
-
-  .score-display-compact__accuracy {
-    min-width: 8px;
-    font-size: 0.4rem;
+  .score-display-compact__divider {
+    display: none;
   }
 
   .score-display-compact__level {
-    gap: 0.03125rem;
+    display: none;
   }
 
-  .score-display-compact__level-badge {
-    font-size: 0.4rem;
-    padding: 0.00625rem 0.03125rem;
-    min-width: 8px;
+  .score-display-compact__values {
+    gap: 0.003125rem; /* Gap ultra mínimo */
+    flex-wrap: nowrap;
+  }
+
+  .score-display-compact__accuracy {
+    min-width: 2px; /* Mínimo extremo */
+    max-width: 3px; /* Limitar ancho */
+    font-size: 0.35rem; /* Fuente ultra pequeña */
+    flex-shrink: 1;
   }
 
   .score-display-compact__points {
-    font-size: 0.4rem;
-    min-width: 8px;
+    min-width: 2px; /* Mínimo extremo */
+    max-width: 3px; /* Limitar ancho */
+    font-size: 0.35rem; /* Fuente ultra pequeña */
+    flex-shrink: 1;
   }
 
   .score-display-compact__progress-bar {
-    width: 8px;
+    width: 1px; /* Ultra mínimo extremo */
     height: 1px;
+    flex-shrink: 0;
+  }
+
+  /* Contenedores principales ultra compactos */
+  .score-display-compact__main,
+  .score-display-compact__session,
+  .score-display-compact__global {
+    gap: 0.003125rem; /* Gap ultra mínimo */
+    flex-shrink: 1;
   }
 
   .score-display-compact__divider {
@@ -508,5 +579,61 @@
 
   .score-display-compact__progress-bar {
     border: 1px solid currentColor;
+  }
+}
+/* Hide progress bar for screens smaller than 520px */
+@media (max-width: 519px) {
+  .score-display-compact__progress-bar {
+    display: none !important;
+  }
+}
+
+/* CRITICAL: Compact design for 500px screens - Header priority */
+@media (max-width: 500px) {
+  /* Hide world icon completely */
+  .score-display-compact__icon {
+    display: none !important;
+  }
+
+  /* Ultra compact containers for header priority */
+  .score-display-compact__container--in-game {
+    min-width: 60px !important;
+    max-width: 70px !important;
+  }
+
+  .score-display-compact__container--full {
+    min-width: 70px !important;
+    max-width: 80px !important;
+  }
+
+  .score-display-compact--menu {
+    min-width: 50px !important;
+    max-width: 60px !important;
+  }
+
+  /* Compact elements */
+  .score-display-compact__container {
+    padding: 0 0.25rem !important;
+    height: 32px !important; /* Match header button height */
+  }
+
+  .score-display-compact__accuracy,
+  .score-display-compact__points {
+    min-width: 12px;
+    font-size: 0.75rem;
+  }
+
+  .score-display-compact__level-badge {
+    font-size: 0.7rem;
+    padding: 0.125rem 0.25rem;
+    min-width: 16px;
+  }
+
+  .score-display-compact__progress-bar {
+    width: 20px;
+  }
+
+  .score-display-compact__values {
+    gap: 0.125rem;
   }
 }
