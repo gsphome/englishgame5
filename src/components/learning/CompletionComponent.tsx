@@ -197,7 +197,7 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
             key={`input-${index}`}
             type="text"
             value={answer}
-            onChange={e => setAnswer(e.target.value)}
+            onChange={e => setAnswer(e.target.value.toLowerCase())}
             disabled={showResult}
             placeholder="..."
             autoComplete="off"
@@ -205,6 +205,7 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
             style={
               {
                 '--dynamic-width': `${Math.max(120, (answer?.length || 3) * 12 + 60)}px`,
+                textTransform: 'lowercase',
               } as React.CSSProperties
             }
           />
