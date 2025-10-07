@@ -303,6 +303,11 @@ export const translations = {
       recommended: 'Recommended',
       unitProgress: 'Progress by Level',
     },
+    orientation: {
+      title: 'For a better learning experience',
+      subtitle: 'Please rotate your device to portrait mode',
+      explanation: 'Our exercises are optimized for vertical screen',
+    },
     errors: {
       somethingWentWrong: 'Something went wrong',
       networkError: 'Network error',
@@ -614,6 +619,11 @@ export const translations = {
       nextRecommended: 'Siguiente Recomendado',
       recommended: 'Recomendado',
       unitProgress: 'Progreso por Nivel',
+    },
+    orientation: {
+      title: 'Para una mejor experiencia de aprendizaje',
+      subtitle: 'Por favor gira tu dispositivo a modo vertical',
+      explanation: 'Nuestros ejercicios están optimizados para pantalla vertical',
     },
     errors: {
       somethingWentWrong: 'Algo salió mal',
