@@ -1,6 +1,7 @@
 @import './styles/design-system/typography.css';
 @import './styles/components.css';
 @import './styles/layout.css';
+@import './styles/components/orientation-lock.css';
 
 /* === GLOBAL BASE STYLES === */
 body {

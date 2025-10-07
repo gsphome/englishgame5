@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ErrorBoundary } from './components/common/ErrorBoundary';
 import { AppRouter } from './components/layout/AppRouter';
 import { MemoizedHeader, MemoizedToastContainer } from './components/ui/MemoizedComponents';
+import { OrientationLock } from './components/ui/OrientationLock';
 import { useAppStore } from './stores/appStore';
 import { useMaxLimits } from './hooks/useMaxLimits';
 import { useSystemTheme } from './hooks/useSystemTheme';
@@ -78,6 +79,9 @@ const AppContent: React.FC = () => {
 
         <MemoizedToastContainer />
       </div>
+      
+      {/* Orientation Lock - Only visible on mobile landscape */}
+      <OrientationLock />
     </ErrorBoundary>
   );
 };
