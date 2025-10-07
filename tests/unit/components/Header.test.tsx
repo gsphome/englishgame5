@@ -139,7 +139,7 @@ describe('Header Component - Theme Context Testing', () => {
       expect(screen.getByTestId('fluent-flow-logo')).toBeInTheDocument();
       expect(screen.getByText('FluentFlow')).toBeInTheDocument();
       expect(screen.getByTestId('score-display')).toBeInTheDocument();
-      expect(screen.getByRole('button', { name: /abrir menú/i })).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: /navigation\.openMenu/i })).toBeInTheDocument();
       expect(screen.getByRole('button', { name: /user profile/i })).toBeInTheDocument();
     });
 
