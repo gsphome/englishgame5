@@ -122,7 +122,9 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
 
         // First, ensure each category gets at least one word
         categoriesWithWords.forEach(category => {
-          const categoryWords = wordsByCategory[category].sort(conditionalRandomSort(randomizeItems));
+          const categoryWords = wordsByCategory[category].sort(
+            conditionalRandomSort(randomizeItems)
+          );
           const wordsToTake = Math.min(minWordsPerCategory, categoryWords.length);
           for (let i = 0; i < wordsToTake && selectedWords.length < totalWords; i++) {
             selectedWords.push({ word: categoryWords[i], category });

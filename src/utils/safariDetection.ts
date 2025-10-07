@@ -10,33 +10,33 @@ export const detectSafariMobile = (): boolean => {
   }
 
   const userAgent = navigator.userAgent;
-  
+
   // Must be Safari
   const isSafari = /Safari/.test(userAgent);
-  
+
   // Must NOT be Chrome (Chrome includes "Safari" in user agent)
   const isNotChrome = !/Chrome/.test(userAgent) && !/CriOS/.test(userAgent);
-  
+
   // Must be mobile (iOS)
   const isMobile = /iPhone|iPad|iPod/.test(userAgent);
-  
+
   // Additional Safari-specific checks
   const hasWebKit = /WebKit/.test(userAgent);
   const hasVersion = /Version\//.test(userAgent);
-  
+
   return isSafari && isNotChrome && isMobile && hasWebKit && hasVersion;
 };
 
 export const applySafariMobileClass = (): void => {
   const isSafariMobile = detectSafariMobile();
-  
+
   // Debug logging
   console.log('Safari Mobile Detection:', {
     userAgent: navigator.userAgent,
     isSafariMobile,
-    classList: document.documentElement.classList.toString()
+    classList: document.documentElement.classList.toString(),
   });
-  
+
   if (isSafariMobile) {
     document.documentElement.classList.add('browser-safari-mobile');
     console.log('✅ Safari Mobile class applied');

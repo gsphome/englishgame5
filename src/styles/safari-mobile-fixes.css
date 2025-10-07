@@ -2,7 +2,6 @@
 /* Use CSS class applied by JavaScript for precise Safari detection */
 
 .browser-safari-mobile {
-
   /* === BASIC SAFARI MOBILE FIXES === */
 
   /* Font rendering to match Chrome */
@@ -39,7 +38,7 @@
 
   /* Add search icon */
   html:not(.dark) .search-bar::before {
-    content: "🔍";
+    content: '🔍';
     position: absolute;
     left: 0.75rem;
     top: 50%;
@@ -78,7 +77,7 @@
 
   /* NEXT badge - must be blue */
   html:not(.dark) .module-card .badge,
-  html:not(.dark) .module-card *:contains("NEXT") {
+  html:not(.dark) .module-card *:contains('NEXT') {
     background: #3b82f6 !important;
     color: #ffffff !important;
   }
@@ -112,10 +111,10 @@
   /* === ADDITIONAL SECTION IMPROVEMENTS === */
 
   /* All expandable sections - consistent styling */
-  html:not(.dark) .main-menu *:contains("Elementary"),
-  html:not(.dark) .main-menu *:contains("Intermediate"),
-  html:not(.dark) .main-menu *:contains("Upper-Intermediate"),
-  html:not(.dark) .main-menu *:contains("Advanced") {
+  html:not(.dark) .main-menu *:contains('Elementary'),
+  html:not(.dark) .main-menu *:contains('Intermediate'),
+  html:not(.dark) .main-menu *:contains('Upper-Intermediate'),
+  html:not(.dark) .main-menu *:contains('Advanced') {
     border: 1px solid #d1d5db !important;
     border-radius: 0.5rem !important;
     background: #f9fafb !important;
@@ -127,9 +126,9 @@
   }
 
   /* Progress counters - better visibility */
-  html:not(.dark) .main-menu span:contains("0/5"),
-  html:not(.dark) .main-menu span:contains("0/8"),
-  html:not(.dark) .main-menu span:contains("0/11") {
+  html:not(.dark) .main-menu span:contains('0/5'),
+  html:not(.dark) .main-menu span:contains('0/8'),
+  html:not(.dark) .main-menu span:contains('0/11') {
     background: #e5e7eb !important;
     color: #374151 !important;
     padding: 0.25rem 0.5rem !important;
@@ -157,7 +156,6 @@ ALLBACK: CSS-only Safari Mobile Detection === */
 /* In case JavaScript detection fails, use CSS feature detection */
 @supports (-webkit-touch-callout: none) and (-webkit-overflow-scrolling: touch) {
   @media screen and (max-device-width: 768px) and (-webkit-min-device-pixel-ratio: 1) {
-
     /* Only apply if NOT Chrome (Chrome doesn't support some Safari-specific features) */
     html:not(.browser-chrome):not(.dark) .main-menu__view-btn--active {
       background: #3b82f6 !important;
@@ -166,7 +164,7 @@ ALLBACK: CSS-only Safari Mobile Detection === */
     }
 
     html:not(.browser-chrome):not(.dark) .search-bar::before {
-      content: "🔍";
+      content: '🔍';
       position: absolute;
       left: 0.75rem;
       top: 50%;
