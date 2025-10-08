@@ -113,7 +113,7 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
       setSelectedRight(null);
       setShowResult(false);
     }
-  }, [module?.data, module?.id]);
+  }, [module?.data, module?.id, randomizeItems]);
 
   if (!module?.data || leftItems.length === 0) {
     return (

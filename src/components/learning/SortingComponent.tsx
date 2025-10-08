@@ -184,7 +184,7 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
       });
       setSortedItems(initialSorted);
     }
-  }, [module]);
+  }, [module, randomizeItems]);
 
   // Desktop drag handlers
   const handleDragStart = (e: React.DragEvent, word: string) => {

@@ -185,7 +185,7 @@
 
   /* Show shorter text for Progress button */
   .main-menu__view-btn:first-child::after {
-    content: "Prog" !important;
+    content: 'Prog' !important;
     font-size: 0.6rem !important;
     font-weight: 600 !important;
     line-height: 1.2 !important;
@@ -199,7 +199,7 @@
 
   /* Show shorter text for All Modules button */
   .main-menu__view-btn:last-child::after {
-    content: "All" !important;
+    content: 'All' !important;
     font-size: 0.6rem !important;
     font-weight: 600 !important;
     line-height: 1.2 !important;
@@ -232,12 +232,12 @@
   /* Fix for small screens - even shorter text */
   @media (max-width: 400px) {
     .main-menu__view-btn:first-child::after {
-      content: "P" !important;
+      content: 'P' !important;
       font-size: 0.7rem !important;
     }
 
     .main-menu__view-btn:last-child::after {
-      content: "A" !important;
+      content: 'A' !important;
       font-size: 0.7rem !important;
     }
 
@@ -277,12 +277,12 @@
   /* Medium screens - slightly longer abbreviations */
   @media (min-width: 401px) and (max-width: 500px) {
     .main-menu__view-btn:first-child::after {
-      content: "Prog" !important;
+      content: 'Prog' !important;
       font-size: 0.65rem !important;
     }
 
     .main-menu__view-btn:last-child::after {
-      content: "Mods" !important;
+      content: 'Mods' !important;
       font-size: 0.65rem !important;
     }
   }
