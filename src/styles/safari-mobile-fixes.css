@@ -2,33 +2,17 @@
 /* Use CSS class applied by JavaScript for precise Safari detection */
 
 .browser-safari-mobile {
-  /* === BASIC SAFARI MOBILE FIXES === */
-
-  /* Font rendering to match Chrome */
-  html:not(.dark) * {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  /* Remove Safari default styling */
-  html:not(.dark) button,
-  html:not(.dark) input,
-  html:not(.dark) select {
-    -webkit-appearance: none;
-    appearance: none;
-  }
-
   /* === MAIN MENU HEADER FIXES === */
 
   /* Progress button - must be blue like Chrome */
-  html:not(.dark) .main-menu__view-btn--active {
+  .main-menu__view-btn--active {
     background: #3b82f6 !important;
     color: #ffffff !important;
     border: 1px solid #3b82f6 !important;
   }
 
   /* All Modules button - white background like Chrome */
-  html:not(.dark) .main-menu__view-btn:not(.main-menu__view-btn--active) {
+  .main-menu__view-btn:not(.main-menu__view-btn--active) {
     background: #ffffff !important;
     color: #374151 !important;
     border: 1px solid #d1d5db !important;
@@ -37,7 +21,7 @@
   /* === SEARCH BAR FIX === */
 
   /* Add search icon */
-  html:not(.dark) .search-bar::before {
+  .search-bar::before {
     content: '🔍';
     position: absolute;
     left: 0.75rem;
@@ -47,138 +31,36 @@
     pointer-events: none;
   }
 
-  html:not(.dark) .search-bar {
+  .search-bar {
     position: relative;
   }
 
-  html:not(.dark) .search-bar input {
+  .search-bar input {
     padding-left: 2.5rem !important;
   }
 
-  /* === MODULE CARDS FIXES === */
-
-  /* Featured module card (Basic Vocabulary) - blue border */
-  html:not(.dark) .module-card:first-child {
-    border: 2px solid #3b82f6 !important;
+  /* Fix Continue button - now we know the class works */
+  .progression-dashboard__continue-btn {
     background: #ffffff !important;
-    border-radius: 0.75rem !important;
-    box-shadow: 0 2px 8px 0 rgba(59, 130, 246, 0.15) !important;
+    color: #1e40af !important;
+    border: 2px solid #1e40af !important;
   }
 
-  /* Continue button - blue with proper styling */
-  html:not(.dark) .module-card:first-child button {
-    background: #3b82f6 !important;
-    color: #ffffff !important;
-    border: 1px solid #3b82f6 !important;
-    border-radius: 0.5rem !important;
-    padding: 0.5rem 1rem !important;
-    font-weight: 600 !important;
+  /* Fix text overflow in module cards */
+  .module-card {
+    overflow: hidden !important;
   }
 
-  /* NEXT badge - must be blue */
-  html:not(.dark) .module-card .badge,
-  html:not(.dark) .module-card *:contains('NEXT') {
-    background: #3b82f6 !important;
-    color: #ffffff !important;
+  .module-card__title {
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    max-width: 100% !important;
+    width: 100% !important;
   }
 
-  /* Module cards - better borders */
-  html:not(.dark) .module-card {
-    border: 1px solid #e5e7eb !important;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1) !important;
-  }
-
-  /* === SECTION HEADERS SIMPLE FIX === */
-
-  /* Foundation, Elementary, etc. - simple border */
-  html:not(.dark) .main-menu h3,
-  html:not(.dark) .main-menu summary {
-    border: 1px solid #d1d5db !important;
-    border-radius: 0.5rem !important;
-    background: #f9fafb !important;
-    padding: 0.75rem 1rem !important;
-    margin: 0.5rem 0 !important;
-  }
-
-  /* Progress counters styling */
-  html:not(.dark) .main-menu span {
-    background: #f3f4f6 !important;
-    padding: 0.25rem 0.5rem !important;
-    border-radius: 0.375rem !important;
-    font-size: 0.75rem !important;
-  }
-
-  /* === ADDITIONAL SECTION IMPROVEMENTS === */
-
-  /* All expandable sections - consistent styling */
-  html:not(.dark) .main-menu *:contains('Elementary'),
-  html:not(.dark) .main-menu *:contains('Intermediate'),
-  html:not(.dark) .main-menu *:contains('Upper-Intermediate'),
-  html:not(.dark) .main-menu *:contains('Advanced') {
-    border: 1px solid #d1d5db !important;
-    border-radius: 0.5rem !important;
-    background: #f9fafb !important;
-    padding: 0.75rem 1rem !important;
-    margin: 0.5rem 0 !important;
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-  }
-
-  /* Progress counters - better visibility */
-  html:not(.dark) .main-menu span:contains('0/5'),
-  html:not(.dark) .main-menu span:contains('0/8'),
-  html:not(.dark) .main-menu span:contains('0/11') {
-    background: #e5e7eb !important;
-    color: #374151 !important;
-    padding: 0.25rem 0.5rem !important;
-    border-radius: 0.375rem !important;
-    font-size: 0.75rem !important;
-    font-weight: 500 !important;
-  }
-
-  /* Module cards - better contrast */
-  html:not(.dark) .module-card:not(:first-child) {
-    border: 1px solid #d1d5db !important;
-    background: #ffffff !important;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1) !important;
-  }
-
-  /* Chevron arrows for expandable sections */
-  html:not(.dark) .main-menu details summary::marker,
-  html:not(.dark) .main-menu .chevron {
-    color: #6b7280 !important;
-  }
-}
-
-/* === F
-ALLBACK: CSS-only Safari Mobile Detection === */
-/* In case JavaScript detection fails, use CSS feature detection */
-@supports (-webkit-touch-callout: none) and (-webkit-overflow-scrolling: touch) {
-  @media screen and (max-device-width: 768px) and (-webkit-min-device-pixel-ratio: 1) {
-    /* Only apply if NOT Chrome (Chrome doesn't support some Safari-specific features) */
-    html:not(.browser-chrome):not(.dark) .main-menu__view-btn--active {
-      background: #3b82f6 !important;
-      color: #ffffff !important;
-      border: 1px solid #3b82f6 !important;
-    }
-
-    html:not(.browser-chrome):not(.dark) .search-bar::before {
-      content: '🔍';
-      position: absolute;
-      left: 0.75rem;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 10;
-      pointer-events: none;
-    }
-
-    html:not(.browser-chrome):not(.dark) .search-bar {
-      position: relative;
-    }
-
-    html:not(.browser-chrome):not(.dark) .search-bar input {
-      padding-left: 2.5rem !important;
-    }
+  .module-card__content {
+    overflow: hidden !important;
+    width: 100% !important;
   }
 }
