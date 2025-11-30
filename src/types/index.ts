@@ -1,5 +1,5 @@
 // Core Types
-export type LearningMode = 'flashcard' | 'quiz' | 'completion' | 'sorting' | 'matching';
+export type LearningMode = 'flashcard' | 'quiz' | 'completion' | 'sorting' | 'matching' | 'reading';
 export type DifficultyLevel = 'a1' | 'a2' | 'b1' | 'b2' | 'c1' | 'c2';
 export type Category =
   | 'Vocabulary'
@@ -78,8 +78,56 @@ export interface MatchingData extends BaseLearningData {
   pairs?: { left: string; right: string }[];
 }
 
+// Reading mode types
+export interface ReadingData extends BaseLearningData {
+  title: string;
+  sections: ReadingSection[];
+  learningObjectives: string[];
+  keyVocabulary: KeyTerm[];
+  grammarPoints?: GrammarPoint[];
+  estimatedReadingTime: number; // in minutes
+}
+
+export interface ReadingSection {
+  id: string;
+  title: string;
+  content: string;
+  type: 'introduction' | 'theory' | 'examples' | 'summary';
+  interactive?: ReadingInteractive;
+}
+
+export interface ReadingInteractive {
+  highlights?: string[];
+  tooltips?: ReadingTooltip[];
+  expandable?: ReadingExpandable[];
+}
+
+export interface ReadingTooltip {
+  term: string;
+  definition: string;
+}
+
+export interface ReadingExpandable {
+  title: string;
+  content: string;
+}
+
+export interface KeyTerm {
+  term: string;
+  definition: string;
+  example: string;
+  pronunciation?: string; // IPA notation
+}
+
+export interface GrammarPoint {
+  rule: string;
+  explanation: string;
+  examples: string[];
+  commonMistakes?: string[];
+}
+
 // Union type for all learning data
-export type LearningData = FlashcardData | QuizData | CompletionData | SortingData | MatchingData;
+export type LearningData = FlashcardData | QuizData | CompletionData | SortingData | MatchingData | ReadingData;
 
 // Language and Theme types
 export type Language = 'en' | 'es';
@@ -148,6 +196,7 @@ export interface GameSettings {
   completionMode: GameModeSettings;
   sortingMode: GameModeSettings & { categoryCount: number };
   matchingMode: GameModeSettings;
+  readingMode: GameModeSettings;
 }
 
 export interface MaxLimits {
@@ -156,6 +205,7 @@ export interface MaxLimits {
   completion: number;
   sorting: number;
   matching: number;
+  reading: number;
   maxCategories: number;
 }
 

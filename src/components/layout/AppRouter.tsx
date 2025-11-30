@@ -67,6 +67,18 @@ const MatchingComponent = lazy(() =>
     }))
 );
 
+const ReadingComponent = lazy(() =>
+  import('../learning/ReadingComponent')
+    .then(module => ({
+      default: module.default,
+    }))
+    .catch(() => ({
+      default: () => (
+        <div className="app-router__error-fallback">Failed to load Reading component</div>
+      ),
+    }))
+);
+
 // Enhanced loading component
 const ComponentLoader: React.FC = () => (
   <div className="app-router__loader">
@@ -167,6 +179,8 @@ export const AppRouter: React.FC = () => {
               return <SortingComponent module={module} />;
             case 'matching':
               return <MatchingComponent module={module} />;
+            case 'reading':
+              return <ReadingComponent module={module} />;
             default:
               return (
                 <div className="app-router__unknown-view">

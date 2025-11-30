@@ -46,7 +46,7 @@ const AppContent: React.FC = () => {
 
     // Clear toasts when changing views (immediate, no delays)
     if (currentView !== prevView) {
-      const learningModes = ['flashcard', 'quiz', 'completion', 'sorting', 'matching'];
+      const learningModes = ['flashcard', 'quiz', 'completion', 'sorting', 'matching', 'reading'];
 
       if (learningModes.includes(prevView) || learningModes.includes(currentView)) {
         toast.clearOnNavigation();

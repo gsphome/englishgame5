@@ -47,7 +47,7 @@ export class ContentAdapter {
    */
   static adaptString(
     text: string,
-    format: 'quiz' | 'flashcard' | 'explanation' = 'quiz'
+    format: 'quiz' | 'flashcard' | 'explanation' | 'reading' = 'quiz'
   ): StructuredContent {
     return ContentParser.fromLegacyString(text, format);
   }
@@ -75,7 +75,7 @@ export class ContentAdapter {
    */
   static ensureStructured(
     content: string | StructuredContent,
-    format: 'quiz' | 'flashcard' | 'explanation' = 'quiz'
+    format: 'quiz' | 'flashcard' | 'explanation' | 'reading' = 'quiz'
   ): StructuredContent {
     if (this.isStructuredContent(content)) {
       return content;

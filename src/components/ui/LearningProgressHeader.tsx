@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../styles/components/learning-progress-header.css';
 
-export type LearningMode = 'flashcard' | 'quiz' | 'completion' | 'sorting' | 'matching';
+export type LearningMode = 'flashcard' | 'quiz' | 'completion' | 'sorting' | 'matching' | 'reading';
 
 interface LearningProgressHeaderProps {
   title: string;

@@ -71,6 +71,7 @@ export const MainMenu: React.FC = () => {
       completion: 'Completar oraciones',
       sorting: 'Ejercicio de clasificación',
       matching: 'Ejercicio de emparejamiento',
+      reading: 'Lectura',
     };
 
     toast.info(

@@ -5,6 +5,7 @@ import {
   PenTool,
   BarChart3,
   Link,
+  BookOpen,
   Lock,
   LockOpen,
   CheckCircle,
@@ -32,6 +33,7 @@ const getIcon = (learningMode: string) => {
     completion: <PenTool {...iconProps} />,
     sorting: <BarChart3 {...iconProps} />,
     matching: <Link {...iconProps} />,
+    reading: <BookOpen {...iconProps} />,
   };
   return icons[learningMode] || <CreditCard {...iconProps} />;
 };
@@ -43,6 +45,7 @@ const getLearningModeLabel = (learningMode: string, t: any): string => {
     completion: t('learning.completionMode'),
     sorting: t('learning.sortingMode'),
     matching: t('learning.matchingMode'),
+    reading: t('learning.readingMode'),
   };
   return labels[learningMode] || t('common.exercise');
 };

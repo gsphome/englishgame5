@@ -205,11 +205,20 @@ export class ContentParser {
   }
 
   /**
+   * Parse reading content with formatting patterns
+   */
+  static parseReadingContent(text: string): StructuredContent {
+    // Reading content uses similar patterns to quiz content
+    // but may have additional formatting for educational content
+    return this.parseQuizContent(text);
+  }
+
+  /**
    * Legacy compatibility: convert current string content to structured
    */
   static fromLegacyString(
     text: string,
-    format: 'quiz' | 'flashcard' | 'explanation' = 'quiz'
+    format: 'quiz' | 'flashcard' | 'explanation' | 'reading' = 'quiz'
   ): StructuredContent {
     switch (format) {
       case 'quiz':
@@ -218,6 +227,8 @@ export class ContentParser {
         return this.parseFlashcardContent(text);
       case 'explanation':
         return this.parseExplanationContent(text);
+      case 'reading':
+        return this.parseReadingContent(text);
       default:
         return { segments: [{ type: 'text', content: text }], format };
     }
