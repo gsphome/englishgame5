@@ -127,7 +127,13 @@ export interface GrammarPoint {
 }
 
 // Union type for all learning data
-export type LearningData = FlashcardData | QuizData | CompletionData | SortingData | MatchingData | ReadingData;
+export type LearningData =
+  | FlashcardData
+  | QuizData
+  | CompletionData
+  | SortingData
+  | MatchingData
+  | ReadingData;
 
 // Language and Theme types
 export type Language = 'en' | 'es';

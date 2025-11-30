@@ -84,7 +84,7 @@ const ReadingComponent: React.FC<ReadingComponentProps> = ({ module }) => {
   }, [currentSectionIndex]);
 
   const toggleExpandable = useCallback((index: number) => {
-    setExpandedItems((prev) => {
+    setExpandedItems(prev => {
       const newSet = new Set(prev);
       if (newSet.has(index)) {
         newSet.delete(index);
@@ -96,7 +96,7 @@ const ReadingComponent: React.FC<ReadingComponentProps> = ({ module }) => {
   }, []);
 
   const handleTooltipToggle = useCallback((term: string) => {
-    setActiveTooltip((prev) => (prev === term ? null : term));
+    setActiveTooltip(prev => (prev === term ? null : term));
   }, []);
 
   // Keyboard navigation
@@ -131,9 +131,7 @@ const ReadingComponent: React.FC<ReadingComponentProps> = ({ module }) => {
   if (!readingData || !readingSections.length) {
     return (
       <div className="reading-component__no-data">
-        <p className="reading-component__no-data-text">
-          {t('learning.noReadingContentAvailable')}
-        </p>
+        <p className="reading-component__no-data-text">{t('learning.noReadingContentAvailable')}</p>
         <button onClick={returnToMenu} className="reading-component__no-data-btn">
           {t('navigation.mainMenu')}
         </button>
@@ -186,30 +184,33 @@ const ReadingComponent: React.FC<ReadingComponentProps> = ({ module }) => {
         </div>
 
         {/* Interactive Content - Tooltips */}
-        {currentSection?.interactive?.tooltips && currentSection.interactive.tooltips.length > 0 && (
-          <div className="reading-component__tooltips">
-            <h4 className="reading-component__tooltips-title">{t('reading.component.keyTerm')}</h4>
-            <div className="reading-component__tooltips-grid">
-              {currentSection.interactive.tooltips.map((tooltip, index) => (
-                <button
-                  key={index}
-                  className={`reading-component__tooltip-trigger ${
-                    activeTooltip === tooltip.term ? 'reading-component__tooltip-trigger--active' : ''
-                  }`}
-                  onClick={() => handleTooltipToggle(tooltip.term)}
-                  aria-expanded={activeTooltip === tooltip.term}
-                >
-                  <span className="reading-component__tooltip-term">{tooltip.term}</span>
-                  {activeTooltip === tooltip.term && (
-                    <div className="reading-component__tooltip-content">
-                      {tooltip.definition}
-                    </div>
-                  )}
-                </button>
-              ))}
+        {currentSection?.interactive?.tooltips &&
+          currentSection.interactive.tooltips.length > 0 && (
+            <div className="reading-component__tooltips">
+              <h4 className="reading-component__tooltips-title">
+                {t('reading.component.keyTerm')}
+              </h4>
+              <div className="reading-component__tooltips-grid">
+                {currentSection.interactive.tooltips.map((tooltip, index) => (
+                  <button
+                    key={index}
+                    className={`reading-component__tooltip-trigger ${
+                      activeTooltip === tooltip.term
+                        ? 'reading-component__tooltip-trigger--active'
+                        : ''
+                    }`}
+                    onClick={() => handleTooltipToggle(tooltip.term)}
+                    aria-expanded={activeTooltip === tooltip.term}
+                  >
+                    <span className="reading-component__tooltip-term">{tooltip.term}</span>
+                    {activeTooltip === tooltip.term && (
+                      <div className="reading-component__tooltip-content">{tooltip.definition}</div>
+                    )}
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
-        )}
+          )}
 
         {/* Interactive Content - Expandable Sections */}
         {currentSection?.interactive?.expandable &&
@@ -242,20 +243,21 @@ const ReadingComponent: React.FC<ReadingComponentProps> = ({ module }) => {
           )}
 
         {/* Interactive Content - Highlights */}
-        {currentSection?.interactive?.highlights && currentSection.interactive.highlights.length > 0 && (
-          <div className="reading-component__highlights">
-            <h4 className="reading-component__highlights-title">
-              {t('reading.component.keyTerm')}
-            </h4>
-            <div className="reading-component__highlights-list">
-              {currentSection.interactive.highlights.map((highlight, index) => (
-                <span key={index} className="reading-component__highlight-item">
-                  {highlight}
-                </span>
-              ))}
+        {currentSection?.interactive?.highlights &&
+          currentSection.interactive.highlights.length > 0 && (
+            <div className="reading-component__highlights">
+              <h4 className="reading-component__highlights-title">
+                {t('reading.component.keyTerm')}
+              </h4>
+              <div className="reading-component__highlights-list">
+                {currentSection.interactive.highlights.map((highlight, index) => (
+                  <span key={index} className="reading-component__highlight-item">
+                    {highlight}
+                  </span>
+                ))}
+              </div>
             </div>
-          </div>
-        )}
+          )}
 
         {/* Key Vocabulary - Show if available for current section */}
         {readingData.keyVocabulary?.length > 0 && (

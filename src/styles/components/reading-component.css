@@ -17,7 +17,7 @@
   --reading-spacing-md: 1rem;
   --reading-spacing-lg: 1.5rem;
   --reading-spacing-xl: 2rem;
-  
+
   /* Local typography variables - self-contained */
   --reading-font-size-sm: 0.875rem;
   --reading-font-size-base: 1rem;
@@ -25,19 +25,19 @@
   --reading-font-size-xl: 1.25rem;
   --reading-font-size-xxl: 1.5rem;
   --reading-font-size-title: 1.75rem;
-  
+
   /* Local line heights - reading-optimized */
   --reading-line-height-tight: 1.3;
   --reading-line-height-normal: 1.6;
   --reading-line-height-relaxed: 1.7;
-  
+
   /* Local layout variables */
   --reading-max-width: 100%;
   --reading-content-width: 100%;
   --reading-touch-target: 44px;
   --reading-border-radius: 0.5rem;
   --reading-border-radius-sm: 0.25rem;
-  
+
   /* Local theme colors - duplicated from global for independence */
   --reading-bg-primary: var(--theme-bg-primary);
   --reading-bg-secondary: var(--theme-bg-secondary);
@@ -189,7 +189,9 @@
   border: 1px solid var(--reading-border-primary);
   border-radius: var(--reading-border-radius);
   padding: var(--reading-spacing-md);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .reading-component__vocabulary-card:hover {
@@ -475,25 +477,25 @@
     --reading-spacing-lg: 1.75rem;
     --reading-max-width: 900px;
   }
-  
+
   /* Tablet: Two-column vocabulary grid */
   .reading-component__vocabulary-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: var(--reading-spacing-md);
   }
-  
+
   /* Tablet: Adjusted content padding */
   .reading-component__content {
     padding: var(--reading-spacing-lg);
     max-width: var(--reading-max-width);
   }
-  
+
   /* Tablet: Larger section titles */
   .reading-component__section-title {
     font-size: var(--reading-font-size-title);
     margin-bottom: var(--reading-spacing-lg);
   }
-  
+
   /* Tablet: Optimized reading width */
   .reading-component__section-content {
     font-size: var(--reading-font-size-base);
@@ -515,32 +517,32 @@
     --reading-spacing-xl: 2.5rem;
     --reading-max-width: 1000px;
   }
-  
+
   /* Desktop: Three-column vocabulary grid */
   .reading-component__vocabulary-grid {
     grid-template-columns: repeat(3, 1fr);
     gap: var(--reading-spacing-md);
   }
-  
+
   /* Desktop: Expanded content area */
   .reading-component__content {
     padding: var(--reading-spacing-xl);
     max-width: var(--reading-max-width);
   }
-  
+
   /* Desktop: Larger section titles */
   .reading-component__section-title {
     font-size: var(--reading-font-size-title);
     margin-bottom: var(--reading-spacing-lg);
   }
-  
+
   /* Desktop: Optimized reading width */
   .reading-component__section-content {
     font-size: var(--reading-font-size-base);
     line-height: var(--reading-line-height-relaxed);
     max-width: 70ch; /* Optimal reading width for desktop */
   }
-  
+
   /* Desktop: Absolute positioned tooltips */
   .reading-component__tooltip-content {
     position: absolute;
@@ -553,7 +555,7 @@
   .reading-component__container {
     --reading-max-width: 1200px;
   }
-  
+
   .reading-component__content {
     max-width: var(--reading-max-width);
   }
@@ -565,30 +567,29 @@
   .reading-component__content {
     padding: var(--reading-spacing-sm);
   }
-  
+
   /* Mobile: Single column vocabulary */
   .reading-component__vocabulary-grid {
     grid-template-columns: 1fr;
   }
-  
+
   /* Mobile: Relative positioned tooltips (no absolute) */
   .reading-component__tooltip-content {
     position: relative;
     margin-top: var(--reading-spacing-sm);
     min-width: auto;
   }
-  
+
   /* Mobile: Compact objectives */
   .reading-component__objectives {
     padding: var(--reading-spacing-sm);
   }
-  
+
   /* Mobile: Compact grammar points */
   .reading-component__grammar-point {
     padding: var(--reading-spacing-sm);
   }
 }
-
 
 /* === THEME SUPPORT - Local light/dark themes === */
 
@@ -687,7 +688,7 @@ html.dark .reading-component__highlights {
   .reading-component__no-data-btn {
     transition: none;
   }
-  
+
   .reading-component__vocabulary-card:hover,
   .reading-component__no-data-btn:hover {
     transform: none;
@@ -699,7 +700,7 @@ html.dark .reading-component__highlights {
   .reading-component__container {
     --reading-border-primary: currentColor;
   }
-  
+
   .reading-component__vocabulary-card,
   .reading-component__grammar-point,
   .reading-component__objectives,
@@ -707,7 +708,7 @@ html.dark .reading-component__highlights {
   .reading-component__tooltip-trigger {
     border-width: 2px;
   }
-  
+
   .reading-component__no-data-btn:focus,
   .reading-component__tooltip-trigger:focus,
   .reading-component__expandable-trigger:focus {
@@ -722,17 +723,17 @@ html.dark .reading-component__highlights {
     color: black;
     min-height: auto;
   }
-  
+
   .reading-component__content {
     max-width: 100%;
     padding: 0;
   }
-  
+
   .reading-component__vocabulary-card,
   .reading-component__grammar-point {
     break-inside: avoid;
   }
-  
+
   .reading-component__tooltip-trigger,
   .reading-component__expandable-trigger {
     cursor: default;
@@ -744,12 +745,12 @@ html.dark .reading-component__highlights {
   .reading-component__content {
     padding: var(--reading-spacing-sm) var(--reading-spacing-md);
   }
-  
+
   .reading-component__section-title {
     font-size: var(--reading-font-size-lg);
     margin-bottom: var(--reading-spacing-sm);
   }
-  
+
   .reading-component__objectives,
   .reading-component__grammar-point {
     padding: var(--reading-spacing-sm);
