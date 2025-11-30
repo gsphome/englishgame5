@@ -156,7 +156,7 @@ describe('Reading Progress Integration Tests', () => {
     });
 
     it('should track time spent reading', async () => {
-      const startTime = Date.now();
+      const _startTime = Date.now();
       
       renderWithProviders(<ReadingComponent module={mockModule} />);
 

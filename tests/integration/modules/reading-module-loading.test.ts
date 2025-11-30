@@ -2,7 +2,7 @@ import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { apiService } from '../../../src/services/api';
 import * as secureHttp from '../../../src/utils/secureHttp';
 import * as pathUtils from '../../../src/utils/pathUtils';
-import type { LearningModule, ReadingData } from '../../../src/types';
+import type { ReadingData } from '../../../src/types';
 
 // Mock dependencies
 vi.mock('../../../src/utils/secureHttp');
