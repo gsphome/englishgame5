@@ -1,6 +1,6 @@
 import React from 'react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { renderWithProviders, waitFor, screen } from '../../helpers/test-utils';
+import { renderWithProviders, waitFor, screen, fireEvent } from '../../helpers/test-utils';
 import ReadingComponent from '../../../src/components/learning/ReadingComponent';
 import type { LearningModule, ReadingData } from '../../../src/types';
 
