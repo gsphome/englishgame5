@@ -192,11 +192,21 @@ const createMockCSSStyleDeclaration = () => {
   });
 };
 
+const mockGetComputedStyle = vi.fn().mockImplementation((_element: Element) => {
+  return createMockCSSStyleDeclaration();
+});
+
 Object.defineProperty(window, 'getComputedStyle', {
   writable: true,
-  value: vi.fn().mockImplementation((_element: Element) => {
-    return createMockCSSStyleDeclaration();
-  })
+  configurable: true,
+  value: mockGetComputedStyle
+});
+
+// Also set on global for better compatibility
+Object.defineProperty(global, 'getComputedStyle', {
+  writable: true,
+  configurable: true,
+  value: mockGetComputedStyle
 });
 
 // Mock requestAnimationFrame for CSS animation testing
