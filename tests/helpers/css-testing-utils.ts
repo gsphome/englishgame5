@@ -207,12 +207,18 @@ export const designTokenHelpers = {
    * Mock getComputedStyle for design token testing
    */
   mockDesignTokens: (tokens: Record<string, string>) => {
-    const mockGetComputedStyle = vi.fn().mockReturnValue({
-      getPropertyValue: vi.fn((prop: string) => tokens[prop] || '')
+    const originalGetComputedStyle = window.getComputedStyle;
+    const mockGetComputedStyle = vi.fn().mockImplementation((element: Element) => {
+      const originalStyle = originalGetComputedStyle(element);
+      return {
+        ...originalStyle,
+        getPropertyValue: vi.fn((prop: string) => tokens[prop] || originalStyle.getPropertyValue(prop) || '')
+      };
     });
 
     Object.defineProperty(window, 'getComputedStyle', {
       writable: true,
+      configurable: true,
       value: mockGetComputedStyle
     });
 
