@@ -462,6 +462,10 @@ describe('Reading Progress Integration Tests', () => {
 
       renderWithProviders(<ReadingComponent module={expandableModule} />);
 
+      // Component starts at objectives page, need to navigate to content
+      const startButton = await screen.findByText('Start Reading');
+      fireEvent.click(startButton);
+
       await waitFor(() => {
         expect(screen.getByText('Expandable Section')).toBeInTheDocument();
       });
