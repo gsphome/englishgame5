@@ -1,4 +1,3 @@
-import React from 'react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { renderWithProviders, waitFor, screen, fireEvent } from '../../helpers/test-utils';
 import ReadingComponent from '../../../src/components/learning/ReadingComponent';
@@ -36,6 +35,7 @@ vi.mock('../../../src/hooks/useLearningCleanup', () => ({
 
 describe('Reading Component Accessibility Tests', () => {
   const mockReadingData: ReadingData = {
+    id: 'reading-accessibility-data',
     title: 'Accessibility Test Reading',
     estimatedReadingTime: 5,
     learningObjectives: ['Test accessibility features'],

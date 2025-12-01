@@ -1,4 +1,3 @@
-import React from 'react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { renderWithProviders, waitFor, screen, fireEvent } from '../../helpers/test-utils';
 import ReadingComponent from '../../../src/components/learning/ReadingComponent';
@@ -40,6 +39,7 @@ vi.mock('../../../src/hooks/useLearningCleanup', () => ({
 
 describe('Reading Progress Integration Tests', () => {
   const mockReadingData: ReadingData = {
+    id: 'reading-test-data',
     title: 'Test Reading Module',
     estimatedReadingTime: 5,
     learningObjectives: ['Objective 1', 'Objective 2'],
@@ -195,8 +195,6 @@ describe('Reading Progress Integration Tests', () => {
     });
 
     it('should track time spent reading', async () => {
-      const _startTime = Date.now();
-      
       renderWithProviders(<ReadingComponent module={mockModule} />);
 
       await waitFor(() => {
