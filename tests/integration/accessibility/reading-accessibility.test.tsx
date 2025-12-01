@@ -99,7 +99,7 @@ describe('Reading Component Accessibility Tests', () => {
       const { container } = renderWithProviders(<ReadingComponent module={mockModule} />);
 
       await waitFor(() => {
-        expect(screen.getByText('Section 1')).toBeInTheDocument();
+        expect(screen.getByText('Learning Objectives')).toBeInTheDocument();
       });
 
       // All buttons should have accessible text or aria-label
@@ -142,6 +142,10 @@ describe('Reading Component Accessibility Tests', () => {
 
       const { container } = renderWithProviders(<ReadingComponent module={interactiveModule} />);
 
+      // Navigate to content section
+      const startButton = await screen.findByText('Start Reading');
+      fireEvent.click(startButton);
+
       await waitFor(() => {
         expect(screen.getByText('Interactive Section')).toBeInTheDocument();
       });
@@ -160,7 +164,7 @@ describe('Reading Component Accessibility Tests', () => {
       const { container } = renderWithProviders(<ReadingComponent module={mockModule} />);
 
       await waitFor(() => {
-        expect(screen.getByText('Section 1')).toBeInTheDocument();
+        expect(screen.getByText('Learning Objectives')).toBeInTheDocument();
       });
 
       // Check for semantic elements
@@ -180,7 +184,7 @@ describe('Reading Component Accessibility Tests', () => {
       const { container: lightContainer } = renderWithProviders(<ReadingComponent module={mockModule} />);
 
       await waitFor(() => {
-        expect(screen.getByText('Section 1')).toBeInTheDocument();
+        expect(screen.getByText('Learning Objectives')).toBeInTheDocument();
       });
 
       // Verify focusable elements exist
@@ -194,7 +198,7 @@ describe('Reading Component Accessibility Tests', () => {
       const { container: darkContainer } = renderWithProviders(<ReadingComponent module={mockModule} />);
 
       await waitFor(() => {
-        expect(screen.getAllByText('Section 1')[0]).toBeInTheDocument();
+        expect(screen.getAllByText('Learning Objectives')[0]).toBeInTheDocument();
       });
 
       const darkFocusable = darkContainer.querySelectorAll(
@@ -210,7 +214,7 @@ describe('Reading Component Accessibility Tests', () => {
       const { container } = renderWithProviders(<ReadingComponent module={mockModule} />);
 
       await waitFor(() => {
-        expect(screen.getByText('Section 1')).toBeInTheDocument();
+        expect(screen.getByText('Learning Objectives')).toBeInTheDocument();
       });
 
       // Check that focusable elements exist and have proper structure
@@ -230,7 +234,7 @@ describe('Reading Component Accessibility Tests', () => {
       const { container } = renderWithProviders(<ReadingComponent module={mockModule} />);
 
       await waitFor(() => {
-        expect(screen.getByText('Section 1')).toBeInTheDocument();
+        expect(screen.getByText('Learning Objectives')).toBeInTheDocument();
       });
 
       // Verify no elements have tabindex > 0 (which can cause focus trapping)
@@ -248,7 +252,7 @@ describe('Reading Component Accessibility Tests', () => {
       const { container } = renderWithProviders(<ReadingComponent module={mockModule} />);
 
       await waitFor(() => {
-        expect(screen.getByText('Section 1')).toBeInTheDocument();
+        expect(screen.getByText('Learning Objectives')).toBeInTheDocument();
       });
 
       // Verify text elements exist (actual contrast testing requires visual tools)
@@ -265,7 +269,7 @@ describe('Reading Component Accessibility Tests', () => {
       const { container } = renderWithProviders(<ReadingComponent module={mockModule} />, { theme: 'dark' });
 
       await waitFor(() => {
-        expect(screen.getByText('Section 1')).toBeInTheDocument();
+        expect(screen.getByText('Learning Objectives')).toBeInTheDocument();
       });
 
       // Verify text elements exist
@@ -280,7 +284,7 @@ describe('Reading Component Accessibility Tests', () => {
       const { container } = renderWithProviders(<ReadingComponent module={mockModule} />);
 
       await waitFor(() => {
-        expect(screen.getByText('Section 1')).toBeInTheDocument();
+        expect(screen.getByText('Learning Objectives')).toBeInTheDocument();
       });
 
       // Check buttons have proper structure for styling
@@ -305,7 +309,7 @@ describe('Reading Component Accessibility Tests', () => {
       const { container } = renderWithProviders(<ReadingComponent module={mockModule} />);
 
       await waitFor(() => {
-        expect(screen.getByText('Section 1')).toBeInTheDocument();
+        expect(screen.getByText('Learning Objectives')).toBeInTheDocument();
       });
 
       // Check interactive elements
@@ -329,7 +333,7 @@ describe('Reading Component Accessibility Tests', () => {
       const { container } = renderWithProviders(<ReadingComponent module={mockModule} />);
 
       await waitFor(() => {
-        expect(screen.getByText('Section 1')).toBeInTheDocument();
+        expect(screen.getByText('Learning Objectives')).toBeInTheDocument();
       });
 
       // Verify interactive elements exist and have proper structure
@@ -365,7 +369,7 @@ describe('Reading Component Accessibility Tests', () => {
       const { container } = renderWithProviders(<ReadingComponent module={mockModule} />);
 
       await waitFor(() => {
-        expect(screen.getByText('Section 1')).toBeInTheDocument();
+        expect(screen.getByText('Learning Objectives')).toBeInTheDocument();
       });
 
       // Verify component renders without animations when reduced motion is preferred
@@ -394,7 +398,7 @@ describe('Reading Component Accessibility Tests', () => {
       const { container } = renderWithProviders(<ReadingComponent module={mockModule} />);
 
       await waitFor(() => {
-        expect(screen.getByText('Section 1')).toBeInTheDocument();
+        expect(screen.getByText('Learning Objectives')).toBeInTheDocument();
       });
 
       // Verify component renders in high contrast mode
@@ -419,7 +423,7 @@ describe('Reading Component Accessibility Tests', () => {
       const { container } = renderWithProviders(<ReadingComponent module={mockModule} />);
 
       await waitFor(() => {
-        expect(screen.getByText('Section 1')).toBeInTheDocument();
+        expect(screen.getByText('Learning Objectives')).toBeInTheDocument();
       });
 
       // Verify content is accessible
@@ -447,7 +451,7 @@ describe('Reading Component Accessibility Tests', () => {
       const { container } = renderWithProviders(<ReadingComponent module={mockModule} />);
 
       await waitFor(() => {
-        expect(screen.getByText('Section 1')).toBeInTheDocument();
+        expect(screen.getByText('Learning Objectives')).toBeInTheDocument();
       });
 
       // Verify layout adapts to landscape
@@ -465,7 +469,7 @@ describe('Reading Component Accessibility Tests', () => {
       const { container } = renderWithProviders(<ReadingComponent module={mockModule} />);
 
       await waitFor(() => {
-        expect(screen.getByText('Section 1')).toBeInTheDocument();
+        expect(screen.getByText('Learning Objectives')).toBeInTheDocument();
       });
 
       // Verify tablet layout
@@ -483,7 +487,7 @@ describe('Reading Component Accessibility Tests', () => {
       const { container } = renderWithProviders(<ReadingComponent module={mockModule} />);
 
       await waitFor(() => {
-        expect(screen.getByText('Section 1')).toBeInTheDocument();
+        expect(screen.getByText('Learning Objectives')).toBeInTheDocument();
       });
 
       // Verify desktop layout
@@ -496,13 +500,13 @@ describe('Reading Component Accessibility Tests', () => {
       const { container } = renderWithProviders(<ReadingComponent module={mockModule} />);
 
       await waitFor(() => {
-        expect(screen.getByText('Section 1')).toBeInTheDocument();
+        expect(screen.getByText('Learning Objectives')).toBeInTheDocument();
       });
 
       // Find the actual button element (not just text)
       const buttons = container.querySelectorAll('button');
       const nextButton = Array.from(buttons).find(btn => 
-        btn.textContent?.includes('Next') || btn.textContent?.includes('nextSection')
+        btn.textContent?.includes('Start') || btn.textContent?.includes('Next')
       );
       
       // Verify button exists and can receive focus
@@ -538,6 +542,10 @@ describe('Reading Component Accessibility Tests', () => {
 
       const { container } = renderWithProviders(<ReadingComponent module={interactiveModule} />);
 
+      // Navigate to content
+      const startButton = await screen.findByText('Start Reading');
+      fireEvent.click(startButton);
+
       await waitFor(() => {
         expect(screen.getByText('Interactive Section')).toBeInTheDocument();
       });
@@ -569,7 +577,7 @@ describe('Reading Component Accessibility Tests', () => {
       const { container } = renderWithProviders(<ReadingComponent module={mockModule} />);
 
       await waitFor(() => {
-        expect(screen.getByText('Section 1')).toBeInTheDocument();
+        expect(screen.getByText('Learning Objectives')).toBeInTheDocument();
       });
 
       // Verify accessibility features
@@ -596,7 +604,7 @@ describe('Reading Component Accessibility Tests', () => {
       const { container } = renderWithProviders(<ReadingComponent module={mockModule} />);
 
       await waitFor(() => {
-        expect(screen.getByText('Section 1')).toBeInTheDocument();
+        expect(screen.getByText('Learning Objectives')).toBeInTheDocument();
       });
 
       // Verify accessibility features in dark mode
@@ -618,7 +626,7 @@ describe('Reading Component Accessibility Tests', () => {
       const { container } = renderWithProviders(<ReadingComponent module={mockModule} />);
 
       await waitFor(() => {
-        expect(screen.getByText('Section 1')).toBeInTheDocument();
+        expect(screen.getByText('Learning Objectives')).toBeInTheDocument();
       });
 
       // Verify mobile accessibility
@@ -637,7 +645,7 @@ describe('Reading Component Accessibility Tests', () => {
       const { container } = renderWithProviders(<ReadingComponent module={mockModule} />);
 
       await waitFor(() => {
-        expect(screen.getByText('Section 1')).toBeInTheDocument();
+        expect(screen.getByText('Learning Objectives')).toBeInTheDocument();
       });
 
       // Verify mobile dark mode accessibility

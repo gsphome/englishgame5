@@ -96,6 +96,14 @@ describe('Reading Progress Integration Tests', () => {
         expect(screen.getByText('Test Reading Module')).toBeInTheDocument();
       });
 
+      // Start reading
+      const startButton = screen.getByText('Start Reading');
+      fireEvent.click(startButton);
+
+      await waitFor(() => {
+        expect(screen.getByText('Introduction')).toBeInTheDocument();
+      });
+
       // Navigate through all sections
       const nextButton = screen.getByText(/nextSection|Next Section/i);
       
@@ -120,8 +128,8 @@ describe('Reading Progress Integration Tests', () => {
         expect(mockAddProgressEntry).toHaveBeenCalledWith(
           expect.objectContaining({
             score: 100,
-            totalQuestions: 3,
-            correctAnswers: 3,
+            totalQuestions: 4,
+            correctAnswers: 4,
             moduleId: 'reading-test',
             learningMode: 'reading',
             timeSpent: expect.any(Number),
@@ -137,7 +145,10 @@ describe('Reading Progress Integration Tests', () => {
         expect(screen.getByText('Test Reading Module')).toBeInTheDocument();
       });
 
-      // Navigate to end
+      // Start and navigate to end
+      const startButton = screen.getByText('Start Reading');
+      fireEvent.click(startButton);
+
       const nextButton = screen.getByText(/nextSection|Next Section/i);
       fireEvent.click(nextButton);
       fireEvent.click(nextButton);
@@ -167,7 +178,10 @@ describe('Reading Progress Integration Tests', () => {
       // Simulate some reading time
       await new Promise(resolve => setTimeout(resolve, 100));
 
-      // Navigate to end
+      // Start and navigate to end
+      const startButton = screen.getByText('Start Reading');
+      fireEvent.click(startButton);
+
       const nextButton = screen.getByText(/nextSection|Next Section/i);
       fireEvent.click(nextButton);
       fireEvent.click(nextButton);
@@ -193,7 +207,10 @@ describe('Reading Progress Integration Tests', () => {
         expect(screen.getByText('Test Reading Module')).toBeInTheDocument();
       });
 
-      // Navigate to end
+      // Start and navigate to end
+      const startButton = screen.getByText('Start Reading');
+      fireEvent.click(startButton);
+
       const nextButton = screen.getByText(/nextSection|Next Section/i);
       fireEvent.click(nextButton);
       fireEvent.click(nextButton);
@@ -212,7 +229,15 @@ describe('Reading Progress Integration Tests', () => {
     it('should navigate forward through sections', async () => {
       renderWithProviders(<ReadingComponent module={mockModule} />);
 
-      // Start at section 1
+      // Start at objectives page
+      await waitFor(() => {
+        expect(screen.getByText('Learning Objectives')).toBeInTheDocument();
+      });
+
+      // Start reading
+      const startButton = screen.getByText('Start Reading');
+      fireEvent.click(startButton);
+
       await waitFor(() => {
         expect(screen.getByText('Introduction')).toBeInTheDocument();
       });
@@ -237,6 +262,14 @@ describe('Reading Progress Integration Tests', () => {
       const { container } = renderWithProviders(<ReadingComponent module={mockModule} />);
 
       await waitFor(() => {
+        expect(screen.getByText('Learning Objectives')).toBeInTheDocument();
+      });
+
+      // Start reading
+      const startButton = screen.getByText('Start Reading');
+      fireEvent.click(startButton);
+
+      await waitFor(() => {
         expect(screen.getByText('Introduction')).toBeInTheDocument();
       });
 
@@ -250,7 +283,7 @@ describe('Reading Progress Integration Tests', () => {
       });
 
       // Navigate backward - find button by title attribute
-      const prevButton = container.querySelector('button[title*="previous"]');
+      const prevButton = container.querySelector('button[title*="Previous"]');
       
       if (prevButton) {
         fireEvent.click(prevButton);
@@ -264,11 +297,11 @@ describe('Reading Progress Integration Tests', () => {
       const { container } = renderWithProviders(<ReadingComponent module={mockModule} />);
 
       await waitFor(() => {
-        expect(screen.getByText('Introduction')).toBeInTheDocument();
+        expect(screen.getByText('Learning Objectives')).toBeInTheDocument();
       });
 
-      // Find previous button by title attribute
-      const prevButton = container.querySelector('button[title*="previous"]');
+      // Find previous button by title attribute - should be disabled on objectives page
+      const prevButton = container.querySelector('button[title*="Previous"]');
 
       if (prevButton) {
         expect(prevButton).toBeDisabled();
@@ -279,10 +312,13 @@ describe('Reading Progress Integration Tests', () => {
       renderWithProviders(<ReadingComponent module={mockModule} />);
 
       await waitFor(() => {
-        expect(screen.getByText('Introduction')).toBeInTheDocument();
+        expect(screen.getByText('Learning Objectives')).toBeInTheDocument();
       });
 
-      // Navigate to last section
+      // Start and navigate to last section
+      const startButton = screen.getByText('Start Reading');
+      fireEvent.click(startButton);
+
       const nextButton = screen.getByText(/nextSection|Next Section/i);
       fireEvent.click(nextButton);
       fireEvent.click(nextButton);
@@ -298,10 +334,17 @@ describe('Reading Progress Integration Tests', () => {
       renderWithProviders(<ReadingComponent module={mockModule} />);
 
       await waitFor(() => {
+        expect(screen.getByText('Learning Objectives')).toBeInTheDocument();
+      });
+
+      // Press ArrowRight to start
+      fireEvent.keyDown(window, { key: 'ArrowRight' });
+
+      await waitFor(() => {
         expect(screen.getByText('Introduction')).toBeInTheDocument();
       });
 
-      // Press ArrowRight
+      // Press ArrowRight again
       fireEvent.keyDown(window, { key: 'ArrowRight' });
 
       await waitFor(() => {
@@ -313,10 +356,16 @@ describe('Reading Progress Integration Tests', () => {
       renderWithProviders(<ReadingComponent module={mockModule} />);
 
       await waitFor(() => {
-        expect(screen.getByText('Introduction')).toBeInTheDocument();
+        expect(screen.getByText('Learning Objectives')).toBeInTheDocument();
       });
 
       // Navigate forward first
+      fireEvent.keyDown(window, { key: 'ArrowRight' });
+      
+      await waitFor(() => {
+        expect(screen.getByText('Introduction')).toBeInTheDocument();
+      });
+
       fireEvent.keyDown(window, { key: 'ArrowRight' });
       
       await waitFor(() => {
@@ -335,7 +384,7 @@ describe('Reading Progress Integration Tests', () => {
       renderWithProviders(<ReadingComponent module={mockModule} />);
 
       await waitFor(() => {
-        expect(screen.getByText('Introduction')).toBeInTheDocument();
+        expect(screen.getByText('Learning Objectives')).toBeInTheDocument();
       });
 
       // Press Escape
@@ -350,10 +399,17 @@ describe('Reading Progress Integration Tests', () => {
       renderWithProviders(<ReadingComponent module={mockModule} />);
 
       await waitFor(() => {
+        expect(screen.getByText('Learning Objectives')).toBeInTheDocument();
+      });
+
+      // Press Enter to start
+      fireEvent.keyDown(window, { key: 'Enter' });
+
+      await waitFor(() => {
         expect(screen.getByText('Introduction')).toBeInTheDocument();
       });
 
-      // Press Enter
+      // Press Enter again
       fireEvent.keyDown(window, { key: 'Enter' });
 
       await waitFor(() => {
