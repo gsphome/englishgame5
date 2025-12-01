@@ -234,7 +234,7 @@ export const designTokenHelpers = {
     const missing: string[] = [];
 
     tokens.forEach(token => {
-      const value = computedStyle.getPropertyValue(token).trim();
+      const value = computedStyle.getPropertyValue ? computedStyle.getPropertyValue(token).trim() : '';
       if (value) {
         available.push(token);
       } else {
@@ -250,7 +250,7 @@ export const designTokenHelpers = {
    */
   validateTokenFormat: (token: string, expectedFormat: 'color' | 'size' | 'number'): boolean => {
     const computedStyle = getComputedStyle(document.documentElement);
-    const value = computedStyle.getPropertyValue(token).trim();
+    const value = computedStyle.getPropertyValue ? computedStyle.getPropertyValue(token).trim() : '';
 
     if (!value) return false;
 
@@ -277,8 +277,8 @@ export const designTokenHelpers = {
     themeContextHelpers.applyTheme(theme);
     
     const computedStyle = getComputedStyle(document.documentElement);
-    const baseValue = computedStyle.getPropertyValue(baseToken).trim();
-    const themeValue = computedStyle.getPropertyValue(themeToken).trim();
+    const baseValue = computedStyle.getPropertyValue ? computedStyle.getPropertyValue(baseToken).trim() : '';
+    const themeValue = computedStyle.getPropertyValue ? computedStyle.getPropertyValue(themeToken).trim() : '';
     
     themeContextHelpers.clearTheme();
     
@@ -336,7 +336,9 @@ export const performanceHelpers = {
     
     for (let i = 0; i < iterations; i++) {
       properties.forEach(prop => {
-        computedStyle.getPropertyValue(prop);
+        if (computedStyle.getPropertyValue) {
+          computedStyle.getPropertyValue(prop);
+        }
       });
     }
     
