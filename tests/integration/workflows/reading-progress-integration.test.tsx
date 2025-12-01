@@ -273,9 +273,14 @@ describe('Reading Progress Integration Tests', () => {
         expect(screen.getByText('Introduction')).toBeInTheDocument();
       });
 
-      // Navigate forward
-      const nextButton = screen.getByText(/nextSection|Next Section/i);
+      // Navigate forward - need to click 3 times (intro -> main -> summary)
+      const nextButton = screen.getByText('Next Section');
       fireEvent.click(nextButton);
+      
+      await waitFor(() => {
+        expect(screen.getByText('Main Content')).toBeInTheDocument();
+      });
+      
       fireEvent.click(nextButton);
 
       await waitFor(() => {
@@ -482,6 +487,10 @@ describe('Reading Progress Integration Tests', () => {
       };
 
       renderWithProviders(<ReadingComponent module={interactiveModule} />);
+
+      // Start reading
+      const startButton = await screen.findByText('Start Reading');
+      fireEvent.click(startButton);
 
       await waitFor(() => {
         expect(screen.getByText('Interactive Section')).toBeInTheDocument();
