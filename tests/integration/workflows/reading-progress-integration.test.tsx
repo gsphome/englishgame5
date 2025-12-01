@@ -171,10 +171,14 @@ describe('Reading Progress Integration Tests', () => {
         expect(screen.getByText('Next Section')).toBeInTheDocument();
       });
       
-      let nextButton = screen.getByText('Next Section');
-      fireEvent.click(nextButton);
-      fireEvent.click(nextButton);
-      fireEvent.click(nextButton);
+      // Click through sections one by one with waits
+      fireEvent.click(screen.getByText('Next Section'));
+      await waitFor(() => expect(screen.getByText('Main Content')).toBeInTheDocument());
+      
+      fireEvent.click(screen.getByText('Next Section'));
+      await waitFor(() => expect(screen.getByText('Summary')).toBeInTheDocument());
+      
+      fireEvent.click(screen.getByText('Next Section'));
 
       // Wait for Complete button to appear on summary page
       await waitFor(() => {
@@ -213,10 +217,14 @@ describe('Reading Progress Integration Tests', () => {
         expect(screen.getByText('Next Section')).toBeInTheDocument();
       });
       
-      let nextButton = screen.getByText('Next Section');
-      fireEvent.click(nextButton);
-      fireEvent.click(nextButton);
-      fireEvent.click(nextButton);
+      // Click through sections one by one with waits
+      fireEvent.click(screen.getByText('Next Section'));
+      await waitFor(() => expect(screen.getByText('Main Content')).toBeInTheDocument());
+      
+      fireEvent.click(screen.getByText('Next Section'));
+      await waitFor(() => expect(screen.getByText('Summary')).toBeInTheDocument());
+      
+      fireEvent.click(screen.getByText('Next Section'));
 
       // Wait for Complete button to appear on summary page
       await waitFor(() => {
@@ -248,11 +256,16 @@ describe('Reading Progress Integration Tests', () => {
       const startButton = screen.getByText('Start Reading');
       fireEvent.click(startButton);
 
-      // Navigate through all sections (3 sections + summary page)
-      let nextButton = screen.getByText('Next Section');
-      fireEvent.click(nextButton);
-      fireEvent.click(nextButton);
-      fireEvent.click(nextButton);
+      // Navigate through all sections (3 sections + summary page) with waits
+      await waitFor(() => expect(screen.getByText('Introduction')).toBeInTheDocument());
+      
+      fireEvent.click(screen.getByText('Next Section'));
+      await waitFor(() => expect(screen.getByText('Main Content')).toBeInTheDocument());
+      
+      fireEvent.click(screen.getByText('Next Section'));
+      await waitFor(() => expect(screen.getByText('Summary')).toBeInTheDocument());
+      
+      fireEvent.click(screen.getByText('Next Section'));
 
       // Wait for Complete button to appear on summary page
       await waitFor(() => {
@@ -369,15 +382,16 @@ describe('Reading Progress Integration Tests', () => {
       const startButton = screen.getByText('Start Reading');
       fireEvent.click(startButton);
 
-      // Navigate through all sections (3 sections + summary page)
-      await waitFor(() => {
-        expect(screen.getByText('Next Section')).toBeInTheDocument();
-      });
+      // Navigate through all sections (3 sections + summary page) with waits
+      await waitFor(() => expect(screen.getByText('Introduction')).toBeInTheDocument());
       
-      let nextButton = screen.getByText('Next Section');
-      fireEvent.click(nextButton);
-      fireEvent.click(nextButton);
-      fireEvent.click(nextButton);
+      fireEvent.click(screen.getByText('Next Section'));
+      await waitFor(() => expect(screen.getByText('Main Content')).toBeInTheDocument());
+      
+      fireEvent.click(screen.getByText('Next Section'));
+      await waitFor(() => expect(screen.getByText('Summary')).toBeInTheDocument());
+      
+      fireEvent.click(screen.getByText('Next Section'));
 
       // On summary page, button should show "Complete Reading"
       await waitFor(() => {
