@@ -100,6 +100,16 @@
     "explanation": "The number twenty written as a word"
   },
   {
+    "left": "21",
+    "right": "twenty-one",
+    "explanation": "The number twenty-one written as words"
+  },
+  {
+    "left": "25",
+    "right": "twenty-five",
+    "explanation": "The number twenty-five written as words"
+  },
+  {
     "left": "30",
     "right": "thirty",
     "explanation": "The number thirty written as a word"
@@ -115,88 +125,93 @@
     "explanation": "The number fifty written as a word"
   },
   {
-    "left": "60",
-    "right": "sixty",
-    "explanation": "The number sixty written as a word"
-  },
-  {
-    "left": "70",
-    "right": "seventy",
-    "explanation": "The number seventy written as a word"
-  },
-  {
-    "left": "80",
-    "right": "eighty",
-    "explanation": "The number eighty written as a word"
-  },
-  {
-    "left": "90",
-    "right": "ninety",
-    "explanation": "The number ninety written as a word"
-  },
-  {
-    "left": "100",
-    "right": "one hundred",
-    "explanation": "The number one hundred written as words"
-  },
-  {
     "left": "some",
     "right": "a few",
-    "explanation": "Both mean a small amount"
+    "explanation": "Both mean a small amount",
+    "type": "word-definition"
   },
   {
     "left": "many",
     "right": "a lot of",
-    "explanation": "Both mean a large amount"
-  },
-  {
-    "left": "much",
-    "right": "many",
-    "explanation": "Both mean a large amount (uncountable)"
-  },
-  {
-    "left": "few",
-    "right": "not many",
-    "explanation": "Both mean a small number"
-  },
-  {
-    "left": "little",
-    "right": "not much",
-    "explanation": "Both mean a small amount (uncountable)"
+    "explanation": "Both mean a large amount",
+    "type": "word-definition"
   },
   {
     "left": "all",
     "right": "everything",
-    "explanation": "Both mean the complete amount"
+    "explanation": "Both mean the complete amount",
+    "type": "word-definition"
   },
   {
     "left": "none",
     "right": "nothing",
-    "explanation": "Both mean zero amount"
+    "explanation": "Both mean zero amount",
+    "type": "word-definition"
   },
   {
     "left": "half",
     "right": "50%",
-    "explanation": "Half means one of two equal parts"
+    "explanation": "Half means one of two equal parts",
+    "type": "word-definition"
   },
   {
-    "left": "quarter",
-    "right": "25%",
-    "explanation": "Quarter means one of four equal parts"
+    "left": "How many?",
+    "right": "¿Cuántos?",
+    "explanation": "Question for countable things",
+    "type": "word-translation"
   },
   {
-    "left": "double",
-    "right": "twice",
-    "explanation": "Both mean two times the amount"
+    "left": "How much?",
+    "right": "¿Cuánto?",
+    "explanation": "Question for uncountable things",
+    "type": "word-translation"
   },
   {
-    "left": "single",
-    "right": "one (2)",
-    "explanation": "Both mean just one"
+    "left": "first",
+    "right": "1st",
+    "explanation": "Ordinal number for position one",
+    "type": "word-definition"
+  },
+  {
+    "left": "second",
+    "right": "2nd",
+    "explanation": "Ordinal number for position two",
+    "type": "word-definition"
+  },
+  {
+    "left": "third",
+    "right": "3rd",
+    "explanation": "Ordinal number for position three",
+    "type": "word-definition"
+  },
+  {
+    "left": "zero",
+    "right": "0",
+    "explanation": "The number zero",
+    "type": "word-definition"
+  },
+  {
+    "left": "one hundred",
+    "right": "100",
+    "explanation": "The number one hundred",
+    "type": "word-definition"
   },
   {
     "left": "pair",
-    "right": "two (2)",
-    "explanation": "A pair means two things together"
+    "right": "two things",
+    "explanation": "A pair means two things together",
+    "type": "word-definition"
+  },
+  {
+    "left": "dozen",
+    "right": "12",
+    "explanation": "A dozen means twelve",
+    "type": "word-definition"
+  },
+  {
+    "left": "both",
+    "right": "the two",
+    "explanation": "Both means the two together",
+    "type": "word-definition"
   }
 ]

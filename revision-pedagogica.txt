@@ -1,0 +1,128 @@
+# REVISIÓN PEDAGÓGICA COMPLETA
+
+## Distribución por Nivel
+
+### A1 (8 módulos)
+- reading: 3
+- flashcard: 1
+- matching: 2
+- completion: 1
+- quiz: 1
+
+### A2 (12 módulos)
+- reading: 4
+- flashcard: 2
+- sorting: 1
+- completion: 3
+- matching: 1
+- quiz: 1
+
+### B1 (10 módulos)
+- reading: 3
+- flashcard: 1
+- sorting: 2
+- completion: 1
+- matching: 1
+- quiz: 2
+
+### B2 (14 módulos)
+- reading: 3
+- completion: 2
+- quiz: 1
+- flashcard: 7
+- sorting: 1
+
+### C1 (11 módulos)
+- reading: 3
+- flashcard: 3
+- completion: 4
+- matching: 1
+
+### C2 (11 módulos)
+- reading: 3
+- flashcard: 1
+- completion: 5
+- sorting: 1
+- quiz: 1
+
+
+## Análisis por Nivel
+
+### A1
+1. [reading] Greetings & Introductions
+2. [reading] Travel Reading
+3. [reading] Daily Life Reading
+4. [flashcard] Basic Vocabulary
+5. [matching] Basic Grammar
+6. [matching] Numbers & Quantities
+7. [completion] Basic Sentences
+8. [quiz] Basic Review
+
+### A2
+1. [reading] Business Reading
+2. [reading] Culture Reading
+3. [reading] Technology Reading
+4. [reading] Health Reading
+5. [flashcard] Family
+6. [flashcard] Home
+7. [sorting] Past Tense
+8. [completion] Past Stories
+9. [matching] Time Expressions
+10. [completion] Comparatives & Superlatives
+11. [completion] Present Perfect
+12. [quiz] Elementary Review
+
+### B1
+1. [reading] Education Reading
+2. [reading] Environment Reading
+3. [reading] Social Media Reading
+4. [flashcard] Travel & Leisure
+5. [sorting] Modal Verbs
+6. [sorting] Basic Prepositions
+7. [completion] Future Forms
+8. [matching] Common Phrasal Verbs
+9. [quiz] Everyday Idioms
+10. [quiz] Intermediate Review
+
+### B2
+1. [reading] Professional Development
+2. [reading] Global Issues
+3. [reading] Innovation & Entrepreneurship
+4. [completion] Used To
+5. [quiz] Used To - Advanced
+6. [flashcard] General Vocab
+7. [completion] Phrasal Verbs
+8. [sorting] Connector Words
+9. [flashcard] Emotions & Feelings
+10. [flashcard] Success & Failure
+11. [flashcard] Time Idioms
+12. [flashcard] Nature & Animals
+13. [flashcard] Clothing & Appearance
+14. [flashcard] Technology
+
+### C1
+1. [reading] Academic Research
+2. [reading] Leadership & Management
+3. [reading] Cultural Analysis
+4. [flashcard] Business
+5. [flashcard] Home & Daily Life
+6. [flashcard] Problem Solving
+7. [completion] Conditionals
+8. [completion] Grammar Inversions
+9. [completion] Participles
+10. [completion] Subjunctive
+11. [matching] Advanced Vocabulary
+
+### C2
+1. [reading] Specialized Domains
+2. [reading] Philosophical Thought
+3. [reading] Literary Analysis
+4. [flashcard] Academic Vocabulary
+5. [completion] Advanced Collocations
+6. [completion] Advanced Structures
+7. [completion] Formal & Nuance
+8. [sorting] Vocabulary Nuance
+9. [completion] Advanced Phrasal Verbs
+10. [completion] Complex Prepositions
+11. [quiz] Mastery Assessment
+

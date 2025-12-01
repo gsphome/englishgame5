@@ -11,7 +11,7 @@ import type { LearningModule } from '../types';
  */
 export const useProgression = () => {
   const { data: allModules = [], isLoading: modulesLoading } = useAllModules();
-  const { getCompletedModuleIds, isModuleCompleted } = useProgressStore();
+  const { getCompletedModuleIds, isModuleCompleted, completedModules } = useProgressStore();
   const { developmentMode } = useSettingsStore();
 
   // Initialize progression service when modules are loaded
@@ -22,9 +22,21 @@ export const useProgression = () => {
     }
   }, [allModules, getCompletedModuleIds]);
 
+  // Track completed modules for query invalidation
+  // Using completedModules object directly ensures React detects changes
+  const completedModulesCount = Object.keys(completedModules || {}).length;
+  
+  // Force re-initialization when completed modules change
+  useEffect(() => {
+    if (allModules.length > 0 && completedModulesCount > 0) {
+      const completedIds = getCompletedModuleIds();
+      progressionService.setCompletedModules(completedIds);
+    }
+  }, [completedModulesCount, allModules.length, getCompletedModuleIds]);
+
   // Get progression data
   const progressionData = useQuery({
-    queryKey: ['progression', allModules.length, getCompletedModuleIds().length],
+    queryKey: ['progression', allModules.length, completedModulesCount],
     queryFn: () => {
       if (allModules.length === 0) {
         return {
@@ -50,7 +62,7 @@ export const useProgression = () => {
       };
     },
     enabled: allModules.length > 0,
-    staleTime: 1000, // Very short stale time since this depends on user actions
+    staleTime: 0, // No stale time - always refetch when dependencies change
   });
 
   // Memoized helper functions

@@ -364,6 +364,10 @@ export const translations = {
         expandDetails: 'Expand Details',
         collapseDetails: 'Collapse Details',
         helpText: 'Use arrow keys to navigate sections',
+        startReading: 'Start Reading',
+        readyToStart: "Ready to start? Let's begin!",
+        summary: 'Summary & Review',
+        examples: 'Examples',
       },
       navigation: {
         returnToMenu: 'Return to Main Menu',
@@ -744,6 +748,10 @@ export const translations = {
         expandDetails: 'Expandir Detalles',
         collapseDetails: 'Contraer Detalles',
         helpText: 'Usa las flechas para navegar entre secciones',
+        startReading: 'Comenzar Lectura',
+        readyToStart: '¿Listo para comenzar? ¡Empecemos!',
+        summary: 'Resumen y Repaso',
+        examples: 'Ejemplos',
       },
       navigation: {
         returnToMenu: 'Volver al Menú Principal',

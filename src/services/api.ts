@@ -113,9 +113,17 @@ class ApiService {
         const dataUrl = validateUrl(getAssetPath(cleanDataPath));
         const data = await secureJsonFetch(dataUrl);
 
+        // Handle different data formats:
+        // - Arrays (flashcard, quiz, etc.): use as-is
+        // - Objects (reading mode): wrap in array for consistent access
+        let processedData = data.data || data;
+        if (!Array.isArray(processedData) && typeof processedData === 'object') {
+          processedData = [processedData];
+        }
+
         moduleData = {
           ...moduleInfo,
-          data: data.data || data,
+          data: processedData,
           estimatedTime: data.estimatedTime || moduleInfo.estimatedTime || 5,
           difficulty: data.difficulty || moduleInfo.difficulty || 3,
           tags: data.tags || moduleInfo.tags || [moduleInfo.category],

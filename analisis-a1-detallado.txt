@@ -1,0 +1,76 @@
+# ANÁLISIS DETALLADO - CONTENIDO A1
+
+## 1. Greetings & Introductions [reading]
+
+Type: Greetings and Introductions
+Sections: 6
+Key vocabulary: 6 terms
+
+## 2. Basic Vocabulary [flashcard]
+
+Items: 40
+Sample (first 3):
+  1. Hello
+  2. Goodbye
+  3. Please
+
+## 3. Common Verbs [matching]
+
+Items: 40
+Sample (first 3):
+  1. go
+  2. come
+  3. eat
+
+## 4. Daily Life Reading [reading]
+
+Type: Daily Life and Routines
+Sections: 6
+Key vocabulary: 6 terms
+
+## 5. Word Categories [sorting]
+
+Items: 37
+Sample (first 3):
+  1. cat
+  2. dog
+  3. bird
+
+## 6. Travel Reading [reading]
+
+Type: Essential Travel English
+Sections: 6
+Key vocabulary: 6 terms
+
+## 7. Basic Grammar [matching]
+
+Items: 40
+Sample (first 3):
+  1. I ___ a student
+  2. You ___ my friend
+  3. The cat ___ sleeping
+
+## 8. Numbers & Quantities [matching]
+
+Items: 40
+Sample (first 3):
+  1. 1
+  2. 2
+  3. 3
+
+## 9. Basic Sentences [completion]
+
+Items: 40
+Sample (first 3):
+  1. I ______ a student.
+  2. You ______ my friend.
+  3. He ______ very tall.
+
+## 10. Basic Review [quiz]
+
+Items: 40
+Sample (first 3):
+  1. What is the correct form of <be> with <I>?
+  2. Which article goes before <apple>?
+  3. How do you say <Hola> in English?
+
