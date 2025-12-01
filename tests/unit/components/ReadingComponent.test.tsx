@@ -71,7 +71,7 @@ describe('ReadingComponent', () => {
   });
 
   it('should display section content', () => {
-    const { getByText, container } = renderWithProviders(<ReadingComponent module={mockModule} />);
+    const { getByText } = renderWithProviders(<ReadingComponent module={mockModule} />);
 
     // Component starts at objectives page, verify objectives are shown
     expect(getByText('Learning Objectives')).toBeInTheDocument();
