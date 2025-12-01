@@ -54,7 +54,7 @@ const ReadingComponent: React.FC<ReadingComponentProps> = ({ module }) => {
 
     if (currentSectionIndex < maxIndex) {
       // Scroll to top first (page turn effect)
-      if (contentRef.current) {
+      if (contentRef.current && typeof contentRef.current.scrollTo === 'function') {
         contentRef.current.scrollTo({ top: 0, behavior: 'smooth' });
       }
       // Then update section after a brief delay for smooth transition
@@ -97,7 +97,7 @@ const ReadingComponent: React.FC<ReadingComponentProps> = ({ module }) => {
   const handlePrev = useCallback(() => {
     if (currentSectionIndex > -1) {
       // Scroll to top first (page turn effect)
-      if (contentRef.current) {
+      if (contentRef.current && typeof contentRef.current.scrollTo === 'function') {
         contentRef.current.scrollTo({ top: 0, behavior: 'smooth' });
       }
       // Then update section after a brief delay for smooth transition

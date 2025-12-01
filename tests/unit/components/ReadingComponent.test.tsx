@@ -2,6 +2,7 @@ import React from 'react';
 import { describe, it, expect, beforeEach } from 'vitest';
 import { renderWithProviders } from '../../helpers/test-utils';
 import { testUtils } from '../../helpers/test-utils';
+import { fireEvent } from '@testing-library/react';
 import ReadingComponent from '../../../src/components/learning/ReadingComponent';
 import type { LearningModule, ReadingData } from '../../../src/types';
 
@@ -73,12 +74,30 @@ describe('ReadingComponent', () => {
   it('should display section content', () => {
     const { getByText } = renderWithProviders(<ReadingComponent module={mockModule} />);
 
+    // Component starts at objectives page, need to click "Start Reading" to see content
+    const startButton = getByText('Start Reading');
+    fireEvent.click(startButton);
+
     expect(getByText('Business Communication Basics')).toBeInTheDocument();
     expect(getByText(/Business English is essential/)).toBeInTheDocument();
   });
 
   it('should display key vocabulary', () => {
-    const { getByText } = renderWithProviders(<ReadingComponent module={mockModule} />);
+    const { getByText, getByRole } = renderWithProviders(<ReadingComponent module={mockModule} />);
+
+    // Navigate to summary page where vocabulary is shown
+    const startButton = getByText('Start Reading');
+    fireEvent.click(startButton); // Go to first section
+    
+    // Click through all sections to reach summary
+    const nextButtons = getByText('Next Section');
+    fireEvent.click(nextButtons); // Section 2
+    fireEvent.click(nextButtons); // Section 3 (last section)
+    fireEvent.click(nextButtons); // Summary page
+    
+    // Vocabulary is collapsed by default, need to expand it
+    const vocabButton = getByText(/KEY VOCABULARY/);
+    fireEvent.click(vocabButton);
 
     expect(getByText('meeting')).toBeInTheDocument();
     expect(getByText(/A gathering of people/)).toBeInTheDocument();
@@ -86,6 +105,20 @@ describe('ReadingComponent', () => {
 
   it('should display grammar points', () => {
     const { getByText } = renderWithProviders(<ReadingComponent module={mockModule} />);
+
+    // Navigate to summary page where grammar is shown
+    const startButton = getByText('Start Reading');
+    fireEvent.click(startButton);
+    
+    // Click through to summary
+    const nextButtons = getByText('Next Section');
+    fireEvent.click(nextButtons);
+    fireEvent.click(nextButtons);
+    fireEvent.click(nextButtons);
+    
+    // Grammar is collapsed by default, need to expand it
+    const grammarButton = getByText(/GRAMMAR POINTS/);
+    fireEvent.click(grammarButton);
 
     expect(getByText(/Formal vs Informal Greetings/)).toBeInTheDocument();
     expect(getByText(/In business, use formal greetings/)).toBeInTheDocument();
@@ -104,7 +137,8 @@ describe('ReadingComponent', () => {
     // Check for BEM-style classes
     expect(container.querySelector('.reading-component__container')).toBeInTheDocument();
     expect(container.querySelector('.reading-component__content')).toBeInTheDocument();
-    expect(container.querySelector('.reading-component__section-title')).toBeInTheDocument();
+    // Objectives page doesn't have section-title, check for objectives-centered instead
+    expect(container.querySelector('.reading-component__objectives-centered')).toBeInTheDocument();
   });
 
   it('should handle no data gracefully', () => {
