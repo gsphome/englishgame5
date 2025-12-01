@@ -2,7 +2,6 @@ import React from 'react';
 import { describe, it, expect, beforeEach } from 'vitest';
 import { renderWithProviders } from '../../helpers/test-utils';
 import { testUtils } from '../../helpers/test-utils';
-import { fireEvent } from '@testing-library/react';
 import ReadingComponent from '../../../src/components/learning/ReadingComponent';
 import type { LearningModule, ReadingData } from '../../../src/types';
 
@@ -80,17 +79,17 @@ describe('ReadingComponent', () => {
   });
 
   it('should display key vocabulary', () => {
-    const { container } = renderWithProviders(<ReadingComponent module={mockModule} />);
+    const { getByText } = renderWithProviders(<ReadingComponent module={mockModule} />);
 
     // Verify component renders with objectives page (vocabulary is in summary page)
-    expect(container.querySelector('.reading-component__objectives-page')).toBeInTheDocument();
+    expect(getByText('Learning Objectives')).toBeInTheDocument();
   });
 
   it('should display grammar points', () => {
-    const { container } = renderWithProviders(<ReadingComponent module={mockModule} />);
+    const { getByText } = renderWithProviders(<ReadingComponent module={mockModule} />);
 
     // Verify component renders with objectives page (grammar is in summary page)
-    expect(container.querySelector('.reading-component__objectives-page')).toBeInTheDocument();
+    expect(getByText('Learning Objectives')).toBeInTheDocument();
   });
 
   it('should show progress indicator', () => {
