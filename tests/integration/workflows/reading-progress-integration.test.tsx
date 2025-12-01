@@ -168,21 +168,21 @@ describe('Reading Progress Integration Tests', () => {
 
       // Navigate through all sections (3 sections + summary page)
       await waitFor(() => {
-        expect(screen.getByRole('button', { name: /next section/i })).toBeInTheDocument();
+        expect(screen.getByText('Next Section')).toBeInTheDocument();
       });
       
-      let nextButton = screen.getByRole('button', { name: /next section/i });
+      let nextButton = screen.getByText('Next Section');
       fireEvent.click(nextButton);
       fireEvent.click(nextButton);
       fireEvent.click(nextButton);
 
       // Wait for Complete button to appear on summary page
       await waitFor(() => {
-        expect(screen.getByRole('button', { name: /complete reading/i })).toBeInTheDocument();
+        expect(screen.getByText('Complete Reading')).toBeInTheDocument();
       });
 
       // Complete
-      const completeButton = screen.getByRole('button', { name: /complete reading/i });
+      const completeButton = screen.getByText('Complete Reading');
       fireEvent.click(completeButton);
 
       await waitFor(() => {
@@ -210,20 +210,20 @@ describe('Reading Progress Integration Tests', () => {
 
       // Navigate through all sections (3 sections + summary page)
       await waitFor(() => {
-        expect(screen.getByRole('button', { name: /next section/i })).toBeInTheDocument();
+        expect(screen.getByText('Next Section')).toBeInTheDocument();
       });
       
-      let nextButton = screen.getByRole('button', { name: /next section/i });
+      let nextButton = screen.getByText('Next Section');
       fireEvent.click(nextButton);
       fireEvent.click(nextButton);
       fireEvent.click(nextButton);
 
       // Wait for Complete button to appear on summary page
       await waitFor(() => {
-        expect(screen.getByRole('button', { name: /complete reading/i })).toBeInTheDocument();
+        expect(screen.getByText('Complete Reading')).toBeInTheDocument();
       });
 
-      const completeButton = screen.getByRole('button', { name: /complete reading/i });
+      const completeButton = screen.getByText('Complete Reading');
       fireEvent.click(completeButton);
 
       await waitFor(() => {
@@ -249,18 +249,18 @@ describe('Reading Progress Integration Tests', () => {
       fireEvent.click(startButton);
 
       // Navigate through all sections (3 sections + summary page)
-      let nextButton = screen.getByRole('button', { name: /next section/i });
+      let nextButton = screen.getByText('Next Section');
       fireEvent.click(nextButton);
       fireEvent.click(nextButton);
       fireEvent.click(nextButton);
 
       // Wait for Complete button to appear on summary page
       await waitFor(() => {
-        expect(screen.getByRole('button', { name: /complete reading/i })).toBeInTheDocument();
+        expect(screen.getByText('Complete Reading')).toBeInTheDocument();
       });
 
       // Complete
-      const completeButton = screen.getByRole('button', { name: /complete reading/i });
+      const completeButton = screen.getByText('Complete Reading');
       fireEvent.click(completeButton);
 
       await waitFor(() => {
@@ -287,7 +287,7 @@ describe('Reading Progress Integration Tests', () => {
       });
 
       // Navigate to section 2
-      let nextButton = screen.getByRole('button', { name: /next section/i });
+      let nextButton = screen.getByText('Next Section');
       fireEvent.click(nextButton);
 
       await waitFor(() => {
@@ -295,7 +295,7 @@ describe('Reading Progress Integration Tests', () => {
       });
 
       // Navigate to section 3
-      nextButton = screen.getByRole('button', { name: /next section/i });
+      nextButton = screen.getByText('Next Section');
       fireEvent.click(nextButton);
 
       await waitFor(() => {
@@ -371,17 +371,17 @@ describe('Reading Progress Integration Tests', () => {
 
       // Navigate through all sections (3 sections + summary page)
       await waitFor(() => {
-        expect(screen.getByRole('button', { name: /next section/i })).toBeInTheDocument();
+        expect(screen.getByText('Next Section')).toBeInTheDocument();
       });
       
-      let nextButton = screen.getByRole('button', { name: /next section/i });
+      let nextButton = screen.getByText('Next Section');
       fireEvent.click(nextButton);
       fireEvent.click(nextButton);
       fireEvent.click(nextButton);
 
       // On summary page, button should show "Complete Reading"
       await waitFor(() => {
-        expect(screen.getByRole('button', { name: /complete reading/i })).toBeInTheDocument();
+        expect(screen.getByText('Complete Reading')).toBeInTheDocument();
       });
     });
   });
