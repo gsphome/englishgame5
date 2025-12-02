@@ -303,7 +303,11 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem 1.25rem;
-  background: linear-gradient(135deg, var(--reading-bg-secondary) 0%, var(--reading-bg-tertiary) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--reading-bg-secondary) 0%,
+    var(--reading-bg-tertiary) 100%
+  );
   border: 2px solid var(--reading-accent-primary);
   border-radius: 0.75rem;
   cursor: pointer;
@@ -312,8 +316,9 @@
   text-align: left;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.12), 
-              0 0 0 1px rgba(59, 130, 246, 0.1) inset;
+  box-shadow:
+    0 2px 8px rgba(59, 130, 246, 0.12),
+    0 0 0 1px rgba(59, 130, 246, 0.1) inset;
 }
 
 /* Decorative left accent bar for collapsed state */
@@ -347,11 +352,16 @@
 }
 
 .reading-component__summary-section-trigger:hover {
-  background: linear-gradient(135deg, var(--reading-bg-tertiary) 0%, var(--reading-bg-secondary) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--reading-bg-tertiary) 0%,
+    var(--reading-bg-secondary) 100%
+  );
   border-color: var(--reading-accent-primary);
   transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.2), 
-              0 0 0 1px rgba(59, 130, 246, 0.15) inset;
+  box-shadow:
+    0 4px 16px rgba(59, 130, 246, 0.2),
+    0 0 0 1px rgba(59, 130, 246, 0.15) inset;
 }
 
 .reading-component__summary-section-trigger:hover::after {
@@ -364,7 +374,7 @@
 }
 
 /* Expanded state styling */
-.reading-component__summary-section-trigger[aria-expanded="true"] {
+.reading-component__summary-section-trigger[aria-expanded='true'] {
   background: linear-gradient(135deg, rgba(59, 130, 246, 0.12) 0%, rgba(139, 92, 246, 0.12) 100%);
   border-color: var(--reading-accent-primary);
   border-bottom-left-radius: 0;
@@ -375,7 +385,7 @@
 }
 
 /* Hide left accent bar when expanded */
-.reading-component__summary-section-trigger[aria-expanded="true"]::after {
+.reading-component__summary-section-trigger[aria-expanded='true']::after {
   width: 0;
 }
 
@@ -418,7 +428,8 @@
   box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
 }
 
-.reading-component__summary-section-trigger[aria-expanded="true"] .reading-component__summary-section-count {
+.reading-component__summary-section-trigger[aria-expanded='true']
+  .reading-component__summary-section-count {
   background: var(--reading-accent-primary);
   color: var(--theme-text-on-accent);
   border-color: var(--reading-accent-primary);
@@ -435,7 +446,8 @@
 }
 
 /* Rotate icon when expanded */
-.reading-component__summary-section-trigger[aria-expanded="true"] .reading-component__summary-section-icon {
+.reading-component__summary-section-trigger[aria-expanded='true']
+  .reading-component__summary-section-icon {
   transform: rotate(180deg);
 }
 
@@ -498,7 +510,11 @@
 }
 
 .reading-component__vocabulary-card {
-  background: linear-gradient(135deg, var(--reading-bg-secondary) 0%, var(--reading-bg-tertiary) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--reading-bg-secondary) 0%,
+    var(--reading-bg-tertiary) 100%
+  );
   border: 1px solid var(--reading-border-primary);
   border-left: 3px solid var(--reading-accent-primary);
   border-radius: var(--reading-border-radius);
@@ -509,12 +525,24 @@
 }
 
 /* Staggered animation for cards */
-.reading-component__vocabulary-card:nth-child(1) { animation-delay: 0.05s; }
-.reading-component__vocabulary-card:nth-child(2) { animation-delay: 0.1s; }
-.reading-component__vocabulary-card:nth-child(3) { animation-delay: 0.15s; }
-.reading-component__vocabulary-card:nth-child(4) { animation-delay: 0.2s; }
-.reading-component__vocabulary-card:nth-child(5) { animation-delay: 0.25s; }
-.reading-component__vocabulary-card:nth-child(6) { animation-delay: 0.3s; }
+.reading-component__vocabulary-card:nth-child(1) {
+  animation-delay: 0.05s;
+}
+.reading-component__vocabulary-card:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.reading-component__vocabulary-card:nth-child(3) {
+  animation-delay: 0.15s;
+}
+.reading-component__vocabulary-card:nth-child(4) {
+  animation-delay: 0.2s;
+}
+.reading-component__vocabulary-card:nth-child(5) {
+  animation-delay: 0.25s;
+}
+.reading-component__vocabulary-card:nth-child(6) {
+  animation-delay: 0.3s;
+}
 
 .reading-component__vocabulary-card::before {
   content: '';
@@ -597,7 +625,11 @@
 }
 
 .reading-component__grammar-point {
-  background: linear-gradient(135deg, var(--reading-bg-secondary) 0%, var(--reading-bg-tertiary) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--reading-bg-secondary) 0%,
+    var(--reading-bg-tertiary) 100%
+  );
   border-left: 4px solid var(--reading-accent-secondary);
   padding: 0.875rem;
   margin-bottom: 0.75rem;
@@ -612,10 +644,18 @@
 }
 
 /* Staggered animation for grammar points */
-.reading-component__grammar-point:nth-child(1) { animation-delay: 0.05s; }
-.reading-component__grammar-point:nth-child(2) { animation-delay: 0.1s; }
-.reading-component__grammar-point:nth-child(3) { animation-delay: 0.15s; }
-.reading-component__grammar-point:nth-child(4) { animation-delay: 0.2s; }
+.reading-component__grammar-point:nth-child(1) {
+  animation-delay: 0.05s;
+}
+.reading-component__grammar-point:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.reading-component__grammar-point:nth-child(3) {
+  animation-delay: 0.15s;
+}
+.reading-component__grammar-point:nth-child(4) {
+  animation-delay: 0.2s;
+}
 
 .reading-component__grammar-point::before {
   content: '';
@@ -1186,11 +1226,16 @@ html.dark .reading-component__highlights {
 
 /* Dark theme - Summary section triggers */
 html.dark .reading-component__summary-section-trigger {
-  background: linear-gradient(135deg, var(--reading-bg-secondary) 0%, var(--reading-bg-tertiary) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--reading-bg-secondary) 0%,
+    var(--reading-bg-tertiary) 100%
+  );
   border-color: var(--reading-accent-primary);
-  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2), 
-              0 0 0 1px rgba(59, 130, 246, 0.15) inset,
-              0 2px 4px rgba(0, 0, 0, 0.3);
+  box-shadow:
+    0 2px 8px rgba(59, 130, 246, 0.2),
+    0 0 0 1px rgba(59, 130, 246, 0.15) inset,
+    0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 html.dark .reading-component__summary-section-trigger::after {
@@ -1203,30 +1248,41 @@ html.dark .reading-component__summary-section-trigger::before {
 }
 
 html.dark .reading-component__summary-section-trigger:hover {
-  background: linear-gradient(135deg, var(--reading-bg-tertiary) 0%, var(--reading-bg-secondary) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--reading-bg-tertiary) 0%,
+    var(--reading-bg-secondary) 100%
+  );
   border-color: var(--reading-accent-primary);
-  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3), 
-              0 0 0 1px rgba(59, 130, 246, 0.2) inset,
-              0 2px 4px rgba(0, 0, 0, 0.4);
+  box-shadow:
+    0 4px 16px rgba(59, 130, 246, 0.3),
+    0 0 0 1px rgba(59, 130, 246, 0.2) inset,
+    0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 html.dark .reading-component__summary-section-trigger:hover::after {
   box-shadow: 0 0 12px rgba(59, 130, 246, 0.6);
 }
 
-html.dark .reading-component__summary-section-trigger[aria-expanded="true"] {
+html.dark .reading-component__summary-section-trigger[aria-expanded='true'] {
   background: linear-gradient(135deg, rgba(59, 130, 246, 0.18) 0%, rgba(139, 92, 246, 0.18) 100%);
   box-shadow: 0 -2px 8px rgba(59, 130, 246, 0.25);
 }
 
 html.dark .reading-component__vocabulary-grid,
-html.dark .reading-component__grammar-points > div:not(.reading-component__summary-section-trigger) {
+html.dark
+  .reading-component__grammar-points
+  > div:not(.reading-component__summary-section-trigger) {
   background: var(--reading-bg-primary);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
 html.dark .reading-component__vocabulary-card {
-  background: linear-gradient(135deg, var(--reading-bg-secondary) 0%, var(--reading-bg-tertiary) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--reading-bg-secondary) 0%,
+    var(--reading-bg-tertiary) 100%
+  );
 }
 
 html.dark .reading-component__vocabulary-card:hover {
@@ -1234,7 +1290,11 @@ html.dark .reading-component__vocabulary-card:hover {
 }
 
 html.dark .reading-component__grammar-point {
-  background: linear-gradient(135deg, var(--reading-bg-secondary) 0%, var(--reading-bg-tertiary) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--reading-bg-secondary) 0%,
+    var(--reading-bg-tertiary) 100%
+  );
 }
 
 html.dark .reading-component__grammar-point:hover {

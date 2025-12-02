@@ -261,7 +261,7 @@ const ReadingComponent: React.FC<ReadingComponentProps> = ({ module }) => {
                   <ChevronDown className="reading-component__summary-section-icon" />
                 </button>
                 {vocabularyExpanded && (
-                  <div 
+                  <div
                     id="vocabulary-content"
                     className="reading-component__vocabulary-grid"
                     role="region"
@@ -307,11 +307,7 @@ const ReadingComponent: React.FC<ReadingComponentProps> = ({ module }) => {
                   <ChevronDown className="reading-component__summary-section-icon" />
                 </button>
                 {grammarExpanded && (
-                  <div
-                    id="grammar-content"
-                    role="region"
-                    aria-label="Grammar points"
-                  >
+                  <div id="grammar-content" role="region" aria-label="Grammar points">
                     {readingData.grammarPoints.map((point, index) => (
                       <div key={index} className="reading-component__grammar-point">
                         <div className="reading-component__grammar-rule">
@@ -327,7 +323,10 @@ const ReadingComponent: React.FC<ReadingComponentProps> = ({ module }) => {
                             </strong>
                             <ul className="reading-component__grammar-examples-list">
                               {point.examples.map((example, exIndex) => (
-                                <li key={exIndex} className="reading-component__grammar-example-item">
+                                <li
+                                  key={exIndex}
+                                  className="reading-component__grammar-example-item"
+                                >
                                   {example}
                                 </li>
                               ))}
@@ -339,7 +338,10 @@ const ReadingComponent: React.FC<ReadingComponentProps> = ({ module }) => {
                             <strong>{t('reading.component.commonMistakes')}:</strong>
                             <ul className="reading-component__grammar-mistakes-list">
                               {point.commonMistakes.map((mistake, mIndex) => (
-                                <li key={mIndex} className="reading-component__grammar-mistake-item">
+                                <li
+                                  key={mIndex}
+                                  className="reading-component__grammar-mistake-item"
+                                >
                                   {mistake}
                                 </li>
                               ))}
