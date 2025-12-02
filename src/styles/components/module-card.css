@@ -274,8 +274,24 @@
 .module-card--sorting svg,
 .module-card--matching svg,
 .module-card--reading svg {
-  color: var(--theme-text-on-colored, #ffffff);
-  stroke: var(--theme-text-on-colored, #ffffff);
+  color: var(--theme-text-on-colored, #ffffff) !important;
+  stroke: var(--theme-text-on-colored, #ffffff) !important;
+  fill: none !important;
+  opacity: 1 !important;
+}
+
+/* Ensure icon visibility in all states */
+.module-card--flashcard .module-card__icon svg,
+.module-card--quiz .module-card__icon svg,
+.module-card--completion .module-card__icon svg,
+.module-card--sorting .module-card__icon svg,
+.module-card--matching .module-card__icon svg,
+.module-card--reading .module-card__icon svg {
+  color: rgba(255, 255, 255, 0.95) !important;
+  stroke: rgba(255, 255, 255, 0.95) !important;
+  fill: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 /* State Modifiers - BEM-Like */
@@ -288,6 +304,18 @@
 
 .module-card--unlocked {
   border: 2px solid rgba(59, 130, 246, 0.2);
+}
+
+/* Ensure icon is visible in unlocked state */
+.module-card--unlocked .module-card__icon {
+  opacity: 1;
+  visibility: visible;
+}
+
+.module-card--unlocked .module-card__icon svg {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
 }
 
 .module-card--locked {
@@ -359,8 +387,9 @@
 }
 
 .module-card__status-indicator--unlocked {
-  /* Hide unlocked indicator - only show completed and locked */
-  display: none;
+  background-color: rgba(59, 130, 246, 0.95);
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  display: flex;
 }
 
 .module-card__status-indicator--locked {
@@ -767,6 +796,29 @@ html.dark
   svg {
   color: var(--theme-text-primary, #ffffff);
   stroke: var(--theme-text-primary, #ffffff);
+}
+
+/* Ensure reading mode icons are visible in both light and dark mode */
+.module-card--reading .module-card__icon svg,
+html.dark .module-card--reading .module-card__icon svg,
+html.light .module-card--reading .module-card__icon svg {
+  color: rgba(255, 255, 255, 0.95) !important;
+  stroke: rgba(255, 255, 255, 0.95) !important;
+  fill: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  stroke-width: 2 !important;
+}
+
+/* Ensure all reading cards show icons regardless of state */
+.module-card--reading.module-card--unlocked .module-card__icon svg,
+.module-card--reading.module-card--completed .module-card__icon svg,
+.module-card--reading.module-card--locked .module-card__icon svg {
+  color: rgba(255, 255, 255, 0.95) !important;
+  stroke: rgba(255, 255, 255, 0.95) !important;
+  fill: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 /* === RESPONSIVE BREAKPOINTS FOR SMALL SCREENS === */

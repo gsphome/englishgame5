@@ -242,29 +242,31 @@ const ReadingComponent: React.FC<ReadingComponentProps> = ({ module }) => {
               {t('reading.component.summary', undefined, { default: 'Summary & Review' })}
             </h3>
 
-            {/* Key Vocabulary Section - Collapsible */}
+            {/* Key Vocabulary Section - Enhanced Collapsible */}
             {readingData.keyVocabulary?.length > 0 && (
               <div className="reading-component__vocabulary">
                 <button
                   className="reading-component__summary-section-trigger"
                   onClick={() => setVocabularyExpanded(!vocabularyExpanded)}
                   aria-expanded={vocabularyExpanded}
+                  aria-controls="vocabulary-content"
+                  aria-label={`${vocabularyExpanded ? 'Collapse' : 'Expand'} key vocabulary section with ${readingData.keyVocabulary.length} ${readingData.keyVocabulary.length === 1 ? 'term' : 'terms'}`}
                 >
                   <span className="reading-component__summary-section-title">
                     {t('reading.component.keyVocabulary')}
                     <span className="reading-component__summary-section-count">
-                      ({readingData.keyVocabulary.length}{' '}
-                      {readingData.keyVocabulary.length === 1 ? 'term' : 'terms'})
+                      {readingData.keyVocabulary.length}
                     </span>
                   </span>
-                  {vocabularyExpanded ? (
-                    <ChevronUp className="reading-component__summary-section-icon" />
-                  ) : (
-                    <ChevronDown className="reading-component__summary-section-icon" />
-                  )}
+                  <ChevronDown className="reading-component__summary-section-icon" />
                 </button>
                 {vocabularyExpanded && (
-                  <div className="reading-component__vocabulary-grid">
+                  <div 
+                    id="vocabulary-content"
+                    className="reading-component__vocabulary-grid"
+                    role="region"
+                    aria-label="Key vocabulary terms"
+                  >
                     {readingData.keyVocabulary.map((term, index) => (
                       <div key={index} className="reading-component__vocabulary-card">
                         <div className="reading-component__vocabulary-term">{term.term}</div>
@@ -286,64 +288,68 @@ const ReadingComponent: React.FC<ReadingComponentProps> = ({ module }) => {
               </div>
             )}
 
-            {/* Grammar Points Section - Collapsible */}
+            {/* Grammar Points Section - Enhanced Collapsible */}
             {readingData.grammarPoints && readingData.grammarPoints.length > 0 && (
               <div className="reading-component__grammar-points">
                 <button
                   className="reading-component__summary-section-trigger"
                   onClick={() => setGrammarExpanded(!grammarExpanded)}
                   aria-expanded={grammarExpanded}
+                  aria-controls="grammar-content"
+                  aria-label={`${grammarExpanded ? 'Collapse' : 'Expand'} grammar points section with ${readingData.grammarPoints.length} ${readingData.grammarPoints.length === 1 ? 'rule' : 'rules'}`}
                 >
                   <span className="reading-component__summary-section-title">
                     {t('reading.component.grammarPoints')}
                     <span className="reading-component__summary-section-count">
-                      ({readingData.grammarPoints.length}{' '}
-                      {readingData.grammarPoints.length === 1 ? 'rule' : 'rules'})
+                      {readingData.grammarPoints.length}
                     </span>
                   </span>
-                  {grammarExpanded ? (
-                    <ChevronUp className="reading-component__summary-section-icon" />
-                  ) : (
-                    <ChevronDown className="reading-component__summary-section-icon" />
-                  )}
+                  <ChevronDown className="reading-component__summary-section-icon" />
                 </button>
-                {grammarExpanded &&
-                  readingData.grammarPoints.map((point, index) => (
-                    <div key={index} className="reading-component__grammar-point">
-                      <div className="reading-component__grammar-rule">
-                        <strong>{t('reading.component.grammarRule')}:</strong> {point.rule}
-                      </div>
-                      <div className="reading-component__grammar-explanation">
-                        {point.explanation}
-                      </div>
-                      {point.examples && point.examples.length > 0 && (
-                        <div className="reading-component__grammar-examples">
-                          <strong>
-                            {t('reading.component.examples', undefined, { default: 'Examples' })}:
-                          </strong>
-                          <ul className="reading-component__grammar-examples-list">
-                            {point.examples.map((example, exIndex) => (
-                              <li key={exIndex} className="reading-component__grammar-example-item">
-                                {example}
-                              </li>
-                            ))}
-                          </ul>
+                {grammarExpanded && (
+                  <div
+                    id="grammar-content"
+                    role="region"
+                    aria-label="Grammar points"
+                  >
+                    {readingData.grammarPoints.map((point, index) => (
+                      <div key={index} className="reading-component__grammar-point">
+                        <div className="reading-component__grammar-rule">
+                          <strong>{t('reading.component.grammarRule')}:</strong> {point.rule}
                         </div>
-                      )}
-                      {point.commonMistakes && point.commonMistakes.length > 0 && (
-                        <div className="reading-component__grammar-mistakes">
-                          <strong>{t('reading.component.commonMistakes')}:</strong>
-                          <ul className="reading-component__grammar-mistakes-list">
-                            {point.commonMistakes.map((mistake, mIndex) => (
-                              <li key={mIndex} className="reading-component__grammar-mistake-item">
-                                {mistake}
-                              </li>
-                            ))}
-                          </ul>
+                        <div className="reading-component__grammar-explanation">
+                          {point.explanation}
                         </div>
-                      )}
-                    </div>
-                  ))}
+                        {point.examples && point.examples.length > 0 && (
+                          <div className="reading-component__grammar-examples">
+                            <strong>
+                              {t('reading.component.examples', undefined, { default: 'Examples' })}:
+                            </strong>
+                            <ul className="reading-component__grammar-examples-list">
+                              {point.examples.map((example, exIndex) => (
+                                <li key={exIndex} className="reading-component__grammar-example-item">
+                                  {example}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                        {point.commonMistakes && point.commonMistakes.length > 0 && (
+                          <div className="reading-component__grammar-mistakes">
+                            <strong>{t('reading.component.commonMistakes')}:</strong>
+                            <ul className="reading-component__grammar-mistakes-list">
+                              {point.commonMistakes.map((mistake, mIndex) => (
+                                <li key={mIndex} className="reading-component__grammar-mistake-item">
+                                  {mistake}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             )}
           </div>
