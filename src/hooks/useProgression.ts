@@ -25,7 +25,7 @@ export const useProgression = () => {
   // Track completed modules for query invalidation
   // Using completedModules object directly ensures React detects changes
   const completedModulesCount = Object.keys(completedModules || {}).length;
-  
+
   // Force re-initialization when completed modules change
   useEffect(() => {
     if (allModules.length > 0 && completedModulesCount > 0) {

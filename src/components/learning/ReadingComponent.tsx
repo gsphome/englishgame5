@@ -46,8 +46,7 @@ const ReadingComponent: React.FC<ReadingComponentProps> = ({ module }) => {
   const isObjectivesPage = currentSectionIndex === -1;
   const isSummaryPage = currentSectionIndex === readingSections.length;
   const hasSummaryContent =
-    (readingData?.keyVocabulary?.length ?? 0) > 0 ||
-    (readingData?.grammarPoints?.length ?? 0) > 0;
+    (readingData?.keyVocabulary?.length ?? 0) > 0 || (readingData?.grammarPoints?.length ?? 0) > 0;
 
   const handleNext = useCallback(() => {
     const maxIndex = hasSummaryContent ? readingSections.length : readingSections.length - 1;
@@ -171,7 +170,13 @@ const ReadingComponent: React.FC<ReadingComponentProps> = ({ module }) => {
       {/* Unified progress header */}
       <LearningProgressHeader
         title={readingData.title}
-        currentIndex={isObjectivesPage ? 0 : isSummaryPage ? readingSections.length + 1 : currentSectionIndex + 1}
+        currentIndex={
+          isObjectivesPage
+            ? 0
+            : isSummaryPage
+              ? readingSections.length + 1
+              : currentSectionIndex + 1
+        }
         totalItems={readingSections.length + 1 + (hasSummaryContent ? 1 : 0)}
         mode="reading"
       />
@@ -466,7 +471,8 @@ const ReadingComponent: React.FC<ReadingComponentProps> = ({ module }) => {
           <span>
             {isObjectivesPage
               ? t('reading.component.startReading', undefined, { default: 'Start Reading' })
-              : isSummaryPage || (!hasSummaryContent && currentSectionIndex === readingSections.length - 1)
+              : isSummaryPage ||
+                  (!hasSummaryContent && currentSectionIndex === readingSections.length - 1)
                 ? t('reading.component.completeReading')
                 : t('reading.component.nextSection')}
           </span>

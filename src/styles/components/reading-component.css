@@ -80,7 +80,7 @@
   padding: 1rem;
   margin-bottom: 0.5rem;
   scroll-behavior: smooth;
-  
+
   /* Custom scrollbar styling */
   scrollbar-width: thin;
   scrollbar-color: var(--theme-primary-blue, #3b82f6) transparent;
@@ -120,11 +120,7 @@
   align-items: center;
   gap: 0.375rem;
   padding: 0.375rem 0.75rem;
-  background: linear-gradient(
-    135deg,
-    rgba(59, 130, 246, 0.08) 0%,
-    rgba(139, 92, 246, 0.08) 100%
-  );
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(139, 92, 246, 0.08) 100%);
   border: 1px solid rgba(59, 130, 246, 0.2);
   border-radius: 9999px;
   font-size: 0.75rem;
@@ -134,11 +130,7 @@
 }
 
 .reading-component__time-badge:hover {
-  background: linear-gradient(
-    135deg,
-    rgba(59, 130, 246, 0.12) 0%,
-    rgba(139, 92, 246, 0.12) 100%
-  );
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.12) 0%, rgba(139, 92, 246, 0.12) 100%);
   border-color: rgba(59, 130, 246, 0.3);
   transform: translateY(-1px);
 }
@@ -225,11 +217,7 @@
 }
 
 .reading-component__objectives-centered {
-  background: linear-gradient(
-    135deg,
-    rgba(59, 130, 246, 0.05) 0%,
-    rgba(139, 92, 246, 0.05) 100%
-  );
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
   border: 2px solid var(--reading-accent-primary);
   border-radius: var(--reading-border-radius);
   padding: var(--reading-spacing-lg);
@@ -933,21 +921,13 @@ html.dark .reading-component__container {
 
 /* Dark mode - Time badge */
 html.dark .reading-component__time-badge {
-  background: linear-gradient(
-    135deg,
-    rgba(59, 130, 246, 0.15) 0%,
-    rgba(139, 92, 246, 0.15) 100%
-  );
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%);
   border-color: rgba(59, 130, 246, 0.3);
   color: var(--theme-primary-blue, #60a5fa);
 }
 
 html.dark .reading-component__time-badge:hover {
-  background: linear-gradient(
-    135deg,
-    rgba(59, 130, 246, 0.2) 0%,
-    rgba(139, 92, 246, 0.2) 100%
-  );
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%);
   border-color: rgba(59, 130, 246, 0.4);
 }
 
@@ -985,11 +965,7 @@ html.dark .reading-component__grammar-point {
 
 /* Dark theme - Objectives Page */
 html.dark .reading-component__objectives-centered {
-  background: linear-gradient(
-    135deg,
-    rgba(59, 130, 246, 0.1) 0%,
-    rgba(139, 92, 246, 0.1) 100%
-  );
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
   border-color: var(--reading-accent-primary);
   box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
 }
