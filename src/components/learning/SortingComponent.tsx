@@ -53,6 +53,8 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
   const { showCorrectAnswer, showIncorrectAnswer, showModuleCompleted } = useToast();
   useLearningCleanup();
 
+  const handleReturnToMenu = () => returnToMenu();
+
   const [exercise, setExercise] = useState<SortingData>({ id: '', words: [], categories: [] });
 
   // Keyboard navigation
@@ -372,7 +374,7 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
 
     showModuleCompleted(module.name, finalScore, accuracy);
     updateUserScore(module.id, finalScore, timeSpent);
-    returnToMenu();
+    returnToMenu({ autoScrollToNext: true });
   };
 
   const showSummaryModal = () => {
@@ -566,7 +568,7 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ module }) => {
       <div className="game-controls">
         {/* Home Navigation */}
         <button
-          onClick={returnToMenu}
+          onClick={handleReturnToMenu}
           className="game-controls__home-btn"
           title={t('learning.returnToMainMenu')}
         >

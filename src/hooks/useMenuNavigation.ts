@@ -7,7 +7,13 @@ import { useAppStore } from '../stores/appStore';
 export const useMenuNavigation = () => {
   const { setCurrentView, previousMenuContext } = useAppStore();
 
-  const returnToMenu = () => {
+  const returnToMenu = (options?: { autoScrollToNext?: boolean }) => {
+    // Set flag for auto-scroll to next module if requested
+    if (options?.autoScrollToNext) {
+      console.log('[useMenuNavigation] Setting autoScrollToNext flag');
+      sessionStorage.setItem('autoScrollToNext', 'true');
+    }
+    
     setCurrentView('menu');
     // The MainMenu component will automatically use the previousMenuContext
     // to set the correct view mode when it mounts

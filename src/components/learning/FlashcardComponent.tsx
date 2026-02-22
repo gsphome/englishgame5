@@ -30,6 +30,8 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
   const { t } = useTranslation(language);
   useLearningCleanup();
 
+  const handleReturnToMenu = () => returnToMenu();
+
   // Generate set with optional randomization based on settings
   const processedFlashcards = useMemo(() => {
     if (!module?.data) return [];
@@ -58,7 +60,7 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
       });
 
       updateUserScore(module.id, 100, timeSpent); // 100% completion for finishing all flashcards
-      returnToMenu();
+      returnToMenu({ autoScrollToNext: true });
     }
   }, [
     currentIndex,
@@ -127,7 +129,7 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
     return (
       <div className="flashcard-component__no-data">
         <p className="flashcard-component__no-data-text">{t('learning.noFlashcardsAvailable')}</p>
-        <button onClick={returnToMenu} className="flashcard-component__no-data-btn">
+        <button onClick={handleReturnToMenu} className="flashcard-component__no-data-btn">
           {t('navigation.mainMenu')}
         </button>
       </div>
@@ -226,7 +228,7 @@ const FlashcardComponent: React.FC<FlashcardComponentProps> = ({ module }) => {
       <div className="game-controls">
         {/* Home Navigation */}
         <button
-          onClick={returnToMenu}
+          onClick={handleReturnToMenu}
           className="game-controls__home-btn"
           title={t('learning.returnToMainMenu')}
         >

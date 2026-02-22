@@ -42,6 +42,8 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
   const { t } = useTranslation(language);
   useLearningCleanup();
 
+  const handleReturnToMenu = () => returnToMenu();
+
   // Initialize component when module changes
   // Body scroll management for modal - optimized to prevent double appearance
   useEffect(() => {
@@ -224,7 +226,7 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
 
     showModuleCompleted(module.name, finalScore, accuracy);
     updateUserScore(module.id, finalScore, timeSpent);
-    returnToMenu();
+    returnToMenu({ autoScrollToNext: true });
   };
 
   const showSummaryModal = () => {
@@ -405,7 +407,7 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
       <div className="game-controls">
         {/* Home Navigation */}
         <button
-          onClick={returnToMenu}
+          onClick={handleReturnToMenu}
           className="game-controls__home-btn"
           title={t('learning.returnToMainMenu')}
         >

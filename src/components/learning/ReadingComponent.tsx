@@ -33,6 +33,8 @@ const ReadingComponent: React.FC<ReadingComponentProps> = ({ module }) => {
   const { t } = useTranslation(language);
   useLearningCleanup();
 
+  const handleReturnToMenu = () => returnToMenu();
+
   // Get reading data from module
   const readingData = useMemo(() => {
     if (!module?.data || !Array.isArray(module.data) || module.data.length === 0) {
@@ -80,7 +82,7 @@ const ReadingComponent: React.FC<ReadingComponentProps> = ({ module }) => {
         timeSpent: timeSpent,
       });
 
-      returnToMenu();
+      returnToMenu({ autoScrollToNext: true });
     }
   }, [
     currentSectionIndex,
@@ -158,7 +160,7 @@ const ReadingComponent: React.FC<ReadingComponentProps> = ({ module }) => {
     return (
       <div className="reading-component__no-data">
         <p className="reading-component__no-data-text">{t('learning.noReadingContentAvailable')}</p>
-        <button onClick={returnToMenu} className="reading-component__no-data-btn">
+        <button onClick={handleReturnToMenu} className="reading-component__no-data-btn">
           {t('navigation.mainMenu')}
         </button>
       </div>
@@ -456,7 +458,7 @@ const ReadingComponent: React.FC<ReadingComponentProps> = ({ module }) => {
       <div className="game-controls">
         {/* Home Navigation */}
         <button
-          onClick={returnToMenu}
+          onClick={handleReturnToMenu}
           className="game-controls__home-btn"
           title={t('reading.navigation.returnToMenu')}
         >

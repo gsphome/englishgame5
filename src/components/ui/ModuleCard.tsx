@@ -22,6 +22,7 @@ interface ModuleCardProps {
   role?: string;
   'aria-posinset'?: number;
   'aria-setsize'?: number;
+  isNextRecommended?: boolean;
 }
 
 const getIcon = (learningMode: string) => {
@@ -57,6 +58,7 @@ export const ModuleCard: React.FC<ModuleCardProps> = ({
   role,
   'aria-posinset': ariaPosinset,
   'aria-setsize': ariaSetsize,
+  isNextRecommended = false,
 }) => {
   const progression = useModuleProgression(module.id);
   const { language } = useSettingsStore();
@@ -134,7 +136,7 @@ export const ModuleCard: React.FC<ModuleCardProps> = ({
 
   return (
     <button
-      className={`module-card module-card--${module.learningMode} ${statusInfo.className}`}
+      className={`module-card module-card--${module.learningMode} ${statusInfo.className} ${isNextRecommended ? 'module-card--next-recommended' : ''}`}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       tabIndex={statusInfo.disabled ? -1 : tabIndex}

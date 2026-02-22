@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { SearchBar } from './SearchBar';
 import { ModuleCard } from './ModuleCard';
 import { ModuleGridSkeleton } from './LoadingSkeleton';
@@ -18,6 +18,9 @@ export const MainMenu: React.FC = () => {
   const { setCurrentModule, setCurrentView, setPreviousMenuContext, previousMenuContext } =
     useAppStore();
   const [viewMode, setViewMode] = useState<'progression' | 'list'>(previousMenuContext);
+  const [highlightedModuleId, setHighlightedModuleId] = useState<string | null>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+  const hasScrolledToNext = useRef(false);
 
   // Sync view mode with stored context when component mounts
   useEffect(() => {
@@ -28,6 +31,57 @@ export const MainMenu: React.FC = () => {
   useEffect(() => {
     setPreviousMenuContext(viewMode);
   }, [viewMode, setPreviousMenuContext]);
+
+  // Auto-scroll to next recommended module after completing a lesson
+  useEffect(() => {
+    if (isLoading || !modules.length) return;
+
+    const shouldAutoScroll = sessionStorage.getItem('autoScrollToNext');
+    console.log('[MainMenu] Auto-scroll check:', { shouldAutoScroll, viewMode, hasModules: modules.length > 0 });
+    
+    if (shouldAutoScroll === 'true' && viewMode === 'list') {
+      // Clear flag immediately to prevent re-triggering
+      sessionStorage.removeItem('autoScrollToNext');
+
+      const nextModule = progression.getNextRecommendedModule();
+      console.log('[MainMenu] Next recommended module:', nextModule?.id, nextModule?.name);
+      
+      if (nextModule && gridRef.current) {
+        // Highlight the next module
+        setHighlightedModuleId(nextModule.id);
+        
+        // Delay to ensure DOM is fully rendered
+        setTimeout(() => {
+          const moduleCard = document.querySelector(`[data-module-id="${nextModule.id}"]`);
+          console.log('[MainMenu] Module card found:', !!moduleCard, 'Grid ref:', !!gridRef.current);
+          
+          if (moduleCard && gridRef.current) {
+            const gridRect = gridRef.current.getBoundingClientRect();
+            const cardRect = moduleCard.getBoundingClientRect();
+            
+            // Calculate scroll position to center the card vertically
+            const scrollTop = 
+              gridRef.current.scrollTop + 
+              (cardRect.top - gridRect.top) - 
+              (gridRect.height / 2) + 
+              (cardRect.height / 2);
+            
+            console.log('[MainMenu] Scrolling to:', scrollTop);
+            
+            gridRef.current.scrollTo({
+              top: Math.max(0, scrollTop),
+              behavior: 'smooth'
+            });
+          }
+        }, 150);
+
+        // Remove highlight after animation completes
+        setTimeout(() => {
+          setHighlightedModuleId(null);
+        }, 2500);
+      }
+    }
+  }, [isLoading, modules.length, viewMode, progression]);
 
   // Show welcome toast when modules are loaded (only once per session)
   useEffect(() => {
@@ -63,6 +117,9 @@ export const MainMenu: React.FC = () => {
     if (gridElement) {
       sessionStorage.setItem('menuGridScrollPosition', gridElement.scrollTop.toString());
     }
+
+    // Reset auto-scroll flag when user manually selects a module
+    hasScrolledToNext.current = false;
 
     // Show toast when starting a module
     const modeLabels: Record<string, string> = {
@@ -188,7 +245,7 @@ export const MainMenu: React.FC = () => {
         <ProgressionDashboard onModuleSelect={handleModuleClick} />
       ) : (
         // List view (original grid)
-        <div className="main-menu__grid">
+        <div className="main-menu__grid" ref={gridRef}>
           <div
             className="main-menu__grid-container"
             role="grid"
@@ -203,6 +260,8 @@ export const MainMenu: React.FC = () => {
                 role="gridcell"
                 aria-posinset={index + 1}
                 aria-setsize={modules.length}
+                data-module-id={module.id}
+                isNextRecommended={highlightedModuleId === module.id}
               />
             ))}
           </div>

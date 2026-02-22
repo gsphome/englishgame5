@@ -54,6 +54,8 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
   const { showCorrectAnswer, showIncorrectAnswer, showModuleCompleted } = useToast();
   useLearningCleanup();
 
+  const handleReturnToMenu = () => returnToMenu();
+
   const isDark = theme === 'dark';
   const textColor = isDark ? 'white' : '#111827';
 
@@ -103,7 +105,7 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
 
       showModuleCompleted(module.name, finalScore, accuracy);
       updateUserScore(module.id, finalScore, timeSpent);
-      returnToMenu();
+      returnToMenu({ autoScrollToNext: true });
     }
   }, [
     currentIndex,
@@ -149,7 +151,7 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
     return (
       <div className="quiz-component__no-data">
         <p className="quiz-component__no-data-text">{t('learning.noQuizQuestions')}</p>
-        <button onClick={returnToMenu} className="quiz-component__no-data-btn">
+        <button onClick={handleReturnToMenu} className="quiz-component__no-data-btn">
           {t('learning.backToMenu')}
         </button>
       </div>
@@ -270,7 +272,7 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
       <div className="game-controls">
         {/* Home Navigation */}
         <button
-          onClick={returnToMenu}
+          onClick={handleReturnToMenu}
           className="game-controls__home-btn"
           title={t('learning.returnToMainMenu')}
         >

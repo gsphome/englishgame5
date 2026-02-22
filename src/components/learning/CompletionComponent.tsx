@@ -42,6 +42,8 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
   const { showCorrectAnswer, showIncorrectAnswer, showModuleCompleted } = useToast();
   useLearningCleanup();
 
+  const handleReturnToMenu = () => returnToMenu();
+
   // Process exercises with optional randomization based on settings
   const processedExercises = useMemo(() => {
     if (!module?.data) return [];
@@ -108,7 +110,7 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
       const accuracy = sessionScore.accuracy;
       showModuleCompleted(module.name, finalScore, accuracy);
       updateUserScore(module.id, finalScore, timeSpent);
-      returnToMenu();
+      returnToMenu({ autoScrollToNext: true });
     }
   }, [
     currentIndex,
@@ -148,7 +150,7 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
         <p className="completion-component__no-data-text">
           {t('learning.noCompletionExercisesAvailable')}
         </p>
-        <button onClick={returnToMenu} className="completion-component__no-data-btn">
+        <button onClick={handleReturnToMenu} className="completion-component__no-data-btn">
           {t('navigation.mainMenu')}
         </button>
       </div>
@@ -297,7 +299,7 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
       <div className="game-controls">
         {/* Home Navigation */}
         <button
-          onClick={returnToMenu}
+          onClick={handleReturnToMenu}
           className="game-controls__home-btn"
           title={t('learning.returnToMainMenu')}
         >
