@@ -13,7 +13,7 @@ export const useMenuNavigation = () => {
       console.log('[useMenuNavigation] Setting autoScrollToNext flag');
       sessionStorage.setItem('autoScrollToNext', 'true');
     }
-    
+
     setCurrentView('menu');
     // The MainMenu component will automatically use the previousMenuContext
     // to set the correct view mode when it mounts

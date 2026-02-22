@@ -37,40 +37,49 @@ export const MainMenu: React.FC = () => {
     if (isLoading || !modules.length) return;
 
     const shouldAutoScroll = sessionStorage.getItem('autoScrollToNext');
-    console.log('[MainMenu] Auto-scroll check:', { shouldAutoScroll, viewMode, hasModules: modules.length > 0 });
-    
+    console.log('[MainMenu] Auto-scroll check:', {
+      shouldAutoScroll,
+      viewMode,
+      hasModules: modules.length > 0,
+    });
+
     if (shouldAutoScroll === 'true' && viewMode === 'list') {
       // Clear flag immediately to prevent re-triggering
       sessionStorage.removeItem('autoScrollToNext');
 
       const nextModule = progression.getNextRecommendedModule();
       console.log('[MainMenu] Next recommended module:', nextModule?.id, nextModule?.name);
-      
+
       if (nextModule && gridRef.current) {
         // Highlight the next module
         setHighlightedModuleId(nextModule.id);
-        
+
         // Delay to ensure DOM is fully rendered
         setTimeout(() => {
           const moduleCard = document.querySelector(`[data-module-id="${nextModule.id}"]`);
-          console.log('[MainMenu] Module card found:', !!moduleCard, 'Grid ref:', !!gridRef.current);
-          
+          console.log(
+            '[MainMenu] Module card found:',
+            !!moduleCard,
+            'Grid ref:',
+            !!gridRef.current
+          );
+
           if (moduleCard && gridRef.current) {
             const gridRect = gridRef.current.getBoundingClientRect();
             const cardRect = moduleCard.getBoundingClientRect();
-            
+
             // Calculate scroll position to center the card vertically
-            const scrollTop = 
-              gridRef.current.scrollTop + 
-              (cardRect.top - gridRect.top) - 
-              (gridRect.height / 2) + 
-              (cardRect.height / 2);
-            
+            const scrollTop =
+              gridRef.current.scrollTop +
+              (cardRect.top - gridRect.top) -
+              gridRect.height / 2 +
+              cardRect.height / 2;
+
             console.log('[MainMenu] Scrolling to:', scrollTop);
-            
+
             gridRef.current.scrollTo({
               top: Math.max(0, scrollTop),
-              behavior: 'smooth'
+              behavior: 'smooth',
             });
           }
         }, 150);
