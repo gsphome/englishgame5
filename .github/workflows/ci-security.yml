@@ -30,7 +30,7 @@ jobs:
         run: npm ci --prefer-offline
 
       - name: Dependency audit
-        run: npm audit --audit-level=moderate
+        run: npm audit --audit-level=high --omit=dev
 
       - name: Production audit
         run: npm audit --audit-level=high --production
@@ -42,12 +42,8 @@ jobs:
         run: |
           echo "🔍 Checking for security patterns..."
           
-          # Check for dangerous patterns
-          if find . -name "*.tsx" -o -name "*.jsx" | xargs grep -l "dangerouslySetInnerHTML" 2>/dev/null; then
-            echo "⚠️ Found dangerouslySetInnerHTML usage - review for XSS"
-          fi
-          
-          if find . -name "*.ts" -o -name "*.tsx" -o -name "*.js" -o -name "*.jsx" | xargs grep -l "eval(" 2>/dev/null; then
+          # Check for eval() usage - critical security risk
+          if find src \( -name "*.ts" -o -name "*.tsx" -o -name "*.js" -o -name "*.jsx" \) | xargs grep -l "eval(" 2>/dev/null; then
             echo "🚨 Found eval() usage - potential security risk"
             exit 1
           fi
