@@ -33,7 +33,7 @@
     "format:check": "prettier --config config/.prettierrc --ignore-path config/.prettierignore --check \"src/**/*.{ts,tsx,js,jsx,json,css,md}\"",
     "type-check": "tsc --noEmit --project config/tsconfig.json",
     "cleanup": "node scripts/analysis/cleanup.js",
-    "security:audit": "npm audit --audit-level=moderate",
+    "security:audit": "npm audit --audit-level=high --omit=dev",
     "security:audit:production": "npm audit --audit-level=high --production",
     "security:audit:critical": "npm audit --audit-level=critical",
     "security:patterns": "node scripts/security/security-patterns.js",
