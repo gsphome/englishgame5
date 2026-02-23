@@ -1,6 +1,7 @@
 /* AppRouter Component */
 .app-router {
-  min-height: 100vh;
+  min-height: calc(100dvh - 64px);
+  height: 100%;
 }
 
 .app-router__loader {

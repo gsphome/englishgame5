@@ -247,7 +247,6 @@ export const ProgressionDashboard: React.FC<ProgressionDashboardProps> = ({
                   className="progression-dashboard__next-desc"
                   style={{
                     marginBottom: '0.15rem',
-                    fontSize: '0.8rem',
                     lineHeight: '1.2',
                     opacity: '0.95',
                   }}
@@ -272,7 +271,6 @@ export const ProgressionDashboard: React.FC<ProgressionDashboardProps> = ({
                           : nextRecommended.level
                       ),
                       padding: '0.03rem 0.15rem',
-                      fontSize: '0.55rem',
                       lineHeight: '1',
                     }}
                   >
@@ -283,7 +281,6 @@ export const ProgressionDashboard: React.FC<ProgressionDashboardProps> = ({
                   <span
                     className="progression-dashboard__time"
                     style={{
-                      fontSize: '0.6rem',
                       lineHeight: '1',
                     }}
                   >
@@ -296,7 +293,6 @@ export const ProgressionDashboard: React.FC<ProgressionDashboardProps> = ({
                 style={{
                   padding: '0.15rem 0.3rem',
                   gap: '0.08rem',
-                  fontSize: '0.65rem',
                   minHeight: 'auto',
                   height: 'fit-content',
                   flexShrink: '0',

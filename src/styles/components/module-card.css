@@ -90,8 +90,7 @@
 
 /* Typography Elements - FIXED LEGIBILITY - Using Typography System */
 .module-card__title {
-  /* Reduced by 15% from 0.875rem to 0.74rem */
-  font-size: 0.74rem;
+  font-size: var(--text-sm, 0.875rem);
   font-weight: 600;
   line-height: 1.25;
   color: rgba(255, 255, 255, 0.98);
@@ -108,13 +107,12 @@
   transition: color 0.2s ease-in-out;
   text-align: center;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  height: 1.75rem;
-  /* Adjusted for larger text */
+  height: auto;
+  min-height: 2rem;
 }
 
 .module-card__type {
-  /* Reduced by 15% from 0.75rem to 0.64rem */
-  font-size: 0.64rem;
+  font-size: var(--text-xs, 0.75rem);
   font-weight: 500;
   line-height: 1;
   color: rgba(255, 255, 255, 0.85);
@@ -128,8 +126,7 @@
 }
 
 .module-card__level {
-  /* Reduced by 15% from 0.75rem to 0.64rem */
-  font-size: 0.64rem;
+  font-size: var(--text-xs, 0.75rem);
   font-weight: 600;
   line-height: 1;
   color: rgba(255, 255, 255, 0.9);
@@ -142,7 +139,7 @@
 }
 
 .module-card__time {
-  font-size: 0.64rem;
+  font-size: var(--text-xs, 0.75rem);
   font-weight: 500;
   line-height: 1;
   color: rgba(255, 255, 255, 0.8);
@@ -474,14 +471,14 @@
   }
 
   .module-card__title {
-    /* IMPROVED: Increased from 0.6875rem to 0.9375rem for better legibility */
-    font-size: 0.9375rem;
+    /* Matches base size — card is too compact for larger sizes */
+    font-size: var(--text-sm, 0.875rem);
     font-weight: var(--font-semibold, 600);
     line-height: var(--leading-tight, 1.25);
-    height: 1.875rem;
+    height: auto;
+    min-height: 2rem;
     margin-bottom: 0.1875rem;
     margin-top: 0.0625rem !important;
-    /* Adjusted for larger text */
   }
 
   .module-card__type {
@@ -538,25 +535,25 @@
   }
 
   .module-card__title {
-    /* IMPROVED: Increased from 0.75rem to 1rem for tablet legibility */
-    font-size: var(--text-base, 1rem);
+    /* Compact card: keep at sm, card is 130×105px */
+    font-size: var(--text-sm, 0.875rem);
     line-height: var(--leading-tight, 1.25);
     font-weight: var(--font-semibold, 600);
-    height: 2rem;
+    height: auto;
+    min-height: 2.25rem;
     margin-bottom: 0.25rem;
     margin-top: 0rem;
-    /* Adjusted for larger text */
   }
 
   .module-card__type {
-    /* FIXED: Use recommended minimum size for consistency */
-    font-size: var(--text-sm, 0.875rem);
+    /* Keep at xs to fit compact card */
+    font-size: var(--text-xs, 0.75rem);
     font-weight: var(--font-medium, 500);
   }
 
   .module-card__level {
-    /* FIXED: Use recommended minimum size for consistency */
-    font-size: var(--text-sm, 0.875rem);
+    /* Keep at xs to fit compact card */
+    font-size: var(--text-xs, 0.75rem);
     padding: 0.0625rem 0.1875rem;
     font-weight: var(--font-semibold, 600);
   }
@@ -579,24 +576,24 @@
   }
 
   .module-card__title {
-    /* IMPROVED: Increased from 0.8125rem to 1.125rem for desktop clarity */
-    font-size: var(--text-lg, 1.125rem);
+    /* Desktop card is 125×125px — base size fits */
+    font-size: var(--text-base, 1rem);
     line-height: var(--leading-tight, 1.25);
     font-weight: var(--font-semibold, 600);
-    height: 2.25rem;
+    height: auto;
+    min-height: 2.5rem;
     margin-bottom: 0.3125rem;
-    /* Adjusted for larger text */
   }
 
   .module-card__type {
-    /* CONSISTENT: Use standard typography token across all breakpoints */
-    font-size: var(--text-sm, 0.875rem);
+    /* Keep metadata at xs */
+    font-size: var(--text-xs, 0.75rem);
     font-weight: var(--font-medium, 500);
   }
 
   .module-card__level {
-    /* CONSISTENT: Use standard typography token across all breakpoints */
-    font-size: var(--text-sm, 0.875rem);
+    /* Keep metadata at xs */
+    font-size: var(--text-xs, 0.75rem);
     padding: 0.0625rem 0.25rem;
     font-weight: var(--font-semibold, 600);
   }
@@ -819,25 +816,6 @@ html.light .module-card--reading .module-card__icon svg {
   fill: none !important;
   opacity: 1 !important;
   visibility: visible !important;
-}
-
-/* === RESPONSIVE BREAKPOINTS FOR SMALL SCREENS === */
-
-/* Force smaller fonts with higher specificity for all screen sizes */
-html body .main-menu__grid-container .module-card__title {
-  font-size: 0.74rem;
-}
-
-html body .main-menu__grid-container .module-card__type {
-  font-size: 0.64rem;
-}
-
-html body .main-menu__grid-container .module-card__level {
-  font-size: 0.64rem;
-}
-
-html body .main-menu__grid-container .module-card__time {
-  font-size: 0.64rem;
 }
 
 /* === AUTO-SCROLL HIGHLIGHT EFFECT === */
