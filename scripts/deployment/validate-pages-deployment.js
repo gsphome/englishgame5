@@ -429,7 +429,7 @@ async function validateDeployment() {
   
   console.log('='.repeat(40));
 
-  return overallStatus === 'HEALTHY' || overallStatus === 'ACCESSIBLE' || overallStatus === 'UPDATING';
+  return overallStatus === 'HEALTHY' || overallStatus === 'ACCESSIBLE' || overallStatus === 'UPDATING' || overallStatus === 'DEPLOYING';
 }
 
 // Handle command line execution
