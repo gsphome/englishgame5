@@ -1,0 +1,63 @@
+{
+  "timestamp": "2026-02-27T16:52:13.247Z",
+  "target": 500,
+  "warningThreshold": 400,
+  "results": {
+    "chunks": [
+      {
+        "name": "index-BvWUHECO.css",
+        "size": 347.63,
+        "status": "PASS",
+        "message": "347.63KB < 500KB target"
+      },
+      {
+        "name": "MatchingComponent-DcYYc_GN.css",
+        "size": 66.24,
+        "status": "PASS",
+        "message": "66.24KB < 500KB target"
+      },
+      {
+        "name": "ReadingComponent-Dn6Ojuim.css",
+        "size": 28.82,
+        "status": "PASS",
+        "message": "28.82KB < 500KB target"
+      },
+      {
+        "name": "SortingComponent-b-vQVe1T.css",
+        "size": 27.12,
+        "status": "PASS",
+        "message": "27.12KB < 500KB target"
+      },
+      {
+        "name": "LearningProgressHeader-B4YmwWGF.css",
+        "size": 11.74,
+        "status": "PASS",
+        "message": "11.74KB < 500KB target"
+      },
+      {
+        "name": "CompletionComponent-BbDkxmO4.css",
+        "size": 7.97,
+        "status": "PASS",
+        "message": "7.97KB < 500KB target"
+      },
+      {
+        "name": "FlashcardComponent-D5Wyebd-.css",
+        "size": 7,
+        "status": "PASS",
+        "message": "7KB < 500KB target"
+      }
+    ],
+    "totalSize": 496.52,
+    "compliance": {
+      "passed": 7,
+      "warnings": 0,
+      "failed": 0
+    },
+    "status": "PASS"
+  },
+  "metadata": {
+    "nodeVersion": "v20.19.4",
+    "platform": "darwin",
+    "generatedBy": "check-css-chunks.js"
+  }
+}
