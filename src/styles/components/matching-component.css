@@ -151,7 +151,7 @@
   border-color: #3b82f6;
   /* Professional hover: scale from center (no layout shift) */
   transform: scale(1.02);
-  box-shadow: 
+  box-shadow:
     0 4px 12px rgba(59, 130, 246, 0.15),
     0 0 0 2px rgba(59, 130, 246, 0.1);
   transition: var(--transition-interactive);
@@ -178,7 +178,7 @@ html body .matching-component .matching-component__item--selected {
   color: #ffffff !important;
   /* Professional selection: scale from center (no layout shift) */
   transform: scale(1.03) !important;
-  box-shadow: 
+  box-shadow:
     0 8px 20px rgba(59, 130, 246, 0.3),
     0 0 0 3px rgba(59, 130, 246, 0.2) !important;
   font-weight: 600 !important;

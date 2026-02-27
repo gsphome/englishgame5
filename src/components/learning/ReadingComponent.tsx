@@ -327,15 +327,13 @@ const ReadingComponent: React.FC<ReadingComponentProps> = ({ module }) => {
                     {readingData.grammarPoints.map((point, index) => (
                       <div key={index} className="reading-component__grammar-point">
                         <div className="reading-component__grammar-point-header">
-                          <span 
+                          <span
                             className="reading-component__grammar-point-number"
                             aria-label={`Grammar point ${index + 1} of ${readingData.grammarPoints?.length ?? 0}`}
                           >
                             {index + 1}
                           </span>
-                          <div className="reading-component__grammar-rule">
-                            {point.rule}
-                          </div>
+                          <div className="reading-component__grammar-rule">{point.rule}</div>
                         </div>
                         <div className="reading-component__grammar-explanation">
                           {point.explanation}
@@ -394,16 +392,16 @@ const ReadingComponent: React.FC<ReadingComponentProps> = ({ module }) => {
                     // Strategy: Find the last single quote to handle apostrophes like "I'm"
                     const examplePattern = /^Example (\d+):\s*(.+?)\s*-\s*'(.*)$/;
                     const match = example.match(examplePattern);
-                    
+
                     if (match) {
                       const [, number, title, fullQuote] = match;
                       // Find the last single quote to separate quote from note
                       const lastQuoteIndex = fullQuote.lastIndexOf("'");
-                      
+
                       if (lastQuoteIndex !== -1) {
                         const quote = fullQuote.substring(0, lastQuoteIndex);
                         const note = fullQuote.substring(lastQuoteIndex + 1);
-                        
+
                         return (
                           <div key={index} className="reading-component__example-card">
                             <div className="reading-component__example-card-header">
@@ -413,14 +411,16 @@ const ReadingComponent: React.FC<ReadingComponentProps> = ({ module }) => {
                             <div className="reading-component__example-quote">
                               "{quote}"
                               {note.trim() && (
-                                <span className="reading-component__example-note">{note.trim()}</span>
+                                <span className="reading-component__example-note">
+                                  {note.trim()}
+                                </span>
                               )}
                             </div>
                           </div>
                         );
                       }
                     }
-                    
+
                     // Fallback for non-matching format
                     return example.trim() ? (
                       <div key={index} className="reading-component__example-card">
