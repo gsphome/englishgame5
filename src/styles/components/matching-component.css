@@ -141,7 +141,7 @@
   color: #1f2937;
 }
 
-/* HOVER STATE - Enhanced for non-selected cards */
+/* HOVER STATE - Enhanced for non-selected cards (NO LAYOUT SHIFT) */
 .matching-component__item:hover:not(.matching-component__item--selected):not(
     .matching-component__item--matched
   ):not(.matching-component__item--correct):not(.matching-component__item--incorrect):not(
@@ -149,8 +149,11 @@
   ) {
   background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
   border-color: #3b82f6;
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-card-hover);
+  /* Professional hover: scale from center (no layout shift) */
+  transform: scale(1.02);
+  box-shadow: 
+    0 4px 12px rgba(59, 130, 246, 0.15),
+    0 0 0 2px rgba(59, 130, 246, 0.1);
   transition: var(--transition-interactive);
 }
 
@@ -168,13 +171,16 @@
   transition: var(--transition-interactive);
 }
 
-/* SELECTED STATE - Clear selection with strong border */
+/* SELECTED STATE - Clear selection with strong border (NO LAYOUT SHIFT) */
 html body .matching-component .matching-component__item--selected {
   background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%) !important;
   border: 3px solid #1e40af !important;
   color: #ffffff !important;
-  transform: translateY(-3px) !important;
-  box-shadow: var(--shadow-card-hover) !important;
+  /* Professional selection: scale from center (no layout shift) */
+  transform: scale(1.03) !important;
+  box-shadow: 
+    0 8px 20px rgba(59, 130, 246, 0.3),
+    0 0 0 3px rgba(59, 130, 246, 0.2) !important;
   font-weight: 600 !important;
   transition: var(--transition-interactive) !important;
 }
