@@ -157,7 +157,7 @@ export const CompactAbout: React.FC<CompactAboutProps> = ({ isOpen, onClose }) =
                 React
               </button>
               <span className="compact-about__tech-item">TypeScript</span>
-              <span className="compact-about__tech-item">Pure CSS</span>
+              <span className="compact-about__tech-item">CSS</span>
               <span className="compact-about__tech-item">Zustand</span>
               <span className="compact-about__tech-item">Vite</span>
             </div>

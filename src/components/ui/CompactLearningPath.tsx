@@ -54,9 +54,9 @@ export const CompactLearningPath: React.FC<CompactLearningPathProps> = ({ isOpen
         </div>
 
         <div className="compact-learning-path__content">
-          {/* Progress Overview */}
+          {/* Progress Overview - Simplified */}
           <div className="compact-learning-path__overview">
-            {/* Progress Circle - Grid Item 1 */}
+            {/* Progress Percentage */}
             <div className="compact-learning-path__stat">
               <div className="compact-learning-path__stat-icon compact-learning-path__stat-icon--emoji">
                 📊
@@ -65,34 +65,18 @@ export const CompactLearningPath: React.FC<CompactLearningPathProps> = ({ isOpen
                 {stats.completionPercentage}%
               </span>
               <span className="compact-learning-path__stat-label">
-                {t('learningPath.complete', 'Completo')}
+                {t('learningPath.complete', 'Complete')}
               </span>
             </div>
 
-            {/* Completed Stat - Grid Item 2 */}
+            {/* Completed Ratio */}
             <div className="compact-learning-path__stat">
               <CheckCircle className="compact-learning-path__stat-icon compact-learning-path__stat-icon--completed" />
-              <span className="compact-learning-path__stat-value">{stats.completedModules}</span>
-              <span className="compact-learning-path__stat-label">
-                {t('learningPath.completed', 'Completados')}
+              <span className="compact-learning-path__stat-value">
+                {stats.completedModules} / {stats.totalModules}
               </span>
-            </div>
-
-            {/* Available Stat - Grid Item 3 */}
-            <div className="compact-learning-path__stat">
-              <Star className="compact-learning-path__stat-icon compact-learning-path__stat-icon--available" />
-              <span className="compact-learning-path__stat-value">{stats.unlockedModules}</span>
               <span className="compact-learning-path__stat-label">
-                {t('learningPath.available', 'Disponibles')}
-              </span>
-            </div>
-
-            {/* Locked Stat - Grid Item 4 */}
-            <div className="compact-learning-path__stat">
-              <Lock className="compact-learning-path__stat-icon compact-learning-path__stat-icon--locked" />
-              <span className="compact-learning-path__stat-value">{stats.lockedModules}</span>
-              <span className="compact-learning-path__stat-label">
-                {t('learningPath.locked', 'Bloqueados')}
+                {t('learningPath.completed', 'Completed')}
               </span>
             </div>
           </div>

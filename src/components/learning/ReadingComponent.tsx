@@ -271,17 +271,31 @@ const ReadingComponent: React.FC<ReadingComponentProps> = ({ module }) => {
                   >
                     {readingData.keyVocabulary.map((term, index) => (
                       <div key={index} className="reading-component__vocabulary-card">
-                        <div className="reading-component__vocabulary-term">{term.term}</div>
-                        {term.pronunciation && (
-                          <div className="reading-component__vocabulary-pronunciation">
-                            {term.pronunciation}
-                          </div>
-                        )}
-                        <div className="reading-component__vocabulary-definition">
-                          <strong>{t('reading.component.definition')}:</strong> {term.definition}
+                        <div className="reading-component__vocabulary-card-header">
+                          <div className="reading-component__vocabulary-term">{term.term}</div>
+                          {term.pronunciation && (
+                            <div className="reading-component__vocabulary-pronunciation">
+                              {term.pronunciation}
+                            </div>
+                          )}
                         </div>
-                        <div className="reading-component__vocabulary-example">
-                          <strong>{t('reading.component.example')}:</strong> {term.example}
+                        <div className="reading-component__vocabulary-content">
+                          <div className="reading-component__vocabulary-definition-block">
+                            <div className="reading-component__vocabulary-label">
+                              {t('reading.component.definition')}
+                            </div>
+                            <div className="reading-component__vocabulary-definition">
+                              {term.definition}
+                            </div>
+                          </div>
+                          <div className="reading-component__vocabulary-example-block">
+                            <div className="reading-component__vocabulary-label">
+                              {t('reading.component.example')}
+                            </div>
+                            <div className="reading-component__vocabulary-example">
+                              {term.example}
+                            </div>
+                          </div>
                         </div>
                       </div>
                     ))}
@@ -312,17 +326,25 @@ const ReadingComponent: React.FC<ReadingComponentProps> = ({ module }) => {
                   <div id="grammar-content" role="region" aria-label="Grammar points">
                     {readingData.grammarPoints.map((point, index) => (
                       <div key={index} className="reading-component__grammar-point">
-                        <div className="reading-component__grammar-rule">
-                          <strong>{t('reading.component.grammarRule')}:</strong> {point.rule}
+                        <div className="reading-component__grammar-point-header">
+                          <span 
+                            className="reading-component__grammar-point-number"
+                            aria-label={`Grammar point ${index + 1} of ${readingData.grammarPoints.length}`}
+                          >
+                            {index + 1}
+                          </span>
+                          <div className="reading-component__grammar-rule">
+                            {point.rule}
+                          </div>
                         </div>
                         <div className="reading-component__grammar-explanation">
                           {point.explanation}
                         </div>
                         {point.examples && point.examples.length > 0 && (
                           <div className="reading-component__grammar-examples">
-                            <strong>
-                              {t('reading.component.examples', undefined, { default: 'Examples' })}:
-                            </strong>
+                            <div className="reading-component__grammar-examples-title">
+                              {t('reading.component.examples', undefined, { default: 'Examples' })}
+                            </div>
                             <ul className="reading-component__grammar-examples-list">
                               {point.examples.map((example, exIndex) => (
                                 <li
@@ -337,7 +359,9 @@ const ReadingComponent: React.FC<ReadingComponentProps> = ({ module }) => {
                         )}
                         {point.commonMistakes && point.commonMistakes.length > 0 && (
                           <div className="reading-component__grammar-mistakes">
-                            <strong>{t('reading.component.commonMistakes')}:</strong>
+                            <div className="reading-component__grammar-mistakes-title">
+                              {t('reading.component.commonMistakes')}
+                            </div>
                             <ul className="reading-component__grammar-mistakes-list">
                               {point.commonMistakes.map((mistake, mIndex) => (
                                 <li
@@ -363,12 +387,56 @@ const ReadingComponent: React.FC<ReadingComponentProps> = ({ module }) => {
             <h3 className="reading-component__section-title">{currentSection?.title}</h3>
 
             <div className="reading-component__section-content">
-              <ContentRenderer
-                content={ContentAdapter.ensureStructured(
-                  currentSection?.content || t('common.loading'),
-                  'reading'
-                )}
-              />
+              {currentSection?.type === 'examples' ? (
+                <div className="reading-component__examples-grid">
+                  {currentSection.content.split('\n\n').map((example, index) => {
+                    // Parse example format: "Example N: Title - 'Quote' (optional note)"
+                    // Strategy: Find the last single quote to handle apostrophes like "I'm"
+                    const examplePattern = /^Example (\d+):\s*(.+?)\s*-\s*'(.*)$/;
+                    const match = example.match(examplePattern);
+                    
+                    if (match) {
+                      const [, number, title, fullQuote] = match;
+                      // Find the last single quote to separate quote from note
+                      const lastQuoteIndex = fullQuote.lastIndexOf("'");
+                      
+                      if (lastQuoteIndex !== -1) {
+                        const quote = fullQuote.substring(0, lastQuoteIndex);
+                        const note = fullQuote.substring(lastQuoteIndex + 1);
+                        
+                        return (
+                          <div key={index} className="reading-component__example-card">
+                            <div className="reading-component__example-card-header">
+                              <span className="reading-component__example-number">{number}</span>
+                              <span className="reading-component__example-title">{title}</span>
+                            </div>
+                            <div className="reading-component__example-quote">
+                              "{quote}"
+                              {note.trim() && (
+                                <span className="reading-component__example-note">{note.trim()}</span>
+                              )}
+                            </div>
+                          </div>
+                        );
+                      }
+                    }
+                    
+                    // Fallback for non-matching format
+                    return example.trim() ? (
+                      <div key={index} className="reading-component__example-card">
+                        <div className="reading-component__example-content">{example}</div>
+                      </div>
+                    ) : null;
+                  })}
+                </div>
+              ) : (
+                <ContentRenderer
+                  content={ContentAdapter.ensureStructured(
+                    currentSection?.content || t('common.loading'),
+                    'reading'
+                  )}
+                />
+              )}
             </div>
 
             {/* Interactive Content - Tooltips */}

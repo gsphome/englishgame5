@@ -483,51 +483,35 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
                             : 'matching-modal__result-card--incorrect'
                         }`}
                       >
-                        <div className="matching-modal__result-card__header">
-                          <h4 className="matching-modal__result-card__term">{result.left}</h4>
-                          <span
-                            className={`matching-modal__result-card__status ${
-                              result.isCorrect
-                                ? 'matching-modal__result-card__status--correct'
-                                : 'matching-modal__result-card__status--incorrect'
-                            }`}
-                          >
-                            {result.isCorrect ? '✓' : '✗'}
+                        <span
+                          className={`matching-modal__result-card__status ${
+                            result.isCorrect
+                              ? 'matching-modal__result-card__status--correct'
+                              : 'matching-modal__result-card__status--incorrect'
+                          }`}
+                        >
+                          {result.isCorrect ? '✓' : '✗'}
+                        </span>
+
+                        <h4 className="matching-modal__result-card__term">{result.left}</h4>
+
+                        <p className="matching-modal__result-card__value matching-modal__result-card__value--correct">
+                          {result.right}
+                        </p>
+
+                        {!result.isCorrect ? (
+                          <p className="matching-modal__result-card__value matching-modal__result-card__value--incorrect">
+                            {result.userAnswer}
+                          </p>
+                        ) : (
+                          <span className="matching-modal__result-card__placeholder"></span>
+                        )}
+
+                        {result.explanation && (
+                          <span className="matching-modal__result-card__explanation" style={{ display: 'none' }}>
+                            {result.explanation}
                           </span>
-                        </div>
-
-                        <div className="matching-modal__result-card__content">
-                          <div className="matching-modal__result-card__field">
-                            <span className="matching-modal__result-card__label">
-                              Correct answer:
-                            </span>
-                            <p className="matching-modal__result-card__value matching-modal__result-card__value--correct">
-                              {result.right}
-                            </p>
-                          </div>
-
-                          {!result.isCorrect && (
-                            <div className="matching-modal__result-card__field">
-                              <span className="matching-modal__result-card__label">
-                                Your answer:
-                              </span>
-                              <p className="matching-modal__result-card__value matching-modal__result-card__value--incorrect">
-                                {result.userAnswer}
-                              </p>
-                            </div>
-                          )}
-
-                          {result.explanation && (
-                            <div className="matching-modal__result-card__field">
-                              <span className="matching-modal__result-card__label">
-                                Explanation:
-                              </span>
-                              <p className="matching-modal__result-card__explanation">
-                                {result.explanation}
-                              </p>
-                            </div>
-                          )}
-                        </div>
+                        )}
                       </div>
                     ))}
                   </div>
@@ -535,15 +519,15 @@ const MatchingComponent: React.FC<MatchingComponentProps> = ({ module }) => {
               ) : (
                 /* Individual Explanation View */
                 <div className="matching-modal__individual">
-                  <div className="matching-individual__field">
-                    <h4 className="matching-individual__label">Match:</h4>
-                    <p className="matching-individual__value">{selectedTerm.right}</p>
+                  <div className="matching-modal__individual__field">
+                    <h4 className="matching-modal__individual__label">Match:</h4>
+                    <p className="matching-modal__individual__value">{selectedTerm.right}</p>
                   </div>
 
                   {selectedTerm.explanation && (
-                    <div className="matching-individual__field">
-                      <h4 className="matching-individual__label">Explanation:</h4>
-                      <div className="matching-individual__explanation">
+                    <div className="matching-modal__individual__field">
+                      <h4 className="matching-modal__individual__label">Explanation:</h4>
+                      <div className="matching-modal__individual__explanation">
                         <ContentRenderer
                           content={ContentAdapter.ensureStructured(
                             selectedTerm.explanation,

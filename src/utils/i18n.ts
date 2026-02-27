@@ -320,6 +320,9 @@ export const translations = {
       nextRecommended: 'Next Recommended',
       recommended: 'Recommended',
       unitProgress: 'Progress by Level',
+      completedModules: 'modules',
+      availableModules: 'modules',
+      lockedModules: 'modules',
     },
     orientation: {
       title: 'For a better learning experience',
@@ -704,6 +707,9 @@ export const translations = {
       nextRecommended: 'Siguiente Recomendado',
       recommended: 'Recomendado',
       unitProgress: 'Progreso por Nivel',
+      completedModules: 'módulos',
+      availableModules: 'módulos',
+      lockedModules: 'módulos',
     },
     orientation: {
       title: 'Para una mejor experiencia de aprendizaje',

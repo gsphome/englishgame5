@@ -194,6 +194,10 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
           inputClass += ' completion-component__input--neutral';
         }
 
+        // Generate hint with first letter
+        const firstLetter = currentExercise.correct?.charAt(0) || '';
+        const placeholderHint = firstLetter ? `${firstLetter}...` : '...';
+
         elements.push(
           <input
             key={`input-${index}`}
@@ -201,7 +205,7 @@ const CompletionComponent: React.FC<CompletionComponentProps> = ({ module }) => 
             value={answer}
             onChange={e => setAnswer(e.target.value.toLowerCase())}
             disabled={showResult}
-            placeholder="..."
+            placeholder={placeholderHint}
             autoComplete="off"
             className={inputClass}
             style={

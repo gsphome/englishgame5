@@ -30,7 +30,7 @@
       "id": "examples",
       "title": "Conversation Examples",
       "type": "examples",
-      "content": "Example 1:\nPerson A: Hello! My name is John.\nPerson B: Hi John! I'm Maria. Nice to meet you.\nPerson A: Nice to meet you too!\n\nExample 2:\nPerson A: Good morning! How are you?\nPerson B: Good morning! I'm fine, thank you. And you?\nPerson A: I'm good, thanks!\n\nExample 3:\nPerson A: Hi! What's your name?\nPerson B: My name is Carlos. I'm from Mexico.\nPerson A: Nice to meet you, Carlos!"
+      "content": "Example 1: FIRST MEETING - 'Hello! My name is Sarah. Nice to meet you.'\n\nExample 2: ASKING HOW SOMEONE IS - 'Good morning! How are you today?'\n\nExample 3: INTRODUCING YOURSELF - 'Hi! I'm Carlos. I'm from Mexico.'\n\nExample 4: POLITE GREETING - 'Good evening! It's a pleasure to meet you.'"
     },
     {
       "id": "polite-words",

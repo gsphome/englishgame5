@@ -251,7 +251,7 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ module }) => {
               className="quiz-component__explanation-title dynamic-text-color"
               style={{ '--dynamic-text-color': textColor } as React.CSSProperties}
             >
-              {t('learning.explanation')}:
+              {t('learning.explanation')}
             </h4>
             <div
               className="quiz-component__explanation-content dynamic-text-color"
