@@ -14,9 +14,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: var(--glass-bg-light);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -29,25 +27,10 @@
   overflow: hidden;
 }
 
-.dark .compact-about {
-  background-color: var(--glass-bg-dark);
-}
-
-/* Fallback for browsers without backdrop-filter support */
-@supports not (backdrop-filter: blur(12px)) {
-  .compact-about {
-    background-color: rgba(0, 0, 0, 0.75);
-  }
-
-  .dark .compact-about {
-    background-color: rgba(0, 0, 0, 0.85);
-  }
-}
-
 /* === MODAL CONTAINER === */
 .compact-about__container {
   background-color: var(--theme-bg-elevated, #ffffff);
-  border: 1px solid var(--glass-border-light);
+  border: 1px solid var(--theme-border-modal, rgba(0, 0, 0, 0.1));
   border-radius: var(--radius-lg, 0.5rem);
   box-shadow: var(--shadow-strong, 0 10px 15px rgba(0, 0, 0, 0.1));
   max-width: 24rem;
@@ -1054,9 +1037,7 @@ html.dark .compact-about__container {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: var(--glass-bg-light);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -1067,24 +1048,9 @@ html.dark .compact-about__container {
   animation: modalFadeIn 0.2s ease-out;
 }
 
-.dark .screen-info-modal {
-  background-color: var(--glass-bg-dark);
-}
-
-/* Fallback for browsers without backdrop-filter support */
-@supports not (backdrop-filter: blur(12px)) {
-  .screen-info-modal {
-    background-color: rgba(0, 0, 0, 0.8);
-  }
-
-  .dark .screen-info-modal {
-    background-color: rgba(0, 0, 0, 0.9);
-  }
-}
-
 .screen-info-modal__container {
   background-color: var(--theme-bg-elevated, #ffffff);
-  border: 1px solid var(--glass-border-light);
+  border: 1px solid var(--theme-border-modal, rgba(0, 0, 0, 0.1));
   border-radius: 0.5rem;
   box-shadow:
     0 20px 25px -5px rgba(0, 0, 0, 0.1),
