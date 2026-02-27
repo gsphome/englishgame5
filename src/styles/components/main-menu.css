@@ -2,9 +2,9 @@
 
 /* CSS Variables for Dynamic Height Calculations - ULTRA-COMPACT */
 :root {
-  --grid-gap-mobile: 4px;
-  --grid-gap-tablet: 5px;
-  --grid-gap-desktop: 6px;
+  --grid-gap-mobile: 8px;
+  --grid-gap-tablet: 10px;
+  --grid-gap-desktop: 12px;
   --grid-padding-mobile: 0.375rem;
   --grid-padding-tablet: 0.5rem;
   --grid-padding-desktop: 0.625rem;
@@ -291,7 +291,7 @@
   place-items: center;
   place-content: center;
 
-  /* Dynamic spacing using CSS variables */
+  /* Dynamic spacing using CSS variables - OPTIMIZED for better density */
   gap: var(--grid-gap-mobile);
 
   /* Responsive Grid Columns - Ultra compact */

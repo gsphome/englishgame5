@@ -348,18 +348,18 @@
 }
 
 .module-card--locked {
-  opacity: 0.4;
+  opacity: 0.65;
   cursor: not-allowed;
-  filter: grayscale(0.8) brightness(0.9);
-  border: 2px solid rgba(156, 163, 175, 0.2);
+  filter: grayscale(0.6) brightness(0.95);
+  border: 2px solid rgba(156, 163, 175, 0.4);
   position: relative;
 }
 
 .module-card--locked:hover {
   transform: none;
   box-shadow: var(--card-shadow);
-  border-color: rgba(156, 163, 175, 0.3);
-  opacity: 0.5;
+  border-color: rgba(156, 163, 175, 0.5);
+  opacity: 0.7;
   will-change: auto;
 }
 
@@ -370,7 +370,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.2);
   border-radius: inherit;
   pointer-events: none;
 }
@@ -802,9 +802,10 @@ html.dark
   color: var(--theme-text-tertiary, #d1d5db);
 }
 
-/* Dark mode for locked cards */
+/* Dark mode for locked cards - IMPROVED CONTRAST */
 html.dark .module-card--locked {
-  opacity: 0.7;
+  opacity: 0.75;
+  filter: grayscale(0.5) brightness(1);
 }
 
 html.dark
@@ -812,11 +813,11 @@ html.dark
     .module-card--completion
   ):not(.module-card--sorting):not(.module-card--matching) {
   background: var(--theme-bg-subtle, #374151);
-  border-color: var(--theme-border-subtle, #4b5563);
+  border-color: var(--theme-border-medium, #6b7280);
 }
 
 html.dark .module-card--locked .module-card__title {
-  color: var(--theme-text-tertiary, #9ca3af);
+  color: var(--theme-text-secondary, #d1d5db);
 }
 
 /* Dark mode icons for non-variant cards */
@@ -852,6 +853,30 @@ html.light .module-card--reading .module-card__icon svg {
   visibility: visible !important;
 }
 
+/* === PROGRESS INDICATOR === */
+.module-card__progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 0 0 var(--card-border-radius) var(--card-border-radius);
+  overflow: hidden;
+}
+
+.module-card__progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, rgba(16, 185, 129, 0.9), rgba(5, 150, 105, 0.9));
+  transition: width 0.3s ease-in-out;
+  box-shadow: 0 0 4px rgba(16, 185, 129, 0.5);
+}
+
+/* Progress indicator for completed modules */
+.module-card--completed .module-card__progress-bar {
+  background: linear-gradient(90deg, rgba(16, 185, 129, 1), rgba(5, 150, 105, 1));
+}
+
 /* === AUTO-SCROLL HIGHLIGHT EFFECT === */
 /* Subtle pulse animation for next recommended module after completion */
 @keyframes next-module-pulse {
@@ -870,13 +895,16 @@ html.light .module-card--reading .module-card__icon svg {
 
 .module-card--next-recommended {
   animation: next-module-pulse 2s ease-in-out;
-  border-color: rgba(59, 130, 246, 0.5);
+  border-color: rgba(59, 130, 246, 0.7);
+  box-shadow: 
+    0 0 0 3px rgba(59, 130, 246, 0.2),
+    var(--card-shadow-hover);
 }
 
 /* Reduced motion: no animation, just highlight border */
 @media (prefers-reduced-motion: reduce) {
   .module-card--next-recommended {
     animation: none;
-    border-color: rgba(59, 130, 246, 0.6);
+    border-color: rgba(59, 130, 246, 0.8);
   }
 }

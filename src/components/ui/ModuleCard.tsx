@@ -11,6 +11,7 @@ import {
   CheckCircle,
 } from 'lucide-react';
 import { useModuleProgression } from '../../hooks/useProgression';
+import { useProgressStore } from '../../stores/progressStore';
 import { useTranslation } from '../../utils/i18n';
 import { useSettingsStore } from '../../stores/settingsStore';
 import type { LearningModule } from '../../types';
@@ -61,8 +62,13 @@ export const ModuleCard: React.FC<ModuleCardProps> = ({
   isNextRecommended = false,
 }) => {
   const progression = useModuleProgression(module.id);
+  const { getModuleCompletion } = useProgressStore();
   const { language } = useSettingsStore();
   const { t } = useTranslation(language);
+
+  // Get progress data for this module
+  const moduleCompletion = getModuleCompletion(module.id);
+  const progressPercentage = moduleCompletion?.bestScore || 0;
 
   const difficultyLevel =
     module.level && Array.isArray(module.level) && module.level.length > 0
@@ -188,7 +194,17 @@ export const ModuleCard: React.FC<ModuleCardProps> = ({
             {statusInfo.statusIcon}
           </div>
         )}
-        {/* Locked state already shows lock icon in main icon area - no duplicate needed */}
+
+        {/* Progress indicator for unlocked/completed modules */}
+        {(progression.status === 'unlocked' || progression.status === 'completed') &&
+          progressPercentage > 0 && (
+            <div className="module-card__progress" aria-hidden="true">
+              <div
+                className="module-card__progress-bar"
+                style={{ width: `${progressPercentage}%` }}
+              />
+            </div>
+          )}
       </div>
     </button>
   );
