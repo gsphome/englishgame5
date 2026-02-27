@@ -44,6 +44,57 @@
   --shadow-strong: 0 4px 16px rgba(0, 0, 0, 0.15);
   --shadow-interactive: 0 2px 4px rgba(0, 0, 0, 0.1);
 
+  /* === ENHANCED SHADOW SYSTEM - MULTI-LAYER DEPTH === */
+  /* ENHANCED_SHADOWS - Multi-layer shadow system for visual enhancements */
+  /* Module card shadows with elevation states */
+  --shadow-card-default: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.02);
+
+  --shadow-card-hover: 0 4px 8px rgba(0, 0, 0, 0.08), 0 12px 24px rgba(0, 0, 0, 0.04);
+
+  --shadow-card-active: 0 2px 4px rgba(0, 0, 0, 0.06), 0 6px 12px rgba(0, 0, 0, 0.03);
+
+  /* Flashcard shadows with 3-layer depth */
+  --shadow-flashcard:
+    0 2px 8px rgba(0, 0, 0, 0.06), 0 8px 20px rgba(0, 0, 0, 0.04), 0 16px 32px rgba(0, 0, 0, 0.02);
+
+  /* Button shadows with tactile feedback */
+  --shadow-button-default: 0 2px 4px rgba(0, 0, 0, 0.08);
+  --shadow-button-hover: 0 4px 12px rgba(0, 0, 0, 0.12);
+  --shadow-button-active: 0 1px 2px rgba(0, 0, 0, 0.06);
+
+  /* === TRANSITION SYSTEM === */
+  /* TRANSITION_SYSTEM - Smooth transitions for interactive elements */
+  /* Transition timing tokens */
+  --transition-fast: 150ms;
+  --transition-normal: 200ms;
+  --transition-slow: 300ms;
+
+  /* Easing functions for natural motion */
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.6, 1);
+
+  /* Combined transition properties */
+  --transition-interactive: all var(--transition-normal) var(--ease-smooth);
+  --transition-shadow: box-shadow var(--transition-normal) var(--ease-smooth);
+  --transition-transform: transform var(--transition-normal) var(--ease-smooth);
+
+  /* === GLASSMORPHISM SYSTEM === */
+  /* GLASSMORPHISM - Modern frosted glass effects */
+  /* Glassmorphism effects for modals and overlays */
+  --glass-blur: blur(12px);
+  --glass-bg-light: rgba(255, 255, 255, 0.85);
+  --glass-bg-dark: rgba(31, 41, 59, 0.85);
+  --glass-border-light: rgba(255, 255, 255, 0.2);
+  --glass-border-dark: rgba(255, 255, 255, 0.1);
+
+  /* === ANIMATION SYSTEM === */
+  /* ANIMATION_SYSTEM - Animation timing for micro-interactions */
+  /* Animation timing tokens */
+  --animation-fast: 200ms;
+  --animation-normal: 300ms;
+  --animation-slow: 500ms;
+
   /* === BORDER RADIUS SYSTEM === */
   /* RADIUS_SYSTEM - Consistent corner radius across components */
   --radius-sm: 0.25rem;
@@ -134,6 +185,62 @@
     /* 15px */
     --text-base: 1.0625rem;
     /* 17px */
+  }
+}
+
+/* === ANIMATION KEYFRAMES === */
+/* ANIMATION_KEYFRAMES - Micro-interaction animations */
+
+/* Pulse animation for success feedback */
+@keyframes pulse-success {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+}
+
+/* Ripple animation for button interactions */
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* === ACCESSIBILITY MEDIA QUERIES === */
+/* ACCESSIBILITY_PREFERENCES - Respect user preferences */
+
+/* Respect reduced motion preference - disable all transitions and animations */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition-fast: 0.01ms;
+    --transition-normal: 0.01ms;
+    --transition-slow: 0.01ms;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Fallback for browsers without backdrop-filter support */
+@supports not (backdrop-filter: blur(12px)) {
+  :root {
+    --glass-bg-light: rgba(255, 255, 255, 0.95);
+    --glass-bg-dark: rgba(31, 41, 59, 0.95);
   }
 }
 
@@ -489,6 +596,21 @@
 /* === DARK MODE ADJUSTMENTS === */
 /* DARK_MODE_TYPOGRAPHY - Enhanced contrast for dark themes */
 html.dark {
+  /* Dark mode shadows - darker rgba values for better visibility */
+  --shadow-card-default: 0 1px 3px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.2);
+
+  --shadow-card-hover: 0 4px 8px rgba(0, 0, 0, 0.4), 0 12px 24px rgba(0, 0, 0, 0.3);
+
+  --shadow-flashcard:
+    0 2px 8px rgba(0, 0, 0, 0.4), 0 8px 20px rgba(0, 0, 0, 0.3), 0 16px 32px rgba(0, 0, 0, 0.2);
+
+  --shadow-button-default: 0 2px 4px rgba(0, 0, 0, 0.4);
+  --shadow-button-hover: 0 4px 12px rgba(0, 0, 0, 0.5);
+
+  /* Dark mode glassmorphism backgrounds */
+  --glass-bg-light: rgba(31, 41, 59, 0.9);
+  --glass-bg-dark: rgba(15, 23, 42, 0.9);
+
   /* Slightly increase font weights for better contrast on dark backgrounds */
   .typography-h1,
   .typography-h2,

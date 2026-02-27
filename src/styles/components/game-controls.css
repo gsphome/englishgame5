@@ -33,16 +33,27 @@
   border: 1px solid var(--theme-border-soft, #f3f4f6);
   border-radius: 50%;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: var(--transition-shadow), var(--transition-transform);
   color: var(--theme-text-secondary, #6b7280);
   flex-shrink: 0;
+  box-shadow: var(--shadow-button-default);
 }
 
 .game-controls__nav-btn:hover:not(:disabled) {
   background-color: var(--theme-primary-blue, #3b82f6);
   color: white;
   transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+  box-shadow: var(--shadow-button-hover);
+}
+
+.game-controls__nav-btn:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
+  box-shadow: var(--shadow-button-active);
+}
+
+.game-controls__nav-btn:focus-visible {
+  outline: 2px solid var(--theme-primary-blue, #3b82f6);
+  outline-offset: 2px;
 }
 
 .game-controls__nav-btn:disabled {
@@ -98,8 +109,30 @@
   cursor: pointer;
   font-weight: 600;
   font-size: 0.75rem;
-  transition: all 0.2s ease;
+  transition: var(--transition-shadow), var(--transition-transform);
   flex-shrink: 0;
+  box-shadow: var(--shadow-button-default);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ripple effect for primary buttons */
+.game-controls__primary-btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.6);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.game-controls__primary-btn:active::after {
+  animation: ripple var(--animation-fast) var(--ease-smooth);
 }
 
 /* Primary Button Variants */
@@ -110,12 +143,21 @@
     var(--theme-primary-purple, #8b5cf6) 100%
   );
   color: white;
-  box-shadow: var(--shadow-interactive, 0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
 .game-controls__primary-btn--blue:hover:not(:disabled) {
   transform: translateY(-1px);
-  box-shadow: var(--shadow-interactive, 0 2px 4px rgba(0, 0, 0, 0.1));
+  box-shadow: var(--shadow-button-hover);
+}
+
+.game-controls__primary-btn--blue:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
+  box-shadow: var(--shadow-button-active);
+}
+
+.game-controls__primary-btn--blue:focus-visible {
+  outline: 2px solid var(--theme-primary-blue, #3b82f6);
+  outline-offset: 2px;
 }
 
 .game-controls__primary-btn--green {
@@ -125,12 +167,22 @@
     var(--theme-primary-blue, #3b82f6) 100%
   );
   color: white;
-  box-shadow: var(--shadow-interactive, 0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
 .game-controls__primary-btn--green:hover:not(:disabled) {
   transform: translateY(-1px);
-  box-shadow: var(--shadow-interactive, 0 2px 4px rgba(0, 0, 0, 0.1));
+  box-shadow: var(--shadow-button-hover);
+}
+
+.game-controls__primary-btn--green:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
+  box-shadow: var(--shadow-button-active);
+  animation: pulse-success var(--animation-normal) var(--ease-smooth);
+}
+
+.game-controls__primary-btn--green:focus-visible {
+  outline: 2px solid var(--theme-success, #10b981);
+  outline-offset: 2px;
 }
 
 .game-controls__primary-btn--purple {
@@ -140,23 +192,41 @@
     var(--theme-primary-blue, #3b82f6) 100%
   );
   color: white;
-  box-shadow: var(--shadow-interactive, 0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
 .game-controls__primary-btn--purple:hover:not(:disabled) {
   transform: translateY(-1px);
-  box-shadow: var(--shadow-interactive, 0 2px 4px rgba(0, 0, 0, 0.1));
+  box-shadow: var(--shadow-button-hover);
+}
+
+.game-controls__primary-btn--purple:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
+  box-shadow: var(--shadow-button-active);
+}
+
+.game-controls__primary-btn--purple:focus-visible {
+  outline: 2px solid var(--theme-primary-purple, #8b5cf6);
+  outline-offset: 2px;
 }
 
 .game-controls__primary-btn--orange {
   background: linear-gradient(135deg, #ea580c 0%, #f97316 100%);
   color: white;
-  box-shadow: 0 2px 4px rgba(234, 88, 12, 0.3);
 }
 
 .game-controls__primary-btn--orange:hover:not(:disabled) {
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(234, 88, 12, 0.4);
+  box-shadow: var(--shadow-button-hover);
+}
+
+.game-controls__primary-btn--orange:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
+  box-shadow: var(--shadow-button-active);
+}
+
+.game-controls__primary-btn--orange:focus-visible {
+  outline: 2px solid #ea580c;
+  outline-offset: 2px;
 }
 
 .game-controls__primary-btn:disabled {
@@ -186,15 +256,26 @@
   cursor: pointer;
   font-weight: 500;
   font-size: 0.75rem;
-  transition: all 0.2s ease;
+  transition: var(--transition-shadow), var(--transition-transform);
   flex-shrink: 0;
+  box-shadow: var(--shadow-button-default);
 }
 
 .game-controls__secondary-btn:hover:not(:disabled) {
   background-color: var(--theme-bg-soft, #f3f4f6);
   color: var(--theme-text-primary, #374151);
   transform: translateY(-1px);
-  box-shadow: var(--shadow-interactive, 0 2px 4px rgba(0, 0, 0, 0.1));
+  box-shadow: var(--shadow-button-hover);
+}
+
+.game-controls__secondary-btn:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
+  box-shadow: var(--shadow-button-active);
+}
+
+.game-controls__secondary-btn:focus-visible {
+  outline: 2px solid var(--theme-primary-blue, #3b82f6);
+  outline-offset: 2px;
 }
 
 .game-controls__secondary-btn:disabled {
@@ -218,16 +299,27 @@
   border: 1px solid var(--theme-border-soft, #f3f4f6);
   border-radius: 50%;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: var(--transition-shadow), var(--transition-transform);
   color: var(--theme-text-secondary, #6b7280);
   flex-shrink: 0;
+  box-shadow: var(--shadow-button-default);
 }
 
 .game-controls__icon-btn:hover:not(:disabled) {
   background-color: var(--theme-primary-blue, #3b82f6);
   color: white;
   transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+  box-shadow: var(--shadow-button-hover);
+}
+
+.game-controls__icon-btn:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
+  box-shadow: var(--shadow-button-active);
+}
+
+.game-controls__icon-btn:focus-visible {
+  outline: 2px solid var(--theme-primary-blue, #3b82f6);
+  outline-offset: 2px;
 }
 
 .game-controls__icon-btn:disabled {
@@ -251,16 +343,27 @@
   border: 1px solid var(--theme-border-soft, #f3f4f6);
   border-radius: 50%;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: var(--transition-shadow), var(--transition-transform);
   color: var(--theme-text-secondary, #6b7280);
   flex-shrink: 0;
+  box-shadow: var(--shadow-button-default);
 }
 
 .game-controls__home-btn:hover:not(:disabled) {
   background-color: var(--theme-text-secondary, #6b7280);
   color: white;
   transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(107, 114, 128, 0.3);
+  box-shadow: var(--shadow-button-hover);
+}
+
+.game-controls__home-btn:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
+  box-shadow: var(--shadow-button-active);
+}
+
+.game-controls__home-btn:focus-visible {
+  outline: 2px solid var(--theme-text-secondary, #6b7280);
+  outline-offset: 2px;
 }
 
 .game-controls__home-btn__icon {

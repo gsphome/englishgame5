@@ -44,6 +44,7 @@
 /* === TOAST TYPES === */
 .toast--success {
   border-left: 4px solid var(--theme-success);
+  animation: pulse-success var(--animation-normal) var(--ease-smooth);
 }
 
 .toast--error {

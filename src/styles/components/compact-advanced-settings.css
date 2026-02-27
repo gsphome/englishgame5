@@ -7,13 +7,16 @@
   box-sizing: border-box;
 }
 
+/* === MODAL OVERLAY === */
 .compact-settings {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--glass-bg-light);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -24,9 +27,24 @@
   overflow: hidden;
 }
 
+.dark .compact-settings {
+  background-color: var(--glass-bg-dark);
+}
+
+/* Fallback for browsers without backdrop-filter support */
+@supports not (backdrop-filter: blur(12px)) {
+  .compact-settings {
+    background-color: rgba(0, 0, 0, 0.75);
+  }
+
+  .dark .compact-settings {
+    background-color: rgba(0, 0, 0, 0.85);
+  }
+}
+
 .compact-settings__container {
   background-color: var(--theme-bg-elevated, #ffffff);
-  border: 1px solid var(--theme-border-modal, rgba(0, 0, 0, 0.1));
+  border: 1px solid var(--glass-border-light);
   border-radius: var(--radius-lg, 0.5rem);
   box-shadow: var(--shadow-strong, 0 10px 15px rgba(0, 0, 0, 0.1));
   max-width: 24rem;
@@ -42,7 +60,7 @@
 /* Dark mode container - MEJORADO */
 html.dark .compact-settings__container {
   background-color: var(--theme-bg-elevated, #111827);
-  border-color: var(--theme-border-soft, #374151);
+  border-color: var(--glass-border-dark);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
 }
 
