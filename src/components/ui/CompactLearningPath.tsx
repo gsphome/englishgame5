@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, CheckCircle, Lock, Star, MapPin } from 'lucide-react';
+import { X, CheckCircle, Star, MapPin } from 'lucide-react';
 import { useProgression } from '../../hooks/useProgression';
 // Note: useProgressStore removed as we consolidated the information
 import { useSettingsStore } from '../../stores/settingsStore';
