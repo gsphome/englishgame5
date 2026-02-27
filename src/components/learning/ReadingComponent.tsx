@@ -322,14 +322,14 @@ const ReadingComponent: React.FC<ReadingComponentProps> = ({ module }) => {
                   </span>
                   <ChevronDown className="reading-component__summary-section-icon" />
                 </button>
-                {grammarExpanded && (
+                {grammarExpanded && readingData.grammarPoints && (
                   <div id="grammar-content" role="region" aria-label="Grammar points">
                     {readingData.grammarPoints.map((point, index) => (
                       <div key={index} className="reading-component__grammar-point">
                         <div className="reading-component__grammar-point-header">
                           <span 
                             className="reading-component__grammar-point-number"
-                            aria-label={`Grammar point ${index + 1} of ${readingData.grammarPoints.length}`}
+                            aria-label={`Grammar point ${index + 1} of ${readingData.grammarPoints?.length ?? 0}`}
                           >
                             {index + 1}
                           </span>
